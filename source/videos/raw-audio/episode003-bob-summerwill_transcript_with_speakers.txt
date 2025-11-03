@@ -1,0 +1,1134 @@
+
+UNKNOWN:
+[0.0s] All righty.
+
+SPEAKER_05:
+[1.2s] Well, thanks everyone for coming back.
+[3.2s] We've done a couple of videos.
+[5.6s] So we've done two on the early days of Ethereum.
+[10.0s] And I actually did another video on identity following that, which you can check out on my channel.
+[15.9s] And
+[16.7s] In the process, we're excited to reconnect with Bob Summerwell.
+[21.2s] So Bob will ask to introduce himself in a second, but he actually went quite in depth in reaction to the videos and helping to work together to patch up the whole story from our collective memory on the early days of Ethereum, wrote a long blog post that you should check out and we'll link in the notes.
+
+UNKNOWN:
+[42.4s] We asked him to join us here today to kind of dig more into the story and also just generally catch up.
+
+SPEAKER_05:
+[47.9s] So with that, maybe I'll hand it to Bob to do a quick intro and we can just kind of get into it.
+
+SPEAKER_01:
+[57.1s] So, yeah, hi, you know, thanks so much for the invite.
+[60.4s] You know, like I said to you guys, you know, I love those first two videos.
+[65.1s] You know, I love this history and it was great to
+[70.8s] you know, both hear that and have, you know, a slightly different perspective as well, you know, our paths have overlapped in some ways and haven't in others.
+[78.5s] So, you know, there are a few things that came up which I, you know, I wasn't myself aware of.
+[85.1s] I mean, just for everyone's background about me and who I am.
+[92.0s] So I
+[94.2s] got interested in blockchain in 2014.
+[97.8s] But it was 2015, where I really like kind of jumped in.
+[101.3s] And that happened because I was I was working in Toronto, I had a six month contract, was working in Toronto, around the same time that Ethereum was doing a mainland launch.
+[114.4s] And I'd actually met Vitalik for the first time in 2014.
+[116.9s] But you know, just kind of following along a little bit, not actually doing anything.
+[121.5s] But then moving to Toronto, it's just like orders of magnitude, more stuff going on and, you know, meetups and, you know, Anthony Fiorio's Bitcoin Decentral co-working space and everything.
+[134.8s] So I got like really very addicted.
+[137.4s] through that year.
+[138.5s] And it was like, right, I can't not get involved.
+[141.5s] Right?
+[141.8s] It's like, it's like you're there at the birth of the web or whatever.
+[145.0s] And you've, you know, you've, you've met Tim Berners-Lee, and he's about to like go live on the web.
+[149.3s] And it's like, you know, how can you not want to get involved.
+[152.9s] So I just started sort of volunteering and helping.
+[158.3s] My background prior to that was in the games industry.
+[161.6s] So like 15 years of C++.
+
+UNKNOWN:
+[164.8s] 15 years at C++.
+
+SPEAKER_01:
+[166.7s] So I was like, well, you know, I can do something with CPP Ethereum.
+[173.1s] I was really into mobile and wearables.
+[175.2s] So my first thing I set myself is, you know, can I get Ethereum running on my smartwatch?
+[180.6s] You know, could you get a smartwatch and go around like, bing, there's some money, you know, that'd be really cool.
+[185.6s] So, so yeah, I just started doing stuff on there.
+[190.4s] That was about the time that Gav was part in company with, with the foundation as well.
+[197.7s] So there was kind of a dearth of people on that team.
+[203.4s] So, you know, like that period, I ended up being like, I think the only person in the world who was actually helping on that.
+[211.6s] Like, you know, no companies, no, no, nobody was helping.
+[215.9s] And then I ended up getting hired into the foundation in early 2016.
+[220.3s] And yeah, I've been involved on Ethereum Enterprise, Ethereum Hyperledger, and more recently, Ethereum Classic, nearly a decade now.
+
+SPEAKER_03:
+[236.8s] Yeah, Bob, well, and to be open to everyone, we're old friends, and we're happy to have you as our first guest host on this thing.
+[248.3s] But also, you are like the Nelson Mandela of the Ethereum ecosystem.
+[254.2s] You're friends with everyone.
+[255.5s] You've been in everywhere.
+[259.7s] So it's great to have your perspective on things.
+
+SPEAKER_00:
+[262.9s] Thank you.
+
+SPEAKER_03:
+[264.7s] So, and as Karen has mentioned, for anyone who hasn't seen Bob's blog post, it's notionally a blog post, almost a full novel, probably a novella size.
+[277.5s] It has pictures of a lot of the people we're talking about.
+[280.1s] You dug up so much content out of there.
+[283.5s] Were those your personal pictures?
+[285.4s] It's just stuff?
+
+SPEAKER_01:
+[286.3s] Yeah, yeah, just stuff I had.
+[289.9s] I mean, another thing here is,
+[293.0s] There's a couple of articles on my own blog from earlier that I linked into there as well, which was, there's one called Ethereum Foundation People and one called Ethereum Foundation Timeline.
+[307.7s] So I made those in late 2017, early 2018, because there was no canonical history of any of this.
+
+SPEAKER_03:
+[317.1s] Like, how did Ethereum start?
+
+SPEAKER_01:
+[318.9s] I mean, it's in people's heads, it's all secondhand stories that you hear from people that were around, but you know, it's like, what's true, what isn't?
+[327.9s] Because I think, especially on that like foundation side, it was such a mess, right?
+[333.8s] Just like all different people weren't getting on, blowing up, kind of like, but parity versus the foundation and Charles, you know, and like, God, you know, so,
+[348.3s] I think some people had almost taken this position of like, we don't talk about that, right?
+[355.3s] Because anything I say, like, it's going to offend somebody else.
+[358.7s] So just la la la, it doesn't matter that, you know.
+[363.2s] But, but yeah, so I started gathering that list of, well, you know, who were the people that were around in the pre-foundation days and then in that.
+[373.9s] So yeah, I've got this one page, this people page, which I think is really cool.
+[378.8s] So that's basically from 2013 through to early 2018, identifying anyone that I could that was involved with Ethereum pre-foundation or who worked for the foundation in those early years.
+[396.2s] And one of the things that's really great there is DevCon Zero,
+[403.6s] So that was the very first DevCon, but it was a closed event.
+[408.8s] That wasn't a public event.
+[410.8s] And it was foundation people at that time, but there were also, you know, some other key community sorts of people there as well.
+[421.3s] And they did this one thing at the start that was introductions.
+[425.5s] So there's this video that's about 15 or 20 minutes long of everybody, like,
+[431.1s] Hi, I'm glad I'm here doing, you know, proof of state research.
+[436.2s] Just see these, you know, so young, so many people that, you know, like really early twenties, you know, and turning up and it's like, that's, you know, that's so-and-so, right.
+[447.5s] And some of these people as well, you know, they're not involved anymore.
+[450.8s] You know, they're sort of like footnotes in history, but you have that record and,
+
+UNKNOWN:
+[457.9s] So yeah, that list of people, I got all of that together.
+
+SPEAKER_01:
+[462.5s] And the reason that that came about was in late 2017, I got a message from Laura Shin saying, hey, I hear Ming's being sacked at the foundation.
+[475.6s] Do you know anything about this?
+[477.3s] And I said, well, no, I don't.
+[479.8s] but it wouldn't surprise me.
+[483.3s] But, you know, basically it would be like Vitalik or maybe Hudson could tell you, but nobody else could tell you.
+[491.0s] Anyway, and, you know, it sort of came out, well, yeah, she's, you know, she's not being sacked, but she's agreed to leave.
+[497.2s] And then it's like, well, what's next?
+[500.1s] So I contacted Vitalik and said, you know, hey, is there anything I can do to help?
+[503.6s] You know, what can I do?
+
+UNKNOWN:
+[505.6s] you know and he said well the one thing you can do is can you like try and talk to people and work out like you know what would good look like right what do people think a good ethereum foundation would look like and so that started my sort of adventure really of like right i'm going to go and talk to all the founders all the other people and try and work out like you know what what
+
+SPEAKER_01:
+[527.7s] And then that just turned into really a thought experiment on my side of like, OK, so to my mind, Ming was terrible.
+[538.1s] So how did she get hired?
+[540.5s] What was going on two and a half years back that that looked like a good option?
+[547.6s] How did it work before?
+[550.0s] How did the foundation come about?
+
+UNKNOWN:
+[554.0s] What were the group of leaders and like what were all the dynamics between all of these people?
+
+SPEAKER_01:
+[558.4s] So, yeah, I went down quite a rabbit hole there.
+[561.9s] And that's that was the sort of the genesis for that information gathering.
+[566.9s] And I learned a lot.
+[570.8s] And that information as well I gave to Laura and to the other two authors that were doing their Ethereum books.
+[578.8s] It's kind of like, right, there is no canonical, but this is kind of what I found, which is maybe like the best information that there was at that time.
+
+SPEAKER_03:
+[588.8s] Well, and also it's to your point, it's that I think generally people have sort of survivorship bias about, you know, like everything works smooth, but innovation is messy.
+[600.2s] You know, it's messy and it's like, you know, there are a million and one different paths that things could have went to, and we just want to kind of acknowledge all that.
+[609.9s] you know, like, given where the ecosystem is today.
+[612.8s] And even though, you know, it's amazing to me that so many people know about it, that I spent, we all spent the first years trying to get anyone to listen to us talk about blockchain, and no one, you know, everyone just glaze over, right.
+[626.0s] So it's just kind of nice to take that retrospective view at this point.
+[630.9s] Oh,
+
+UNKNOWN:
+[631.8s] Went a little bit far.
+
+SPEAKER_03:
+[634.7s] We'll just go with it.
+[636.7s] One of the things that I know that Vitalik said, and again, it was maybe in Laura Shin's book, was like the founding of Ethereum was very atypical.
+
+SPEAKER_01:
+[651.8s] Because it was essentially like, here's a white paper out to a bunch of random people who may be interested.
+[661.6s] And it's basically like, first people that turn up, right, you're the founders.
+[666.8s] A number of them, they'd not even met each other before, not really a lot of knowledge.
+[675.6s] And so yeah, there were lots of interpersonal things that just didn't work at all.
+[683.6s] It's just like, no.
+[686.0s] like founding a company, and I'm sure you guys, you know, have this experience yourself, right?
+[692.1s] You want to start with people that you kind of know and trust a bit, because you know that you're going through the fire together.
+[698.0s] So, you know, you better have some stickability with you and, you know, common alignment or at least
+[709.3s] knowing that you've got good communication to go through those bad times, right, and you know that you can work it out.
+[716.9s] And what seemed to happen on Ethereum was absolutely the polar opposite of that.
+[720.6s] It's just a random bunch of people who were there, didn't really know each other,
+[725.6s] make that commitment before you even know what you're doing right yeah and so that didn't work so great and i think also let me actually i wanted to ask about that i'm also just looking at the list of the ethereum foundation people which is remarkably long for the type of initiative it was
+
+SPEAKER_05:
+[746.0s] You know, we talk about this because we're a management team and we're trying to get people to focus on particular goals and things our company wants to do and such.
+[754.1s] Do you think there is any benefits to this level of, you could call it disorganization or just, you know.
+
+UNKNOWN:
+[762.4s] I kind of think if there were a benefit and it wasn't merely just an inefficient and painful process that Ethereum succeeded in spite of, it's kind of, it embodied the ethos and it let people, like Vitalik put the idea out there and then people fought for its destiny.
+
+SPEAKER_05:
+[781.0s] Like Ethereum existed and then they wanted to be part of taking it to, and he saw the clients and all that too.
+[787.8s] Sorry, Jim, go ahead.
+
+SPEAKER_02:
+[788.8s] I was going to say it kind of worked like a blockchain works, in fact.
+
+SPEAKER_05:
+[791.6s] Yeah.
+
+SPEAKER_02:
+[792.2s] Lots of random people coming together with some underlying principle to organize things, and then they fight it out.
+
+SPEAKER_03:
+[798.3s] But what's that law that organization technology reflects the organization?
+[803.5s] Collins Law, I think?
+[805.1s] Yeah, something like that.
+[806.3s] Like, yeah, sorry.
+
+SPEAKER_01:
+[809.7s] Yeah, I mean, I guess in general, yes, having that frothing emergent
+[817.3s] like stuff is is good I think where it was really screwed though was to do with money and and you know the ICO funding right that it's basically like okay here we're doing the thing and here the money is all actually in this organizational group and the people in that group are being funded you know are in this privileged position um it's something which
+[842.7s] Brian Bellendorf said to me in later years was it's sort of like the original sin of Ethereum is if you want to have that kind of collaboration, so, you know, whatever stuff like the EA and Hyperledger or even just, you know, the rather looser protocol development around Ethereum, you don't want to pay one team and not the others, because that just screws that battlefield.
+[870.7s] So,
+[872.3s] you have this situation, for example, where, you know, you've got the C++ client and you've got Geth, you know, you did have a Python client as well.
+[882.9s] So you have that good triangulation, but it was essentially like the funded ones were C++ and Go.
+[888.9s] And then they have the money crisis of like, oh my God, is this thing even gonna happen?
+[894.9s] Right, we've got cut scope, C++ is gone, Gab ends up going out of the way.
+[899.6s] And then you have parity,
+[902.6s] you know, having one of the major clients, but without funding.
+[907.4s] So it's like get a gap, that's the you know, that's the favorite child, right?
+[911.6s] You know, that's the, it's not like the official client, but it is the official client.
+[918.5s] So all that sort of like, separation of implementation versus specification.
+[924.5s] And, you know, in that free market around that was really skewed, because the money was with gap.
+[932.0s] Geth were in the foundation and they've got, you know, Vitalik's kind of blessing and everything.
+[936.7s] So I think that's where things were great, because you did have the diversity, but it wasn't fair diversity.
+[947.1s] And I think if you look at what's happening now on
+[950.5s] the consensus clients for, I was going to say Ethereum 2, it's not called Ethereum 2 anymore, but you know, the separation that you have with those execution clients and consensus clients, none of those consensus clients are made by the foundation.
+[966.7s] The foundation doesn't have client teams.
+[969.6s] They do funding, like they've got the grants.
+[971.8s] And I think all of those teams are going to be grant recipients.
+[975.2s] So that's kind of centralization in a way,
+[978.4s] But it is an even playing field in terms of the development, right?
+[981.3s] Because you've got an evenness of funding.
+[983.6s] And that wasn't the case, you know, originally for Ethereum.
+[989.6s] And I think that made a lot of bitterness as well.
+[992.3s] Because it's like, well, why do you guys got the money?
+[994.3s] Like, we're making another one as well.
+[996.2s] And, or, you know, other parts of the ecosystem, like there wasn't a grants program for a number of years.
+[1004.3s] Between about 2015 and 2018, there wasn't even a grants program.
+[1008.1s] you know, you've got the foundation sitting on hundreds of millions of dollars and teams couldn't even get funded for doing anything.
+[1014.6s] So, uh, so yeah, I think the diversity is good, but the money was bad.
+
+SPEAKER_05:
+[1023.2s] Interesting.
+[1024.0s] Yeah.
+[1024.5s] I think, right.
+[1026.3s] Okay.
+[1026.5s] That's a, it's a good strong point.
+[1028.0s] So if you compare it to like a Bitcoin, which I know less about the history of the development of Bitcoin, but it was kind of similar.
+[1035.7s] There was less of a,
+[1038.1s] there was no pre-mine and no token pre-sale.
+[1043.8s] And so the people who were in it were in it for general interest and it was really sincerely an even playing field.
+[1053.3s] And I would argue, you know,
+[1056.5s] In some ways, Ethereum has made bigger strides than Bitcoin, especially since, you know, let's say 2015, some of the value prop of Bitcoin is that it never changes.
+[1066.2s] And that's kind of part of why it holds its value in some way.
+[1071.7s] But it's, I think, you know, been stifled a little bit for that reason.
+[1077.3s] I think it's pretty hard probably to make step function positive changes in a fully decentralized manner.
+
+SPEAKER_01:
+[1086.0s] Another major difference there talking about clients is it was a very deliberate decision, right, on Ethereum to separate the specification from the clients.
+[1097.3s] And that there were multiple clients from day one.
+[1100.7s] I see if I can find my Twitter thread, I was finding these the other day, I was finding the first commits for Pi Ethereum, Pi F app, or Pi Ethereum as it was, CPP Ethereum and Go Ethereum.
+[1115.5s] And they were all, I think they were all November or December.
+[1121.2s] I think they were all 2013, not even 2014 for those three.
+[1125.7s] And then Ethereum-J looked like it started in about April, I think.
+[1131.2s] But you know- Yeah, Jim, Kieran, you guys started Ethereum-H in 2014, right?
+
+SPEAKER_05:
+[1136.6s] Yeah, we were much later.
+[1137.9s] We were- When did we get going?
+[1141.9s] In the fourth quarter, 2014.
+
+SPEAKER_03:
+[1143.8s] Yeah, that's right.
+
+UNKNOWN:
+[1147.2s] And I had worked on the theory just in the summer.
+
+SPEAKER_05:
+[1149.7s] So starting kind of maybe June, 2014, I got to know the project pretty well.
+[1156.7s] And then I had gone back to Berkeley.
+[1159.6s] I was in New York for the summer and met Jim September, October, something like that.
+[1165.9s] And we started work more or less right away, more Jim than me.
+[1169.5s] But, um, so yeah, so there was a big time delay on our side.
+[1173.2s] And yeah, I think, OK, yeah, Bob, it's an interesting point, right?
+[1176.9s] I think probably they could have.
+[1182.4s] There was some real mismanagement at different times, both with the running out of funds, not doing any hedging.
+[1188.5s] And then later, I guess I agree that it could have just been more fair and open feeling, and that would have alienated fewer people.
+[1197.5s] And it could have even just been bigger than it is today.
+[1200.3s] Obviously, we're talking about a smashing success here, but it sort of
+
+UNKNOWN:
+[1204.9s] The idea in the community was so powerful that it, you know, there's definitely succeeded in spite of aspect.
+
+SPEAKER_05:
+[1213.7s] I think there was value still in this, like, throw it out there, get people to fight over it.
+[1220.2s] But it probably overcorrected.
+[1222.8s] And lots of these people also just went and started their own thing because it wasn't a big enough tip.
+
+SPEAKER_01:
+[1228.6s] I mean, the other thing is right at the start there, it's like, well, the people that are doing it, that was the whole world, right?
+[1233.8s] That was everything, right?
+[1235.9s] Was several months.
+[1238.0s] I mean, all of that early work on the clients actually was before the foundation even existed.
+[1242.2s] That was actually unfunded.
+
+SPEAKER_04:
+[1244.2s] Yeah.
+
+SPEAKER_01:
+[1246.2s] Because I'm looking at the dates.
+[1247.8s] So the white paper came out in November 2013, sorry, 2013.
+[1254.7s] PIA theorem was started on November the 19th, 2013.
+[1259.6s] Gav actually was in contact with Vitalik on that same day.
+[1264.2s] CPP Ethereum started four days later, 23rd of December, obviously some over Christmas hacking on these things going on.
+[1274.9s] And then GoEthereum was December the 26th.
+[1278.7s] So just three further days.
+[1283.0s] The foundation got formed, I think in May,
+[1288.6s] April or May 2014, but the crown sale didn't conclude until September 2014.
+[1295.7s] So you'd actually got about nine months worth of development on all of these three clients that was actually unfunded.
+[1303.5s] So, you know, I think that unfairness kind of came in a little bit later.
+[1309.3s] I think for that phase, it was like nobody got funded.
+[1313.1s] Oh, sorry.
+[1315.1s] Um, you know, nobody got funded though.
+[1317.3s] There was the retrospective payback, right?
+[1320.1s] You know, when, when the crown sale had gone through, you had, you know, money for early contributors, which I think, I think it was nearly 10%.
+[1329.0s] Yeah.
+[1330.7s] For like a hundred, 120 people, like some people made out like absolute bandits for, for those early months.
+[1339.4s] Um,
+[1340.4s] But then, yeah, following that, there was hiring of actual staff onto those teams.
+[1349.2s] And that, I think, is when it became kind of uneven.
+[1352.8s] Because you already had EthereumJ for a number of months there, and that never got funded.
+[1358.1s] And then you guys starting whenever you were starting.
+[1363.9s] So yeah, it kind of became uneven, I think, at that point.
+[1368.4s] And probably the worst of it of all was for Parity, when that team spun out.
+[1374.4s] And you basically did have a major, rapidly load-bearing client.
+[1381.7s] And it was just unfunded, especially in with Gav, who was, you know,
+[1389.3s] have been the CTO and wrote the yellow paper and have the first working client and all of the value he delivered.
+[1394.9s] And then it's like, right, sorry, you're out.
+[1397.4s] And you're not getting any money.
+[1398.7s] Yes.
+
+SPEAKER_05:
+[1402.7s] So my memory around the C++ client was that there were funds to do a security audit for
+
+UNKNOWN:
+[1413.1s] two clients, but one at a time, and it was tight, right?
+
+SPEAKER_05:
+[1417.7s] And so they did go Ethereum first, and I think they did actually do the security audit on CPP Ethereum, but I'm not quite sure.
+[1426.0s] I'm not sure they did, you know.
+
+SPEAKER_01:
+[1429.3s] Maybe there'd been an intention to do that, but then the money ran out before it happened.
+[1436.7s] I mean, my understanding in terms of uptake as well is CPP Ethereum
+[1444.4s] go Ethereum just like caught up and overtook it like really fast uh so when they were making those decisions on cutting funding which would have been mid-2015 it's like hey Gabby you're the CTO but it's your code base that's got to cop it and then that's what happened and
+
+UNKNOWN:
+[1468.5s] I mean, I was sort of building the various clients quite a bit, because I was trying to integrate with them at the time.
+
+SPEAKER_02:
+[1476.0s] And my memory was that the C++ client had all the newest stuff in it first.
+[1480.9s] So if I wanted to see something first, I would go there.
+[1483.5s] But the Go client was more stable.
+[1485.8s] Like because I think because they were putting so much stuff into the C++ client, it was often an unstable situation.
+[1492.6s] And so I would typically kind of go to C++ first to see the new stuff.
+[1496.6s] But if it wasn't building that day, I would run over to go and try it out.
+[1500.4s] Yeah, I mean, and that would make complete sense.
+
+SPEAKER_01:
+[1503.0s] Because the other thing to know with the C++ client is that was where the test suites were done.
+[1510.1s] you know, like all the tests were generated out of that code base.
+[1514.2s] So as you say, all of the protocol changes, or whatever would happen there first, then you do the test generation through that.
+[1522.4s] And then those are the tests for other clients.
+[1527.2s] So even when CPP Ethereum as a client, like died,
+
+UNKNOWN:
+[1533.6s] It didn't die within that testing sweep for years.
+
+SPEAKER_01:
+[1537.9s] It's like, right, even though nobody's actually running this or using it on mainnet or anything, we've got to keep maintaining that one because that's where the tests are coming from.
+
+UNKNOWN:
+[1549.1s] So yeah, that front line was really like leading across Sol-C, the tests, and CppEthereum.
+
+SPEAKER_01:
+[1559.8s] You know, all of those actually were bundled together into a single workspace as well with all of the GUI apps like with Mix and Aleph, 0aleph1aleph5.
+[1570.4s] It took 24 hours to build the bloody thing.
+[1574.6s] But that was because it was all around Gav, right?
+[1577.5s] You know, Gav was leading all of that, you know, he was, he was building that client, he was writing the yellow paper, he was
+[1583.7s] you know, working there with Christian and Christoph on that specification and testing stuff like that.
+[1593.0s] You know, all of that was there.
+[1596.1s] And then on Jeff's side, you know, just doing Geth, right?
+[1601.8s] It wasn't a broader thing.
+[1604.1s] And that Geth team were working closer with Mist, you know, with Avsar on Mist.
+[1611.6s] Like for a good while, I don't think CPP Ethereum even worked with Mist.
+[1616.4s] You know, it's like all these groups not really talking to each other.
+[1621.5s] But yeah, that would make sense.
+[1623.1s] Like a lot of it was GAV-led.
+
+SPEAKER_03:
+[1627.8s] And wait, solc, the Solidity compiler, that was part of that C++ group too?
+[1636.0s] Yeah.
+[1636.3s] That makes sense, because it's written in C++.
+[1638.8s] Yeah.
+
+SPEAKER_01:
+[1640.7s] It was all under web3 umbrella.
+
+UNKNOWN:
+[1643.6s] OK.
+
+SPEAKER_03:
+[1644.3s] I remember Web3 Umbrella.
+[1645.9s] I remember Web3 Umbrella, yes.
+[1647.8s] So yeah, Web3 Umbrella was a Git repo with sub repos for, you know, for, it was called F, it was just called F, the executable.
+
+SPEAKER_01:
+[1660.7s] So you had F and again.
+[1663.5s] But yeah, you had F, you had solc,
+[1665.9s] You had Mix, which was the original IDE, cute client.
+[1679.1s] You had Aleph0, which was the GUI miner.
+[1684.0s] So it's like, right here, here's a GUI, press the mine button.
+[1688.8s] And then you had Aleph1, which was sort of, I guess it was like,
+[1695.0s] kind of like a GUI client runner thing.
+[1697.8s] I can't remember the exact scope, but it was sort of like, right, you're running a node, but you kind of got a GUI on it.
+[1705.0s] And I can't remember what it had, but, you know, whatever logs going by, and I guess you could like fiddle with settings or whatever.
+[1712.5s] But yeah, all of that was in Web3 Umbrella.
+
+UNKNOWN:
+[1717.2s] That's a lot.
+
+SPEAKER_01:
+[1718.3s] That was a lot.
+[1719.6s] Yeah.
+[1720.3s] And all of the dependents, they were all really, and the tests as well, right?
+[1724.4s] Right, right, right.
+[1724.8s] But then they were all really codependent.
+[1726.7s] I mean, when I started, one of the first things I did was like, what are the dependencies on all of these things?
+[1731.8s] Like, what is all of this stuff?
+[1733.9s] Because you have like libraries with it as well.
+[1735.9s] It's like libEthereum, libWeb3Base,
+
+UNKNOWN:
+[1741.5s] Oh, yeah.
+
+SPEAKER_05:
+[1743.1s] Dev P2P, live P2P.
+[1745.5s] There was documentation all over the place.
+[1749.6s] I mean, I think what had happened there that Gab was sort of trying to do, but it never came to fruition and then he left, was it's like, right, let's try and make this modular, right?
+
+SPEAKER_01:
+[1760.9s] We're going to try and do a modular thing and pull apart the networking and the database and this, that and the other.
+[1766.7s] But it was it was pulled apart into separate repos before there were actually stable interfaces between any of these.
+[1775.2s] So you had to use the latest stuff of anything anyway, like you couldn't mix and match because there was no versioning, there was no interplace discipline on any of it.
+[1784.7s] You had to use all the latest ones together, but then it was all split into separate repos.
+[1789.0s] So it's like, right, you're making a change on one of them, and then whatever, updating the sub modules and like,
+[1795.9s] Like, that wasn't atomic.
+[1798.4s] It was just a big old mess.
+[1801.2s] So yeah, one of the first things I did was work out, infer a dependency diagram, map a path to pulling it all back into a monolithic workspace, doing automated builds that we somehow didn't have, and specifically decoupling
+[1827.8s] So for Sol-C for example, because it was tied in with this
+[1835.6s] our build.
+[1837.1s] It was like compiling Chromium from source twice, compiling Qt, all of this stuff.
+[1846.6s] So just to get, you know, and there weren't binaries available for Sol-C either.
+[1852.4s] Like you had to build all of this stuff yourself to be able to like compile, you know, a smart contract to do anything.
+[1858.8s] You had to do all of that.
+[1860.8s] So I remember, you know, after all that decomposition,
+[1865.1s] I got it so you could just do Sol-C, and that was a quick build.
+[1872.0s] And then I did homebrew.
+[1875.0s] And it's like, so you could do brew install Sol-C, and it did it in like five seconds.
+[1880.2s] And everyone's like, oh my god, this is amazing.
+[1887.7s] But yeah, it was a bit of a mess.
+
+UNKNOWN:
+[1891.1s] I do remember waiting, like, you know, many times trying to build things, coming back, looking at it, saying, like, this can't be, like, my machine's got to be broken, because, like, it can't be this long.
+
+SPEAKER_03:
+[1903.7s] It can't be, like, eight hours.
+[1905.2s] Like, nothing I could imagine would take more than eight hours to do, you know?
+[1909.3s] But you're right.
+[1910.5s] It's just like... You know, talking about that, you know, creative brew of lots of different people and uncoordinated and everything,
+
+SPEAKER_01:
+[1918.2s] one of my first observations on joining the foundation is these people seem allergic to professionalism.
+[1927.2s] Because that's seen as, you know, in an organized way, well, you're one of the baddies, you know, you're the status quo, you're trying to subvert it and take it over.
+[1935.6s] You know, things as simple as like, like, you know, have we got like, technical leads that actually lead?
+[1942.0s] you know, have we got any project management?
+[1944.3s] Have we got any IT?
+[1945.5s] Have we got anything?
+[1947.6s] And it's like, no, it's just like a jumble of people doing stuff.
+[1952.5s] And it's like, oh, how on earth can you develop software in such a chaotic environment?
+[1959.5s] But that was kind of the vibe as well.
+[1962.9s] That was seen as a good thing.
+[1964.1s] You know, because it's because that's a defensive cultural thing, right?
+[1969.1s] You know, we don't
+[1970.1s] We don't want this to be a Silicon Valley thing.
+
+SPEAKER_05:
+[1976.0s] I just have a comment.
+[1980.3s] It's interesting, and maybe I commented on this in one of the other videos.
+[1984.3s] One of these rare big software projects that did not very much come from the United States is Canada.
+[1991.6s] it's different parts of Europe, you know.
+[1993.8s] And one of those confusing things, Bob, to your point about who got paid for the clients on the foundation, I think like, I remember there being a deal struck with Zug, the, you know, the Canton basically around it.
+[2008.2s] They were like, there's tax stuff and all that sort of thing.
+[2011.6s] But they also sort of intended to hire and operate locally.
+[2015.6s] People would either move there or they'd hire
+
+UNKNOWN:
+[2018.2s] ETH Zurich grads or whatever.
+
+SPEAKER_05:
+[2020.2s] I don't know the details specifically, but I think that didn't quite end up happening that way in sort of as a surprise.
+[2028.8s] And I saw some of this firsthand at the meeting in which, you know, Amir and Charles were, you know, sent on their way.
+[2037.6s] The client team set up in their own countries.
+
+UNKNOWN:
+[2043.2s] And that was like a bit of a script flip, like Gavin wanted to be in Berlin, because I guess the devs were good and expensive and to be like living there, you know, inexpensive, excuse me.
+
+SPEAKER_05:
+[2057.9s] Yeah, I think it's just, you know, you would, running my own business, you would never make such a decision in such a flip manner where like overnight, we're like, oh, we're doing a different country, you know.
+[2067.7s] But that was kind of a regular occurrence to some extent, major things changing, you know, as part of how the foundation plus sort of operated that I saw.
+[2081.5s] And again, it didn't seem to hurt, you know, quite as much as you might expect.
+[2087.3s] But yeah, but I think, you know, you had to have, you were lucky in how people were, how excited people were about the project that survived all of this.
+[2098.2s] And again, from our side, you know, we're sitting in the Bay Area at that time, and we're like, why do they keep doing all of these things?
+[2103.9s] Like, they're trying to build a thousand things, and it's hard to build one thing.
+
+SPEAKER_01:
+[2108.6s] Yeah, I mean, so there were separate legal entities for those as well, right?
+[2113.8s] So you had FDEV AG,
+[2116.2s] in Berlin and then there was an Amsterdam thing for the Geth team.
+[2123.3s] You had the London stuff as well, which was mainly communications sort of stuff with Stefan and George Hallam, Ian Meikle and one other person who I forget.
+[2141.8s] But, you know, you sort of talk about, you know, these people working for the Ethereum Foundation, like, but it's, it was always woolier than that.
+[2150.0s] So, yeah, you did have the stipum in Zug, but most people, even if they're working full-time, they weren't actually working for that.
+[2161.5s] You know, so when I had my contract, it was with the for-profit FDEV,
+[2167.7s] in Berlin, that was who I was actually working for.
+[2170.3s] And then they were funded by the foundation.
+[2173.5s] And FDev in general, that was another big split that there was, right?
+[2178.3s] Was that you got the foundation, but then you had FDev that was like the kind of umbrella group for that, that Gav was leading essentially.
+[2187.5s] So I think the Amsterdam thing like rolled into Berlin.
+[2191.1s] I think that was all sort of FDev side.
+[2195.7s] And that in itself was a huge item of conflict.
+[2199.6s] I know, again, in Laura's book, I think Joe was talking about that, right, was that Gav kind of wanted a big chunk of money.
+[2209.6s] It's like, right, the funds are there from the crown sale now, so give them all to us, right?
+[2215.9s] And it's like, yeah, I don't know that we want to give you all the funds.
+[2221.3s] as you go, but that was typical of that period, it's just a mess of complexity and interpersonal things and organisational complexity.
+[2234.4s] And with that Swiss people thing, so my understanding on that was that was like a main motivation for like getting, renting that spaceship building, right?
+[2246.9s] was the intention was that there were going to be a load of people there, but like maybe it was, I think tests, testing was one of the ones I heard was maybe a goal there is like, right, we're going to get a load of Swiss people to test things.
+[2259.6s] And there was also like Mihai with his Holon ideas, Holon of these co-working spacey things around the world.
+
+UNKNOWN:
+[2272.6s] And also to make it a little bit more willier, very shortly consensus emerged out of that too.
+
+SPEAKER_03:
+[2281.2s] And they were doing a bunch of work.
+[2282.5s] We were technically working under consensus for the first little parts of it too.
+[2288.7s] And all of that was in the mix everywhere.
+
+UNKNOWN:
+[2294.0s] I want to jump ahead a bit because we have you as an ETC expert.
+
+SPEAKER_03:
+[2299.2s] And in our last one, we had a lot of questions around what we remembered from Slocket and the DAO hack.
+[2307.5s] So maybe you could walk us through that and how ETC emerged out of that.
+[2312.3s] That part was a little bit vague to us because we didn't follow much on how those pieces all came together.
+
+SPEAKER_01:
+[2321.4s] Yeah.
+[2323.4s] Um, one of the groups or companies that came out of this kind of like, shrinking of the foundation was that on that C++ team that got most of the cuts, a good chunk of those people went to just went straight to parity, and just like carried on with that new client.
+[2347.0s] But Christoph Jentz, who had
+[2350.5s] testing effort, we were just talking about those same tests.
+[2353.9s] He and Stephan Toal, who had been community communications leader, you know, that sort of thing, community stuff, and Lefteris, who'd also been on C++ team, those three went off and formed a company called Slocket.
+[2373.5s] So Slocket being smart locks, just the idea that you,
+[2379.5s] you know, whatever, if you're doing an Airbnb or something that you can, you know, that you could have a smart lock and that you could go and do your contract with someone for the rental.
+[2389.9s] And then that could be, you know, enabling something on the lot that's checking an Oracle or an on-chain thing and so on.
+[2399.4s] And so that was their product area.
+[2405.6s] At DEVCON1,
+[2408.6s] they did like an onstage demo that was, it was like a pot of, it was like a pebble, like a pot.
+[2414.8s] Yeah, I remember that.
+[2416.1s] Like doing this transaction that turned it on to make a cup of tea.
+[2420.0s] Yeah.
+[2420.4s] That was the onstage demo.
+[2425.2s] But what seemed to happen there was like, they didn't want to do an ICO.
+[2431.5s] They wanted it to be fairer, I guess, because around that era,
+
+UNKNOWN:
+[2438.1s] more later, you know, you saw lots of cash grab ICOs and it's like, right, here's all the money up front.
+
+SPEAKER_01:
+[2444.7s] You know, we're not going to live it.
+[2445.8s] What are you going to do?
+[2447.6s] Right.
+[2447.7s] So, so they didn't want to do that, you know, because they were very genuine people who come out of the foundation and were, you know, kind of, you know, ideologically driven.
+[2457.5s] So Vitalik had written stuff about dowels, right, you know, I think they were mentioned in the white paper even.
+[2468.8s] And it's like, well, maybe we can make a DAO.
+[2472.3s] So, and I think that was just SlocketDAO really originally.
+[2477.4s] And it was like, right, we're going to have a DAO.
+[2480.4s] The money is going to go into there, but then it's only going to get released to us as we deliver milestones.
+[2487.9s] So it's kind of like this separation of like, right, the DAO is where the money is, and that's controlled by the token holders.
+[2495.4s] Slocket as a company is a service provider into that, but we're a sackable service provider, and we're only going to get paid as we go through the milestones.
+[2505.9s] So it's like, oh, that's really interesting.
+[2509.1s] And to my understanding, that's what was presented at DEF CON 1, from what I remember, was like, hey, with Slocket, this is what we're doing, and we're going to do a DAO with it.
+[2519.5s] And it's like, oh, cool.
+[2521.7s] But then they kept working on that DAO
+[2525.7s] stuff after DevCon one, and it just seemed to like warp into what we've made like a DAO framework.
+[2533.0s] It's a DAO library, you know, because we want other people to be able to do this as well.
+[2538.5s] But then that sort of turned into, well, actually, how about it isn't just us?
+[2543.5s] How about it could be anything like anyone could have a service provider, you could propose anything into it.
+[2549.9s] And then it became the DAO.
+
+SPEAKER_03:
+[2552.4s] Okay.
+
+SPEAKER_01:
+[2553.3s] Um,
+[2554.3s] And it wasn't capped.
+[2557.2s] There was no cap on the contributions into it.
+[2561.0s] There was really nothing else that you could do on Ethereum at that point.
+[2565.2s] It was kind of like the first application, really.
+[2568.7s] Well, I mean, you did have a few.
+[2570.8s] You had DigX, this gold thing.
+[2573.8s] You did have DAI, I think, was sort of coming to life just about at that point.
+[2580.7s] But the DAO was kind of like the first big thing.
+[2584.5s] And it just sort of snowballed and snowballed, right?
+[2586.7s] Because it's like, it was also touted as zero risk because you could exit with your funds, right?
+[2594.7s] If you didn't like the result of what was happening, you could just exit and have your F back.
+[2599.3s] So it's kind of like, this is risk-free, right?
+[2601.1s] It's like a risk, you know, it's like a sovereign bond or whatever, right?
+[2604.4s] There's no downside here.
+[2605.6s] This is risk-free.
+[2607.7s] So tons of people are like, well, what else am I gonna do?
+[2610.6s] I'm just sitting here on my ether.
+[2611.7s] I can't do anything.
+[2612.7s] Well, you know, pile on in.
+[2614.9s] And the Ethereum crowdsale raised what is 16 million, I think, in Bitcoin, which was, I think it was number five crowdsale of all time, you know, it was like comparing to Kickstarter projects.
+[2630.4s] Right.
+[2630.6s] So it's like, you know, maybe the Dow will do, you know, two or three million, maybe five.
+[2636.6s] And it just went, until it was, you know, it was just absolutely gigantic.
+[2645.3s] And I remember at the time thinking, you know, this is, I don't like this, like the Dow, it's not, this is not a good idea.
+[2654.2s] And the main reason I was thinking of that was, is this a security?
+[2662.2s] Is this seen as, you know, money transfer stuff?
+[2668.9s] Because you've got slock at the company, and then they have this thing called Dow Link,
+[2673.8s] that was sort of a service company for paying people in real life.
+[2679.6s] That was some S-Swiss thing, I think, or Bitcoin Swiss.
+[2685.3s] And then you had the DAO itself.
+[2688.0s] You had the curators as well.
+[2690.7s] So anyone could propose a smart contract that encoded their proposal, right?
+[2697.0s] They would make a written description of the thing, and here's a smart contract doing it.
+[2702.8s] And the curator's role was to verify what they've said in text is what they've done.
+[2712.4s] It was meant to be this administrative role.
+[2717.7s] But what happened is all of those guys, that was their names and faces up on the website.
+[2723.4s] You know, so like Dow Hub website is just like a who's who of the Ethereum Foundation, basically.
+[2730.4s] And it didn't say, you know, Christian Reitbeissner, creator of Solidity.
+[2736.2s] it said Christian Reitbeissner, Ethereum Foundation.
+[2739.7s] Vitalik, Ethereum Foundation.
+[2742.0s] You know, so lots of people were like, this is an Ethereum Foundation project, right?
+[2746.0s] Because you've all got your names on everything.
+[2749.0s] So I thought there was, firstly, there was huge like legal liability on those guys.
+[2753.9s] Because where Slocket got these layers of legal protection, these guys haven't, they're just doing it as individuals.
+[2759.8s] And I remember Fabian,
+[2763.7s] talking to me and talking to the group and the foundation, it's like, you know, I've been talking to some of my friends and they're like, you know, they don't think this is a great idea.
+[2772.5s] And I'm thinking of talking to a lawyer and Gav backed out, right?
+[2778.6s] A couple of weeks before all the disaster, Gav just backed out.
+[2783.9s] He's like, you know, this is, you know, this, this is not what I signed up for.
+[2788.5s] I thought it was just a small role.
+[2790.3s] And now it's like,
+[2792.2s] presented as a lot more and, you know, so he, he backed out.
+[2798.3s] A lot of the others didn't, because because it was like, well, if we back out, it's going to like ruin it.
+[2803.4s] And it's like a great experiment.
+[2806.6s] But I thought there was huge liability to them.
+[2808.4s] I thought there were legal risks.
+[2810.7s] And I also just thought it was a stupid idea.
+[2813.6s] Like, why would you have thousands of random people putting their money in a bucket and then let's like vote on what to do with it?
+[2821.0s] Who are these people?
+[2822.0s] Like, what do they even know about a business proposal or anything?
+[2827.2s] It's just like, this is a stupid idea.
+[2829.4s] But I didn't have my eye on the fact that all of the tech stack was incredibly immature at that point, right?
+[2837.7s] There's no best practices.
+[2838.9s] There's no libraries.
+[2840.5s] It's just, here's some code.
+[2842.7s] And they just went all in, right?
+[2844.8s] It was like, code is law.
+[2847.3s] The smart contract is the contract.
+[2850.2s] YOLO, you can't stop us.
+
+UNKNOWN:
+[2854.5s] Kaboom.
+
+SPEAKER_03:
+[2856.2s] But OK, and then the hack happens, right?
+[2859.6s] And I remember the details of the hack being they found a flaw in the smart contract code, and they could basically withdraw those funds into another account.
+[2871.0s] and I remember there was some kind of race between like the people at the DAO slash Lockit who are like using the same exploit to like drain the account, like using the same hack basically, is that right?
+
+SPEAKER_01:
+[2887.3s] Yeah, so there was this re-entrancy vote where it's really sort of like to do with
+[2896.2s] atomic operations or order of operations.
+[2899.7s] So your re-entrancy was that you could be calling, because people were supplying like their proposals and it's like, hey, here's a smart contract that it's implementing mine.
+[2910.1s] You were like calling into their code, but you can't know what theirs is going to do.
+[2913.9s] So there was this re-entrancy issue where within that other person's supplied code, you could like kind of call back in.
+[2922.1s] And it was sort of like,
+[2924.1s] So it was to do with child DAOs.
+[2926.6s] So this whole zero risk thing was like, if you didn't like proposals that were happening, you could make a child DAO of saying, well, hey, I'm, I'm out, right?
+[2937.0s] I'm taking my ether and my voting off into this other one, right?
+[2941.5s] I'm not, I'm not following you.
+[2942.7s] I'm going there.
+[2944.2s] And other people could join you as well.
+[2946.3s] So I guess the idea was like, right, you know, here, we've got this totally over general DAO, but we're going to make a
+[2952.8s] you know, like a DeFi DAO or an NFT DAO or whatever, right?
+[2957.3s] And it's like, I guess a little bit like some of the thoughts for consensus and hub and spoke is like, you know, you're going to get this universe of stuff just flourishing out and childs and so on.
+[2971.6s] But yeah, the problem on that child DAO thing is that there was this re-entrancy bug where rather than just being able to pull your F or your share,
+[2981.8s] you can actually go in and pull more and more.
+[2983.9s] So you have this, using this kind of trial down and pulling a giant amount of the funds into that trial down.
+[2994.2s] And then within 30 days, they'd be able to exit with the funds.
+[2998.8s] But kind of the blessings, I guess, of that setup is they're not immediately exiting with the funds, right?
+[3007.0s] They haven't gone already and sold it on an exchange and they're done before you notice you have got this
+[3011.9s] period.
+[3013.8s] And then the other thing is that you could join them.
+[3016.5s] You can go into the child DAO as well.
+[3018.9s] So after the hack, there was this appeal out, hey, did anyone participate in this specific child DAO?
+[3027.5s] Is anyone in there?
+[3028.3s] And it's like, yeah, somebody else is in there.
+[3031.3s] And then what you could do is you could child DAO again.
+[3034.9s] You could do another one.
+[3037.1s] It's like, well, I'm going to grab it off you, and you're going to grab it off me.
+[3042.1s] So, you know, you could have had this Dow Wars thing of like, you can never stop it, but you could delay it indefinitely.
+[3050.0s] So that was one of them.
+[3051.6s] But then the other white hat thing is like, okay, well, we know about the bug, so we can do it too.
+[3057.8s] You can have white hat people like, well, we're going to steal all of the money out of the top Dow as well, but we're doing it for good, right?
+[3065.2s] We're doing it here to keep it, to give it back.
+[3069.4s] So yeah, you had all of those games going on within that existing setup.
+[3075.2s] But then as a reaction to that, you had all of this discussion about, well, are we going to react?
+[3080.4s] Are we not going to react?
+[3083.3s] The first proposal was a soft walk.
+[3087.3s] But it was just going to blacklist out stuff to do with the hacker, right?
+
+UNKNOWN:
+[3094.7s] And they did do that soft fork, right?
+
+SPEAKER_03:
+[3096.8s] I remember they did that soft fork first.
+[3099.3s] It was done for it.
+
+SPEAKER_01:
+[3100.4s] And I think it might even have gone on testnets and things, but it never went live.
+
+SPEAKER_03:
+[3104.9s] Okay.
+
+SPEAKER_01:
+[3105.9s] Because it was spotted that it was a denial of service attack.
+[3110.3s] Because that blacklisting was like, you know, not accounted for in the crypto economics.
+[3117.3s] So it was like, yeah, yeah, you had a denial of service attack thing on that soft fork.
+[3125.3s] So it got done and then it got undone.
+[3127.7s] And then the hard fork was like, okay, well, we can, we can go in and we can do an irregular state transaction, uh, where at a certain block, you know, you're just going to have a hard coded thing, which sticks different, uh, byte code into, uh, into the address of the, of the DAO.
+[3154.0s] which is like, okay, yeah, that thing, it didn't happen.
+[3160.1s] You know, what's actually at that address is a simple refund thing where you can all get your money back.
+[3166.7s] So that was the Dow hard fork.
+
+SPEAKER_05:
+[3172.7s] I just wanted to ask, where were you at this time?
+[3175.0s] Because I know you got involved, I believe, later with ETC, because it didn't exist yet.
+[3180.4s] And so, in terms of your personal perspective on all this, were you actually implementing anything yourself?
+[3190.7s] Because obviously, you've got pretty deep knowledge of the technical internals.
+[3196.5s] Yes, I was working for the foundation.
+
+SPEAKER_01:
+[3199.9s] I was on the C++ team at that point.
+[3201.8s] You know, this is about three or four months after I'd started.
+[3208.4s] The thing that was really interesting to me was how different people's thoughts or perspectives were, even within the foundation.
+[3220.2s] You know, that you'd have people, say, working on Geth,
+[3225.8s] going, well, of course we shouldn't do anything.
+[3228.9s] Well, of course we should.
+[3230.5s] And it's like, you know, been working with you for a year.
+[3233.3s] Like, what?
+[3234.2s] You think that?
+[3235.0s] Like, woo!
+[3236.3s] You know, you had this real mixture of reactions.
+[3241.5s] And I mean, my first reaction was, well, you know, of course you don't do anything.
+[3247.5s] Like, it's an immutable blockchain.
+[3249.7s] That's the whole point.
+[3250.7s] Like, you know, you don't like the outcome.
+[3253.2s] Well, you know, tough titties.
+[3255.8s] know, you saw you've seen so many, you know, like Mt.
+[3259.6s] Gox, you know, Mt.
+[3260.7s] Gox, you didn't have the Bitcoiners going all that, you know, let's, let's, you know, let's try and fix this up or, you know, and I think the only reason it happened was because of the scale of it.
+[3273.1s] you know, that it was a significant chunk of the entire money, money base.
+[3281.8s] And also, I think that, you know, things weren't super great on funding.
+[3289.1s] And, you know, it wasn't like Ethereum was sure to succeed.
+[3294.1s] It was quite, you know, nascent at that point.
+[3298.0s] And I know that there were also worries about
+[3300.9s] the proof of stake transition and the fact that if you had a large amount of the ether in hostile hands, that you could maybe have years of griefing attacks and stuff like that.
+
+UNKNOWN:
+[3318.8s] Um, but also I think there was just, you know, a lot of people were like, well, you know, this is theft, right?
+
+SPEAKER_01:
+[3326.4s] You know, that money was intended for building the ecosystem and, you know, some guys come in and stolen it.
+[3331.5s] And if we can fix that, well, we should.
+[3336.9s] So, so yeah, I mean, I, you know, my immediate reaction was you shouldn't, but I also, it was like, well, you know, whatever that seems to be the consensus that we do it, you know, and
+[3349.8s] okay, off we go.
+[3354.4s] Though I wasn't at the foundation many more months after that anyway, but there was this real schism.
+[3363.4s] Though I think from what I saw, I think probably about 85% of people wanted to do the hard fork and 15 didn't, or maybe 80, 20, but I think there was pretty strong consensus to do it.
+
+UNKNOWN:
+[3378.3s] But that was, you know, very contentious for, you know, a not tiny group of people.
+
+SPEAKER_01:
+[3387.9s] You know, a lot of people that have got involved with Ethereum have done so because they kind of wanted smart, you know, Bitcoin with smart contracts.
+[3397.9s] And if you're of that Bitcoin-y mindset, then yeah, like, of course you don't, you know, don't screw with things.
+[3405.1s] But I think there's also this larger group that were like, well, ether isn't money anyway.
+[3411.9s] That was a messaging that had been given out at the time.
+[3414.4s] It's like, no, no, it's fuel, right?
+[3415.8s] It's fuel for the engine.
+[3418.2s] Though I think part of that is just like trying to dodge legal liability.
+[3422.5s] But that was also true as well.
+[3425.4s] This whole world computer,
+[3427.7s] know here's a platform right you know it's a platform like the web or android so i think it was sort of like that that was the mental split is like is it money and if it's money you don't move people's monies without private keys like you know that's that's a mortal sin and on the other side you're like well no it's a bug right it's a bug in the platform and it's like well but it's
+[3450.8s] but it was a bug in the smart contract.
+[3452.5s] Well, you know, if you've worked on serious software projects, you know, people hack shit on the wrong layers all the time because it's going to give you a better user experience.
+[3460.9s] Like, you know, you don't have to be, you know, pure on that.
+[3465.0s] It's really about how the thing works.
+[3466.7s] So, you know, you get hacks in the wrong layers all the time.
+[3470.1s] And if, if you're just seeing it as a, as a software platform, then yeah, it's a bug.
+[3476.1s] You fix the bug.
+
+SPEAKER_03:
+[3478.9s] So it's rare in life that you can actually see a counterfactual, but in this case, we can because ETC was created at that time and kind of emerged out of that.
+[3490.5s] So like, you know, can you talk a little bit about that and how has that gone?
+[3494.9s] Because you're deep into that ecosystem, obviously, as the, you know, director of the Ethereum Classic Cooperative.
+[3501.1s] Like, how does it work now?
+[3503.2s] Like, you know, how did those words divide?
+
+UNKNOWN:
+[3507.0s] And then, you know, how are those words continuing?
+
+SPEAKER_01:
+[3511.1s] So over that month or so, right, where it's like, you know, the money's been stolen into the sub down, we're going to do anything, you know, you have the most, you know, vigorous debate on all platforms, right, you know, the topic, you know, what's going to happen, how's it going to go and everything, right.
+[3529.2s] So, you know, I don't think there's anyone that was like, unaware of this stuff happening, you know, it's very, very everyone with their eyes open.
+[3536.6s] Um, but yeah, you know, you just, you just have this group of people kind of gathering together and it's like, no, you know, we're not going to go with it.
+[3545.8s] This is not going to happen.
+[3547.1s] Or, or at least like, you know, we're not following that heartful.
+[3549.6s] Maybe people do, but you know, a bunch of people deciding not to, um, the other thing I thought was really interesting at the time and was to my mind, the best thing of all about that chain split is to that point.
+[3565.3s] I don't think that ever been a minority chain that survived.
+[3569.7s] Right.
+[3570.5s] The standard thinking is like, you're going to have a winning side and a losing side.
+[3575.1s] And, you know, it's going to happen and we'll see where, where's the thing, you know, where are the people going, which is the winner and then the losers, you know, well, you know, people will stop mining.
+[3585.0s] It will just die.
+[3585.8s] Right.
+[3586.0s] Because it's the loser chain.
+[3587.3s] So there's no economic value there.
+[3589.7s] And, you know, forget it.
+[3591.6s] what actually happened on the ETC side is you had miners that were like, just going to keep on mining.
+[3597.6s] I'm not updating.
+[3599.1s] Some of it going, the evil Ethereum foundation and Vitalik's a dictator.
+[3605.9s] I don't think any of that's true.
+[3609.3s] But you have got people that were like, no, I'm going to keep going.
+[3612.0s] And then, look, block production's still going and it's still happening there.
+[3616.8s] uh and then Poloniex listed it and then it's got a market value and then you've got speculative activity around that you've got ether holders like dumping their etc you know it's hey it's free money um but also you've got other people on the other side going well you know i see real value here and like this etc is going cheap so you know noticeably notably Barry Silbert who
+[3644.4s] first non-bit in Ethereum to that point presumably like based on pre-mine and various other things but was like well oh actually like you know an immutability focused DTC uh you know would be would be really interesting so yeah you just got this sort of grassroots thing forming
+[3667.6s] You got volunteers jumping up saying, Hey, you know, I'm a developer.
+[3671.5s] I'll keep maintaining the classic geth clients and so on.
+[3675.1s] And, um, you know, it, it, it found its own, uh, legs that, you know, you had like the, the Ethereum subreddit was like a primary communication platform at that point.
+[3687.6s] And then you had like an Ethereum classic one, um, you know, being created and some people in,
+[3693.5s] you know, one side, some on the other, but, you know, it got quite bitter in the end.
+[3697.3s] Right.
+[3697.5s] You know, you've got a lot of people that were like, you know, foundation, you guys are just ruined.
+[3703.3s] Yeah.
+[3703.6s] You've just ruined the project.
+[3706.0s] Um, and you had people, um, on the other side, seeing is seeing ETC is really illegitimate, you know, as saying, well, look, you, you know, it's just a money grab.
+[3716.2s] You just want your free money.
+[3718.3s] Um,
+[3718.9s] know, why are these Bitcoiners kind of coming over like they weren't interested in Ethereum before and now they are like, that's not, you know, you know, that's, that's not good.
+[3728.1s] And you did obviously have a bunch of speculators in there as well.
+[3731.1s] So that's sort of a bit nasty, too.
+[3734.6s] But I think the thing that like, severed those communities, finally, was this like, 100% F meme.
+[3744.5s] which came about because somebody tweeted, hey Vitalik, I hear that you're working on Ethereum Classic.
+[3752.9s] Is there any truth to this?
+[3754.9s] And he said, no, I'm only working on Ethereum.
+[3761.7s] And the person then said, well, what if ETC had more market cap than Ethereum?
+[3767.4s] And he said, no, I still wouldn't work on it.
+[3770.6s] 100% F. Like he wasn't saying it in a purity pledge way, he was just in the way he does being just making a factual statement.
+[3780.9s] But then I remember, you know, Joe replied, you know, I'm 100% F. And then it's like, everyone's doing it, right?
+[3786.8s] It's this purity pledge.
+[3788.6s] You know, everyone is expected to, you know, pledge allegiance to F.
+[3793.3s] so it became a you know oh shit is this an either or like you can't be in both like if you if you you're interested in etc then you you know you're a dirty person so i think that that really wedged it you know wedged it permanently apart at that point and also you know a number of the people that were um volunteering on etc you know they were really angry they were like you know why you know being involved for
+[3821.1s] two, two and a bit years in this project, you know, really pumped about everything that you can do with Ethereum and that you guys have, you know, wrecked it.
+[3830.8s] So there was a lot of, you know, bitterness from that ETC side back.
+[3838.2s] But then, you know, things kind of split apart and, and over time, ETC, you know, found its own path.
+[3846.0s] So with the real differentiation being
+[3849.9s] Well, firstly, the Dow hack didn't happen.
+[3852.3s] That was the only initial difference.
+[3854.8s] Very rapidly, though, there was this conclusion that fixed economic policy was needed.
+[3861.2s] You know, the ETC was really like Bitcoin with Ethereum technology, but, you know, Bitcoin, you know, culture and ethos.
+[3869.8s] So it's like, right, you know, there's no fixed monetary policy for Ethereum.
+[3874.8s] I mean, you see this over many years is like, you know, change of
+[3878.8s] change of block rewards, ice age, delays, fee burning, you know, many, many changes.
+[3886.6s] So that was the first kind of like major change on the ETC side was introduction of that fixed monetary policy, because there was consensus that that was important.
+[3897.3s] You know, that was like bad inheritance that we want to fix.
+[3901.2s] And the other thing that that enabled was the Grayscale ETC fund.
+[3906.8s] So at that point, it's like, right, okay, this is really a Bitcoin feeling thing.
+[3911.3s] And, you know, there's a feeling that there's a value here.
+[3916.3s] So then from that, Grayscale then created the Etsy cooperative that I work from, you know, so a share of the fees went into that kind of not quite a foundation, but a bit like a foundation, you know, a nonprofit to support the ecosystem.
+[3936.0s] And then the other thing more recently is just proof of work.
+[3940.2s] There was sort of fairly rapidly a consensus that ETC wanted to stick with proof of work indefinitely, but that proof of state was seen as a centralizing, oligarchic,
+
+UNKNOWN:
+[3957.4s] kind of thing that didn't really fit with that, with that ethos.
+
+SPEAKER_01:
+[3962.4s] But more generally, ECC is tracking protocol changes in Ethereum, you know, very compatible.
+[3968.8s] So there have been forks, but not the hard fork along the way, because... Well, so yeah, I mean, they're hard forks, but not chain splits.
+
+SPEAKER_03:
+[3978.9s] Got it.
+[3979.4s] Okay.
+
+SPEAKER_01:
+[3981.3s] In the all protocol updates on Ethereum as well, you know, they're all hard forks.
+[3986.4s] And the old side doesn't actually go away.
+[3988.8s] You know, you could run a frontier node if you wanted.
+[3992.3s] You can mine on frontier, mine the Olympic test net, mine any of these ones.
+[3996.3s] It's just, you have had the wither and die because there hasn't been contention.
+[4003.4s] But on ETC, you have sufficient contention that you had a chain split.
+[4009.6s] But yeah, I guess that's sort of a bit
+[4015.1s] you know, forks are bad.
+[4018.4s] But it's like, consensuous hard forks are bad.
+[4023.4s] Hard forks are an upgrade mechanism for the protocol.
+
+SPEAKER_02:
+[4027.2s] Yeah, I mean, I remember I had to implement that fork a few years ago, and it was pretty blatant.
+[4033.4s] It was just like, take money from here and place it here.
+
+UNKNOWN:
+[4036.8s] By the way, it didn't bug me.
+
+SPEAKER_02:
+[4039.0s] But we had people in the block apps who thought of it as like a stab to the back.
+[4044.4s] They were like so upset by it.
+
+SPEAKER_01:
+[4047.1s] Well, I mean, it's literally here's an array of addresses, right?
+[4050.0s] So fuck with.
+
+UNKNOWN:
+[4051.2s] Yep.
+
+SPEAKER_02:
+[4052.3s] I don't remember what else was in there, but I remember the majority of it was just like, take a bunch of money and put it into these addresses.
+[4060.2s] That was the fork.
+
+SPEAKER_01:
+[4062.3s] Yeah.
+[4063.2s] For this list of addresses, replace the bytecode with this other bytecode.
+[4072.6s] Also, I think the moving was consolidating the child DAOs.
+[4076.9s] I think that's what that was doing.
+
+UNKNOWN:
+[4078.9s] So it's like, move the money from the child DAOs back into the parent DAO and change the bytecode.
+
+SPEAKER_01:
+[4086.6s] Like, I think, you know, if block equals this, do a horrible thing.
+
+UNKNOWN:
+[4093.1s] But in the UTC world, where the DAO hack happened, are those funds, like, did the hacker pull out those funds?
+
+SPEAKER_03:
+[4104.3s] Did, okay, so like,
+
+SPEAKER_01:
+[4107.0s] Yeah, yeah.
+
+SPEAKER_03:
+[4108.5s] Interesting.
+
+SPEAKER_01:
+[4109.0s] Yeah.
+[4109.2s] I mean, again, Laura Shin has a great write-up of all of this in her book, The Cryptopians, including working out who it probably was.
+
+SPEAKER_03:
+[4120.3s] Oh, wow.
+[4120.7s] OK.
+
+SPEAKER_01:
+[4121.9s] So she didn't name names in the book, but then she did an article
+[4130.1s] like on the release day or just before uh naming who she thinks it was so that's an interesting story i can i'll dig out that article and send it to you guys so you can add it to the uh description here cool and but you know bob you're a natural born bridge builder as we said you get along with everyone do you ever see the you know uh
+
+UNKNOWN:
+[4153.8s] valley between Ethereum and Ethereum Classic narrowing or getting better or do you think it is getting better?
+
+SPEAKER_01:
+[4162.1s] I mean the problem that Ethereum Classic has always had from the time of the split and it comes back to money again like I think that was the one thing that the foundation did wrong you know like not talking about the developers or the decision on that or whatever
+[4184.2s] was to only put the money on one side.
+[4189.1s] Because what that did is disenfranchised a good chunk of people who had invested in the pre-sale, who'd been part of that community, who'd genuinely been actively involved for those first two years.
+[4205.1s] And they were just left in the dust.
+[4206.5s] It's like, fuck you guys.
+[4208.1s] We don't care what you think.
+[4209.5s] Goodbye.
+[4210.9s] And the trademark's going this way, and all the funds are going this way.
+[4214.5s] And all the developers went that way as well.
+[4218.0s] And I mean, obviously the foundation couldn't control that, what people choose to work on.
+[4223.2s] But what that meant is effectively that group of people got defunded, like totally done.
+[4231.8s] I'm sorry, my child, I disavow you and I'll kick you out of the house forever and I wish I'll never talk to you again.
+
+UNKNOWN:
+[4239.6s] You know, I think in retrospect, it should have been like, okay, funding is available for that other fork as well.
+
+SPEAKER_01:
+[4247.8s] And you may hate us, you know, and not want to talk to us.
+[4251.0s] But I, you know, I guess it's like, you know, a child, you know, whatever teenager, I'm, fuck you, dad, I'm leaving home.
+[4256.7s] And it's like, okay, I'm not going to stop putting aside savings and money for you.
+[4261.3s] I, you know, you might not love me now, but, you know, I'm, you're my child too.
+[4265.8s] And, you know, we'll, we'll find a way of making it happen.
+[4269.1s] You know, cause same with the C cooperative, you know, it could have been, well, when that came into, you know, into existence, the foundation could have gone well, okay.
+[4280.1s] You know, like here's a body that can help and there you go.
+[4283.1s] We're going to fund it as well.
+[4285.4s] And there was something a little tiny bit like that with Virgil.
+[4290.4s] So Virgil was also a huge bridge builder between Ethereum and Ethereum Classic.
+[4296.7s] So in 2018, he invited Anthony Busardi, who was my predecessor, to speak at EdCon.
+[4303.4s] So this was May 2018.
+[4305.6s] And that was the first Ethereum Classic talk at an Ethereum event, you know, being nearly two years at that point.
+[4314.9s] And, you know, and it was fine and it was cool and everyone was, you know, everyone was friendly and, you know, Vitalik and various others came to that talk and, you know, it was all kind of friendly.
+[4325.7s] And Anthony invited me to Ethereum Classic Summit, which was in September 2018.
+[4335.8s] So myself and Virgil went and spoke at that event.
+[4339.7s] And around that time, Virgil,
+[4342.2s] they somehow they found some ETC that the foundation still had, you know, generally, they did a market dump at that time.
+[4352.1s] But there was some stuff that they found, you know, like 50 grand or something like that.
+[4357.4s] And so we got that donated to the co-op, which was great.
+[4361.2s] That was a that was a really nice, nice kind of thing.
+[4364.3s] But you know, it was kind of like, here's a little gesture.
+[4369.6s] But really, I think that was a real failing because it was a legitimate, you know, irreconcilable difference.
+[4380.0s] But it was made even worse by this, you know, 100% F purity pledge combined again with all the money's gone.
+[4391.0s] So you end up with, you know, a very small community of mainly people who are, you know, very ideologically outraged
+[4399.1s] buy it, you know, if you've got speculative token holders, obviously, that, you know, they're going to stick with Ethereum, you know, what's this other thing, this new thing, and there's nothing, you know, so that's always been the issue that the ETCs had is, you know, lack of, you know, lack of lack of money and interest, really.
+[4427.2s] More recently, we've had support from Bitmain.
+[4431.2s] After the merge with Ethereum moving to Proof-of-Stake, all of a sudden, ETC is one of the larger mining ecosystems.
+[4439.6s] So all of a sudden, we're very aligned with Bitmain.
+[4443.7s] They want to sell ASICs.
+[4444.7s] They want to be using Antpool for mining.
+[4448.8s] So they're supporting a grant program now.
+[4451.7s] But yeah, ETC is small.
+[4456.8s] but you have, you know, you have some people and that's, you know, that's their, that's what they want.
+
+SPEAKER_03:
+[4462.4s] Yeah.
+[4462.9s] And as you said, like, you know, like it's broken mode of like sidechain surviving, right?
+[4468.1s] Like, like, you know, it's possible, you know.
+[4473.7s] Oh, sorry, go ahead, Kieran.
+
+SPEAKER_05:
+[4475.9s] I wanted to talk quickly about, you know, the definition of success for blockchains.
+[4482.7s] market caps, and all that sort of thing.
+[4486.6s] And I was looking today, and so Ethereum's market cap is in the 200 billions.
+[4493.4s] Ethereum Classic is still at number 28, which is quite impressive, and is, you know, 2.6 billion in market cap.
+[4501.9s] I think market cap is probably more of an indicator of popularity than anything sort of truly long-term.
+[4509.6s] You know, it's not quite like
+[4511.6s] with companies where market cap is probably a better indicator of how important they are.
+[4518.2s] But it is also still.
+[4520.2s] And then if you look, yeah.
+
+SPEAKER_01:
+[4523.0s] If you look in CoinGecko, so Ethereum Classic is higher than Cosmos, than Filecoin, than Hedera, than Internet Computer, than Aptos, than Lido, than Nia.
+[4539.8s] than optimism, than arbitrum, than the graph.
+
+SPEAKER_05:
+[4545.6s] And so I wanted to follow, is market cap a good goal?
+[4551.0s] What is your goal for ETC?
+[4554.6s] If you were trying to make up the gap with Ethereum, would you do anything differently?
+[4561.1s] I mean, I think to do that, you just need vast investment into application layer.
+
+SPEAKER_01:
+[4570.1s] I mean, I think that's somewhere where ETC really can't compete with many other VC chains, you know, that have huge treasuries that can be spending, you know, tens or hundreds of millions on grant programs, you know.
+
+UNKNOWN:
+[4586.7s] you know, we can't compete that way.
+
+SPEAKER_01:
+[4589.1s] But also, as you say, it's a bit of a vanity metric in a way, you know, like there are many other vanity metrics that we commonly see in the space.
+[4602.7s] Because, yeah, you know, if you want whatever the fastest chain or the most money or whatever, like, yeah, that's not going to be ETC, like it can never be ETC.
+[4613.7s] But for people that are interested, that's not the goal, right?
+[4616.8s] They, uh, you know, they, they, they're, they're looking for something, which is basically like Bitcoin plus smart contracts, you know, with that kind of.
+[4625.7s] Strong non-intervention kind of bias, uh, and also proof of work.
+[4631.3s] You know, a lot of people see, uh, you know, real value in proof of work and are very skeptical of, uh, of proof of state systems.
+[4640.4s] So, you know,
+
+UNKNOWN:
+[4645.4s] It's not winner-takes-all.
+
+SPEAKER_05:
+[4649.1s] It's been interesting just how not a winner-takes-all the blockchain space has been.
+[4654.2s] They're like cockroaches.
+[4656.4s] They just kind of keep going.
+[4660.3s] I know they get delisted occasionally, but how many, let's see how many pages you can get to on- Can we call them tree clippings instead of- Yeah.
+
+SPEAKER_01:
+[4669.4s] 20,000 is the big record.
+[4672.8s] Yeah.
+[4673.5s] 20,000 live chains.
+
+UNKNOWN:
+[4676.0s] That's quite a number and very interesting kind of in and of itself.
+
+SPEAKER_05:
+[4681.3s] Victor, you were saying something when I made my comment.
+[4683.9s] Oh, no, no, no.
+[4684.5s] I was just saying, I was going to ask you more questions about the early days of EEA, but I think we will have to invite you back because I'm pretty sure we could have another 90 minute conversation on that.
+
+UNKNOWN:
+[4704.3s] Great to have you, Bob.
+
+SPEAKER_03:
+[4706.2s] As always, you've always been a great friend and a wealth of information on the space.
+[4711.2s] So thank you for joining us, and we hope you'll come back again soon.
+
+SPEAKER_01:
+[4715.2s] Well, thank you, and sorry for monopolizing me.
+
+SPEAKER_05:
+[4719.2s] No, this is exactly why you're here.
+[4721.6s] Yeah, your story, we've told plenty of ours.
+[4725.2s] Should we, you know, I see on other podcasts, should we send people anywhere?
+[4731.3s] Where can people find you?
+[4732.5s] Do you want them to find you, et cetera?
+
+SPEAKER_01:
+[4735.6s] Yeah, I can.
+[4736.4s] Yeah, I can.
+[4737.0s] I can.
+[4737.5s] I can drop you some links afterwards.
+[4739.5s] But yeah, my own website is BobsonWorld.com.
+[4743.1s] ethereumclassic.org is the main sort of landing page for ECC.
+
+SPEAKER_05:
+[4750.6s] Awesome.
+[4750.9s] Fantastic.
+[4751.7s] Well, thank you very much.
+[4752.7s] Really appreciate your time.
+[4754.2s] And I'm sure we will follow up.
+[4756.3s] We'll put our heads together and do another one when we're all ready.
+[4760.8s] Yes, we'll have to have a round two.
+
+SPEAKER_03:
+[4762.2s] There's plenty more stories that we haven't even touched on yet.
+
+SPEAKER_05:
+[4767.6s] OK.
+[4767.8s] Cheers, guys.
+[4769.5s] Cheers.
