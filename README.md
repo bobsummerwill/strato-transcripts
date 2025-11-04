@@ -207,10 +207,22 @@ This installs:
 
 3. **Install remaining Python dependencies:**
 ```bash
-pip install -r requirements.txt
+pip install -r requirements-lock.txt
 ```
 
-The `requirements.txt` includes pyannote.audio 4.0.1 and all other dependencies compatible with PyTorch nightly.
+**About Requirements Files:**
+
+This project uses two requirements files:
+- **requirements.txt** (minimal) - 6 direct dependencies only. For development when you need flexibility.
+- **requirements-lock.txt** (complete) - All 155+ packages with exact versions. **Use this for setup** to ensure reproducible builds.
+
+**Generating/Updating Lock File:**
+
+If you need to regenerate the lock file after updating requirements.txt:
+```bash
+pip install -r requirements.txt
+pip freeze > requirements-lock.txt
+```
 
 4. **Apply WhisperX patches (REQUIRED):**
 

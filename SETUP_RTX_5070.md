@@ -220,7 +220,39 @@ GPU: NVIDIA GeForce RTX 5070
 ### 5.1 Install Requirements
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements-lock.txt
+```
+
+**Note:** This installs from the complete lock file with all 155+ packages pinned to exact versions, ensuring a reproducible build.
+
+### 5.2 Understanding Requirements Files
+
+This project uses two requirements files:
+
+**requirements.txt** (minimal, for development):
+- Contains only 6 direct dependencies
+- Uses exact versions only where critical (PyTorch, pyannote.audio)
+- Transitive dependencies resolved automatically by pip
+
+**requirements-lock.txt** (complete lock file, for production):
+- Contains all 155+ packages with exact versions
+- Ensures reproducible builds
+- Generated from `pip freeze` after installing requirements.txt
+
+### 5.3 Generating/Updating Lock File (Optional)
+
+If you need to regenerate or update the lock file:
+
+```bash
+# After installing from requirements.txt
+pip freeze > requirements-lock.txt
+```
+
+This captures all installed packages with exact versions, ensuring reproducible builds.
+
+For production deployments, install from the lock file:
+```bash
+pip install -r requirements-lock.txt
 ```
 
 **What this installs:**
