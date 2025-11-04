@@ -2,49 +2,30 @@
 # RTX 5070 / Blackwell Architecture Requirements
 # ==============================================================================
 #
-# Minimal requirements file - only direct dependencies listed.
-# All transitive dependencies will be resolved automatically by pip.
-#
-# For a complete lock file with all exact versions, see requirements-lock.txt
-#
-# Installation:
-#   pip install -r requirements.txt
-#
-# To generate lock file:
-#   pip freeze > requirements-lock.txt
+# For complete lock file with exact versions: requirements-lock.txt
+# To generate: pip install -r requirements.txt && pip freeze > requirements-lock.txt
 #
 # ==============================================================================
 
-# Add PyTorch nightly index for torch/torchvision/torchaudio
+# PyTorch nightly - REQUIRED for RTX 5070 Blackwell/sm_120 compute capability
+# Stable releases don't support sm_120 yet (as of Nov 2025)
 --extra-index-url https://download.pytorch.org/whl/nightly/cu128
-
-# PyTorch ecosystem (nightly build for RTX 5070)
-# RTX 5070 requires sm_120 support, only available in nightly
 torch --pre
 torchvision --pre
 torchaudio --pre
 
-# Core transcription
-# Pulls in faster-whisper, transformers, ctranslate2, etc.
+# WhisperX (latest git) - PyPI version 3.7.4 outdated, needs patches for pyannote.audio 4.0.1
+# Pulls in faster-whisper, transformers, ctranslate2
 whisperx @ git+https://github.com/m-bain/whisperx.git
 
-# Speaker diarization
-# pyannote.audio 4.0.1+ required for PyTorch 2.10+ compatibility
-# Pulls in pyannote.core, pyannote.database, pyannote.metrics, pyannote.pipeline,
-# pytorch-lightning, opentelemetry, numpy>=2.0, pandas, scipy, etc.
+# pyannote.audio 4.0.1+ - REQUIRED for PyTorch 2.10+ compatibility
+# Older versions (3.x) incompatible with PyTorch nightly
+# Pulls in: pyannote.core, pyannote.database, pytorch-lightning, opentelemetry, numpy>=2.0, pandas, scipy
 pyannote.audio>=4.0.1
 
-# Additional ML framework
-# Pulls in torch-audiomentations, torchaudio-augmentations, etc.
+# SpeechBrain (latest git) - PyPI version may have PyTorch 2.10+ compatibility issues
+# Pulls in torch-audiomentations, torchaudio-augmentations
 speechbrain @ git+https://github.com/speechbrain/speechbrain.git
 
-# ==============================================================================
-# Post-Installation Steps (RTX 5070 Required)
-# ==============================================================================
-#
-# 1. Apply WhisperX patches (pyannote.audio 4.0.1 compatibility)
-# 2. Set LD_LIBRARY_PATH (PyTorch nightly library path issue)
-#
-# See SETUP_RTX_5070.md for complete instructions and explanations.
-#
-# ==============================================================================
+# Post-Installation: Run install_packages_and_venv.sh or manually apply WhisperX patches
+# See SETUP_RTX_5070.md for complete setup instructions
