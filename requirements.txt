@@ -2,7 +2,7 @@
 # WhisperX Requirements - Hardware-Agnostic
 # ==============================================================================
 #
-# This project now uses split requirements files for different hardware:
+# This project uses split requirements files for different hardware:
 #
 # - requirements-nvidia.txt  → PyTorch nightly with CUDA (for NVIDIA GPUs)
 # - requirements-cpu.txt     → PyTorch nightly CPU-only (for non-NVIDIA systems)
@@ -25,7 +25,17 @@
 #     pip install -r requirements-cpu.txt
 #     pip install -r requirements-base.txt
 #
-# For locked versions: see requirements-lock.txt
+# GENERATING LOCKED VERSIONS (for production):
+#   For NVIDIA systems:
+#     pip install -r requirements-nvidia.txt
+#     pip install -r requirements-base.txt
+#     pip freeze > requirements-nvidia-lock.txt
+#
+#   For CPU systems:
+#     pip install -r requirements-cpu.txt
+#     pip install -r requirements-base.txt
+#     pip freeze > requirements-cpu-lock.txt
+#
 # For setup guide: see SETUP_RTX_5070.md
 #
 # ==============================================================================

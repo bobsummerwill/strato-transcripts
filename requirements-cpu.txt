@@ -4,6 +4,11 @@
 #
 # For CPU-only systems, AMD GPUs, or any non-NVIDIA hardware
 #
+# To generate locked versions (recommended for production):
+#   pip install -r requirements-cpu.txt
+#   pip install -r requirements-base.txt
+#   pip freeze > requirements-cpu-lock.txt
+#
 # ==============================================================================
 
 # PyTorch nightly CPU version

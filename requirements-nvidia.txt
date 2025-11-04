@@ -4,6 +4,11 @@
 #
 # Supports all NVIDIA GPUs including RTX 5070 Blackwell/sm_120
 #
+# To generate locked versions (recommended for production):
+#   pip install -r requirements-nvidia.txt
+#   pip install -r requirements-base.txt
+#   pip freeze > requirements-nvidia-lock.txt
+#
 # ==============================================================================
 
 # PyTorch nightly - REQUIRED for RTX 5070 Blackwell/sm_120 compute capability

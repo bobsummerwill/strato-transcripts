@@ -5,6 +5,10 @@
 # These packages work with any PyTorch installation (NVIDIA GPU or CPU)
 # Install AFTER installing PyTorch from requirements-nvidia.txt or requirements-cpu.txt
 #
+# Note: This file is included in hardware-specific lock files:
+#   - requirements-nvidia-lock.txt (NVIDIA GPU systems)
+#   - requirements-cpu-lock.txt (CPU-only systems)
+#
 # ==============================================================================
 
 # WhisperX (latest git) - PyPI version 3.7.4 outdated, needs patches for pyannote.audio 4.0.1
