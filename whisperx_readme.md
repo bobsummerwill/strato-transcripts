@@ -49,7 +49,7 @@ nano setup_env.sh  # Add your HF_TOKEN from https://huggingface.co/settings/toke
 
 **What it installs:**
 - System dependencies (ffmpeg, build tools, Python dev)
-- PyTorch nightly (CUDA 12.8 for NVIDIA, CPU-only otherwise)
+- PyTorch nightly (CUDA 13.0 for NVIDIA, CPU-only otherwise)
 - WhisperX, pyannote.audio, SpeechBrain
 - Applies compatibility patches automatically
 - Configures LD_LIBRARY_PATH (NVIDIA only)
@@ -161,7 +161,7 @@ echo 'export HF_TOKEN="hf_YourTokenHere"' >> ~/.bashrc  # Make permanent
 - Change `"large-v2"` to `"medium"` or `"small"`
 
 **"CUDA capability sm_120 not supported"**
-- Install PyTorch nightly: `pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128`
+- Install PyTorch nightly: `pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu130`
 - Or use automated setup scripts
 
 **"Unable to load libcudnn_cnn.so.9"**
@@ -184,7 +184,7 @@ sed -i '412s/use_auth_token=None/token=None/' venv/lib/python3.12/site-packages/
 
 **Requirements:**
 - PyTorch 2.10.0.dev nightly (not stable)
-- CUDA 12.8 support
+- CUDA 13.0 support
 - NVIDIA driver 565+
 - WhisperX patches applied
 
@@ -199,7 +199,7 @@ python3 -c "import torch; print(f'PyTorch: {torch.__version__}'); print(f'CUDA: 
 
 Expected output:
 ```
-PyTorch: 2.10.0.dev20251103+cu128
+PyTorch: 2.10.0.dev20251104+cu130
 CUDA: True
 GPU: NVIDIA GeForce RTX 5070
 ```
@@ -262,12 +262,12 @@ GPU: NVIDIA GeForce RTX 5070
 **Tested:**
 - Python: 3.8 - 3.12
 - PyTorch: 2.0.0 - 2.2.0 (older GPUs), 2.10.0.dev (RTX 5070)
-- CUDA: 11.8, 12.1, 12.8 (nightly)
+- CUDA: 11.8, 12.1, 13.0 (nightly)
 - Ubuntu: 20.04, 22.04, 24.04
 - Windows: 10, 11 (WSL2 recommended)
 
 **GPU Support:**
-- RTX 50-series (Blackwell): PyTorch 2.10.0.dev nightly + CUDA 12.8
+- RTX 50-series (Blackwell): PyTorch 2.10.0.dev nightly + CUDA 13.0
 - RTX 40-series (Ada Lovelace): PyTorch 2.0+ stable
 - RTX 30-series (Ampere): PyTorch 2.0+ stable
 - GTX 16-series (Turing): PyTorch 2.0+ stable

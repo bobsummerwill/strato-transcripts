@@ -150,7 +150,7 @@ nano setup_env.sh  # Add your HF_TOKEN
 **What the scripts do:**
 - Detect hardware (NVIDIA GPU vs CPU) or use `--force-cpu` flag
 - Install system dependencies (ffmpeg, build tools, Python dev)
-- Install PyTorch nightly (CUDA 12.8 for NVIDIA, CPU-only otherwise)
+- Install PyTorch nightly (CUDA 13.0 for NVIDIA, CPU-only otherwise)
 - Install WhisperX, pyannote.audio, SpeechBrain
 - Apply WhisperX compatibility patches automatically
 - Configure LD_LIBRARY_PATH (NVIDIA only)
@@ -174,7 +174,7 @@ sudo reboot
 2. **Verify CUDA is detected:**
 ```bash
 nvidia-smi
-# Should show CUDA Version: 12.8 or newer
+# Should show CUDA Version: 13.0 or newer
 ```
 
 3. **Install FFmpeg for audio extraction:**
@@ -190,15 +190,15 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-2. **Install PyTorch NIGHTLY with CUDA 12.8 support (REQUIRED for RTX 5070):**
+2. **Install PyTorch NIGHTLY with CUDA 13.0 support (REQUIRED for RTX 5070):**
 ```bash
-pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
+pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu130
 ```
 
 This installs:
-- PyTorch 2.10.0.dev20251103+cu128 (or later nightly)
-- torchvision 0.25.0.dev20251103+cu128
-- torchaudio 2.10.0.dev20251103+cu128
+- PyTorch 2.10.0.dev20251104+cu130 (or later nightly)
+- torchvision 0.25.0.dev20251104+cu130
+- torchaudio 2.10.0.dev20251104+cu130
 - Bundled CUDA libraries including cuDNN 9.10.2.21, NCCL 2.27.5, cuBLAS, cuFFT, etc.
 
 3. **Install remaining Python dependencies:**
@@ -209,7 +209,7 @@ pip install -r requirements-base.txt
 **About Requirements Files:**
 
 This project uses hardware-specific requirements files:
-- **requirements-nvidia.txt** - PyTorch nightly with CUDA 12.8 for NVIDIA GPUs
+- **requirements-nvidia.txt** - PyTorch nightly with CUDA 13.0 for NVIDIA GPUs
 - **requirements-cpu.txt** - PyTorch nightly CPU-only for non-NVIDIA systems
 - **requirements-base.txt** - WhisperX, pyannote.audio, SpeechBrain (hardware-agnostic)
 - **requirements-nvidia-lock.txt** - Complete dependency snapshot for NVIDIA systems
@@ -252,7 +252,7 @@ python3 -c "import torch; print(f'PyTorch: {torch.__version__}'); print(f'CUDA a
 
 Expected output:
 ```
-PyTorch: 2.10.0.dev20251103+cu128
+PyTorch: 2.10.0.dev20251104+cu130
 CUDA available: True
 GPU: NVIDIA GeForce RTX 5070
 ```
@@ -307,15 +307,15 @@ python3 map_speakers_to_names.py \
 
 **CUDA Compatibility Issues:**
 If you see errors about CUDA capability sm_120 not being supported:
-- **Solution:** Install PyTorch nightly with CUDA 12.8 (not stable releases)
-- Run: `pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128`
+- **Solution:** Install PyTorch nightly with CUDA 13.0 (not stable releases)
+- Run: `pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu130`
 - Verify PyTorch version shows "2.10.0.dev" or newer: `pip show torch`
 
 **NVIDIA Driver Issues:**
-If `nvidia-smi` shows an older CUDA version (< 12.8):
+If `nvidia-smi` shows an older CUDA version (< 13.0):
 - Install newer drivers: `sudo apt install nvidia-driver-565`
 - Reboot: `sudo reboot`
-- Verify: `nvidia-smi` should show CUDA 12.8+
+- Verify: `nvidia-smi` should show CUDA 13.0+
 
 **cuDNN Loading Errors:**
 If you see "Unable to load libcudnn_cnn.so.9":
