@@ -16,11 +16,15 @@
 #   1. Detects hardware (NVIDIA GPU vs CPU)
 #   2. Installs system dependencies (ffmpeg, build tools, Python dev)
 #   3. Creates isolated Python virtual environment
-#   4. Installs PyTorch nightly (required for RTX 5070 Blackwell support)
-#   5. Installs WhisperX and dependencies (pyannote.audio, SpeechBrain)
-#   6. Applies compatibility patches to WhisperX
-#   7. Configures environment (LD_LIBRARY_PATH for NVIDIA)
-#   8. Verifies all installations
+#   4. Installs PyTorch nightly
+#   5. Verifies PyTorch installation
+#   6. Installs WhisperX and dependencies
+#   7. Applies compatibility patches to WhisperX
+#   8. Upgrades packages for compatibility
+#   9. Applies compatibility patches to SpeechBrain
+#  10. Configures LD_LIBRARY_PATH for NVIDIA
+#  11. Verifies package installations
+#  12. Sets up environment configuration file
 #
 # REQUIREMENTS:
 #   - Ubuntu 24.04 LTS (or compatible Debian-based system)
@@ -29,15 +33,12 @@
 #   - sudo access for system package installation
 #
 # USAGE:
-#   ./install_packages_and_venv.sh                    # Auto-detect hardware, use lock files
-#   ./install_packages_and_venv.sh --force-cpu        # Force CPU-only mode, use lock files
-#   ./install_packages_and_venv.sh --refresh-lock     # Rebuild packages and regenerate lock files
+#   ./install_packages_and_venv.sh                    # Auto-detect hardware
+#   ./install_packages_and_venv.sh --force-cpu        # Force CPU-only mode
 #
 # OPTIONS:
 #   --force-cpu       Force CPU-only installation even if NVIDIA GPU is present
 #                     Useful for testing or when you want CPU mode on GPU system
-#   --refresh-lock    Rebuild all packages from source requirements and regenerate lock files
-#                     Use this when dependencies change or you need to update packages
 #
 # POST-INSTALLATION:
 #   1. Get HuggingFace token: https://huggingface.co/settings/tokens
@@ -68,20 +69,15 @@ VENV_DIR="$PROJECT_DIR/venv"                                   # Virtual environ
 
 # Parse command-line arguments
 FORCE_CPU=false
-REFRESH_LOCK=false
 for arg in "$@"; do
     case $arg in
         --force-cpu)
             FORCE_CPU=true
             shift
             ;;
-        --refresh-lock)
-            REFRESH_LOCK=true
-            shift
-            ;;
         *)
             echo -e "${RED}Error: Unknown option: $arg${NC}"
-            echo "Usage: $0 [--force-cpu] [--refresh-lock]"
+            echo "Usage: $0 [--force-cpu]"
             exit 1
             ;;
     esac
@@ -111,7 +107,7 @@ elif command -v nvidia-smi &> /dev/null && nvidia-smi &> /dev/null; then
     HAS_NVIDIA=true
     GPU_NAME=$(nvidia-smi --query-gpu=name --format=csv,noheader 2>/dev/null || echo "NVIDIA GPU")
     echo -e "${GREEN}✓ Detected NVIDIA GPU: $GPU_NAME${NC}"
-    echo "Will install PyTorch nightly with CUDA 13.0 support"
+    echo "Will install PyTorch nightly with CUDA 12.8 support"
 else
     HAS_NVIDIA=false
     echo -e "${YELLOW}⚠ No NVIDIA GPU detected - using CPU mode${NC}"
@@ -161,44 +157,26 @@ echo ""
 source "$VENV_DIR/bin/activate"
 
 # ==============================================================================
-# Step 4: Package Installation
+# Step 4: PyTorch Installation
 # ==============================================================================
-# By default, install from lock files for fast, reproducible installations.
-# With --refresh-lock, install from source requirements and rebuild lock files.
-# Lock files contain complete frozen dependency tree for deterministic installs.
+# Install PyTorch nightly for RTX 5070 Blackwell (sm_120) support.
+# Uses PyTorch nightly for all hardware for consistency.
+# Will switch to stable PyTorch once it supports Blackwell (expected: PyTorch 2.6+).
 # ==============================================================================
-if [ "$REFRESH_LOCK" = false ]; then
-    echo -e "${YELLOW}[4/10] Installing packages from lock files...${NC}"
-    echo "Using frozen dependencies for fast, reproducible installation"
-    echo "This may take 2-5 minutes depending on internet speed..."
-    if [ "$HAS_NVIDIA" = true ]; then
-        echo "Installing from: requirements-nvidia-lock.txt (CUDA 13.0)"
-        pip install -r "$PROJECT_DIR/requirements-nvidia-lock.txt"
-    else
-        echo "Installing from: requirements-cpu-lock.txt (CPU-only)"
-        pip install -r "$PROJECT_DIR/requirements-cpu-lock.txt"
-    fi
-    echo -e "${GREEN}✓ Packages installed from lock files${NC}"
-    echo ""
+echo -e "${YELLOW}[4/10] Installing PyTorch nightly...${NC}"
+echo "Using PyTorch nightly for all hardware to ensure maximum GPU support"
+echo "REQUIRED for RTX 5070 Blackwell (sm_120), but used universally for consistency"
+echo "Will switch to stable PyTorch once it supports Blackwell (expected: PyTorch 2.6+)"
+echo "This may take 2-5 minutes depending on internet speed..."
+if [ "$HAS_NVIDIA" = true ]; then
+    echo "Installing from: requirements-nvidia.txt (CUDA 12.8)"
+    pip install -r "$PROJECT_DIR/requirements-nvidia.txt"
 else
-    # ==============================================================================
-    # Step 4a: PyTorch Installation (--refresh-lock mode)
-    # ==============================================================================
-    echo -e "${YELLOW}[4/10] Installing PyTorch nightly (refresh mode)...${NC}"
-    echo "Using PyTorch nightly for all hardware to ensure maximum GPU support"
-    echo "REQUIRED for RTX 5070 Blackwell (sm_120), but used universally for consistency"
-    echo "Will switch to stable PyTorch once it supports Blackwell (expected: PyTorch 2.6+)"
-    echo "This may take 2-5 minutes depending on internet speed..."
-    if [ "$HAS_NVIDIA" = true ]; then
-        echo "Installing from: requirements-nvidia.txt (CUDA 13.0)"
-        pip install -r "$PROJECT_DIR/requirements-nvidia.txt"
-    else
-        echo "Installing from: requirements-cpu.txt (CPU-only)"
-        pip install -r "$PROJECT_DIR/requirements-cpu.txt"
-    fi
-    echo -e "${GREEN}✓ PyTorch nightly installed${NC}"
-    echo ""
+    echo "Installing from: requirements-cpu.txt (CPU-only)"
+    pip install -r "$PROJECT_DIR/requirements-cpu.txt"
 fi
+echo -e "${GREEN}✓ PyTorch nightly installed${NC}"
+echo ""
 
 # ==============================================================================
 # Step 5: PyTorch Verification
@@ -234,39 +212,31 @@ fi
 echo ""
 
 # ==============================================================================
-# Step 6: Application Packages Installation (--refresh-lock mode only)
+# Step 6: Application Packages Installation
 # ==============================================================================
-# Install WhisperX and its dependencies (pyannote.audio, SpeechBrain).
+# Install WhisperX and its dependencies.
 # These packages are hardware-agnostic and work with both NVIDIA and CPU.
-# Installed from requirements-base.txt which uses git repos for latest versions.
-# This step takes longest (5-10 min) due to compiling numerous dependencies.
-# Skipped when using lock files since they already contain all packages.
+# This step takes longest (5-10 min) due to downloading and installing packages.
 # ==============================================================================
-if [ "$REFRESH_LOCK" = true ]; then
-    echo -e "${YELLOW}[6/10] Installing common packages (refresh mode)...${NC}"
-    echo "Installing WhisperX, pyannote.audio, and SpeechBrain from requirements-base.txt"
-    echo "These packages are hardware-agnostic and work with both NVIDIA and CPU"
-    echo "This may take 5-10 minutes..."
-    pip install -r "$PROJECT_DIR/requirements-base.txt"
-    echo -e "${GREEN}✓ Common packages installed${NC}"
-    echo ""
-else
-    echo -e "${YELLOW}[6/10] Skipping common packages installation${NC}"
-    echo "Already installed from lock file in step 4"
-    echo ""
-fi
+echo -e "${YELLOW}[6/10] Installing common packages...${NC}"
+echo "Installing WhisperX and dependencies from requirements-base.txt"
+echo "These packages are hardware-agnostic and work with both NVIDIA and CPU"
+echo "This may take 5-10 minutes..."
+pip install -r "$PROJECT_DIR/requirements-base.txt"
+echo -e "${GREEN}✓ Common packages installed${NC}"
+echo ""
 
 # ==============================================================================
 # Step 7: WhisperX Compatibility Patches
 # ==============================================================================
 # Patch WhisperX source code to use 'token' instead of 'use_auth_token'.
-# WhisperX (from git) uses deprecated parameter name incompatible with
-# pyannote.audio 4.0.1+. Patches are applied with sed and verified.
+# WhisperX uses deprecated parameter name incompatible with pyannote.audio 4.x.
+# Patches are applied with sed and verified.
 # Files patched: vads/pyannote.py (global replace) and asr.py (line 412).
 # ==============================================================================
 echo -e "${YELLOW}[7/10] Applying WhisperX patches...${NC}"
 echo "Patching WhisperX to use 'token' parameter instead of deprecated 'use_auth_token'"
-echo "Required for compatibility with pyannote.audio 4.0.1+"
+echo "Required for compatibility with pyannote.audio 4.x"
 WHISPERX_VADS="$VENV_DIR/lib/python3.12/site-packages/whisperx/vads/pyannote.py"
 WHISPERX_ASR="$VENV_DIR/lib/python3.12/site-packages/whisperx/asr.py"
 
@@ -295,105 +265,159 @@ echo -e "${GREEN}✓ WhisperX patches applied successfully${NC}"
 echo ""
 
 # ==============================================================================
-# Step 7.5: Upgrade pyannote.audio (--refresh-lock mode only)
+# Step 8: Package Upgrades for Compatibility
 # ==============================================================================
-# WhisperX initially installs pyannote.audio 3.x (its dependency requirement).
-# Now that patches are applied, upgrade to 4.0.1+ for PyTorch 2.10+ compatibility.
-# This step is done AFTER patching because patches make WhisperX compatible with 4.0.1.
-# Skipped when using lock files since they already have the correct version.
+# After WhisperX installation, perform necessary upgrades for compatibility.
+# 1. Upgrade pyannote.audio 3.x to 4.0.0+ for PyTorch nightly compatibility
+# 2. Reinstall PyTorch nightly (WhisperX downgrades it to 2.8.0)
 # ==============================================================================
-if [ "$REFRESH_LOCK" = true ]; then
-    echo -e "${YELLOW}[7.5/10] Upgrading pyannote.audio to 4.0.1+ (refresh mode)...${NC}"
-    echo "WhisperX installed pyannote.audio 3.x, upgrading to 4.0.1+ for PyTorch compatibility"
-    pip install --upgrade "pyannote.audio>=4.0.1"
-    echo -e "${GREEN}✓ pyannote.audio upgraded successfully${NC}"
-    echo ""
+echo -e "${YELLOW}[8/10] Finalizing package versions...${NC}"
+
+# Upgrade pyannote.audio
+echo "Upgrading pyannote.audio 3.x to 4.0.0+ for PyTorch compatibility..."
+pip install --upgrade "pyannote.audio>=4.0.0"
+echo -e "${GREEN}✓ pyannote.audio upgraded${NC}"
+
+# Reinstall PyTorch nightly
+echo "Reinstalling PyTorch nightly (WhisperX downgraded it to 2.8.0)..."
+if [ "$HAS_NVIDIA" = true ]; then
+    pip install --force-reinstall --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
 else
-    echo -e "${YELLOW}[7.5/10] Skipping pyannote.audio upgrade${NC}"
-    echo "Already at correct version from lock file"
-    echo ""
+    pip install --force-reinstall --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
 fi
+echo -e "${GREEN}✓ PyTorch nightly reinstalled${NC}"
+echo ""
 
 # ==============================================================================
-# Step 7.6: Fix PyTorch Version Conflicts (--refresh-lock mode only)
+# Step 9: SpeechBrain Compatibility Patches
 # ==============================================================================
-# WhisperX requires torch~=2.8.0, which downgrades PyTorch from 2.9.0 to 2.8.0.
-# This breaks torchvision 0.24.0 which requires torch==2.9.0.
-# Force reinstall PyTorch 2.9.0 nightly to fix the conflict.
-# This works because WhisperX actually runs fine with 2.9.0 despite its metadata.
-# Skipped when using lock files since they already have compatible versions.
+# Patch SpeechBrain for compatibility with PyTorch nightly (torchaudio 2.1+).
+# Issue: torchaudio.list_audio_backends() was removed in newer versions but
+# SpeechBrain 1.0.3 still tries to call it, causing AttributeError.
+# Fix: Add hasattr() check before calling list_audio_backends().
+# This patch ensures SpeechBrain works with both old and new torchaudio versions.
 # ==============================================================================
-if [ "$REFRESH_LOCK" = true ]; then
-    echo -e "${YELLOW}[7.6/10] Fixing PyTorch version conflicts (refresh mode)...${NC}"
-    echo "WhisperX downgraded PyTorch to 2.8.0, reinstalling 2.9.0 nightly for compatibility"
-    if [ "$HAS_NVIDIA" = true ]; then
-        pip install --force-reinstall --no-deps torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu130
-    else
-        pip install --force-reinstall --no-deps torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
-    fi
-    echo -e "${GREEN}✓ PyTorch versions fixed${NC}"
-    echo ""
-    
-    # ==============================================================================
-    # Step 7.7: Regenerate Lock Files (--refresh-lock mode only)
-    # ==============================================================================
-    echo -e "${YELLOW}[7.7/10] Regenerating lock files...${NC}"
-    echo "Creating frozen dependency snapshot for future fast installations"
-    if [ "$HAS_NVIDIA" = true ]; then
-        pip freeze > "$PROJECT_DIR/requirements-nvidia-lock.txt"
-        echo -e "${GREEN}✓ Generated requirements-nvidia-lock.txt${NC}"
-    else
-        pip freeze > "$PROJECT_DIR/requirements-cpu-lock.txt"
-        echo -e "${GREEN}✓ Generated requirements-cpu-lock.txt${NC}"
-    fi
-    echo ""
-else
-    echo -e "${YELLOW}[7.6/10] Skipping PyTorch version fix${NC}"
-    echo "Already at correct versions from lock file"
-    echo ""
+echo -e "${YELLOW}[9/12] Applying SpeechBrain compatibility patches...${NC}"
+echo "Patching SpeechBrain for torchaudio 2.1+ compatibility"
+echo "Issue: list_audio_backends() removed in newer torchaudio versions"
+
+SPEECHBRAIN_BACKEND="$VENV_DIR/lib/python3.12/site-packages/speechbrain/utils/torch_audio_backend.py"
+
+if [ ! -f "$SPEECHBRAIN_BACKEND" ]; then
+    echo -e "${RED}ERROR: SpeechBrain torch_audio_backend.py not found at $SPEECHBRAIN_BACKEND${NC}"
+    exit 1
 fi
 
+# Create the patch - adds hasattr() check for list_audio_backends()
+cat > /tmp/speechbrain_patch.py << 'PATCH_EOF'
+import sys
+
+# Read the file
+with open(sys.argv[1], 'r') as f:
+    content = f.read()
+
+# Check if already patched
+if 'hasattr(torchaudio, \'list_audio_backends\')' in content:
+    # Verify the structure is correct
+    if 'if hasattr(torchaudio, \'list_audio_backends\'):\n        available_backends = torchaudio.list_audio_backends()\n        if len(available_backends)' in content.replace('    ', ' '*4):
+        print("Already patched with correct structure")
+        sys.exit(0)
+    else:
+        print("Patch exists but structure incorrect - re-patching")
+
+# Apply the patch - find and replace the problematic section
+original = """    elif torchaudio_major >= 2 and torchaudio_minor >= 1:
+        available_backends = torchaudio.list_audio_backends()
+
+        if len(available_backends) == 0:
+            logger.warning(
+                "SpeechBrain could not find any working torchaudio backend. Audio files may fail to load. Follow this link for instructions and troubleshooting: https://speechbrain.readthedocs.io/en/latest/audioloading.html"
+            )"""
+
+replacement = """    elif torchaudio_major >= 2 and torchaudio_minor >= 1:
+        # list_audio_backends() was removed in newer torchaudio versions
+        if hasattr(torchaudio, 'list_audio_backends'):
+            available_backends = torchaudio.list_audio_backends()
+            if len(available_backends) == 0:
+                logger.warning(
+                    "SpeechBrain could not find any working torchaudio backend. Audio files may fail to load. Follow this link for instructions and troubleshooting: https://speechbrain.readthedocs.io/en/latest/audioloading.html"
+                )
+        else:
+            # Newer torchaudio versions don't have list_audio_backends()
+            logger.info("Using torchaudio with default audio backend")"""
+
+if original in content:
+    content = content.replace(original, replacement)
+    with open(sys.argv[1], 'w') as f:
+        f.write(content)
+    print("Patch applied successfully")
+else:
+    # Try alternative matching for hasattr case
+    if 'hasattr(torchaudio, \'list_audio_backends\')' in content:
+        print("Already patched")
+    else:
+        print("ERROR: Could not find pattern to patch")
+        sys.exit(1)
+PATCH_EOF
+
+# Apply the patch
+python3 /tmp/speechbrain_patch.py "$SPEECHBRAIN_BACKEND"
+
+# Verify the patch
+if grep -q "hasattr(torchaudio, 'list_audio_backends')" "$SPEECHBRAIN_BACKEND"; then
+    echo -e "${GREEN}✓ SpeechBrain compatibility patch applied successfully${NC}"
+else
+    echo -e "${RED}ERROR: SpeechBrain patch verification failed${NC}"
+    exit 1
+fi
+
+# Cleanup
+rm -f /tmp/speechbrain_patch.py
+echo ""
+
 # ==============================================================================
-# Step 8: LD_LIBRARY_PATH Configuration (NVIDIA Only)
+# Step 10: LD_LIBRARY_PATH Configuration (NVIDIA Only)
 # ==============================================================================
-# PyTorch nightly packages cuDNN as a separate pip package in nvidia/cudnn/lib.
+# PyTorch nightly packages CUDA libraries as separate pip packages.
 # The system linker needs LD_LIBRARY_PATH to find these libraries at runtime.
 # Added to ~/.bashrc for persistence across terminal sessions.
-# CPU installations skip this step as they don't use cuDNN.
 # ==============================================================================
 if [ "$HAS_NVIDIA" = true ]; then
-    echo -e "${YELLOW}[8/10] Configuring LD_LIBRARY_PATH for NVIDIA...${NC}"
-    echo "PyTorch nightly packages cuDNN separately - needs LD_LIBRARY_PATH to find it"
-    echo "Adding to ~/.bashrc for persistent configuration across sessions"
+    echo -e "${YELLOW}[10/12] Configuring LD_LIBRARY_PATH for NVIDIA...${NC}"
+    echo "Adding cuDNN library path to ~/.bashrc"
+    
     BASHRC="$HOME/.bashrc"
-    LD_PATH_LINE="export LD_LIBRARY_PATH=$PROJECT_DIR/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:\$LD_LIBRARY_PATH"
+    # Only add cuDNN path - this is what pyannote.audio needs
+    CUDNN_LIB="$VENV_DIR/lib/python3.12/site-packages/nvidia/cudnn/lib"
+    LD_PATH_LINE="export LD_LIBRARY_PATH=$CUDNN_LIB:\$LD_LIBRARY_PATH"
 
-    if grep -q "nvidia/cudnn/lib" "$BASHRC" 2>/dev/null; then
-        echo "LD_LIBRARY_PATH already configured in ~/.bashrc"
-    else
-        echo "" >> "$BASHRC"
-        echo "# Added by install_packages_and_venv.sh for PyTorch nightly cuDNN" >> "$BASHRC"
-        echo "$LD_PATH_LINE" >> "$BASHRC"
-        echo -e "${GREEN}✓ LD_LIBRARY_PATH added to ~/.bashrc${NC}"
-    fi
-
+    # Remove any existing entry
+    sed -i '/Added by install_packages_and_venv.sh/d' "$BASHRC"
+    sed -i '/nvidia.*LD_LIBRARY_PATH/d' "$BASHRC"
+    
+    # Add new entry
+    echo "" >> "$BASHRC"
+    echo "# Added by install_packages_and_venv.sh for PyTorch nightly cuDNN" >> "$BASHRC"
+    echo "$LD_PATH_LINE" >> "$BASHRC"
+    
     # Set for current session
-    export LD_LIBRARY_PATH="$VENV_DIR/lib/python3.12/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH"
-    echo -e "${GREEN}✓ LD_LIBRARY_PATH configured for current session and future sessions${NC}"
+    export LD_LIBRARY_PATH="$CUDNN_LIB:$LD_LIBRARY_PATH"
+    
+    echo -e "${GREEN}✓ LD_LIBRARY_PATH configured${NC}"
 else
-    echo -e "${YELLOW}[8/10] Skipping LD_LIBRARY_PATH configuration${NC}"
+    echo -e "${YELLOW}[10/12] Skipping LD_LIBRARY_PATH configuration${NC}"
     echo "Not needed for CPU-only installations"
 fi
 echo ""
 
 # ==============================================================================
-# Step 9: Application Package Verification
+# Step 11: Application Package Verification
 # ==============================================================================
 # Test import of WhisperX and pyannote.audio to ensure they installed correctly.
 # These imports also verify all their dependencies are properly installed.
 # Catches common issues like missing dependencies or incompatible versions.
 # ==============================================================================
-echo -e "${YELLOW}[9/10] Verifying package installations...${NC}"
+echo -e "${YELLOW}[11/12] Verifying package installations...${NC}"
 echo "Testing imports to ensure all packages are properly installed and accessible"
 
 echo "Testing WhisperX import..."
@@ -406,13 +430,13 @@ echo -e "${GREEN}✓ All packages verified and ready to use${NC}"
 echo ""
 
 # ==============================================================================
-# Step 10: Environment File Setup
+# Step 12: Environment File Setup
 # ==============================================================================
 # Create setup_env.sh from template if it doesn't exist.
 # This file stores HuggingFace token needed for downloading pyannote models.
 # User must manually edit this file to add their token (see post-install steps).
 # ==============================================================================
-echo -e "${YELLOW}[10/10] Setting up environment configuration...${NC}"
+echo -e "${YELLOW}[12/12] Setting up environment configuration...${NC}"
 echo "Checking for setup_env.sh (required for HuggingFace authentication)"
 if [ ! -f "$PROJECT_DIR/setup_env.sh" ]; then
     if [ -f "$PROJECT_DIR/setup_env.sh.example" ]; then

@@ -3,19 +3,22 @@
 # ==============================================================================
 #
 # RTX 5070 Blackwell Dependency Chain:
-#   RTX 5070 (sm_120) requires PyTorch 2.10+ nightly
-#   PyTorch 2.10+ requires pyannote-audio 4.0.1+
+#   RTX 5070 Blackwell (sm_120) requires PyTorch nightly
+#     - Stable PyTorch 2.5.x and earlier only support up to sm_90 (Hopper/Ada)
+#     - sm_120 (Blackwell) support only available in nightly builds
+#     - Will be in stable PyTorch 2.6+ when released (expected Q1-Q2 2026)
+#   PyTorch nightly requires pyannote-audio 4.0.1+
 #
 # Conflicts with WhisperX 3.7.4:
 #   - Requires torch~=2.8.0 (attempts downgrade to 2.8.x)
-#   - Requires pyannote-audio<4.0.0 (incompatible with PyTorch 2.10+)
+#   - Requires pyannote-audio<4.0.0 (incompatible with PyTorch nightly)
 #   - Uses use_auth_token (renamed to 'token' in pyannote 4.x)
 #
 # Resolution (see install_packages_and_venv.sh for details):
-#   1. Install PyTorch 2.10+ first
+#   1. Install PyTorch nightly first
 #   2. Install WhisperX (pulls older versions)
 #   3. Patch WhisperX code for pyannote 4.x API
-#   4. Force-reinstall PyTorch 2.10+
+#   4. Force-reinstall PyTorch nightly
 #   5. Upgrade pyannote-audio to 4.0.1+
 # ==============================================================================
 
