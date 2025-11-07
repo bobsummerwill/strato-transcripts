@@ -14,23 +14,31 @@ import whisperx
 import torch
 from pyannote.audio import Pipeline
 
-def transcribe_audio(audio_path, device, compute_type="float16"):
-    """Run WhisperX transcription"""
+def transcribe_audio(audio_path, device, compute_type="float16", language="en"):
+    """Run WhisperX transcription
+    
+    Args:
+        audio_path: Path to audio file
+        device: Device to use (cuda/cpu)
+        compute_type: Compute precision (float16/int8)
+        language: Language code (default: "en" for English)
+    """
     print("\n" + "="*60)
     print("Step 1: Transcribing audio with WhisperX...")
     print("="*60)
+    print(f"Language: {language}")
     
     start = time.time()
     
     # Load model
     model = whisperx.load_model("large-v2", device, compute_type=compute_type)
     
-    # Transcribe
+    # Transcribe with explicit language to prevent drift
     audio = whisperx.load_audio(audio_path)
-    result = model.transcribe(audio, batch_size=16)
+    result = model.transcribe(audio, batch_size=16, language=language)
     
-    # Align whisper output
-    model_a, metadata = whisperx.load_align_model(language_code=result["language"], device=device)
+    # Align whisper output using the same language
+    model_a, metadata = whisperx.load_align_model(language_code=language, device=device)
     result = whisperx.align(result["segments"], model_a, metadata, audio, device, return_char_alignments=False)
     
     elapsed = time.time() - start
@@ -171,6 +179,7 @@ def main():
     parser.add_argument("audio_file", help="Audio file path")
     parser.add_argument("--output", help="Output file path")
     parser.add_argument("--token", help="HuggingFace token (overrides HF_TOKEN env var)")
+    parser.add_argument("--language", default="en", help="Language code for transcription (default: en). Use en for English to prevent language drift.")
     
     args = parser.parse_args()
     
@@ -212,8 +221,8 @@ def main():
     
     # Run pipeline
     try:
-        # Step 1: Transcribe
-        result = transcribe_audio(str(audio_path), device, compute_type)
+        # Step 1: Transcribe with specified language
+        result = transcribe_audio(str(audio_path), device, compute_type, language=args.language)
         
         # Step 2: Diarize
         diarize_segments = diarize_audio(str(audio_path), hf_token, device)
