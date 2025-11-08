@@ -22,9 +22,8 @@
 #   7. Applies compatibility patches to WhisperX
 #   8. Upgrades packages for compatibility
 #   9. Applies compatibility patches to SpeechBrain
-#  10. Configures LD_LIBRARY_PATH for NVIDIA
-#  11. Verifies package installations
-#  12. Sets up environment configuration file
+#  10. Verifies package installations
+#  11. Sets up environment configuration file
 #
 # REQUIREMENTS:
 #   - Ubuntu 24.04 LTS (or compatible Debian-based system)
@@ -159,23 +158,22 @@ source "$VENV_DIR/bin/activate"
 # ==============================================================================
 # Step 4: PyTorch Installation
 # ==============================================================================
-# Install PyTorch nightly for RTX 5070 Blackwell (sm_120) support.
-# Uses PyTorch nightly for all hardware for consistency.
-# Will switch to stable PyTorch once it supports Blackwell (expected: PyTorch 2.6+).
+# Install PyTorch 2.9.0 stable with CUDA 12.8 for Blackwell architecture support.
+# PyTorch 2.7+ includes stable Blackwell (sm_120) support for RTX 50-series.
+# Using stable release for better reliability and ecosystem compatibility.
 # ==============================================================================
-echo -e "${YELLOW}[4/10] Installing PyTorch nightly...${NC}"
-echo "Using PyTorch nightly for all hardware to ensure maximum GPU support"
-echo "REQUIRED for RTX 5070 Blackwell (sm_120), but used universally for consistency"
-echo "Will switch to stable PyTorch once it supports Blackwell (expected: PyTorch 2.6+)"
+echo -e "${YELLOW}[4/10] Installing PyTorch 2.9.0 stable...${NC}"
+echo "Installing PyTorch 2.9.0 stable with CUDA 12.8 support"
+echo "Includes full Blackwell (sm_120) support for RTX 50-series GPUs"
 echo "This may take 2-5 minutes depending on internet speed..."
 if [ "$HAS_NVIDIA" = true ]; then
-    echo "Installing from: requirements-nvidia.txt (CUDA 12.8)"
+    echo "Installing from: requirements-nvidia.txt (PyTorch 2.9.0 + CUDA 12.8)"
     pip install -r "$PROJECT_DIR/requirements-nvidia.txt"
 else
-    echo "Installing from: requirements-cpu.txt (CPU-only)"
+    echo "Installing from: requirements-cpu.txt (PyTorch 2.9.0 CPU-only)"
     pip install -r "$PROJECT_DIR/requirements-cpu.txt"
 fi
-echo -e "${GREEN}✓ PyTorch nightly installed${NC}"
+echo -e "${GREEN}✓ PyTorch 2.9.0 stable installed${NC}"
 echo ""
 
 # ==============================================================================
@@ -268,24 +266,29 @@ echo ""
 # Step 8: Package Upgrades for Compatibility
 # ==============================================================================
 # After WhisperX installation, perform necessary upgrades for compatibility.
-# 1. Upgrade pyannote.audio 3.x to 4.0.0+ for PyTorch nightly compatibility
-# 2. Reinstall PyTorch nightly (WhisperX downgrades it to 2.8.0)
+# Upgrade pyannote.audio 3.x to 4.0.0+ for PyTorch 2.9.0 compatibility.
+# Note: WhisperX may try to downgrade PyTorch to 2.8.0, so we reinstall if needed.
 # ==============================================================================
 echo -e "${YELLOW}[8/10] Finalizing package versions...${NC}"
 
 # Upgrade pyannote.audio
-echo "Upgrading pyannote.audio 3.x to 4.0.0+ for PyTorch compatibility..."
+echo "Upgrading pyannote.audio 3.x to 4.0.0+ for PyTorch 2.9.0 compatibility..."
 pip install --upgrade "pyannote.audio>=4.0.0"
 echo -e "${GREEN}✓ pyannote.audio upgraded${NC}"
 
-# Reinstall PyTorch nightly
-echo "Reinstalling PyTorch nightly (WhisperX downgraded it to 2.8.0)..."
-if [ "$HAS_NVIDIA" = true ]; then
-    pip install --force-reinstall --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
+# Check if PyTorch was downgraded and reinstall if needed
+PYTORCH_VERSION=$(python3 -c "import torch; print(torch.__version__)" 2>/dev/null || echo "unknown")
+if [[ "$PYTORCH_VERSION" != "2.9.0"* ]]; then
+    echo "PyTorch was downgraded to $PYTORCH_VERSION - reinstalling 2.9.0..."
+    if [ "$HAS_NVIDIA" = true ]; then
+        pip install --force-reinstall torch==2.9.0 torchvision==0.24.0 torchaudio==2.9.0 --index-url https://download.pytorch.org/whl/cu128
+    else
+        pip install --force-reinstall torch==2.9.0 torchvision==0.24.0 torchaudio==2.9.0 --index-url https://download.pytorch.org/whl/cpu
+    fi
+    echo -e "${GREEN}✓ PyTorch 2.9.0 reinstalled${NC}"
 else
-    pip install --force-reinstall --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
+    echo "PyTorch 2.9.0 still installed - no reinstall needed"
 fi
-echo -e "${GREEN}✓ PyTorch nightly reinstalled${NC}"
 echo ""
 
 # ==============================================================================
@@ -376,48 +379,13 @@ rm -f /tmp/speechbrain_patch.py
 echo ""
 
 # ==============================================================================
-# Step 10: LD_LIBRARY_PATH Configuration (NVIDIA Only)
-# ==============================================================================
-# PyTorch nightly packages CUDA libraries as separate pip packages.
-# The system linker needs LD_LIBRARY_PATH to find these libraries at runtime.
-# Added to ~/.bashrc for persistence across terminal sessions.
-# ==============================================================================
-if [ "$HAS_NVIDIA" = true ]; then
-    echo -e "${YELLOW}[10/12] Configuring LD_LIBRARY_PATH for NVIDIA...${NC}"
-    echo "Adding cuDNN library path to ~/.bashrc"
-    
-    BASHRC="$HOME/.bashrc"
-    # Only add cuDNN path - this is what pyannote.audio needs
-    CUDNN_LIB="$VENV_DIR/lib/python3.12/site-packages/nvidia/cudnn/lib"
-    LD_PATH_LINE="export LD_LIBRARY_PATH=$CUDNN_LIB:\$LD_LIBRARY_PATH"
-
-    # Remove any existing entry
-    sed -i '/Added by install_packages_and_venv.sh/d' "$BASHRC"
-    sed -i '/nvidia.*LD_LIBRARY_PATH/d' "$BASHRC"
-    
-    # Add new entry
-    echo "" >> "$BASHRC"
-    echo "# Added by install_packages_and_venv.sh for PyTorch nightly cuDNN" >> "$BASHRC"
-    echo "$LD_PATH_LINE" >> "$BASHRC"
-    
-    # Set for current session
-    export LD_LIBRARY_PATH="$CUDNN_LIB:$LD_LIBRARY_PATH"
-    
-    echo -e "${GREEN}✓ LD_LIBRARY_PATH configured${NC}"
-else
-    echo -e "${YELLOW}[10/12] Skipping LD_LIBRARY_PATH configuration${NC}"
-    echo "Not needed for CPU-only installations"
-fi
-echo ""
-
-# ==============================================================================
-# Step 11: Application Package Verification
+# Step 10: Application Package Verification
 # ==============================================================================
 # Test import of WhisperX and pyannote.audio to ensure they installed correctly.
 # These imports also verify all their dependencies are properly installed.
 # Catches common issues like missing dependencies or incompatible versions.
 # ==============================================================================
-echo -e "${YELLOW}[11/12] Verifying package installations...${NC}"
+echo -e "${YELLOW}[10/11] Verifying package installations...${NC}"
 echo "Testing imports to ensure all packages are properly installed and accessible"
 
 echo "Testing WhisperX import..."
@@ -430,13 +398,13 @@ echo -e "${GREEN}✓ All packages verified and ready to use${NC}"
 echo ""
 
 # ==============================================================================
-# Step 12: Environment File Setup
+# Step 11: Environment File Setup
 # ==============================================================================
 # Create setup_env.sh from template if it doesn't exist.
 # This file stores HuggingFace token needed for downloading pyannote models.
 # User must manually edit this file to add their token (see post-install steps).
 # ==============================================================================
-echo -e "${YELLOW}[12/12] Setting up environment configuration...${NC}"
+echo -e "${YELLOW}[11/11] Setting up environment configuration...${NC}"
 echo "Checking for setup_env.sh (required for HuggingFace authentication)"
 if [ ! -f "$PROJECT_DIR/setup_env.sh" ]; then
     if [ -f "$PROJECT_DIR/setup_env.sh.example" ]; then
@@ -476,5 +444,5 @@ echo "  source setup_env.sh"
 echo "  source venv/bin/activate"
 echo "  python3 transcribe_with_diarization.py audio.mp3"
 echo ""
-echo "See SETUP_RTX_5070.md for complete documentation."
+echo "See README.md for complete documentation."
 echo ""

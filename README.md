@@ -44,10 +44,9 @@ This installs NVIDIA driver 565+ which is required for RTX 50-series GPUs (Black
 **What this script does:**
 - Detects hardware (NVIDIA GPU vs CPU) or uses `--force-cpu` flag
 - Installs system dependencies (ffmpeg, build tools, Python dev)
-- Installs PyTorch nightly (CUDA 12.8 for NVIDIA, CPU-only otherwise)
+- Installs PyTorch 2.9.0 stable (CUDA 12.8 for NVIDIA, CPU-only otherwise)
 - Installs WhisperX, pyannote.audio, SpeechBrain
 - Applies WhisperX compatibility patches automatically
-- Configures LD_LIBRARY_PATH (NVIDIA only)
 - Runs verification tests
 
 ### Step 3: Configure HuggingFace Token
@@ -203,7 +202,7 @@ NVIDIA Driver 565+
     ↓ enables
 CUDA 12.8 Support
     ↓ used by
-PyTorch Nightly (cu128)
+PyTorch 2.9.0 Stable (cu128)
     ↓ required by
 pyannote.audio 4.0.1+
     ↓ used by
@@ -212,11 +211,19 @@ WhisperX (with patches)
 GPU-Accelerated Transcription
 ```
 
-### Why PyTorch Nightly?
+### PyTorch Version History
 
-- **Stable PyTorch 2.5.1** only supports up to sm_90 (Hopper/Ada architectures)
-- **PyTorch Nightly** includes sm_120 support for Blackwell architecture
-- **Future**: Will move to stable PyTorch 2.6+ when released (expected Q1-Q2 2026)
+**Evolution of Blackwell Support:**
+- **Before PyTorch 2.7 (pre-April 2025)**: RTX 50-series required nightly builds
+- **PyTorch 2.7 (April 2025)**: Prototype Blackwell support introduced
+- **PyTorch 2.9.0 (October 2025)**: Mature stable Blackwell support
+- **Current setup**: Using stable PyTorch 2.9.0 for reliability
+
+**Why PyTorch 2.9.0 Stable:**
+- Full Blackwell (sm_120) architecture support
+- Stable, well-tested releases (vs experimental nightly builds)
+- Better compatibility with ecosystem packages
+- Production-ready for RTX 50-series GPUs
 
 ### Why CUDA 12.8 (not 13.0)?
 
@@ -244,16 +251,16 @@ sed -i '412s/use_auth_token=None/token=None/' venv/lib/python3.12/site-packages/
 
 ### LD_LIBRARY_PATH Configuration
 
-PyTorch nightly packages CUDA libraries separately, so the system linker needs help finding them:
+**Not needed with PyTorch 2.9.0 stable!** 
 
+Previous versions using PyTorch nightly builds required manual `LD_LIBRARY_PATH` configuration to help the system linker find CUDA libraries. PyTorch 2.9.0 stable properly packages and locates these libraries automatically, so this workaround is no longer necessary.
+
+**If you upgraded from nightly builds:** You can safely remove old LD_LIBRARY_PATH entries from your `~/.bashrc`:
 ```bash
-# Automatically configured by install_packages_and_venv.sh
-export LD_LIBRARY_PATH=venv/lib/python3.12/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:$LD_LIBRARY_PATH
-# ... (additional nvidia library paths)
+# Remove lines added by old versions of install_packages_and_venv.sh
+sed -i '/Added by install_packages_and_venv.sh/d' ~/.bashrc
+sed -i '/nvidia.*LD_LIBRARY_PATH/d' ~/.bashrc
 ```
-
-This is automatically added to your `~/.bashrc` by the installation script.
 
 ## Manual Setup (Advanced)
 
@@ -284,10 +291,10 @@ sudo reboot
 python3 -m venv venv
 source venv/bin/activate
 
-# For NVIDIA GPU (RTX 5070 and other Blackwell GPUs)
-pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
+# For NVIDIA GPU (RTX 50-series and other Blackwell GPUs)
+pip install torch==2.9.0 torchvision==0.24.0 torchaudio==2.9.0 --index-url https://download.pytorch.org/whl/cu128
 
-# For other NVIDIA GPUs
+# For other NVIDIA GPUs (older hardware)
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 
 # For CPU-only
@@ -318,8 +325,8 @@ python3 -c "from pyannote.audio import Pipeline; print('pyannote OK')"
 
 This project uses hardware-specific requirements files:
 
-- **requirements-nvidia.txt** - PyTorch nightly with CUDA 12.8 for NVIDIA GPUs
-- **requirements-cpu.txt** - PyTorch nightly CPU-only for non-NVIDIA systems
+- **requirements-nvidia.txt** - PyTorch 2.9.0 stable with CUDA 12.8 for NVIDIA GPUs
+- **requirements-cpu.txt** - PyTorch 2.9.0 stable CPU-only for non-NVIDIA systems
 - **requirements-base.txt** - WhisperX, pyannote.audio, SpeechBrain (hardware-agnostic)
 
 The `install_packages_and_venv.sh` script automatically selects the correct file based on your hardware.
@@ -356,13 +363,13 @@ The `install_packages_and_venv.sh` script automatically selects the correct file
 
 **Tested:**
 - Python: 3.8 - 3.12
-- PyTorch: 2.0.0 - 2.2.0 (older GPUs), 2.10.0.dev (RTX 5070)
-- CUDA: 11.8, 12.1, 12.8 (RTX 5070), 13.0 (nightly)
+- PyTorch: 2.0.0 - 2.9.0 (stable)
+- CUDA: 11.8, 12.1, 12.8
 - Ubuntu: 20.04, 22.04, 24.04
 - Windows: 10, 11 (WSL2 recommended)
 
 **GPU Support:**
-- RTX 50-series (Blackwell): PyTorch 2.10.0.dev nightly + CUDA 12.8
+- RTX 50-series (Blackwell): PyTorch 2.7+ stable + CUDA 12.8
 - RTX 40-series (Ada Lovelace): PyTorch 2.0+ stable
 - RTX 30-series (Ampere): PyTorch 2.0+ stable
 - GTX 16-series (Turing): PyTorch 2.0+ stable

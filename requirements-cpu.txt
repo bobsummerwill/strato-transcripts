@@ -1,24 +1,26 @@
 # ==============================================================================
-# PyTorch Nightly CPU-Only - For Systems Without NVIDIA GPU
+# PyTorch 2.9.0 CPU-Only - For Systems Without NVIDIA GPU
 # ==============================================================================
 #
-# For CPU-only systems, AMD GPUs, or any non-NVIDIA hardware
+# USING STABLE PYTORCH 2.9.0:
+# - PyTorch 2.7+ includes Blackwell architecture support
+# - Using stable release for reliability and ecosystem compatibility
+# - Same version as NVIDIA setup for consistency across all hardware
 #
-# WHY NIGHTLY:
-# - Used to match NVIDIA version for consistency across all hardware
-# - Ensures same PyTorch version for both GPU and CPU installations
-# - Stable PyTorch would work fine for CPU, but nightly used for uniformity
+# FOR CPU-ONLY SYSTEMS:
+# - Systems without NVIDIA GPU
+# - AMD GPUs (not supported for GPU acceleration)
+# - Any non-NVIDIA hardware
 #
-# WHEN TO SWITCH TO STABLE:
-# - Once PyTorch 2.6+ stable is released (when NVIDIA systems can also switch)
-# - Expected: Q1-Q2 2026
-# - Then replace with: torch>=2.6.0 torchvision>=0.17.0 torchaudio>=2.6.0
-# - And remove --extra-index-url (use default PyPI)
+# NOTE:
+# - PyTorch 2.7+ stable works perfectly for CPU-only systems
+# - CPU-only builds don't need CUDA, so no special CUDA version required
 #
 # ==============================================================================
 
-# PyTorch nightly CPU version
---extra-index-url https://download.pytorch.org/whl/nightly/cpu
-torch --pre
-torchvision --pre
-torchaudio --pre
+# PyTorch 2.9.0 stable CPU version
+--index-url https://download.pytorch.org/whl/cpu
+
+torch==2.9.0
+torchvision==0.24.0
+torchaudio==2.9.0
