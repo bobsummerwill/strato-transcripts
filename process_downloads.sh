@@ -19,6 +19,10 @@ NC='\033[0m'
 # Directories
 PROJECT_DIR="/home/zombietiger/Projects/stratomercata-transcripts"
 DOWNLOADS_DIR="/home/zombietiger/Downloads"
+OUTPUT_DIR="$PROJECT_DIR/outputs"
+
+# Ensure output directory exists
+mkdir -p "$OUTPUT_DIR"
 
 echo -e "${BLUE}========================================${NC}"
 echo -e "${BLUE}Batch MP3 Processing${NC}"
@@ -29,9 +33,6 @@ echo ""
 cd "$PROJECT_DIR"
 source venv/bin/activate
 source setup_env.sh
-
-# Set LD_LIBRARY_PATH for cuDNN (needed for PyTorch CUDA operations)
-export LD_LIBRARY_PATH="$PROJECT_DIR/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH"
 
 # Find all MP3 files
 MP3_FILES=("$DOWNLOADS_DIR"/*.mp3)
@@ -64,7 +65,6 @@ format_duration() {
 # Timing arrays
 declare -a FILE_NAMES
 declare -a TRANSCRIBE_TIMES
-declare -a MARKDOWN_TIMES
 declare -a TOTAL_TIMES
 
 # Overall timing
@@ -73,7 +73,6 @@ BATCH_START=$(date +%s)
 # Process each file
 COUNT=0
 PROCESSED=0
-SKIPPED=0
 
 for MP3_FILE in "${MP3_FILES[@]}"; do
     COUNT=$((COUNT + 1))
@@ -82,52 +81,35 @@ for MP3_FILE in "${MP3_FILES[@]}"; do
     echo -e "${YELLOW}[$COUNT/$TOTAL] Processing: $BASENAME${NC}"
     
     # Output files
-    TRANSCRIPT_FILE="${DOWNLOADS_DIR}/${BASENAME}_transcript_with_speakers.txt"
-    MARKDOWN_FILE="${DOWNLOADS_DIR}/${BASENAME}_transcript.md"
-    
-    # Skip if already processed
-    if [ -f "$MARKDOWN_FILE" ]; then
-        echo -e "${BLUE}  → Already processed, skipping${NC}"
-        echo ""
-        SKIPPED=$((SKIPPED + 1))
-        continue
-    fi
+    TRANSCRIPT_FILE="${OUTPUT_DIR}/${BASENAME}_transcript_with_speakers.txt"
+    MARKDOWN_FILE="${OUTPUT_DIR}/${BASENAME}_transcript.md"
     
     FILE_START=$(date +%s)
     
-    # Step 1: Transcribe with diarization
+    # Transcribe with diarization (creates both .txt and .md)
     echo "  → Transcribing with speaker identification..."
     TRANSCRIBE_START=$(date +%s)
-    python3 transcribe_with_diarization.py "$MP3_FILE"
+    python3 transcribe_with_diarization.py "$MP3_FILE" --output "$TRANSCRIPT_FILE"
     TRANSCRIBE_END=$(date +%s)
     TRANSCRIBE_DURATION=$((TRANSCRIBE_END - TRANSCRIBE_START))
-    echo -e "     Time: $(format_duration $TRANSCRIBE_DURATION)"
     
-    # Step 2: Format as markdown
-    MARKDOWN_DURATION=0
-    if [ -f "$TRANSCRIPT_FILE" ]; then
-        echo "  → Formatting as markdown..."
-        MARKDOWN_START=$(date +%s)
-        python3 format_transcript_for_markdown.py "$TRANSCRIPT_FILE" "$MARKDOWN_FILE"
-        MARKDOWN_END=$(date +%s)
-        MARKDOWN_DURATION=$((MARKDOWN_END - MARKDOWN_START))
-        echo -e "     Time: $(format_duration $MARKDOWN_DURATION)"
-        
+    if [ -f "$TRANSCRIPT_FILE" ] && [ -f "$MARKDOWN_FILE" ]; then
         FILE_END=$(date +%s)
         FILE_DURATION=$((FILE_END - FILE_START))
         
-        echo -e "${GREEN}  ✓ Complete: $MARKDOWN_FILE${NC}"
-        echo -e "     Total file time: $(format_duration $FILE_DURATION)"
+        echo -e "${GREEN}  ✓ Complete${NC}"
+        echo -e "     Text: $TRANSCRIPT_FILE"
+        echo -e "     Markdown: $MARKDOWN_FILE"
+        echo -e "     Time: $(format_duration $FILE_DURATION)"
         
         # Store timing data
         FILE_NAMES+=("$BASENAME")
         TRANSCRIBE_TIMES+=($TRANSCRIBE_DURATION)
-        MARKDOWN_TIMES+=($MARKDOWN_DURATION)
         TOTAL_TIMES+=($FILE_DURATION)
         
         PROCESSED=$((PROCESSED + 1))
     else
-        echo -e "${RED}  ✗ Error: Transcript file not created${NC}"
+        echo -e "${RED}  ✗ Error: Transcript files not created${NC}"
     fi
     
     echo ""
@@ -144,8 +126,7 @@ echo ""
 echo -e "${BLUE}Summary:${NC}"
 echo "  Total files found: $TOTAL"
 echo "  Processed: $PROCESSED"
-echo "  Skipped: $SKIPPED"
-echo "  Output location: $DOWNLOADS_DIR"
+echo "  Output location: $OUTPUT_DIR"
 echo ""
 
 if [ $PROCESSED -gt 0 ]; then
@@ -154,27 +135,21 @@ if [ $PROCESSED -gt 0 ]; then
     
     # Calculate totals
     TOTAL_TRANSCRIBE=0
-    TOTAL_MARKDOWN=0
     TOTAL_FILE_TIME=0
     
     # Print per-file timing
     for i in "${!FILE_NAMES[@]}"; do
         echo -e "${YELLOW}${FILE_NAMES[$i]}${NC}"
-        echo "  Transcription: $(format_duration ${TRANSCRIBE_TIMES[$i]})"
-        echo "  Markdown:      $(format_duration ${MARKDOWN_TIMES[$i]})"
-        echo "  Total:         $(format_duration ${TOTAL_TIMES[$i]})"
+        echo "  Processing time: $(format_duration ${TRANSCRIBE_TIMES[$i]})"
         echo ""
         
         TOTAL_TRANSCRIBE=$((TOTAL_TRANSCRIBE + ${TRANSCRIBE_TIMES[$i]}))
-        TOTAL_MARKDOWN=$((TOTAL_MARKDOWN + ${MARKDOWN_TIMES[$i]}))
         TOTAL_FILE_TIME=$((TOTAL_FILE_TIME + ${TOTAL_TIMES[$i]}))
     done
     
     echo -e "${BLUE}========================================${NC}"
     echo -e "${BLUE}Cumulative Totals:${NC}"
-    echo "  Total transcription time: $(format_duration $TOTAL_TRANSCRIBE)"
-    echo "  Total markdown time:      $(format_duration $TOTAL_MARKDOWN)"
-    echo "  Total processing time:    $(format_duration $TOTAL_FILE_TIME)"
+    echo "  Total processing time:    $(format_duration $TOTAL_TRANSCRIBE)"
     echo "  Batch overhead:           $(format_duration $((BATCH_DURATION - TOTAL_FILE_TIME)))"
     echo "  Overall batch time:       $(format_duration $BATCH_DURATION)"
     echo ""

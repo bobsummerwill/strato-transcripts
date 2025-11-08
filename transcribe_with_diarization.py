@@ -14,31 +14,30 @@ import whisperx
 import torch
 from pyannote.audio import Pipeline
 
-def transcribe_audio(audio_path, device, compute_type="float16", language="en"):
-    """Run WhisperX transcription
+def transcribe_audio(audio_path, device, compute_type="float16"):
+    """Run WhisperX transcription - hardcoded to English
     
     Args:
         audio_path: Path to audio file
         device: Device to use (cuda/cpu)
         compute_type: Compute precision (float16/int8)
-        language: Language code (default: "en" for English)
     """
     print("\n" + "="*60)
     print("Step 1: Transcribing audio with WhisperX...")
     print("="*60)
-    print(f"Language: {language}")
+    print("Language: en (hardcoded)")
     
     start = time.time()
     
-    # Load model
-    model = whisperx.load_model("large-v2", device, compute_type=compute_type)
+    # Load model with English language hardcoded
+    model = whisperx.load_model("large-v2", device, compute_type=compute_type, language="en")
     
-    # Transcribe with explicit language to prevent drift
+    # Transcribe with explicit English language to prevent drift
     audio = whisperx.load_audio(audio_path)
-    result = model.transcribe(audio, batch_size=16, language=language)
+    result = model.transcribe(audio, batch_size=16, language="en")
     
-    # Align whisper output using the same language
-    model_a, metadata = whisperx.load_align_model(language_code=language, device=device)
+    # Align whisper output using English
+    model_a, metadata = whisperx.load_align_model(language_code="en", device=device)
     result = whisperx.align(result["segments"], model_a, metadata, audio, device, return_char_alignments=False)
     
     elapsed = time.time() - start
@@ -140,11 +139,12 @@ def assign_speakers(result, diarize_segments):
     return result_with_speakers
 
 def save_transcript(result, output_path):
-    """Save formatted transcript"""
+    """Save formatted transcript as both .txt and .md"""
     print("\n" + "="*60)
-    print("Step 4: Saving transcript...")
+    print("Step 4: Saving transcripts...")
     print("="*60)
     
+    # Save .txt file
     with open(output_path, 'w', encoding='utf-8') as f:
         current_speaker = None
         for segment in result["segments"]:
@@ -158,7 +158,24 @@ def save_transcript(result, output_path):
             text = segment["text"].strip()
             f.write(f"[{start_time:.1f}s] {text}\n")
     
-    print(f"✓ Saved to: {output_path}")
+    print(f"✓ Text saved to: {output_path}")
+    
+    # Save .md file
+    md_path = output_path.parent / f"{output_path.stem.replace('_transcript_with_speakers', '_transcript')}.md"
+    with open(md_path, 'w', encoding='utf-8') as f:
+        current_speaker = None
+        for segment in result["segments"]:
+            speaker = segment.get("speaker", "UNKNOWN")
+            
+            if speaker != current_speaker:
+                f.write(f"\n**{speaker}:**\n")
+                current_speaker = speaker
+            
+            start_time = segment["start"]
+            text = segment["text"].strip()
+            f.write(f"[{start_time:.1f}s] {text}\n")
+    
+    print(f"✓ Markdown saved to: {md_path}")
     
     # Print statistics
     speakers = {}
@@ -175,11 +192,10 @@ def save_transcript(result, output_path):
 def main():
     import argparse
     
-    parser = argparse.ArgumentParser(description="Complete WhisperX transcription with speaker diarization")
+    parser = argparse.ArgumentParser(description="Complete WhisperX transcription with speaker diarization (English only)")
     parser.add_argument("audio_file", help="Audio file path")
     parser.add_argument("--output", help="Output file path")
     parser.add_argument("--token", help="HuggingFace token (overrides HF_TOKEN env var)")
-    parser.add_argument("--language", default="en", help="Language code for transcription (default: en). Use en for English to prevent language drift.")
     
     args = parser.parse_args()
     
@@ -221,8 +237,8 @@ def main():
     
     # Run pipeline
     try:
-        # Step 1: Transcribe with specified language
-        result = transcribe_audio(str(audio_path), device, compute_type, language=args.language)
+        # Step 1: Transcribe (English hardcoded)
+        result = transcribe_audio(str(audio_path), device, compute_type)
         
         # Step 2: Diarize
         diarize_segments = diarize_audio(str(audio_path), hf_token, device)

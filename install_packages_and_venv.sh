@@ -375,13 +375,15 @@ echo ""
 # ==============================================================================
 if [ "$HAS_NVIDIA" = true ]; then
     echo -e "${YELLOW}[10/12] Configuring LD_LIBRARY_PATH for NVIDIA...${NC}"
-    echo "Adding cuDNN library path to ~/.bashrc"
-    echo "Required for PyTorch CUDA operations"
+    echo "Adding all required CUDA library paths to ~/.bashrc"
+    echo "Required for PyTorch CUDA operations (cuDNN, cuBLAS, NVRTC, and CUDA 13.0 runtime)"
     
     BASHRC="$HOME/.bashrc"
-    # Only add cuDNN path - this is what pyannote.audio needs
+    # Add all CUDA library paths needed for PyTorch + pyannote operations
     CUDNN_LIB="$VENV_DIR/lib/python3.12/site-packages/nvidia/cudnn/lib"
-    LD_PATH_LINE="export LD_LIBRARY_PATH=$CUDNN_LIB:\$LD_LIBRARY_PATH"
+    CUBLAS_LIB="$VENV_DIR/lib/python3.12/site-packages/nvidia/cublas/lib"
+    CU13_LIB="$VENV_DIR/lib/python3.12/site-packages/nvidia/cu13/lib"
+    LD_PATH_LINE="export LD_LIBRARY_PATH=$CUDNN_LIB:$CUBLAS_LIB:$CU13_LIB:\$LD_LIBRARY_PATH"
 
     # Remove any existing entry
     sed -i '/Added by install_packages_and_venv.sh/d' "$BASHRC"
@@ -393,7 +395,7 @@ if [ "$HAS_NVIDIA" = true ]; then
     echo "$LD_PATH_LINE" >> "$BASHRC"
     
     # Set for current session
-    export LD_LIBRARY_PATH="$CUDNN_LIB:$LD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="$CUDNN_LIB:$CUBLAS_LIB:$CU13_LIB:$LD_LIBRARY_PATH"
     
     echo -e "${GREEN}✓ LD_LIBRARY_PATH configured${NC}"
 else
