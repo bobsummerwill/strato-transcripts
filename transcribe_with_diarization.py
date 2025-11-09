@@ -19,7 +19,7 @@ from pyannote.audio import Pipeline
 torch.backends.cudnn.allow_tf32 = True
 torch.backends.cuda.matmul.allow_tf32 = True
 
-def transcribe_audio(audio_path, device, compute_type="float16", high_accuracy=False):
+def transcribe_audio(audio_path, device, compute_type="float16", high_accuracy=False, model_name="large-v2"):
     """Run WhisperX transcription - hardcoded to English
     
     Args:
@@ -27,6 +27,7 @@ def transcribe_audio(audio_path, device, compute_type="float16", high_accuracy=F
         device: Device to use (cuda/cpu)
         compute_type: Compute precision (float16/int8/float32)
         high_accuracy: Enable high-accuracy mode (slower, more thorough)
+        model_name: Model to use (large-v2, large-v3, turbo, distil-large-v3)
     """
     print("\n" + "="*60)
     print("Step 1: Transcribing audio with WhisperX...")
@@ -36,13 +37,14 @@ def transcribe_audio(audio_path, device, compute_type="float16", high_accuracy=F
     quality_mode = "HIGH QUALITY" if high_accuracy else "LOW QUALITY"
     device_type = "GPU" if device == "cuda" else "CPU"
     print(f"Mode: {quality_mode}, {device_type}")
+    print(f"Model: {model_name}")
     print(f"Compute type: {compute_type}")
     print("Language: en (hardcoded)")
     
     start = time.time()
     
     # Load model with English language hardcoded
-    model = whisperx.load_model("large-v2", device, compute_type=compute_type, language="en")
+    model = whisperx.load_model(model_name, device, compute_type=compute_type, language="en")
     
     # Transcribe with explicit English language to prevent drift
     audio = whisperx.load_audio(audio_path)
@@ -60,7 +62,9 @@ def transcribe_audio(audio_path, device, compute_type="float16", high_accuracy=F
         # LOW QUALITY (FAST) settings - standard batch processing
         batch_size = 16 if device == "cuda" else 8
         print(f"Settings: batch_size={batch_size} (standard fast mode)")
-        result = model.transcribe(audio, batch_size=batch_size, language="en")
+        result = model.transcribe(audio, 
+                                 batch_size=batch_size, 
+                                 language="en")
     
     # Align whisper output using English
     model_a, metadata = whisperx.load_align_model(language_code="en", device=device)
@@ -240,6 +244,9 @@ Device modes:
                        help="Force low-quality/fast mode (overrides default)")
     parser.add_argument("--force-cpu", action="store_true",
                        help="Force CPU processing even if GPU available")
+    parser.add_argument("--model", default="large-v2",
+                       choices=["large-v2", "large-v3", "turbo", "distil-large-v3"],
+                       help="Whisper model to use (default: large-v2)")
     
     args = parser.parse_args()
     
@@ -261,20 +268,23 @@ Device modes:
         print(f"Error: Audio file not found: {audio_path}")
         sys.exit(1)
     
-    # Set output path
+    # Determine quality mode (default is low-quality/fast unless high-quality specified)
+    high_quality_mode = args.high_quality
+    
+    # Set output path with settings info for comparison
     if args.output:
         output_path = Path(args.output)
     else:
-        output_path = audio_path.parent / f"{audio_path.stem}_transcript_with_speakers.txt"
+        # Build descriptive filename with settings
+        model_short = args.model.replace("distil-", "d").replace("large-", "l")
+        quality = "hq" if high_quality_mode else "lq"
+        output_path = audio_path.parent / f"{audio_path.stem}_{model_short}_{quality}_transcript_with_speakers.txt"
     
     # Setup device based on flags
     if args.force_cpu:
         device = "cpu"
     else:
         device = "cuda" if torch.cuda.is_available() else "cpu"
-    
-    # Determine quality mode (default is low-quality/fast unless high-quality specified)
-    high_quality_mode = args.high_quality
     
     # Setup compute type based on device and quality
     if high_quality_mode:
@@ -302,7 +312,9 @@ Device modes:
     # Run pipeline
     try:
         # Step 1: Transcribe (English hardcoded)
-        result = transcribe_audio(str(audio_path), device, compute_type, high_accuracy=high_quality_mode)
+        result = transcribe_audio(str(audio_path), device, compute_type, 
+                                 high_accuracy=high_quality_mode,
+                                 model_name=args.model)
         
         # Step 2: Diarize
         diarize_segments = diarize_audio(str(audio_path), hf_token, device)
