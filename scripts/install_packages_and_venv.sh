@@ -435,9 +435,12 @@ echo ""
 echo -e "${YELLOW}[12/13] Building Ethereum glossaries...${NC}"
 echo "Extracting domain-specific terminology for transcript quality improvement"
 
-if [ -f "$PROJECT_DIR/extract_people.py" ]; then
-    echo "Running extract_people.py..."
-    if python3 "$PROJECT_DIR/extract_people.py" 2>/dev/null; then
+# Ensure intermediates directory exists
+mkdir -p "$PROJECT_DIR/intermediates"
+
+if [ -f "$PROJECT_DIR/scripts/extract_people.py" ]; then
+    echo "Running scripts/extract_people.py..."
+    if python3 "$PROJECT_DIR/scripts/extract_people.py" 2>/dev/null; then
         echo -e "${GREEN}✓ People glossary created${NC}"
     else
         echo -e "${YELLOW}⚠ extract_people.py failed (EarlyDaysOfEthereum may not be available)${NC}"
@@ -447,9 +450,9 @@ else
     echo -e "${YELLOW}⚠ extract_people.py not found${NC}"
 fi
 
-if [ -f "$PROJECT_DIR/extract_terms.py" ]; then
-    echo "Running extract_terms.py..."
-    if python3 "$PROJECT_DIR/extract_terms.py" 2>/dev/null; then
+if [ -f "$PROJECT_DIR/scripts/extract_terms.py" ]; then
+    echo "Running scripts/extract_terms.py..."
+    if python3 "$PROJECT_DIR/scripts/extract_terms.py" 2>/dev/null; then
         echo -e "${GREEN}✓ Technical terms glossary created${NC}"
     else
         echo -e "${YELLOW}⚠ extract_terms.py failed${NC}"

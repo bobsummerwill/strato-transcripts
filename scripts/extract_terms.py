@@ -277,7 +277,7 @@ def main():
     sorted_terms = sorted(all_terms_lower.values(), key=str.lower)
     
     # Save to file
-    output_file = Path("ethereum_technical_terms.txt")
+    output_file = Path("intermediates/ethereum_technical_terms.txt")
     with open(output_file, 'w', encoding='utf-8') as f:
         for term in sorted_terms:
             f.write(f"{term}\n")

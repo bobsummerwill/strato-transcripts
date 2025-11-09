@@ -20,7 +20,7 @@ NC='\033[0m'
 PROJECT_DIR="/home/zombietiger/Projects/stratomercata-transcripts"
 DOWNLOADS_DIR="/home/zombietiger/Downloads"
 INTERMEDIATES_DIR="$PROJECT_DIR/intermediates"
-OUTPUT_DIR="$PROJECT_DIR/output"
+OUTPUT_DIR="$PROJECT_DIR/outputs"
 
 # Ensure directories exist
 mkdir -p "$INTERMEDIATES_DIR"
@@ -151,7 +151,7 @@ echo "Files created per MP3:"
 echo "  Intermediates (./intermediates/):"
 echo "    - *_transcript_with_speakers.txt (raw transcript)"
 echo "    - *_transcript.md (raw markdown)"
-echo "  Final Output (./output/):"
+echo "  Final Output (./outputs/):"
 echo "    - *_corrected.txt (AI corrected)"
 echo "    - *_corrected.md (AI corrected markdown)"
 echo ""

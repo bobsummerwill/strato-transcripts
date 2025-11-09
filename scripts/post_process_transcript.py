@@ -57,7 +57,7 @@ def load_glossary():
 
 def load_people_list():
     """Load ethereum_people.txt if available"""
-    people_file = Path("ethereum_people.txt")
+    people_file = Path("intermediates/ethereum_people.txt")
     
     if people_file.exists():
         with open(people_file, 'r', encoding='utf-8') as f:
@@ -67,7 +67,7 @@ def load_people_list():
 
 def load_terms_list():
     """Load ethereum_technical_terms.txt if available"""
-    terms_file = Path("ethereum_technical_terms.txt")
+    terms_file = Path("intermediates/ethereum_technical_terms.txt")
     
     if terms_file.exists():
         with open(terms_file, 'r', encoding='utf-8') as f:
@@ -343,8 +343,8 @@ def process_transcript(transcript_path, api_key, provider="anthropic",
         print(f"   Lost {original_line_count - corrected_line_count} lines ({100 - retention_pct:.1f}% loss)")
         print(f"   This indicates truncation or incomplete processing.")
         
-        # Save partial file for inspection to output directory
-        output_dir = Path("output")
+        # Save partial file for inspection to outputs directory
+        output_dir = Path("outputs")
         output_dir.mkdir(exist_ok=True)
         base_name = transcript_file.stem.replace('_transcript_with_speakers', '').replace('_lv2_lq', '').replace('_lv2_hq', '')
         partial_path = output_dir / f"{base_name}_corrected_PARTIAL.txt"
@@ -354,8 +354,8 @@ def process_transcript(transcript_path, api_key, provider="anthropic",
         print(f"   File marked as PARTIAL - requires manual review.")
         return None
     
-    # Save corrected transcript to output directory
-    output_dir = Path("output")
+    # Save corrected transcript to outputs directory
+    output_dir = Path("outputs")
     output_dir.mkdir(exist_ok=True)
     
     # Clean up filename: remove model/quality suffixes and _transcript_with_speakers

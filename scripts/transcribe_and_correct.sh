@@ -167,25 +167,41 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Find the generated transcript file in intermediates directory
+# Find the generated transcript file and move to intermediates
 # Format: filename_<model>_<quality>_transcript_with_speakers.txt
 BASE_NAME=$(basename "$AUDIO_FILE" | sed 's/\.[^.]*$//')
 MODEL_SHORT=$(echo "$MODEL" | sed 's/distil-/d/;s/large-/l/')
 QUALITY=$([ -n "$HIGH_QUALITY" ] && echo "hq" || echo "lq")
 TRANSCRIPT="${BASE_NAME}_${MODEL_SHORT}_${QUALITY}_transcript_with_speakers.txt"
 
-# Look for transcript in intermediates directory
-if [ -f "intermediates/$TRANSCRIPT" ]; then
+# Create intermediates directory
+mkdir -p intermediates
+
+# Look for transcript in audio file's directory
+AUDIO_DIR=$(dirname "$AUDIO_FILE")
+if [ -f "$AUDIO_DIR/$TRANSCRIPT" ]; then
+    # Move transcript and markdown to intermediates
+    mv "$AUDIO_DIR/$TRANSCRIPT" "intermediates/"
+    MD_FILE="${TRANSCRIPT/_transcript_with_speakers.txt/_transcript.md}"
+    [ -f "$AUDIO_DIR/$MD_FILE" ] && mv "$AUDIO_DIR/$MD_FILE" "intermediates/"
     TRANSCRIPT_FULL="intermediates/$TRANSCRIPT"
+    echo "Moved transcript files to intermediates/"
 else
-    # Fall back to finding any recent transcript in intermediates
-    TRANSCRIPT_FULL=$(find intermediates -name "${BASE_NAME}*_transcript_with_speakers.txt" -type f -printf '%T@ %p\n' 2>/dev/null | sort -n | tail -1 | cut -d' ' -f2)
+    # Fall back to finding any recent transcript
+    FOUND=$(find "$AUDIO_DIR" -name "${BASE_NAME}*_transcript_with_speakers.txt" -type f -printf '%T@ %p\n' 2>/dev/null | sort -n | tail -1 | cut -d' ' -f2)
     
-    if [ -z "$TRANSCRIPT_FULL" ] || [ ! -f "$TRANSCRIPT_FULL" ]; then
-        echo "Error: Could not find generated transcript in intermediates/"
+    if [ -z "$FOUND" ] || [ ! -f "$FOUND" ]; then
+        echo "Error: Could not find generated transcript"
         exit 1
     fi
     
+    # Move files to intermediates
+    mv "$FOUND" "intermediates/"
+    TRANSCRIPT_FULL="intermediates/$(basename "$FOUND")"
+    MD_FOUND="${FOUND/_transcript_with_speakers.txt/_transcript.md}"
+    [ -f "$MD_FOUND" ] && mv "$MD_FOUND" "intermediates/"
+    
+    echo "Moved transcript files to intermediates/"
     echo "Found transcript: $TRANSCRIPT_FULL"
 fi
 
@@ -217,8 +233,8 @@ if [ "$SKIP_CORRECTION" = false ]; then
         echo "Warning: Post-processing failed, but transcript is still available"
         CORRECTED=""
     else
-        # Corrected files will be in output/ directory
-        CORRECTED="output/${BASE_NAME}_corrected.txt"
+        # Corrected files will be in outputs/ directory
+        CORRECTED="outputs/${BASE_NAME}_corrected.txt"
         echo ""
         echo "✓ Corrected transcript: $CORRECTED"
     fi
@@ -236,7 +252,7 @@ echo "Generated files:"
 echo "  Intermediates (./intermediates/):"
 echo "    - Raw transcript: $TRANSCRIPT_FULL"
 if [ -n "$CORRECTED" ] && [ -f "$CORRECTED" ]; then
-    echo "  Final Output (./output/):"
+    echo "  Final Output (./outputs/):"
     echo "    - Corrected transcript: $CORRECTED"
     echo "    - Markdown version: ${CORRECTED%.txt}.md"
 fi

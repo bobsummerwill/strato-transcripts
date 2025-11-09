@@ -7,3 +7,114 @@
    Aborting - corrected file will not be saved.
 ---
 
+5. Saved corrected transcript to: outputs/are_corporate_chains_back_transcript_with_speakers_corrected.txt
+   Also saved markdown to: outputs/are_corporate_chains_back_transcript_with_speakers_corrected.md
+
+============================================================
+✓ Post-processing complete! (110.4% line retention)
+============================================================
+---
+
+5. Saved corrected transcript to: outputs/episode001_transcript_with_speakers_corrected.txt
+   Also saved markdown to: outputs/episode001_transcript_with_speakers_corrected.md
+
+============================================================
+✓ Post-processing complete! (114.0% line retention)
+============================================================
+---
+
+5. Saved corrected transcript to: outputs/episode002_transcript_with_speakers_corrected.txt
+   Also saved markdown to: outputs/episode002_transcript_with_speakers_corrected.md
+
+============================================================
+✓ Post-processing complete! (90.9% line retention)
+============================================================
+---
+
+5. Saved corrected transcript to: outputs/episode003-bob-summerwill_transcript_with_speakers_corrected.txt
+   Also saved markdown to: outputs/episode003-bob-summerwill_transcript_with_speakers_corrected.md
+
+============================================================
+✓ Post-processing complete! (96.6% line retention)
+============================================================
+---
+
+5. Saved corrected transcript to: outputs/episode004-taylor-gerring_transcript_with_speakers_corrected.txt
+   Also saved markdown to: outputs/episode004-taylor-gerring_transcript_with_speakers_corrected.md
+
+============================================================
+✓ Post-processing complete! (86.7% line retention)
+============================================================
+---
+
+
+❌ ERROR: Severe content loss detected!
+   Lost 305 lines (21.0% loss)
+   This indicates truncation or incomplete processing.
+   Saved PARTIAL output for inspection: outputs/episode005-anthony-d-onofrio_transcript_with_speakers_corrected_PARTIAL.txt
+   File marked as PARTIAL - requires manual review.
+---
+
+5. Saved corrected transcript to: outputs/fabian-vogelsteller-interview_transcript_with_speakers_corrected.txt
+   Also saved markdown to: outputs/fabian-vogelsteller-interview_transcript_with_speakers_corrected.md
+
+============================================================
+✓ Post-processing complete! (112.9% line retention)
+============================================================
+---
+
+5. Saved corrected transcript to: outputs/institutions_want_tokens_how_is_ethereum_keeping_up_transcript_with_speakers_corrected.txt
+   Also saved markdown to: outputs/institutions_want_tokens_how_is_ethereum_keeping_up_transcript_with_speakers_corrected.md
+
+============================================================
+✓ Post-processing complete! (101.1% line retention)
+============================================================
+---
+
+    result = process_transcript(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/zombietiger/Projects/stratomercata-transcripts/post_process_transcript.py", line 356, in process_transcript
+    with open(output_path, 'w', encoding='utf-8') as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'outputs/is_better_web3_ux_the_key_to_mainstream_adoption_transcript_with_speakers_corrected.txt'
+---
+
+Input: outputs/launch-of-mercata-v2-app-walkthrough_transcript_with_speakers.txt
+Provider: openai
+Model: chatgpt-4o-latest
+
+1. Loading transcript...
+Error: Transcript file not found: outputs/launch-of-mercata-v2-app-walkthrough_transcript_with_speakers.txt
+---
+
+Input: outputs/mercata_v2_contest_winners_announced_transcript_with_speakers.txt
+Provider: openai
+Model: chatgpt-4o-latest
+
+1. Loading transcript...
+Error: Transcript file not found: outputs/mercata_v2_contest_winners_announced_transcript_with_speakers.txt
+---
+
+Input: outputs/mercata_v2_context_kickoff_transcript_with_speakers.txt
+Provider: openai
+Model: chatgpt-4o-latest
+
+1. Loading transcript...
+Error: Transcript file not found: outputs/mercata_v2_context_kickoff_transcript_with_speakers.txt
+---
+
+Input: outputs/strato-mercata-show-2025.10.08_transcript_with_speakers.txt
+Provider: openai
+Model: chatgpt-4o-latest
+
+1. Loading transcript...
+Error: Transcript file not found: outputs/strato-mercata-show-2025.10.08_transcript_with_speakers.txt
+---
+
+Input: outputs/william-entriken-interview_transcript_with_speakers.txt
+Provider: openai
+Model: chatgpt-4o-latest
+
+1. Loading transcript...
+Error: Transcript file not found: outputs/william-entriken-interview_transcript_with_speakers.txt
+---

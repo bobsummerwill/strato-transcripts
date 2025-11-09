@@ -123,7 +123,7 @@ def main():
     sorted_names = sorted(all_names)
     
     # Save to file
-    output_file = Path("ethereum_people.txt")
+    output_file = Path("intermediates/ethereum_people.txt")
     with open(output_file, 'w', encoding='utf-8') as f:
         for name in sorted_names:
             f.write(f"{name}\n")
