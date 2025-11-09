@@ -343,16 +343,25 @@ def process_transcript(transcript_path, api_key, provider="anthropic",
         print(f"   Lost {original_line_count - corrected_line_count} lines ({100 - retention_pct:.1f}% loss)")
         print(f"   This indicates truncation or incomplete processing.")
         
-        # Save partial file for inspection
-        partial_path = transcript_file.parent / f"{transcript_file.stem}_corrected_PARTIAL.txt"
+        # Save partial file for inspection to output directory
+        output_dir = Path("output")
+        output_dir.mkdir(exist_ok=True)
+        base_name = transcript_file.stem.replace('_transcript_with_speakers', '').replace('_lv2_lq', '').replace('_lv2_hq', '')
+        partial_path = output_dir / f"{base_name}_corrected_PARTIAL.txt"
         with open(partial_path, 'w', encoding='utf-8') as f:
             f.write(corrected_clean)
         print(f"   Saved PARTIAL output for inspection: {partial_path}")
         print(f"   File marked as PARTIAL - requires manual review.")
         return None
     
-    # Save corrected transcript
-    output_path = transcript_file.parent / f"{transcript_file.stem}_corrected.txt"
+    # Save corrected transcript to output directory
+    output_dir = Path("output")
+    output_dir.mkdir(exist_ok=True)
+    
+    # Clean up filename: remove model/quality suffixes and _transcript_with_speakers
+    base_name = transcript_file.stem.replace('_transcript_with_speakers', '').replace('_lv2_lq', '').replace('_lv2_hq', '')
+    output_path = output_dir / f"{base_name}_corrected.txt"
+    
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(corrected_clean)
     

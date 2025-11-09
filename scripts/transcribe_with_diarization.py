@@ -169,10 +169,13 @@ def assign_speakers(result, diarize_segments):
     return result_with_speakers
 
 def save_transcript(result, output_path):
-    """Save formatted transcript as both .txt and .md"""
+    """Save formatted transcript as both .txt and .md to intermediates directory"""
     print("\n" + "="*60)
-    print("Step 4: Saving transcripts...")
+    print("Step 4: Saving transcripts to intermediates/...")
     print("="*60)
+    
+    # Ensure output directory exists
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     
     # Save .txt file
     with open(output_path, 'w', encoding='utf-8') as f:
@@ -271,14 +274,16 @@ Device modes:
     # Determine quality mode (default is low-quality/fast unless high-quality specified)
     high_quality_mode = args.high_quality
     
-    # Set output path with settings info for comparison
+    # Set output path - always to intermediates directory
     if args.output:
         output_path = Path(args.output)
     else:
-        # Build descriptive filename with settings
+        # Build descriptive filename with settings and save to intermediates/
         model_short = args.model.replace("distil-", "d").replace("large-", "l")
         quality = "hq" if high_quality_mode else "lq"
-        output_path = audio_path.parent / f"{audio_path.stem}_{model_short}_{quality}_transcript_with_speakers.txt"
+        intermediates_dir = Path("intermediates")
+        intermediates_dir.mkdir(exist_ok=True)
+        output_path = intermediates_dir / f"{audio_path.stem}_{model_short}_{quality}_transcript_with_speakers.txt"
     
     # Setup device based on flags
     if args.force_cpu:

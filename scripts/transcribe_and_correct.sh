@@ -158,7 +158,7 @@ echo ""
 echo "STEP 1: Transcribing with WhisperX..."
 echo "------------------------------------------------------------------------"
 
-python3 transcribe_with_diarization.py "$AUDIO_FILE" \
+python3 scripts/transcribe_with_diarization.py "$AUDIO_FILE" \
     $HIGH_QUALITY \
     --model "$MODEL"
 
@@ -167,24 +167,22 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Find the generated transcript file
+# Find the generated transcript file in intermediates directory
 # Format: filename_<model>_<quality>_transcript_with_speakers.txt
 BASE_NAME=$(basename "$AUDIO_FILE" | sed 's/\.[^.]*$//')
 MODEL_SHORT=$(echo "$MODEL" | sed 's/distil-/d/;s/large-/l/')
 QUALITY=$([ -n "$HIGH_QUALITY" ] && echo "hq" || echo "lq")
 TRANSCRIPT="${BASE_NAME}_${MODEL_SHORT}_${QUALITY}_transcript_with_speakers.txt"
 
-# Look for transcript in current directory or outputs/
-if [ -f "$TRANSCRIPT" ]; then
-    TRANSCRIPT_FULL="$TRANSCRIPT"
-elif [ -f "outputs/$TRANSCRIPT" ]; then
-    TRANSCRIPT_FULL="outputs/$TRANSCRIPT"
+# Look for transcript in intermediates directory
+if [ -f "intermediates/$TRANSCRIPT" ]; then
+    TRANSCRIPT_FULL="intermediates/$TRANSCRIPT"
 else
-    # Fall back to finding any recent transcript
-    TRANSCRIPT_FULL=$(find . -name "${BASE_NAME}*_transcript_with_speakers.txt" -type f -printf '%T@ %p\n' 2>/dev/null | sort -n | tail -1 | cut -d' ' -f2)
+    # Fall back to finding any recent transcript in intermediates
+    TRANSCRIPT_FULL=$(find intermediates -name "${BASE_NAME}*_transcript_with_speakers.txt" -type f -printf '%T@ %p\n' 2>/dev/null | sort -n | tail -1 | cut -d' ' -f2)
     
     if [ -z "$TRANSCRIPT_FULL" ] || [ ! -f "$TRANSCRIPT_FULL" ]; then
-        echo "Error: Could not find generated transcript"
+        echo "Error: Could not find generated transcript in intermediates/"
         exit 1
     fi
     
@@ -201,7 +199,7 @@ if [ "$SKIP_CORRECTION" = false ]; then
     echo "------------------------------------------------------------------------"
     
     # Build command with appropriate model flags
-    CMD="python3 post_process_transcript.py \"$TRANSCRIPT_FULL\" --provider \"$AI_PROVIDER\""
+    CMD="python3 scripts/post_process_transcript.py \"$TRANSCRIPT_FULL\" --provider \"$AI_PROVIDER\""
     
     if [ "$AI_PROVIDER" = "openai" ]; then
         CMD="$CMD --openai-model \"$OPENAI_MODEL\""
@@ -219,7 +217,8 @@ if [ "$SKIP_CORRECTION" = false ]; then
         echo "Warning: Post-processing failed, but transcript is still available"
         CORRECTED=""
     else
-        CORRECTED="${TRANSCRIPT_FULL%.txt}_corrected.txt"
+        # Corrected files will be in output/ directory
+        CORRECTED="output/${BASE_NAME}_corrected.txt"
         echo ""
         echo "✓ Corrected transcript: $CORRECTED"
     fi
@@ -234,10 +233,12 @@ echo "✓ PIPELINE COMPLETE!"
 echo "========================================================================"
 echo ""
 echo "Generated files:"
-echo "  - Raw transcript: $TRANSCRIPT_FULL"
+echo "  Intermediates (./intermediates/):"
+echo "    - Raw transcript: $TRANSCRIPT_FULL"
 if [ -n "$CORRECTED" ] && [ -f "$CORRECTED" ]; then
-    echo "  - Corrected transcript: $CORRECTED"
-    echo "  - Markdown version: ${CORRECTED%.txt}.md"
+    echo "  Final Output (./output/):"
+    echo "    - Corrected transcript: $CORRECTED"
+    echo "    - Markdown version: ${CORRECTED%.txt}.md"
 fi
 echo ""
 echo "========================================================================"

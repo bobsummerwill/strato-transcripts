@@ -19,9 +19,11 @@ NC='\033[0m'
 # Directories
 PROJECT_DIR="/home/zombietiger/Projects/stratomercata-transcripts"
 DOWNLOADS_DIR="/home/zombietiger/Downloads"
-OUTPUT_DIR="$PROJECT_DIR/outputs"
+INTERMEDIATES_DIR="$PROJECT_DIR/intermediates"
+OUTPUT_DIR="$PROJECT_DIR/output"
 
-# Ensure output directory exists
+# Ensure directories exist
+mkdir -p "$INTERMEDIATES_DIR"
 mkdir -p "$OUTPUT_DIR"
 
 echo -e "${BLUE}========================================${NC}"
@@ -84,8 +86,8 @@ for MP3_FILE in "${MP3_FILES[@]}"; do
     
     FILE_START=$(date +%s)
     
-    # Call transcribe_and_correct.sh with OpenAI provider
-    if ./transcribe_and_correct.sh "$MP3_FILE" --provider openai; then
+    # Call transcribe_and_correct.sh with OpenAI provider from scripts directory
+    if ./scripts/transcribe_and_correct.sh "$MP3_FILE" --provider openai; then
         FILE_END=$(date +%s)
         FILE_DURATION=$((FILE_END - FILE_START))
         
@@ -117,7 +119,8 @@ echo -e "${BLUE}Summary:${NC}"
 echo "  Total files found: $TOTAL"
 echo "  Processed successfully: $PROCESSED"
 echo "  Failed: $FAILED"
-echo "  Output location: $OUTPUT_DIR"
+echo "  Intermediates: $INTERMEDIATES_DIR"
+echo "  Final output: $OUTPUT_DIR"
 echo ""
 
 if [ $PROCESSED -gt 0 ]; then
@@ -145,8 +148,10 @@ if [ $PROCESSED -gt 0 ]; then
 fi
 
 echo "Files created per MP3:"
-echo "  - *_transcript_with_speakers.txt (raw transcript)"
-echo "  - *_transcript.md (raw markdown)"
-echo "  - *_transcript_with_speakers_corrected.txt (AI corrected)"
-echo "  - *_transcript_with_speakers_corrected.md (AI corrected markdown)"
+echo "  Intermediates (./intermediates/):"
+echo "    - *_transcript_with_speakers.txt (raw transcript)"
+echo "    - *_transcript.md (raw markdown)"
+echo "  Final Output (./output/):"
+echo "    - *_corrected.txt (AI corrected)"
+echo "    - *_corrected.md (AI corrected markdown)"
 echo ""
