@@ -342,7 +342,13 @@ def process_transcript(transcript_path, api_key, provider="anthropic",
         print(f"\n❌ ERROR: Severe content loss detected!")
         print(f"   Lost {original_line_count - corrected_line_count} lines ({100 - retention_pct:.1f}% loss)")
         print(f"   This indicates truncation or incomplete processing.")
-        print(f"   Aborting - corrected file will not be saved.")
+        
+        # Save partial file for inspection
+        partial_path = transcript_file.parent / f"{transcript_file.stem}_corrected_PARTIAL.txt"
+        with open(partial_path, 'w', encoding='utf-8') as f:
+            f.write(corrected_clean)
+        print(f"   Saved PARTIAL output for inspection: {partial_path}")
+        print(f"   File marked as PARTIAL - requires manual review.")
         return None
     
     # Save corrected transcript
