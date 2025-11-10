@@ -1,13 +1,32 @@
 #!/bin/bash
 # ==============================================================================
-# Batch Process All MP3 Files in ~/Downloads with Full AI Pipeline
+# Batch Process All MP3 Files in ~/Downloads with Multi-Provider AI Pipeline
 # ==============================================================================
 # - Loops through all MP3 files in ~/Downloads
-# - Calls transcribe_and_correct.sh for each file (handles full pipeline)
+# - Calls transcribe_and_correct_multi.sh for each file
 # - Outputs to ./outputs directory
 # ==============================================================================
 
 set -e
+
+# Default providers
+DEFAULT_PROVIDERS="openai,gemini,ollama"
+
+# Parse arguments
+PROVIDERS="$DEFAULT_PROVIDERS"
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --providers)
+            PROVIDERS="$2"
+            shift 2
+            ;;
+        *)
+            echo "Unknown option: $1"
+            echo "Usage: $0 [--providers openai,gemini,ollama]"
+            exit 1
+            ;;
+    esac
+done
 
 # Colors
 RED='\033[0;31m'
@@ -29,6 +48,7 @@ mkdir -p "$OUTPUT_DIR"
 echo -e "${BLUE}========================================${NC}"
 echo -e "${BLUE}Batch MP3 Processing with AI Pipeline${NC}"
 echo -e "${BLUE}========================================${NC}"
+echo -e "${BLUE}Providers: ${YELLOW}${PROVIDERS}${NC}"
 echo ""
 
 # Activate environment
@@ -86,8 +106,8 @@ for MP3_FILE in "${MP3_FILES[@]}"; do
     
     FILE_START=$(date +%s)
     
-    # Call transcribe_and_correct.sh with OpenAI provider from scripts directory
-    if ./scripts/transcribe_and_correct.sh "$MP3_FILE" --provider openai; then
+    # Call transcribe_and_correct_multi.sh with providers list
+    if ./scripts/transcribe_and_correct_multi.sh "$MP3_FILE" --providers "$PROVIDERS"; then
         FILE_END=$(date +%s)
         FILE_DURATION=$((FILE_END - FILE_START))
         
@@ -152,6 +172,13 @@ echo "  Intermediates (./intermediates/):"
 echo "    - *_transcript_with_speakers.txt (raw transcript)"
 echo "    - *_transcript.md (raw markdown)"
 echo "  Final Output (./outputs/):"
-echo "    - *_corrected.txt (AI corrected)"
-echo "    - *_corrected.md (AI corrected markdown)"
+IFS=',' read -ra PROVIDER_ARRAY <<< "$PROVIDERS"
+for PROVIDER in "${PROVIDER_ARRAY[@]}"; do
+    echo "    - *_${PROVIDER}_corrected.txt (${PROVIDER} corrected)"
+    echo "    - *_${PROVIDER}_corrected.md (${PROVIDER} markdown)"
+done
+echo ""
+echo -e "${GREEN}Customize providers:${NC}"
+echo "  Default: openai,gemini,ollama"
+echo "  Example: $0 --providers openai,gemini"
 echo ""

@@ -280,23 +280,42 @@ def process_with_ollama(transcript, context):
         # Process transcript
         prompt = build_prompt(context, transcript)
         print(f"   Processing with {model}...")
+        print(f"   Transcript size: {len(transcript)} chars (may take 10-30 minutes)")
+        print(f"   Progress: ", end='', flush=True)
         
+        # Use streaming to show progress
         response = requests.post(
             "http://localhost:11434/api/generate",
             json={
                 "model": model,
                 "prompt": prompt,
-                "stream": False,
+                "stream": True,  # Enable streaming for progress
                 "options": {
                     "temperature": 0.3,
                     "num_predict": 16000
                 }
             },
-            timeout=600
+            timeout=1800,  # 30 minutes for large transcripts
+            stream=True
         )
         response.raise_for_status()
-        result = response.json()["response"]
         
+        # Collect response and show progress
+        result = ""
+        chunk_count = 0
+        for line in response.iter_lines():
+            if line:
+                chunk = json.loads(line)
+                if "response" in chunk:
+                    result += chunk["response"]
+                    chunk_count += 1
+                    # Show progress every 50 chunks
+                    if chunk_count % 50 == 0:
+                        print(".", end='', flush=True)
+                if chunk.get("done", False):
+                    break
+        
+        print(" ✓")  # Complete the progress line
         return result
         
     except requests.exceptions.Timeout:
