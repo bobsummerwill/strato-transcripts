@@ -9,20 +9,48 @@
 
 set -e
 
-# Default providers (all 6 providers in recommended order)
-DEFAULT_PROVIDERS="anthropic,openai,gemini,deepseek,moonshot,ollama"
+# Defaults: WhisperX (local/FREE) + GPT-4o (ChatGPT-5, highest quality)
+DEFAULT_TRANSCRIBERS="whisperx"
+DEFAULT_PROCESSORS="openai"
 
 # Parse arguments
-PROVIDERS="$DEFAULT_PROVIDERS"
+TRANSCRIBERS="$DEFAULT_TRANSCRIBERS"
+PROCESSORS="$DEFAULT_PROCESSORS"
+
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --providers)
-            PROVIDERS="$2"
+        --transcribers)
+            TRANSCRIBERS="$2"
+            shift 2
+            ;;
+        --processors)
+            PROCESSORS="$2"
             shift 2
             ;;
         *)
-            echo "Unknown option: $1"
-            echo "Usage: $0 [--providers openai,gemini,ollama]"
+            echo "Error: Unknown option: $1"
+            echo ""
+            echo "Usage: $0 [--transcribers <list>] [--processors <list>]"
+            echo ""
+            echo "Options:"
+            echo "  --transcribers <list>    Comma-separated transcription services"
+            echo "                           (whisperx, deepgram, assemblyai, openai)"
+            echo "                           Default: whisperx"
+            echo ""
+            echo "  --processors <list>      Comma-separated AI post-processors"
+            echo "                           (anthropic, openai, gemini, deepseek, moonshot, ollama)"
+            echo "                           Default: openai (ChatGPT-5/gpt-4o)"
+            echo ""
+            echo "Examples:"
+            echo "  # Use defaults (whisperx + openai)"
+            echo "  $0"
+            echo ""
+            echo "  # Deepgram + Claude"
+            echo "  $0 --transcribers deepgram --processors anthropic"
+            echo ""
+            echo "  # All combinations (4 transcribers × 6 processors = 24)"
+            echo "  $0 --transcribers whisperx,deepgram,assemblyai,openai \\"
+            echo "     --processors anthropic,openai,gemini,deepseek,moonshot,ollama"
             exit 1
             ;;
     esac
@@ -48,7 +76,8 @@ mkdir -p "$OUTPUT_DIR"
 echo -e "${BLUE}========================================${NC}"
 echo -e "${BLUE}Batch MP3 Processing with AI Pipeline${NC}"
 echo -e "${BLUE}========================================${NC}"
-echo -e "${BLUE}Providers: ${YELLOW}${PROVIDERS}${NC}"
+echo -e "${BLUE}Transcribers: ${YELLOW}${TRANSCRIBERS}${NC}"
+echo -e "${BLUE}Processors: ${YELLOW}${PROCESSORS}${NC}"
 echo ""
 
 # Activate environment
@@ -106,8 +135,8 @@ for MP3_FILE in "${MP3_FILES[@]}"; do
     
     FILE_START=$(date +%s)
     
-    # Call transcribe_and_correct_multi.sh with providers list
-    if ./scripts/transcribe_and_correct_multi.sh "$MP3_FILE" --providers "$PROVIDERS"; then
+    # Call transcribe_and_correct_multi.sh with transcribers and processors
+    if ./scripts/transcribe_and_correct_multi.sh "$MP3_FILE" --transcribers "$TRANSCRIBERS" --processors "$PROCESSORS"; then
         FILE_END=$(date +%s)
         FILE_DURATION=$((FILE_END - FILE_START))
         
@@ -169,16 +198,30 @@ fi
 
 echo "Files created per MP3:"
 echo "  Intermediates (./intermediates/):"
-echo "    - *_transcript_with_speakers.txt (raw transcript)"
-echo "    - *_transcript.md (raw markdown)"
+IFS=',' read -ra TRANSCRIBER_ARRAY <<< "$TRANSCRIBERS"
+for TRANSCRIBER in "${TRANSCRIBER_ARRAY[@]}"; do
+    case "$TRANSCRIBER" in
+        whisperx)
+            echo "    - *_transcript_with_speakers.txt (whisperx)"
+            ;;
+        *)
+            echo "    - *_${TRANSCRIBER}_transcript_with_speakers.txt"
+            ;;
+    esac
+done
 echo "  Final Output (./outputs/):"
-IFS=',' read -ra PROVIDER_ARRAY <<< "$PROVIDERS"
-for PROVIDER in "${PROVIDER_ARRAY[@]}"; do
-    echo "    - *_${PROVIDER}_corrected.txt (${PROVIDER} corrected)"
-    echo "    - *_${PROVIDER}_corrected.md (${PROVIDER} markdown)"
+IFS=',' read -ra PROCESSOR_ARRAY <<< "$PROCESSORS"
+for TRANSCRIBER in "${TRANSCRIBER_ARRAY[@]}"; do
+    for PROCESSOR in "${PROCESSOR_ARRAY[@]}"; do
+        if [ "$TRANSCRIBER" = "whisperx" ]; then
+            echo "    - *_${PROCESSOR}_corrected.txt"
+        else
+            echo "    - *_${TRANSCRIBER}_${PROCESSOR}_corrected.txt"
+        fi
+    done
 done
 echo ""
-echo -e "${GREEN}Customize providers:${NC}"
-echo "  Default: openai,gemini,ollama"
-echo "  Example: $0 --providers openai,gemini"
+echo -e "${GREEN}Customize settings:${NC}"
+echo "  Defaults: --transcribers whisperx --processors openai"
+echo "  Example: $0 --transcribers deepgram --processors anthropic,gemini"
 echo ""

@@ -2,7 +2,78 @@
 
 This guide explains the different AI providers available for transcript post-processing and helps you choose the best option for your needs.
 
-## Quick Comparison
+## Transcription Services Quick Reference
+
+Before AI post-processing, you need to transcribe your audio. Here are your options:
+
+| Service | Type | Cost (per hour) | Speed | Diarization | Quality |
+|---------|------|-----------------|-------|-------------|---------|
+| **WhisperX** | Local | FREE | 5-10 min | ⭐⭐⭐⭐⭐ | Excellent |
+| **Deepgram** | Cloud | $0.41 | 23 sec | ⭐⭐⭐⭐⭐ | Excellent |
+| **AssemblyAI** | Cloud | $1.44 | 3-4 min | ⭐⭐⭐⭐⭐ | Excellent |
+| **OpenAI** | Cloud | $5.75 | 4-5 min | ❌ None | Good |
+
+### Transcription Provider Details
+
+#### WhisperX (Local - Default)
+- **Cost**: FREE (requires GPU)
+- **Script**: `scripts/transcribe_with_diarization.py`
+- **Best for**: Privacy, unlimited usage, no ongoing costs
+- **Requirements**: NVIDIA GPU with 6GB+ VRAM
+- **Setup**: Already configured in this project
+```bash
+python3 scripts/transcribe_with_diarization.py audio.mp3
+```
+
+#### Deepgram (Recommended Cloud Option)
+- **Cost**: ~$0.0043/minute (~$0.26/hour)
+- **Script**: `scripts/transcribe_with_deepgram.py`
+- **Best for**: Speed (fastest), cost-effectiveness
+- **Speed**: ~23 seconds for 96-minute audio
+- **Quality**: Excellent speaker diarization (detected 6 speakers in test)
+- **Setup**:
+```bash
+export DEEPGRAM_API_KEY="your-key"
+python3 scripts/transcribe_with_deepgram.py audio.mp3
+```
+- **Get API key**: https://console.deepgram.com/
+
+#### AssemblyAI
+- **Cost**: ~$0.024/minute (~$1.44/hour)
+- **Script**: `scripts/transcribe_with_assemblyai.py`
+- **Best for**: Balanced cloud option
+- **Speed**: 3-4 minutes processing time
+- **Quality**: Excellent speaker diarization
+- **Setup**:
+```bash
+export ASSEMBLYAI_API_KEY="your-key"
+python3 scripts/transcribe_with_assemblyai.py audio.mp3
+```
+- **Get API key**: https://www.assemblyai.com/
+
+#### OpenAI Whisper API
+- **Cost**: ~$0.096/minute (~$5.75/hour)
+- **Script**: `scripts/transcribe_with_openai.py`
+- **❌ Not Recommended**: No speaker diarization support
+- **Use case**: Only if you need OpenAI ecosystem integration
+
+### File Naming Convention
+
+After transcription, files are named: `filename_transcriber_transcript_with_speakers.txt`
+
+Examples:
+- `alex-interview_transcript_with_speakers.txt` (WhisperX)
+- `alex-interview_deepgram_transcript_with_speakers.txt` (Deepgram)
+- `alex-interview_assemblyai_transcript_with_speakers.txt` (AssemblyAI)
+
+After AI post-processing: `filename_transcriber_processor_corrected.txt`
+
+Examples:
+- `alex-interview_whisperx_anthropic_corrected.txt`
+- `alex-interview_deepgram_moonshot_corrected.txt`
+- `alex-interview_assemblyai_gemini_corrected.txt`
+
+## AI Post-Processing Quick Comparison
 
 | Provider | Type | Cost | Quality | Speed | Privacy |
 |----------|------|------|---------|-------|---------|

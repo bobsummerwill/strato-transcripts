@@ -39,6 +39,14 @@ export DEEPSEEK_API_KEY=""
 # Get key from: https://platform.moonshot.cn/
 export MOONSHOT_API_KEY=""
 
+# AssemblyAI (Cloud transcription with speaker diarization)
+# Get key from: https://www.assemblyai.com/
+export ASSEMBLYAI_API_KEY=""
+
+# Deepgram (Most cost-effective cloud transcription with diarization)
+# Get key from: https://console.deepgram.com/
+export DEEPGRAM_API_KEY=""
+
 # Ollama - No API key needed (runs locally, FREE, private)
 # Just ensure service is running: ollama serve
 # Models available: qwen2.5:32b, llama3.1:70b, etc.

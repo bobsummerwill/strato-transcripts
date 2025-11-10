@@ -496,12 +496,32 @@ def process_transcript(transcript_path, api_key, provider="anthropic"):
     output_dir = Path("outputs")
     output_dir.mkdir(exist_ok=True)
     
-    # Clean up filename: remove all model indicators and _transcript_with_speakers
-    base_name = transcript_file.stem.replace('_transcript_with_speakers', '')
-    # Remove any model version indicators (lv2, lv3, dlv3, etc.)
+    # Extract transcriber from filename (whisperx, assemblyai, deepgram, openai)
+    # Expected formats:
+    #   - filename_transcript_with_speakers.txt (whisperx - no suffix)
+    #   - filename_assemblyai_transcript_with_speakers.txt
+    #   - filename_deepgram_transcript_with_speakers.txt
+    #   - filename_openai_transcript_with_speakers.txt
+    transcriber = "whisperx"  # default
+    base_name = transcript_file.stem
+    
+    # Check for transcriber suffixes before _transcript_with_speakers
+    for service in ['assemblyai', 'deepgram', 'openai']:
+        if f'_{service}_transcript_with_speakers' in base_name:
+            transcriber = service
+            base_name = base_name.replace(f'_{service}_transcript_with_speakers', '')
+            break
+    else:
+        # No service suffix found, assume whisperx
+        base_name = base_name.replace('_transcript_with_speakers', '')
+    
+    # Remove any model version indicators
     base_name = base_name.replace('_lv2', '').replace('_lv3', '').replace('_dlv3', '')
     base_name = base_name.replace('_lq', '').replace('_hq', '')
-    output_path = output_dir / f"{base_name}_{provider}_corrected.txt"
+    
+    # Build output filename: base_transcriber_processor_corrected.txt
+    # Example: alex-interview_deepgram_moonshot_corrected.txt
+    output_path = output_dir / f"{base_name}_{transcriber}_{provider}_corrected.txt"
     
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(corrected_clean)

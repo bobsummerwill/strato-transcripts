@@ -16,16 +16,17 @@
 #   1. Detects hardware (NVIDIA GPU vs CPU)
 #   2. Installs system dependencies (ffmpeg, build tools, Python dev)
 #   3. Creates isolated Python virtual environment
-#   4. Installs PyTorch nightly
-#   5. Verifies PyTorch installation
-#   6. Installs WhisperX and dependencies
+#   4. Installs WhisperX and dependencies
+#   5. Installs PyTorch 2.9.0 (GPU or CPU)
+#   6. Verifies PyTorch installation
 #   7. Applies compatibility patches to WhisperX
-#   8. Upgrades packages for compatibility
+#   8. Installs pyannote.audio 4.0+
 #   9. Applies compatibility patches to SpeechBrain
 #  10. Configures LD_LIBRARY_PATH for NVIDIA
 #  11. Verifies package installations
-#  12. Builds Ethereum glossaries
-#  13. Sets up environment configuration file
+#  12. Installs AI provider SDKs (transcription & post-processing)
+#  13. Builds Ethereum glossaries
+#  14. Sets up environment configuration file
 #
 # REQUIREMENTS:
 #   - Ubuntu 24.04 LTS (or compatible Debian-based system)
@@ -99,7 +100,7 @@ echo ""
 # Sets HAS_NVIDIA flag used throughout script for conditional logic.
 # Can be overridden with --force-cpu flag to force CPU-only installation.
 # ==============================================================================
-echo -e "${YELLOW}[1/13] Detecting hardware...${NC}"
+echo -e "${YELLOW}[1/14] Detecting hardware...${NC}"
 
 if [ "$FORCE_CPU" = true ]; then
     HAS_NVIDIA=false
@@ -126,20 +127,30 @@ echo ""
 # Optional AI tools: Ollama for local/private AI post-processing (FREE)
 # Requires sudo access for system-wide installation.
 # ==============================================================================
-echo -e "${YELLOW}[2/13] Installing system dependencies and AI tools...${NC}"
+echo -e "${YELLOW}[2/14] Installing system dependencies and AI tools...${NC}"
 echo "Installing required system packages:"
 echo "  - build-essential: C/C++ compilers for building Python packages"
-echo "  - ffmpeg: Audio/video processing for WhisperX"
-echo "  - python3-dev: Python headers for compiling extensions"
-echo "  - python3-venv: Python virtual environment support"
-echo "  - python3-pip: Python package installer"
-echo "  - git: Version control for installing packages from GitHub"
-echo "  - curl: HTTP client for API requests"
 echo "  - ca-certificates: SSL/TLS certificates for secure connections"
-echo "  - libssl-dev: SSL development libraries"
+echo "  - curl: HTTP client for API requests"
+echo "  - ffmpeg: Audio/video processing for WhisperX"
+echo "  - git: Version control for installing packages from GitHub"
 echo "  - libcurl4-openssl-dev: cURL development libraries for Python packages"
+echo "  - libssl-dev: SSL development libraries"
+echo "  - python3-dev: Python headers for compiling extensions"
+echo "  - python3-pip: Python package installer"
+echo "  - python3-venv: Python virtual environment support"
 sudo apt update
-sudo apt install -y build-essential ffmpeg python3-dev python3-venv python3-pip git curl ca-certificates libssl-dev libcurl4-openssl-dev
+sudo apt install -y \
+  build-essential \
+  ca-certificates \
+  curl \
+  ffmpeg \
+  git \
+  libcurl4-openssl-dev \
+  libssl-dev \
+  python3-dev \
+  python3-pip \
+  python3-venv
 echo -e "${GREEN}✓ System dependencies installed${NC}"
 
 echo ""
@@ -188,7 +199,7 @@ echo ""
 # If venv already exists, it's removed and recreated to ensure clean state.
 # All subsequent Python packages will be installed into this venv.
 # ==============================================================================
-echo -e "${YELLOW}[3/13] Creating Python virtual environment...${NC}"
+echo -e "${YELLOW}[3/14] Creating Python virtual environment...${NC}"
 echo "Creating isolated Python environment to avoid conflicts with system packages"
 echo "Location: $VENV_DIR"
 if [ -d "$VENV_DIR" ]; then
@@ -214,7 +225,7 @@ source "$VENV_DIR/bin/activate"
 # WhisperX pulls in PyTorch 2.8.0 as its dependency.
 # We install the optimal PyTorch version for this GPU in the next step.
 # ==============================================================================
-echo -e "${YELLOW}[4/13] Installing WhisperX and base packages...${NC}"
+echo -e "${YELLOW}[4/14] Installing WhisperX and base packages...${NC}"
 echo "Installing WhisperX and dependencies from requirements-base.txt"
 echo "Note: WhisperX includes PyTorch 2.8.0 (we install 2.9.0 next for GPU optimization)"
 echo "This may take 5-10 minutes..."
@@ -229,7 +240,7 @@ echo ""
 # PyTorch 2.9.0 provides full Blackwell (sm_120) support for RTX 50-series GPUs.
 # CUDA 13.0 offers the latest optimizations and performance improvements.
 # ==============================================================================
-echo -e "${YELLOW}[5/13] Installing PyTorch 2.9.0...${NC}"
+echo -e "${YELLOW}[5/14] Installing PyTorch 2.9.0...${NC}"
 echo "Installing PyTorch 2.9.0 stable with CUDA 13.0"
 echo "Provides full Blackwell (sm_120) support for RTX 50-series GPUs"
 echo "This may take 2-5 minutes depending on internet speed..."
@@ -251,7 +262,7 @@ echo ""
 # For CPU: Confirms basic CPU tensor operations work correctly.
 # Ensures the installation is ready for machine learning workloads.
 # ==============================================================================
-echo -e "${YELLOW}[6/13] Verifying PyTorch installation...${NC}"
+echo -e "${YELLOW}[6/14] Verifying PyTorch installation...${NC}"
 echo "Verifying PyTorch installation and hardware access..."
 python3 -c "import torch; print(f'PyTorch: {torch.__version__}'); print(f'CUDA available: {torch.cuda.is_available()}'); print(f'GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"N/A\"}')"
 
@@ -284,7 +295,7 @@ echo ""
 # Patches are applied with sed and verified.
 # Files modified: vads/pyannote.py (global replace) and asr.py (line 412).
 # ==============================================================================
-echo -e "${YELLOW}[7/13] Applying WhisperX patches...${NC}"
+echo -e "${YELLOW}[7/14] Applying WhisperX patches...${NC}"
 echo "Updating WhisperX to use 'token' parameter for HuggingFace authentication"
 echo "Enables compatibility with pyannote.audio 4.x"
 WHISPERX_VADS="$VENV_DIR/lib/python3.12/site-packages/whisperx/vads/pyannote.py"
@@ -315,27 +326,25 @@ echo -e "${GREEN}✓ WhisperX patches applied successfully${NC}"
 echo ""
 
 # ==============================================================================
-# Step 9: pyannote.audio Installation
+# Step 8: pyannote.audio Installation
 # ==============================================================================
 # Installs pyannote.audio 4.0+, which provides PyTorch 2.9.0 compatibility.
 # Version 4.0+ is required to work with PyTorch 2.9.0's API and features.
 # ==============================================================================
-echo -e "${YELLOW}[8/13] Installing pyannote.audio 4.0+ and AI providers...${NC}"
+echo -e "${YELLOW}[8/14] Installing pyannote.audio 4.0+...${NC}"
 echo "Installing pyannote.audio 4.0+ for PyTorch 2.9.0 compatibility..."
 pip install --upgrade "pyannote.audio>=4.0.0"
-echo "Installing AI provider packages for post-processing..."
-pip install openai anthropic google-generativeai assemblyai requests
-echo -e "${GREEN}✓ pyannote.audio 4.0+ and AI providers installed${NC}"
+echo -e "${GREEN}✓ pyannote.audio 4.0+ installed${NC}"
 echo ""
 
 # ==============================================================================
-# Step 10: SpeechBrain Compatibility Patches
+# Step 9: SpeechBrain Compatibility Patches
 # ==============================================================================
 # Updates SpeechBrain to work with torchaudio 2.9.0's API.
 # Adds hasattr() check to gracefully handle different torchaudio versions.
 # This ensures SpeechBrain can detect available audio backends across versions.
 # ==============================================================================
-echo -e "${YELLOW}[9/13] Applying SpeechBrain compatibility patches...${NC}"
+echo -e "${YELLOW}[9/14] Applying SpeechBrain compatibility patches...${NC}"
 echo "Updating SpeechBrain for torchaudio 2.9.0 compatibility"
 echo "Adding version-agnostic audio backend detection"
 
@@ -422,7 +431,7 @@ echo ""
 # Configuration persists across sessions by adding to ~/.bashrc.
 # ==============================================================================
 if [ "$HAS_NVIDIA" = true ]; then
-    echo -e "${YELLOW}[10/13] Configuring LD_LIBRARY_PATH for NVIDIA...${NC}"
+    echo -e "${YELLOW}[10/14] Configuring LD_LIBRARY_PATH for NVIDIA...${NC}"
     echo "Adding all required CUDA library paths to ~/.bashrc"
     echo "Required for PyTorch CUDA operations (cuDNN, cuBLAS, NVRTC, and CUDA 13.0 runtime)"
     
@@ -447,19 +456,19 @@ if [ "$HAS_NVIDIA" = true ]; then
     
     echo -e "${GREEN}✓ LD_LIBRARY_PATH configured${NC}"
 else
-    echo -e "${YELLOW}[10/13] Skipping LD_LIBRARY_PATH configuration${NC}"
+    echo -e "${YELLOW}[10/14] Skipping LD_LIBRARY_PATH configuration${NC}"
     echo "Not needed for CPU-only installations"
 fi
 echo ""
 
 # ==============================================================================
-# Step 12: Application Package Verification
+# Step 11: Application Package Verification
 # ==============================================================================
 # Verifies WhisperX and pyannote.audio can be imported successfully.
 # Import tests confirm all dependencies are properly installed and accessible.
 # This validation ensures the environment is ready for transcription tasks.
 # ==============================================================================
-echo -e "${YELLOW}[11/13] Verifying package installations...${NC}"
+echo -e "${YELLOW}[11/14] Verifying package installations...${NC}"
 echo "Testing imports to ensure all packages are properly installed and accessible"
 
 echo "Testing WhisperX import..."
@@ -472,6 +481,36 @@ echo -e "${GREEN}✓ All packages verified and ready to use${NC}"
 echo ""
 
 # ==============================================================================
+# Step 12: AI Provider SDKs Installation
+# ==============================================================================
+# Installs Python SDKs for cloud AI transcription and post-processing services.
+# Transcription: AssemblyAI, Deepgram, OpenAI Whisper API
+# Post-processing: Anthropic Claude, Google Gemini, OpenAI GPT, DeepSeek
+# Also includes requests library for HTTP operations.
+# ==============================================================================
+echo -e "${YELLOW}[12/14] Installing AI provider SDKs...${NC}"
+echo "Installing Python packages for AI transcription and post-processing services:"
+echo "  Transcription providers:"
+echo "    - assemblyai: AssemblyAI cloud transcription with diarization"
+echo "    - deepgram-sdk: Deepgram cloud transcription (fastest, cheapest)"
+echo "    - openai: OpenAI Whisper API transcription"
+echo "  Post-processing providers:"
+echo "    - anthropic: Claude 3.5 Sonnet for transcript correction"
+echo "    - google-generativeai: Gemini 2.5 Pro for transcript correction"
+echo "    - openai: GPT-4o for transcript correction (reused from above)"
+echo "  Utilities:"
+echo "    - requests: HTTP client for API operations"
+pip install \
+  anthropic \
+  assemblyai \
+  deepgram-sdk \
+  google-generativeai \
+  openai \
+  requests
+echo -e "${GREEN}✓ AI provider SDKs installed${NC}"
+echo ""
+
+# ==============================================================================
 # Step 13: Build Ethereum Glossaries
 # ==============================================================================
 # Extracts people names and technical terms for quality improvement.
@@ -479,7 +518,7 @@ echo ""
 # Runs extract_people.py and extract_terms.py if they exist.
 # Failures are non-fatal as these are optional enhancements.
 # ==============================================================================
-echo -e "${YELLOW}[12/13] Building Ethereum glossaries and project directories...${NC}"
+echo -e "${YELLOW}[13/14] Building Ethereum glossaries and project directories...${NC}"
 echo "Creating project directory structure..."
 mkdir -p "$PROJECT_DIR/intermediates"
 mkdir -p "$PROJECT_DIR/outputs"
@@ -520,7 +559,7 @@ echo ""
 # This file stores the HuggingFace token for downloading pyannote models.
 # User provides their token manually (see post-installation instructions).
 # ==============================================================================
-echo -e "${YELLOW}[13/13] Setting up environment configuration...${NC}"
+echo -e "${YELLOW}[14/14] Setting up environment configuration...${NC}"
 echo "Checking for setup_env.sh (required for HuggingFace authentication)"
 if [ ! -f "$PROJECT_DIR/setup_env.sh" ]; then
     if [ -f "$PROJECT_DIR/setup_env.sh.example" ]; then

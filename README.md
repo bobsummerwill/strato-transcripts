@@ -86,19 +86,68 @@ You'll need to accept the terms for:
 
 ## Usage
 
-### Basic Workflow
+### Transcription Options
 
+This project supports multiple transcription services:
+
+| Service | Type | Cost (per hour) | Speed | Setup |
+|---------|------|-----------------|-------|-------|
+| **WhisperX** | Local | FREE | 5-10 min | Default (GPU required) |
+| **Deepgram** | Cloud | $0.41 | 23 sec | API key required |
+| **AssemblyAI** | Cloud | $1.44 | 3-4 min | API key required |
+| **OpenAI** | Cloud | $5.75 | 4-5 min | ❌ No diarization |
+
+#### WhisperX (Local - Default)
 ```bash
 # Activate environment
 source venv/bin/activate
 source setup_env.sh
 
+# Transcribe with speaker identification (forces English by default)
+python3 scripts/transcribe_with_diarization.py audio.mp3
+# Output: intermediates/audio_transcript_with_speakers.txt
+```
+
+#### Deepgram (Recommended Cloud - Fastest & Cheapest)
+```bash
+# Setup (one time)
+export DEEPGRAM_API_KEY="your-key"  # Get from https://console.deepgram.com/
+
+# Transcribe
+python3 scripts/transcribe_with_deepgram.py audio.mp3
+# Output: intermediates/audio_deepgram_transcript_with_speakers.txt
+# Speed: ~23 seconds for 96-minute audio
+# Cost: ~$0.41 per hour
+```
+
+#### AssemblyAI (Cloud Alternative)
+```bash
+# Setup (one time)
+export ASSEMBLYAI_API_KEY="your-key"  # Get from https://www.assemblyai.com/
+
+# Transcribe
+python3 scripts/transcribe_with_assemblyai.py audio.mp3
+# Output: intermediates/audio_assemblyai_transcript_with_speakers.txt
+# Speed: 3-4 minutes processing
+# Cost: ~$1.44 per hour
+```
+
+### Basic Workflow
+
+```bash
 # 1. Extract audio from video (if needed)
 ffmpeg -i "video.mp4" -q:a 0 -map a output.mp3
 
-# 2. Transcribe with speaker identification (forces English by default)
-python3 transcribe_with_diarization.py output.mp3
-# Output: output_transcript_with_speakers.txt
+# 2. Transcribe with speaker identification
+# Choose one of the methods above
+python3 scripts/transcribe_with_deepgram.py output.mp3
+
+# 3. AI Post-Process (fix technical terms & speaker names)
+python3 scripts/post_process_transcript.py \
+  intermediates/output_deepgram_transcript_with_speakers.txt \
+  --provider anthropic
+
+# Output: outputs/output_deepgram_anthropic_corrected.txt
 
 # 3. Map speaker labels to names
 python3 map_speakers_to_names.py \
