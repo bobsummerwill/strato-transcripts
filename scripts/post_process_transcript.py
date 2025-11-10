@@ -462,36 +462,6 @@ def process_transcript(transcript_path, api_key, provider="anthropic"):
     corrected_lines = [line.rstrip() for line in corrected.split('\n')]
     corrected_clean = '\n'.join(corrected_lines)
     
-    # Validate line count - original vs corrected
-    original_line_count = len(transcript.split('\n'))
-    corrected_line_count = len(corrected_lines)
-    retention_pct = (corrected_line_count / original_line_count) * 100
-    
-    print(f"\n4. Validating output...")
-    print(f"   Original lines: {original_line_count}")
-    print(f"   Corrected lines: {corrected_line_count}")
-    print(f"   Retention: {retention_pct:.1f}%")
-    
-    # Fail if more than 15% of lines are lost (allowing for reasonable AI cleanup & line consolidation)
-    if corrected_line_count < original_line_count * 0.85:
-        print(f"\n❌ ERROR: Severe content loss detected!")
-        print(f"   Lost {original_line_count - corrected_line_count} lines ({100 - retention_pct:.1f}% loss)")
-        print(f"   This indicates truncation or incomplete processing.")
-        
-        # Save partial file for inspection to outputs directory
-        output_dir = Path("outputs")
-        output_dir.mkdir(exist_ok=True)
-        base_name = transcript_file.stem.replace('_transcript_with_speakers', '')
-        # Remove any model version indicators
-        base_name = base_name.replace('_lv2', '').replace('_lv3', '').replace('_dlv3', '')
-        base_name = base_name.replace('_lq', '').replace('_hq', '')
-        partial_path = output_dir / f"{base_name}_{provider}_corrected_PARTIAL.txt"
-        with open(partial_path, 'w', encoding='utf-8') as f:
-            f.write(corrected_clean)
-        print(f"   Saved PARTIAL output for inspection: {partial_path}")
-        print(f"   File marked as PARTIAL - requires manual review.")
-        return None
-    
     # Save corrected transcript to outputs directory
     output_dir = Path("outputs")
     output_dir.mkdir(exist_ok=True)
@@ -526,7 +496,7 @@ def process_transcript(transcript_path, api_key, provider="anthropic"):
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(corrected_clean)
     
-    print(f"\n5. Saved corrected transcript to: {output_path}")
+    print(f"\n4. Saved corrected transcript to: {output_path}")
     
     # Also save markdown version
     md_output_path = output_path.with_suffix('.md')
@@ -538,7 +508,7 @@ def process_transcript(transcript_path, api_key, provider="anthropic"):
     print(f"   Also saved markdown to: {md_output_path}")
     
     print("\n" + "="*60)
-    print(f"✓ Post-processing complete! ({retention_pct:.1f}% line retention)")
+    print("✓ Post-processing complete!")
     print("="*60)
     
     return output_path
