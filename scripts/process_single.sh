@@ -104,23 +104,10 @@ fi
 
 echo ""
 
-# Find generated transcript files
+# Find generated transcript files (using new naming convention)
 TRANSCRIPT_FILES=()
 for TRANSCRIBER in "${TRANSCRIBER_ARRAY[@]}"; do
-    case "$TRANSCRIBER" in
-        whisperx)
-            TRANSCRIPT_FILE="intermediates/${BASE_NAME}_whisperx_transcript_with_speakers.txt"
-            ;;
-        deepgram)
-            TRANSCRIPT_FILE="intermediates/${BASE_NAME}_deepgram_transcript_with_speakers.txt"
-            ;;
-        assemblyai)
-            TRANSCRIPT_FILE="intermediates/${BASE_NAME}_assemblyai_transcript_with_speakers.txt"
-            ;;
-        openai)
-            TRANSCRIPT_FILE="intermediates/${BASE_NAME}_openai_transcript_with_speakers.txt"
-            ;;
-    esac
+    TRANSCRIPT_FILE="intermediates/${BASE_NAME}_${TRANSCRIBER}_raw.txt"
     
     if [ -f "$TRANSCRIPT_FILE" ]; then
         TRANSCRIPT_FILES+=("$TRANSCRIPT_FILE")

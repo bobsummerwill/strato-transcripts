@@ -392,7 +392,7 @@ def transcribe_deepgram(audio_path, output_dir):
     
     audio_file_path = Path(audio_path)
     
-    print(f"  Model: Nova-2")
+    print(f"  Model: Nova-3 General")
     print(f"  Uploading and transcribing...")
     
     deepgram = DeepgramClient(api_key=api_key)
@@ -402,9 +402,11 @@ def transcribe_deepgram(audio_path, output_dir):
     
     start_time = time.time()
     
+    # Model: nova-3-general (updated 2025-11-10)
+    # Best accuracy for multi-speaker conversations and technical content
     response = deepgram.listen.v1.media.transcribe_file(
         request=buffer_data,
-        model="nova-2",
+        model="nova-3-general",
         smart_format=True,
         diarize=True,
         punctuate=True,
