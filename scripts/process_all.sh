@@ -136,7 +136,7 @@ for MP3_FILE in "${MP3_FILES[@]}"; do
     FILE_START=$(date +%s)
     
     # Call transcribe_and_correct_multi.sh with transcribers and processors
-    if ./scripts/process_single_mp3.sh "$MP3_FILE" --transcribers "$TRANSCRIBERS" --processors "$PROCESSORS"; then
+    if ./scripts/process_single.sh "$MP3_FILE" --transcribers "$TRANSCRIBERS" --processors "$PROCESSORS"; then
         FILE_END=$(date +%s)
         FILE_DURATION=$((FILE_END - FILE_START))
         

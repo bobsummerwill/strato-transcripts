@@ -110,7 +110,7 @@ echo "========================================================================"
 echo ""
 
 # Build command for unified transcription script
-TRANSCRIBE_CMD="python3 scripts/transcribe_and_diarize.py \"$AUDIO_FILE\" --transcribers \"$TRANSCRIBERS\""
+TRANSCRIBE_CMD="python3 scripts/process_single_transcribe_and_diarize.py \"$AUDIO_FILE\" --transcribers \"$TRANSCRIBERS\""
 if [ -n "$BATCH_SIZE" ]; then
     TRANSCRIBE_CMD="$TRANSCRIBE_CMD --batch-size $BATCH_SIZE"
 fi
@@ -230,7 +230,7 @@ for TRANSCRIPT_FILE in "${TRANSCRIPT_FILES[@]}"; do
         fi
         
         # Run post-processing
-        python3 scripts/post_process_transcript.py "$TRANSCRIPT_FILE" --provider "$PROCESSOR"
+        python3 scripts/process_single_post_process.py "$TRANSCRIPT_FILE" --provider "$PROCESSOR"
         POST_EXIT=$?
         
         # Stop Ollama if we started it
