@@ -11,9 +11,7 @@ if [ $# -eq 0 ]; then
     echo "Options:"
     echo "  --batch-size <n>     Batch size (default: 16 GPU, 8 CPU)"
     echo "  --provider <name>    AI provider (anthropic, openai, gemini, deepseek, ollama)"
-    echo "  --openai-model <name> OpenAI model (chatgpt-4o-latest, gpt-4o, etc.)"
-    echo "  --gemini-model <name> Gemini model (gemini-2.0-flash-exp, etc.)"
-    echo "  --deepseek-model <name> DeepSeek model (deepseek-chat, etc.)"
+    echo "                       Each provider uses its best model automatically"
     echo "  --skip-correction    Skip AI post-processing step"
     echo ""
     echo "Environment variables:"
@@ -25,13 +23,16 @@ if [ $# -eq 0 ]; then
     echo "  (Ollama runs locally, no API key needed)"
     echo ""
     echo "Examples:"
-    echo "  # Using ChatGPT-5 (latest OpenAI model)"
+    echo "  # Using OpenAI ChatGPT-5 (chatgpt-4o-latest)"
     echo "  $0 interview.mp3 --provider openai"
     echo ""
-    echo "  # Using Ollama (local, FREE, private - auto-managed)"
+    echo "  # Using Gemini 1.5 Pro (best reasoning)"
+    echo "  $0 interview.mp3 --provider gemini"
+    echo ""
+    echo "  # Using Ollama qwen2.5:32b (local, FREE, auto-managed)"
     echo "  $0 interview.mp3 --provider ollama"
     echo ""
-    echo "  # Using DeepSeek (very cost-effective)"
+    echo "  # Using DeepSeek Chat (very cost-effective)"
     echo "  $0 interview.mp3 --provider deepseek"
     echo ""
     echo "  # Transcription only (no correction)"
@@ -47,10 +48,7 @@ shift
 
 # Default options
 BATCH_SIZE=""
-AI_PROVIDER="openai"  # Default to OpenAI (ChatGPT-5)
-OPENAI_MODEL="chatgpt-4o-latest"
-GEMINI_MODEL="gemini-1.5-pro"
-DEEPSEEK_MODEL="deepseek-chat"
+AI_PROVIDER="openai"  # Default to OpenAI ChatGPT-5
 SKIP_CORRECTION=false
 
 # Parse optional arguments
@@ -62,18 +60,6 @@ while [[ $# -gt 0 ]]; do
             ;;
         --provider)
             AI_PROVIDER="$2"
-            shift 2
-            ;;
-        --openai-model)
-            OPENAI_MODEL="$2"
-            shift 2
-            ;;
-        --gemini-model)
-            GEMINI_MODEL="$2"
-            shift 2
-            ;;
-        --deepseek-model)
-            DEEPSEEK_MODEL="$2"
             shift 2
             ;;
         --skip-correction)
@@ -134,13 +120,15 @@ fi
 if [ "$SKIP_CORRECTION" = false ]; then
     echo "AI provider: $AI_PROVIDER"
     if [ "$AI_PROVIDER" = "openai" ]; then
-        echo "OpenAI model: $OPENAI_MODEL"
+        echo "  Model: chatgpt-4o-latest (auto-selected)"
     elif [ "$AI_PROVIDER" = "gemini" ]; then
-        echo "Gemini model: $GEMINI_MODEL"
+        echo "  Model: gemini-1.5-pro (auto-selected)"
     elif [ "$AI_PROVIDER" = "deepseek" ]; then
-        echo "DeepSeek model: $DEEPSEEK_MODEL"
+        echo "  Model: deepseek-chat (auto-selected)"
     elif [ "$AI_PROVIDER" = "ollama" ]; then
-        echo "Ollama model: qwen2.5:32b (hardcoded, auto-managed)"
+        echo "  Model: qwen2.5:32b (auto-selected, auto-managed)"
+    elif [ "$AI_PROVIDER" = "anthropic" ]; then
+        echo "  Model: claude-3-5-sonnet (auto-selected)"
     fi
 else
     echo "AI correction: DISABLED"
@@ -186,18 +174,8 @@ if [ "$SKIP_CORRECTION" = false ]; then
     echo "STEP 2: Post-processing with $AI_PROVIDER..."
     echo "------------------------------------------------------------------------"
     
-    # Build command with appropriate model flags
-    CMD="python3 scripts/post_process_transcript.py \"$TRANSCRIPT_FULL\" --provider \"$AI_PROVIDER\""
-    
-    if [ "$AI_PROVIDER" = "openai" ]; then
-        CMD="$CMD --openai-model \"$OPENAI_MODEL\""
-    elif [ "$AI_PROVIDER" = "gemini" ]; then
-        CMD="$CMD --gemini-model \"$GEMINI_MODEL\""
-    elif [ "$AI_PROVIDER" = "deepseek" ]; then
-        CMD="$CMD --deepseek-model \"$DEEPSEEK_MODEL\""
-    fi
-    
-    eval $CMD
+    # Run post-processing (provider auto-selects best model)
+    python3 scripts/post_process_transcript.py "$TRANSCRIPT_FULL" --provider "$AI_PROVIDER"
     
     if [ $? -ne 0 ]; then
         echo "Warning: Post-processing failed, but transcript is still available"

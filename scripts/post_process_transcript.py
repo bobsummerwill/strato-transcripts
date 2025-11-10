@@ -145,8 +145,10 @@ def split_transcript_by_speakers(transcript, max_chunk_size=15000):
     
     return chunks
 
-def process_with_openai(transcript, api_key, context, model="chatgpt-4o-latest"):
-    """Process transcript using OpenAI GPT models (GPT-4, GPT-4o, ChatGPT-5)"""
+def process_with_openai(transcript, api_key, context):
+    """Process transcript using OpenAI ChatGPT-5 (chatgpt-4o-latest)"""
+    # Hardcoded best model for quality
+    model = "chatgpt-4o-latest"
     try:
         import openai
     except ImportError:
@@ -182,8 +184,10 @@ def process_with_openai(transcript, api_key, context, model="chatgpt-4o-latest")
     # Combine chunks
     return '\n\n'.join(corrected_chunks)
 
-def process_with_gemini(transcript, api_key, context, model="gemini-1.5-pro"):
-    """Process transcript using Google Gemini"""
+def process_with_gemini(transcript, api_key, context):
+    """Process transcript using Google Gemini 1.5 Pro"""
+    # Hardcoded best model for technical content
+    model = "gemini-1.5-pro"
     try:
         import google.generativeai as genai
     except ImportError:
@@ -198,8 +202,10 @@ def process_with_gemini(transcript, api_key, context, model="gemini-1.5-pro"):
     
     return response.text
 
-def process_with_deepseek(transcript, api_key, context, model="deepseek-chat"):
-    """Process transcript using DeepSeek API (OpenAI-compatible)"""
+def process_with_deepseek(transcript, api_key, context):
+    """Process transcript using DeepSeek Chat"""
+    # Hardcoded best model
+    model = "deepseek-chat"
     try:
         import openai
     except ImportError:
@@ -311,10 +317,7 @@ def process_with_ollama(transcript, context):
                 ollama_process.kill()
                 print("   ✓ Ollama service force stopped")
 
-def process_transcript(transcript_path, api_key, provider="anthropic", 
-                      openai_model="chatgpt-4o-latest", 
-                      gemini_model="gemini-2.0-flash-exp",
-                      deepseek_model="deepseek-chat"):
+def process_transcript(transcript_path, api_key, provider="anthropic"):
     """Main processing function"""
     
     print("="*60)
@@ -324,11 +327,11 @@ def process_transcript(transcript_path, api_key, provider="anthropic",
     print(f"Provider: {provider}")
     
     if provider == "openai":
-        print(f"Model: {openai_model}")
+        print(f"Model: chatgpt-4o-latest (hardcoded)")
     elif provider == "gemini":
-        print(f"Model: {gemini_model}")
+        print(f"Model: gemini-1.5-pro (hardcoded)")
     elif provider == "deepseek":
-        print(f"Model: {deepseek_model}")
+        print(f"Model: deepseek-chat (hardcoded)")
     elif provider == "ollama":
         print(f"Model: qwen2.5:32b (hardcoded)")
     
@@ -355,11 +358,11 @@ def process_transcript(transcript_path, api_key, provider="anthropic",
     if provider == "anthropic":
         corrected = process_with_anthropic(transcript, api_key, context)
     elif provider == "openai":
-        corrected = process_with_openai(transcript, api_key, context, openai_model)
+        corrected = process_with_openai(transcript, api_key, context)
     elif provider == "gemini":
-        corrected = process_with_gemini(transcript, api_key, context, gemini_model)
+        corrected = process_with_gemini(transcript, api_key, context)
     elif provider == "deepseek":
-        corrected = process_with_deepseek(transcript, api_key, context, deepseek_model)
+        corrected = process_with_deepseek(transcript, api_key, context)
     elif provider == "ollama":
         corrected = process_with_ollama(transcript, context)
     else:
@@ -442,22 +445,22 @@ def main():
         description="Post-process transcripts using AI to correct technical terms and speaker names",
         epilog="""
 Examples:
-  # Using Anthropic Claude
+  # Using Anthropic Claude 3.5 Sonnet (best quality)
   python3 post_process_transcript.py transcript.txt --provider anthropic
   
-  # Using OpenAI ChatGPT-5/GPT-4o
+  # Using OpenAI ChatGPT-5 (chatgpt-4o-latest)
   python3 post_process_transcript.py transcript.txt --provider openai
   
-  # Using Google Gemini 2.0
+  # Using Google Gemini 1.5 Pro (best reasoning)
   python3 post_process_transcript.py transcript.txt --provider gemini
   
-  # Using DeepSeek (very cost-effective)
+  # Using DeepSeek Chat (very cost-effective)
   python3 post_process_transcript.py transcript.txt --provider deepseek
   
-  # Using Ollama (local, FREE, private - auto-managed)
+  # Using Ollama qwen2.5:32b (local, FREE, private - auto-managed)
   python3 post_process_transcript.py transcript.txt --provider ollama
   
-  # With environment variables
+  # With environment variables (provider auto-selects best model)
   export OPENAI_API_KEY=sk-...
   python3 post_process_transcript.py transcript.txt --provider openai
         """,
@@ -469,19 +472,7 @@ Examples:
     parser.add_argument("--provider", 
                        choices=["anthropic", "openai", "gemini", "deepseek", "ollama"], 
                        default="anthropic",
-                       help="AI provider (default: anthropic)")
-    parser.add_argument("--openai-model", 
-                       default="chatgpt-4o-latest",
-                       choices=["chatgpt-4o-latest", "gpt-4o", "gpt-4o-mini", "gpt-4-turbo", "gpt-4"],
-                       help="OpenAI model (default: chatgpt-4o-latest)")
-    parser.add_argument("--gemini-model",
-                       default="gemini-1.5-pro",
-                       choices=["gemini-2.0-flash-exp", "gemini-1.5-pro", "gemini-1.5-flash"],
-                       help="Gemini model (default: gemini-1.5-pro)")
-    parser.add_argument("--deepseek-model",
-                       default="deepseek-chat",
-                       choices=["deepseek-chat", "deepseek-reasoner"],
-                       help="DeepSeek model (default: deepseek-chat)")
+                       help="AI provider (default: anthropic). Each provider uses its best model.")
     
     args = parser.parse_args()
     
@@ -519,9 +510,7 @@ Examples:
     
     # Process transcript
     result = process_transcript(
-        args.transcript, api_key, args.provider,
-        args.openai_model, args.gemini_model,
-        args.deepseek_model
+        args.transcript, api_key, args.provider
     )
     
     sys.exit(0 if result else 1)
