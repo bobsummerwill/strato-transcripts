@@ -28,6 +28,89 @@ def failure(msg):
 def skip(msg):
     return f"{Colors.YELLOW}⊘{Colors.RESET} {msg}"
 
+
+# ============================================================================
+# Utility Functions
+# ============================================================================
+
+def save_transcript_files(output_dir, basename, service_name, segments, speaker_key="speaker"):
+    """
+    Save transcript in both txt and md formats with consistent naming.
+    
+    Args:
+        output_dir: Directory to save files
+        basename: Base filename without extension
+        service_name: Name of transcription service (whisperx, deepgram, etc.)
+        segments: List of segment dicts with 'speaker', 'start', 'text' keys
+        speaker_key: Key name for speaker in segments (default: 'speaker')
+    
+    Returns:
+        Path object for the .txt file
+    """
+    output_path = Path(output_dir) / f"{basename}_{service_name}_raw.txt"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Save text version
+    with open(output_path, 'w', encoding='utf-8') as f:
+        current_speaker = None
+        for segment in segments:
+            speaker = segment.get(speaker_key, "UNKNOWN")
+            if speaker != current_speaker:
+                f.write(f"\n{speaker}:\n")
+                current_speaker = speaker
+            start_time = segment.get("start", 0)
+            text = segment.get("text", "").strip()
+            f.write(f"[{start_time:.1f}s] {text}\n")
+    
+    # Save markdown version
+    md_path = output_path.with_suffix('.md')
+    with open(md_path, 'w', encoding='utf-8') as f:
+        current_speaker = None
+        for segment in segments:
+            speaker = segment.get(speaker_key, "UNKNOWN")
+            if speaker != current_speaker:
+                f.write(f"\n**{speaker}:**\n")
+                current_speaker = speaker
+            start_time = segment.get("start", 0)
+            text = segment.get("text", "").strip()
+            f.write(f"[{start_time:.1f}s] {text}\n")
+    
+    return output_path
+
+
+def save_raw_transcript_from_text(output_dir, basename, service_name, formatted_text):
+    """
+    Save pre-formatted transcript text in both txt and md formats.
+    
+    Args:
+        output_dir: Directory to save files
+        basename: Base filename without extension
+        service_name: Name of transcription service
+        formatted_text: Pre-formatted text with speaker labels and timestamps
+    
+    Returns:
+        Path object for the .txt file
+    """
+    output_path = Path(output_dir) / f"{basename}_{service_name}_raw.txt"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Save text version
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(formatted_text)
+    
+    # Save markdown version (convert SPEAKER_ labels to bold)
+    md_path = output_path.with_suffix('.md')
+    md_content = formatted_text.replace('SPEAKER_', '**SPEAKER_').replace(':', ':**', 1)
+    with open(md_path, 'w', encoding='utf-8') as f:
+        f.write(md_content)
+    
+    return output_path
+
+
+# ============================================================================
+# Main Entry Point
+# ============================================================================
+
 def main():
     parser = argparse.ArgumentParser(
         description="Transcribe audio with speaker diarization using multiple providers",
@@ -270,33 +353,13 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False):
         
         print(f"  → Detected {len(speakers)} speakers")
         
-        # Step 4: Save
-        output_path = Path(output_dir) / f"{audio_path_obj.stem}_whisperx_raw.txt"
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        
-        with open(output_path, 'w', encoding='utf-8') as f:
-            current_speaker = None
-            for segment in result_with_speakers["segments"]:
-                speaker = segment.get("speaker", "UNKNOWN")
-                if speaker != current_speaker:
-                    f.write(f"\n{speaker}:\n")
-                    current_speaker = speaker
-                start_time = segment["start"]
-                text = segment["text"].strip()
-                f.write(f"[{start_time:.1f}s] {text}\n")
-        
-        # Save markdown
-        md_path = output_path.with_suffix('.md')
-        with open(md_path, 'w', encoding='utf-8') as f:
-            current_speaker = None
-            for segment in result_with_speakers["segments"]:
-                speaker = segment.get("speaker", "UNKNOWN")
-                if speaker != current_speaker:
-                    f.write(f"\n**{speaker}:**\n")
-                    current_speaker = speaker
-                start_time = segment["start"]
-                text = segment["text"].strip()
-                f.write(f"[{start_time:.1f}s] {text}\n")
+        # Step 4: Save using utility function
+        output_path = save_transcript_files(
+            output_dir,
+            audio_path_obj.stem,
+            "whisperx",
+            result_with_speakers["segments"]
+        )
         
         elapsed = time.time() - start
         print(f"  Completed in {elapsed:.1f}s ({elapsed/60:.1f} min)")
@@ -376,18 +439,6 @@ def transcribe_deepgram(audio_path, output_dir):
                 current_speaker = speaker
             output_lines.append(f'[{timestamp}s] {text}')
     
-    # Save
-    output_path = Path(output_dir) / f"{audio_file_path.stem}_deepgram_raw.txt"
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write('\n'.join(output_lines) + '\n')
-    
-    # Save markdown
-    md_path = output_path.with_suffix('.md')
-    with open(md_path, 'w', encoding='utf-8') as f:
-        f.write('\n'.join(output_lines).replace('SPEAKER_', '**SPEAKER_').replace(':', ':**', 1) + '\n')
-    
     # Count speakers
     speakers = set()
     for line in formatted_lines:
@@ -397,7 +448,9 @@ def transcribe_deepgram(audio_path, output_dir):
     
     print(f"  Detected {len(speakers)} speakers")
     
-    return output_path
+    # Save using utility function
+    formatted_text = '\n'.join(output_lines) + '\n'
+    return save_raw_transcript_from_text(output_dir, audio_file_path.stem, "deepgram", formatted_text)
 
 
 def transcribe_assemblyai(audio_path, output_dir):
@@ -442,24 +495,13 @@ def transcribe_assemblyai(audio_path, output_dir):
     else:
         formatted_lines.append(f"[0.0s] SPEAKER_00: {transcript.text}")
     
-    # Save
-    output_path = Path(output_dir) / f"{audio_file_path.stem}_assemblyai_raw.txt"
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write('\n'.join(formatted_lines))
-    
-    # Save markdown
-    md_path = output_path.with_suffix('.md')
-    with open(md_path, 'w', encoding='utf-8') as f:
-        md_content = '\n'.join(formatted_lines).replace('SPEAKER_', '**SPEAKER_').replace(': ', ':** ')
-        f.write(md_content)
-    
     # Count speakers
     num_speakers = len(set(utterance.speaker for utterance in transcript.utterances)) if transcript.utterances else 1
     print(f"  Detected {num_speakers} speakers")
     
-    return output_path
+    # Save using utility function
+    formatted_text = '\n'.join(formatted_lines)
+    return save_raw_transcript_from_text(output_dir, audio_file_path.stem, "assemblyai", formatted_text)
 
 
 def transcribe_openai(audio_path, output_dir):
@@ -560,24 +602,11 @@ def transcribe_openai(audio_path, output_dir):
     except:
         pass
     
-    # Save
-    formatted = '\n~~~~~~\n'.join(all_transcripts)
-    
-    output_path = Path(output_dir) / f"{audio_file_path.stem}_openai_raw.txt"
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(formatted)
-    
-    # Save markdown
-    md_path = output_path.with_suffix('.md')
-    with open(md_path, 'w', encoding='utf-8') as f:
-        md_content = formatted.replace('SPEAKER_', '**SPEAKER_').replace(': ', ':** ')
-        f.write(md_content)
-    
     print(f"  Complete ({len(chunks)} chunks stitched)")
     
-    return output_path
+    # Save using utility function
+    formatted = '\n~~~~~~\n'.join(all_transcripts)
+    return save_raw_transcript_from_text(output_dir, audio_file_path.stem, "openai", formatted)
 
 
 if __name__ == "__main__":

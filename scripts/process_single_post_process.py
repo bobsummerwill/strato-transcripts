@@ -30,7 +30,70 @@ def failure(msg):
 def skip(msg):
     return f"{Colors.YELLOW}⊘{Colors.RESET} {msg}"
 
+
+# ============================================================================
+# Utility Functions
+# ============================================================================
+
+def extract_transcriber_from_filename(filepath):
+    """
+    Extract transcriber name from intermediate filename.
+    
+    Args:
+        filepath: Path to intermediate transcript file
+    
+    Returns:
+        Tuple of (basename, transcriber_name) or (basename, None) if not found
+    """
+    filename = Path(filepath).stem
+    
+    for service in ['whisperx', 'assemblyai', 'deepgram', 'openai']:
+        if f'_{service}_raw' in filename:
+            basename = filename.replace(f'_{service}_raw', '')
+            return basename, service
+    
+    # Fallback if no match
+    return filename, "whisperx"
+
+
+def save_processed_files(output_dir, basename, transcriber, processor, content):
+    """
+    Save processed transcript in both txt and md formats with consistent naming.
+    
+    Args:
+        output_dir: Directory to save files  
+        basename: Base filename without extension
+        transcriber: Name of transcription service used
+        processor: Name of AI processor used
+        content: Processed transcript content
+    
+    Returns:
+        Path object for the .txt file
+    """
+    output_path = Path(output_dir) / f"{basename}_{transcriber}_{processor}_processed.txt"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Clean up content
+    content_lines = [line.rstrip() for line in content.split('\n')]
+    content_clean = '\n'.join(content_lines)
+    
+    # Save text version
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(content_clean)
+    
+    # Save markdown version (convert SPEAKER_ labels to bold)
+    md_path = output_path.with_suffix('.md')
+    md_content = content_clean.replace('\n\nSPEAKER_', '\n\n**SPEAKER_')
+    md_content = md_content.replace(':\n', ':**\n')
+    with open(md_path, 'w', encoding='utf-8') as f:
+        f.write(md_content)
+    
+    return output_path
+
+
+# ============================================================================
 # Shared instruction template for all AI providers
+# ============================================================================
 SYSTEM_PROMPT = "You are an expert transcript editor specializing in Ethereum and blockchain technology."
 
 INSTRUCTION_TEMPLATE = """You are an expert transcript editor specializing in Ethereum and blockchain technology.
@@ -398,37 +461,17 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
     if not corrected:
         return None, new_ollama_process
     
-    # Clean up
-    corrected_lines = [line.rstrip() for line in corrected.split('\n')]
-    corrected_clean = '\n'.join(corrected_lines)
+    # Extract transcriber name and basename from input file
+    basename, transcriber = extract_transcriber_from_filename(transcript_path)
     
-    # Save output
-    transcript_file = Path(transcript_path)
-    output_dir = Path("outputs")
-    output_dir.mkdir(exist_ok=True)
-    
-    # Extract transcriber from filename
-    transcriber = "whisperx"
-    base_name = transcript_file.stem
-    
-    for service in ['whisperx', 'assemblyai', 'deepgram', 'openai']:
-        if f'_{service}_raw' in base_name:
-            transcriber = service
-            base_name = base_name.replace(f'_{service}_raw', '')
-            break
-    
-    # Build output path
-    output_path = output_dir / f"{base_name}_{transcriber}_{provider}_processed.txt"
-    
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(corrected_clean)
-    
-    # Save markdown
-    md_output_path = output_path.with_suffix('.md')
-    md_content = corrected_clean.replace('\n\nSPEAKER_', '\n\n**SPEAKER_')
-    md_content = md_content.replace(':\n', ':**\n')
-    with open(md_output_path, 'w', encoding='utf-8') as f:
-        f.write(md_content)
+    # Save using utility function
+    output_path = save_processed_files(
+        "outputs",
+        basename,
+        transcriber,
+        provider,
+        corrected
+    )
     
     print(f"      ✓ Saved: {output_path}")
     
