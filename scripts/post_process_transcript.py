@@ -217,7 +217,7 @@ def process_with_gemini(transcript, api_key, context):
     return response.text
 
 def process_with_deepseek(transcript, api_key, context):
-    """Process transcript using DeepSeek Chat"""
+    """Process transcript using DeepSeek Chat with chunking (same strategy as OpenAI)"""
     # Hardcoded best model
     model = "deepseek-chat"
     try:
@@ -230,18 +230,33 @@ def process_with_deepseek(transcript, api_key, context):
         api_key=api_key,
         base_url="https://api.deepseek.com"
     )
-    prompt = build_prompt(context, transcript)
     
-    response = client.chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": prompt}
-        ],
-        max_tokens=16384  # Maximum supported
-    )
+    # Use chunking like OpenAI (same API architecture and token limits)
+    print(f"   Transcript size: {len(transcript)} chars - using chunking for complete output")
+    print(f"   Splitting into chunks for processing...")
     
-    return response.choices[0].message.content
+    chunks = split_transcript_by_speakers(transcript, max_chunk_size=15000)
+    print(f"   Processing {len(chunks)} chunks...")
+    
+    corrected_chunks = []
+    for i, chunk in enumerate(chunks, 1):
+        print(f"   Processing chunk {i}/{len(chunks)}...", end=' ', flush=True)
+        
+        prompt = build_prompt(context, chunk)
+        response = client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=16384  # Maximum supported
+        )
+        
+        corrected_chunks.append(response.choices[0].message.content)
+        print("✓")
+    
+    # Combine chunks
+    return '\n\n'.join(corrected_chunks)
 
 def process_with_ollama(transcript, context):
     """Process transcript using local Ollama with qwen2.5:32b (auto-managed service)"""
