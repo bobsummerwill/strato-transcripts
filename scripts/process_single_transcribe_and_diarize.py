@@ -53,6 +53,8 @@ def validate_api_key(env_var):
 def save_transcript_files(output_dir, basename, service_name, segments, speaker_key="speaker"):
     """
     Save transcript in both txt and md formats with consistent naming.
+    TXT format: No timestamps (clean text only)
+    MD format: With timestamps for reference
     
     Args:
         output_dir: Directory to save files
@@ -67,7 +69,7 @@ def save_transcript_files(output_dir, basename, service_name, segments, speaker_
     output_path = Path(output_dir) / f"{basename}_{service_name}_raw.txt"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
-    # Save text version
+    # Save text version (NO timestamps)
     with open(output_path, 'w', encoding='utf-8') as f:
         current_speaker = None
         for segment in segments:
@@ -75,11 +77,10 @@ def save_transcript_files(output_dir, basename, service_name, segments, speaker_
             if speaker != current_speaker:
                 f.write(f"\n{speaker}:\n")
                 current_speaker = speaker
-            start_time = segment.get("start", 0)
             text = segment.get("text", "").strip()
-            f.write(f"[{start_time:.1f}s] {text}\n")
+            f.write(f"{text}\n")
     
-    # Save markdown version
+    # Save markdown version (WITH timestamps)
     md_path = output_path.with_suffix('.md')
     with open(md_path, 'w', encoding='utf-8') as f:
         current_speaker = None
@@ -98,6 +99,8 @@ def save_transcript_files(output_dir, basename, service_name, segments, speaker_
 def save_raw_transcript_from_text(output_dir, basename, service_name, formatted_text):
     """
     Save pre-formatted transcript text in both txt and md formats.
+    TXT format: No timestamps (clean text only)
+    MD format: With timestamps for reference
     
     Args:
         output_dir: Directory to save files
@@ -108,14 +111,23 @@ def save_raw_transcript_from_text(output_dir, basename, service_name, formatted_
     Returns:
         Path object for the .txt file
     """
+    import re
+    
     output_path = Path(output_dir) / f"{basename}_{service_name}_raw.txt"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
-    # Save text version
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(formatted_text)
+    # Save text version (NO timestamps)
+    # Strip timestamps like [150.9s] from beginning of lines
+    text_lines = []
+    for line in formatted_text.split('\n'):
+        # Remove timestamp pattern [XXX.Xs] at start of line
+        clean_line = re.sub(r'^\[[\d.]+s\] ', '', line)
+        text_lines.append(clean_line)
     
-    # Save markdown version (convert SPEAKER_ labels to bold)
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(text_lines))
+    
+    # Save markdown version (WITH timestamps, convert SPEAKER_ labels to bold)
     md_path = output_path.with_suffix('.md')
     md_content = formatted_text.replace('SPEAKER_', '**SPEAKER_').replace(':', ':**', 1)
     with open(md_path, 'w', encoding='utf-8') as f:

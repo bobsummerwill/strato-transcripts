@@ -76,6 +76,8 @@ def extract_transcriber_from_filename(filepath):
 def save_processed_files(output_dir, basename, transcriber, processor, content):
     """
     Save processed transcript in both txt and md formats with consistent naming.
+    TXT format: No timestamps (clean text only)
+    MD format: With timestamps for reference
     
     Args:
         output_dir: Directory to save files  
@@ -87,6 +89,8 @@ def save_processed_files(output_dir, basename, transcriber, processor, content):
     Returns:
         Path object for the .txt file
     """
+    import re
+    
     output_path = Path(output_dir) / f"{basename}_{transcriber}_{processor}_processed.txt"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
@@ -94,11 +98,18 @@ def save_processed_files(output_dir, basename, transcriber, processor, content):
     content_lines = [line.rstrip() for line in content.split('\n')]
     content_clean = '\n'.join(content_lines)
     
-    # Save text version
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(content_clean)
+    # Save text version (NO timestamps)
+    # Strip timestamps like [150.9s] from beginning of lines
+    text_lines = []
+    for line in content_clean.split('\n'):
+        # Remove timestamp pattern [XXX.Xs] at start of line
+        clean_line = re.sub(r'^\[[\d.]+s\] ', '', line)
+        text_lines.append(clean_line)
     
-    # Save markdown version (convert SPEAKER_ labels to bold)
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(text_lines))
+    
+    # Save markdown version (WITH timestamps, convert SPEAKER_ labels to bold)
     md_path = output_path.with_suffix('.md')
     md_content = content_clean.replace('\n\nSPEAKER_', '\n\n**SPEAKER_')
     md_content = md_content.replace(':\n', ':**\n')
