@@ -22,8 +22,10 @@
 #   7. Applies compatibility patches to WhisperX
 #   8. Upgrades packages for compatibility
 #   9. Applies compatibility patches to SpeechBrain
-#  10. Verifies package installations
-#  11. Sets up environment configuration file
+#  10. Configures LD_LIBRARY_PATH for NVIDIA
+#  11. Verifies package installations
+#  12. Builds Ethereum glossaries
+#  13. Sets up environment configuration file
 #
 # REQUIREMENTS:
 #   - Ubuntu 24.04 LTS (or compatible Debian-based system)
@@ -63,8 +65,10 @@ BLUE='\033[0;34m'      # Section headers
 NC='\033[0m'           # No Color (reset)
 
 # Project directories - resolved to absolute paths
-PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"  # Script's directory
-VENV_DIR="$PROJECT_DIR/venv"                                   # Virtual environment location
+# Script is in ./scripts/, so go up one level to project root
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"  # Project root (parent of scripts/)
+VENV_DIR="$PROJECT_DIR/venv"                  # Virtual environment location
 
 # Parse command-line arguments
 FORCE_CPU=false
@@ -95,7 +99,7 @@ echo ""
 # Sets HAS_NVIDIA flag used throughout script for conditional logic.
 # Can be overridden with --force-cpu flag to force CPU-only installation.
 # ==============================================================================
-echo -e "${YELLOW}[1/10] Detecting hardware...${NC}"
+echo -e "${YELLOW}[1/13] Detecting hardware...${NC}"
 
 if [ "$FORCE_CPU" = true ]; then
     HAS_NVIDIA=false
@@ -106,7 +110,7 @@ elif command -v nvidia-smi &> /dev/null && nvidia-smi &> /dev/null; then
     HAS_NVIDIA=true
     GPU_NAME=$(nvidia-smi --query-gpu=name --format=csv,noheader 2>/dev/null || echo "NVIDIA GPU")
     echo -e "${GREEN}✓ Detected NVIDIA GPU: $GPU_NAME${NC}"
-    echo "Will install PyTorch nightly with CUDA 12.8 support"
+    echo "Will install PyTorch nightly with CUDA 13.0 support"
 else
     HAS_NVIDIA=false
     echo -e "${YELLOW}⚠ No NVIDIA GPU detected - using CPU mode${NC}"
@@ -115,13 +119,14 @@ fi
 echo ""
 
 # ==============================================================================
-# Step 2: System Dependencies Installation
+# Step 2: System Dependencies and AI Tools Installation
 # ==============================================================================
-# Install required system packages using apt package manager.
-# These are low-level dependencies needed to build Python packages and process audio.
+# Install required system packages and optional AI tools.
+# System packages: Build tools, audio processing, Python development
+# Optional AI tools: Ollama for local/private AI post-processing (FREE)
 # Requires sudo access for system-wide installation.
 # ==============================================================================
-echo -e "${YELLOW}[2/10] Installing system dependencies...${NC}"
+echo -e "${YELLOW}[2/13] Installing system dependencies and AI tools...${NC}"
 echo "Installing required system packages:"
 echo "  - build-essential: C/C++ compilers for building Python packages"
 echo "  - ffmpeg: Audio/video processing for WhisperX"
@@ -129,9 +134,51 @@ echo "  - python3-dev: Python headers for compiling extensions"
 echo "  - python3-venv: Python virtual environment support"
 echo "  - python3-pip: Python package installer"
 echo "  - git: Version control for installing packages from GitHub"
+echo "  - curl: HTTP client for API requests"
+echo "  - ca-certificates: SSL/TLS certificates for secure connections"
+echo "  - libssl-dev: SSL development libraries"
+echo "  - libcurl4-openssl-dev: cURL development libraries for Python packages"
 sudo apt update
-sudo apt install -y build-essential ffmpeg python3-dev python3-venv python3-pip git
+sudo apt install -y build-essential ffmpeg python3-dev python3-venv python3-pip git curl ca-certificates libssl-dev libcurl4-openssl-dev
 echo -e "${GREEN}✓ System dependencies installed${NC}"
+
+echo ""
+echo "Installing Ollama for local AI post-processing (optional, FREE, private)..."
+if command -v ollama &> /dev/null; then
+    echo -e "${GREEN}✓ Ollama already installed${NC}"
+    OLLAMA_VERSION=$(ollama --version 2>/dev/null || echo "unknown")
+    echo "  Version: $OLLAMA_VERSION"
+else
+    echo "Downloading and installing Ollama..."
+    if curl -fsSL https://ollama.com/install.sh | sh; then
+        echo -e "${GREEN}✓ Ollama installed successfully${NC}"
+    else
+        echo -e "${YELLOW}⚠ Ollama installation failed (non-fatal)${NC}"
+        echo "  You can install it manually later: curl -fsSL https://ollama.com/install.sh | sh"
+    fi
+fi
+
+# Start Ollama service and pull default model
+if command -v ollama &> /dev/null; then
+    echo "Starting Ollama service..."
+    # Start in background, redirect output to avoid clutter
+    if ! pgrep -x "ollama" > /dev/null; then
+        nohup ollama serve > /tmp/ollama.log 2>&1 &
+        sleep 2  # Give service time to start
+        echo "✓ Ollama service started"
+    else
+        echo "✓ Ollama service already running"
+    fi
+    
+    echo "Pulling recommended Ollama model (qwen2.5:32b - fast and high-quality)..."
+    echo "This may take several minutes depending on your internet speed..."
+    if ollama pull qwen2.5:32b 2>&1 | grep -q "success"; then
+        echo -e "${GREEN}✓ Model qwen2.5:32b downloaded and ready${NC}"
+    else
+        # Try anyway, sometimes it succeeds but doesn't output "success"
+        echo -e "${YELLOW}⚠ Model pull completed (check with: ollama list)${NC}"
+    fi
+fi
 echo ""
 
 # ==============================================================================
@@ -141,12 +188,17 @@ echo ""
 # If venv already exists, it's removed and recreated to ensure clean state.
 # All subsequent Python packages will be installed into this venv.
 # ==============================================================================
-echo -e "${YELLOW}[3/10] Creating Python virtual environment...${NC}"
+echo -e "${YELLOW}[3/13] Creating Python virtual environment...${NC}"
 echo "Creating isolated Python environment to avoid conflicts with system packages"
 echo "Location: $VENV_DIR"
 if [ -d "$VENV_DIR" ]; then
     echo -e "${YELLOW}Warning: venv directory already exists. Removing...${NC}"
-    rm -rf "$VENV_DIR"
+    # Try normal removal first, fall back to sudo only if permission denied
+    if ! rm -rf "$VENV_DIR" 2>/dev/null; then
+        echo -e "${YELLOW}Permission denied - trying with sudo...${NC}"
+        echo "Note: This shouldn't be necessary. The venv may have been created with sudo previously."
+        sudo rm -rf "$VENV_DIR"
+    fi
 fi
 python3 -m venv "$VENV_DIR"
 echo -e "${GREEN}✓ Virtual environment created${NC}"
@@ -156,35 +208,50 @@ echo ""
 source "$VENV_DIR/bin/activate"
 
 # ==============================================================================
-# Step 4: PyTorch Installation
+# Step 4: WhisperX Installation
 # ==============================================================================
-# Install PyTorch 2.9.0 stable with CUDA 12.8 for Blackwell architecture support.
-# PyTorch 2.7+ includes stable Blackwell (sm_120) support for RTX 50-series.
-# Using stable release for better reliability and ecosystem compatibility.
+# Installs WhisperX and its base dependencies.
+# WhisperX pulls in PyTorch 2.8.0 as its dependency.
+# We install the optimal PyTorch version for this GPU in the next step.
 # ==============================================================================
-echo -e "${YELLOW}[4/10] Installing PyTorch 2.9.0 stable...${NC}"
-echo "Installing PyTorch 2.9.0 stable with CUDA 12.8 support"
-echo "Includes full Blackwell (sm_120) support for RTX 50-series GPUs"
-echo "This may take 2-5 minutes depending on internet speed..."
-if [ "$HAS_NVIDIA" = true ]; then
-    echo "Installing from: requirements-nvidia.txt (PyTorch 2.9.0 + CUDA 12.8)"
-    pip install -r "$PROJECT_DIR/requirements-nvidia.txt"
-else
-    echo "Installing from: requirements-cpu.txt (PyTorch 2.9.0 CPU-only)"
-    pip install -r "$PROJECT_DIR/requirements-cpu.txt"
-fi
-echo -e "${GREEN}✓ PyTorch 2.9.0 stable installed${NC}"
+echo -e "${YELLOW}[4/13] Installing WhisperX and base packages...${NC}"
+echo "Installing WhisperX and dependencies from requirements-base.txt"
+echo "Note: WhisperX includes PyTorch 2.8.0 (we install 2.9.0 next for GPU optimization)"
+echo "This may take 5-10 minutes..."
+pip install -r "$PROJECT_DIR/requirements-base.txt"
+echo -e "${GREEN}✓ WhisperX and base packages installed${NC}"
 echo ""
 
 # ==============================================================================
-# Step 5: PyTorch Verification
+# Step 5: PyTorch Installation
 # ==============================================================================
-# Verify PyTorch was installed correctly and can access hardware.
-# For NVIDIA: Checks CUDA availability, runs GPU matrix operations, tests cuDNN.
-# For CPU: Runs basic CPU matrix operations to confirm functionality.
-# Script exits with error if NVIDIA GPU is detected but CUDA isn't available.
+# Installs PyTorch 2.9.0 with CUDA 13.0 for optimal GPU performance.
+# PyTorch 2.9.0 provides full Blackwell (sm_120) support for RTX 50-series GPUs.
+# CUDA 13.0 offers the latest optimizations and performance improvements.
 # ==============================================================================
-echo -e "${YELLOW}[5/10] Verifying PyTorch installation...${NC}"
+echo -e "${YELLOW}[5/13] Installing PyTorch 2.9.0...${NC}"
+echo "Installing PyTorch 2.9.0 stable with CUDA 13.0"
+echo "Provides full Blackwell (sm_120) support for RTX 50-series GPUs"
+echo "This may take 2-5 minutes depending on internet speed..."
+if [ "$HAS_NVIDIA" = true ]; then
+    echo "Installing from: requirements-nvidia.txt (PyTorch 2.9.0 + CUDA 13.0)"
+    pip install --force-reinstall -r "$PROJECT_DIR/requirements-nvidia.txt"
+else
+    echo "Installing from: requirements-cpu.txt (PyTorch 2.9.0 CPU-only)"
+    pip install --force-reinstall -r "$PROJECT_DIR/requirements-cpu.txt"
+fi
+echo -e "${GREEN}✓ PyTorch 2.9.0 installed${NC}"
+echo ""
+
+# ==============================================================================
+# Step 6: PyTorch Verification
+# ==============================================================================
+# Verifies PyTorch installation and hardware accessibility.
+# For NVIDIA: Confirms CUDA availability, GPU operations, and cuDNN functionality.
+# For CPU: Confirms basic CPU tensor operations work correctly.
+# Ensures the installation is ready for machine learning workloads.
+# ==============================================================================
+echo -e "${YELLOW}[6/13] Verifying PyTorch installation...${NC}"
 echo "Verifying PyTorch installation and hardware access..."
 python3 -c "import torch; print(f'PyTorch: {torch.__version__}'); print(f'CUDA available: {torch.cuda.is_available()}'); print(f'GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"N/A\"}')"
 
@@ -210,31 +277,16 @@ fi
 echo ""
 
 # ==============================================================================
-# Step 6: Application Packages Installation
+# Step 8: WhisperX Compatibility Patches
 # ==============================================================================
-# Install WhisperX and its dependencies.
-# These packages are hardware-agnostic and work with both NVIDIA and CPU.
-# This step takes longest (5-10 min) due to downloading and installing packages.
-# ==============================================================================
-echo -e "${YELLOW}[6/10] Installing common packages...${NC}"
-echo "Installing WhisperX and dependencies from requirements-base.txt"
-echo "These packages are hardware-agnostic and work with both NVIDIA and CPU"
-echo "This may take 5-10 minutes..."
-pip install -r "$PROJECT_DIR/requirements-base.txt"
-echo -e "${GREEN}✓ Common packages installed${NC}"
-echo ""
-
-# ==============================================================================
-# Step 7: WhisperX Compatibility Patches
-# ==============================================================================
-# Patch WhisperX source code to use 'token' instead of 'use_auth_token'.
-# WhisperX uses deprecated parameter name incompatible with pyannote.audio 4.x.
+# Updates WhisperX source code to use 'token' parameter for HuggingFace authentication.
+# This enables compatibility with pyannote.audio 4.x API.
 # Patches are applied with sed and verified.
-# Files patched: vads/pyannote.py (global replace) and asr.py (line 412).
+# Files modified: vads/pyannote.py (global replace) and asr.py (line 412).
 # ==============================================================================
-echo -e "${YELLOW}[7/10] Applying WhisperX patches...${NC}"
-echo "Patching WhisperX to use 'token' parameter instead of deprecated 'use_auth_token'"
-echo "Required for compatibility with pyannote.audio 4.x"
+echo -e "${YELLOW}[7/13] Applying WhisperX patches...${NC}"
+echo "Updating WhisperX to use 'token' parameter for HuggingFace authentication"
+echo "Enables compatibility with pyannote.audio 4.x"
 WHISPERX_VADS="$VENV_DIR/lib/python3.12/site-packages/whisperx/vads/pyannote.py"
 WHISPERX_ASR="$VENV_DIR/lib/python3.12/site-packages/whisperx/asr.py"
 
@@ -263,46 +315,29 @@ echo -e "${GREEN}✓ WhisperX patches applied successfully${NC}"
 echo ""
 
 # ==============================================================================
-# Step 8: Package Upgrades for Compatibility
+# Step 9: pyannote.audio Installation
 # ==============================================================================
-# After WhisperX installation, perform necessary upgrades for compatibility.
-# Upgrade pyannote.audio 3.x to 4.0.0+ for PyTorch 2.9.0 compatibility.
-# Note: WhisperX may try to downgrade PyTorch to 2.8.0, so we reinstall if needed.
+# Installs pyannote.audio 4.0+, which provides PyTorch 2.9.0 compatibility.
+# Version 4.0+ is required to work with PyTorch 2.9.0's API and features.
 # ==============================================================================
-echo -e "${YELLOW}[8/10] Finalizing package versions...${NC}"
-
-# Upgrade pyannote.audio
-echo "Upgrading pyannote.audio 3.x to 4.0.0+ for PyTorch 2.9.0 compatibility..."
+echo -e "${YELLOW}[8/13] Installing pyannote.audio 4.0+ and AI providers...${NC}"
+echo "Installing pyannote.audio 4.0+ for PyTorch 2.9.0 compatibility..."
 pip install --upgrade "pyannote.audio>=4.0.0"
-echo -e "${GREEN}✓ pyannote.audio upgraded${NC}"
-
-# Check if PyTorch was downgraded and reinstall if needed
-PYTORCH_VERSION=$(python3 -c "import torch; print(torch.__version__)" 2>/dev/null || echo "unknown")
-if [[ "$PYTORCH_VERSION" != "2.9.0"* ]]; then
-    echo "PyTorch was downgraded to $PYTORCH_VERSION - reinstalling 2.9.0..."
-    if [ "$HAS_NVIDIA" = true ]; then
-        pip install --force-reinstall torch==2.9.0 torchvision==0.24.0 torchaudio==2.9.0 --index-url https://download.pytorch.org/whl/cu128
-    else
-        pip install --force-reinstall torch==2.9.0 torchvision==0.24.0 torchaudio==2.9.0 --index-url https://download.pytorch.org/whl/cpu
-    fi
-    echo -e "${GREEN}✓ PyTorch 2.9.0 reinstalled${NC}"
-else
-    echo "PyTorch 2.9.0 still installed - no reinstall needed"
-fi
+echo "Installing AI provider packages for post-processing..."
+pip install openai anthropic google-generativeai requests
+echo -e "${GREEN}✓ pyannote.audio 4.0+ and AI providers installed${NC}"
 echo ""
 
 # ==============================================================================
-# Step 9: SpeechBrain Compatibility Patches
+# Step 10: SpeechBrain Compatibility Patches
 # ==============================================================================
-# Patch SpeechBrain for compatibility with PyTorch nightly (torchaudio 2.1+).
-# Issue: torchaudio.list_audio_backends() was removed in newer versions but
-# SpeechBrain 1.0.3 still tries to call it, causing AttributeError.
-# Fix: Add hasattr() check before calling list_audio_backends().
-# This patch ensures SpeechBrain works with both old and new torchaudio versions.
+# Updates SpeechBrain to work with torchaudio 2.9.0's API.
+# Adds hasattr() check to gracefully handle different torchaudio versions.
+# This ensures SpeechBrain can detect available audio backends across versions.
 # ==============================================================================
-echo -e "${YELLOW}[9/12] Applying SpeechBrain compatibility patches...${NC}"
-echo "Patching SpeechBrain for torchaudio 2.1+ compatibility"
-echo "Issue: list_audio_backends() removed in newer torchaudio versions"
+echo -e "${YELLOW}[9/13] Applying SpeechBrain compatibility patches...${NC}"
+echo "Updating SpeechBrain for torchaudio 2.9.0 compatibility"
+echo "Adding version-agnostic audio backend detection"
 
 SPEECHBRAIN_BACKEND="$VENV_DIR/lib/python3.12/site-packages/speechbrain/utils/torch_audio_backend.py"
 
@@ -338,7 +373,7 @@ original = """    elif torchaudio_major >= 2 and torchaudio_minor >= 1:
             )"""
 
 replacement = """    elif torchaudio_major >= 2 and torchaudio_minor >= 1:
-        # list_audio_backends() was removed in newer torchaudio versions
+        # list_audio_backends() is not available in torchaudio 2.9.0
         if hasattr(torchaudio, 'list_audio_backends'):
             available_backends = torchaudio.list_audio_backends()
             if len(available_backends) == 0:
@@ -379,13 +414,52 @@ rm -f /tmp/speechbrain_patch.py
 echo ""
 
 # ==============================================================================
-# Step 10: Application Package Verification
+# Step 10: LD_LIBRARY_PATH Configuration (NVIDIA Only)
 # ==============================================================================
-# Test import of WhisperX and pyannote.audio to ensure they installed correctly.
-# These imports also verify all their dependencies are properly installed.
-# Catches common issues like missing dependencies or incompatible versions.
+# Configures system linker to locate PyTorch's CUDA libraries.
+# PyTorch packages CUDA libraries as separate pip packages in the venv.
+# LD_LIBRARY_PATH tells the system where to find these libraries at runtime.
+# Configuration persists across sessions by adding to ~/.bashrc.
 # ==============================================================================
-echo -e "${YELLOW}[10/11] Verifying package installations...${NC}"
+if [ "$HAS_NVIDIA" = true ]; then
+    echo -e "${YELLOW}[10/13] Configuring LD_LIBRARY_PATH for NVIDIA...${NC}"
+    echo "Adding all required CUDA library paths to ~/.bashrc"
+    echo "Required for PyTorch CUDA operations (cuDNN, cuBLAS, NVRTC, and CUDA 13.0 runtime)"
+    
+    BASHRC="$HOME/.bashrc"
+    # Add all CUDA library paths needed for PyTorch + pyannote operations
+    CUDNN_LIB="$VENV_DIR/lib/python3.12/site-packages/nvidia/cudnn/lib"
+    CUBLAS_LIB="$VENV_DIR/lib/python3.12/site-packages/nvidia/cublas/lib"
+    CU13_LIB="$VENV_DIR/lib/python3.12/site-packages/nvidia/cu13/lib"
+    LD_PATH_LINE="export LD_LIBRARY_PATH=$CUDNN_LIB:$CUBLAS_LIB:$CU13_LIB:\$LD_LIBRARY_PATH"
+
+    # Remove any existing entry
+    sed -i '/Added by install_packages_and_venv.sh/d' "$BASHRC"
+    sed -i '/nvidia.*LD_LIBRARY_PATH/d' "$BASHRC"
+    
+    # Add new entry
+    echo "" >> "$BASHRC"
+    echo "# Added by install_packages_and_venv.sh for PyTorch CUDA libraries" >> "$BASHRC"
+    echo "$LD_PATH_LINE" >> "$BASHRC"
+    
+    # Set for current session
+    export LD_LIBRARY_PATH="$CUDNN_LIB:$CUBLAS_LIB:$CU13_LIB:$LD_LIBRARY_PATH"
+    
+    echo -e "${GREEN}✓ LD_LIBRARY_PATH configured${NC}"
+else
+    echo -e "${YELLOW}[10/13] Skipping LD_LIBRARY_PATH configuration${NC}"
+    echo "Not needed for CPU-only installations"
+fi
+echo ""
+
+# ==============================================================================
+# Step 12: Application Package Verification
+# ==============================================================================
+# Verifies WhisperX and pyannote.audio can be imported successfully.
+# Import tests confirm all dependencies are properly installed and accessible.
+# This validation ensures the environment is ready for transcription tasks.
+# ==============================================================================
+echo -e "${YELLOW}[11/13] Verifying package installations...${NC}"
 echo "Testing imports to ensure all packages are properly installed and accessible"
 
 echo "Testing WhisperX import..."
@@ -398,13 +472,55 @@ echo -e "${GREEN}✓ All packages verified and ready to use${NC}"
 echo ""
 
 # ==============================================================================
-# Step 11: Environment File Setup
+# Step 13: Build Ethereum Glossaries
 # ==============================================================================
-# Create setup_env.sh from template if it doesn't exist.
-# This file stores HuggingFace token needed for downloading pyannote models.
-# User must manually edit this file to add their token (see post-install steps).
+# Extracts people names and technical terms for quality improvement.
+# These glossaries are used by AI post-processing to correct transcripts.
+# Runs extract_people.py and extract_terms.py if they exist.
+# Failures are non-fatal as these are optional enhancements.
 # ==============================================================================
-echo -e "${YELLOW}[11/11] Setting up environment configuration...${NC}"
+echo -e "${YELLOW}[12/13] Building Ethereum glossaries and project directories...${NC}"
+echo "Creating project directory structure..."
+mkdir -p "$PROJECT_DIR/intermediates"
+mkdir -p "$PROJECT_DIR/outputs"
+echo "✓ Created intermediates/ and outputs/ directories"
+
+echo "Extracting domain-specific terminology for transcript quality improvement"
+
+if [ -f "$PROJECT_DIR/scripts/extract_people.py" ]; then
+    echo "Running scripts/extract_people.py..."
+    if python3 "$PROJECT_DIR/scripts/extract_people.py" 2>/dev/null; then
+        echo -e "${GREEN}✓ People glossary created${NC}"
+    else
+        echo -e "${YELLOW}⚠ extract_people.py failed (EarlyDaysOfEthereum may not be available)${NC}"
+        echo "You can run manually later: python3 extract_people.py"
+    fi
+else
+    echo -e "${YELLOW}⚠ extract_people.py not found${NC}"
+fi
+
+if [ -f "$PROJECT_DIR/scripts/extract_terms.py" ]; then
+    echo "Running scripts/extract_terms.py..."
+    if python3 "$PROJECT_DIR/scripts/extract_terms.py" 2>/dev/null; then
+        echo -e "${GREEN}✓ Technical terms glossary created${NC}"
+    else
+        echo -e "${YELLOW}⚠ extract_terms.py failed${NC}"
+        echo "You can run manually later: python3 extract_terms.py"
+    fi
+else
+    echo -e "${YELLOW}⚠ extract_terms.py not found${NC}"
+fi
+
+echo ""
+
+# ==============================================================================
+# Step 14: Environment File Setup
+# ==============================================================================
+# Creates setup_env.sh from template if needed.
+# This file stores the HuggingFace token for downloading pyannote models.
+# User provides their token manually (see post-installation instructions).
+# ==============================================================================
+echo -e "${YELLOW}[13/13] Setting up environment configuration...${NC}"
 echo "Checking for setup_env.sh (required for HuggingFace authentication)"
 if [ ! -f "$PROJECT_DIR/setup_env.sh" ]; then
     if [ -f "$PROJECT_DIR/setup_env.sh.example" ]; then
@@ -437,12 +553,24 @@ echo "3. Accept model agreements:"
 echo "   - https://huggingface.co/pyannote/speaker-diarization-3.1"
 echo "   - https://huggingface.co/pyannote/segmentation-3.0"
 echo ""
+echo -e "${YELLOW}OPTIONAL: Get API keys for remote AI providers${NC}"
+echo ""
+echo "4. For cloud-based AI providers (if not using local Ollama):"
+echo "   - OpenAI (ChatGPT-5): https://platform.openai.com/api-keys"
+echo "   - Anthropic (Claude): https://console.anthropic.com/"
+echo "   - Google (Gemini): https://makersuite.google.com/app/apikey"
+echo "   - DeepSeek: https://platform.deepseek.com/"
+echo ""
 echo -e "${GREEN}Ready to use!${NC}"
 echo ""
-echo "Usage:"
+echo "Basic Usage:"
 echo "  source setup_env.sh"
 echo "  source venv/bin/activate"
-echo "  python3 transcribe_with_diarization.py audio.mp3"
+echo "  python3 scripts/transcribe_with_diarization.py audio.mp3 --high-quality"
 echo ""
-echo "See README.md for complete documentation."
+echo "Complete Pipeline (transcribe + AI correction):"
+echo "  ./scripts/transcribe_and_correct.sh audio.mp3 --provider openai"
+echo "  ./scripts/process_downloads.sh  # Batch process all MP3s in ~/Downloads"
+echo ""
+echo "See README.md and AI_PROVIDERS_GUIDE.md for complete documentation."
 echo ""

@@ -22,4 +22,8 @@
 #   5. Upgrade pyannote-audio to 4.0.1+
 # ==============================================================================
 
+# Core transcription package
 whisperx==3.7.4
+
+# Data processing (used by transcribe_with_diarization.py for speaker diarization)
+pandas==2.2.3

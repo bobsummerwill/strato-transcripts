@@ -211,19 +211,14 @@ WhisperX (with patches)
 GPU-Accelerated Transcription
 ```
 
-### PyTorch Version History
+### PyTorch 2.9.0 Stable
 
-**Evolution of Blackwell Support:**
-- **Before PyTorch 2.7 (pre-April 2025)**: RTX 50-series required nightly builds
-- **PyTorch 2.7 (April 2025)**: Prototype Blackwell support introduced
-- **PyTorch 2.9.0 (October 2025)**: Mature stable Blackwell support
-- **Current setup**: Using stable PyTorch 2.9.0 for reliability
+This setup uses PyTorch 2.9.0 stable for the following reasons:
 
-**Why PyTorch 2.9.0 Stable:**
-- Full Blackwell (sm_120) architecture support
-- Stable, well-tested releases (vs experimental nightly builds)
-- Better compatibility with ecosystem packages
-- Production-ready for RTX 50-series GPUs
+- Full Blackwell (sm_120) architecture support for RTX 50-series GPUs
+- Stable, well-tested release suitable for production use
+- Excellent compatibility with ecosystem packages (pyannote.audio 4.0.1+, WhisperX)
+- Reliable performance on all NVIDIA GPU generations
 
 ### Why CUDA 12.8 (not 13.0)?
 
@@ -251,16 +246,21 @@ sed -i '412s/use_auth_token=None/token=None/' venv/lib/python3.12/site-packages/
 
 ### LD_LIBRARY_PATH Configuration
 
-**Not needed with PyTorch 2.9.0 stable!** 
+**Required for cuDNN Library Loading**
 
-Previous versions using PyTorch nightly builds required manual `LD_LIBRARY_PATH` configuration to help the system linker find CUDA libraries. PyTorch 2.9.0 stable properly packages and locates these libraries automatically, so this workaround is no longer necessary.
+The system linker needs `LD_LIBRARY_PATH` to locate cuDNN libraries at runtime. The installation script automatically configures this by adding to your `~/.bashrc`:
 
-**If you upgraded from nightly builds:** You can safely remove old LD_LIBRARY_PATH entries from your `~/.bashrc`:
 ```bash
-# Remove lines added by old versions of install_packages_and_venv.sh
-sed -i '/Added by install_packages_and_venv.sh/d' ~/.bashrc
-sed -i '/nvidia.*LD_LIBRARY_PATH/d' ~/.bashrc
+# Automatically configured by install_packages_and_venv.sh
+export LD_LIBRARY_PATH=venv/lib/python3.12/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH
 ```
+
+**Why is this needed?**
+- PyTorch packages CUDA libraries (including cuDNN) as separate pip packages
+- The system linker needs to know where to find `libcudnn_cnn.so.9` at runtime
+- Without this, you'll see errors like: `Unable to load libcudnn_cnn.so.9.1.0`
+
+**Note:** This is automatically added to your `~/.bashrc` by the installation script and is set in the batch processing script. You don't need to configure it manually.
 
 ## Manual Setup (Advanced)
 
