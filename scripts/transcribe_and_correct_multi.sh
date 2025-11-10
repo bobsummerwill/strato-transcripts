@@ -16,7 +16,7 @@ if [ $# -eq 0 ]; then
     echo "Required:"
     echo "  <audio_file>             Path to MP3 audio file"
     echo "  --providers <list>       Comma-separated list of AI providers"
-    echo "                           (anthropic, openai, gemini, deepseek, ollama)"
+    echo "                           (anthropic, openai, gemini, deepseek, moonshot, ollama)"
     echo ""
     echo "Optional:"
     echo "  --batch-size <n>         Batch size for transcription (default: 16 GPU, 8 CPU)"
@@ -26,7 +26,7 @@ if [ $# -eq 0 ]; then
     echo "  $0 interview.mp3 --providers openai,gemini"
     echo ""
     echo "  # All providers"
-    echo "  $0 interview.mp3 --providers openai,gemini,ollama,anthropic,deepseek"
+    echo "  $0 interview.mp3 --providers anthropic,openai,gemini,deepseek,moonshot,ollama"
     echo ""
     echo "  # Single provider"
     echo "  $0 interview.mp3 --providers ollama"
@@ -107,6 +107,9 @@ for PROVIDER in "${PROVIDER_ARRAY[@]}"; do
         deepseek)
             echo "  - DeepSeek: deepseek-chat"
             ;;
+        moonshot)
+            echo "  - Moonshot: moonshot-v1-128k (128K context)"
+            ;;
     esac
 done
 echo "========================================================================"
@@ -185,6 +188,11 @@ for i in "${!PROVIDER_ARRAY[@]}"; do
     elif [ "$PROVIDER" = "deepseek" ]; then
         if [ -z "${DEEPSEEK_API_KEY:-}" ]; then
             echo "⊘ DEEPSEEK_API_KEY not defined or empty, skipping $PROVIDER"
+            SKIP_PROVIDER=true
+        fi
+    elif [ "$PROVIDER" = "moonshot" ]; then
+        if [ -z "${MOONSHOT_API_KEY:-}" ]; then
+            echo "⊘ MOONSHOT_API_KEY not defined or empty, skipping $PROVIDER"
             SKIP_PROVIDER=true
         fi
     fi

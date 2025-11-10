@@ -162,6 +162,37 @@ def test_deepseek():
         print(f"❌ Error: {e}")
         return False
 
+def test_moonshot():
+    """Test Moonshot Kimi connection"""
+    print("\n" + "="*60)
+    print("Testing MOONSHOT (moonshot-v1-128k)")
+    print("="*60)
+    
+    api_key = os.environ.get('MOONSHOT_API_KEY')
+    if not api_key or api_key == "" or api_key == "your_moonshot_api_key_here":
+        print("⚠️  API key not configured - skipping")
+        return "skipped"
+    
+    try:
+        import openai
+        client = openai.OpenAI(
+            api_key=api_key,
+            base_url="https://api.moonshot.cn/v1"
+        )
+        
+        response = client.chat.completions.create(
+            model="moonshot-v1-128k",
+            messages=[{"role": "user", "content": "Say 'hello' in one word"}],
+            max_tokens=10
+        )
+        
+        print(f"✅ Connected successfully")
+        print(f"Response: {response.choices[0].message.content}")
+        return True
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        return False
+
 def main():
     print("="*60)
     print("AI Provider Connectivity Test")
@@ -169,8 +200,9 @@ def main():
     
     results = {}
     
-    # Test in order: deepseek, gemini, anthropic, ollama, openai
+    # Test in order: deepseek, moonshot, gemini, anthropic, ollama, openai
     results['deepseek'] = test_deepseek()
+    results['moonshot'] = test_moonshot()
     results['gemini'] = test_gemini()
     results['anthropic'] = test_anthropic()
     results['ollama'] = test_ollama()

@@ -35,6 +35,10 @@ export GOOGLE_API_KEY="your_google_api_key_here"
 # Get key from: https://platform.deepseek.com/
 export DEEPSEEK_API_KEY="your_deepseek_api_key_here"
 
+# Moonshot Kimi (Chinese provider, 128K context)
+# Get key from: https://platform.moonshot.cn/
+export MOONSHOT_API_KEY="your_moonshot_api_key_here"
+
 # Ollama - No API key needed (runs locally, FREE, private)
 # Just ensure service is running: ollama serve
 # Models available: qwen2.5:32b, llama3.1:70b, etc.
@@ -71,6 +75,12 @@ if [ -n "$DEEPSEEK_API_KEY" ] && [ "$DEEPSEEK_API_KEY" != "your_deepseek_api_key
   echo "  DEEPSEEK_API_KEY: SET"
 else
   echo "  DEEPSEEK_API_KEY: NOT SET"
+fi
+
+if [ -n "$MOONSHOT_API_KEY" ] && [ "$MOONSHOT_API_KEY" != "your_moonshot_api_key_here" ]; then
+  echo "  MOONSHOT_API_KEY: SET"
+else
+  echo "  MOONSHOT_API_KEY: NOT SET"
 fi
 echo ""
 echo "You can now run the transcription pipeline:"

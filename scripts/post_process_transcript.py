@@ -258,6 +258,48 @@ def process_with_deepseek(transcript, api_key, context):
     # Combine chunks
     return '\n\n'.join(corrected_chunks)
 
+def process_with_moonshot(transcript, api_key, context):
+    """Process transcript using Moonshot Kimi v2 with chunking (OpenAI-compatible API)"""
+    # Hardcoded best model - moonshot-v1-128k has 128K context
+    model = "moonshot-v1-128k"
+    try:
+        import openai
+    except ImportError:
+        print("Error: openai package not installed. Install with: pip install openai")
+        return None
+    
+    client = openai.OpenAI(
+        api_key=api_key,
+        base_url="https://api.moonshot.cn/v1"
+    )
+    
+    # Use chunking for reliability (OpenAI-compatible API)
+    print(f"   Transcript size: {len(transcript)} chars - using chunking for complete output")
+    print(f"   Splitting into chunks for processing...")
+    
+    chunks = split_transcript_by_speakers(transcript, max_chunk_size=15000)
+    print(f"   Processing {len(chunks)} chunks...")
+    
+    corrected_chunks = []
+    for i, chunk in enumerate(chunks, 1):
+        print(f"   Processing chunk {i}/{len(chunks)}...", end=' ', flush=True)
+        
+        prompt = build_prompt(context, chunk)
+        response = client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=16384  # Standard for OpenAI-compatible APIs
+        )
+        
+        corrected_chunks.append(response.choices[0].message.content)
+        print("✓")
+    
+    # Combine chunks
+    return '\n\n'.join(corrected_chunks)
+
 def process_with_ollama(transcript, context):
     """Process transcript using local Ollama with qwen2.5:32b (auto-managed service)"""
     import subprocess
@@ -380,6 +422,8 @@ def process_transcript(transcript_path, api_key, provider="anthropic"):
         print(f"Model: gemini-2.5-pro (hardcoded)")
     elif provider == "deepseek":
         print(f"Model: deepseek-chat (hardcoded)")
+    elif provider == "moonshot":
+        print(f"Model: moonshot-v1-128k (hardcoded)")
     elif provider == "ollama":
         print(f"Model: qwen2.5:32b (hardcoded)")
     elif provider == "anthropic":
@@ -413,6 +457,8 @@ def process_transcript(transcript_path, api_key, provider="anthropic"):
         corrected = process_with_gemini(transcript, api_key, context)
     elif provider == "deepseek":
         corrected = process_with_deepseek(transcript, api_key, context)
+    elif provider == "moonshot":
+        corrected = process_with_moonshot(transcript, api_key, context)
     elif provider == "ollama":
         corrected = process_with_ollama(transcript, context)
     else:
@@ -507,6 +553,9 @@ Examples:
   # Using DeepSeek Chat (very cost-effective)
   python3 post_process_transcript.py transcript.txt --provider deepseek
   
+  # Using Moonshot Kimi v2 (Chinese, 128K context)
+  python3 post_process_transcript.py transcript.txt --provider moonshot
+  
   # Using Ollama qwen2.5:32b (local, FREE, private - auto-managed)
   python3 post_process_transcript.py transcript.txt --provider ollama
   
@@ -520,7 +569,7 @@ Examples:
     parser.add_argument("transcript", help="Path to transcript file")
     parser.add_argument("--api-key", help="API key (not needed for Ollama)")
     parser.add_argument("--provider", 
-                       choices=["anthropic", "openai", "gemini", "deepseek", "ollama"], 
+                       choices=["anthropic", "openai", "gemini", "deepseek", "moonshot", "ollama"], 
                        default="anthropic",
                        help="AI provider (default: anthropic). Each provider uses its best model.")
     
@@ -554,6 +603,13 @@ Examples:
             print("Error: DeepSeek API key required")
             print("Set DEEPSEEK_API_KEY or use --api-key")
             print("Get key: https://platform.deepseek.com/")
+            sys.exit(1)
+    elif args.provider == "moonshot":
+        api_key = args.api_key or os.environ.get('MOONSHOT_API_KEY')
+        if not api_key:
+            print("Error: Moonshot API key required")
+            print("Set MOONSHOT_API_KEY or use --api-key")
+            print("Get key: https://platform.moonshot.cn/")
             sys.exit(1)
     elif args.provider == "ollama":
         print("Using local Ollama - no API key required")
