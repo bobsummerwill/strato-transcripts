@@ -249,7 +249,7 @@ def process_with_deepseek(transcript, api_key, context):
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=16384  # Maximum supported
+            max_tokens=8192  # DeepSeek maximum is 8192
         )
         
         corrected_chunks.append(response.choices[0].message.content)
