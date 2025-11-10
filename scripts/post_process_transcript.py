@@ -359,8 +359,9 @@ def process_transcript(transcript_path, api_key, provider="anthropic",
     output_dir.mkdir(exist_ok=True)
     
     # Clean up filename: remove model/quality suffixes and _transcript_with_speakers
-    base_name = transcript_file.stem.replace('_transcript_with_speakers', '').replace('_lv2_lq', '').replace('_lv2_hq', '')
-    output_path = output_dir / f"{base_name}_corrected.txt"
+    # Keep Whisper model indicator (lv2, lv3, etc.) if present, add AI provider name
+    base_name = transcript_file.stem.replace('_transcript_with_speakers', '')
+    output_path = output_dir / f"{base_name}_{provider}_corrected.txt"
     
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(corrected_clean)
