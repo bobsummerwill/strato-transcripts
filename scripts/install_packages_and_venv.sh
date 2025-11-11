@@ -515,45 +515,20 @@ echo -e "${GREEN}✓ All AI provider SDKs verified${NC}"
 echo ""
 
 # ==============================================================================
-# Step 13: Build Ethereum Glossaries
+# Step 13: Create Project Directories
 # ==============================================================================
-# Extracts people names and technical terms for quality improvement.
-# These glossaries are used by AI post-processing to correct transcripts.
-# Runs extract_people.py and extract_terms.py if they exist.
-# Failures are non-fatal as these are optional enhancements.
+# Create intermediates and outputs directories for transcript processing.
+# Ethereum glossaries (people/terms) are now generated on-demand during
+# post-processing rather than at install time, as they're only needed then.
 # ==============================================================================
-echo -e "${YELLOW}[13/14] Building Ethereum glossaries and project directories...${NC}"
+echo -e "${YELLOW}[13/14] Creating project directories...${NC}"
 echo "Creating project directory structure..."
 mkdir -p "$PROJECT_DIR/intermediates"
 mkdir -p "$PROJECT_DIR/outputs"
 echo "✓ Created intermediates/ and outputs/ directories"
-
-echo "Extracting domain-specific terminology for transcript quality improvement"
-
-if [ -f "$PROJECT_DIR/scripts/extract_people.py" ]; then
-    echo "Running scripts/extract_people.py..."
-    if python3 "$PROJECT_DIR/scripts/extract_people.py" 2>/dev/null; then
-        echo -e "${GREEN}✓ People glossary created${NC}"
-    else
-        echo -e "${YELLOW}⚠ extract_people.py failed (EarlyDaysOfEthereum may not be available)${NC}"
-        echo "You can run manually later: python3 extract_people.py"
-    fi
-else
-    echo -e "${YELLOW}⚠ extract_people.py not found${NC}"
-fi
-
-if [ -f "$PROJECT_DIR/scripts/extract_terms.py" ]; then
-    echo "Running scripts/extract_terms.py..."
-    if python3 "$PROJECT_DIR/scripts/extract_terms.py" 2>/dev/null; then
-        echo -e "${GREEN}✓ Technical terms glossary created${NC}"
-    else
-        echo -e "${YELLOW}⚠ extract_terms.py failed${NC}"
-        echo "You can run manually later: python3 extract_terms.py"
-    fi
-else
-    echo -e "${YELLOW}⚠ extract_terms.py not found${NC}"
-fi
-
+echo ""
+echo "Note: Ethereum glossaries will be generated when needed during post-processing"
+echo "      Run scripts/extract_people.py or extract_terms.py manually if desired"
 echo ""
 
 # ==============================================================================
