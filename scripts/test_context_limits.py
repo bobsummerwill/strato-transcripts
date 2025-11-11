@@ -12,7 +12,6 @@ POST-PROCESSING PROVIDERS TESTED:
 - OpenAI (GPT-4o)
 - Google (Gemini 2.5 Pro)
 - DeepSeek (Chat)
-- Moonshot (Kimi K2-Instruct)
 - Ollama (qwen2.5:32b local)
 
 TRANSCRIPTION PROVIDERS (audio length limits, not context windows):
@@ -27,7 +26,7 @@ TRANSCRIPTION PROVIDERS (audio length limits, not context windows):
 
 Usage:
     python3 scripts/test_context_limits.py
-    python3 scripts/test_context_limits.py --providers anthropic,openai,moonshot
+    python3 scripts/test_context_limits.py --providers anthropic,openai,deepseek
     python3 scripts/test_context_limits.py --quick  # Fast test with smaller increments
 """
 
@@ -386,72 +385,6 @@ def test_deepseek_context(test_sizes=[10000, 30000, 50000, 64000]):
     return results
 
 
-def test_moonshot_context(test_sizes=[10000, 50000, 100000, 150000, 200000]):
-    """Test Moonshot Kimi K2-Instruct context limits"""
-    try:
-        import openai
-    except ImportError:
-        return {"error": "openai package not installed", "status": "skip"}
-    
-    api_key = os.environ.get('MOONSHOT_API_KEY')
-    if not api_key:
-        return {"error": "MOONSHOT_API_KEY not set", "status": "skip"}
-    
-    print_info("Testing Moonshot Kimi K2-Instruct...")
-    client = openai.OpenAI(
-        api_key=api_key,
-        base_url="https://api.moonshot.cn/v1"
-    )
-    
-    results = {
-        "provider": "Moonshot",
-        "model": "kimi-k2-instruct",
-        "advertised": "200,000+ tokens",
-        "tested": [],
-        "max_working": 0,
-        "status": "tested"
-    }
-    
-    for size in test_sizes:
-        print(f"  Testing {size:,} tokens...", end=" ", flush=True)
-        payload, actual_tokens = generate_test_payload(size)
-        
-        try:
-            start = time.time()
-            response = client.chat.completions.create(
-                model="kimi-k2-instruct",
-                max_tokens=50,
-                messages=[{
-                    "role": "user",
-                    "content": f"{payload}\n\nRespond with just: OK"
-                }]
-            )
-            elapsed = time.time() - start
-            
-            print_success(f"{actual_tokens:,} tokens OK ({elapsed:.1f}s)")
-            results["tested"].append({
-                "target": size,
-                "actual": actual_tokens,
-                "success": True,
-                "time": elapsed
-            })
-            results["max_working"] = actual_tokens
-            time.sleep(1)
-            
-        except Exception as e:
-            error_msg = str(e)
-            print_failure(f"Failed - {error_msg[:100]}")
-            results["tested"].append({
-                "target": size,
-                "actual": actual_tokens,
-                "success": False,
-                "error": error_msg[:200]
-            })
-            break
-    
-    return results
-
-
 def test_ollama_context(test_sizes=[2000, 4000, 8000, 16000, 32000]):
     """Test Ollama local model context limits"""
     try:
@@ -618,7 +551,7 @@ def main():
     )
     parser.add_argument(
         "--providers",
-        default="anthropic,openai,gemini,deepseek,moonshot,ollama",
+        default="anthropic,openai,gemini,deepseek,ollama",
         help="Comma-separated list of providers to test"
     )
     parser.add_argument(
@@ -658,8 +591,6 @@ def main():
             result = test_gemini_context()
         elif provider == 'deepseek':
             result = test_deepseek_context()
-        elif provider == 'moonshot':
-            result = test_moonshot_context()
         elif provider == 'ollama':
             result = test_ollama_context()
         else:

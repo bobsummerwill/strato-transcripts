@@ -16,7 +16,7 @@ if [ $# -eq 0 ]; then
     echo "  --transcribers <list>       Comma-separated transcription services"
     echo "                              (whisperx, kimi, deepgram, assemblyai, sonix, speechmatics, novita)"
     echo "  --processors <list>         Comma-separated AI post-processors"
-    echo "                              (anthropic, openai, gemini, deepseek, moonshot, ollama)"
+    echo "                              (anthropic, openai, gemini, deepseek, ollama)"
     echo ""
     echo "Optional:"
     echo "  --batch-size <n>            Batch size for WhisperX (default: 16 GPU, 8 CPU)"

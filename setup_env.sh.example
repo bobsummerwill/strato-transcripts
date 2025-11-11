@@ -35,10 +35,6 @@ export GOOGLE_API_KEY=""
 # Get key from: https://platform.deepseek.com/
 export DEEPSEEK_API_KEY=""
 
-# Moonshot Kimi (Chinese provider, 128K context)
-# Get key from: https://platform.moonshot.cn/
-export MOONSHOT_API_KEY=""
-
 # AssemblyAI (Cloud transcription with speaker diarization)
 # Get key from: https://www.assemblyai.com/
 export ASSEMBLYAI_API_KEY=""
@@ -95,12 +91,6 @@ if [ -n "$DEEPSEEK_API_KEY" ] && [ "$DEEPSEEK_API_KEY" != "" ]; then
   echo "  DEEPSEEK_API_KEY: SET"
 else
   echo "  DEEPSEEK_API_KEY: NOT SET"
-fi
-
-if [ -n "$MOONSHOT_API_KEY" ] && [ "$MOONSHOT_API_KEY" != "" ]; then
-  echo "  MOONSHOT_API_KEY: SET"
-else
-  echo "  MOONSHOT_API_KEY: NOT SET"
 fi
 
 if [ -n "$ASSEMBLYAI_API_KEY" ] && [ "$ASSEMBLYAI_API_KEY" != "" ]; then

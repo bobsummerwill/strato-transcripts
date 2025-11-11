@@ -163,37 +163,6 @@ def test_deepseek():
         print(f"❌ Error: {e}")
         return False
 
-def test_moonshot():
-    """Test Moonshot Kimi K2-Instruct connection"""
-    print("\n" + "="*60)
-    print("Testing MOONSHOT (kimi-k2-instruct)")
-    print("="*60)
-    
-    api_key = os.environ.get('MOONSHOT_API_KEY')
-    if not api_key or api_key == "" or api_key == "your_moonshot_api_key_here":
-        print("⚠️  API key not configured - skipping")
-        return "skipped"
-    
-    try:
-        import openai
-        client = openai.OpenAI(
-            api_key=api_key,
-            base_url="https://api.moonshot.ai/v1"
-        )
-        
-        response = client.chat.completions.create(
-            model="kimi-k2-instruct",
-            messages=[{"role": "user", "content": "Say 'hello' in one word"}],
-            max_tokens=10
-        )
-        
-        print(f"✅ Connected successfully")
-        print(f"Response: {response.choices[0].message.content}")
-        return True
-    except Exception as e:
-        print(f"❌ Error: {e}")
-        return False
-
 def test_assemblyai():
     """Test AssemblyAI transcription service"""
     print("\n" + "="*60)
@@ -254,7 +223,6 @@ def main():
     
     # Test AI post-processing providers
     results['deepseek'] = test_deepseek()
-    results['moonshot'] = test_moonshot()
     results['gemini'] = test_gemini()
     results['anthropic'] = test_anthropic()
     results['ollama'] = test_ollama()

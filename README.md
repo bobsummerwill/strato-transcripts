@@ -60,7 +60,6 @@ All services include speaker diarization (identifying who said what).
 | **OpenAI** | GPT-4o | $2.50/M tokens | Chunking, reliable |
 | **Gemini** | Gemini 2.5 Pro | $1.25/M tokens | 2M context |
 | **DeepSeek** | DeepSeek Chat | $0.14/M tokens | Cost-effective |
-| **Moonshot** | Kimi K2 | $0.42/M tokens | 256K context |
 | **Ollama** | Qwen2.5:32b | FREE | Local, private |
 
 ## Usage Examples
@@ -173,7 +172,7 @@ outputs/
 Where:
 - `{basename}` = Original audio filename without extension
 - `{transcriber}` = whisperx, kimi, deepgram, assemblyai, sonix, speechmatics, or novita
-- `{processor}` = anthropic, openai, gemini, deepseek, moonshot, or ollama
+- `{processor}` = anthropic, openai, gemini, deepseek, or ollama
 
 ## GPU Support
 

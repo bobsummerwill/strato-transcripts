@@ -38,7 +38,7 @@ while [[ $# -gt 0 ]]; do
             echo "                           Default: whisperx"
             echo ""
             echo "  --processors <list>      Comma-separated AI post-processors"
-            echo "                           (anthropic, openai, gemini, deepseek, moonshot, ollama)"
+            echo "                           (anthropic, openai, gemini, deepseek, ollama)"
             echo "                           Default: openai (ChatGPT-5/gpt-4o)"
             echo ""
             echo "Examples:"
@@ -50,7 +50,7 @@ while [[ $# -gt 0 ]]; do
             echo ""
             echo "  # All combinations (7 transcribers × 6 processors = 42)"
             echo "  $0 --transcribers whisperx,kimi,deepgram,assemblyai,sonix,speechmatics,novita \\"
-            echo "     --processors anthropic,openai,gemini,deepseek,moonshot,ollama"
+            echo "     --processors anthropic,openai,gemini,deepseek,ollama"
             exit 1
             ;;
     esac

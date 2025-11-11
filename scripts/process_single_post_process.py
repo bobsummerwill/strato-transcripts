@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Multi-provider AI transcript post-processor for Ethereum/blockchain content
-Supports: Claude (Anthropic), ChatGPT-5 (OpenAI), Gemini (Google), DeepSeek, Moonshot, and Ollama (local)
+Supports: Claude (Anthropic), ChatGPT-5 (OpenAI), Gemini (Google), DeepSeek, and Ollama (local)
 Uses domain context to correct technical terms and speaker names
 
 Now supports batch processing of multiple transcripts × processors internally
@@ -405,32 +405,6 @@ def process_with_deepseek(transcript, api_key, context):
     print(" ✓")
     return '\n\n'.join(corrected_chunks)
 
-def process_with_moonshot(transcript, api_key, context):
-    """Process transcript using Moonshot Kimi K2-Instruct"""
-    model = "kimi-k2-instruct"
-    try:
-        import openai
-    except ImportError:
-        raise ImportError("openai package not installed")
-    
-    client = openai.OpenAI(api_key=api_key, base_url="https://api.moonshot.cn/v1")
-    prompt = build_prompt(context, transcript)
-    
-    print(f"      Transcript size: {len(transcript)} chars")
-    print(f"      Processing: ", end='', flush=True)
-    
-    response = client.chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": prompt}
-        ],
-        max_tokens=16384
-    )
-    
-    print("✓")
-    return response.choices[0].message.content
-
 def process_with_ollama(transcript, context, ollama_process=None):
     """Process transcript using local Ollama - reuses existing process if provided"""
     import subprocess
@@ -533,8 +507,6 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
             corrected = process_with_gemini(transcript, api_keys['gemini'], context)
         elif provider == "deepseek":
             corrected = process_with_deepseek(transcript, api_keys['deepseek'], context)
-        elif provider == "moonshot":
-            corrected = process_with_moonshot(transcript, api_keys['moonshot'], context)
         elif provider == "ollama":
             corrected, new_ollama_process = process_with_ollama(transcript, context, ollama_process)
     except Exception as e:
@@ -571,13 +543,13 @@ def main():
     
     parser.add_argument("transcripts", nargs='+', help="Transcript file path(s)")
     parser.add_argument("--processors", required=True,
-                       help="Comma-separated list of processors (anthropic,openai,gemini,deepseek,moonshot,ollama)")
+                       help="Comma-separated list of processors (anthropic,openai,gemini,deepseek,ollama)")
     
     args = parser.parse_args()
     
     # Parse processors
     processors = [p.strip() for p in args.processors.split(',')]
-    valid_processors = {'anthropic', 'openai', 'gemini', 'deepseek', 'moonshot', 'ollama'}
+    valid_processors = {'anthropic', 'openai', 'gemini', 'deepseek', 'ollama'}
     
     for proc in processors:
         if proc not in valid_processors:
@@ -594,8 +566,7 @@ def main():
         'anthropic': 'ANTHROPIC_API_KEY',
         'openai': 'OPENAI_API_KEY',
         'gemini': 'GOOGLE_API_KEY',
-        'deepseek': 'DEEPSEEK_API_KEY',
-        'moonshot': 'MOONSHOT_API_KEY'
+        'deepseek': 'DEEPSEEK_API_KEY'
     }
     
     for proc in processors:
