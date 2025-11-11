@@ -1,5 +1,0 @@
-Ethereum blockchain podcast interview. Technical terms: smart contracts, ERC-20, ERC-721, NFTs, DeFi, decentralized finance, Web3, MetaMask, Solidity, gas fees, validators, staking, proof-of-stake, consensus, Ethereum Virtual Machine, EVM, dApps, decentralized applications, layer 2, rollups, sharding, zkSync, Optimism, Arbitrum.
-
-Key people: Vitalik Buterin, Gavin Wood, Joseph Lubin, Jeffrey Wilcke, Alex van de Sande, Alexis Roussel, Taylor Gerring, Fabian Vogelsteller, Anthony D'Onofrio, Bob Summerwill, William Entriken.
-
-Projects: Ethereum Foundation, ConsenSys, Parity Technologies, OpenEthereum, Geth, Prysm, Lighthouse.
