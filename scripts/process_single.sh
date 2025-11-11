@@ -123,10 +123,8 @@ fi
 echo "PHASE 2: Post-Processing"
 echo "========================================================================"
 
-# Build transcript list for Python
-TRANSCRIPT_LIST="${TRANSCRIPT_FILES[@]}"
-
-if ! python3 scripts/process_single_post_process.py $TRANSCRIPT_LIST --processors "$PROCESSORS"; then
+# Pass transcript files with proper quoting to handle spaces
+if ! python3 scripts/process_single_post_process.py "${TRANSCRIPT_FILES[@]}" --processors "$PROCESSORS"; then
     echo "✗ Post-processing phase failed"
     exit 1
 fi
