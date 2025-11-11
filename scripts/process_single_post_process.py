@@ -462,6 +462,8 @@ def process_with_ollama(transcript, context, ollama_process=None):
 
 def process_single_combination(transcript_path, provider, api_keys, context, ollama_process=None):
     """Process a single transcript with a single provider"""
+    start_time = time.time()
+    
     # Load transcript
     with open(transcript_path, 'r', encoding='utf-8') as f:
         transcript = f.read()
@@ -484,11 +486,13 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
         elif provider == "ollama":
             corrected, new_ollama_process = process_with_ollama(transcript, context, ollama_process)
     except Exception as e:
-        print(f"      ✗ Processing failed: {e}")
-        return None, new_ollama_process
+        elapsed = time.time() - start_time
+        print(f"      ✗ Processing failed ({elapsed:.1f}s): {e}")
+        return None, new_ollama_process, elapsed
     
     if not corrected:
-        return None, new_ollama_process
+        elapsed = time.time() - start_time
+        return None, new_ollama_process, elapsed
     
     # Extract transcriber name and basename from input file
     basename, transcriber = extract_transcriber_from_filename(transcript_path)
@@ -502,9 +506,10 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
         corrected
     )
     
-    print(f"      ✓ Saved: {output_path}")
+    elapsed = time.time() - start_time
+    print(f"      ✓ Saved: {output_path} ({elapsed:.1f}s)")
     
-    return output_path, new_ollama_process
+    return output_path, new_ollama_process, elapsed
 
 def main():
     parser = argparse.ArgumentParser(
@@ -573,6 +578,7 @@ def main():
     success_count = 0
     failed_count = 0
     combo_num = 0
+    combo_times = []
     
     print("="*70)
     print(f"Processing {len(args.transcripts)} transcript(s) × {len(processors)} processor(s) = {total} combinations")
@@ -580,6 +586,7 @@ def main():
     print()
     
     ollama_process = None
+    pipeline_start = time.time()
     
     try:
         for transcript_path in args.transcripts:
@@ -590,9 +597,10 @@ def main():
             
             for processor in processors:
                 combo_num += 1
+                combo_start = time.time()
                 print(f"[{combo_num}/{total}] {Path(transcript_path).name} + {processor}")
                 
-                result, new_ollama_process = process_single_combination(
+                result, new_ollama_process, elapsed = process_single_combination(
                     transcript_path, processor, api_keys, context, ollama_process
                 )
                 
@@ -602,6 +610,7 @@ def main():
                 
                 if result:
                     success_count += 1
+                    combo_times.append((Path(transcript_path).name, processor, elapsed))
                 else:
                     failed_count += 1
                 
@@ -619,7 +628,9 @@ def main():
                 ollama_process.kill()
                 print("✓ Ollama force stopped")
     
-    # Summary
+    # Summary with timing
+    pipeline_elapsed = time.time() - pipeline_start
+    
     print("="*70)
     print("✓ Post-Processing Complete")
     print("="*70)
@@ -627,6 +638,19 @@ def main():
     print(f"Successful: {success_count}")
     print(f"Failed: {failed_count}")
     print(f"Skipped: {len(skip_processors) * len(args.transcripts)}")
+    print()
+    print(f"Total time: {pipeline_elapsed:.1f}s ({pipeline_elapsed/60:.1f}min)")
+    
+    if combo_times:
+        print()
+        print("Per-combination timing:")
+        for transcript, processor, elapsed in combo_times:
+            print(f"  {transcript} + {processor}: {elapsed:.1f}s")
+        
+        if len(combo_times) > 1:
+            avg_time = sum(t[2] for t in combo_times) / len(combo_times)
+            print(f"\n  Average: {avg_time:.1f}s per combination")
+    
     print()
     print("Output files in: ./outputs/")
     print("="*70)
