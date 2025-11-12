@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Multi-provider AI transcript post-processor for Ethereum/blockchain content
-Supports: Claude (Anthropic), ChatGPT-5 (OpenAI), Gemini (Google), DeepSeek, Novita (Kimi K2), Gwen (Qwen2.5-7B-Instruct local)
+Supports: Claude (Anthropic), GPT-4o (OpenAI), Gemini (Google), DeepSeek, Kimi K2 (Moonshot via Novita), Qwen (local via Ollama)
 Uses domain context to correct technical terms and speaker names
 
 Now supports batch processing of multiple transcripts × processors internally
@@ -400,8 +400,8 @@ def process_with_deepseek(transcript, api_key, context):
     print(" ✓")
     return result
 
-def process_with_novita(transcript, api_key, context):
-    """Process transcript using Novita AI's Moonshot Kimi K2 Thinking model with streaming
+def process_with_kimi(transcript, api_key, context):
+    """Process transcript using Moonshot Kimi K2 Thinking model (via Novita AI) with streaming
     
     Uses moonshotai/kimi-k2-thinking - advanced reasoning model with massive context window
     Excellent for long transcripts with complex technical content and reasoning tasks
@@ -447,8 +447,8 @@ def estimate_tokens(text):
     """Rough token estimation (words * 1.3)"""
     return int(len(text.split()) * 1.3)
 
-def process_with_gwen(transcript, context, ollama_process=None):
-    """Process transcript using Gwen (Qwen2.5-7B-Instruct via Ollama) - reuses existing process if provided
+def process_with_qwen(transcript, context, ollama_process=None):
+    """Process transcript using Qwen 2.5 7B (via Ollama) - reuses existing process if provided
     
     Note: Qwen2.5-7B has a 32K token context limit. Typical transcripts (60-90 min) need ~45K tokens.
     For longer transcripts, consider using cloud providers (Gemini, OpenAI, DeepSeek, Anthropic).
@@ -600,10 +600,10 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
             corrected = process_with_gemini(transcript, api_keys['gemini'], context)
         elif provider == "deepseek":
             corrected = process_with_deepseek(transcript, api_keys['deepseek'], context)
-        elif provider == "novita":
-            corrected = process_with_novita(transcript, api_keys['novita'], context)
-        elif provider == "gwen":
-            corrected, new_ollama_process = process_with_gwen(transcript, context, ollama_process)
+        elif provider == "kimi":
+            corrected = process_with_kimi(transcript, api_keys['kimi'], context)
+        elif provider == "qwen":
+            corrected, new_ollama_process = process_with_qwen(transcript, context, ollama_process)
     except Exception as e:
         elapsed = time.time() - start_time
         print(f"      {failure(f'Processing failed ({elapsed:.1f}s): {e}')}")
@@ -655,7 +655,7 @@ def main():
     
     parser.add_argument("transcripts", nargs='+', help="Transcript file path(s)")
     parser.add_argument("--processors", required=True,
-                       help="Comma-separated list of processors (anthropic,openai,gemini,deepseek,novita,gwen)")
+                       help="Comma-separated list of processors (anthropic,openai,gemini,deepseek,kimi,qwen)")
     
     args = parser.parse_args()
     
@@ -683,7 +683,7 @@ def main():
     
     # Parse processors
     processors = [p.strip() for p in args.processors.split(',')]
-    valid_processors = {'anthropic', 'openai', 'gemini', 'deepseek', 'novita', 'gwen'}
+    valid_processors = {'anthropic', 'openai', 'gemini', 'deepseek', 'kimi', 'qwen'}
     
     for proc in processors:
         if proc not in valid_processors:
@@ -701,12 +701,12 @@ def main():
         'openai': 'OPENAI_API_KEY',
         'gemini': 'GOOGLE_API_KEY',
         'deepseek': 'DEEPSEEK_API_KEY',
-        'novita': 'NOVITA_API_KEY'
+        'kimi': 'NOVITA_API_KEY'  # Kimi K2 via Novita platform
     }
     
     for proc in processors:
-        if proc == 'gwen':
-            # Gwen (local via Ollama) doesn't need an API key
+        if proc == 'qwen':
+            # Qwen (local via Ollama) doesn't need an API key
             continue
         
         env_var = key_mapping.get(proc)

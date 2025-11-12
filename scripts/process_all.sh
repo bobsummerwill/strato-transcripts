@@ -38,7 +38,7 @@ while [[ $# -gt 0 ]]; do
             echo "                           Default: whisperx"
             echo ""
             echo "  --processors <list>      Comma-separated AI post-processors"
-            echo "                           (anthropic, openai, gemini, deepseek, novita, ollama)"
+            echo "                           (anthropic, openai, gemini, deepseek, kimi, qwen)"
             echo "                           Default: openai (ChatGPT-5/gpt-4o)"
             echo ""
             echo "Examples:"

@@ -57,9 +57,9 @@ All services include speaker diarization (identifying who said what).
 | **Anthropic** | Claude Sonnet 4.5 | Cloud API | 200K | $3/$15 per MTok | Complex technical content, long transcripts |
 | **OpenAI** | GPT-4o | Cloud API | 128K | $1.25/$10 per MTok | Reliable, consistent results |
 | **Gemini** | Gemini 2.5 Pro | Cloud API | 128K | ~$1.25 per MTok | Very long transcripts, multilingual |
-| **Novita** | Kimi K2 Thinking | Cloud API | 262K | $0.60/$2.50 per MTok | Advanced reasoning, cost-effective |
+| **Kimi** | K2 Thinking (Moonshot via Novita) | Cloud API | 262K | $0.60/$2.50 per MTok | Advanced reasoning, cost-effective |
 | **DeepSeek** | DeepSeek Chat | Cloud API | 64K | $0.27/$1.12 per MTok | Budget-friendly, good quality |
-| **Qwen (Ollama)** | Qwen2.5:7b | Local | 32K | FREE | Local, private, 12GB GPU ⚠️ |
+| **Qwen** | Qwen2.5:7b (local via Ollama) | Local | 32K | FREE | Local, private, 12GB GPU ⚠️ |
 
 **Model Selection Notes:**
 - **For best quality:** Use Anthropic Claude Sonnet 4.5 or OpenAI GPT-4o
@@ -93,7 +93,7 @@ All services include speaker diarization (identifying who said what).
 # 2 transcribers × 3 processors = 6 combinations
 ./scripts/process_single.sh interview.mp3 \
   --transcribers whisperx,deepgram \
-  --processors anthropic,openai,novita
+  --processors anthropic,openai,kimi
 ```
 
 ### Batch Processing
@@ -180,7 +180,7 @@ outputs/
 Where:
 - `{basename}` = Original audio filename without extension
 - `{transcriber}` = whisperx, deepgram, assemblyai, sonix, or speechmatics
-- `{processor}` = anthropic, openai, gemini, deepseek, novita, or ollama
+- `{processor}` = anthropic, openai, gemini, deepseek, kimi, or qwen
 
 ## GPU Support
 
