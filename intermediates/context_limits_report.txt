@@ -1,0 +1,34 @@
+======================================================================
+AI PROVIDER CONTEXT WINDOW TEST RESULTS
+======================================================================
+
+Test Date: 2025-11-11 16:21:29
+
+For typical 60-90 minute transcripts:
+  Estimated tokens: 20,000 - 40,000 tokens
+  Plus system prompts: ~5,000 tokens
+  Total needed: ~45,000 tokens maximum
+
+======================================================================
+
+
+Gwen: qwen2.5:7b
+  Advertised: 32,768 tokens (model dependent)
+  Maximum Tested: 32,027 tokens
+  Recommended Safe Limit: 30,425 tokens (with 5% buffer)
+  Chunking Needed: YES - Transcripts may need splitting
+
+  Test Results:
+    ✓ 2,011 tokens - OK (2.4s)
+    ✓ 8,041 tokens - OK (1.3s)
+    ✓ 16,014 tokens - OK (1.3s)
+    ✓ 24,054 tokens - OK (1.3s)
+    ✓ 32,027 tokens - OK (1.4s)
+
+======================================================================
+
+RECOMMENDATIONS FOR YOUR TRANSCRIPTS:
+======================================================================
+
+REQUIRE CHUNKING (not ideal for quality):
+  - Gwen: 32,027 tokens

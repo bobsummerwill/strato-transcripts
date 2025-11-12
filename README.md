@@ -29,7 +29,7 @@ process_single.sh (orchestration)
     ↓
 Phase 1: Transcription
     process_single_transcribe_and_diarize.py
-    - Runs all transcribers internally (whisperx, deepgram, assemblyai, sonix, speechmatics)
+    - Runs all transcribers internally (whisperx, deepgram, assemblyai, sonix, speechmatics, novita)
     - Outputs: intermediates/*_raw.txt
     ↓
 Phase 2: Post-Processing  
@@ -42,24 +42,27 @@ Phase 2: Post-Processing
 
 All services include speaker diarization (identifying who said what).
 
-| Service | Type | Cost/hour | Speed |
-|---------|------|-----------|-------|
-| **WhisperX** | Local GPU | FREE | 5-10 min |
-| **Deepgram** | Cloud API | $0.41 | 23 sec |
-| **AssemblyAI** | Cloud API | $1.44 | 3-4 min |
-| **Sonix** | Cloud API | $10.00 | ~2 min |
-| **Speechmatics** | Cloud API | $4.50 | ~1 min |
+| Service | Model | Type | Cost/hour | Speed |
+|---------|-------|------|-----------|-------|
+| **WhisperX** | large-v3 | Local GPU | FREE | 5-10 min |
+| **Kimi-Audio** | 7B-Instruct | Local GPU | FREE | ~1.5x RT |
+| **Deepgram** | nova-3-general | Cloud API | $0.41 | 23 sec |
+| **AssemblyAI** | Best | Cloud API | $1.44 | 3-4 min |
+| **Sonix** | Standard | Cloud API | $10.00 | ~2 min |
+| **Speechmatics** | Enhanced | Cloud API | $4.50 | ~1 min |
+| **Novita AI** | qwen2.5-omni | Cloud API | TBD | TBD |
 
 ## AI Post-Processors
 
-| Provider | Model | Cost | Features |
-|----------|-------|------|----------|
-| **Anthropic** | Claude Sonnet 4.5 | $3/M tokens | Streaming, 64K output |
-| **OpenAI** | GPT-4o | $2.50/M tokens | Chunking, reliable |
-| **Gemini** | Gemini 2.5 Pro | $1.25/M tokens | 2M context |
-| **DeepSeek** | DeepSeek Chat | $0.14/M tokens | Cost-effective |
-| **Moonshot** | Kimi K2 | $0.42/M tokens | 256K context |
-| **Ollama** | Qwen2.5:32b | FREE | Local, private |
+| Provider | Model | Type | Context | Cost | Features |
+|----------|-------|------|---------|------|----------|
+| **Anthropic** | Claude Sonnet 4.5 | Cloud API | 200K | $3/M tokens | Streaming, 64K output |
+| **OpenAI** | GPT-4o | Cloud API | 128K | $2.50/M tokens | Reliable, fast |
+| **Gemini** | Gemini 2.5 Pro | Cloud API | 128K | $1.25/M tokens | Best for long transcripts |
+| **DeepSeek** | DeepSeek Chat | Cloud API | 64K | $0.14/M tokens | Cost-effective |
+| **Qwen (Ollama)** | Qwen2.5:7b | Local | 32K | FREE | Local, private ⚠️ |
+
+**Note on Qwen:** Alibaba's Qwen 2.5 model served locally via Ollama. The 32K context limit is suitable for transcripts up to ~40 minutes. Typical 60-90 minute transcripts (~45K tokens) may be truncated. For longer content, use cloud providers.
 
 ## Usage Examples
 
@@ -151,6 +154,7 @@ export MOONSHOT_API_KEY="sk-..."      # https://platform.moonshot.cn/
 ```
 intermediates/
   audio_whisperx_raw.txt         # WhisperX output
+  audio_kimi_raw.txt             # Kimi-Audio output
   audio_deepgram_raw.txt          # Deepgram output
   audio_whisperx_raw.md           # Markdown version
 ```
@@ -169,8 +173,8 @@ outputs/
 
 Where:
 - `{basename}` = Original audio filename without extension
-- `{transcriber}` = whisperx, deepgram, assemblyai, sonix, or speechmatics
-- `{processor}` = anthropic, openai, gemini, deepseek, moonshot, or ollama
+- `{transcriber}` = whisperx, kimi, deepgram, assemblyai, sonix, speechmatics, or novita
+- `{processor}` = anthropic, openai, gemini, deepseek, or ollama
 
 ## GPU Support
 

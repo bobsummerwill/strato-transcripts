@@ -154,19 +154,22 @@ sudo apt install -y \
 echo -e "${GREEN}✓ System dependencies installed${NC}"
 
 echo ""
-echo "Installing Ollama for local AI post-processing (optional, FREE, private)..."
+echo "Installing/upgrading Ollama for local AI post-processing (optional, FREE, private)..."
 if command -v ollama &> /dev/null; then
-    echo -e "${GREEN}✓ Ollama already installed${NC}"
-    OLLAMA_VERSION=$(ollama --version 2>/dev/null || echo "unknown")
-    echo "  Version: $OLLAMA_VERSION"
+    CURRENT_VERSION=$(ollama --version 2>/dev/null | grep -oP 'ollama version is \K[0-9.]+' || echo "unknown")
+    echo "Current version: $CURRENT_VERSION"
+    echo "Upgrading to latest version..."
 else
-    echo "Downloading and installing Ollama..."
-    if curl -fsSL https://ollama.com/install.sh | sh; then
-        echo -e "${GREEN}✓ Ollama installed successfully${NC}"
-    else
-        echo -e "${YELLOW}⚠ Ollama installation failed (non-fatal)${NC}"
-        echo "  You can install it manually later: curl -fsSL https://ollama.com/install.sh | sh"
-    fi
+    echo "Installing Ollama..."
+fi
+
+# Always run installer - it handles upgrades and stops/restarts service automatically
+if curl -fsSL https://ollama.com/install.sh | sh; then
+    NEW_VERSION=$(ollama --version 2>/dev/null | grep -oP 'ollama version is \K[0-9.]+' || echo "unknown")
+    echo -e "${GREEN}✓ Ollama ready (version: $NEW_VERSION)${NC}"
+else
+    echo -e "${YELLOW}⚠ Ollama installation/upgrade failed (non-fatal)${NC}"
+    echo "  You can install it manually later: curl -fsSL https://ollama.com/install.sh | sh"
 fi
 
 # Start Ollama service and pull default model
@@ -181,14 +184,17 @@ if command -v ollama &> /dev/null; then
         echo "✓ Ollama service already running"
     fi
     
-    echo "Pulling recommended Ollama model (qwen2.5:32b - fast and high-quality)..."
-    echo "This may take several minutes depending on your internet speed..."
-    if ollama pull qwen2.5:32b 2>&1 | grep -q "success"; then
-        echo -e "${GREEN}✓ Model qwen2.5:32b downloaded and ready${NC}"
+    echo "Pulling Ollama model for Gwen (qwen2.5:7b - optimized for 12GB GPU)..."
+    echo "This will download ~4.7GB - may take several minutes depending on your internet speed..."
+    if ollama pull qwen2.5:7b 2>&1 | grep -q "success"; then
+        echo -e "${GREEN}✓ Model qwen2.5:7b downloaded and ready for Gwen${NC}"
     else
         # Try anyway, sometimes it succeeds but doesn't output "success"
         echo -e "${YELLOW}⚠ Model pull completed (check with: ollama list)${NC}"
     fi
+    echo "Note: You can also install larger models if you have more VRAM:"
+    echo "  ollama pull qwen2.5:14b  # ~8.5GB model, needs 16GB+ VRAM"
+    echo "  ollama pull qwen2.5:32b  # ~20GB model, needs 24GB+ VRAM"
 fi
 echo ""
 
@@ -219,37 +225,45 @@ echo ""
 source "$VENV_DIR/bin/activate"
 
 # ==============================================================================
-# Step 4: WhisperX Installation
+# Step 4: Install Base Packages
 # ==============================================================================
-# Installs WhisperX and its base dependencies.
-# WhisperX pulls in PyTorch 2.8.0 as its dependency.
-# We install the optimal PyTorch version for this GPU in the next step.
+# Installs WhisperX, AI provider SDKs, and dependencies from requirements.txt.
+# WhisperX will pull PyTorch 2.8.0, which we'll upgrade in the next step.
+# Includes transcription services (AssemblyAI, Deepgram, OpenAI, Kimi-Audio)
+# and post-processing services (Anthropic, Google Gemini, OpenAI).
 # ==============================================================================
-echo -e "${YELLOW}[4/14] Installing WhisperX and base packages...${NC}"
-echo "Installing WhisperX and dependencies from requirements-base.txt"
-echo "Note: WhisperX includes PyTorch 2.8.0 (we install 2.9.0 next for GPU optimization)"
+echo -e "${YELLOW}[4/14] Installing base packages...${NC}"
+echo "Installing WhisperX, AI provider SDKs, and dependencies from requirements.txt"
+echo "Note: WhisperX will pull PyTorch 2.8.0 (we'll upgrade to 2.9.0 next)"
 echo "This may take 5-10 minutes..."
-pip install -r "$PROJECT_DIR/requirements-base.txt"
-echo -e "${GREEN}✓ WhisperX and base packages installed${NC}"
+pip install -r "$PROJECT_DIR/requirements.txt"
+echo -e "${GREEN}✓ Base packages installed${NC}"
 echo ""
 
 # ==============================================================================
-# Step 5: PyTorch Installation
+# Step 5: PyTorch Upgrade
 # ==============================================================================
-# Installs PyTorch 2.9.0 with CUDA 13.0 for optimal GPU performance.
+# Upgrades PyTorch from 2.8.0 (WhisperX default) to 2.9.0 with correct build.
 # PyTorch 2.9.0 provides full Blackwell (sm_120) support for RTX 50-series GPUs.
 # CUDA 13.0 offers the latest optimizations and performance improvements.
+# Uses --force-reinstall to ensure correct CUDA/CPU variant is installed.
 # ==============================================================================
-echo -e "${YELLOW}[5/14] Installing PyTorch 2.9.0...${NC}"
-echo "Installing PyTorch 2.9.0 stable with CUDA 13.0"
+echo -e "${YELLOW}[5/14] Upgrading PyTorch to 2.9.0...${NC}"
+echo "Upgrading PyTorch 2.8.0 → 2.9.0 with correct build for detected hardware"
 echo "Provides full Blackwell (sm_120) support for RTX 50-series GPUs"
 echo "This may take 2-5 minutes depending on internet speed..."
 if [ "$HAS_NVIDIA" = true ]; then
-    echo "Installing from: requirements-nvidia.txt (PyTorch 2.9.0 + CUDA 13.0)"
-    pip install --force-reinstall -r "$PROJECT_DIR/requirements-nvidia.txt"
+    echo "Installing: PyTorch 2.9.0 with CUDA 13.0 support"
+    pip install --force-reinstall --index-url https://download.pytorch.org/whl/cu130 \
+        torch==2.9.0 \
+        torchvision==0.24.0 \
+        torchaudio==2.9.0
 else
-    echo "Installing from: requirements-cpu.txt (PyTorch 2.9.0 CPU-only)"
-    pip install --force-reinstall -r "$PROJECT_DIR/requirements-cpu.txt"
+    echo "Installing: PyTorch 2.9.0 CPU-only build"
+    pip install --force-reinstall --index-url https://download.pytorch.org/whl/cpu \
+        torch==2.9.0 \
+        torchvision==0.24.0 \
+        torchaudio==2.9.0
 fi
 echo -e "${GREEN}✓ PyTorch 2.9.0 installed${NC}"
 echo ""
@@ -481,75 +495,46 @@ echo -e "${GREEN}✓ All packages verified and ready to use${NC}"
 echo ""
 
 # ==============================================================================
-# Step 12: AI Provider SDKs Installation
+# Step 12: Verify AI Provider SDKs
 # ==============================================================================
-# Installs Python SDKs for cloud AI transcription and post-processing services.
-# Transcription: AssemblyAI, Deepgram, OpenAI Whisper API
-# Post-processing: Anthropic Claude, Google Gemini, OpenAI GPT, DeepSeek
-# Also includes requests library for HTTP operations.
+# Verifies that AI provider SDKs were installed from requirements.txt.
+# These packages were already installed in Step 4 along with WhisperX.
 # ==============================================================================
-echo -e "${YELLOW}[12/14] Installing AI provider SDKs...${NC}"
-echo "Installing Python packages for AI transcription and post-processing services:"
-echo "  Transcription providers:"
-echo "    - assemblyai: AssemblyAI cloud transcription with diarization"
-echo "    - deepgram-sdk: Deepgram cloud transcription (fastest, cheapest)"
-echo "    - openai: OpenAI Whisper API transcription"
-echo "  Post-processing providers:"
-echo "    - anthropic: Claude 3.5 Sonnet for transcript correction"
-echo "    - google-generativeai: Gemini 2.5 Pro for transcript correction"
-echo "    - openai: GPT-4o for transcript correction (reused from above)"
-echo "  Utilities:"
-echo "    - requests: HTTP client for API operations"
-pip install \
-  anthropic \
-  assemblyai \
-  deepgram-sdk \
-  google-generativeai \
-  openai \
-  requests
-echo -e "${GREEN}✓ AI provider SDKs installed${NC}"
+echo -e "${YELLOW}[12/14] Verifying AI provider SDKs...${NC}"
+echo "Verifying packages installed from requirements.txt:"
+echo "  Cloud transcription: assemblyai, deepgram-sdk, openai"
+echo "  Kimi-Audio support: transformers, librosa"
+echo "  AI post-processing: anthropic, google-generativeai"
+echo "  Utilities: requests"
+
+# Test key imports
+python3 -c "import assemblyai; print('✓ assemblyai')"
+python3 -c "import deepgram; print('✓ deepgram-sdk')"
+python3 -c "import openai; print('✓ openai')"
+python3 -c "import transformers; print('✓ transformers')"
+python3 -c "import librosa; print('✓ librosa')"
+python3 -c "import anthropic; print('✓ anthropic')"
+python3 -c "import google.generativeai; print('✓ google-generativeai')"
+python3 -c "import requests; print('✓ requests')"
+
+echo -e "${GREEN}✓ All AI provider SDKs verified${NC}"
 echo ""
 
 # ==============================================================================
-# Step 13: Build Ethereum Glossaries
+# Step 13: Create Project Directories
 # ==============================================================================
-# Extracts people names and technical terms for quality improvement.
-# These glossaries are used by AI post-processing to correct transcripts.
-# Runs extract_people.py and extract_terms.py if they exist.
-# Failures are non-fatal as these are optional enhancements.
+# Create intermediates and outputs directories for transcript processing.
+# Ethereum glossaries (people/terms) are now generated on-demand during
+# post-processing rather than at install time, as they're only needed then.
 # ==============================================================================
-echo -e "${YELLOW}[13/14] Building Ethereum glossaries and project directories...${NC}"
+echo -e "${YELLOW}[13/14] Creating project directories...${NC}"
 echo "Creating project directory structure..."
 mkdir -p "$PROJECT_DIR/intermediates"
 mkdir -p "$PROJECT_DIR/outputs"
 echo "✓ Created intermediates/ and outputs/ directories"
-
-echo "Extracting domain-specific terminology for transcript quality improvement"
-
-if [ -f "$PROJECT_DIR/scripts/extract_people.py" ]; then
-    echo "Running scripts/extract_people.py..."
-    if python3 "$PROJECT_DIR/scripts/extract_people.py" 2>/dev/null; then
-        echo -e "${GREEN}✓ People glossary created${NC}"
-    else
-        echo -e "${YELLOW}⚠ extract_people.py failed (EarlyDaysOfEthereum may not be available)${NC}"
-        echo "You can run manually later: python3 extract_people.py"
-    fi
-else
-    echo -e "${YELLOW}⚠ extract_people.py not found${NC}"
-fi
-
-if [ -f "$PROJECT_DIR/scripts/extract_terms.py" ]; then
-    echo "Running scripts/extract_terms.py..."
-    if python3 "$PROJECT_DIR/scripts/extract_terms.py" 2>/dev/null; then
-        echo -e "${GREEN}✓ Technical terms glossary created${NC}"
-    else
-        echo -e "${YELLOW}⚠ extract_terms.py failed${NC}"
-        echo "You can run manually later: python3 extract_terms.py"
-    fi
-else
-    echo -e "${YELLOW}⚠ extract_terms.py not found${NC}"
-fi
-
+echo ""
+echo "Note: Ethereum glossaries will be generated when needed during post-processing"
+echo "      Run scripts/extract_people.py or extract_terms.py manually if desired"
 echo ""
 
 # ==============================================================================
@@ -606,6 +591,9 @@ echo "Basic Usage:"
 echo "  source setup_env.sh"
 echo "  source venv/bin/activate"
 echo "  ./scripts/process_single.sh audio.mp3 --transcribers whisperx --processors openai"
+echo ""
+echo "Available transcribers: whisperx, kimi, deepgram, assemblyai, sonix, speechmatics, novita"
+echo "Available processors: anthropic, openai, gemini, deepseek, ollama"
 echo ""
 echo "Batch Processing:"
 echo "  ./scripts/process_all.sh --transcribers deepgram --processors anthropic"

@@ -1,0 +1,67 @@
+# WhisperX
+#
+# Dependency Chain:
+#   WhisperX 3.7.4 requires:
+#     - torch~=2.8.0 (pulls PyTorch 2.8.x)
+#     - pyannote-audio<4.0.0 (older API)
+#     - Uses use_auth_token parameter
+#
+#   For optimal performance we use:
+#     - PyTorch 2.9.0 stable (CUDA 12.8 for NVIDIA GPUs)
+#     - pyannote-audio 4.0.1+ (newer API with better compatibility)
+#
+# Resolution (see install_packages_and_venv.sh for details):
+#   1. Install WhisperX 3.7.4 (pulls PyTorch 2.8.0 and pyannote <4.0)
+#   2. Upgrade to PyTorch 2.9.0 stable (install script sets pip index for CUDA/CPU)
+#   3. Patch WhisperX code for pyannote 4.x API (use_auth_token → token)
+#   4. Upgrade pyannote-audio to 4.0.1+
+#   5. Apply SpeechBrain patches for torchaudio 2.9.0 compatibility
+
+whisperx==3.7.4             # Core transcription package
+pandas==2.2.3               # Data processing for speaker diarization (latest compatible with WhisperX)
+
+# PyTorch (install script sets pip index based on detected hardware)
+#
+# USING STABLE PYTORCH 2.9.0:
+# - PyTorch 2.7+ includes Blackwell architecture (sm_120) support
+# - CUDA 13.0 provides latest optimizations for RTX 50-series GPUs
+# - Stable release with production-ready features
+# - Same version across GPU and CPU for consistency
+#
+# HARDWARE SUPPORT:
+# - NVIDIA GPUs: CUDA 13.0 builds (install script uses cu130 pip index)
+# - CPU-only: For systems without NVIDIA GPU, AMD GPUs (install script uses cpu pip index)
+#
+# NOTE:
+# - GPU: Latest CUDA version supported by PyTorch 2.9.0, works with drivers 535+
+# - CPU: CPU-only builds don't need CUDA, no special requirements
+# - PyTorch 2.9 has mature Blackwell support vs 2.7's prototype
+
+# PyTorch packages are NOT installed from requirements-base.txt
+# WhisperX will pull torch~=2.8.0, then install script explicitly upgrades to 2.9.0
+# torch==2.9.0                # Core PyTorch (GPU or CPU depending on hardware)
+# torchvision==0.24.0         # Computer vision library
+# torchaudio==2.9.0           # Audio processing library
+
+# Anthropic (Claude)
+anthropic==0.72.1           # Claude 3.5 Sonnet for transcript correction
+
+# AssemblyAI
+assemblyai==0.46.0          # Cloud transcription with speaker diarization
+
+# Deepgram
+deepgram-sdk==5.3.0         # Cloud transcription (fastest, cheapest)
+
+# Google Gemini
+google-generativeai==0.8.5  # Gemini 2.5 Pro for transcript correction
+
+# Kimi-Audio (Local 7B end-to-end model)
+transformers==4.57.1        # HuggingFace transformers for model loading
+librosa==0.11.0             # Audio processing (loading/resampling)
+
+# OpenAI
+openai==2.7.2               # Whisper API transcription & GPT-4o post-processing
+tiktoken==0.8.0             # OpenAI tokenizer for accurate token counting
+
+# Utilities
+requests==2.32.5            # HTTP client for API operations

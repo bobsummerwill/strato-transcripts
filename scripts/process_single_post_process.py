@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Multi-provider AI transcript post-processor for Ethereum/blockchain content
-Supports: Claude (Anthropic), ChatGPT-5 (OpenAI), Gemini (Google), DeepSeek, Moonshot, and Ollama (local)
+Supports: Claude (Anthropic), ChatGPT-5 (OpenAI), Gemini (Google), DeepSeek, Gwen (Qwen2.5-7B-Instruct local)
 Uses domain context to correct technical terms and speaker names
 
 Now supports batch processing of multiple transcripts × processors internally
@@ -64,7 +64,7 @@ def extract_transcriber_from_filename(filepath):
     """
     filename = Path(filepath).stem
     
-    for service in ['whisperx', 'assemblyai', 'deepgram', 'openai']:
+    for service in ['whisperx', 'kimi', 'assemblyai', 'deepgram', 'sonix', 'speechmatics', 'novita', 'openai']:
         if f'_{service}_raw' in filename:
             basename = filename.replace(f'_{service}_raw', '')
             return basename, service
@@ -166,8 +166,21 @@ def load_glossary():
     }
 
 def load_people_list():
-    """Load ethereum_people.txt if available"""
+    """Load ethereum_people.txt, generating it if needed"""
     people_file = Path("intermediates/ethereum_people.txt")
+    
+    # Generate if doesn't exist
+    if not people_file.exists():
+        extract_script = Path("scripts/extract_people.py")
+        if extract_script.exists():
+            import subprocess
+            try:
+                print("  Generating ethereum_people.txt...")
+                subprocess.run(["python3", str(extract_script)], 
+                             check=True, capture_output=True, text=True)
+            except subprocess.CalledProcessError:
+                # Silent failure - file may not be critical
+                pass
     
     if people_file.exists():
         with open(people_file, 'r', encoding='utf-8') as f:
@@ -176,8 +189,21 @@ def load_people_list():
     return []
 
 def load_terms_list():
-    """Load ethereum_technical_terms.txt if available"""
+    """Load ethereum_technical_terms.txt, generating it if needed"""
     terms_file = Path("intermediates/ethereum_technical_terms.txt")
+    
+    # Generate if doesn't exist
+    if not terms_file.exists():
+        extract_script = Path("scripts/extract_terms.py")
+        if extract_script.exists():
+            import subprocess
+            try:
+                print("  Generating ethereum_technical_terms.txt...")
+                subprocess.run(["python3", str(extract_script)], 
+                             check=True, capture_output=True, text=True)
+            except subprocess.CalledProcessError:
+                # Silent failure - file may not be critical
+                pass
     
     if terms_file.exists():
         with open(terms_file, 'r', encoding='utf-8') as f:
@@ -187,6 +213,8 @@ def load_terms_list():
 
 def build_context_summary():
     """Build a concise context summary from available resources"""
+    import subprocess
+    
     context_parts = []
     
     # Add glossary info if available
@@ -200,11 +228,35 @@ def build_context_summary():
     
     # Try to load from separate files if glossary doesn't exist
     if not glossary["people"]:
+        # Generate people list if it doesn't exist
+        people_file = Path("intermediates/ethereum_people.txt")
+        if not people_file.exists():
+            extract_script = Path("scripts/extract_people.py")
+            if extract_script.exists():
+                try:
+                    print("  Generating ethereum_people.txt...")
+                    subprocess.run(["python3", str(extract_script)], 
+                                 check=True, capture_output=True, text=True, cwd=Path.cwd())
+                except subprocess.CalledProcessError:
+                    pass  # Silent failure - file may not be critical
+        
         people = load_people_list()
         if people:
             context_parts.append(f"Known People ({len(people)}): {', '.join(people[:30])}")
     
     if not glossary["technical_terms"]:
+        # Generate technical terms if it doesn't exist
+        terms_file = Path("intermediates/ethereum_technical_terms.txt")
+        if not terms_file.exists():
+            extract_script = Path("scripts/extract_terms.py")
+            if extract_script.exists():
+                try:
+                    print("  Generating ethereum_technical_terms.txt...")
+                    subprocess.run(["python3", str(extract_script)], 
+                                 check=True, capture_output=True, text=True, cwd=Path.cwd())
+                except subprocess.CalledProcessError:
+                    pass  # Silent failure - file may not be critical
+        
         terms = load_terms_list()
         if terms:
             context_parts.append(f"Technical Terms ({len(terms)}): {', '.join(terms[:50])}")
@@ -242,31 +294,8 @@ def process_with_anthropic(transcript, api_key, context):
     print(" ✓")
     return result
 
-def split_transcript_by_speakers(transcript, max_chunk_size=15000):
-    """Split transcript into chunks at speaker boundaries"""
-    lines = transcript.split('\n')
-    chunks = []
-    current_chunk = []
-    current_size = 0
-    
-    for line in lines:
-        line_size = len(line)
-        
-        if current_size + line_size > max_chunk_size and current_chunk:
-            chunks.append('\n'.join(current_chunk))
-            current_chunk = []
-            current_size = 0
-        
-        current_chunk.append(line)
-        current_size += line_size + 1
-    
-    if current_chunk:
-        chunks.append('\n'.join(current_chunk))
-    
-    return chunks
-
 def process_with_openai(transcript, api_key, context):
-    """Process transcript using OpenAI GPT-4o"""
+    """Process transcript using OpenAI GPT-4o with streaming"""
     model = "gpt-4o-2024-11-20"
     try:
         import openai
@@ -274,33 +303,36 @@ def process_with_openai(transcript, api_key, context):
         raise ImportError("openai package not installed. Install with: pip install openai")
     
     client = openai.OpenAI(api_key=api_key)
+    prompt = build_prompt(context, transcript)
     
     print(f"      Transcript size: {len(transcript)} chars")
-    print(f"      Chunking for complete output...")
+    print(f"      Processing: ", end='', flush=True)
     
-    chunks = split_transcript_by_speakers(transcript, max_chunk_size=15000)
-    print(f"      Processing {len(chunks)} chunks: ", end='', flush=True)
+    result = ""
+    chunk_count = 0
     
-    corrected_chunks = []
-    for i, chunk in enumerate(chunks, 1):
-        prompt = build_prompt(context, chunk)
-        response = client.chat.completions.create(
-            model=model,
-            messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": prompt}
-            ],
-            max_tokens=16384
-        )
-        
-        corrected_chunks.append(response.choices[0].message.content)
-        print(".", end='', flush=True)
+    stream = client.chat.completions.create(
+        model=model,
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=16384,
+        stream=True
+    )
+    
+    for chunk in stream:
+        if chunk.choices[0].delta.content:
+            result += chunk.choices[0].delta.content
+            chunk_count += 1
+            if chunk_count % 100 == 0:
+                print(".", end='', flush=True)
     
     print(" ✓")
-    return '\n\n'.join(corrected_chunks)
+    return result
 
 def process_with_gemini(transcript, api_key, context):
-    """Process transcript using Google Gemini 2.5 Pro"""
+    """Process transcript using Google Gemini 2.5 Pro with streaming"""
     model = "gemini-2.5-pro"
     try:
         import google.generativeai as genai
@@ -314,13 +346,23 @@ def process_with_gemini(transcript, api_key, context):
     print(f"      Processing: ", end='', flush=True)
     
     model_instance = genai.GenerativeModel(model)
-    response = model_instance.generate_content(prompt)
+    result = ""
+    chunk_count = 0
     
-    print("✓")
-    return response.text
+    response = model_instance.generate_content(prompt, stream=True)
+    
+    for chunk in response:
+        if chunk.text:
+            result += chunk.text
+            chunk_count += 1
+            if chunk_count % 100 == 0:
+                print(".", end='', flush=True)
+    
+    print(" ✓")
+    return result
 
 def process_with_deepseek(transcript, api_key, context):
-    """Process transcript using DeepSeek Chat"""
+    """Process transcript using DeepSeek Chat with streaming"""
     model = "deepseek-chat"
     try:
         import openai
@@ -328,68 +370,54 @@ def process_with_deepseek(transcript, api_key, context):
         raise ImportError("openai package not installed")
     
     client = openai.OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
-    
-    print(f"      Transcript size: {len(transcript)} chars")
-    print(f"      Chunking for complete output...")
-    
-    chunks = split_transcript_by_speakers(transcript, max_chunk_size=15000)
-    print(f"      Processing {len(chunks)} chunks: ", end='', flush=True)
-    
-    corrected_chunks = []
-    for i, chunk in enumerate(chunks, 1):
-        prompt = build_prompt(context, chunk)
-        response = client.chat.completions.create(
-            model=model,
-            messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": prompt}
-            ],
-            max_tokens=8192
-        )
-        
-        corrected_chunks.append(response.choices[0].message.content)
-        print(".", end='', flush=True)
-    
-    print(" ✓")
-    return '\n\n'.join(corrected_chunks)
-
-def process_with_moonshot(transcript, api_key, context):
-    """Process transcript using Moonshot Kimi K2-Instruct"""
-    model = "kimi-k2-instruct"
-    try:
-        import openai
-    except ImportError:
-        raise ImportError("openai package not installed")
-    
-    client = openai.OpenAI(api_key=api_key, base_url="https://api.moonshot.cn/v1")
     prompt = build_prompt(context, transcript)
     
     print(f"      Transcript size: {len(transcript)} chars")
     print(f"      Processing: ", end='', flush=True)
     
-    response = client.chat.completions.create(
+    result = ""
+    chunk_count = 0
+    
+    stream = client.chat.completions.create(
         model=model,
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": prompt}
         ],
-        max_tokens=16384
+        max_tokens=8192,
+        stream=True
     )
     
-    print("✓")
-    return response.choices[0].message.content
+    for chunk in stream:
+        if chunk.choices[0].delta.content:
+            result += chunk.choices[0].delta.content
+            chunk_count += 1
+            if chunk_count % 100 == 0:
+                print(".", end='', flush=True)
+    
+    print(" ✓")
+    return result
 
-def process_with_ollama(transcript, context, ollama_process=None):
-    """Process transcript using local Ollama - reuses existing process if provided"""
+def estimate_tokens(text):
+    """Rough token estimation (words * 1.3)"""
+    return int(len(text.split()) * 1.3)
+
+def process_with_gwen(transcript, context, ollama_process=None):
+    """Process transcript using Gwen (Qwen2.5-7B-Instruct via Ollama) - reuses existing process if provided
+    
+    Note: Qwen2.5-7B has a 32K token context limit. Typical transcripts (60-90 min) need ~45K tokens.
+    For longer transcripts, consider using cloud providers (Gemini, OpenAI, DeepSeek, Anthropic).
+    """
     import subprocess
     import time
     
     try:
         import requests
+        import json
     except ImportError:
         raise ImportError("requests package not installed")
     
-    model = "qwen2.5:32b"
+    model = "qwen2.5:7b"
     started_ollama = False
     
     try:
@@ -422,8 +450,23 @@ def process_with_ollama(transcript, context, ollama_process=None):
         
         # Process transcript
         prompt = build_prompt(context, transcript)
-        print(f"      Transcript size: {len(transcript)} chars")
-        print(f"      Processing: ", end='', flush=True)
+        
+        # Estimate tokens and check for overflow
+        estimated_tokens = estimate_tokens(prompt)
+        print(f"      Transcript size: {len(transcript)} chars (~{estimated_tokens:,} tokens estimated)")
+        
+        # Qwen has 32K token limit - hard stop if exceeded
+        if estimated_tokens > 32000:
+            print(f"      ✗ OVERFLOW: {estimated_tokens:,} tokens exceeds Qwen's 32K limit")
+            if started_ollama and ollama_process:
+                ollama_process.terminate()
+            raise Exception(f"Token overflow: {estimated_tokens} > 32000")
+        
+        # Warn if approaching limit
+        if estimated_tokens > 28000:
+            print(f"      ⚠️  CAUTION: ~{estimated_tokens:,} tokens approaching Qwen's 32K limit")
+        
+        print(f"      Processing with {model}: ", end='', flush=True)
         
         response = requests.post(
             "http://localhost:11434/api/generate",
@@ -431,7 +474,11 @@ def process_with_ollama(transcript, context, ollama_process=None):
                 "model": model,
                 "prompt": prompt,
                 "stream": True,
-                "options": {"temperature": 0.3, "num_predict": 16000}
+                "options": {
+                    "temperature": 0.3,
+                    "num_predict": 32000,  # Increased from 16000 for longer transcripts
+                    "stop": []  # Override default stop sequences
+                }
             },
             timeout=1800,
             stream=True
@@ -452,19 +499,48 @@ def process_with_ollama(transcript, context, ollama_process=None):
                     break
         
         print(" ✓")
+        
+        # Validate output completeness
+        input_words = len(transcript.split())
+        output_words = len(result.split())
+        
+        # Check for severe truncation (output <40% of input = likely failure)
+        if output_words < input_words * 0.4:
+            print(f"\n      {failure('TRUNCATION DETECTED:')}")
+            print(f"         Input:  {input_words:,} words (~{estimated_tokens:,} tokens)")
+            print(f"         Output: {output_words:,} words (~{estimate_tokens(result):,} tokens)")
+            print(f"         Output is only {output_words/input_words*100:.1f}% of input length")
+            print(f"      → Qwen likely failed to complete the edit")
+            if started_ollama and ollama_process:
+                ollama_process.terminate()
+            raise Exception(f"Output truncation: {output_words} words vs {input_words} words expected")
+        
+        # Warn for moderate truncation (40-70% of input)
+        elif output_words < input_words * 0.7:
+            print(f"\n      ⚠️  WARNING: Output shorter than expected")
+            print(f"         Input:  {input_words:,} words")
+            print(f"         Output: {output_words:,} words ({output_words/input_words*100:.1f}% of input)")
+        
         return result, ollama_process if started_ollama else None
         
     except Exception as e:
-        print(f" ✗ Error: {e}")
+        print(f" {failure(f'Error: {e}')}")
         if started_ollama and ollama_process:
             ollama_process.terminate()
         return None, None
 
 def process_single_combination(transcript_path, provider, api_keys, context, ollama_process=None):
     """Process a single transcript with a single provider"""
+    start_time = time.time()
+    
     # Load transcript
     with open(transcript_path, 'r', encoding='utf-8') as f:
         transcript = f.read()
+    
+    # Get output file paths for potential cleanup
+    basename, transcriber = extract_transcriber_from_filename(transcript_path)
+    output_txt = Path("outputs") / f"{basename}_{transcriber}_{provider}_processed.txt"
+    output_md = Path("outputs") / f"{basename}_{transcriber}_{provider}_processed.md"
     
     # Process with appropriate provider
     corrected = None
@@ -479,21 +555,38 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
             corrected = process_with_gemini(transcript, api_keys['gemini'], context)
         elif provider == "deepseek":
             corrected = process_with_deepseek(transcript, api_keys['deepseek'], context)
-        elif provider == "moonshot":
-            corrected = process_with_moonshot(transcript, api_keys['moonshot'], context)
-        elif provider == "ollama":
-            corrected, new_ollama_process = process_with_ollama(transcript, context, ollama_process)
+        elif provider == "gwen":
+            corrected, new_ollama_process = process_with_gwen(transcript, context, ollama_process)
     except Exception as e:
-        print(f"      ✗ Processing failed: {e}")
-        return None, new_ollama_process
+        elapsed = time.time() - start_time
+        print(f"      {failure(f'Processing failed ({elapsed:.1f}s): {e}')}")
+        
+        # Clean up any partial files that may have been created
+        for partial_file in [output_txt, output_md]:
+            if partial_file.exists():
+                try:
+                    partial_file.unlink()
+                    print(f"      → Deleted partial file: {partial_file.name}")
+                except Exception as cleanup_error:
+                    print(f"      ⚠ Could not delete {partial_file.name}: {cleanup_error}")
+        
+        return None, new_ollama_process, elapsed
     
     if not corrected:
-        return None, new_ollama_process
+        elapsed = time.time() - start_time
+        
+        # Clean up any partial files
+        for partial_file in [output_txt, output_md]:
+            if partial_file.exists():
+                try:
+                    partial_file.unlink()
+                    print(f"      → Deleted partial file: {partial_file.name}")
+                except Exception as cleanup_error:
+                    print(f"      ⚠ Could not delete {partial_file.name}: {cleanup_error}")
+        
+        return None, new_ollama_process, elapsed
     
-    # Extract transcriber name and basename from input file
-    basename, transcriber = extract_transcriber_from_filename(transcript_path)
-    
-    # Save using utility function
+    # Save using utility function (basename/transcriber already extracted above)
     output_path = save_processed_files(
         "outputs",
         basename,
@@ -502,9 +595,10 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
         corrected
     )
     
-    print(f"      ✓ Saved: {output_path}")
+    elapsed = time.time() - start_time
+    print(f"      ✓ Saved: {output_path} ({elapsed:.1f}s)")
     
-    return output_path, new_ollama_process
+    return output_path, new_ollama_process, elapsed
 
 def main():
     parser = argparse.ArgumentParser(
@@ -514,13 +608,35 @@ def main():
     
     parser.add_argument("transcripts", nargs='+', help="Transcript file path(s)")
     parser.add_argument("--processors", required=True,
-                       help="Comma-separated list of processors (anthropic,openai,gemini,deepseek,moonshot,ollama)")
+                       help="Comma-separated list of processors (anthropic,openai,gemini,deepseek,gwen)")
     
     args = parser.parse_args()
     
+    # Clean up any dangling Ollama processes at startup
+    try:
+        import subprocess
+        import requests
+        
+        # Check if Ollama is running
+        try:
+            response = requests.get("http://localhost:11434/api/tags", timeout=1)
+            if response.status_code == 200:
+                print("Stopping dangling Ollama process...")
+                subprocess.run(['pkill', '-f', 'ollama serve'], 
+                             stdout=subprocess.DEVNULL, 
+                             stderr=subprocess.DEVNULL,
+                             timeout=5)
+                time.sleep(2)  # Give it time to stop
+                print("✓ Cleared")
+        except:
+            pass  # Not running, nothing to clean up
+    except Exception as e:
+        # Non-fatal if cleanup fails
+        print(f"⚠ Warning: Could not clean up dangling processes: {e}")
+    
     # Parse processors
     processors = [p.strip() for p in args.processors.split(',')]
-    valid_processors = {'anthropic', 'openai', 'gemini', 'deepseek', 'moonshot', 'ollama'}
+    valid_processors = {'anthropic', 'openai', 'gemini', 'deepseek', 'gwen'}
     
     for proc in processors:
         if proc not in valid_processors:
@@ -537,13 +653,12 @@ def main():
         'anthropic': 'ANTHROPIC_API_KEY',
         'openai': 'OPENAI_API_KEY',
         'gemini': 'GOOGLE_API_KEY',
-        'deepseek': 'DEEPSEEK_API_KEY',
-        'moonshot': 'MOONSHOT_API_KEY'
+        'deepseek': 'DEEPSEEK_API_KEY'
     }
     
     for proc in processors:
-        if proc == 'ollama':
-            # Ollama doesn't need an API key
+        if proc == 'gwen':
+            # Gwen (local via Ollama) doesn't need an API key
             continue
         
         env_var = key_mapping.get(proc)
@@ -573,6 +688,7 @@ def main():
     success_count = 0
     failed_count = 0
     combo_num = 0
+    combo_times = []
     
     print("="*70)
     print(f"Processing {len(args.transcripts)} transcript(s) × {len(processors)} processor(s) = {total} combinations")
@@ -580,6 +696,7 @@ def main():
     print()
     
     ollama_process = None
+    pipeline_start = time.time()
     
     try:
         for transcript_path in args.transcripts:
@@ -592,7 +709,7 @@ def main():
                 combo_num += 1
                 print(f"[{combo_num}/{total}] {Path(transcript_path).name} + {processor}")
                 
-                result, new_ollama_process = process_single_combination(
+                result, new_ollama_process, elapsed = process_single_combination(
                     transcript_path, processor, api_keys, context, ollama_process
                 )
                 
@@ -602,6 +719,7 @@ def main():
                 
                 if result:
                     success_count += 1
+                    combo_times.append((Path(transcript_path).name, processor, elapsed))
                 else:
                     failed_count += 1
                 
@@ -619,7 +737,9 @@ def main():
                 ollama_process.kill()
                 print("✓ Ollama force stopped")
     
-    # Summary
+    # Summary with timing
+    pipeline_elapsed = time.time() - pipeline_start
+    
     print("="*70)
     print("✓ Post-Processing Complete")
     print("="*70)
@@ -627,6 +747,19 @@ def main():
     print(f"Successful: {success_count}")
     print(f"Failed: {failed_count}")
     print(f"Skipped: {len(skip_processors) * len(args.transcripts)}")
+    print()
+    print(f"Total time: {pipeline_elapsed:.1f}s ({pipeline_elapsed/60:.1f}min)")
+    
+    if combo_times:
+        print()
+        print("Per-combination timing:")
+        for transcript, processor, elapsed in combo_times:
+            print(f"  {transcript} + {processor}: {elapsed:.1f}s")
+        
+        if len(combo_times) > 1:
+            avg_time = sum(t[2] for t in combo_times) / len(combo_times)
+            print(f"\n  Average: {avg_time:.1f}s per combination")
+    
     print()
     print("Output files in: ./outputs/")
     print("="*70)

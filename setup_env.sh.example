@@ -35,10 +35,6 @@ export GOOGLE_API_KEY=""
 # Get key from: https://platform.deepseek.com/
 export DEEPSEEK_API_KEY=""
 
-# Moonshot Kimi (Chinese provider, 128K context)
-# Get key from: https://platform.moonshot.cn/
-export MOONSHOT_API_KEY=""
-
 # AssemblyAI (Cloud transcription with speaker diarization)
 # Get key from: https://www.assemblyai.com/
 export ASSEMBLYAI_API_KEY=""
@@ -54,6 +50,10 @@ export SONIX_API_KEY=""
 # Speechmatics (Fast, accurate transcription with diarization)
 # Get key from: https://www.speechmatics.com/
 export SPEECHMATICS_API_KEY=""
+
+# Novita AI (Cloud transcription with Qwen2.5-Omni model)
+# Get key from: https://novita.ai/
+export NOVITA_API_KEY=""
 
 # Ollama - No API key needed (runs locally, FREE, private)
 # Just ensure service is running: ollama serve
@@ -93,12 +93,6 @@ else
   echo "  DEEPSEEK_API_KEY: NOT SET"
 fi
 
-if [ -n "$MOONSHOT_API_KEY" ] && [ "$MOONSHOT_API_KEY" != "" ]; then
-  echo "  MOONSHOT_API_KEY: SET"
-else
-  echo "  MOONSHOT_API_KEY: NOT SET"
-fi
-
 if [ -n "$ASSEMBLYAI_API_KEY" ] && [ "$ASSEMBLYAI_API_KEY" != "" ]; then
   echo "  ASSEMBLYAI_API_KEY: SET"
 else
@@ -121,6 +115,12 @@ if [ -n "$SPEECHMATICS_API_KEY" ] && [ "$SPEECHMATICS_API_KEY" != "" ]; then
   echo "  SPEECHMATICS_API_KEY: SET"
 else
   echo "  SPEECHMATICS_API_KEY: NOT SET"
+fi
+
+if [ -n "$NOVITA_API_KEY" ] && [ "$NOVITA_API_KEY" != "" ]; then
+  echo "  NOVITA_API_KEY: SET"
+else
+  echo "  NOVITA_API_KEY: NOT SET"
 fi
 echo ""
 echo "See README.md for usage examples and documentation."

@@ -14,9 +14,9 @@ if [ $# -eq 0 ]; then
     echo "Required:"
     echo "  <audio_file>                Path to MP3 audio file"
     echo "  --transcribers <list>       Comma-separated transcription services"
-    echo "                              (whisperx, deepgram, assemblyai, sonix, speechmatics)"
+    echo "                              (whisperx, kimi, deepgram, assemblyai, sonix, speechmatics, novita)"
     echo "  --processors <list>         Comma-separated AI post-processors"
-    echo "                              (anthropic, openai, gemini, deepseek, moonshot, ollama)"
+    echo "                              (anthropic, openai, gemini, deepseek, ollama)"
     echo ""
     echo "Optional:"
     echo "  --batch-size <n>            Batch size for WhisperX (default: 16 GPU, 8 CPU)"
@@ -123,10 +123,8 @@ fi
 echo "PHASE 2: Post-Processing"
 echo "========================================================================"
 
-# Build transcript list for Python
-TRANSCRIPT_LIST="${TRANSCRIPT_FILES[@]}"
-
-if ! python3 scripts/process_single_post_process.py $TRANSCRIPT_LIST --processors "$PROCESSORS"; then
+# Pass transcript files with proper quoting to handle spaces
+if ! python3 scripts/process_single_post_process.py "${TRANSCRIPT_FILES[@]}" --processors "$PROCESSORS"; then
     echo "✗ Post-processing phase failed"
     exit 1
 fi
