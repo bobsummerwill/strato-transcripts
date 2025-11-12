@@ -54,13 +54,15 @@ All services include speaker diarization (identifying who said what).
 
 ## AI Post-Processors
 
-| Provider | Model | Cost | Features |
-|----------|-------|------|----------|
-| **Anthropic** | Claude Sonnet 4.5 | $3/M tokens | Streaming, 64K output |
-| **OpenAI** | GPT-4o | $2.50/M tokens | Chunking, reliable |
-| **Gemini** | Gemini 2.5 Pro | $1.25/M tokens | 2M context |
-| **DeepSeek** | DeepSeek Chat | $0.14/M tokens | Cost-effective |
-| **Ollama** | Qwen2.5:32b | FREE | Local, private |
+| Provider | Model | Type | Context | Cost | Features |
+|----------|-------|------|---------|------|----------|
+| **Anthropic** | Claude Sonnet 4.5 | Cloud API | 200K | $3/M tokens | Streaming, 64K output |
+| **OpenAI** | GPT-4o | Cloud API | 128K | $2.50/M tokens | Reliable, fast |
+| **Gemini** | Gemini 2.5 Pro | Cloud API | 128K | $1.25/M tokens | Best for long transcripts |
+| **DeepSeek** | DeepSeek Chat | Cloud API | 64K | $0.14/M tokens | Cost-effective |
+| **Qwen (Ollama)** | Qwen2.5:7b | Local | 32K | FREE | Local, private ⚠️ |
+
+**Note on Qwen:** Alibaba's Qwen 2.5 model served locally via Ollama. The 32K context limit is suitable for transcripts up to ~40 minutes. Typical 60-90 minute transcripts (~45K tokens) may be truncated. For longer content, use cloud providers.
 
 ## Usage Examples
 

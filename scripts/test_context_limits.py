@@ -12,7 +12,7 @@ POST-PROCESSING PROVIDERS TESTED:
 - OpenAI (GPT-4o)
 - Google (Gemini 2.5 Pro)
 - DeepSeek (Chat)
-- Ollama (qwen2.5:32b local)
+- Gwen (Qwen2.5-7B-Instruct local)
 
 TRANSCRIPTION PROVIDERS (audio length limits, not context windows):
 - WhisperX (local GPU) - No length limit
@@ -22,7 +22,6 @@ TRANSCRIPTION PROVIDERS (audio length limits, not context windows):
 - Sonix (cloud) - No length limit
 - Speechmatics (cloud) - No length limit
 - Novita AI (cloud) - No length limit
-- OpenAI Whisper (cloud) - 25 MB file size limit
 
 Usage:
     python3 scripts/test_context_limits.py
@@ -385,18 +384,18 @@ def test_deepseek_context(test_sizes=[10000, 30000, 50000, 64000]):
     return results
 
 
-def test_ollama_context(test_sizes=[2000, 4000, 8000, 16000, 32000]):
-    """Test Ollama local model context limits"""
+def test_gwen_context(test_sizes=[2000, 8000, 16000, 24000, 32000]):
+    """Test Gwen (Qwen2.5-7B-Instruct via Ollama) context limits"""
     try:
         import requests
     except ImportError:
         return {"error": "requests package not installed", "status": "skip"}
     
-    print_info("Testing Ollama (local)...")
+    print_info("Testing Gwen (Qwen2.5-7B via Ollama)...")
     
     results = {
-        "provider": "Ollama",
-        "model": "qwen2.5:32b",
+        "provider": "Gwen",
+        "model": "qwen2.5:7b",
         "advertised": "32,768 tokens (model dependent)",
         "tested": [],
         "max_working": 0,
@@ -420,7 +419,7 @@ def test_ollama_context(test_sizes=[2000, 4000, 8000, 16000, 32000]):
             response = requests.post(
                 "http://localhost:11434/api/generate",
                 json={
-                    "model": "qwen2.5:32b",
+                    "model": "qwen2.5:7b",
                     "prompt": f"{payload}\n\nRespond with just: OK",
                     "stream": False,
                     "options": {
@@ -551,7 +550,7 @@ def main():
     )
     parser.add_argument(
         "--providers",
-        default="anthropic,openai,gemini,deepseek,ollama",
+        default="anthropic,openai,gemini,deepseek,gwen",
         help="Comma-separated list of providers to test"
     )
     parser.add_argument(
@@ -561,22 +560,16 @@ def main():
     )
     parser.add_argument(
         "--output",
-        default="context_limits_report.txt",
+        default="intermediates/context_limits_report.txt",
         help="Output file for results"
     )
     
     args = parser.parse_args()
     
     print_header("AI Context Window Limit Testing")
-    print_info("This will make real API calls to test limits")
-    print_info("Costs should be minimal (~$0.01-0.05 total)")
+    print_info("Testing all providers with real API calls")
+    print_info("Estimated cost: ~$0.01-0.05 total")
     print()
-    
-    # Get confirmation
-    response = input(f"{Colors.YELLOW}Continue? (y/n): {Colors.RESET}")
-    if response.lower() != 'y':
-        print("Cancelled.")
-        sys.exit(0)
     
     providers = [p.strip() for p in args.providers.split(',')]
     all_results = []
@@ -591,8 +584,8 @@ def main():
             result = test_gemini_context()
         elif provider == 'deepseek':
             result = test_deepseek_context()
-        elif provider == 'ollama':
-            result = test_ollama_context()
+        elif provider == 'gwen':
+            result = test_gwen_context()
         else:
             print_warning(f"Unknown provider: {provider}")
             continue

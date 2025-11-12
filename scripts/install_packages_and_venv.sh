@@ -154,19 +154,22 @@ sudo apt install -y \
 echo -e "${GREEN}✓ System dependencies installed${NC}"
 
 echo ""
-echo "Installing Ollama for local AI post-processing (optional, FREE, private)..."
+echo "Installing/upgrading Ollama for local AI post-processing (optional, FREE, private)..."
 if command -v ollama &> /dev/null; then
-    echo -e "${GREEN}✓ Ollama already installed${NC}"
-    OLLAMA_VERSION=$(ollama --version 2>/dev/null || echo "unknown")
-    echo "  Version: $OLLAMA_VERSION"
+    CURRENT_VERSION=$(ollama --version 2>/dev/null | grep -oP 'ollama version is \K[0-9.]+' || echo "unknown")
+    echo "Current version: $CURRENT_VERSION"
+    echo "Upgrading to latest version..."
 else
-    echo "Downloading and installing Ollama..."
-    if curl -fsSL https://ollama.com/install.sh | sh; then
-        echo -e "${GREEN}✓ Ollama installed successfully${NC}"
-    else
-        echo -e "${YELLOW}⚠ Ollama installation failed (non-fatal)${NC}"
-        echo "  You can install it manually later: curl -fsSL https://ollama.com/install.sh | sh"
-    fi
+    echo "Installing Ollama..."
+fi
+
+# Always run installer - it handles upgrades and stops/restarts service automatically
+if curl -fsSL https://ollama.com/install.sh | sh; then
+    NEW_VERSION=$(ollama --version 2>/dev/null | grep -oP 'ollama version is \K[0-9.]+' || echo "unknown")
+    echo -e "${GREEN}✓ Ollama ready (version: $NEW_VERSION)${NC}"
+else
+    echo -e "${YELLOW}⚠ Ollama installation/upgrade failed (non-fatal)${NC}"
+    echo "  You can install it manually later: curl -fsSL https://ollama.com/install.sh | sh"
 fi
 
 # Start Ollama service and pull default model
@@ -181,14 +184,17 @@ if command -v ollama &> /dev/null; then
         echo "✓ Ollama service already running"
     fi
     
-    echo "Pulling recommended Ollama model (qwen2.5:32b - fast and high-quality)..."
-    echo "This may take several minutes depending on your internet speed..."
-    if ollama pull qwen2.5:32b 2>&1 | grep -q "success"; then
-        echo -e "${GREEN}✓ Model qwen2.5:32b downloaded and ready${NC}"
+    echo "Pulling Ollama model for Gwen (qwen2.5:7b - optimized for 12GB GPU)..."
+    echo "This will download ~4.7GB - may take several minutes depending on your internet speed..."
+    if ollama pull qwen2.5:7b 2>&1 | grep -q "success"; then
+        echo -e "${GREEN}✓ Model qwen2.5:7b downloaded and ready for Gwen${NC}"
     else
         # Try anyway, sometimes it succeeds but doesn't output "success"
         echo -e "${YELLOW}⚠ Model pull completed (check with: ollama list)${NC}"
     fi
+    echo "Note: You can also install larger models if you have more VRAM:"
+    echo "  ollama pull qwen2.5:14b  # ~8.5GB model, needs 16GB+ VRAM"
+    echo "  ollama pull qwen2.5:32b  # ~20GB model, needs 24GB+ VRAM"
 fi
 echo ""
 

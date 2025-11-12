@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Multi-provider AI transcript post-processor for Ethereum/blockchain content
-Supports: Claude (Anthropic), ChatGPT-5 (OpenAI), Gemini (Google), DeepSeek, and Ollama (local)
+Supports: Claude (Anthropic), ChatGPT-5 (OpenAI), Gemini (Google), DeepSeek, Gwen (Qwen2.5-7B-Instruct local)
 Uses domain context to correct technical terms and speaker names
 
 Now supports batch processing of multiple transcripts × processors internally
@@ -398,17 +398,26 @@ def process_with_deepseek(transcript, api_key, context):
     print(" ✓")
     return result
 
-def process_with_ollama(transcript, context, ollama_process=None):
-    """Process transcript using local Ollama - reuses existing process if provided"""
+def estimate_tokens(text):
+    """Rough token estimation (words * 1.3)"""
+    return int(len(text.split()) * 1.3)
+
+def process_with_gwen(transcript, context, ollama_process=None):
+    """Process transcript using Gwen (Qwen2.5-7B-Instruct via Ollama) - reuses existing process if provided
+    
+    Note: Qwen2.5-7B has a 32K token context limit. Typical transcripts (60-90 min) need ~45K tokens.
+    For longer transcripts, consider using cloud providers (Gemini, OpenAI, DeepSeek, Anthropic).
+    """
     import subprocess
     import time
     
     try:
         import requests
+        import json
     except ImportError:
         raise ImportError("requests package not installed")
     
-    model = "qwen2.5:32b"
+    model = "qwen2.5:7b"
     started_ollama = False
     
     try:
@@ -441,8 +450,23 @@ def process_with_ollama(transcript, context, ollama_process=None):
         
         # Process transcript
         prompt = build_prompt(context, transcript)
-        print(f"      Transcript size: {len(transcript)} chars")
-        print(f"      Processing: ", end='', flush=True)
+        
+        # Estimate tokens and check for overflow
+        estimated_tokens = estimate_tokens(prompt)
+        print(f"      Transcript size: {len(transcript)} chars (~{estimated_tokens:,} tokens estimated)")
+        
+        # Qwen has 32K token limit - hard stop if exceeded
+        if estimated_tokens > 32000:
+            print(f"      ✗ OVERFLOW: {estimated_tokens:,} tokens exceeds Qwen's 32K limit")
+            if started_ollama and ollama_process:
+                ollama_process.terminate()
+            raise Exception(f"Token overflow: {estimated_tokens} > 32000")
+        
+        # Warn if approaching limit
+        if estimated_tokens > 28000:
+            print(f"      ⚠️  CAUTION: ~{estimated_tokens:,} tokens approaching Qwen's 32K limit")
+        
+        print(f"      Processing with {model}: ", end='', flush=True)
         
         response = requests.post(
             "http://localhost:11434/api/generate",
@@ -487,6 +511,11 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
     with open(transcript_path, 'r', encoding='utf-8') as f:
         transcript = f.read()
     
+    # Get output file paths for potential cleanup
+    basename, transcriber = extract_transcriber_from_filename(transcript_path)
+    output_txt = Path("outputs") / f"{basename}_{transcriber}_{provider}_processed.txt"
+    output_md = Path("outputs") / f"{basename}_{transcriber}_{provider}_processed.md"
+    
     # Process with appropriate provider
     corrected = None
     new_ollama_process = None
@@ -500,21 +529,38 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
             corrected = process_with_gemini(transcript, api_keys['gemini'], context)
         elif provider == "deepseek":
             corrected = process_with_deepseek(transcript, api_keys['deepseek'], context)
-        elif provider == "ollama":
-            corrected, new_ollama_process = process_with_ollama(transcript, context, ollama_process)
+        elif provider == "gwen":
+            corrected, new_ollama_process = process_with_gwen(transcript, context, ollama_process)
     except Exception as e:
         elapsed = time.time() - start_time
         print(f"      ✗ Processing failed ({elapsed:.1f}s): {e}")
+        
+        # Clean up any partial files that may have been created
+        for partial_file in [output_txt, output_md]:
+            if partial_file.exists():
+                try:
+                    partial_file.unlink()
+                    print(f"      → Deleted partial file: {partial_file.name}")
+                except Exception as cleanup_error:
+                    print(f"      ⚠ Could not delete {partial_file.name}: {cleanup_error}")
+        
         return None, new_ollama_process, elapsed
     
     if not corrected:
         elapsed = time.time() - start_time
+        
+        # Clean up any partial files
+        for partial_file in [output_txt, output_md]:
+            if partial_file.exists():
+                try:
+                    partial_file.unlink()
+                    print(f"      → Deleted partial file: {partial_file.name}")
+                except Exception as cleanup_error:
+                    print(f"      ⚠ Could not delete {partial_file.name}: {cleanup_error}")
+        
         return None, new_ollama_process, elapsed
     
-    # Extract transcriber name and basename from input file
-    basename, transcriber = extract_transcriber_from_filename(transcript_path)
-    
-    # Save using utility function
+    # Save using utility function (basename/transcriber already extracted above)
     output_path = save_processed_files(
         "outputs",
         basename,
@@ -536,13 +582,36 @@ def main():
     
     parser.add_argument("transcripts", nargs='+', help="Transcript file path(s)")
     parser.add_argument("--processors", required=True,
-                       help="Comma-separated list of processors (anthropic,openai,gemini,deepseek,ollama)")
+                       help="Comma-separated list of processors (anthropic,openai,gemini,deepseek,gwen)")
     
     args = parser.parse_args()
     
+    # Clean up any dangling Ollama processes at startup
+    try:
+        import subprocess
+        import requests
+        
+        # Check if Ollama is running
+        try:
+            response = requests.get("http://localhost:11434/api/tags", timeout=1)
+            if response.status_code == 200:
+                print("Stopping dangling Ollama process...")
+                subprocess.run(['pkill', '-f', 'ollama serve'], 
+                             stdout=subprocess.DEVNULL, 
+                             stderr=subprocess.DEVNULL,
+                             timeout=5)
+                import time
+                time.sleep(2)  # Give it time to stop
+                print("✓ Cleared")
+        except:
+            pass  # Not running, nothing to clean up
+    except Exception as e:
+        # Non-fatal if cleanup fails
+        print(f"⚠ Warning: Could not clean up dangling processes: {e}")
+    
     # Parse processors
     processors = [p.strip() for p in args.processors.split(',')]
-    valid_processors = {'anthropic', 'openai', 'gemini', 'deepseek', 'ollama'}
+    valid_processors = {'anthropic', 'openai', 'gemini', 'deepseek', 'gwen'}
     
     for proc in processors:
         if proc not in valid_processors:
@@ -563,8 +632,8 @@ def main():
     }
     
     for proc in processors:
-        if proc == 'ollama':
-            # Ollama doesn't need an API key
+        if proc == 'gwen':
+            # Gwen (local via Ollama) doesn't need an API key
             continue
         
         env_var = key_mapping.get(proc)
@@ -613,7 +682,6 @@ def main():
             
             for processor in processors:
                 combo_num += 1
-                combo_start = time.time()
                 print(f"[{combo_num}/{total}] {Path(transcript_path).name} + {processor}")
                 
                 result, new_ollama_process, elapsed = process_single_combination(
