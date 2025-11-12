@@ -45,7 +45,6 @@ All services include speaker diarization (identifying who said what).
 | Service | Model | Type | Cost/hour | Speed |
 |---------|-------|------|-----------|-------|
 | **WhisperX** | large-v3 | Local GPU | FREE | 5-10 min |
-| **Kimi-Audio** | 7B-Instruct | Local GPU | FREE | ~1.5x RT |
 | **Deepgram** | nova-3-general | Cloud API | $0.41 | 23 sec |
 | **AssemblyAI** | Best | Cloud API | $1.44 | 3-4 min |
 | **Sonix** | Standard | Cloud API | $10.00 | ~2 min |
@@ -154,7 +153,6 @@ export DEEPSEEK_API_KEY="sk-..."       # https://platform.deepseek.com/
 ```
 intermediates/
   audio_whisperx_raw.txt         # WhisperX output
-  audio_kimi_raw.txt             # Kimi-Audio output
   audio_deepgram_raw.txt          # Deepgram output
   audio_whisperx_raw.md           # Markdown version
 ```
@@ -173,7 +171,7 @@ outputs/
 
 Where:
 - `{basename}` = Original audio filename without extension
-- `{transcriber}` = whisperx, kimi, deepgram, assemblyai, sonix, speechmatics, or novita
+- `{transcriber}` = whisperx, deepgram, assemblyai, sonix, speechmatics, or novita
 - `{processor}` = anthropic, openai, gemini, deepseek, or ollama
 
 ## GPU Support
@@ -213,7 +211,6 @@ stratomercata-transcripts/
 ### Transcription Services
 - [AssemblyAI](https://www.assemblyai.com/docs) - Cloud transcription with speaker diarization
 - [Deepgram](https://developers.deepgram.com/) - Cloud speech-to-text API
-- [Kimi-Audio](https://github.com/THUDM/CogVLM2) - Local GPU audio transcription model
 - [Novita AI](https://novita.ai/) - Cloud transcription service
 - [Sonix](https://sonix.ai/) - Cloud transcription with speaker identification
 - [Speechmatics](https://www.speechmatics.com/) - Enhanced cloud transcription API

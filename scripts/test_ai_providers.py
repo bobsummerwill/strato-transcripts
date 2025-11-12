@@ -238,26 +238,8 @@ def test_whisperx():
         print(f"❌ Error: {e}")
         return False
 
-def test_kimi():
-    """Test Kimi-Audio local transcription"""
-    print("\n" + "="*60)
-    print("Testing KIMI-AUDIO (local GPU transcription)")
-    print("="*60)
-    
-    try:
-        import transformers
-        import torch
-        
-        # Check if required packages available
-        print(f"✅ Transformers installed: {transformers.__version__}")
-        
-        if torch.cuda.is_available():
-            print(f"✅ GPU available: {torch.cuda.get_device_name(0)}")
-            print(f"   Kimi-Audio can use GPU acceleration")
-            return True
         else:
             print(f"⚠️  No GPU detected (CPU mode)")
-            print(f"   Note: Kimi-Audio works on CPU but will be slower")
             return True
     except ImportError as e:
         print(f"❌ Required package not installed: {e}")
@@ -406,7 +388,6 @@ def main():
     print("LOCAL TRANSCRIPTION SERVICES")
     print("="*60)
     results['whisperx'] = test_whisperx()
-    results['kimi'] = test_kimi()
     
     # Test cloud transcription services
     print("\n" + "="*60)

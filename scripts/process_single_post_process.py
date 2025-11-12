@@ -64,7 +64,7 @@ def extract_transcriber_from_filename(filepath):
     """
     filename = Path(filepath).stem
     
-    for service in ['whisperx', 'kimi', 'assemblyai', 'deepgram', 'sonix', 'speechmatics', 'novita', 'openai']:
+    for service in ['whisperx', 'assemblyai', 'deepgram', 'sonix', 'speechmatics', 'novita', 'openai']:
         if f'_{service}_raw' in filename:
             basename = filename.replace(f'_{service}_raw', '')
             return basename, service

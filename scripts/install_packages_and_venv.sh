@@ -229,7 +229,7 @@ source "$VENV_DIR/bin/activate"
 # ==============================================================================
 # Installs WhisperX, AI provider SDKs, and dependencies from requirements.txt.
 # WhisperX will pull PyTorch 2.8.0, which we'll upgrade in the next step.
-# Includes transcription services (AssemblyAI, Deepgram, OpenAI, Kimi-Audio)
+# Includes transcription services (AssemblyAI, Deepgram, OpenAI)
 # and post-processing services (Anthropic, Google Gemini, OpenAI).
 # ==============================================================================
 echo -e "${YELLOW}[4/14] Installing base packages...${NC}"
@@ -503,7 +503,6 @@ echo ""
 echo -e "${YELLOW}[12/14] Verifying AI provider SDKs...${NC}"
 echo "Verifying packages installed from requirements.txt:"
 echo "  Cloud transcription: assemblyai, deepgram-sdk, openai"
-echo "  Kimi-Audio support: transformers, librosa"
 echo "  AI post-processing: anthropic, google-generativeai"
 echo "  Utilities: requests"
 
@@ -511,8 +510,6 @@ echo "  Utilities: requests"
 python3 -c "import assemblyai; print('✓ assemblyai')"
 python3 -c "import deepgram; print('✓ deepgram-sdk')"
 python3 -c "import openai; print('✓ openai')"
-python3 -c "import transformers; print('✓ transformers')"
-python3 -c "import librosa; print('✓ librosa')"
 python3 -c "import anthropic; print('✓ anthropic')"
 python3 -c "import google.generativeai; print('✓ google-generativeai')"
 python3 -c "import requests; print('✓ requests')"
@@ -592,7 +589,7 @@ echo "  source setup_env.sh"
 echo "  source venv/bin/activate"
 echo "  ./scripts/process_single.sh audio.mp3 --transcribers whisperx --processors openai"
 echo ""
-echo "Available transcribers: whisperx, kimi, deepgram, assemblyai, sonix, speechmatics, novita"
+echo "Available transcribers: whisperx, deepgram, assemblyai, sonix, speechmatics, novita"
 echo "Available processors: anthropic, openai, gemini, deepseek, ollama"
 echo ""
 echo "Batch Processing:"

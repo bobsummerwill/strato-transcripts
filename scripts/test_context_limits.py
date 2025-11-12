@@ -16,7 +16,6 @@ POST-PROCESSING PROVIDERS TESTED:
 
 TRANSCRIPTION PROVIDERS (audio length limits, not context windows):
 - WhisperX (local GPU) - No length limit
-- Kimi-Audio (local GPU) - No length limit
 - AssemblyAI (cloud) - No length limit
 - Deepgram (cloud) - No length limit
 - Sonix (cloud) - No length limit
