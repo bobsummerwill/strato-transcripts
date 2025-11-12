@@ -279,11 +279,11 @@ def process_with_anthropic(transcript, api_key, context):
     result = ""
     chunk_count = 0
     
-    # Using Claude Sonnet 4.5 (released Sept 2025)
+    # Using Claude Sonnet 4.5 (auto-updates to latest version)
     # Top-tier intelligence for coding, agents, and complex reasoning
     # Best balance of capability/cost/speed for transcript post-processing
     with client.messages.stream(
-        model="claude-sonnet-4-5-20250929",
+        model="claude-sonnet-4-5",
         max_tokens=64000,
         messages=[{"role": "user", "content": prompt}]
     ) as stream:
