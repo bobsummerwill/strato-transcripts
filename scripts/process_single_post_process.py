@@ -264,7 +264,7 @@ def build_context_summary():
     return "\n\n".join(context_parts) if context_parts else "No additional context available."
 
 def process_with_anthropic(transcript, api_key, context):
-    """Process transcript using Anthropic Claude Sonnet 4.5 with streaming"""
+    """Process transcript using Anthropic Claude 3.5 Sonnet with streaming"""
     try:
         import anthropic
     except ImportError:
@@ -279,9 +279,10 @@ def process_with_anthropic(transcript, api_key, context):
     result = ""
     chunk_count = 0
     
-    # Using Claude Sonnet 4.5 (latest stable model as of 2025-11-10)
+    # Using Claude 3.5 Sonnet (latest stable model as of Oct 2024)
+    # Best balance of capability/cost/speed for transcript post-processing
     with client.messages.stream(
-        model="claude-sonnet-4-5-20250929",
+        model="claude-3-5-sonnet-20241022",
         max_tokens=64000,
         messages=[{"role": "user", "content": prompt}]
     ) as stream:
