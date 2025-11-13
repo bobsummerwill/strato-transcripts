@@ -130,7 +130,13 @@ def save_raw_transcript_from_text(output_dir, basename, service_name, formatted_
     
     # Save markdown version (WITH timestamps, convert SPEAKER_ labels to bold)
     md_path = output_path.with_suffix('.md')
-    md_content = formatted_text.replace('SPEAKER_', '**SPEAKER_').replace(':', ':**', 1)
+    md_lines = []
+    for line in formatted_text.split('\n'):
+        # Bold speaker labels: SPEAKER_XX: becomes **SPEAKER_XX:**
+        if re.match(r'^SPEAKER_\d+:', line):
+            line = line.replace('SPEAKER_', '**SPEAKER_').replace(':', ':**', 1)
+        md_lines.append(line)
+    md_content = '\n'.join(md_lines)
     with open(md_path, 'w', encoding='utf-8') as f:
         f.write(md_content)
     
@@ -501,7 +507,7 @@ def transcribe_deepgram(audio_path, output_dir):
             text = getattr(alternative, 'transcript', "")
             formatted_lines.append(f"[0.0s] SPEAKER_00: {text}")
     
-    # Reformat to WhisperX style
+    # Reformat to WhisperX style - split text into proper sentences WITH timestamps
     current_speaker = None
     output_lines = []
     
@@ -514,7 +520,24 @@ def transcribe_deepgram(audio_path, output_dir):
                     output_lines.append('')
                 output_lines.append(f'{speaker}:')
                 current_speaker = speaker
-            output_lines.append(f'[{timestamp}s] {text}')
+            
+            # Split text into sentences
+            sentences = re.split(r'([.!?])\s+', text)
+            
+            # Rejoin punctuation with sentences and add timestamps
+            current_sentence = ''
+            for part in sentences:
+                if part in '.!?':
+                    current_sentence += part
+                    if current_sentence.strip():
+                        output_lines.append(f'[{timestamp}s] {current_sentence.strip()}')
+                    current_sentence = ''
+                elif part.strip():
+                    current_sentence += part + ' '
+            
+            # Add any remaining text with timestamp
+            if current_sentence.strip():
+                output_lines.append(f'[{timestamp}s] {current_sentence.strip()}')
     
     # Count speakers
     speakers = set()
@@ -568,25 +591,52 @@ def transcribe_assemblyai(audio_path, output_dir):
     if transcript.status == aai.TranscriptStatus.error:
         raise RuntimeError(f"Transcription failed: {transcript.error}")
     
-    # Format output
-    formatted_lines = []
+    # Format output - build sentences like WhisperX WITH timestamps
+    output_lines = []
+    current_speaker = None
     
     if transcript.utterances:
         for utterance in transcript.utterances:
-            start_time = utterance.start / 1000.0
             speaker_num = ord(utterance.speaker) - ord('A')
             speaker_label = f"SPEAKER_{speaker_num:02d}"
+            start_time = utterance.start / 1000.0  # Convert ms to seconds
+            
+            if speaker_label != current_speaker:
+                if output_lines:
+                    output_lines.append('')
+                output_lines.append(f'{speaker_label}:')
+                current_speaker = speaker_label
+            
+            # Split text into sentences
             text = utterance.text.strip()
-            formatted_lines.append(f"[{start_time:.1f}s] {speaker_label}: {text}")
+            import re
+            sentences = re.split(r'([.!?])\s+', text)
+            
+            # Rejoin punctuation with sentences and add timestamps
+            current_sentence = ''
+            for i, part in enumerate(sentences):
+                if part in '.!?':
+                    current_sentence += part
+                    if current_sentence.strip():
+                        # Add timestamp to sentence
+                        output_lines.append(f'[{start_time:.1f}s] {current_sentence.strip()}')
+                    current_sentence = ''
+                elif part.strip():
+                    current_sentence += part + ' '
+            
+            # Add any remaining text with timestamp
+            if current_sentence.strip():
+                output_lines.append(f'[{start_time:.1f}s] {current_sentence.strip()}')
     else:
-        formatted_lines.append(f"[0.0s] SPEAKER_00: {transcript.text}")
+        output_lines.append('SPEAKER_00:')
+        output_lines.append('[0.0s] ' + transcript.text)
     
     # Count speakers
     num_speakers = len(set(utterance.speaker for utterance in transcript.utterances)) if transcript.utterances else 1
     print(f"  Detected {num_speakers} speakers")
     
     # Save using utility function
-    formatted_text = '\n'.join(formatted_lines)
+    formatted_text = '\n'.join(output_lines) + '\n'
     return save_raw_transcript_from_text(output_dir, audio_file_path.stem, "assemblyai", formatted_text)
 
 
@@ -605,11 +655,8 @@ def transcribe_revai(audio_path, output_dir):
     print(f"  Model: Rev.ai v3 Human")
     print(f"  Uploading and transcribing...")
     
-    # Load custom vocabulary (people names + technical terms)
-    custom_vocab = load_custom_vocabulary()
-    print(f"  Loaded {len(custom_vocab)} custom terms")
-    
     # Submit job with speaker diarization
+    # Note: Not using custom vocabulary due to API limitations
     headers = {'Authorization': f'Bearer {api_key}'}
     
     with open(audio_file_path, 'rb') as f:
@@ -619,12 +666,7 @@ def transcribe_revai(audio_path, output_dir):
                 'language': 'en',
                 'speaker_channels_count': None,  # Auto-detect speakers
                 'remove_disfluencies': True,  # Remove filler words (um, uh, etc.)
-                'filter_profanity': False,
-                'custom_vocabularies': [
-                    {
-                        'phrases': custom_vocab  # Use full vocabulary from files
-                    }
-                ]
+                'filter_profanity': False
             })
         }
         
@@ -668,7 +710,7 @@ def transcribe_revai(audio_path, output_dir):
     response.raise_for_status()
     transcript_data = response.json()
     
-    # Format output
+    # Format output - build sentences from words like WhisperX WITH timestamps
     output_lines = []
     current_speaker = None
     
@@ -683,13 +725,33 @@ def transcribe_revai(audio_path, output_dir):
             output_lines.append(f'{speaker_label}:')
             current_speaker = speaker_label
         
-        # Process elements (words, punctuation) in the monologue
+        # Build sentences from words and punctuation
+        current_sentence = []
+        sentence_start_time = None
+        
         for element in monologue.get('elements', []):
             if element.get('type') == 'text':
-                start = element.get('ts', 0)
                 value = element.get('value', '').strip()
                 if value:
-                    output_lines.append(f'[{start:.1f}s] {value}')
+                    if sentence_start_time is None:
+                        sentence_start_time = element.get('ts', 0)
+                    current_sentence.append(value)
+                    
+                    # End sentence on period, question mark, or exclamation
+                    if value.endswith(('.', '?', '!')):
+                        sentence = ' '.join(current_sentence)
+                        # Include timestamp for MD version
+                        output_lines.append(f'[{sentence_start_time:.1f}s] {sentence}')
+                        current_sentence = []
+                        sentence_start_time = None
+        
+        # Add any remaining words as a sentence
+        if current_sentence:
+            sentence = ' '.join(current_sentence)
+            if sentence_start_time is not None:
+                output_lines.append(f'[{sentence_start_time:.1f}s] {sentence}')
+            else:
+                output_lines.append(sentence)
     
     # Count speakers
     speakers = set(f"SPEAKER_{m.get('speaker', 0):02d}" for m in transcript_data.get('monologues', []))
