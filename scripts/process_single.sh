@@ -72,6 +72,25 @@ if [ ! -f "$AUDIO_FILE" ]; then
     exit 1
 fi
 
+# Timing function
+format_duration() {
+    local seconds=$1
+    local hours=$((seconds / 3600))
+    local minutes=$(((seconds % 3600) / 60))
+    local secs=$((seconds % 60))
+    
+    if [ $hours -gt 0 ]; then
+        printf "%dh %dm %ds" $hours $minutes $secs
+    elif [ $minutes -gt 0 ]; then
+        printf "%dm %ds" $minutes $secs
+    else
+        printf "%ds" $secs
+    fi
+}
+
+# Start overall timing
+PIPELINE_START=$(date +%s)
+
 # Show what we're doing
 BASE_NAME=$(basename "$AUDIO_FILE" | sed 's/\.[^.]*$//')
 IFS=',' read -ra TRANSCRIBER_ARRAY <<< "$TRANSCRIBERS"
@@ -92,6 +111,8 @@ echo ""
 echo "PHASE 1: Transcription"
 echo "========================================================================"
 
+PHASE1_START=$(date +%s)
+
 TRANSCRIBE_CMD="python3 scripts/process_single_transcribe_and_diarize.py \"$AUDIO_FILE\" --transcribers \"$TRANSCRIBERS\""
 if [ -n "$BATCH_SIZE" ]; then
     TRANSCRIBE_CMD="$TRANSCRIBE_CMD --batch-size $BATCH_SIZE"
@@ -102,6 +123,11 @@ if ! eval $TRANSCRIBE_CMD; then
     exit 1
 fi
 
+PHASE1_END=$(date +%s)
+PHASE1_DURATION=$((PHASE1_END - PHASE1_START))
+
+echo ""
+echo "Phase 1 complete: $(format_duration $PHASE1_DURATION)"
 echo ""
 
 # Find generated transcript files (using new naming convention)
@@ -123,18 +149,35 @@ fi
 echo "PHASE 2: Post-Processing"
 echo "========================================================================"
 
+PHASE2_START=$(date +%s)
+
 # Pass transcript files with proper quoting to handle spaces
 if ! python3 scripts/process_single_post_process.py "${TRANSCRIPT_FILES[@]}" --processors "$PROCESSORS"; then
     echo "✗ Post-processing phase failed"
     exit 1
 fi
 
+PHASE2_END=$(date +%s)
+PHASE2_DURATION=$((PHASE2_END - PHASE2_START))
+
 echo ""
+echo "Phase 2 complete: $(format_duration $PHASE2_DURATION)"
+echo ""
+
+# Overall timing
+PIPELINE_END=$(date +%s)
+PIPELINE_DURATION=$((PIPELINE_END - PIPELINE_START))
+
 echo "========================================================================"
 echo "✓ PIPELINE COMPLETE!"
 echo "========================================================================"
 echo ""
+echo "Timing Summary:"
+echo "  Phase 1 (Transcription):   $(format_duration $PHASE1_DURATION)"
+echo "  Phase 2 (Post-Processing): $(format_duration $PHASE2_DURATION)"
+echo "  Total Pipeline Time:       $(format_duration $PIPELINE_DURATION)"
+echo ""
 echo "Output files:"
 echo "  Transcripts: ./intermediates/"
-echo "  Corrected: ./outputs/"
+echo "  Corrected:   ./outputs/"
 echo "========================================================================"
