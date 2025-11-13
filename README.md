@@ -2,10 +2,10 @@
 
 Automated transcription with speaker diarization plus AI post-processing to correct technical terms and speaker names.
 
-## Quick Start
+## Usage
 
 ```bash
-# 1. Setup
+# 1. Setup (one time)
 ./scripts/install_packages_and_venv.sh
 cp setup_env.sh.example setup_env.sh
 nano setup_env.sh  # Add API keys
@@ -14,7 +14,10 @@ nano setup_env.sh  # Add API keys
 source venv/bin/activate && source setup_env.sh
 ./scripts/process_single.sh audio.mp3 --transcribers whisperx --processors chatgpt
 
-# 3. Batch process
+# 3. Multiple combinations (2 transcribers × 3 processors = 6 outputs)
+./scripts/process_single.sh audio.mp3 --transcribers whisperx,deepgram --processors sonnet,chatgpt,llama
+
+# 4. Batch process all MP3s
 ./scripts/process_all.sh --transcribers deepgram --processors sonnet
 ```
 
@@ -44,28 +47,11 @@ All services include speaker diarization (identifying who said what).
 | **deepseek** | DeepSeek Chat | DeepSeek | 64K | $0.27/$1.12 per MTok | Budget-friendly, good quality |
 | **qwen** | Qwen2.5:7b | Ollama (local) | 32K | FREE | Local, private, 12GB GPU ⚠️ |
 
-## Usage
-
-```bash
-# Single transcriber + processor
-./scripts/process_single.sh audio.mp3 --transcribers whisperx --processors sonnet
-
-# Multiple combinations (2×3 = 6 outputs)
-./scripts/process_single.sh audio.mp3 --transcribers whisperx,deepgram --processors sonnet,chatgpt,llama
-```
-
 ## Setup
 
 **Requirements:**
 - Minimum: 8GB RAM, 50GB disk (CPU-only, slow)
 - Recommended: NVIDIA GPU 6GB+ VRAM, 16GB RAM, 50GB disk
-
-**Installation:**
-```bash
-./scripts/install_packages_and_venv.sh  # Auto-detects GPU
-cp setup_env.sh.example setup_env.sh
-nano setup_env.sh  # Add your API keys
-```
 
 **API Keys in `setup_env.sh`:**
 ```bash
