@@ -248,8 +248,6 @@ def main():
             _, skip_reason = validate_api_key('DEEPGRAM_API_KEY')
         elif transcriber == 'assemblyai':
             _, skip_reason = validate_api_key('ASSEMBLYAI_API_KEY')
-        elif transcriber == 'revai':
-            _, skip_reason = validate_api_key('REVAI_API_KEY')
         elif transcriber == 'whisperx':
             _, skip_reason = validate_api_key('HF_TOKEN')
         
@@ -271,8 +269,6 @@ def main():
                 output_path = transcribe_deepgram(str(audio_path), args.output_dir)
             elif transcriber == 'assemblyai':
                 output_path = transcribe_assemblyai(str(audio_path), args.output_dir)
-            elif transcriber == 'revai':
-                output_path = transcribe_revai(str(audio_path), args.output_dir)
             
             elapsed = time.time() - transcriber_start
             results.append((transcriber, output_path, 'success', elapsed))

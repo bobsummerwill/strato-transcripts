@@ -35,13 +35,7 @@ export GOOGLE_API_KEY=""
 # Get key from: https://console.groq.com/
 export GROQ_API_KEY=""
 
-# DeepSeek (Very cost-effective, good quality)
-# Get key from: https://platform.deepseek.com/
-export DEEPSEEK_API_KEY=""
 
-# Novita AI (Moonshot Kimi K2 Thinking - advanced reasoning model)
-# Get key from: https://novita.ai/
-export NOVITA_API_KEY=""
 
 # AssemblyAI (Cloud transcription with speaker diarization)
 # Get key from: https://www.assemblyai.com/
@@ -51,9 +45,6 @@ export ASSEMBLYAI_API_KEY=""
 # Get key from: https://console.deepgram.com/
 export DEEPGRAM_API_KEY=""
 
-# Rev.ai (Professional transcription with human-level accuracy)
-# Get key from: https://www.rev.ai/
-export REVAI_API_KEY=""
 
 # Ollama - No API key needed (runs locally, FREE, private)
 # Just ensure service is running: ollama serve
@@ -93,17 +84,6 @@ else
   echo "  GROQ_API_KEY: NOT SET"
 fi
 
-if [ -n "$DEEPSEEK_API_KEY" ] && [ "$DEEPSEEK_API_KEY" != "" ]; then
-  echo "  DEEPSEEK_API_KEY: SET"
-else
-  echo "  DEEPSEEK_API_KEY: NOT SET"
-fi
-
-if [ -n "$NOVITA_API_KEY" ] && [ "$NOVITA_API_KEY" != "" ]; then
-  echo "  NOVITA_API_KEY: SET"
-else
-  echo "  NOVITA_API_KEY: NOT SET"
-fi
 
 if [ -n "$ASSEMBLYAI_API_KEY" ] && [ "$ASSEMBLYAI_API_KEY" != "" ]; then
   echo "  ASSEMBLYAI_API_KEY: SET"
@@ -117,11 +97,6 @@ else
   echo "  DEEPGRAM_API_KEY: NOT SET"
 fi
 
-if [ -n "$REVAI_API_KEY" ] && [ "$REVAI_API_KEY" != "" ]; then
-  echo "  REVAI_API_KEY: SET"
-else
-  echo "  REVAI_API_KEY: NOT SET"
-fi
 
 echo ""
 echo "See README.md for usage examples and documentation."
