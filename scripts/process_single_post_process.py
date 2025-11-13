@@ -106,12 +106,34 @@ Your tasks:
 4. Identify and replace generic speaker labels (SPEAKER_00, SPEAKER_01, etc.) with actual names if you can determine them from context
 5. Improve punctuation and sentence structure for readability
 6. Add paragraph breaks at natural conversation transitions
-7. Preserve all timestamps in [XX.Xs] format exactly as they appear
+7. **CRITICAL: PRESERVE ALL TIMESTAMPS**
 8. Maintain the speaker label format (lines starting with speaker name followed by colon)
 
-Important: Only make changes where you are confident. If unsure about a speaker's identity or technical term, leave it as-is.
+**TIMESTAMP FORMAT REQUIREMENT (MANDATORY):**
+Every line of dialogue MUST retain its timestamp in [XX.Xs] format at the start of the line.
 
-Output the corrected transcript maintaining the exact same format structure."""
+CORRECT FORMAT EXAMPLE:
+```
+**SPEAKER_01 (Victor):**
+[1.8s] Okay, welcome everyone.
+[3.4s] We have a very special topic today.
+```
+
+INCORRECT FORMAT (DO NOT DO THIS):
+```
+**SPEAKER_01 (Victor):**
+Okay, welcome everyone.
+We have a very special topic today.
+```
+
+The timestamps [XX.Xs] are REQUIRED and must appear at the beginning of every text line. This is non-negotiable.
+
+Important: 
+- Only make changes where you are confident
+- If unsure about a speaker's identity or technical term, leave it as-is
+- NEVER remove timestamps - they are structural requirements, not optional metadata
+
+Output the corrected transcript maintaining the exact same format structure with all timestamps intact."""
 
 def build_prompt(context, transcript):
     """Build complete prompt from template."""
