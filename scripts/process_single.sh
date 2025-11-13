@@ -26,8 +26,8 @@ if [ $# -eq 0 ]; then
     echo "  --batch-size <n>            Batch size for WhisperX (default: 16 GPU, 8 CPU)"
     echo ""
     echo "Examples:"
-    echo "  $0 interview.mp3 --transcribers deepgram --processors anthropic,gemini"
-    echo "  $0 interview.mp3 --transcribers whisperx,deepgram --processors openai"
+    echo "  $0 interview.mp3 --transcribers deepgram --processors sonnet,gemini"
+    echo "  $0 interview.mp3 --transcribers whisperx,deepgram --processors chatgpt"
     exit 1
 fi
 
