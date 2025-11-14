@@ -1,0 +1,460 @@
+SPEAKER_00:**
+[00:00] So, hello.
+
+**SPEAKER_01:**
+[00:01] Hello, Bob.
+
+**SPEAKER_00:**
+[00:02] So, yes, I'm Bob Samuel, recording here at Devconnect Prague for the early days of Ethereum.
+[00:06] And I have here Jakob.
+
+**SPEAKER_01:**
+[00:08] Good enough?
+
+**SPEAKER_00:**
+[00:08] Good enough, yes.
+[00:09] There you go.
+[00:10] So, yeah, we've known each other about three years or so now, I think.
+[00:13] We did meet in Bogota for Devcon 6 for the first time, where you introduced yourself.
+[00:16] I was not aware of your background and role, but yeah, specifically you were an intern at EF Dev in Berlin in late 2015 and you also attended Devcon 1.
+[00:23] So how did you come to be involved with Ethereum at that time?
+
+**SPEAKER_01:**
+[00:26] Oh, yeah, thank you for the intro and good question.
+[00:28] It was in Bogota.
+[00:29] I think I knew about you or of you for longer than since then.
+[00:32] But yeah, I think you were chatting with someone and talking about Florian Glutz, maybe, and talking about the old days.
+[00:36] And I just jumped in because I know Florian and found out that we have a shared interest in the old days of Ethereum.
+[00:41] And yeah, I did my internship working on the Python client back starting September or August 2015.
+
+**SPEAKER_00:**
+[00:47] I think it was like maybe August to December.
+
+**SPEAKER_01:**
+[00:48] Yeah, it was August to December.
+[00:50] It was a couple of weeks after Mainnet launched.
+[00:52] And the first week I was there was when there was like the first big fork where the Go client forked from the C++ and Python client.
+
+**SPEAKER_00:**
+[00:58] There was a chain split on Mainnet.
+
+**SPEAKER_01:**
+[01:00] Yes.
+[01:00] And it happened, I think the second day I was there, and that was the same day that there was a meetup planned in the office.
+
+**SPEAKER_00:**
+[01:05] Right.
+
+**SPEAKER_01:**
+[01:06] So everything was extremely chaotic and people arrived at the office for the meetup and nothing happened for a good amount of time.
+[01:11] And eventually I was just sitting there in the corner working and I was like, no, we can't do this because there's so many people who are just like, looking.
+[01:17] Some started leaving.
+[01:18] So I kind of ad hoc jumped in and gave a presentation on Ethereum back then that I had given a couple of weeks before back in Copenhagen.
+
+**SPEAKER_00:**
+[01:25] Prior to your internship?
+
+**SPEAKER_01:**
+[01:26] Yeah, I gave the presentation prior to my internship because I started a Copenhagen Ethereum meetup group.
+
+**SPEAKER_00:**
+[01:30] Oh, goodness.
+[01:31] So when, when do you think that started?
+
+**SPEAKER_01:**
+[01:33] I know exactly when it started.
+[01:34] It started on the 14th of July 2015.
+
+**SPEAKER_00:**
+[01:37] Right, right.
+
+**SPEAKER_01:**
+[01:38] And the reason I got into Ethereum, I was studying computer science.
+
+**SPEAKER_00:**
+[01:41] Okay.
+
+**SPEAKER_01:**
+[01:42] And I knew about Bitcoin and thought it would be interesting to write my bachelor thesis on Bitcoin.
+
+**SPEAKER_00:**
+[01:46] So this was an internship while you were still doing an undergraduate?
+
+**SPEAKER_01:**
+[01:49] No, it was actually an internship that I got because I wrote my bachelor thesis on Ethereum in the spring of 2015.
+
+**SPEAKER_00:**
+[01:55] So you had graduated.
+
+**SPEAKER_01:**
+[01:56] Yeah, but just a bachelor.
+[01:58] And because the Ethereum ecosystem, so to speak, was so small back then.
+
+**SPEAKER_00:**
+[02:02] Right, right.
+
+**SPEAKER_01:**
+[02:02] We were in contact with the Ethereum Foundation during the internship.
+[02:06] I think I opened my first issue in March 2015.
+
+**SPEAKER_00:**
+[02:09] Right.
+
+**SPEAKER_01:**
+[02:09] To like the C++ client or something like that.
+[02:11] Okay.
+[02:12] So, so yeah, I actually, I think I've known of Ethereum since end of 2014.
+[02:18] But anyway, yeah, we wrote this bachelor thesis, me and two of my friends, and we shared it with the Foundation and then we got offered internships and I was the only one.
+[02:24] I was tired of studying already, only after a bachelor, and the other two guys wanted to continue.
+[02:28] So I was like, okay, I'm going to do this.
+[02:30] And a couple of weeks later I moved to Berlin to do my internship working on the Python client.
+
+**SPEAKER_00:**
+[02:35] Right, right.
+
+**SPEAKER_01:**
+[02:36] And yeah, that was a very interesting time.
+[02:38] Thinking back now, I'm sad I didn't write down more things or take more pictures or appreciate some of the things a little bit more, but I also had no idea that things would get as big as they are now.
+[02:47] But yeah, I enjoyed it a lot.
+
+**SPEAKER_00:**
+[02:49] So, I mean, it was primarily C++ development under Gavin that was happening in that office.
+[02:53] Right.
+[02:53] But also Felix Lang, I know, was there on the guest.
+
+**SPEAKER_01:**
+[02:56] Yeah.
+
+**SPEAKER_00:**
+[02:57] And then some different people and then.
+
+**SPEAKER_01:**
+[02:58] Some Python Simonson, I think he was doing Go stuff.
+[03:01] And yeah, the Solidity team was also there.
+
+**SPEAKER_00:**
+[03:03] I think they were under the C++.
+[03:05] That's right.
+[03:05] Back then.
+
+**SPEAKER_01:**
+[03:06] But they were.
+
+**SPEAKER_00:**
+[03:07] And Remix as well.
+[03:08] Well, Mix.
+[03:08] Sorry.
+[03:09] At the time.
+
+**SPEAKER_01:**
+[03:10] Yeah.
+[03:10] Yeah.
+[03:10] And I also remember the Mist, I guess at least Fabian Vogelsteller was also around.
+[03:14] So there was a good amount of different people around.
+[03:18] And also quite often people would come and visit from other places.
+[03:21] I remember a couple of times Christoph Jentzsch came to visit.
+
+**SPEAKER_00:**
+[03:24] Yeah.
+
+**SPEAKER_01:**
+[03:25] There was one time where I think he arrived at midnight or something like that and there was no one else at the office.
+
+**SPEAKER_00:**
+[03:30] Yeah.
+
+**SPEAKER_01:**
+[03:30] I was doing my internship and I think he wrote like late afternoon.
+[03:33] He wrote on the Skype channel if there would be someone around that he was a little bit delayed or whatever.
+
+**SPEAKER_00:**
+[03:37] Right, right.
+
+**SPEAKER_01:**
+[03:38] So I was just like, oh, it's fine.
+[03:39] I had nothing to do in Berlin anyway.
+[03:42] I had like the smallest room, just like a small room with a bed, nothing else, basically.
+
+**SPEAKER_00:**
+[03:46] Yeah.
+
+**SPEAKER_01:**
+[03:47] So I enjoyed spending a lot of time in the office and I actually would usually just stay in the office.
+
+**SPEAKER_00:**
+[03:53] Yeah.
+
+**SPEAKER_01:**
+[03:53] And then just go home and sleep because the office was quite nice.
+
+**SPEAKER_00:**
+[03:56] Right, right.
+
+**SPEAKER_01:**
+[03:57] So, yeah.
+[03:58] I had one night, one night where I think I let him into the office at midnight and we had a little bit of a chat.
+[04:03] I got to know him, he told me about all the testing he was doing and how they were testing.
+[04:07] It was quite interesting.
+
+**SPEAKER_00:**
+[04:08] And that's cross-client testing as well, wasn't it?
+[04:10] Right, yeah.
+
+**SPEAKER_01:**
+[04:11] If I remember correctly, he was building a lot of just JSON data that they fed to the client and that.
+
+**SPEAKER_00:**
+[04:15] Was from the C++ client.
+[04:16] I know that cpp-ethereum was leading and the tests were generated from that, but then running those against the Python and Geth clients.
+
+**SPEAKER_01:**
+[04:22] Yeah, that sounds about right.
+[04:23] But there are a lot of small stories you told me.
+[04:25] We don't have too much time, I'll try to keep it short.
+[04:27] But I would say if I think back to the most interesting things that happened, it was of course being lucky enough to participate at Devcon 1.
+
+**SPEAKER_00:**
+[04:33] Right, yeah.
+
+**SPEAKER_01:**
+[04:34] And also experience the kind of split that was taking place at this point in time because the Foundation, I think almost ran out of money.
+
+**SPEAKER_00:**
+[04:41] Yeah, that's right.
+
+**SPEAKER_01:**
+[04:42] The C++ team was kind of cut off.
+
+**SPEAKER_00:**
+[04:44] And you also, so you also had, you know, Ming Chan, her first official date was 1st of August of 2015.
+[04:50] So yeah, you basically had those kind of cost cutting measures coming in quite fast of looking at the spend where you know, it had been going for a year.
+[04:56] It was, it was the July of the previous year that the Foundation had been formed and you had the crowd sale but like nearly all of the money was gone in that year.
+
+**SPEAKER_01:**
+[05:03] I think that was also maybe not the most responsible usage of money, but also the Bitcoin price was doing really poorly.
+
+**SPEAKER_00:**
+[05:08] Yeah, that's right.
+
+**SPEAKER_01:**
+[05:09] The ether price itself.
+[05:11] Yeah, I think it dipped below the presale price at some point.
+
+**SPEAKER_00:**
+[05:13] And it's right, September, a year in and you've had no accumulation.
+
+**SPEAKER_01:**
+[05:17] Yeah, but yeah, I didn't have any interactions with Ming back then, so maybe.
+[05:22] Actually one thing I just remembered now, I was actually supposed to have done my internship on the C++ team in London, but.
+
+**SPEAKER_00:**
+[05:27] Oh yeah, right.
+
+**SPEAKER_01:**
+[05:28] Yeah, a couple of weeks before that I was, sorry, we can't do it anyway because like we don't have the money anymore.
+
+**SPEAKER_00:**
+[05:32] Right.
+[05:33] Well, because they were getting very rapidly defunded or even shut down entirely, I think.
+
+**SPEAKER_01:**
+[05:36] Yeah, probably already all that was coming.
+[05:38] Yeah, so that's why it ended up being the Python team instead because there was some budget.
+[05:41] But yeah, like sitting as the only person working on the Python client in that office in my small corner.
+[05:46] I had a lot of fun kind of following how people came and went and went into Gavin's office and had a chat there with him and Jutta or whatever.
+[05:54] And I didn't really know in the beginning what was going on until I was also asked if I wanted to come in and talk and it was basically presenting ideas of what would happen next with the C++ team and if I wanted to consider joining there or whatever.
+
+**SPEAKER_00:**
+[06:04] Yeah, so that was sort of the pre-formation of what became Ethcore, later Parity.
+
+**SPEAKER_01:**
+[06:08] Yeah, I think so.
+[06:10] So I was witnessing that without knowing what was going on.
+[06:13] I had no insight into like the finances of the foundation or anything like that.
+[06:16] I only found out about most of those things later.
+[06:18] So yeah, interesting to hear.
+
+**SPEAKER_00:**
+[06:20] Yeah.
+[06:20] So I mean maybe let's talk about Devcon 1.
+[06:22] So the first Devcon was Devcon 0, which happened in November 2014 before your time, which was the closed, you know, closed event.
+[06:29] Mainly Ethereum Foundation people, but some broader ecosystem people.
+[06:32] But then Devcon 1 had happened in November 2015 in London.
+[06:36] It had got announced earlier in the year and got cancelled because of this funding squeeze.
+[06:40] But then ConsenSys basically stepped up and filled that funding gap and did some organizing.
+[06:44] So that was in November of that year.
+[06:46] I was not present myself.
+[06:47] I couldn't afford to go or whatever at the time, but I watched a lot of the livestream.
+[06:51] But know that was a really very seminal conference.
+[06:54] So how was that?
+
+**SPEAKER_01:**
+[06:55] For me it was amazing.
+[06:56] I've never been good at sitting still on a chair for a long period of time, but there I was at every talk from the beginning, in the morning until the end.
+[07:03] I think I missed one talk because I had to go catch my flight to go back on the last day, but it was, I was just sitting there and sucking up all of these ideas and visions and it was really, I think before that I had an idea that I thought it would be interesting to continue working with Ethereum or in the Ethereum space.
+[07:16] But after Devcon 1, I was like, I have to do this.
+[07:18] Like there's no other way for me.
+[07:19] I'm not going back to the university, I'm not going to do anything else.
+[07:22] This is what I'm going to do.
+[07:23] Because it was a full day or three full days of just sitting there and people presenting their ideas.
+[07:28] I remember clearly, like there was like Maker was presented, like, I was like, okay, like stablecoins.
+[07:33] Like it was amazing.
+[07:34] I think Fabian Vogelsteller and Alex van de Sande and some other people presented the ERC-20 token standard, or the early version of it.
+[07:42] Yeah, okay.
+[07:42] This has also, this is such a big part of Ethereum now.
+[07:45] I think maybe Gnosis.
+[07:47] I'm not sure, actually.
+[07:48] And of course, the project I was working on, the people there, like, we were presenting the Raiden Network, which got a lot of very good feedback as well.
+
+**SPEAKER_00:**
+[07:55] So it was Hydrachain as well, right?
+
+**SPEAKER_01:**
+[07:56] Yeah.
+[07:57] I was not so sold on Hydrachain back then because it was aimed at.
+
+**SPEAKER_00:**
+[08:00] One of the very first permissioned Ethereum.
+
+**SPEAKER_01:**
+[08:01] Exactly.
+[08:02] It was like a round-robin kind of algorithm.
+[08:05] And now it seems like something people would actually have used these days.
+[08:07] So only 10 years too early.
+[08:09] But back to Devcon 1.
+[08:11] I was just thinking about it after our conversation last night, that Devcon 1, it was just about the technology.
+[08:16] I think maybe there were three booths or something like that, a couple of stickers.
+[08:19] I barely remember.
+[08:20] I just remember.
+[08:21] What was the name of the Haskell project? BlockApps?
+
+**SPEAKER_00:**
+[08:24] Strato.
+
+**SPEAKER_01:**
+[08:24] Yeah.
+[08:25] BlockApps.
+[08:26] I remember they had like a small booth, I think.
+
+**SPEAKER_00:**
+[08:28] Right, right.
+
+**SPEAKER_01:**
+[08:29] Some stickers.
+
+**SPEAKER_00:**
+[08:30] Yeah.
+
+**SPEAKER_01:**
+[08:30] Very sad that I lost that sticker.
+
+**SPEAKER_00:**
+[08:32] Right.
+
+**SPEAKER_01:**
+[08:33] But other than that, it was just like, yeah, just people.
+[08:36] There was one stage and everyone was, like, in the same room, more or less.
+[08:39] And in the evenings, yeah, people would go out.
+[08:41] Go out for dinner maybe, but there was not a single side event.
+[08:44] There was not a single party.
+
+**SPEAKER_00:**
+[08:46] Glory days.
+
+**SPEAKER_01:**
+[08:47] It was just dinners and a couple of shepherd's pie somewhere.
+
+**SPEAKER_00:**
+[08:49] Right.
+
+**SPEAKER_01:**
+[08:50] And that was kind of fun.
+[08:51] Like, you got to know people, like, really, really well.
+[08:55] And, yeah, it was, it was really just the golden days.
+[08:57] I felt like there was, yeah, so many inspired people and ideas and people only talked about tech.
+[09:02] I think there was like one a little bit weird product hype talk with a guy who had a T-shirt gun on the stage.
+[09:07] This, like, FreeMyVunk, right?
+[09:09] Like a very different energy than everybody.
+[09:11] It felt like he was the only one who actually knew how to give a talk and how to actually sell and back.
+[09:15] Yeah, I thought it was way too much, but now, now it's basically what everyone else is doing.
+[09:19] And the quality of slides was so bad as well.
+
+**SPEAKER_00:**
+[09:21] It's right to look back.
+
+**SPEAKER_01:**
+[09:22] But, yeah, I was thinking about that and then I was comparing with, let's say, Devcon 2.
+
+**SPEAKER_00:**
+[09:27] Right.
+
+**SPEAKER_01:**
+[09:28] I think at Devcon 2, there was maybe like a couple of parties.
+[09:30] I think ConsenSys had like a bar somewhere where we would usually go.
+[09:34] It was still not that big.
+[09:35] There was still only one stage, I think, at Devcon 2.
+
+**SPEAKER_00:**
+[09:38] So it was like there was just one main stage.
+
+**SPEAKER_01:**
+[09:39] Yeah.
+[09:40] Quite, quite doable.
+[09:41] And then I think at Devcon 3 in Cancun, that was where you could really feel okay, now there's a lot of money in this space because, like, there were parties right and left and.
+[09:49] Yeah.
+[09:49] Okay.
+[09:49] The rest is history, right?
+
+**SPEAKER_00:**
+[09:51] That's right.
+
+**SPEAKER_01:**
+[09:52] It's been quite crazy to see this development as well, of, like, measuring on the amount of events and parties at the different Devcons, how popular things got.
+[09:59] But for me, the Devcon 1 is like one of my best memories of these 10 years, simply because it was just so inspiring and motivating, I would say.
+[10:06] And a lot of the people you have on your list were around there.
+
+**SPEAKER_00:**
+[10:09] Yeah, it's.
+
+**SPEAKER_01:**
+[10:10] It's quite, quite cool.
+[10:12] And I actually recently found out that someone I got to know, a couple of years ago only, who's also doing some cool stuff, he actually was around there.
+[10:18] Like, we didn't meet each other.
+[10:19] I didn't know him.
+[10:20] I only found out like, two years ago.
+[10:21] But he had also.
+[10:22] And he said he didn't see almost any talks because he was sitting in the back trying to get AlethZero or the Geth client to run on his machine or something like that.
+[10:29] Because it was not easy back then.
+[10:31] No, it took days, even if you had the devs available right next to you.
+
+**SPEAKER_00:**
+[10:34] Absolutely.
+
+**SPEAKER_01:**
+[10:35] It wasn't easy.
+
+**SPEAKER_00:**
+[10:36] No.
+
+**SPEAKER_01:**
+[10:37] So, yeah, I think that's mainly what I have to, like, share without it going into too much detail about things, but.
+
+**SPEAKER_00:**
+[10:43] Well, thanks so much.
+
+**SPEAKER_01:**
+[10:44] Yeah, you're very welcome.
+
+**SPEAKER_00:**
+[10:46] Great chatting, always.
+
+**SPEAKER_01:**
+[10:47] Yeah.
+
+**SPEAKER_00:**
+[10:48] Okay.
+[10:48] All the very best.
+
+**SPEAKER_01:**
+[10:49] Thank you.
+[10:50] You too.
