@@ -2,7 +2,7 @@
 AI PROVIDER CONTEXT WINDOW TEST RESULTS
 ======================================================================
 
-Test Date: 2025-11-11 16:21:29
+Test Date: 2025-11-20 02:02:15
 
 For typical 60-90 minute transcripts:
   Estimated tokens: 20,000 - 40,000 tokens
@@ -12,23 +12,82 @@ For typical 60-90 minute transcripts:
 ======================================================================
 
 
-Gwen: qwen2.5:7b
-  Advertised: 32,768 tokens (model dependent)
-  Maximum Tested: 32,027 tokens
-  Recommended Safe Limit: 30,425 tokens (with 5% buffer)
-  Chunking Needed: YES - Transcripts may need splitting
+Anthropic: claude-sonnet-4-5-20250929
+  Advertised: 200,000 tokens (standard), 1,000,000 (beta)
+  Maximum Tested: 50,050 tokens
+  Recommended Safe Limit: 47,547 tokens (with 5% buffer)
+  Chunking Needed: NO - Perfect for your transcripts!
 
   Test Results:
-    ✓ 2,011 tokens - OK (2.4s)
-    ✓ 8,041 tokens - OK (1.3s)
-    ✓ 16,014 tokens - OK (1.3s)
-    ✓ 24,054 tokens - OK (1.3s)
-    ✓ 32,027 tokens - OK (1.4s)
+    ✓ 10,051 tokens - OK (2.8s)
+    ✓ 50,050 tokens - OK (3.3s)
+    ✗ 100,049 tokens - FAILED
+
+OpenAI: gpt-4o-2024-11-20
+  Advertised: 128,000 tokens
+  Maximum Tested: 120,041 tokens
+  Recommended Safe Limit: 114,038 tokens (with 5% buffer)
+  Chunking Needed: NO - Perfect for your transcripts!
+
+  Test Results:
+    ✓ 10,051 tokens - OK (1.2s)
+    ✓ 50,050 tokens - OK (2.9s)
+    ✓ 100,049 tokens - OK (6.3s)
+    ✓ 120,041 tokens - OK (6.5s)
+    ✗ 128,065 tokens - FAILED
+
+Google: gemini-2.5-pro
+  Advertised: 128,000 tokens (some claim 1M)
+  Maximum Tested: 128,065 tokens
+  Recommended Safe Limit: 121,661 tokens (with 5% buffer)
+  Chunking Needed: NO - Perfect for your transcripts!
+
+  Test Results:
+    ✓ 10,051 tokens - OK (4.4s)
+    ✓ 50,050 tokens - OK (4.1s)
+    ✓ 100,049 tokens - OK (3.9s)
+    ✓ 120,041 tokens - OK (3.5s)
+    ✓ 128,065 tokens - OK (3.5s)
+
+Groq: llama-3.3-70b-versatile
+  Advertised: 128,000 tokens
+  Maximum Tested: 100,049 tokens
+  Recommended Safe Limit: 95,046 tokens (with 5% buffer)
+  Chunking Needed: NO - Perfect for your transcripts!
+
+  Test Results:
+    ✓ 10,051 tokens - OK (1.1s)
+    ✓ 50,050 tokens - OK (3.0s)
+    ✓ 100,049 tokens - OK (6.2s)
+    ✗ 120,041 tokens - FAILED
+
+Groq: qwen/qwen3-32b
+  Advertised: 128,000 tokens
+  Maximum Tested: 100,049 tokens
+  Recommended Safe Limit: 95,046 tokens (with 5% buffer)
+  Chunking Needed: NO - Perfect for your transcripts!
+
+  Test Results:
+    ✓ 10,051 tokens - OK (1.0s)
+    ✓ 50,050 tokens - OK (3.2s)
+    ✓ 100,049 tokens - OK (5.4s)
+    ✗ 120,041 tokens - FAILED
+
+Qwen: SKIPPED
+  Reason: GPU Required - Qwen skipped on CPU-only system
 
 ======================================================================
 
 RECOMMENDATIONS FOR YOUR TRANSCRIPTS:
 ======================================================================
 
-REQUIRE CHUNKING (not ideal for quality):
-  - Gwen: 32,027 tokens
+BEST CHOICE: Google (gemini-2.5-pro)
+  Context: 128,065 tokens
+  Perfect for your transcripts without chunking
+  Maintains full context for best quality
+
+ALTERNATIVES:
+  - Anthropic: 50,050 tokens
+  - OpenAI: 120,041 tokens
+  - Groq: 100,049 tokens
+  - Groq: 100,049 tokens

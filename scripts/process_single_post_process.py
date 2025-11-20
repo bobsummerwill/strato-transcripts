@@ -357,16 +357,16 @@ def process_with_groq(transcript, api_key, context):
         import openai
     except ImportError:
         raise ImportError("openai package not installed")
-    
+
     client = openai.OpenAI(api_key=api_key, base_url="https://api.groq.com/openai/v1")
     prompt = build_prompt(context, transcript)
-    
+
     print(f"      Model: {model}")
     print(f"      Processing: ", end='', flush=True)
-    
+
     result = ""
     chunk_count = 0
-    
+
     stream = client.chat.completions.create(
         model=model,
         messages=[
@@ -377,14 +377,52 @@ def process_with_groq(transcript, api_key, context):
         temperature=0.3,
         stream=True
     )
-    
+
     for chunk in stream:
         if chunk.choices[0].delta.content:
             result += chunk.choices[0].delta.content
             chunk_count += 1
             if chunk_count % 100 == 0:
                 print(".", end='', flush=True)
-    
+
+    print(" ✓")
+    return result
+
+def process_with_groq_qwen(transcript, api_key, context):
+    """Process transcript using Qwen3 32B (via Groq) with streaming - MAXIMUM QUALITY - No cost/speed limits."""
+    model = "qwen/qwen3-32b"
+    try:
+        import openai
+    except ImportError:
+        raise ImportError("openai package not installed")
+
+    client = openai.OpenAI(api_key=api_key, base_url="https://api.groq.com/openai/v1")
+    prompt = build_prompt(context, transcript)
+
+    print(f"      Model: {model} (hosted)")
+    print(f"      Processing: ", end='', flush=True)
+
+    result = ""
+    chunk_count = 0
+
+    stream = client.chat.completions.create(
+        model=model,
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=32000,  # Groq Qwen supports up to 32K output tokens
+        temperature=0.3,
+        stream=True
+    )
+
+    for chunk in stream:
+        if chunk.choices[0].delta.content:
+            result += chunk.choices[0].delta.content
+            chunk_count += 1
+            if chunk_count % 100 == 0:
+                print(".", end='', flush=True)
+
     print(" ✓")
     return result
 
@@ -525,9 +563,11 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
         elif provider == "gemini":
             corrected = process_with_gemini(transcript, api_keys['gemini'], context)
         elif provider == "llama":
-            corrected = process_with_groq(transcript, api_keys['llama'], context)
-        elif provider == "qwen":
-            corrected, new_ollama_process = process_with_qwen(transcript, context, ollama_process)
+                corrected = process_with_groq(transcript, api_keys['llama'], context)
+    elif provider == "qwen-cloud":
+        corrected = process_with_groq_qwen(transcript, api_keys['qwen-cloud'], context)
+    elif provider == "qwen":
+        corrected, new_ollama_process = process_with_qwen(transcript, context, ollama_process)
     except Exception as e:
         elapsed = time.time() - start_time
         print(f"      {failure(f'Processing failed ({elapsed:.1f}s): {e}')}")
@@ -601,7 +641,7 @@ def main():
     
     parser.add_argument("transcripts", nargs='+', help="Transcript file path(s)")
     parser.add_argument("--processors", required=True,
-                       help="Comma-separated list of processors (sonnet,chatgpt,gemini,llama,qwen)")
+                       help="Comma-separated list of processors (sonnet,chatgpt,gemini,llama,qwen-cloud,qwen)")
     
     args = parser.parse_args()
     
@@ -629,7 +669,7 @@ def main():
     
     # Parse processors
     processors = [p.strip() for p in args.processors.split(',')]
-    valid_processors = {'sonnet', 'chatgpt', 'gemini', 'llama', 'qwen'}
+    valid_processors = {'sonnet', 'chatgpt', 'gemini', 'llama', 'qwen-cloud', 'qwen'}
     
     for proc in processors:
         if proc not in valid_processors:
@@ -683,7 +723,8 @@ def main():
         'sonnet': 'ANTHROPIC_API_KEY',     # Claude Sonnet 4.5 via Anthropic
         'chatgpt': 'OPENAI_API_KEY',       # ChatGPT-4o-latest via OpenAI
         'gemini': 'GOOGLE_API_KEY',        # Gemini 2.5 Pro via Google
-        'llama': 'GROQ_API_KEY'            # Llama 3.3 70B via Groq
+        'llama': 'GROQ_API_KEY',           # Llama 3.3 70B via Groq
+        'qwen-cloud': 'GROQ_API_KEY'       # Qwen3 32B via Groq
     }
     
     for proc in processors:

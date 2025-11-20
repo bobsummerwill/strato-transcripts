@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Unified transcription with speaker diarization.
-Supports: WhisperX (local), Deepgram, AssemblyAI.
+Supports: WhisperX (local), WhisperX Cloud (Replicate), Deepgram, AssemblyAI.
 """
 
 import sys
@@ -126,7 +126,7 @@ def main():
     parser.add_argument(
         "--transcribers",
         required=True,
-        help="Comma-separated list of transcription services (whisperx,deepgram,assemblyai)"
+        help="Comma-separated list of transcription services (whisperx,whisperx-cloud,deepgram,assemblyai)"
     )
     parser.add_argument("--output-dir", default="intermediates", help="Output directory")
     parser.add_argument("--force-cpu", action="store_true", help="Force CPU for WhisperX")
@@ -141,7 +141,7 @@ def main():
     
     # Parse transcribers
     transcribers = [t.strip() for t in args.transcribers.split(',')]
-    valid_transcribers = {'whisperx', 'deepgram', 'assemblyai'}
+    valid_transcribers = {'whisperx', 'whisperx-cloud', 'deepgram', 'assemblyai'}
     
     for transcriber in transcribers:
         if transcriber not in valid_transcribers:
@@ -200,6 +200,8 @@ def main():
             _, skip_reason = validate_api_key('ASSEMBLYAI_API_KEY')
         elif transcriber == 'whisperx':
             _, skip_reason = validate_api_key('HF_TOKEN')
+        elif transcriber == 'whisperx-cloud':
+            _, skip_reason = validate_api_key('REPLICATE_API_TOKEN')
         
         if skip_reason:
             print(skip(f"{transcriber}: {skip_reason}"))
@@ -215,6 +217,8 @@ def main():
                     args.output_dir,
                     args.force_cpu
                 )
+            elif transcriber == 'whisperx-cloud':
+                output_path = transcribe_whisperx_cloud(str(audio_path), args.output_dir)
             elif transcriber == 'deepgram':
                 output_path = transcribe_deepgram(str(audio_path), args.output_dir)
             elif transcriber == 'assemblyai':
@@ -412,7 +416,7 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False):
         )
         
         elapsed = time.time() - start
-        print(f"  Completed in {elapsed:.1f}s ({elapsed/60:.1f} min)")
+        print(f"  → Completed in {elapsed:.1f}s ({elapsed/60:.1f} min)")
         
         # Clean up GPU memory after transcription (gentle cleanup)
         print("  → Cleaning up GPU memory...")
@@ -423,6 +427,85 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False):
     finally:
         if temp_wav and os.path.exists(temp_wav.name):
             os.unlink(temp_wav.name)
+
+
+def transcribe_whisperx_cloud(audio_path, output_dir):
+    """WhisperX cloud transcription via Replicate with speaker diarization"""
+    import replicate
+    import time
+    import json
+    from pathlib import Path
+    
+    api_token = os.environ.get('REPLICATE_API_TOKEN')
+    if not api_token:
+        raise ValueError("REPLICATE_API_TOKEN environment variable not set")
+    
+    audio_path_obj = Path(audio_path)
+    
+    print(f"  Uploading and transcribing via Replicate...")
+    print(f"  Model: WhisperX Large-v3")
+    
+    start_time = time.time()
+    
+    try:
+        # Run WhisperX on Replicate - matches local large-v3 settings
+        prediction = replicate.run(
+            "victor-upmeet/whisperx",
+            input={
+                "audio": audio_path,  # File path - Replicate handles upload
+                "model": "large-v3",
+                "language": "en",
+                "diarize": True,  # Enable speaker diarization like local
+                "vad_filter": True
+            }
+        )
+        
+        elapsed = time.time() - start_time
+        print(f"  Transcribed in {elapsed:.1f}s")
+        
+        # Parse the output
+        segments = []
+        
+        # Replicate returns a structure with segments including speaker info
+        # Format: list of dicts like {"start": 0.0, "end": 4.2, "text": "...", "speaker": "SPEAKER_00"}
+        if isinstance(prediction, list) and prediction:
+            for seg in prediction:
+                start = float(seg.get('start', 0))
+                end = float(seg.get('end', 0))
+                speaker = seg.get('speaker', 'SPEAKER_00')
+                
+                # Normalize speaker labels to match local format
+                if not speaker.startswith('SPEAKER_'):
+                    speaker = f'SPEAKER_{int(speaker):02d}'
+                
+                text = seg.get('text', '').strip()
+                
+                segments.append({
+                    'start': start,
+                    'end': end,
+                    'speaker': speaker,
+                    'text': text
+                })
+        
+        if not segments:
+            raise ValueError("No transcription segments returned from Replicate")
+        
+        # Count speakers
+        speakers = set(seg['speaker'] for seg in segments if seg['speaker'].startswith('SPEAKER_'))
+        print(f"  Detected {len(speakers)} speakers")
+        
+        # Save using utility function (same format as local whisperx)
+        output_path = save_transcript_files(
+            output_dir,
+            audio_path_obj.stem,
+            "whisperx-cloud",
+            segments
+        )
+        
+        return output_path
+        
+    except Exception as e:
+        raise RuntimeError(f"WhisperX Cloud transcription failed: {e}")
 
 
 def transcribe_deepgram(audio_path, output_dir):
@@ -625,4 +708,4 @@ def transcribe_assemblyai(audio_path, output_dir):
 
 
 if __name__ == "__main__":
-    main()
+main()

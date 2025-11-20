@@ -225,11 +225,11 @@ def test_whisperx():
     print("\n" + "="*60)
     print("Testing WHISPERX (local GPU transcription)")
     print("="*60)
-    
+
     try:
         import whisperx
         import torch
-        
+
         # Check if GPU available
         if torch.cuda.is_available():
             print(f"✅ WhisperX installed with GPU support")
@@ -242,6 +242,67 @@ def test_whisperx():
     except ImportError:
         print(f"❌ WhisperX not installed")
         return False
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        return False
+
+def test_whisperx_cloud():
+    """Test WhisperX Cloud (Replicate) transcription"""
+    print("\n" + "="*60)
+    print("Testing WHISPERX-CLOUD (Replicate cloud transcription)")
+    print("="*60)
+
+    try:
+        import replicate
+
+        api_key = os.environ.get('REPLICATE_API_TOKEN')
+        if not api_key or api_key == "" or api_key == "your_replicate_api_token_here":
+            print("⚠️  API key not configured - skipping")
+            return "skipped"
+
+        # Set the REPLICATE_API_TOKEN environment variable
+        # The replicate library automatically uses this
+        os.environ['REPLICATE_API_TOKEN'] = api_key
+
+        # Initialize client - replicate.run() will use the env var
+        client = replicate.Client()
+
+        # Test basic connection by listing models
+        models = client.models.list()
+        if hasattr(models, '__iter__'):
+            print(f"✅ API key configured and SDK loaded successfully")
+            return True
+        else:
+            print(f"✅ API key configured (basic connection test)")
+            return True
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        return False
+
+def test_qwen_cloud():
+    """Test Qwen 2.5 72B (hosted on Groq) connection"""
+    print("\n" + "="*60)
+    print("Testing QWEN-CLOUD (qwen/qwen3-32b on Groq)")
+    print("="*60)
+
+    api_key = os.environ.get('GROQ_API_KEY')
+    if not api_key:
+        print("❌ GROQ_API_KEY not set")
+        return False
+
+    try:
+        import openai
+        client = openai.OpenAI(api_key=api_key, base_url="https://api.groq.com/openai/v1")
+
+        response = client.chat.completions.create(
+            model="qwen/qwen3-32b",
+            messages=[{"role": "user", "content": "Say 'hello' in one word"}],
+            max_tokens=10
+        )
+
+        print(f"✅ Connected successfully")
+        print(f"Response: {response.choices[0].message.content}")
+        return True
     except Exception as e:
         print(f"❌ Error: {e}")
         return False
@@ -265,6 +326,7 @@ def main():
     print("="*60)
     results['assemblyai'] = test_assemblyai()
     results['deepgram'] = test_deepgram()
+    results['whisperx-cloud'] = test_whisperx_cloud()
     
     # Test AI post-processing providers
     print("\n" + "="*60)
@@ -273,6 +335,7 @@ def main():
     results['anthropic'] = test_anthropic()
     results['openai'] = test_openai()
     results['gemini'] = test_gemini()
+    results['qwen-cloud'] = test_qwen_cloud()
     results['qwen'] = test_qwen()
     
     # Summary

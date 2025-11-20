@@ -35,8 +35,6 @@ export GOOGLE_API_KEY=""
 # Get key from: https://console.groq.com/
 export GROQ_API_KEY=""
 
-
-
 # AssemblyAI (Cloud transcription with speaker diarization)
 # Get key from: https://www.assemblyai.com/
 export ASSEMBLYAI_API_KEY=""
@@ -45,6 +43,9 @@ export ASSEMBLYAI_API_KEY=""
 # Get key from: https://console.deepgram.com/
 export DEEPGRAM_API_KEY=""
 
+# Replicate (Cloud WhisperX with speaker diarization)
+# Get key from: https://replicate.com/account/api-tokens
+export REPLICATE_API_TOKEN=""
 
 # Ollama - No API key needed (runs locally, FREE, private)
 # Just ensure service is running: ollama serve

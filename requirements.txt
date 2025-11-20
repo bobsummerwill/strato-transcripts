@@ -1,6 +1,7 @@
 # WhisperX transcription with speaker diarization
 whisperx==3.7.4
 pandas==2.2.3
+replicate==1.0.2
 
 # PyTorch versions COMMENTED OUT - installed by shell script instead
 # WhisperX 3.7.4 requires torch~=2.8.0, but we need 2.9.0 for RTX 5070 Blackwell support

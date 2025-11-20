@@ -17,6 +17,9 @@ source venv/bin/activate && source setup_env.sh
 # 3. Multiple combinations (2 transcribers × 3 processors = 6 outputs)
 ./scripts/process_single.sh audio.mp3 --transcribers whisperx,deepgram --processors sonnet,chatgpt,llama
 
+# 4. Cloud WhisperX (paid but no local GPU required)
+./scripts/process_single.sh audio.mp3 --transcribers whisperx-cloud --processors chatgpt
+
 # 4. Batch process all MP3s
 ./scripts/process_all.sh --transcribers deepgram --processors sonnet
 ```
@@ -26,20 +29,22 @@ source venv/bin/activate && source setup_env.sh
 All services include speaker diarization (identifying who said what).
 
 | Service | Model | Type | Cost/hour | Speed |
-|---------|-------|------|-----------|-------|
+|---------|--------|------|-----------|-------|
 | **WhisperX** | large-v3 | Local GPU | FREE | 5-10 min |
-| **Deepgram** | nova-3-general | Cloud API | $0.41 | 23 sec |
-| **AssemblyAI** | Best | Cloud API | $1.44 | 3-4 min |
+| **WhisperX-Cloud** | large-v3 | Cloud API | $2.88 | 2-3 min |
+| **Deepgram** | nova-3-general | Cloud API | $0.27 | 23 sec |
+| **AssemblyAI** | Best | Cloud API | $1.08 | 3-4 min |
 
 ## AI Post-Processors
 
 | Processor | Model | Cloud Service | Context | Cost (Input/Output) | Best For |
-|-----------|-------|---------------|---------|---------------------|----------|
+|-----------|------------|---------------|---------|---------------------|----------|
 | **sonnet** | Claude Sonnet 4.5 | Anthropic | 200K | $3/$15 per MTok | Complex technical content, long transcripts |
 | **chatgpt** | GPT-4.1 | OpenAI | 128K | $2.50/$10 per MTok | Extended context, 32K output tokens |
 | **gemini** | Gemini 2.5 Pro | Google | 128K | ~$1.25 per MTok | Very long transcripts, multilingual |
 | **llama** | Llama 3.3 70B | Groq | 128K | $0.59/$0.79 per MTok | ⚡ BLAZING FAST (300+ tok/s), Meta's latest |
-| **qwen** | Qwen2.5:32b | Ollama (local) | 32K | FREE | 🎮 GPU-only (12GB+ VRAM), skipped on CPU |
+| **qwen-cloud** | Qwen3 32B | Groq | 128K | $0.08/$0.08 per MTok | 🔬 MAXIMUM QUALITY for technical content |
+| **qwen** | Qwen2.5:14B | Ollama (local) | 32K | FREE | 🎮 Local GPU (12GB+ VRAM), skipped on CPU |
 
 ## Setup
 
@@ -62,7 +67,7 @@ export GROQ_API_KEY="gsk_..."
 
 Example: `interview_deepgram_llama_processed.txt`
 
-Processors: `sonnet`, `chatgpt`, `gemini`, `llama`, `qwen`
+Processors: `sonnet`, `chatgpt`, `gemini`, `llama`, `qwen-cloud`, `qwen`
 
 ## License
 

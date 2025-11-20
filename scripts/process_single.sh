@@ -18,7 +18,7 @@ if [ $# -eq 0 ]; then
     echo "Required:"
     echo "  <audio_file>                Path to MP3 audio file"
     echo "  --transcribers <list>       Comma-separated transcription services"
-    echo "                              (whisperx, deepgram, assemblyai)"
+    echo "                              (whisperx, whisperx-cloud, deepgram, assemblyai)"
     echo "  --processors <list>         Comma-separated AI post-processors"
     echo "                              (sonnet, chatgpt, gemini, llama, qwen)"
     echo ""
