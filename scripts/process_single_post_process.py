@@ -38,7 +38,7 @@ def save_processed_files(output_dir, basename, transcriber, processor, content):
     """Save txt (clean) and md (with timestamps)."""
     import re
     
-    output_path = Path(output_dir) / f"{basename}_{transcriber}_{processor}_processed.txt"
+    output_path = Path(output_dir) / f"{basename}_{transcriber}_{processor}.txt"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
     # Clean up content
@@ -548,8 +548,8 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
     
     # Get output file paths for potential cleanup
     basename, transcriber = extract_transcriber_from_filename(transcript_path)
-    output_txt = Path("outputs") / f"{basename}_{transcriber}_{provider}_processed.txt"
-    output_md = Path("outputs") / f"{basename}_{transcriber}_{provider}_processed.md"
+    output_txt = Path("outputs") / f"{basename}_{transcriber}_{provider}.txt"
+    output_md = Path("outputs") / f"{basename}_{transcriber}_{provider}.md"
     
     # Process with appropriate provider
     corrected = None

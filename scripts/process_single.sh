@@ -128,11 +128,11 @@ echo ""
 echo "Phase 1 complete: $(format_duration $PHASE1_DURATION)"
 echo ""
 
-# Find generated transcript files (using new naming convention)
+# Find generated transcript files (no _raw suffix)
 TRANSCRIPT_FILES=()
 for TRANSCRIBER in "${TRANSCRIBER_ARRAY[@]}"; do
-    TRANSCRIPT_FILE="intermediates/${BASE_NAME}_${TRANSCRIBER}_raw.txt"
-    
+    TRANSCRIPT_FILE="intermediates/${BASE_NAME}_${TRANSCRIBER}.txt"
+
     if [ -f "$TRANSCRIPT_FILE" ]; then
         TRANSCRIPT_FILES+=("$TRANSCRIPT_FILE")
     fi
