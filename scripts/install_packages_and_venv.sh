@@ -520,7 +520,7 @@ echo ""
 # ==============================================================================
 echo -e "${YELLOW}[9/15] Installing pyannote.audio 4.0+...${NC}"
 echo "Installing pyannote.audio 4.0+ for PyTorch 2.9.0 compatibility..."
-pip install --upgrade "pyannote.audio>=4.0.0"
+pip install --upgrade "pyannote.audio>=4.0.1,<4.0.2"
 echo -e "${GREEN}✓ pyannote.audio 4.0+ installed${NC}"
 echo ""
 
