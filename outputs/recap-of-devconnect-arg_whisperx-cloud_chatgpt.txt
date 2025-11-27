@@ -1,113 +1,107 @@
+```
 **SPEAKER_03:**
-[00:01] We are on, and welcome everyone to our recap of DevConnect Argentina. I'm Victor Wong, founder and CPO at Strato. Three CPO? Three CPO, maybe. Three CPO. I may be looking very robotic, so if I am, then you know, like that.
+We are on, and welcome everyone to our recap of DevConnect Argentina. I'm Victor Wong, founder and CPO at Strato. Three CPO? Three CPO, maybe. Three CPO. I may be looking very robotic, so if I am, then you know, like that.
 
 **SPEAKER_04:**
-[00:15] So let's go around the horn and introduce ourselves before we kick it off. Kieran, you want to go?
+So let's go around the horn and introduce ourselves before we kick it off. Kieran, you want to go?
+
+Sure. I'm Kieran. I'm our CEO. I guess, you know—okay, so Strato, we have been—I guess we're hard announcing it now. We are...
+
+The labs company, if you will, has always been called BlockApps. And I'm actually the CEO of BlockApps as we're transitioning to a mainnet open source kind of foundation-given project. First, we called that...
+
+Strato Mercado because kind of Mercado was sort of a separate product, and we've kind of purposefully sunset everything else. So going back to the OG Strato at this time. So I guess I'm the—does Strato have a CEO? Like we're jumping in with two feet, Victor.
+
+Yeah, exactly. Well, I just—I was kind of soft-pedaling it, but I didn't know if you want to make the announcement though. That's cool.
+
+Well, but you said "of Strato," so it was too late.
 
 **SPEAKER_01:**
-[00:20] Sure. I'm Kieran. I'm our CEO. I guess, you know—okay, so Strato, we have been—I guess we're hard announcing it now. We are... the labs company, if you will, has always been called BlockApps. And I'm actually the CEO of BlockApps as we're transitioning to a mainnet open source kind of foundation-given project.
-
-[00:40] First, we called that Strato Mercado because Mercado was sort of a separate product, and we've kind of purposefully sunset everything else. So going back to the OG Strato at this time. So I guess I'm the—does Strato have a CEO? Like, we're jumping in with two feet, Victor.
+I think I've already changed it in my mind. So maybe it's not like—and thanks for that, Bob. Yeah. And that's it. OG, OG. So, Strato was, you know, unveiled at DevCon One...
 
 **SPEAKER_03:**
-[00:56] Yeah, exactly. Well, I just—I was kind of soft-pedaling it, but I didn't know if you wanted to make the announcement though. That's cool. Well, but you said "of Strato," so it was too late.
+I don't know what exact date that was. You know, it might be almost exactly 10 years like right now. I think it's very close to 10 years. I think it was early December, maybe a week off.
+
+No, no, no. I think it was in October or November because it wasn't that cold. It was in London. And I remember it was not miserable yet, which is normal during London at that time. I will keep looking off to the side. Okay, you're our resident historian, Bob.
 
 **SPEAKER_01:**
-[01:06] I think I've already changed it in my mind. So maybe it's not like—and thanks for that, Bob. Yeah. And that's it. OG, OG. So, Strato was, you know, unveiled at DevCon One.
+I see a YouTube video, December 11th, 2015.
 
-**SPEAKER_03:**
-[01:17] I don't know what exact date that was. You know, it might be almost exactly 10 years like right now. I think it's very close to 10 years. I think it was early December, maybe a week off.
+Now, that's later though. They got released later. Yeah. Yeah. So, well, Bob, do you want to do a quick "who are you"?
 
-**SPEAKER_01:**
-[01:26] No, no, no. I think it was in October or November because it wasn't that cold. It was in London. And I remember it was not miserable yet, which is normal during London at that time. I will keep looking off to the side. Okay, you're our resident historian, Bob.
+I'm Head of Ecosystem. So, you know, joined the team this year, but, you know, long-time friend.
 
-**SPEAKER_01:**
-[01:39] I see a YouTube video, December 11th, 2015.
-
-**SPEAKER_03:**
-[01:42] No, that was later though. They got released later.
-
-**SPEAKER_01:**
-[01:44] Yeah. Yeah. So, well, Bob, do you want to do a quick "Who are you?"
-
-**SPEAKER_01:**
-[01:47] I'm Head of Ecosystem. So, you know, joined the team this year, but, you know, long-time friend.
-
-**SPEAKER_03:**
-[01:52] Yes. Long-time listener, first-time caller, right?
+Yes. Long-time listener. First-time caller, right?
 
 **SPEAKER_00:**
-[01:55] And Jim, who are you?
+And Jim, who are you?
 
-**SPEAKER_00:**
-[01:57] I am James from SDR. I am CTO of BlockApps and one of the three founders.
-
-**SPEAKER_03:**
-[02:02] Yes. And of Strato too, as Kieran has announced. So let's dive right into it. What were your—
-
-**SPEAKER_00:**
-[02:07] For you and us.
+I am James from SDR. I am CTO of BlockApps and one of the three founders.
 
 **SPEAKER_03:**
-[02:08] I don't know what to—maybe I soft-announced. I pushed you over the edge on that one. So let's dive into it. What were your impressions of DevConnect and Buenos Aires? Who wants to start here?
+Yes. And of Strato too, as Kieran has announced. So let's dive right into it. What were your—
+
+For you and us. I don't know what to—maybe I soft-announced. I pushed you over the edge on that one.
+
+So let's dive into it. What were your impressions of DevConnect and Buenos Aires? Who wants to start here?
 
 **SPEAKER_04:**
-[02:18] I guess I can quickly—hopefully quickly. I know we all have a tendency to ramble. One of my big surprises, let's say, was the city itself. I was surprised to find that I was in Europe. I was expecting to be in South America. And I guess everyone knows this—they call it like the Paris of South America or something—but quite beautiful place.
+I guess I can quickly—hopefully quickly. I know we all have a tendency to ramble.
 
-[02:37] The mix of food varied from really excellent, especially on the steak front—that is all true. For anyone on the fence about the Argentinian steak, go and try it—to, you know, like, medium. Sometimes, you know, service very slow.
+One of my big surprises, let's say, was the city itself. I was surprised to find that I was in Europe. I was expecting to be in South America. And I guess everyone knows this—they call it like the Paris of South America or something—but quite beautiful place.
 
-[02:50] The city does not look that big. Like somehow, you know, all of the hotels near the venue were booked out. So I ended up staying about 20 minutes away by car. And if there's no traffic, it was like 9 to 12 minutes away, but it was consistently about 25 minutes away.
+The mix of the food varied from really excellent, especially on the steak front—that is all true. For anyone who is on the fence about the Argentinian steak, go and try it—to, you know, like...
 
-[03:05] It's all kind of like mid-rises, like four to six or eight stories. And it's like that for a pretty large geographic area, which I found quite interesting. Yeah. It had a little bit of an old-world feel. It's kind of narrow. But yeah, super cool. People are very nice—maybe except for the slow service. It wasn't like snooty slow service. It was just slow service, you know?
+Medium. Sometimes, you know, service very slow. The city does not look that big. Like somehow, you know, all of the hotels near the venue were booked out. So I ended up staying about 20 minutes away by car and...
 
-[03:25] So hard to get things. You had to budget more time than you expected for things, which we found out the hard way. But would go back. Very cool place.
+If there's no traffic, it was like 9 to 12 minutes away, but it was consistently about 25 minutes away. It's all kind of like mid-rises, like four to six or eight stories. And it's like that for a pretty large geographic area, which I found quite interesting.
+
+Yeah. It had like a little bit of an old-world feel. It's kind of narrow. But yeah, super cool. People are very nice—maybe except for the slow service. It wasn't like snooty slow service. It was just slow service, you know?
+
+So hard to get things. You had to budget more time than you expected for things, which we found out the hard way. But would go back. Very cool place.
 
 **SPEAKER_03:**
-[03:33] And what about DevConnect itself? How did you feel about the conference? And, you know, you might want to mention, like, what was the reaction to prices tanking during the event itself?
+And what about DevConnect itself? How did you feel about the conference? And, you know, you might want to mention, like, what was the reaction to prices tanking during the event itself?
 
-[03:42] We'll tell you the other thing that we should mention first is what DevConnect even is. Oh, yeah. So as a resident historian of Ethereum, what is DevConnect?
+We'll tell you the other thing that we should mention first is what DevConnect even is. Oh yeah. So as a resident historian of Ethereum, what is DevConnect?
 
 **SPEAKER_01:**
-[03:51] Yeah, so it's a major conference held by the Ethereum Foundation. There's actually two different conference series that run now. So DevCon, which was originally Developer Conference, obviously has become not a developer conference anymore.
+Yeah, so it's a major conference held by the Ethereum Foundation. There's actually two different conference series that run now.
 
-[04:04] I don't know when it was last a developer conference. Maybe two—probably DevCon Two-ish. Maybe. It kept getting bigger. Two was big, but not huge.
+So DevCon, which was originally Developer Conference, obviously has become not a developer conference anymore. I don't know when it was last a developer conference. Maybe two—probably DevCon Two-ish. Maybe.
+
+It kept getting bigger. Two was big, but not huge.
 
 **SPEAKER_04:**
-[04:13] I'm thinking in terms of the content, though.
+I'm thinking in terms of the content, though.
 
 **SPEAKER_01:**
-[04:15] No, I know, but they kind of correlated, right?
+No, I know, but they kind of correlated, right?
 
 **SPEAKER_04:**
-[04:17] Yeah, yeah. The more people that wanted to come, the lower percentage devs somehow.
+Yeah, yeah. The more people that wanted to come, the lower percentage devs somehow.
+
+Well, I kind of remember at Two they had DevCon, and then, like, next to it they had...
 
 **SPEAKER_01:**
-[04:21] Well, I kind of remember at Two they had DevCon, and then next to it they had—
+I think it was called like World Blockchain. Yeah, I mean, that one was a combined event. But yeah, I guess probably DevCon Three, probably in 2017, was the switch over where you had like a thousand people.
 
-**SPEAKER_04:**
-[04:25] I think it was called like World Blockchain.
+So it switched from a, you know, meet your peers, talk about all the different development projects going on to more of a, you know, hey, here are the big talks and, you know, woo.
 
-**SPEAKER_01:**
-[04:27] Yeah, I mean, that one was a combined event. But yeah, I guess probably DevCon Three, probably in 2017, was the switch over where you had like a thousand people. So it switched from a, you know, meet your peers, talk about all the different development projects going on to more of a, you know, hey, here are the big talks and, you know, woo.
+But yeah, we're on to—we have Seven now. So, you know, DevCon Seven was in Bangkok last October, I think.
 
-[04:45] But yeah, we're on to—we have Seven now. So, you know, DevCon Seven was in Bangkok last October, I think. But yeah, they started doing DevConnect as well, which is really intended, I guess, to not be a conference—to be a collection of different events connecting developers and community.
+But yeah, they started doing DevConnect as well, which is really...
 
-[05:03] So I was expecting it to be a fair bit smaller, but it absolutely wasn't. But it did have a different flavor to DevCon in that it was lots of little things. Lots of mini-events, many under that same banner, obviously side events as well.
+Intended, I guess, to not be a conference—to be a collection of different events connecting developers and community. So I was expecting it to be a fair bit smaller, but it absolutely wasn't.
 
-[05:17] But even if you just got a ticket for the main thing with a theme of World Fair, you know, of really bringing people from around the world to show what they're working on. But I didn't expect it to be as big. Like, I think it probably was as big as DevCon really in the numbers.
+But it did have a different flavor to DevCon in that you...
 
-**SPEAKER_03:**
-[05:32] I mean, effectively, I think they've become the same. It's just, you know, basically whatever they were trying to kind of keep it small and more developer-friendly. But I think, you know, in terms of signal-to-noise ratio, these DevCons are probably still the highest compared to more business-y conferences. You know what I mean? Like in terms of actually getting some technical stuff.
+It was lots of little things, you know, lots of mini-events, many under that same banner. Obviously side events as well, but...
 
-[05:51] Jim, what were your impressions of DevConnect and Buenos Aires? I've heard you said you're worried about being too negative, but...
+Even if you just got like a ticket for the main thing with a theme of World Fair, you know, of really bringing people from around the world to show what they're working on.
 
-**SPEAKER_00:**
-[05:59] There is no—go for it. Yes. I mean, there was a lot of good stuff down there. First of all, I actually, in part to avoid having a huge flight down there, I broke up multiple destinations down South America on the way there. Saw a lot of really cool stuff in Central and South America the week before.
+But I didn't expect it to be as big. Like, I think it probably was as big as DevCon really in the numbers.
 
-[06:15] And Argentina is beautiful. Conference itself had some very cool things there, but I think I really sort of preferred the format of what happened in Bangkok the year before. There were certain things about the format here that sort of made it difficult.
+I mean, effectively, I think they've become the same. It's just, you know, basically...
+```
 
-[06:29] First thing is that there was less going on at the main venue, and we had to spend a lot of time signing up for all these offsite things. And these offsite things were big and would go on for hours. So it sort of pulled you away from the main event for the whole day.
-
-[06:43] Maybe you could kind of come back at the end of the day. But then I tried that a little bit at first. Like, you know, I signed up for an offsite thing and then I kind of came back. And once I got to the main event, you're sort of just wandering around. And it was hard.
-
-[06:56] Maybe—did you guys find a good schedule for what was happening right there? Because mostly I was just walking around. And there was one area—I guess it was the Yellow Pavilion—where the big room was, and you could get a couple small talks there. But mostly it was just sort of...
+(Transcript continues in next message due to length)
