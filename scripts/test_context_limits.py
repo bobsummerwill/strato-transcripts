@@ -7,24 +7,36 @@ Tests actual context window limits for AI providers to determine:
 - Whether chunking is needed
 - Optimal prompt sizes for quality
 
-POST-PROCESSING PROVIDERS TESTED:
-- Sonnet (Claude Sonnet 4.5 via Anthropic)
-- ChatGPT (GPT-4o via OpenAI)
-- Gemini (Gemini 3.0 Pro via Google)
-- Llama (Llama 3.3 70B via Groq)
-- Qwen (Qwen 2.5 7B via Ollama local)
+COMPLETE PROVIDER MATRIX:
 
-TRANSCRIPTION PROVIDERS:
-- WhisperX (local GPU/CPU) - No context limit, processes audio directly
-- AssemblyAI (cloud) - No context limit, processes audio directly
-- Deepgram (cloud) - No context limit, processes audio directly
+POST-PROCESSING PROVIDERS (AI TEXT CORRECTION):
+- Opus (Claude Opus 4.5 via Anthropic) - PREMIUM REASONING, 150K context
+- Sonnet (Claude Sonnet 4.5 via Anthropic) - BALANCED QUALITY, 150K context
+- ChatGPT (GPT-4o via OpenAI) - GENERAL PURPOSE, 120K context
+- Gemini (Gemini 3.0 Pro via Google) - TECHNICAL EXCELLENCE, 128K context
+- Llama (Llama 3.3 70B via Groq) - ULTRAFAST, 128K context, 300+ tok/s
+- Qwen-Cloud (Qwen3 32B via Groq) - MAXIMUM QUALITY, 128K context
+- Qwen (Qwen2.5:14B via Ollama local) - FREE LOCAL GPU, 32K context
 
-Note: Transcribers have no context limits as they process audio, not text.
-      This tool tests post-processor context limits for editing transcripts.
+TRANSCRIPTION PROVIDERS (ASR + DIARIZATION):
+- WhisperX (local GPU/CPU) - NO context limit, FREE, processes audio directly
+- WhisperX-Cloud (Replicate) - NO context limit, $2.88/hr, 2-3 min
+- AssemblyAI (cloud) - NO context limit, $1.08/hr, 3-4 min
+- Deepgram (cloud) - NO context limit, $0.27/hr, 23 sec
 
-Usage:
-    python3 scripts/test_context_limits.py
-    python3 scripts/test_context_limits.py --providers sonnet,chatgpt,gemini,llama,qwen
+AVAILABLE WORKFLOWS:
+All combinations: transcribers × processors
+Example: whisperx,deepgram × sonnet,opus,gemini = 6 combinations
+
+USAGE EXAMPLES:
+Test all major providers:
+    python3 scripts/test_context_limits.py --providers sonnet,opus,chatgpt,gemini,llama,qwen-cloud
+
+Test specific model:
+    python3 scripts/test_context_limits.py --providers opus
+
+Post-processing providers listed above do have context limits.
+Transcription (ASR) providers have no context limits since they process audio.
 """
 
 import os
@@ -82,16 +94,16 @@ def count_tokens_tiktoken(text, model="gpt-4"):
 def generate_test_payload(target_tokens, model="gpt-4"):
     """Generate text payload of approximately target_tokens size"""
     # Use repetitive but varied text to avoid compression
-    base_text = """The quick brown fox jumps over the lazy dog. This is a test of the context 
-window limits for various AI language models. We are testing to determine the actual usable 
-token limits versus advertised specifications. Understanding these limits helps optimize 
-prompt engineering and determine when chunking strategies are necessary for long documents. 
+    base_text = """The quick brown fox jumps over the lazy dog. This is a test of the context
+window limits for various AI language models. We are testing to determine the actual usable
+token limits versus advertised specifications. Understanding these limits helps optimize
+prompt engineering and determine when chunking strategies are necessary for long documents.
 """
-    
+
     # Repeat until we reach target
     current_text = ""
     current_tokens = 0
-    
+
     counter = 0
     while current_tokens < target_tokens:
         # Add variation to prevent compression
@@ -99,7 +111,7 @@ prompt engineering and determine when chunking strategies are necessary for long
         current_text += chunk
         current_tokens = count_tokens_tiktoken(current_text, model)
         counter += 1
-    
+
     return current_text, current_tokens
 
 
@@ -113,14 +125,14 @@ def test_anthropic_context(test_sizes=[10000, 50000, 100000, 150000, 190000, 200
         import anthropic
     except ImportError:
         return {"error": "anthropic package not installed", "status": "skip"}
-    
+
     api_key = os.environ.get('ANTHROPIC_API_KEY')
     if not api_key:
         return {"error": "ANTHROPIC_API_KEY not set", "status": "skip"}
-    
+
     print_info("Testing Anthropic Claude Sonnet 4.5...")
     client = anthropic.Anthropic(api_key=api_key)
-    
+
     results = {
         "provider": "Anthropic",
         "model": "claude-sonnet-4-5-20250929",
@@ -129,11 +141,11 @@ def test_anthropic_context(test_sizes=[10000, 50000, 100000, 150000, 190000, 200
         "max_working": 0,
         "status": "tested"
     }
-    
+
     for size in test_sizes:
         print(f"  Testing {size:,} tokens...", end=" ", flush=True)
         payload, actual_tokens = generate_test_payload(size)
-        
+
         try:
             start = time.time()
             response = client.messages.create(
@@ -145,7 +157,7 @@ def test_anthropic_context(test_sizes=[10000, 50000, 100000, 150000, 190000, 200
                 }]
             )
             elapsed = time.time() - start
-            
+
             print_success(f"{actual_tokens:,} tokens OK ({elapsed:.1f}s)")
             results["tested"].append({
                 "target": size,
@@ -155,7 +167,7 @@ def test_anthropic_context(test_sizes=[10000, 50000, 100000, 150000, 190000, 200
             })
             results["max_working"] = actual_tokens
             time.sleep(1)  # Rate limit courtesy
-            
+
         except Exception as e:
             error_msg = str(e)
             print_failure(f"Failed - {error_msg[:100]}")
@@ -166,7 +178,7 @@ def test_anthropic_context(test_sizes=[10000, 50000, 100000, 150000, 190000, 200
                 "error": error_msg[:200]
             })
             break  # Stop at first failure
-    
+
     # Test for 1M token access (beta)
     if results["max_working"] >= 190000:
         print_info("Testing for 1M token beta access...")
@@ -186,7 +198,72 @@ def test_anthropic_context(test_sizes=[10000, 50000, 100000, 150000, 190000, 200
         except Exception as e:
             print_info(f"1M token beta access: Not available ({str(e)[:50]})")
             results["beta_access"] = False
-    
+
+    return results
+
+
+def test_opus_context(test_sizes=[10000, 50000, 100000, 150000, 190000, 200000]):
+    """Test Claude Opus 4.5 context limits"""
+    try:
+        import anthropic
+    except ImportError:
+        return {"error": "anthropic package not installed", "status": "skip"}
+
+    api_key = os.environ.get('ANTHROPIC_API_KEY')
+    if not api_key:
+        return {"error": "ANTHROPIC_API_KEY not set", "status": "skip"}
+
+    print_info("Testing Anthropic Claude Opus 4.5...")
+    client = anthropic.Anthropic(api_key=api_key)
+
+    results = {
+        "provider": "Anthropic",
+        "model": "claude-opus-4-5",
+        "advertised": "200,000 tokens (advertised)",
+        "tested": [],
+        "max_working": 0,
+        "status": "tested"
+    }
+
+    for size in test_sizes:
+        print(f"  Testing {size:,} tokens...", end=" ", flush=True)
+        payload, actual_tokens = generate_test_payload(size)
+
+        try:
+            start = time.time()
+            response = client.messages.create(
+                model="claude-opus-4-5",
+                max_tokens=100,
+                messages=[{
+                    "role": "user",
+                    "content": f"{payload}\n\nPlease respond with just: OK"
+                }]
+            )
+            elapsed = time.time() - start
+
+            print_success(f"{actual_tokens:,} tokens OK ({elapsed:.1f}s)")
+            results["tested"].append({
+                "target": size,
+                "actual": actual_tokens,
+                "success": True,
+                "time": elapsed
+            })
+            results["max_working"] = actual_tokens
+            time.sleep(1)  # Rate limit courtesy
+
+        except Exception as e:
+            error_msg = str(e)
+            if 'model_not_found' in error_msg.lower() or 'does not exist' in error_msg.lower():
+                return {"error": "Claude Opus 4.5 model not available", "status": "skip"}
+            print_failure(f"Failed - {error_msg[:100]}")
+            results["tested"].append({
+                "target": size,
+                "actual": actual_tokens,
+                "success": False,
+                "error": error_msg[:200]
+            })
+            break  # Stop at first failure
+
     return results
 
 
@@ -196,14 +273,14 @@ def test_openai_context(test_sizes=[10000, 50000, 100000, 120000, 128000]):
         import openai
     except ImportError:
         return {"error": "openai package not installed", "status": "skip"}
-    
+
     api_key = os.environ.get('OPENAI_API_KEY')
     if not api_key:
         return {"error": "OPENAI_API_KEY not set", "status": "skip"}
-    
+
     print_info("Testing OpenAI GPT-4o...")
     client = openai.OpenAI(api_key=api_key)
-    
+
     results = {
         "provider": "OpenAI",
         "model": "gpt-4o-2024-11-20",
@@ -212,11 +289,11 @@ def test_openai_context(test_sizes=[10000, 50000, 100000, 120000, 128000]):
         "max_working": 0,
         "status": "tested"
     }
-    
+
     for size in test_sizes:
         print(f"  Testing {size:,} tokens...", end=" ", flush=True)
         payload, actual_tokens = generate_test_payload(size, "gpt-4")
-        
+
         try:
             start = time.time()
             response = client.chat.completions.create(
@@ -228,7 +305,7 @@ def test_openai_context(test_sizes=[10000, 50000, 100000, 120000, 128000]):
                 }]
             )
             elapsed = time.time() - start
-            
+
             print_success(f"{actual_tokens:,} tokens OK ({elapsed:.1f}s)")
             results["tested"].append({
                 "target": size,
@@ -238,7 +315,7 @@ def test_openai_context(test_sizes=[10000, 50000, 100000, 120000, 128000]):
             })
             results["max_working"] = actual_tokens
             time.sleep(1)
-            
+
         except Exception as e:
             error_msg = str(e)
             print_failure(f"Failed - {error_msg[:100]}")
@@ -249,7 +326,7 @@ def test_openai_context(test_sizes=[10000, 50000, 100000, 120000, 128000]):
                 "error": error_msg[:200]
             })
             break
-    
+
     return results
 
 
@@ -259,14 +336,14 @@ def test_gemini_context(test_sizes=[10000, 50000, 100000, 120000, 128000]):
         import google.generativeai as genai
     except ImportError:
         return {"error": "google-generativeai package not installed", "status": "skip"}
-    
+
     api_key = os.environ.get('GOOGLE_API_KEY')
     if not api_key:
         return {"error": "GOOGLE_API_KEY not set", "status": "skip"}
-    
+
     print_info("Testing Google Gemini 3.0 Pro...")
     genai.configure(api_key=api_key)
-    
+
     results = {
         "provider": "Google",
         "model": "gemini-3.0-pro",
@@ -275,13 +352,13 @@ def test_gemini_context(test_sizes=[10000, 50000, 100000, 120000, 128000]):
         "max_working": 0,
         "status": "tested"
     }
-    
+
     model = genai.GenerativeModel('models/gemini-3-pro-preview')
-    
+
     for size in test_sizes:
         print(f"  Testing {size:,} tokens...", end=" ", flush=True)
         payload, actual_tokens = generate_test_payload(size)
-        
+
         try:
             start = time.time()
             response = model.generate_content(
@@ -291,7 +368,7 @@ def test_gemini_context(test_sizes=[10000, 50000, 100000, 120000, 128000]):
                 )
             )
             elapsed = time.time() - start
-            
+
             print_success(f"{actual_tokens:,} tokens OK ({elapsed:.1f}s)")
             results["tested"].append({
                 "target": size,
@@ -301,7 +378,7 @@ def test_gemini_context(test_sizes=[10000, 50000, 100000, 120000, 128000]):
             })
             results["max_working"] = actual_tokens
             time.sleep(1)
-            
+
         except Exception as e:
             error_msg = str(e)
             print_failure(f"Failed - {error_msg[:100]}")
@@ -312,7 +389,135 @@ def test_gemini_context(test_sizes=[10000, 50000, 100000, 120000, 128000]):
                 "error": error_msg[:200]
             })
             break
-    
+
+    return results
+
+
+def test_llama_context(test_sizes=[20000, 40000, 60000, 80000, 100000]):
+    """Test Llama 3.3 70B (via Groq) context limits"""
+    try:
+        import openai
+    except ImportError:
+        return {"error": "openai package not installed", "status": "skip"}
+
+    api_key = os.environ.get('GROQ_API_KEY')
+    if not api_key:
+        return {"error": "GROQ_API_KEY not set", "status": "skip"}
+
+    print_info("Testing Llama 3.3 70B (via Groq)...")
+    client = openai.OpenAI(api_key=api_key, base_url="https://api.groq.com/openai/v1")
+
+    results = {
+        "provider": "Meta",
+        "model": "llama-3.3-70b-versatile",
+        "advertised": "128,000 tokens (hosted via Groq)",
+        "tested": [],
+        "max_working": 0,
+        "status": "tested"
+    }
+
+    for size in test_sizes:
+        print(f"  Testing {size:,} tokens...", end=" ", flush=True)
+        payload, actual_tokens = generate_test_payload(size, "gpt-4")  # Use GPT-4 tokenizer approximation
+
+        try:
+            start = time.time()
+            response = client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                messages=[
+                    {"role": "system", "content": "You are a helpful assistant."},
+                    {"role": "user", "content": f"{payload}\n\nRespond with just: OK"}
+                ],
+                max_tokens=50,
+                temperature=0.1
+            )
+            elapsed = time.time() - start
+
+            print_success(f"{actual_tokens:,} tokens OK ({elapsed:.1f}s)")
+            results["tested"].append({
+                "target": size,
+                "actual": actual_tokens,
+                "success": True,
+                "time": elapsed
+            })
+            results["max_working"] = actual_tokens
+            time.sleep(1)
+
+        except Exception as e:
+            error_msg = str(e)
+            print_failure(f"Failed - {error_msg[:100]}")
+            results["tested"].append({
+                "target": size,
+                "actual": actual_tokens,
+                "success": False,
+                "error": error_msg[:200]
+            })
+            break
+
+    return results
+
+
+def test_qwen_cloud_context(test_sizes=[20000, 40000, 60000, 80000, 100000]):
+    """Test Qwen3 32B (via Groq) context limits"""
+    try:
+        import openai
+    except ImportError:
+        return {"error": "openai package not installed", "status": "skip"}
+
+    api_key = os.environ.get('GROQ_API_KEY')
+    if not api_key:
+        return {"error": "GROQ_API_KEY not set", "status": "skip"}
+
+    print_info("Testing Qwen Cloud (Qwen3 32B via Groq)...")
+    client = openai.OpenAI(api_key=api_key, base_url="https://api.groq.com/openai/v1")
+
+    results = {
+        "provider": "Qwen",
+        "model": "qwen/qwen3-32b",
+        "advertised": "128,000 tokens (hosted via Groq)",
+        "tested": [],
+        "max_working": 0,
+        "status": "tested"
+    }
+
+    for size in test_sizes:
+        print(f"  Testing {size:,} tokens...", end=" ", flush=True)
+        payload, actual_tokens = generate_test_payload(size, "gpt-4")  # Use GPT-4 tokenizer approximation
+
+        try:
+            start = time.time()
+            response = client.chat.completions.create(
+                model="qwen/qwen3-32b",
+                messages=[
+                    {"role": "system", "content": "You are a helpful assistant."},
+                    {"role": "user", "content": f"{payload}\n\nRespond with just: OK"}
+                ],
+                max_tokens=50,
+                temperature=0.1
+            )
+            elapsed = time.time() - start
+
+            print_success(f"{actual_tokens:,} tokens OK ({elapsed:.1f}s)")
+            results["tested"].append({
+                "target": size,
+                "actual": actual_tokens,
+                "success": True,
+                "time": elapsed
+            })
+            results["max_working"] = actual_tokens
+            time.sleep(1)
+
+        except Exception as e:
+            error_msg = str(e)
+            print_failure(f"Failed - {error_msg[:100]}")
+            results["tested"].append({
+                "target": size,
+                "actual": actual_tokens,
+                "success": False,
+                "error": error_msg[:200]
+            })
+            break
+
     return results
 
 
@@ -320,19 +525,19 @@ def test_qwen_context(test_sizes=[2000, 8000, 16000, 24000, 32000]):
     """Test Qwen 32B (GPU-only via Ollama) context limits"""
     import subprocess
     import time
-    
+
     try:
         import requests
     except ImportError:
         return {"error": "requests package not installed", "status": "skip"}
-    
+
     # Check for GPU
     try:
         import torch
         has_gpu = torch.cuda.is_available()
     except:
         has_gpu = False
-    
+
     if not has_gpu:
         return {
             "provider": "Qwen",
@@ -340,12 +545,12 @@ def test_qwen_context(test_sizes=[2000, 8000, 16000, 24000, 32000]):
             "error": "GPU Required - Qwen skipped on CPU-only system",
             "status": "skip"
         }
-    
+
     model = "qwen2.5:7b"
-    
+
     print_info(f"Testing Qwen ({model} via Ollama)...")
     print_info("GPU detected - using 32B model")
-    
+
     results = {
         "provider": "Qwen",
         "model": model,
@@ -354,10 +559,10 @@ def test_qwen_context(test_sizes=[2000, 8000, 16000, 24000, 32000]):
         "max_working": 0,
         "status": "tested"
     }
-    
+
     ollama_process = None
     started_ollama = False
-    
+
     # Check if Ollama is running, start if needed
     try:
         response = requests.get("http://localhost:11434/api/tags", timeout=2)
@@ -373,12 +578,12 @@ def test_qwen_context(test_sizes=[2000, 8000, 16000, 24000, 32000]):
         started_ollama = True
         time.sleep(3)  # Give service time to start
         print_success("Ollama started")
-    
+
     try:
         for size in test_sizes:
             print(f"  Testing {size:,} tokens...", end=" ", flush=True)
             payload, actual_tokens = generate_test_payload(size)
-            
+
             try:
                 start = time.time()
                 response = requests.post(
@@ -394,7 +599,7 @@ def test_qwen_context(test_sizes=[2000, 8000, 16000, 24000, 32000]):
                     timeout=60
                 )
                 elapsed = time.time() - start
-                
+
                 if response.status_code == 200:
                     print_success(f"{actual_tokens:,} tokens OK ({elapsed:.1f}s)")
                     results["tested"].append({
@@ -406,7 +611,7 @@ def test_qwen_context(test_sizes=[2000, 8000, 16000, 24000, 32000]):
                     results["max_working"] = actual_tokens
                 else:
                     raise Exception(f"HTTP {response.status_code}")
-                
+
             except Exception as e:
                 error_msg = str(e)
                 print_failure(f"Failed - {error_msg[:100]}")
@@ -426,7 +631,7 @@ def test_qwen_context(test_sizes=[2000, 8000, 16000, 24000, 32000]):
                 ollama_process.wait(timeout=5)
             except:
                 ollama_process.kill()
-    
+
     return results
 
 
@@ -446,21 +651,21 @@ def generate_report(all_results):
     report.append("  Plus system prompts: ~5,000 tokens")
     report.append("  Total needed: ~45,000 tokens maximum")
     report.append("\n" + "="*70 + "\n")
-    
+
     for result in all_results:
         if result["status"] == "skip":
             report.append(f"\n{result['provider']}: SKIPPED")
             report.append(f"  Reason: {result['error']}")
             continue
-        
+
         report.append(f"\n{result['provider']}: {result['model']}")
         report.append(f"  Advertised: {result['advertised']}")
         report.append(f"  Maximum Tested: {result['max_working']:,} tokens")
-        
+
         # Calculate recommended safe limit (5% buffer)
         safe_limit = int(result['max_working'] * 0.95)
         report.append(f"  Recommended Safe Limit: {safe_limit:,} tokens (with 5% buffer)")
-        
+
         # Determine if chunking needed
         if result['max_working'] >= 50000:
             report.append(f"  Chunking Needed: NO - Perfect for your transcripts!")
@@ -468,7 +673,7 @@ def generate_report(all_results):
             report.append(f"  Chunking Needed: BORDERLINE - Should work but close")
         else:
             report.append(f"  Chunking Needed: YES - Transcripts may need splitting")
-        
+
         # Test details
         report.append("\n  Test Results:")
         for test in result['tested']:
@@ -476,18 +681,18 @@ def generate_report(all_results):
                 report.append(f"    ✓ {test['actual']:,} tokens - OK ({test['time']:.1f}s)")
             else:
                 report.append(f"    ✗ {test['actual']:,} tokens - FAILED")
-        
+
         # Special notes
         if 'beta_access' in result:
             if result['beta_access']:
                 report.append("\n  🎉 EXTENDED CONTEXT: 1M token beta access available!")
             else:
                 report.append("\n  ℹ Extended context (1M tokens) not available on your tier")
-    
+
     report.append("\n" + "="*70)
     report.append("\nRECOMMENDATIONS FOR YOUR TRANSCRIPTS:")
     report.append("="*70)
-    
+
     # Find best provider
     best_providers = [r for r in all_results if r['status'] == 'tested' and r['max_working'] >= 50000]
     if best_providers:
@@ -496,21 +701,21 @@ def generate_report(all_results):
         report.append(f"  Context: {best['max_working']:,} tokens")
         report.append(f"  Perfect for your transcripts without chunking")
         report.append(f"  Maintains full context for best quality")
-    
+
     # Alternative providers
     alternatives = [r for r in all_results if r['status'] == 'tested' and r['max_working'] >= 45000 and r['provider'] != (best['provider'] if best_providers else None)]
     if alternatives:
         report.append("\nALTERNATIVES:")
         for alt in alternatives:
             report.append(f"  - {alt['provider']}: {alt['max_working']:,} tokens")
-    
+
     # Chunking required
     chunking_needed = [r for r in all_results if r['status'] == 'tested' and r['max_working'] < 45000]
     if chunking_needed:
         report.append("\nREQUIRE CHUNKING (not ideal for quality):")
         for cn in chunking_needed:
             report.append(f"  - {cn['provider']}: {cn['max_working']:,} tokens")
-    
+
     return "\n".join(report)
 
 
@@ -524,59 +729,61 @@ def main():
     )
     parser.add_argument(
         "--providers",
-        default="sonnet,chatgpt,gemini,llama,qwen",
-        help="Comma-separated list of providers to test (sonnet,chatgpt,gemini,llama,qwen)"
+        default="sonnet,opus,chatgpt,gemini,llama,qwen,qwen-cloud",
+        help="Comma-separated list of providers to test (sonnet,opus,chatgpt,gemini,llama,qwen,qwen-cloud)"
     )
     parser.add_argument(
         "--output",
         default="intermediates/context_limits_report.txt",
         help="Output file for results"
     )
-    
+
     args = parser.parse_args()
-    
+
     print_header("AI Context Window Limit Testing")
     print_info("Testing all providers with real API calls")
     print_info("Estimated cost: ~$0.01-0.05 total")
     print()
-    
+
     providers = [p.strip() for p in args.providers.split(',')]
     all_results = []
-    
+
     # Test each provider
     for provider in providers:
         if provider == 'sonnet':
             result = test_anthropic_context()
+        elif provider == 'opus':
+            result = test_opus_context()
         elif provider == 'chatgpt':
             result = test_openai_context()
         elif provider == 'gemini':
             result = test_gemini_context()
         elif provider == 'llama':
-            # Llama via Groq has similar limits to OpenAI, skip separate test
-            print_info("Llama (via Groq): Similar to ChatGPT/OpenAI (~128K tokens)")
-            continue
+            result = test_llama_context()
         elif provider == 'qwen':
             result = test_qwen_context()
+        elif provider == 'qwen-cloud':
+            result = test_qwen_cloud_context()
         else:
             print_warning(f"Unknown provider: {provider}")
-            print_info(f"Valid providers: sonnet, chatgpt, gemini, llama, qwen")
+            print_info(f"Valid providers: sonnet, opus, chatgpt, gemini, llama, qwen, qwen-cloud")
             continue
-        
+
         all_results.append(result)
         print()
-    
+
     # Generate report
     print_header("Generating Report")
     report = generate_report(all_results)
-    
+
     # Save to file
     output_path = Path(args.output)
     with open(output_path, 'w') as f:
         f.write(report)
-    
+
     print_success(f"Report saved to: {output_path}")
     print()
-    
+
     # Display report
     print(report)
 

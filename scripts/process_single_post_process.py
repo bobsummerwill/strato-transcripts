@@ -2,7 +2,7 @@
 """
 AI transcript post-processor for Ethereum/blockchain content.
 Batch process transcripts with multiple AI providers.
-Supports: sonnet, chatgpt, gemini, llama, qwen.
+Supports: sonnet, opus, chatgpt, gemini, llama, qwen-cloud, qwen.
 """
 
 import os
@@ -26,7 +26,9 @@ def extract_transcriber_from_filename(filepath):
     """Parse transcriber name from intermediate filename."""
     filename = Path(filepath).stem
 
-    for service in ['whisperx', 'whisperx-cloud', 'assemblyai', 'deepgram', 'openai']:
+    # CHECK LONGER NAMES FIRST to avoid substring matching issues
+    # (whisperx-cloud must be checked before whisperx)
+    for service in ['whisperx-cloud', 'assemblyai', 'deepgram', 'whisperx', 'openai']:
         if f'_{service}' in filename:
             basename = filename.replace(f'_{service}', '')
             return basename, service
@@ -49,8 +51,8 @@ def save_processed_files(output_dir, basename, transcriber, processor, content):
     text_lines = []
     for line in content_clean.split('\n'):
         clean_line = line
-        # Remove timestamps like [MM:SS] or [XXX.Xs] or [XXX.Xs] from beginning of lines
-        clean_line = re.sub(r'^\[[\d.:]+s?\]\s?', '', clean_line)
+        # Remove timestamps like [MM:SS] or [XXX.Xs] from beginning of lines
+        clean_line = re.sub(r'^\[[\d:.]+\]\s?', '', clean_line)
         # Remove markdown bold from speaker labels (**SPEAKER_XX:** -> SPEAKER_XX:)
         clean_line = re.sub(r'\*\*(SPEAKER_\d+)\*\*:?', r'\1:', clean_line)
         text_lines.append(clean_line)
@@ -265,10 +267,10 @@ def process_with_anthropic(transcript, api_key, context):
     prompt = build_prompt(context, transcript)
     
     print(f"      Processing: ", end='', flush=True)
-    
+
     result = ""
     chunk_count = 0
-    
+
     with client.messages.stream(
         model="claude-sonnet-4-5",
         max_tokens=64000,
@@ -279,7 +281,36 @@ def process_with_anthropic(transcript, api_key, context):
             chunk_count += 1
             if chunk_count % 100 == 0:
                 print(".", end='', flush=True)
-    
+
+    print(" ✓")
+    return result
+
+def process_with_opus(transcript, api_key, context):
+    """Process transcript using Claude Opus 4.5 with streaming."""
+    try:
+        import anthropic
+    except ImportError:
+        raise ImportError("anthropic package not installed. Install with: pip install anthropic")
+
+    client = anthropic.Anthropic(api_key=api_key)
+    prompt = build_prompt(context, transcript)
+
+    print(f"      Processing: ", end='', flush=True)
+
+    result = ""
+    chunk_count = 0
+
+    with client.messages.stream(
+        model="claude-opus-4-5",
+        max_tokens=64000,  # Opus 4.5 max output tokens
+        messages=[{"role": "user", "content": prompt}]
+    ) as stream:
+        for text in stream.text_stream:
+            result += text
+            chunk_count += 1
+            if chunk_count % 100 == 0:
+                print(".", end='', flush=True)
+
     print(" ✓")
     return result
 
@@ -560,6 +591,8 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
     try:
         if provider == "sonnet":
             corrected = process_with_anthropic(transcript, api_keys['sonnet'], context)
+        elif provider == "opus":
+            corrected = process_with_opus(transcript, api_keys['opus'], context)
         elif provider == "chatgpt":
             corrected = process_with_openai(transcript, api_keys['chatgpt'], context)
         elif provider == "gemini":
@@ -643,7 +676,7 @@ def main():
     
     parser.add_argument("transcripts", nargs='+', help="Transcript file path(s)")
     parser.add_argument("--processors", required=True,
-                       help="Comma-separated list of processors (sonnet,chatgpt,gemini,llama,qwen-cloud,qwen)")
+                       help="Comma-separated list of processors (sonnet,opus,chatgpt,gemini,llama,qwen-cloud,qwen)")
     
     args = parser.parse_args()
     
@@ -671,7 +704,7 @@ def main():
     
     # Parse processors
     processors = [p.strip() for p in args.processors.split(',')]
-    valid_processors = {'sonnet', 'chatgpt', 'gemini', 'llama', 'qwen-cloud', 'qwen'}
+    valid_processors = {'sonnet', 'opus', 'chatgpt', 'gemini', 'llama', 'qwen-cloud', 'qwen'}
     
     for proc in processors:
         if proc not in valid_processors:
@@ -723,6 +756,7 @@ def main():
     # Map processor names to their environment variable names
     key_mapping = {
         'sonnet': 'ANTHROPIC_API_KEY',     # Claude Sonnet 4.5 via Anthropic
+        'opus': 'ANTHROPIC_API_KEY',       # Claude Opus 4.5 via Anthropic
         'chatgpt': 'OPENAI_API_KEY',       # ChatGPT-4o-latest via OpenAI
         'gemini': 'GOOGLE_API_KEY',        # Gemini 3.0 Pro via Google
         'llama': 'GROQ_API_KEY',           # Llama 3.3 70B via Groq

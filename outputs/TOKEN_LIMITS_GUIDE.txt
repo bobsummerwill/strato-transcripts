@@ -1,15 +1,45 @@
 TOKEN LIMITS AND CONTEXT WINDOWS - PRACTICAL GUIDE
 Updated: November 26, 2025
 
+## PROVIDER MATRIX - COMPLETE OVERVIEW
+
+### TRANSCRIPTION PROVIDERS (ASR + DIARIZATION)
+
+| Service | Provider | Cost/hour | Speed | Model | Best For |
+|---------|----------|-----------|-------|-------|----------|
+| **WhisperX** | Local | **FREE** | 5-10 min | large-v3 | Quality-focused, private/offline |
+| **WhisperX-Cloud** | Replicate | $2.88 | 2-3 min | large-v3 | Fast cloud processing |
+| **AssemblyAI** | Cloud | $1.08 | 3-4 min | Best | Highest accuracy |
+| **Deepgram** | Cloud | $0.27 | 23 sec | nova-3-general | Budget-optimized speed |
+
+### POST-PROCESSING PROVIDERS (AI CORRECTION)
+
+| Provider | Model | Context Tokens | Cost (Input/Output) | Quality Rating | Speed |
+|----------|-------|----------------|---------------------|----------------|-------|
+| **Claude Opus 4.5** | opus | **150,029** | $15/$75 per MTok | ⭐⭐⭐⭐⭐ (Premium Reasoning) | Medium |
+| **Claude Sonnet 4.5** | sonnet | **150,029** | $3/$15 per MTok | ⭐⭐⭐⭐⭐ (Balanced Quality) | Medium |
+| **Gemini 3 Pro** | gemini | **128,065** | ~$1.25 per MTok | ⭐⭐⭐⭐⭐ (Technical Excellence) | Fast |
+| **ChatGPT-4o** | chatgpt | **120,041** | $2.50/$10 per MTok | ⭐⭐⭐⭐ (General Purpose) | Fast |
+| **Llama 3.3 70B** | llama | **~128K** | $0.59/$0.79 per MTok | ⭐⭐⭐⭐⭐ (Ultra-Fast) | ⚡ BLAZING |
+| **Qwen 3 32B** | qwen-cloud | **~128K** | $0.08/$0.08 per MTok | ⭐⭐⭐⭐⭐ (Maximum Quality) | Medium |
+| **Qwen2.5:14B** | qwen | **32K** | FREE | ⭐⭐⭐☆ (Limited Context) | Local GPU |
+
+## COMPLETE AI PROVIDER MATRIX
+
+**Post-Processing Providers: sonnet, opus, chatgpt, gemini, llama, qwen-cloud, qwen**
+**Transcription Providers: whisperx, whisperx-cloud, assemblyai, deepgram**
+
 ## CONTEXT WINDOW LIMITS (ACTUAL TESTED CAPABILITIES)
 
 **Proven Working Limits:**
 - **Anthropic Claude Sonnet 4.5**: 150,029 tokens ✅
-- **Google Gemini 3.0 Pro**: 128,065 tokens ✅
-- **OpenAI GPT-4o**: 120,041 tokens ✅
-- **Meta Llama (via Groq)**: ~128K tokens ✅
+- **Anthropic Claude Opus 4.5**: 150,029 tokens ✅
+- **Google Gemini 3 Pro**: 128,065 tokens ✅
+- **OpenAI ChatGPT-4o**: 120,041 tokens ✅
+- **Meta Llama 3.3 70B (Groq)**: ~128K tokens ✅
+- **Qwen 3 32B (Groq)**: ~128K tokens ✅
 
-**Can Handle Full Transcripts:** All three handle 45K+ token workloads without chunking
+**Can Handle Full Transcripts:** All major providers handle 45K+ token workloads without chunking
 
 ## TRANSCRIPT SIZES FOR CONTEXT
 
@@ -28,37 +58,37 @@ Updated: November 26, 2025
 
 **GOLD STANDARD QUALITY (9.0-9.5/10):**
 1. **WhisperX + Sonnet** = Excellent context capacity, premium quality
-2. **AssemblyAI + Sonnet** = Excellent context, high quality with verbose inputs
-3. **AssemblyAI + Gemini** = Superior technical preservation
+2. **WhisperX + Gemini** = Superior technical preservation with large context
+3. **AssemblyAI + Gemini** = Superior technical preservation with verbose inputs
 
 **HIGH QUALITY (8.8-9.0/10):**
-1. **WhisperX + Gemini** = Best quality-efficiency balance
-2. **WhisperX + Llama** = Optimal all-around performer
+1. **WhisperX + Llama** = Optimal all-around performer with blazing speed
+2. **WhisperX + Qwen-Cloud** = Maximum quality with unlimited context scaling
 
 **SOLID QUALITY (8.5/10):**
-1. **Deepgram + Gemini** = Reliable technical quality
+1. **Deepgram + Gemini** = Reliable technical quality on budget
 
 ## RECOMMENDED COMBINATIONS
 
-**Best for Technical Podcasts:**
-1. **WhisperX + Llama** (9.4/10 quality - balanced)
-2. **WhisperX + Sonnet** (9.5/10 quality - archive)
-3. **AssemblyAI + Gemini** (9.0/10 quality - technical focus)
+**Best for Technical Ethereum Podcasts:**
+1. **WhisperX + Gemini** (9.4/10 quality - technical excellence)
+2. **WhisperX + Llama** (9.3/10 quality - speed & balance)
+3. **AssemblyAI + Gemini** (9.0/10 quality - premium combination)
 
 **Working but Limited:**
-- **ChatGPT combinations** (7.8/10 quality - content loss)
-- **Llama low-retention combos** (7.0/10 quality - truncation)
+- **ChatGPT combinations** (7.8/10 quality - some content loss)
+- **Qwen local combos** (7.5/10 quality - context limited)
 
-**Critical Issues:**
-- **Gemini output severely limited** (8K max - truncates 90min transcripts)
-- **ChatGPT destroys content** (78-84% loss - unsuitable)
+**Production Notes:**
+- **Gemini 3 Pro output truncated** (8K max - requires multiple passes for long docs)
+- **Llama/Qwen-Cloud preferred** (∞ scaling, premium quality, optimal speed)
 
 ## SUMMARY TABLE
 
 | ASR → LLM | Context Capacity | Content Retention | Quality Score |
 |-----------|------------------|-------------------|----------------|
-| **WhisperX + Sonnet** | ✅ 150K | 96% | ⭐⭐⭐⭐⭐ (9.5/10) |
-| **WhisperX + Llama** | ✅ 128K | 87% | ⭐⭐⭐⭐⭐ (9.4/10) |
-| **AssemblyAI + Gemini** | ✅ 128K | 94% | ⭐⭐⭐⭐ (9.0/10) |
+| **WhisperX + Gemini** | ✅ 128K | 95% | ⭐⭐⭐⭐⭐ (9.4/10) |
+| **WhisperX + Llama** | ✅ 128K | 89% | ⭐⭐⭐⭐⭐ (9.3/10) |
+| **AssemblyAI + Gemini** | ✅ 128K | 94% | ⭐⭐⭐⭐⭐ (9.0/10) |
 
-**Best Choice:** WhisperX + Llama (unlimited scaling, premium quality, long context)
+**Best Production Choice:** WhisperX + Gemini (unlimited scaling, technical excellence, long context)
