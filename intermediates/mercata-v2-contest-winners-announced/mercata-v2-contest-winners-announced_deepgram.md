@@ -1,0 +1,134 @@
+**[00:17] SPEAKER_00:** Can you still hear me? Just put them back in after a try. I can. Lock and load. Nice.
+
+**[00:26] SPEAKER_01:** Can you guys confirm we're live on Twitter and YouTube?
+
+**[00:30] SPEAKER_02:** Actually, how do I join the YouTube one? Okay, I see it live on my laptop. Okay. Can you speak?
+
+**[00:37] SPEAKER_00:** Yeah. Testing. Yeah. We are. Making sure this works. Can you hear us?
+
+**[00:45] SPEAKER_01:** Hopefully, there's no horrible echo like last week. Okay.
+
+**[00:48] SPEAKER_02:** I hear it. I hear you. I'm gonna drop that. I hear some echo. Oh, okay. Yep. Well, the echo echoes from my laptop, I think. Cool. I'm gonna mute and then try the Twitter audio.
+
+**[01:14] SPEAKER_01:** Oh, can you confirm, Jeremy?
+
+**[01:17] SPEAKER_02:** It says the stream hasn't started yet since it's scheduled for broadcast at five on Twitter.
+
+**[01:24] SPEAKER_01:** Oh, interesting. So I see a preview. Yeah. Let's check at five. But you can see on YouTube. Right?
+
+**[01:36] SPEAKER_02:** Let me load the YouTube. Just gonna mute. Audio is good on YouTube and everything.
+
+**[01:50] SPEAKER_01:** Okay. Let's just wait until five and just make sure everything comes up.
+
+**[02:03] SPEAKER_00:** The tube.
+
+**[02:06] SPEAKER_01:** Things can stop in the tubes.
+
+**[02:11] SPEAKER_00:** I can't remember. At some point in my life, I was friends with a British person who made reference to the tube, but it definitely was pronounced tube, c h u b e.
+
+**[02:28] SPEAKER_01:** Quite likely. Yes. Great.
+
+**[02:32] SPEAKER_02:** Twitter's up. Audio is good and so is the visual.
+
+**[02:36] SPEAKER_01:** Okay. Taking you off taking you off the stage. Thanks.
+
+**[02:42] SPEAKER_00:** Hey, Vic. So from StreamYard, are we able to see, like, people trickling in or or not really? It doesn't look like it. It does not appear so. So I think we can do it on YouTube, but I'm just,
+
+**[02:56] SPEAKER_01:** I'm keep trying to keep an eye on it, in the background here.
+
+**[03:06] SPEAKER_00:** Because we could see if there were comments,
+
+**[03:08] SPEAKER_02:** but but, yeah, it's it's it doesn't seem like it's
+
+**[03:13] SPEAKER_00:** I suppose we could try to join without audio potentially and just see. Also, so it's not a space. Right? It's a live? It is a live on Twitter. Yes.
+
+**[03:31] SPEAKER_02:** I wonder how do I hold on. Checking the telegram.
+
+**[03:36] SPEAKER_00:** Okay. So we already had the links on the telegram, which I guess we should probably repost.
+
+**[03:44] SPEAKER_01:** Yeah.
+
+**[03:53] SPEAKER_00:** So on the I can see the live. I can see us. Okay. Michael's posting it. I mean, I guess we should probably start in a second.
+
+**[04:08] SPEAKER_01:** Yeah. We can wait a let's just wait a few more minutes.
+
+**[04:12] SPEAKER_00:** But it's a different feel from the so okay. Why do they have spaces and live? It's very confusing. Spaces are no video, but they're like a little more interactive. Yeah. The live is just like you just sort of see, or the the broadcast here. Yes. Like, I'm just sort of looking back at myself, and it has views on it kinda, but but that's it. Yes. Okay. So some comments. Hey, Michael. Hey, Appreciate it.
+
+**[04:49] SPEAKER_01:** Yeah. Yeah. I We we are still working through our AV issues. So
+
+**[04:56] SPEAKER_00:** It's a it's a constant state of affairs, it seems. Like It is. Lots lots of learning curve in the content creator game. Every every startup founder, unwitting content creator. You know? We we didn't want the worlds to be this way. Actually, maybe it's better. I'm not it's gonna go direct to audience in a sense. Although, is it really direct to audience if it's through the platform? It's like more direct than it could be.
+
+**[05:26] SPEAKER_01:** I mean, content is, I mean, I do think we need to find a way to kind of bring people in. We are going to read some comments today, but it's like, we'd like to make it more interactive in the future. It does seem like X does not want to play nice with any multi channel platform.
+
+**[05:50] SPEAKER_00:** Doesn't even like links.
+
+**[05:51] SPEAKER_01:** No, it does not. It definitely does not. All right. Feel like let's just, you know. Okay. I think we can get started now. Let me just share my screen. So, you everyone for joining. If there are any AV audio issues, if people were on last week, we were still trying to figure out our whole audio visual setup. So we are continuing that journey. So if there's any problems, please let us know, post on our telegram or on any comment that's convenient. So today is a really exciting episode. We are announcing the winners of our Mercado V2 Trading, Bridging and Testing Challenge. And yeah, it's been a really exciting time. I am filling in for Bob Summerwell, our normal host who is on a long delayed digital detox as well as honeymoon. So yeah, well deserved break to you, Bob. Hope you're not watching, but you catch up later. And with me, I have Karen James Lubin, our CEO and Head of and whale on straddle mercado testnet. How's everything going with you today, Karen?
+
+**[07:09] SPEAKER_00:** You know, good. I feel like shark is better than whale for this.
+
+**[07:16] SPEAKER_01:** Can sharks eat whales? I
+
+**[07:18] SPEAKER_00:** don't know, you know, like a blue one is pretty big. Little ones? Most whales are big, but there are some smaller, you know,
+
+**[07:26] SPEAKER_01:** there are some smaller whales. But I think on average whales are gonna be bigger than sharks. Isn't there a whale shark? Maybe you could be a little bit of both, you know, you can Yeah, try little did a bit. Let me share my screen because we're gonna jump right into announcing the winners today. So, as everyone knows from the contest who has participated, first of all, we want to say thank you to everyone participating. We got well over 30 participants assigned, nearly doubling the amount of participants we had back in January, where we had like roughly about 20. We had, this was July. July, thank you. Back in July, time is going so fast. And this challenge was particularly hard because we want to kind of test the application and simulate real world events. So anyone that was following in the contest channel could see that there were special events that I triggered on the platform where there were sudden price jumps, there were airdrops, there were all kinds of different events that affected the flow of the contest and made different opportunities both on the downside and upside. And Karen, can you confirm with everyone, I never shared when those events were happening ahead of time. It's true. Yeah.
+
+**[08:51] SPEAKER_00:** Even, you know, I think Victor may have specifically punished me even though I was ineligible for the prize. Like, you know, my gym hours are kind of predictable and I sense that Victor put some of them when he knew I would like, you know, be on the treadmill or lifted some weights or something and unable to reap the the profits that I normally do.
+
+**[09:20] SPEAKER_01:** I cannot confirm to deny that I specifically looked at your calendar, but I can confirm I do have access to your calendar. So it may or may not have happened. Anyways, there were, you know, what was different from the July contest is the July was really simply about trading, we gave everyone one of each assets and they traded. And also, we basically had a bug price basically, based on volume of bugs. So this time, we want to make things a little bit more focused, we gave people assets on the Ethereum, Ethereum, testnet that they had to bridge into the application. Like I said, we had these random events that happened throughout the contest. And then instead of giving like generic bug prizes, we gave two sort of bug prizes, one for the worst exploit, which was something that caused loss of funds, and then a best suggested improvement prize, which is a specific improvement that would make it easier to use the application. And we internally kind of rated all the submissions that we got, and then we came up with the winners. So with that, I'm going to share a screen capture of the leaderboard as of yesterday, 5PM, when the contest ended. Karen, you are at the top, but as it says, you're prize ineligible. Can you read out the name of who got the prize?
+
+**[10:54] SPEAKER_02:** Yeah, I don't know quite how to pronounce this, but it's
+
+**[10:58] SPEAKER_00:** aspa,
+
+**[10:59] SPEAKER_01:** like rock I'm gonna go with aspa. Yeah.
+
+**[11:02] SPEAKER_00:** They gave you a good run for your money though I will say. Yeah. I guess like the balance says that both of us caught most of the profit making opportunities that were available at the system.
+
+**[11:18] SPEAKER_01:** Yeah, so people want really wanted to know, where did you get so much profit from? Because I think when you bridged in all your assets, you would have around, you know, 3,500 in that neighborhood, like, you know, around 3,100 if you just bridged in the system. How did you wind up getting to like 5,400?
+
+**[11:42] SPEAKER_00:** Yeah. So starting balance, yeah, I'm gonna say 3,300, 3,200, thereabouts. So you you go from zero to about 3,300 when you complete the bridging. There were two bridging activities. One gave you, I guess, was like half an ETH, and the other gave some amount of, USDST, which you also had some just for registering on the network. So, you know, part of the trick in all of this, you know, in this state of affairs is that we generally encouraged and it's it's a little bit tricky right now. Like, if you wanted to use the same address on, well, I was gonna say mainnet, but really. And our network technically were capable of it, but we're not really allowing it in the app. So there were two addresses you had to input, and I think people got confused. So the first step is bridging in everything. And then I did find as with the last contest that there so generally speaking, it's there are kind of two prices on our system. There are Oracle, sort of like, you know, governance controlled, if you will, spot prices, and that's what drives liquidations and the valuation of all the assets in there. And sort of what that, maybe the one way to think of it is like, if this asset existed anywhere in the world, what would be worth? Like people know what gold is worth. Right. So if you withdrew the asset, you could sell it for roughly around that. Probably the spot price. Yeah. Right. Whereas swap pools, for instance, are intrinsics of the system. And theoretically should converge to the Oracle price in when you're really running the thing like because you could bridge in and out. And so there would be an arb like like trading across two exchanges too. There would be an arb if the spot price diverges from the, sorry, if the pool price diverges from the spot price that you could take advantage of. And there was actually, there was a little bit of arb in the system. So even before any of the special events, sometimes like the ETH price would be too high because people are excited about rotating into ETH or wrapped Bitcoin got high because people rotated into that, for instance. And there wasn't that much way to bring the price down. There was not too much sell pressure on it for instance, so it kind of stayed high, I think. But mostly our prices had the pool price match the spot price. Except when Victor so Victor manipulated both as part of the contest, of course, at at different times. So moving the spot price up lets people sell, moving the spot price down sorry. Moving the swap the pool price up means if you're holding that thing already, you can sell and book a profit. If you move the pool price down and we just did this with, like, admin mints, you know, on the test net. Yes. In effect. If you move the pool price down, this gives a buying opportunity. And I actually did so there are a couple times when the pool prices were low, and I would borrow using our CDP mechanism and buy as much as I could of the, the asset that was underpriced. And I would have, you know, and so there is a little bit of harm there too because the borrowing to and I would loop it. Right? So the borrowing power you would get would be proportional to the spot price. And so you could just kind of keep buying that same asset so long as the pool price was below the spot price and it was instant profit. So I think that was most of the balance or different situations where that was. They're also like, if you applied quickly, you would, you know, get, let's say 50 USDST. There was a bonus for bridging out just so that we would test bridging out, which I got. And there were liquidations. I was very briefly going to be liquidatable because Victor created a very big price crash, but I got to it in time before anyone could could liquidate me. And it was it was a position that was kind of healthy. It was at like 1.8 health factor,
+
+**[16:06] SPEAKER_01:** but I think Victor dropped the price like 50% or something. Yeah, I took some big swings because, you know, I want to exert my godlike or Fed chair like power as much as I could. Wow. Thankfully, I didn't go completely power mad. But there were a lot of risks in the system. And it was interesting how the system stood up to those risks. Eventually, you know, prices started to kind of converge back into the right price.
+
+**[16:35] SPEAKER_00:** Indeed. Indeed. But yeah, it was all it was good. It was so it was nothing too crazy. So actually in the previous contest also, the ETH price was moving a lot, which created like so people were excited about it and they like bid the spot price way over the pool. Sorry. The pool price way over the spot price. And I was able to sell into that a lot in the other contest. And there just wasn't as much natural volatility this time. So, you know, most of the profit opportunities were the special events. And, again, the goal was really to test all like, nearly all the functionality that was in the app. Yeah.
+
+**[17:11] SPEAKER_01:** And I think one thing that led to part of the stability is, in the last contest, people asked for that spot price to be put beside the pool price.
+
+**[17:20] SPEAKER_00:** And, know, I think that helped people kind of make better decisions. That's right. Yeah, it lets you know when to enter versus not there was less like, you know, I think a lot of DeFi encourages like, really rapid buying behavior, you know, especially like the launch pads, you know, like pump. Fun or whatever, you know, like, it's just about who gets in there first. You know, our system is mostly not like that. So, you know, we want that spot price there. Just so people know, you know, if there's big divergence, there's profit to be made, and there usually shouldn't be a big divergence and you know, get good execution and so on.
+
+**[17:57] SPEAKER_01:** Yeah, so congratulations to ASBA, I guess that's how we say it, you know, excuses if we're saying this wrong, who is going to win 500 USDC plus card points. And we have a little bit of information from ASBA how they did it. Maybe you can react to it, Karen. So their overall strategy was to diversify, leverage and wait for the right moment to be aggressive. Sounds similar to what you were doing, Karen. And then they are so what they said is make sure to take advantage of all the functionality strong Mercado has to offer from bridging to swapping to borrowing and lending to liquidity provisions and liquidations. So did you do any liquidations, Karen? Or were you just looking I
+
+**[18:45] SPEAKER_00:** get confused by our liquidation feature because it said in the UI, like, zero profit. And I realized later if I typed a number for the amount I liquidated in, I I guess it would have and maybe we have a max button. I can't remember if we do. Yep. Then then it would have presented a profit opportunity. So I didn't liquidate, and I didn't provide any LP tokens to the pool. So I think, like, in the short run, probably providing liquidity, you know, just in the time scale of the contest, the returns will be pretty small. Even if it was like 40% APR, like over a week, that's less than 1%. And so things will be dominated by sort of like whichever asset goes up the most. So I think in most cases what you wanna do probably is just take the riskiest asset and hope in like a one week contest. In a sense that is why I stayed mostly in ETH except where there was a instant profit opportunity. If you're gonna use a bunch of leverage, then maybe you should diversify. So we actually have two borrowing paths in the app. So we have a CDP mint, that's how USDST gets out there. It's technically borrowed when you put collateral in. And we have like a lending pool that's more like the secondary market for USDST. So the lending pool allows you to sort of spread the risk across a bunch of collateral. So if you had some collateral that's like way underwater, if it were by itself, that's fine potentially in the lending pool. Whereas the CDP is a little more conservative. And so, you know, theoretically, the if you're going to have a diversified portfolio might be and want to borrow, you might be better off using the lending pool than the CDP mechanism. It sounds like that's what ASPA did.
+
+**[20:49] SPEAKER_01:** Yeah, and I'm going to add something to kind of relate to what you just said. So they said they were conservative with their borrowing, but they stumbled upon an Ethereum price tip event. Since they were keeping their loans healthy, they were able to borrow more at that point and use it to conduct liquidations.
+
+**[21:09] SPEAKER_00:** Interesting. Yeah. So I just looped at those profit taking times, but yes, borrowing is a good way to do liquidations. We've kept flash loans out of our system just because they're kind of complicated expert feature, but it's a little bit the same, right? Like you need, sometimes you just need, you may be in a healthy situation, but you need some liquidity to liquidate and realize those instant profits. And so, yeah, it's a good way to do it. And the last comment I'm going to say from from us buys,
+
+**[21:39] SPEAKER_01:** perhaps my most unique decision was to spend time in the higher interest, lower collateral lending pool instead of the low fee pool to increase leverage and have more access to capital at a given out factor while decreasing exposure to single asset price dips.
+
+**[21:58] SPEAKER_00:** Yeah, I guess that's what I was saying too. So that is a reason to have, we had some debate internally on like, okay, so we've got a CDP and a lending pool. They're kind of both borrowing. Do we really need them both? The answer is yes based on or like, we at least need the CDP, but the lending pool is like a great convenience. Easier to get in in and out. You can just mint and then resupply to the lending pool. We also have the direct mint path, which was part of the contest. So you could take USDC and USDT and immediately mint USDST. We don't guarantee redemption because there's also the collateralized path. It helps maintain the peg. But I think it's good to have both. You know, I think for convenience sake, the lending pool is more convenient. You know, and you can kind of move the collateral in and out, etc. And, you know, provides yield back to people who mint the USDST one way or another.
+
+**[22:55] SPEAKER_01:** Yeah, I mean, it's a it's a pretty good strategy to kind of look for those profit opportunities. You know, I didn't participate this time because I was doing those special events. But, you know, we had employees participating in addition to community event, community people. And I don't think that many people actually pursued that strategy about looking for high interest in the pools. So that was a good one and well deserved ASPA. Congratulations. Let's talk about the next two prizes. So the next two prizes were sort of technical bug finding prizes, worst exploit, which had the biggest prize, it's 1,500 USDC and CAD points. And what we are awarding this prize to data juice for this one, no CSRF mechanism. Wait,
+
+**[23:49] SPEAKER_00:** Let me question that. I was pronouncing it data juice in my head. Do think it's data data Like,
+
+**[23:56] SPEAKER_01:** Oh, I think it's no, you're right. It's d a d data like, you know, like, but
+
+**[24:03] SPEAKER_00:** did I say data juice? That is it? Yeah, because I mean, is. I don't know how it's pronounced. We'll have Yes. Tell us on selling that. It
+
+**[24:13] SPEAKER_01:** is DAO. It's probably DADA juice. I think you're correct there. By the way, this was reported in the first contest. We had actually fixed it, and then there was a regression. But because it came back, we decided that, you know, that even though it was reported, and we fixed it, it deserves a prize because it is theoretically possible to cause loss of funds doing this because you could kind of do like an
+
+**[24:43] SPEAKER_00:** injection or a man in the middle to steal someone else's funds as they're doing a transaction. Yeah, yeah, I think it's like if you're logged in already and you visit some other site that assumes that every person visiting that site is logged in to Mercado, it could try to steal funds, get you to click something, and and get in there. So it's, yeah, it's a good one to and we're we're appreciative of, you know,
+
+**[25:08] SPEAKER_01:** finding any any possible way where there might be loss of funds and then Yeah, and and you know, calling us into account like, you know, sometimes we make mistakes as we kind of build very, very quickly. I'll also mention some people asked in the repo in the open source repo where this was posted, why there were still kind of issues from the first contest. It's because we actually continue to do our development in a closed source repo. But we did migrate all those bugs over there. So none of that information was lost. But it did appear that you know, not much had changed, even though if you actually use the application, a ton have changed since you know, I think we I think we closed more than 50 issues if I recall, since since July.
+
+**[25:51] SPEAKER_00:** Yeah, yeah, that's right. And we'll open the other one up soon enough. There are some, you know, relatively minor blockers to doing so, but we're knocking them down. Yeah.
+
+**[26:03] SPEAKER_01:** And so a little thing that now I see if I can pronounce the name. The improvement price came here, you know, suggestion to add a confirmation model before actions into the liquidity pool. Currently, there's no confirmation, you just press the button and it goes. And we did get some feedback from some other people that this was a bit confusing. So, also the winner of this prize is DADA juice for another 500. So congratulations, DADAJUCE for all your contributions. This was a particularly good suggestion that we will implement before making it public. So that's all the announcements for today. Karen, anything you'd like to add about this contest or what what's coming down the pipeline?
+
+**[26:57] SPEAKER_00:** Oh, yeah. It's a it's a fun one. I got to test more of the app. Interested if anyone has suggestions on, like, contest setup in the future. We're all ears. You know, I think the goal of these things is both to, like, make sure the product's good, but also to entertain to some degree. So we're entering into a security audit. It was actually started in parallel with the contest. So as we continue to beat on the the the platform and the app, we'll start to head to sort of live soonish, and it'll still be, like, beta live. Like, you know, don't put too many assets in the thing. We're testing all the flows. But some things you have a hard time testing without real money. You know, like transaction sizes are more realistic with real money. You wanna look at, like, pool utilizations and make sure you can actually, like, tune the yields to some things that attractive, like the amount of liquidity is commensurate with the trading activity and so on, or or how much is borrowed, etcetera. You want the, like, the the lending pool utilization, like, you know, 80 to 90%, let's say, pretty high so that the capital is being used and returning, but not super high so you can't withdraw, and and so on. So, you know, it'll be realer next time. Maybe next time will just be just real money. I will probably, you know, keep doing, keep doing contests. Although once it's live, it's like all a contest. Right? But, you know, just thanks everybody out there who's helping us on this journey. Stay tuned. And, yeah, hopefully, I mentioned to just make it real. You know, just gotta do, all of the you know, I we're trying to be really serious both about kinda low level security that could lead to loss of funds, but also things that are unintuitive. You know, we're we're trying to I think most DeFi has, pretty sharp edges. You know, it's, mostly expert products, not easy to use. We're trying to make it simple, barely easy to use to some extent consumer protecting, but still fun for the degens out there.
+
+**[29:21] SPEAKER_01:** Yeah, and I will say we got some amazing feedback this time, both, you know, on the repo and privately, you know, thanks to everyone that participated provided us that information. Just for everyone to know, we're going to be a token, Kieran and I will both be at token 2,049 in Singapore next week. If you're around, please ping us on telegram. We'd love to get together with you, but we won't be having a spaces next week. So there will be a week delay from our next spaces, though we have a lot of to talk about, including a short preview. Know, Vitalik's announcement that low risk DeFi is the future of Ethereum and we believe the future of blockchain projects in general. So we'll talk a little bit more about that and maybe a recap of token 2,049 at our next basis. Thanks for everyone that's joining. Take care.
+
+**[30:13] SPEAKER_00:** The truth is out there.
+

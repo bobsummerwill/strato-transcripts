@@ -1,117 +1,49 @@
-**SPEAKER_00:**
-[00:01] Alright.
-[00:02] Well, welcome back, everybody.
-[00:04] The first episode of the early days of Ethereum actually got quite good critical reception on LinkedIn and Twitter.
-[00:10] I have a total of nine YouTube subscribers now, which I think is not so bad for our first video.
-[00:16] And there have been a few people who reached out who we've known a long time who really appreciated the content.
-[00:21] One of them called it, you know, essential viewing.
-[00:24] So, anyway, we're back for another episode.
-[00:27] So remind everybody, I'm Kieran James, CEO of BlockApps, here with my cofounders.
-[00:32] Victor, do you wanna introduce yourself quickly?
+```
+**[00:00] SPEAKER_00:** Alright. Well, welcome back, everybody. The first episode of the Early Days of Ethereum actually got quite good critical reception on LinkedIn and Twitter. I have a total of nine YouTube subscribers now, which I think is not so bad for our first video. And there have been a few people who reached out who we've known a long time who really appreciated the content. One of them called it, you know, essential viewing. So, anyway, we're back for another episode. So remind everybody, I'm Kieran James, CEO of BlockApps, here with my cofounders. Victor, do you wanna introduce yourself quickly?
 
-**SPEAKER_01:**
-[00:35] Oh, okay.
-[00:36] I'm Victor Wong, cofounder and Chief Product Officer of BlockApps.
+**[00:34] SPEAKER_01:** Oh, okay. I'm Victor Wong, cofounder and Chief Product Officer of BlockApps.
 
-**SPEAKER_02:**
-[00:40] I'm James—Jim, CTO and cofounder of BlockApps.
+**[00:39] SPEAKER_02:** I'm James, Jim, CTO and cofounder of BlockApps.
 
-**SPEAKER_00:**
-[00:44] Alright. Thank you.
-[00:46] And so I believe where we left—so I can't watch video of myself, so I forget exactly how we ended the last episode, but I believe we pretty much ended with the Ethereum launch.
-[00:55] And there were some things we left out even prior to launch that we can kinda backtrack to a little bit and then go forward to all of the kind of after-launch activity.
-[01:03] So with that said, maybe I'll hand it to Victor to talk about the first ConsenSys Dappathon, which was June 2015, I believe?
+**[00:44] SPEAKER_00:** Alright. Thank you. And so I believe where we left—so I can't watch video of myself, so I forget exactly how we ended the last episode—but I believe we pretty much ended with the Ethereum launch. And there were some things we left out even prior to launch that we can kinda backtrack to a little bit and then go forward to all of the kind of after-launch activity. So with that said, maybe I'll hand it to Victor to talk about the first ConsenSys Dappathon, which was June 2015, I believe.
 
-**SPEAKER_01:**
-[01:10] Yeah.
-[01:11] So that was, I think, the first actual hackathon building, you know, what in those days were known as dapps.
-[01:17] I guess some people still call it that, but that seems to have gone out of favor in favor of "blockchain applications."
-[01:22] So the first idea was to really try to build blockchain applications directly on Ethereum.
-[01:27] And that was in the first ConsenSys office, which was like a very small coworking space in, like, Greenpoint, I think.
+**[01:12] SPEAKER_01:** Yeah. So that was, I think, the first actual hackathon building, you know, what we in those days were known as dapps. I guess some people still call them that, but that seems to have gone out of favor in favor of "blockchain applications." So the first idea was to really try to build blockchain applications directly on Ethereum. And that was in the first ConsenSys office, which was like a very small coworking space in, like, Greenpoint, I think.
 
-**SPEAKER_00:**
-[01:34] Yeah. Heard. It was called Green Desk, maybe?
+**[01:38] SPEAKER_00:** Yeah. I heard it was called Green Desks, maybe?
 
-**SPEAKER_02:**
-[01:37] Green Desk. Yeah, that's right.
-[01:39] It's right next to the modern-day Domino Park, maybe a block away from there.
-[01:43] Exactly. Yeah, that's right.
-[01:45] Of course, Domino Park did not exist at that time.
-[01:48] In fact, Domino Park went up really quickly and took me by surprise.
-[01:51] I looked up one day, and there was a big, kind of well-manicured park there.
-[01:55] They kind of walled it off, and so it just was like—I don't know.
-[01:58] I thought it was an abandoned site.
-[02:00] And then one day, all of a sudden, the wall was gone, and there was a beautiful park there.
+**[01:41] SPEAKER_02:** Green Desks. Yeah. That's right. Yeah. It's right next to the modern-day Domino Park, maybe a block away from there. So exactly. Yeah. That's right. And of course, Domino Park did not exist at that time. In fact, Domino Park went up really quickly and took me by surprise. I'd looked up one day, and there was a big kind of well-manicured park there. They kind of walled it off, and so it just was like—I don't know—I thought it was, like, an abandoned site. And then one day, all of a sudden, the wall was gone, and there was a beautiful park there.
 
-**SPEAKER_01:**
-[02:04] So at that event, which was, I think, two to three months before the actual launch of Ethereum, I will say the concepts were really interesting.
-[02:11] People were coming up, and it was mostly, I think, interns that were interning at ConsenSys over that summer.
-[02:16] And ConsenSys at this point was only, like, maybe 20 people at max.
-[02:20] Like, it was really, really small.
-[02:22] And, you know, some great concepts came up, but even with the stuff we built, we realized pretty quickly that no one could build anything in a short period of time.
-[02:30] Like, it was just impossible.
-[02:32] Very basic stuff, like reading a variable off the blockchain, was kind of impossible.
-[02:36] Like, you couldn't read the state off the blockchain—all of this kind of stuff.
-[02:40] So that kind of led into—yeah, like, everything building in those days was incredibly hard.
-[02:46] And that led into—so we decided at that event we were going to, at the launch of Ethereum, do a bigger hackathon.
-[02:52] And that became the second ConsenSys Dappathon, which coincided with the launch of Ethereum.
-[02:58] And it was us, the Java client, which I think was called EtherCamp at that time, and other tools that were kind of combined together.
-[03:06] But what was really interesting about that one was, you know, it was bigger.
-[03:09] Like, I think the first one, we had, like, six participants.
-[03:12] The other one, we had, I think, close to 30.
-[03:15] But it introduced a lot of ideas that would become more developed pretty quickly.
-[03:19] Like, the winner was a GameFi app.
-[03:22] Like, it really had that element of tokenized gameplay.
-[03:25] There was a decentralized social app, I think, called Truther or something like that.
-[03:30] And then there was a traceability supply chain app in those early days, and that kind of all coincided with the launch of Ethereum.
+**[02:12] SPEAKER_01:** So at that event, which was, I think, two to three months before the actual launch of Ethereum, I will say the concepts were really interesting. People were coming up, and it was mostly, I think, interns that were interning at ConsenSys over that summer. And ConsenSys at this point was only, like, maybe 20 people at max. Like, it was really, really small. And, you know, some great concepts came up, but even with the stuff we built, we realized pretty quickly that no one could build anything in a short period of time. Like, it was just impossible. Very basic stuff, like reading a variable off the blockchain, was kind of impossible. Like, you couldn't read the state off the blockchain, all of this kind of stuff. So that kind of led into—yeah, like, everything building in those days was incredibly hard. And that led into—so we decided at that event, we were going to, at the launch of Ethereum, do a bigger hackathon, and that became the second ConsenSys Dappathon, which coincided with the launch of Ethereum. And it was us, the Java client, which I think was called EtherCamp at that time, and other tools that were kind of combined together. But what was really interesting about that one was it was bigger. Like, I think the first one, we had like six participants. The other one, we had, I think, close to 30. And it introduced a lot of ideas that would become more developed pretty quickly. Like, the winner was a GameFi app. Like, it really had that element of tokenized gameplay. There was a decentralized social app, I think, called Truther or something like that. And then there was a traceability supply chain app in those early days, and that kind of all coincided with the launch of Ethereum.
 
-**SPEAKER_00:**
-[03:37] Yeah. So, okay. So you're talking about the second one?
+**[03:47] SPEAKER_00:** Yeah. So okay. You're talking about the second one?
 
-**SPEAKER_01:**
-[03:40] I'm talking about the second one. Yeah.
+**[03:50] SPEAKER_01:** I'm talking about the second one. Yeah.
 
-**SPEAKER_00:**
-[03:42] The second one, also, the offices had shifted.
-[03:45] So ConsenSys, which we were kind of working as a part of at that time, had moved to a much larger office in Bushwick, which is—I believe they still have a presence there, though they've gone mostly remote.
-[03:56] I remember there was, like, a horse lineage app.
-[03:59] Yeah. Pretty interesting.
-[04:01] And we ended up actually hiring a couple people who participated in the hackathon.
-[04:05] But that one was open to externals, right?
-[04:07] So that was the big difference.
-[04:09] And it actually was, you know, quite well attended.
-[04:12] The room, I think, never had the greatest air conditioning, but it was really quite hot in there, if I recall.
-[04:17] And you think that one was, like, 24 hours, or it was two days? I can't remember.
+**[03:52] SPEAKER_00:** The second one, also, the offices had shifted. So ConsenSys, which we were kind of working as a part of at that time, had moved to a much larger office in Bushwick, which is—I believe they still have a presence there, though they've gone mostly remote. I remember there was, like, a horse lineage app. Yeah. Pretty interesting. And we ended up actually hiring a couple people who participated in the hackathon. But that one was open to externals, right? So that was the big difference. And it actually was quite well attended. The room, I think, never had the greatest air conditioning, but it was really quite hot in there, if I recall.
 
-**SPEAKER_01:**
-[04:21] It was two days.
-[04:22] And, yeah, like, the air conditioning thing—so we moved into that space to have the hackathon.
-[04:27] Like, you know, ConsenSys was blank because they had outgrown that coworking space already.
-[04:31] And so we moved into that space, which—yeah, it was a reasonably sized room.
-[04:35] Like, you could probably get 80 to 100 people in that room, right?
-[04:38] But, yes, the air conditioning was terrible, and we had to frantically—we only realized this after we got into the room, so we had to, like, frantically buy some and set them up.
+**[04:27] SPEAKER_01:** And you think that one was, like, 24 hours, or it was two days? I can't remember.
 
-**SPEAKER_00:**
-[04:47] Okay. I do have a memory of that.
-[04:49] I don't know if you recall that, but, yeah, we were, like, trying to get those air conditioning units in place before, like, a ton of people showed up.
-[04:55] Because, yeah, like, we were sweating when there were only, like, five people in the room.
+**[04:31] SPEAKER_00:** It was two days. And, yeah, like, the air conditioning thing. So we moved into that space to have the hackathon. Like, you know, ConsenSys was blank because they had outgrown that coworking space already. And so we moved into that space, which was a reasonably sized room. Like, you could probably get 80 to 100 people in that room, right? But yes, the air conditioning was terrible, and we had to frantically—we only realized this after we got into the room—so we had to, like, frantically buy some and set them up.
 
-**SPEAKER_01:**
-[04:59] These were the scrappy days.
-[05:01] Manually configuring air conditioning.
-[05:03] I think the amount of, like, furniture assembly that you do is, like, a good proxy for how scrappy you are in your startup journey.
+**[04:59] SPEAKER_01:** Okay. I do have a memory of that. I don't know if you recall that, but, yeah, we were trying to get those air conditioning units in place before a ton of people showed up. Because, yeah, we were sweating when there were only, like, five people in the room.
 
-**SPEAKER_00:**
-[05:09] There was a lot of furniture.
-[05:11] I mean, we kept—like, it was basically an empty room when we moved in there.
-[05:14] And I think we moved in there a day or two before the hackathon actually started, so we had to get everything up and running.
-[05:19] And it was this to, like, sort of commemorate the launch, I think? Or was it, like, right before the launch?
+**[05:11] SPEAKER_00:** These were the scrappy days. Yeah. Manually configuring air conditioning. I think the amount of furniture assembly that you do is a good proxy for how scrappy you are in your startup journey.
 
-**SPEAKER_01:**
-[05:24] It was—it actually—you know, if you recall at the time, we didn't know when the launch would be.
-[05:28] Like, the dates were always shifting, right?
-[05:30] And we just said—we can't—we arbitrarily chose—like, we wanted to actually synchronize it with the launch, but because we couldn't know exactly when the launch was.
-[05:38] And even when they declared the date, it was still a little bit vague.
-[05:41] Like, we're like, is that gonna actually happen?
-[05:43] So we kind of, at some point, had to arbitrarily choose the date, and they more or less—it was the right date.
-[05:49] Like, I think it was off by maybe a day or two.
+**[05:22] SPEAKER_01:** There was a lot of furniture. I mean, it was basically an empty room when we moved in there. And I think we moved in there a day or two before the hackathon actually started, so we had to get everything up and running. And it was to sort of commemorate the launch, I think, or was it right before the launch?
+
+**[05:39] SPEAKER_00:** It was—it actually, you know, if you recall at the time, we didn't know when the launch would be. Like, the dates were always shifting, right? And we just said—we kind of arbitrarily chose. Like, we wanted to actually synchronize it with the launch, but because we couldn't know exactly when the launch was, and even when they declared the date, it was still a little bit vague. Like, we're like, is that going to actually happen? So we kind of, at some point, had to arbitrarily choose the date, and it more or less was the right date. Like, I think it was off by maybe a day or two.
+
+**[06:06] SPEAKER_00:** Jim, I might have asked you this last episode, but I'll ask again. Do you remember, one, trying to predict the launch, and could you explain how? And two, there was some complicated mechanism for how the launch would actually happen because it's hard for a decentralized group to decide on a launch time. I can't remember that at all. You were mentioning it in the last video, and I didn't remember this, but I don't doubt it. It sounds correct.
+
+**[06:28] SPEAKER_02:** You were saying we were looking through the Git commits at the time. We were. Yes. You made this plot. It was, like, commits by day, and you extrapolated it forward. I think we probably got within a couple days of the launch date.
+
+**[06:41] SPEAKER_00:** But okay. So I still don't know how they set the clock on the first block, so to speak. Maybe we can dig this up. There was something they did.
+
+**[06:48] SPEAKER_02:** It's probably in our DMs. I wish I thought to look between the first and second video to find the actual discussion that we had. Maybe the graph is in there. Yeah. That's very funny. The Slack is a treasure trove of interesting things.
+
+**[07:00] SPEAKER_00:** Alright. So yeah. So it launched, and I kind of felt like there was a sort of "and then what's going on?" You know? It took a little time for things to get going. And then, you know, it's obviously just been a smashing success, right? It's just sort of the reality of a new platform. You sort of get it out there, you see what people do, you learn from it, and it took a minute for...
+
+**[07:20] SPEAKER_02:** Jim, remember, like, a lot of people around us at the time had been buying a lot of presale ether beforehand. And so the day it came out, I think they were expecting it to have a huge jump in value immediately. And when, like, a couple weeks had gone by and it was only still, like, 20¢ an ether or so, remember people around us were kind of like—some of the people there were like, "Oh, this thing was a flop. It's never going to go anywhere."
+
+**[07:42] SPEAKER_00:** Yeah. I mean, it's just psychologically—the expectations were super high. There was this concept floating around ConsenSys of "day one dapps." Like, you had to be ready right for the launch because it was a land grab and things were going to the moon. And, you know, it turned out to not quite be—obviously, again, smashing success—but yeah, the price was under a dollar for a little bit, and then around a dollar for a while, I believe. And I did want to mention—so I had to look this up. So the first ICO, whatever you want to call it, that was on Ethereum—obviously, Ethereum did its own crowdsale, but it was like, you know, they took in Bitcoin, and there was something like 2,000 ether to 1 Bitcoin at the time, which I believe at the time was like 20 or 30¢, and then it had gone up to a dollar on launch. It's already a pretty good return, you know? But that is what it is. The first ICO apparently was Augur.
+```

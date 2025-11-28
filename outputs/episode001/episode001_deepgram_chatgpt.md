@@ -1,124 +1,57 @@
-**SPEAKER_00:**
-[00:00] Alrighty.
-[00:01] So we're on.
-[00:02] Thanks.
-[00:03] So, my name is Kieran James Lubin.
-[00:06] I'm joined by Jim—or James—from SDR and Victor Wong.
-[00:10] We are old friends.
-[00:11] We also run a company together called BlockApps, which has been in operation for quite some time.
-[00:16] But that's not what we're here to talk about today.
-[00:18] We're actually taking up the topic of what Ethereum was like in the early days.
-[00:22] So we've all had both an insider and an outsider perspective on Ethereum and enjoyed the really crazy and wild ride that has been the last approximately decade in the blockchain space.
-[00:32] And sometimes we forget all of the interesting things that happened.
-[00:35] So we wanted to kind of, you know, get in front of a camera and get it all down for posterity—and here we are.
-[00:41] So with that said, I'll kind of take the lead on the discussion, but we're not trying to be formal here.
-[00:46] Trying to make it conversational.
-[00:48] This is a first of a Kieran-produced podcast of sorts.
-[00:52] I've been on a bunch of them.
-[00:53] I don't think I've ever led one, so we're gonna find out how it goes.
-[00:56] Alrighty.
-[00:57] So let's start out with the question: when were you first aware of Bitcoin and blockchain in particular?
-[01:03] I'll give my answer to start.
-[01:05] And there's still a kicking-myself aspect to it.
-[01:08] So I became aware—I'm gonna say 2010, possibly 2011.
-[01:13] So this would have been my senior year in undergrad—of Bitcoin.
-[01:17] And I distinctly remember it being $3, down from a recent peak of $14 or $15.
-[01:22] I thought it was interesting and, you know, looked into it a little bit.
-[01:26] I didn't really get the idea of decentralization at the time.
-[01:29] I just imagined it as some sort of digital money solution.
-[01:33] You know, if you asked me then, I probably couldn't have drawn a difference between it and, you know, digital banking or a PayPal-type provider, that sort of thing.
-[01:41] And I might have bought a little of it, but not nearly enough, of course.
-[01:45] So, that said, let me hand the question over to Jim.
+```
+**[00:00] SPEAKER_00:** Alrighty. So we're on. Thanks. So my name is Kieran James Lubin. I'm joined by Jim—or James—from SDR and Victor Wong. We are old friends. We also run a company together called BlockApps, which has been in operation for quite some time, but that's not what we're here to talk about today. We're actually taking up the topic of what Ethereum was like in the early days. So we've all had both an insider and an outsider perspective on Ethereum and enjoyed the really crazy and wild ride that has been the last approximately decade in the blockchain space. And sometimes we forget all of the interesting things that happened. So we wanted to kind of get in front of a camera and get it all down for posterity, and here we are. So with that said, I'll kinda take the lead on the discussion, but we're not trying to be formal here. Trying to make it conversational. This is the first of a Kieran-produced podcast of sorts. I've been on a bunch of them. I don't think I've ever led one, so we're gonna find out how it goes. Alrighty. So let's start out with the question: when were you first aware of Bitcoin and blockchain in particular? I'll give my answer to start, and there's still a kicking-myself aspect to it. So I became aware—I'm gonna say 2010, possibly 2011—so this would have been my senior year in undergrad, of Bitcoin. And I distinctly remember it being $3, down from a recent peak of $14 or $15. I thought it was interesting and looked into it a little bit. I didn't really get the idea of decentralization at the time. I just imagined it as some sort of digital money solution. If you asked me then, I probably couldn't have drawn a difference between it and digital banking or a PayPal-type provider, that sort of thing. And I might have bought a little of it, but not nearly enough, of course. So, that said, let me hand the question over to Jim.
 
-**SPEAKER_01:**
-[01:49] When were you first aware of Bitcoin?
-[01:51] Aware is different than, like, interested.
-[01:53] In fact, like, I don't know.
-[01:55] I came from an academic background, so I'd been hearing about it probably since when you had been hearing about it.
-[01:59] But I was, like, a little bit too above all that.
-[02:02] Like, "Oh, that's like a money thing. I'm not interested in that money world."
-[02:06] So, really, no.
-[02:07] Like, the interest came from when you reached out to Steve, who was an old friend of mine.
-[02:11] And Kieran had been following his blog.
-[02:13] And Steve called me up, and he's like, "This guy Kieran just called me up, and you have to go look at this Ethereum thing."
-[02:19] And so, at first, I was like, "Yeah, you know, I'm not interested in all this fake money thing."
-[02:24] And I went and I read the white paper.
-[02:26] And by the end of the white paper, I was hooked in.
-[02:29] I was like, "This isn't just about banking or something. This is about incentivization on the Internet."
-[02:34] And that drew me in.
-[02:35] So at that point, there was enough ambiguous stuff being discussed.
-[02:39] I wanted to just dig in and see how it worked.
-[02:42] So that's when I started trying to write code that would connect to one of the peers.
-[02:46] And at the time, it was a testnet.
-[02:48] And that's when I started to understand the background of it and got really pulled into there.
-[02:52] So, well, I don't know.
-[02:53] Let me pass it on to Victor.
+**[02:08] SPEAKER_01:** When were you first aware of Bitcoin? Aware is different than, like, interested. In fact, I don't know. I came from an academic background, so I'd been hearing about it probably since when you had been hearing about it. But I was a little bit too above all that. Like, oh, that's like a money thing. I'm not interested in that money world. So really, no. The interest came from when you reached out to Steve, who was an old friend of mine, and Kieran had been following his blog. And Steve called me up, and he's like, "This guy Kieran just called me up, and you have to go look at this Ethereum thing." And so, at first, I was like, yeah, I'm not interested in all this fake money thing. And I went and I read the white paper. And by the end of the white paper, I was hooked in. I was like, this isn't just about banking or something. This is about incentivization on the Internet, and that drew me in. And at that point, there was enough ambiguous stuff being discussed that I wanted to just dig in and see how it worked. So that's when I started trying to write code that would connect to one of the peers. And at the time, it was a testnet. And that's when I started to understand the background of it and got really pulled into there. So, well, I don't know. Let me pass it on to Victor.
 
-**SPEAKER_00:**
-[02:55] Yeah.
-[02:56] Let's—Jim, we'll pick that up.
-[02:57] I'm trying to a little bit stay chronological.
-[02:59] So, you know, 2010, 2011 sounds like same time frame for you.
-[03:03] I think we'll pull back in a question or two right to that era, and we'll talk in more detail.
+**[04:00] SPEAKER_00:** Yeah. Let's—Jim, we'll pick that up. I'm trying to a little bit stay chronological. So, you know, 2010, 2011 sounds like same time frame for you. I think we'll pull back in a question or two right to that era, and we'll talk in more detail.
 
-**SPEAKER_02:**
-[03:08] But let's hold on it for just a moment.
-[03:10] Vic, do you wanna take it?
-[03:11] Yeah.
-[03:12] I think I became aware of it around the same time as you.
-[03:14] I was doing one of my startups in Beijing at the time, and I felt really disconnected from North America.
-[03:20] So I became sort of an early fan of podcasts.
-[03:23] And one of the big podcast networks was this thing called TWiT that was, like, all technical podcasts.
-[03:28] And one of the podcasts I really loved was this podcast, Security Now, which went really deep into these kind of, like, security technical kind of things.
-[03:35] And he did a couple episodes on Bitcoin.
-[03:37] And I was, like, really, really fascinated by it, but mostly from a technical angle.
-[03:41] Like, even to the point where I downloaded the Bitcoin client and ran it.
-[03:45] Didn't get any Bitcoin—or if I did, I didn't notice it.
-[03:48] I wish—I think the rewards were like 50 at the time or something like this.
-[03:52] But the strange thing was that a year or two later, I started to notice at other Chinese startups, there'd be groups of computers in part of their office.
-[03:59] And I was like, "What are those for?"
-[04:01] And they're like, "Oh, we're mining Bitcoin."
-[04:03] And I was like, "Oh, why are you mining Bitcoin?"
-[04:06] And they're like, "Oh, well, you know, we can transfer money and it's basically free Internet magic money."
-[04:11] And I was like—I honestly was kind of repelled by that.
-[04:14] Like, that kind of seemed too nutty even for me at the time.
-[04:17] Did we all hate it before we liked it?
+**[04:13] SPEAKER_02:** But let's hold on it for just a moment. Vic, do you wanna take it? Yeah. I think I became aware of it around the same time as you. I was doing one of my startups in Beijing at the time, and I felt really disconnected from North America, so I became sort of an early fan of podcasts. And one of the big podcast networks was this thing called TWiT that was all technical podcasts. And one of the podcasts I really loved was this podcast, Security Now, which went really deep into these kind of security, technical kind of things. And he did a couple episodes on Bitcoin. And I was really, really fascinated by it, but mostly from a technical angle. Even to the point where I downloaded the Bitcoin client and ran it—didn't get any Bitcoin. Or if I did, I didn't notice it. I wish—I think the rewards were like 50 at the time or something like this. But the strange thing was that a year or two later, I started to notice at other Chinese startups, there'd be groups of computers in part of their office. And I was like, what are those for? And they're like, "Oh, we're mining Bitcoin." And I was like, "Oh, why are you mining Bitcoin?" And they're like, "Oh, well, we can transfer money and it's basically free Internet magic money." And I was like—I honestly was kind of repelled by that. That kind of seemed too nutty even for me at the time. Did we all hate it before we liked it?
 
-**SPEAKER_00:**
-[04:20] I never hated it.
-[04:21] I was sort of just, like, not that interested, I guess.
-[04:24] You know, I think from the East Coast, the attitude towards stiff financial stuff is probably more favorable.
-[04:30] I think Jimmy had long since been out in California doing, like, yeah, you know, after your physics days.
-[04:35] But when doing grad stuff, you're not telling me that there were other grad students who kinda—like, I guess I didn't hate it.
-[04:40] I just felt I was too good for it.
-[04:42] I see.
-[04:43] I didn't hate it, but I think—
+**[06:00] SPEAKER_00:** I never hated it. I was sort of just not that interested, I guess. You know, I think from the East Coast, the attitude towards stiff financial stuff is probably more favorable. I think Jimmy had long since been out in California doing—yeah, you know, after your physics days. But when doing grad stuff, you're not telling me that there were other grad students who kinda—like, I guess I didn't hate it. I just felt I was too good for it.
 
-**SPEAKER_02:**
-[04:45] I found the—like, everyone talked about—so I was fascinated by the technical aspect, like I said.
-[04:50] And it got me to read the white paper and even download the software.
-[04:53] But I think the part that kind of turned me off a bit was, like, when you talk to some of the early people that I would ask, like, who were setting up Bitcoin mining rigs, they were kind of fanatical.
-[05:01] Like, there was that crypto-anarchist sort of flavor to the early days that kind of turned me off, I would say.
-[05:06] Yeah. Jim, I would say—
+**[06:23] SPEAKER_02:** I see. I didn't hate it, but I think I found the—like, everyone talked about—so I was fascinated by the technical aspect, like I said. And it got me to read the white paper and even download the software. But I think the part that kind of turned me off a bit was when you talked to some of the early people that I would ask, who were setting up Bitcoin mining rigs, they were kind of fanatical. There was that crypto-anarchist sort of flavor to the early days that kind of turned me off, I would say.
 
-**SPEAKER_00:**
-[05:08] The people in academia that were pretty successful on a classic track and were gonna get a good postdoc and a good assistant professorship and all that sort of thing mostly ignored crypto.
-[05:17] Some of them weighed in on it, but yeah, I think it was too fringe to attract the classically most successful, in some sense, people at that time.
-[05:26] Whereas, you know, fighting against—not fighting against, but you're sort of fighting for jobs in math or physics or something.
-[05:32] It's just like the most horsepower wins from an intellectual perspective—and I guess the hardest-working horsepower.
-[05:38] Very few of those people got interested in crypto or blockchain.
-[05:42] A few cryptographers certainly did, and probably actually more established ones compared to younger ones—like folks like Dan Boneh, etc.
-[05:49] But yeah, I think—I don't know that it was that I was too good for it, but that, one, I didn't grasp right away that it was revolutionary.
-[05:57] And I didn't see anyone near me leaning into it for a while, I guess.
-[06:01] Yeah. I would describe my view of it in the early days as—
+**[06:52] SPEAKER_00:** Yeah. Jim, I would say the people in academia that were pretty successful on a classic track and were gonna get a good postdoc and a good assistant professorship and all that sort of thing mostly ignored crypto. Some of them weighed in on it, but yeah, I think it was too fringe to attract the classically most successful, in some sense, people at that time. Whereas, you know, fighting against—not fighting against, but you're sort of fighting for jobs in math or physics or something. It's just like the most horsepower wins from an intellectual perspective and, I guess, the hardest-working horsepower. Very few of those people got interested in crypto or blockchain. A few cryptographers certainly did, and probably actually more established ones as far as compared to younger ones—like folks like Dan Boneh, etc. But yeah, I think—I don't know that it was that I was too good for it, but that, one, I didn't grasp right away that it was revolutionary, and I didn't see anyone near me leaning into it for a while, I guess.
 
-**SPEAKER_02:**
-[06:04] Sketchy.
-[06:05] Because most of the use cases that—I thought the technology was fascinating.
-[06:09] But whenever I would ask about—you know, I'm a product guy, so I would always ask, like, "What's the use case? Why would you use it?"
-[06:14] And people would describe things to circumvent existing laws.
-[06:17] Like, the big one in China that I remember is like, "Oh, I can transfer money and bypass foreign exchange rules and stuff."
-[06:23] And I was like, "Is that legal?"
-[06:25] And no one would mention anything afterwards, basically.
+**[07:55] SPEAKER_02:** Yeah. I would describe my view of it in the early days as sketchy because most of the use cases that—I thought the technology was fascinating, but whenever I would ask about—you know, I'm a product guy, so I would always ask, like, what's the use case? Why would you use it? And people would describe things to circumvent existing laws. Like, the big one in China that I remember is like, "Oh, I can transfer money and bypass foreign exchange rules and stuff." So I was like, "Is that legal?" And no one would mention anything afterwards, basically.
 
-(Transcript continues in next message due to length)
+**[08:25] SPEAKER_01:** Yeah.
+
+**[08:26] SPEAKER_00:** Well, I wanna say I got—sorry.
+
+**[08:28] SPEAKER_01:** I got over feeling too good for it. I'll tell you that.
+
+**[08:31] SPEAKER_00:** Yeah. And we all did. Yeah. I wanna touch on the other—the big thing that sticks out in my memory from the early blockchain era is—and we've kinda gone through this kind of cycle a couple times—was Mt. Gox. So Mt. Gox was that first big price run-up. I believe Bitcoin went from like $30 to $1,200 in a pretty short time frame. And as we've seen in the last couple crypto—you could call them asset bubbles if you were a cynical person—to some extent, consumer interest tracks with the price. People are getting excited about price momentum. Articles get circulated, all that sort of thing. More people come in, and it goes all the way up. And then, seemingly invariably, the bubble bursts, and someone is fleeced at the top. And whether it's outright theft or merely collapsing asset values or some mix thereof, everyone's hurt on the other side. And then sort of the crypto is somehow this way of surviving all of this. The protocols themselves seem to be quite sound. But I guess the question is, do you guys remember Mt. Gox distinctly? I feel like lots of people I knew who were not quite crypto-savvy in the industry, etc., were suddenly paying attention when that was happening. It was the hot topic just getting into things.
+
+**[10:00] SPEAKER_01:** Yeah. What year was it? Was it 2015, 2014?
+
+**[10:03] SPEAKER_00:** 2014, probably, right?
+
+**[10:04] SPEAKER_01:** I think Gox was '13. Let me check.
+
+**[10:06] SPEAKER_00:** Yeah. I think it was '13.
+
+**[10:07] SPEAKER_01:** Yeah. Okay. So that was a little before, but that was still the topic that everybody was talking about at the time. I was new enough to it that it was still—I was observing it as a third party. It was interesting to me. But yeah, I think I spent a little time to understand what—because, you know, the newspaper coverage, like usual, was terrible about it. They didn't explain what was going on. So I spent a little time to understand that, yes, there was a problem, but no, it had nothing to do with blockchain. It was—
+
+**[10:35] SPEAKER_00:** I think you're right. So the run-up was actually '13 into '14, it looks like. Or okay. So it officially shuttered February. And the big—the $1,200 that I remember was like November 2013, it looks like.
+
+**[10:47] SPEAKER_02:** When did the hack happen?
+
+**[10:48] SPEAKER_00:** December.
+
+**[10:49] SPEAKER_02:** Oh, it happened right here. Okay. Okay. Yeah. Happened right there.
+
+**[10:52] SPEAKER_00:** So yeah, interesting times for sure. Because I think Mt. Gox and—oh, what was—I'm blanking right now. What was the name of that dark web marketplace that used—
+
+**[11:00] SPEAKER_02:** Silk Road.
+
+**[11:01] SPEAKER_00:** Silk Road. Yeah. I think those were kind of intertwined in those early days. Right? So I remember even going on to Silk Road just to check what it was about, and I was kinda shocked with what I saw listed there. Lots of illicit stuff was listed there.
+
+**[11:14] SPEAKER_02:** You know?
+
+**[11:15] SPEAKER_00:** Wow. You know, I think I never did that. I think I never actually navigated to Silk Road. Just heard about it at length. I had an account, and some others. There's a period where, like, was doing crypto stuff, and then I think they stopped. And I believe they're still around as a payment API company.
+
+**[11:30] SPEAKER_02:** Yeah. Because I remember them and some others. I remember the Silk Road arrests and the Mt. Gox hacks came relatively within the same time frame of each other, and that was the sort of like—you know, as you mentioned—the first kind of iteration of, "Oh, all crypto and blockchain is dead now," and then it just keeps coming back. Right?
+
+**[11:48] SPEAKER_00:** Yeah. It sure does.
+```

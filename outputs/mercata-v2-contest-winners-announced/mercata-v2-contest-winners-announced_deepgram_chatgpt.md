@@ -1,0 +1,95 @@
+```
+**[00:00] SPEAKER_00:** Can you still hear me? Just put them back in after a try. I can. Lock and load. Nice.
+
+**[00:05] SPEAKER_01:** Can you guys confirm we're live on Twitter and YouTube?
+
+**[00:08] SPEAKER_02:** Actually, how do I join the YouTube one? Okay, I see it live on my laptop. Okay. Can you speak?
+
+**[00:14] SPEAKER_00:** Yeah. Testing. Yeah. We are. Making sure this works. Can you hear us?
+
+**[00:18] SPEAKER_01:** Hopefully, there's no horrible echo like last week. Okay.
+
+**[00:21] SPEAKER_02:** I hear it. I hear you. I'm gonna drop that. I hear some echo. Oh, okay. Yep. Well, the echo echoes from my laptop, I think. Cool. I'm gonna mute and then try the Twitter audio.
+
+**[00:32] SPEAKER_01:** Oh, can you confirm, Jeremy?
+
+**[00:34] SPEAKER_02:** It says the stream hasn't started yet since it's scheduled for broadcast at five on Twitter.
+
+**[00:38] SPEAKER_01:** Oh, interesting. So I see a preview. Yeah. Let's check at five. But you can see on YouTube, right?
+
+**[00:43] SPEAKER_02:** Let me load the YouTube. Just gonna mute. Audio is good on YouTube and everything.
+
+**[00:47] SPEAKER_01:** Okay. Let's just wait until five and just make sure everything comes up.
+
+**[00:50] SPEAKER_00:** The tube.
+
+**[00:51] SPEAKER_01:** Things can stop in the tubes.
+
+**[00:53] SPEAKER_00:** I can't remember. At some point in my life, I was friends with a British person who made reference to the tube, but it definitely was pronounced tube, chube.
+
+**[01:00] SPEAKER_01:** Quite likely. Yes. Great.
+
+**[01:02] SPEAKER_02:** Twitter's up. Audio is good and so is the visual.
+
+**[01:05] SPEAKER_01:** Okay. Taking you off, taking you off the stage. Thanks.
+
+**[01:08] SPEAKER_00:** Hey, Vic. So from StreamYard, are we able to see, like, people trickling in or not really? It doesn't look like it. It does not appear so. So I think we can do it on YouTube, but I'm just,
+
+**[01:17] SPEAKER_01:** I'm trying to keep an eye on it in the background here.
+
+**[01:20] SPEAKER_00:** Because we could see if there were comments,
+
+**[01:22] SPEAKER_02:** but yeah, it doesn't seem like it's—
+
+**[01:24] SPEAKER_00:** I suppose we could try to join without audio potentially and just see. Also, so it's not a Space, right? It's a Live?
+
+**[01:29] SPEAKER_02:** It is a Live on Twitter. Yes.
+
+**[01:31] SPEAKER_02:** I wonder how do I—hold on. Checking the Telegram.
+
+**[01:34] SPEAKER_00:** Okay. So we already had the links on the Telegram, which I guess we should probably repost.
+
+**[01:38] SPEAKER_01:** Yeah.
+
+**[01:39] SPEAKER_00:** So on the—I can see the Live. I can see us. Okay. Michael's posting it. I mean, I guess we should probably start in a second.
+
+**[01:45] SPEAKER_01:** Yeah. We can wait a—let's just wait a few more minutes.
+
+**[01:48] SPEAKER_00:** But it's a different feel from the—so okay. Why do they have Spaces and Live? It's very confusing. Spaces are no video, but they're like a little more interactive. Yeah. The Live is just like you just sort of see, or the broadcast here. Yes. Like, I'm just sort of looking back at myself, and it has views on it kinda, but that's it. Yes. Okay. So some comments. Hey, Michael. Hey, appreciate it.
+
+**[02:10] SPEAKER_01:** Yeah. Yeah. We are still working through our AV issues.
+
+**[02:13] SPEAKER_00:** It's a constant state of affairs, it seems. It is. Lots of learning curve in the content creator game. Every startup founder, unwitting content creator. You know? We didn't want the world to be this way. Actually, maybe it's better. I mean, it's gonna go direct to audience in a sense. Although, is it really direct to audience if it's through the platform? It's like more direct than it could be.
+
+**[02:33] SPEAKER_01:** I mean, content is—I do think we need to find a way to kind of bring people in. We are going to read some comments today, but it's like, we'd like to make it more interactive in the future. It does seem like X does not want to play nice with any multi-channel platform.
+
+**[02:46] SPEAKER_00:** Doesn't even like links.
+
+**[02:47] SPEAKER_01:** No, it does not. It definitely does not. All right. Feel like let's just, you know. Okay. I think we can get started now. Let me just share my screen. So, thank you everyone for joining. If there are any AV audio issues—if people were on last week—we're still trying to figure out our whole audio-visual setup. So we are continuing that journey. If there's any problems, please let us know, post on our Telegram or on any comment that's convenient. So today is a really exciting episode. We are announcing the winners of our Mercado V2 Trading, Bridging, and Testing Challenge. And yeah, it's been a really exciting time. I am filling in for Bob Summerwell, our normal host who is on a long-delayed digital detox as well as honeymoon. So yeah, well-deserved break to you, Bob. Hope you're not watching, but you catch up later. And with me, I have Karen James Lubin, our CEO and head of—and whale on Straddle Mercado testnet. How's everything going with you today, Karen?
+
+**[03:45] SPEAKER_00:** You know, good. I feel like shark is better than whale for this.
+
+**[03:48] SPEAKER_01:** Can sharks eat whales?
+
+**[03:49] SPEAKER_00:** I don't know. You know, like a blue one is pretty big. Little ones? Most whales are big, but there are some smaller, you know—
+
+**[03:56] SPEAKER_01:** There are some smaller whales. But I think on average whales are gonna be bigger than sharks. Isn't there a whale shark? Maybe you could be a little bit of both, you know, you can—
+
+**[04:03] SPEAKER_00:** Yeah, try a little bit of both.
+
+**[04:04] SPEAKER_01:** Let me share my screen because we're gonna jump right into announcing the winners today. So, as everyone knows from the contest who has participated, first of all, we want to say thank you to everyone participating. We got well over 30 participants assigned, nearly doubling the amount of participants we had back in July, where we had like roughly about 20. This was July—thank you. Back in July. Time is going so fast. And this challenge was particularly hard because we wanted to kind of test the application and simulate real-world events. So anyone that was following in the contest channel could see that there were special events that I triggered on the platform where there were sudden price jumps, there were airdrops, there were all kinds of different events that affected the flow of the contest and made different opportunities both on the downside and upside. And Karen, can you confirm with everyone—I never shared when those events were happening ahead of time?
+
+**[04:54] SPEAKER_00:** It's true. Yeah. Even, you know, I think Victor may have specifically punished me even though I was ineligible for the prize. Like, you know, my gym hours are kind of predictable and I sense that Victor put some of them when he knew I would, like, you know, be on the treadmill or lifting some weights or something and unable to reap the profits that I normally do.
+
+**[05:13] SPEAKER_01:** I cannot confirm or deny that I specifically looked at your calendar, but I can confirm I do have access to your calendar. So it may or may not have happened. Anyways, what was different from the July contest is July was really simply about trading. We gave everyone one of each asset and they traded. And also, we basically had a bug price based on volume of bugs. So this time, we wanted to make things a little bit more focused. We gave people assets on the Ethereum testnet that they had to bridge into the application. Like I said, we had these random events that happened throughout the contest. And then instead of giving like generic bug prizes, we gave two sort of bug prizes—one for the worst exploit, which was something that caused loss of funds, and then a best suggested improvement prize, which is a specific improvement that would make it easier to use the application. And we internally kind of rated all the submissions that we got, and then we came up with the winners. So with that, I'm going to share a screen capture of the leaderboard as of yesterday, 5 PM, when the contest ended. Karen, you are at the top, but as it says, you're prize ineligible. Can you read out the name of who got the prize?
+
+**[06:21] SPEAKER_02:** Yeah, I don't know quite how to pronounce this, but it's—
+
+**[06:24] SPEAKER_00:** Aspa.
+
+**[06:25] SPEAKER_01:** Like rock. I'm gonna go with Aspa. Yeah.
+
+**[06:27] SPEAKER_00:** They gave you a good run for your money though, I will say. Yeah. I guess like the balance says that both of us caught most of the profit-making opportunities that were available in the system.
+```
+
+(Transcript continues in next message due to length)

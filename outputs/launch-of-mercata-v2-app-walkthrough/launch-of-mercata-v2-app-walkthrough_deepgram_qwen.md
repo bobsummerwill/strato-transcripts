@@ -1,0 +1,159 @@
+**[00:00] SPEAKER_00:** We're live for real.
+
+**[00:02] SPEAKER_01:** We are live. Yes.
+
+**[00:03] SPEAKER_02:** We're live and we're live. So
+
+**[00:05] SPEAKER_00:** maybe this won't be so meaningful for the rest of you, but it is the November 5 today, which in The UK is a very famous day of the calendar because it's it's bonfire night or Guy Fawkes night celebrating the the burning at the stake, I guess, of Guy Fawkes who was the guy who who tried to to blow up the parliament in in the mid seventeenth century. Oh, the Viveve Vendetta guy. Viveve Vendetta. So that's that's based that. I mean, the poem, right, says remember remember right in the first line. Right? So, like That's that's right. So, basically, the deal there was that, I I guess, an annually, you had, like, the king giving the speech in front of the parliament, you know. So you had, like, basically, the royalty and all of the elite sitting in the hall. They, like, it was stuffing barrels of gunpowder underneath, but it was discovered at the last minute. So then there you go. You you you now have burning of Guy Fawkes in effigy on bonfire nights to to celebrate that that that it didn't happen. And and and yeah. So you have a, you know, like a doll or whatever that's that's the guy that you put on the fire. So anyway, happy happy bonfire night, everybody.
+
+**[01:25] SPEAKER_03:** Happy bonfire night.
+
+**[01:26] SPEAKER_01:** We should probably introduce Michael because he's a special guest.
+
+**[01:28] SPEAKER_02:** Yeah. Is he a I guess he's a guest. Mean, he's a
+
+**[01:31] SPEAKER_03:** We'll make him a regular, I assume. But Yeah. Guys see me on the telegram. Michael, do do you wanna introduce yourself quickly? Yeah. Yeah. I work on the sales side of the team. I'm gonna be introducing the app today to you guys, and I hope you're excited.
+
+**[01:42] SPEAKER_01:** Well, you work sales. You're a dev. You're a front end dev. You know? Like, you do a bunch of different stuff on the team. So yeah. Got the moves.
+
+**[01:48] SPEAKER_00:** Yeah. So So what we sorry. Go ahead. Let me just kick off. Hi. Hello, everybody. Welcome. Welcome. So we did it. We we launched v two. It happened. How how does that feel? Man,
+
+**[02:01] SPEAKER_02:** actually, I think, Bob, we may not be as tired, you know. Oh, did did Oh, he's gone away. Okay.
+
+**[02:05] SPEAKER_01:** He's he's frozen.
+
+**[02:06] SPEAKER_00:** He was probably asleep. Said. Yes.
+
+**[02:08] SPEAKER_01:** Well, there were a lot of sleepless nights and
+
+**[02:10] SPEAKER_02:** working through weekends and your response. Oh, you are back. Oh. Back. Oh, it was my so it was my problem. Okay. Yeah. It it started spinning everything for a second, and then I and you all came back. Yeah. I was very excited.
+
+**[02:19] SPEAKER_00:** Say again? So how how's three two being live? How's that feel?
+
+**[02:23] SPEAKER_02:** Much better than before. You know? It's still, you never it's a it's a funny thing. Do you ever feel, like, good for, like, a sustained period? Like, I I think not, but, extremely happy that it's live. I think it would be maybe interesting for the audience, to go into a little bit of, like, what it is and also, like, why it took so long. So we to the 2024, we started to realize that there was a lot of demand for DeFi type features. So, basically, marketplace version one, or Mercado version one, if you will, was more NFT ish. We had interesting and exotic things that might be numbered, and the breadth of them. So this was we have carbon offsets trading on there, whiskey barrels. Michael moved a lot of collectible shoes through the system. So truly, you know, fairly unique, at least down to, like, having a serial number or sometimes very unique stuff. So there is occasional one on ones on there. We we dipped our toes into the art market a little bit with some collabs. And also some and then more financialized stuff too. So the the metals in particular being, something that we've had for a long time. And we kind of saw the most demand for the most financialized items, and it sort of led us to realize what people want from this technology. I mean, one way or another you I think in the the course of the company, obviously, we did, very enterprise stuff, a lot in the supply chain, and that kind of actually led very naturally to the unique item, focus. And but, you know, often, everything in the blockchain space pulls back to some sort of financialization, and we we kind of decided to stop resisting this impulse, you know, as the market seemed to be demanding it. So we released the the other thing we realized is that, in some ways so, you know, we say your goal is to tokenize everything. Like, you want all manner of real world value to be on chain, existing, alongside truly, you know, digital native assets like Bitcoin ETH and so on. What what would get the world to do that? And we thought the answer was making liquid trading markets where they didn't exist prior, and that is definitely still part of it. But, I think it is more about debt than it is about selling or transacting. Right? And so we kind of, on marketplace version one, created a mechanism, whereby you could borrow against collateral. It was sort of primitively done, but you could do it within the system. And it got great uptake. And then we we said, alright. Like, let's just make this stuff a little more DeFi. And it just turned out that, like, I I we were not expecting to do a relaunch. In fact, we were bringing folks on through q one and q two, and TVL was rising and, you know, etcetera, more loan volumes and and all that sort of thing. But we realized that we were hitting the limits of the system pretty quickly and that it would be just, you know, that that we needed to at least change some of the way the internals worked. And, you know, we so we did a a listing of our gold token with the small exchange. It was good good experience to work with them, But they had, you know, a hard time dealing with things as as they were rather, and found that just everyone wants the ERC 20 style, and that to make the capabilities, you know, sort of show the best of DeFi, it was like a huge, huge effort that turned into a full relaunch, which was never the goal at the outset. But, you know, happy to be on the other side of it. The system is definitely way better. It's a little bit different. There are some, areas where we kind of took a shortcut on version one that made it kind of easy, and we've gone and made it, say, more decentralized now, which is definitely better, but there there could be, like, rough edges around it. As as a for instance, we often had fixed pricing on marketplace version one or pure spot pricing, and we have swap pools now, which is great in that they let the market determine the price and get third party liquidity and and so forth. But then there's just more variability on the on the at any given trade execution. And so though these things will all sort of work themselves out over time, but huge effort. It's way better. Way better. But it's it's we ended up in more of a different place than I intended at the outset.
+
+**[10:45] SPEAKER_01:** Let me just let me throw throw it over to, say, Victor just on on all this. Yeah. I I think the thing is that, really, I think our core insight was really if you think about how people in the real world really a QL or, you know, accumulate wealth, it's really through, like, small accumulation over time of interest. You know? Like, think about a savings account, a retiring account, all of these things. People aren't, like, day trading constantly. Right? So what we realized is that, you know, it wasn't enough to simply be able to buy new exotic or not even exotic, but tokenize things in the real world, but really to turn those into things that were revenue generating for you individually and earning over time. So it should you know, you should be able to have multiple ways except for trading to earn things. And we realized that DeFi had kind of answered this, but it did it in a way that was too complicated for the vast majority of people to understand. I mean, you know, it was only a year ago that Vitalik himself was like, someone needs to explain to me where DeFi yields are coming from. Right? Like, if he couldn't understand it, you know, how could the rest of the world kind of get into it? And we wanted to cut build a system that would allow the rest of the world to really kind of, get those DeFi earning potentials. And, you know, I think there were two things that really came out of it. One is that we had to kind of combine the pool of assets to not just be about real world asset liquid real world assets, which we started with, But we also had to bring in, you know, high quality crypto assets. And then the second thing is that we have to offer different paths of earning. Like, you could be able to put some of those assets into liquidity pool that you would lend out to other people and get interest on that. You would be able to go into swap cores and see when their prices differ. You should be able to earn directly if you put some of your things into a savings account that people could offer. So, basically, b two offers all of those paths for users, which we're really, really excited about.
+
+**[16:05] SPEAKER_00:** Yeah. I mean, what the the point you were saying about trading specifically, Victor, you know, sort of a a stat I've repeatedly said, parroting from a a prior project was that, you know, only about 5% of people who try and day trade actually, like, make a profit. Yeah. Most people are terrible, absolutely terrible at trading because you just end up trading your emotions right, and you're just scared at the wrong time, and you're not brave at the right time. And you just it's very, very easy to, you know, to put yourself in a worse position. So, you know, having passive yield is absolutely,
+
+**[16:39] SPEAKER_01:** you know, a big need for a huge amount of people. Yeah. And I I was really surprised that even in the crypto world, the amount of people that had exposure to DeFi was relatively small. Like, I I mean, you know and I think people didn't understand that how well established those patterns have gotten. I it's it's funny that, you know, Vitalik has just woken up to this after like, last year saying I didn't understand. You know, said, you know, the future of Ethereum
+
+**[17:05] SPEAKER_00:** is going to be based on low risk DeFi. Right? So that's what we're talking about. Are using DeFi themselves now finally. Exactly. Exactly. Ten years, they were just, market dumping to raise funds. And it's like, you know, the thing that's kinda got built here because of Ethereum?
+
+**[17:23] SPEAKER_01:** Well, in the world fundamentally, current support, runs on credit. Right? That's and DeFi has really solved the collateralized lending component in a way that is so seamless. Like, where else can you get a loan in, like, minutes? Right? Like, it's it's it's hard to kind of think of any other place where you could do that in a reliable fashion. And I I think it does it in a way that allows it to be much more transparent than, say, typical financial institutions. Right? So, you know, the people that are benefiting from those loans are the other users, which is really exciting, I think, to us.
+
+**[17:53] SPEAKER_00:** So, I mean, how how would you say v two is different than existing, you know, other big name DeFi protocols.
+
+**[18:02] SPEAKER_02:** Yeah. It's so it's very much has a point click philosophy. I think if you look at the app today, which Michael will show you, there are still details bleeding through that we will eventually kind of smooth out, as appropriate. You know, you need to you need the user to know what they're doing, but not quite know how it's happening, if you will. You know, give give them the right amount of rope, etcetera. But it is much easier than, other takes on how to do it, in my opinion. Like, if you you know, you've gotta do sort of the one, wallet connect if you, use the bridge in path. So probably easiest way into our system is to take some USDC and mint, some of our stable token USD ST. You can also go in with ETH, for instance, and then you'll be granted some vouchers, which will, give you gas on on Virgin. Once that's happened, you're in this sort of pleasant, let's say, know, essentially gas free playground where you point and click like a normal web two app. And this philosophy extends further. So at the moment, we have, just four swap pools set up, which we've seeded, and others have with some liquidity. We want we'll expand this over time for sure. And eventually, we'll go to sort of, like, a permission list listing structure, if you will. The reason we've kept it small to date is, you know, just to wanna make sure everything is is working, but kind of give you a little bit of a little less rope than the other platforms out there. So, like, if you if you go to Uniswap, for instance, you'll find the top pool is usually the top pool by volume. You could sort it by TBL if you want. And that tends to direct people's attention to whatever is trading right now. Right? And, you know, the wildly variable APRs, APYs, etcetera, kind of it in encourage like an aping in sort of behavior. Our message is kind of more like, yeah, get get into whichever assets you prefer, maybe borrow conservatively, and just kind of keep accumulating over time, basically. And so, you know, it's not quite at a Vanguard level, but, you know, kind of more of a set it, forget it, be conservative, keep growing attitude that should show through within the system while while still having flexibility. So the yeah. So the and it's I guess I would say batteries included. They're actually two borrowing paths within the system. So once you have collateral, you can mint our stable coin at a moderate interest rate, and you can then put that into swap pools. You can put that into lending pools, you know, and so on. Or you could just, you know, kind of go into the secondary market, which is a little bit more flexible in certain ways. So that would be swapping directly lending pool, etcetera. So, you know, I think we we always we we don't aspire to the same ends, but look at projects like Hyperliquid where the it's a it's an Alt l one, which means you've got control over the fees. The latency of the system is very good as compared with most Ethereum stuff. Let's say it's it's fast confirmations that are irreversible and and that sort of thing. And it it just gives you the latitude to make the user experience as good as possible, which will be a continual battle, but it's been a real step function change from both our old stuff and what's what's out there today.
+
+**[26:45] SPEAKER_00:** Well, should we take a look? Let's take a look. Let's take a look. Oh, yes. I'm off. Alright. Let
+
+**[26:49] SPEAKER_03:** me share my screen.
+
+**[26:51] SPEAKER_01:** K.
+
+**[26:52] SPEAKER_03:** K. Everybody see my screen? Yes. Great. So we're gonna start with bridging in tokens. There's two ways to do it. There's normal bridge. Well, first, you have to connect your wallet, of course, using MetaMask here. There's two ways to do it. If you wanna bridge an ETH or any kind of, like, wrap Bitcoin, PAXGI, I think we have something else. Forgot it. But you bridge it into this. If you wanna bridge in stables, I would go through the convert feature that will mint on bridge. So we're gonna bridge in USDC. This is the, test net, by the way, you wanna try it out. Just go to this link. But and, if you wanna get some test USDC, Aave has some test losses for USDC and USDT, but let's bridge in, like, a $100 maybe. Let's do USDC, get USDT. Which it in. Confirm. Confirm. Minting. So I bridged them in before just because this is a bit of a process, but you could also check the status here. Takes a while for the takes a little bit for the server to update there, but visit earlier when I did that completed.
+
+**[28:16] SPEAKER_01:** So let's just assume that's alright. And we should be clear that delays are not on the Mercado side. Or something pretty much instantaneous. It's on the, you know, Ethereum, Sepulia side. Yep.
+
+**[28:27] SPEAKER_03:** So we're gonna swap some right now. Let's swap some USDT. Let's do, like, I don't know, 10. Let's get some EFST swap. And, also, gas is used through USDST on our app as well, similar to similar to Hyperliquid, actually.
+
+**[28:39] SPEAKER_00:** And what do you pay? I should not What do you pay what do you pay in those for the whole transaction?
+
+**[28:43] SPEAKER_03:** Depends on the transactions, but some are 1¢ to 3¢ depending on what it is. If it's 3¢, it's probably three transactions in there. Yes. Yeah. Yeah. Usually, like, I believe a transfer. No. Not a transfer. A bridge in is two transactions, if I'm not mistaken.
+
+**[28:54] SPEAKER_02:** Although, yes, if you bridge in, you get minted vouchers. So, the vouchers just give you free transactions,
+
+**[28:57] SPEAKER_03:** one to one with the cents, I suppose. Yep. Vouchers, you can track here as well, and this cool little little widget.
+
+**[29:01] SPEAKER_00:** Anyway, so I swapped some assets And vouches here. Vouches, just to clarify. So that's kind of a little a little a little nice hack of getting past the, oh my god. I haven't got any any ether for gas on this chain at this time.
+
+**[29:13] SPEAKER_01:** Right? But Exactly. It's a it's a it's an onboarding thing. Right? Like Yeah. You know, without one big limitation on a lot of chains, right, like, is you can't even do your first transactions on most of them until you have the native token. Right? So it allows us to bring people on without requiring that. Yep. So we've done the swaps. We're gonna add some liquidity to the lending Michael, I just wanted to mention if you can go back to the stock swap or something. One really important thing with our system is it allows you to see sort of, like, the exchange rates internally, but also, like, the global exchange rate. That's where you see the exchange spot right under there. So that's the global right. Is something we learned from two of our trading contests. So where are, like, you know, the arbitrage opportunities you can see from these two things directly instead of having to go somewhere else to figure Alright. It's been funny on the, on the live system.
+
+**[30:45] SPEAKER_02:** So it, for for those who have used DEXs, you find you know, if there's not that much liquidity, you can definitely push the price as reported and provided by the decks off of the true market price. And and here, we're combining a a couple different data sources to get the spot price, and that's just coming through at Oracle. Really, here, it's just a reminder. The spot price is used for, like, the health calculations when you borrow. And the reason you wanna do that is, you know, someone could do a big trade on the one of the pools and manipulate that price and then liquidate someone or or etcetera.
+
+**[31:20] SPEAKER_01:** As we saw very recently with the balancer attack. You know? Yeah. Yeah. Yeah.
+
+**[31:24] SPEAKER_02:** So Yeah. So but it's also just a reminder to to get good execution. So, you know, for for those who go try this, if you do it on the live net, just just make sure you know, don't do huge trades on there just yet because liquidity is still coming in both both from us and externals to make sure you get good execution.
+
+**[31:40] SPEAKER_03:** Yep. And, yeah, just the pool is not really relevant to the the Oracle price, but, yeah, everyone should keep that in mind as well. Anyway, we'll get back to the pool. So these are the lending pools that contribute to the borrow lending, which we'll get to in a little bit, but I can deposit a 100 in here. And then I will it should admit me some m USDST tokens, which is my pool token that's represented of my my lending pool contribution. Believe that is in these non earnings right here. I am a good So let's also contribute some money to the swap pool so you can earn APY. See what looks juicy right now. The silver. Wow.
+
+**[32:19] SPEAKER_02:** Looks like silver trades on this.
+
+**[32:21] SPEAKER_03:** So I'm gonna confirm my deposit. And we are deposited, and we're earning APY.
+
+**[32:24] SPEAKER_00:** And you're depositing both Silvestea and USDST?
+
+**[32:26] SPEAKER_02:** That's right. When when you input to a swap pool, you need to put in both pairs. And we have we have two modes here. It's probably just better to use the a and b mode, but you can do a single sided liquidity ad, but what it does is it does a swap so that you have an equal amount of the other one, and then it Right. Deposit it.
+
+**[32:40] SPEAKER_00:** So yeah. And to to as long as the price convenience if you if you wanted to get into it, but you haven't got the right stuff. That's correct. Yeah. Yeah. Yep. The button's right here for everybody that wants to do it single side if they choose to do so. And
+
+**[32:49] SPEAKER_03:** let's see what we're going to. Let's do some borrowing. So I'm gonna supply my whole ETH stack $14. Don't
+
+**[32:53] SPEAKER_01:** do it all through. All of it. Yeah. You he'll be okay on the gas, though.
+
+**[32:56] SPEAKER_02:** It'll be you know? So I have
+
+**[32:57] SPEAKER_03:** let's see. I have $14. Oh, we gotta hide some of these. $14.90 here. Because the LTV, I believe, is about 75%.
+
+**[33:06] SPEAKER_02:** I have $11 We tend to match the market. You don't need to go all the way up to the LTV.
+
+**[33:09] SPEAKER_03:** Well, let's let's go all the way. Let's test it anyway. Yeah. I would like, this is risky.
+
+**[33:14] SPEAKER_01:** You know? I would recommend people to Are we gonna see some
+
+**[33:16] SPEAKER_03:** My hope that always be careful of your health factor. Once you have one, you can get liquidated, but we can also repay you guys, I'd recommend going with the 80%, basically.
+
+**[33:24] SPEAKER_01:** Yeah. You know? So
+
+**[33:25] SPEAKER_03:** We could always just repay it, and it should update here.
+
+**[33:27] SPEAKER_00:** Buyer's remorse, instant refund, please. So
+
+**[33:30] SPEAKER_03:** overall, that's the app. It's kind of a combination of Uniswap and, Abi, for you guys more familiar with f three. If you guys have any questions or if you want a deeper walk through, feel free to message me on Telegram, and we can hop on to Zoom. Yeah. But there you go, guys. Also, for the gold and silver bugs out there, we take physical deposits
+
+**[33:49] SPEAKER_02:** in addition to supporting some of the popular well, actually, there's no so far as I know, there's no really popular silver token other than ours. But, you know, we'll take PAXG right now and soon the tether gold coin as well, and and that can drive your borrowing power within the system. You can borrow and then turn around and lend if you use CDP path, and that will make your gold into a productive asset.
+
+**[34:07] SPEAKER_01:** I hadn't thought that there weren't other silver tokens. That's a good I looked what there's they're very small to the extent that we have that they're out there. Too many there. I mean, there are a bunch of gold tokens at this point. A lot of gold. Yeah. So
+
+**[34:17] SPEAKER_00:** yeah.
+
+**[34:18] SPEAKER_02:** So that so that was that. I have one more comment, actually. It's been kinda fun. So the the prod system, you know, it's been online for a couple days, and the that you know, the most trading has been on the ETH pool because it's been volatile. Right? Sorry if anyone's gotten hurt out there in the last, you know, twenty four hours or so. Michael likes to get liquidated. I I know. But, so so, you know, that's manifested very quickly on our system, and it's where a lot of the the trading is. And it's, you know, still very much beta mode, but we have enough people that it's we're starting to see the pool prices actually converge to the spot price because if it doesn't, there's an arb in there. So, you know, get get in early. You know, don't don't put crazy amounts in, but, because, you know, these systems become pretty efficient over time. But when it's not, there's money to be made. And finally, I will say, for those of you who are holders of points, mostly from v one or contest participation, We we're gonna monitor the system for a little bit, just make sure everything is working and so on, and then start to work towards, the v two points program. So, not imminent, but coming.
+
+**[35:40] SPEAKER_00:** Excellent. Because, yeah, there must be a number of people asking that question.
+
+**[35:43] SPEAKER_01:** And I was just gonna add, like, if you wanna try it out now, you can just go to our, updated website at straddlemercada.com and click launch app. One of the big efforts that we're going to is to improve the UX. So if anyone has any suggestions, please join our Telegram community and send us messages there. We'd love to hear from you. We're actively trying to improve it and, you know, achieve our goal of, like, mainstreaming DeFi.
+
+**[36:05] SPEAKER_00:** And Colin there says the whole platform works perfectly. Just waiting on the rendering of front page to be visible for me. That's a friend a friend crypto Tarzan who was having the the issue of seeing his Carter that were hiding under the nonearning assets.
+
+**[36:19] SPEAKER_02:** You know, you get to you get the physical delivery at the end. Maybe not if it's fractionalized.
+
+**[36:24] SPEAKER_00:** At the end of the, rail bed.
+
+**[36:25] SPEAKER_02:** That's right. Taking delivery.
+
+**[36:27] SPEAKER_00:** Okay. Well, is there anything else anyone wanted to cover or
+
+**[36:29] SPEAKER_01:** we can wrap it up? No. We just look forward to we look forward to you guys trying it and giving us whatever input. We're really excited for you to see this and, you know, we're still gonna evolve a lot. Things have been moving quickly and will continue to be moving quickly on it. So exciting times for us.
+
+**[36:45] SPEAKER_00:** So, yeah, just ahead to stratomcata.com. So stratomercata.com. Stratamcunster.com. And you've got the app there and all the information.
+
+**[36:52] SPEAKER_02:** In the top right. That's the another landing page, which we have to, of course, eliminate as well. Thanks. It's better that this thing is up, but, yes, this is, you know, the sometimes you have to just make a choice and launch it.
+
+**[37:02] SPEAKER_00:** But, yes, in time Well, then then they say if you, you know, if you're if you're not embarrassed a bit about the things that you release, then you release too late.
+
+**[37:10] SPEAKER_01:** For sure. Absolutely.
+
+**[37:12] SPEAKER_02:** Yep. We do we're strong advocates of Great stuff. It's like it's like a child it's like like a teenager. You're like, I love this child, but, you know, you still get on my nerves a little bit.
+
+**[37:19] SPEAKER_01:** You can say that as a non parent. As a parent, I can say that as a parent. They
+
+**[37:21] SPEAKER_02:** never get it's just love. They're perfect. All love. They never get on your nerves? Never. They definitely get on your nerves. You're lying to me. You're lying to the Internet.
+
+**[37:28] SPEAKER_00:** Children are never frustrating.
+
+**[37:29] SPEAKER_01:** Never. Just perfect. They're they're balls of joy. That's it.
+
+**[37:34] SPEAKER_02:** Alright. Now I'm set now. Thank you. Thank you, everyone. Cheers, everyone. Everyone.
+
+**[37:38] SPEAKER_00:** Take care. Have a good week.

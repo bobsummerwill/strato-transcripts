@@ -1,5 +1,4 @@
-**SPEAKER_01:**
-So, hello.
+SPEAKER_01: So, hello.
 Hello, Bob.
 So, yes, I'm Bob Samuel, recording here at Dark Prague for Early Days of Ethereum.
 And I have here Jakub Ciepluch.
@@ -8,13 +7,11 @@ Good enough.
 Ciepluch.
 Yes, there you go.
 So, yeah, we've known each other about three years or so now.
-I think we did meet in Bogota for DevCon 6 for the first time, where you introduced yourself.
+I think we did meet in Bogota for DevCon 6 for the first time where you introduced yourself.
 I was not aware of your background and role, but...
 But yeah, specifically, you were an intern at Dev in Berlin in late 2015, and you also attended DEFCON 1.
-So how did you come to be involved with Ethereum at that time?
 
-**SPEAKER_00:**
-Oh, yeah.
+SPEAKER_00: Oh, yeah.
 Thank you for the intro and good question.
 It was in Bogota.
 I think I knew about you or of you for longer than since then.
@@ -23,10 +20,10 @@ you were chatting with someone and talking about Florian Glatz maybe, and talkin
 And I just jumped in because I know Florian and found out that we have a shared interest in the old days of Ethereum.
 And yeah, I did my internship working on the Python client.
 back starting September or August 2015.
-I think it was like- Maybe August to December?
+I think it was like— Maybe August to December?
 Yeah, it was August to December.
-It was a couple of weeks after Mainnet launched and the first
-big fork where the Go client forked from the C++ and Python client.
+It was a couple of weeks after Mainnet launched and the first week I was there was when there was like the first
+a big fork where the Go client forked from the C++ and Python client.
 There was a chain split on mainnet?
 Yes.
 And it happened, I think, the second day I was there.
@@ -37,42 +34,34 @@ And eventually I was just sitting there in the corner working and I was like, no
 Some started leaving.
 So I kind of ad hoc jumped in and gave a presentation of on Ethereum back then that I had given a couple of weeks before back in Copenhagen.
 
-**SPEAKER_01:**
-Prior to your internship.
+SPEAKER_01: Prior to your internship.
 
-**SPEAKER_00:**
-Yeah, I gave the presentation prior to my internship because I started a Copenhagen Ethereum meetup group.
+SPEAKER_00: Yeah, I gave the presentation prior to my internship because I started a Copenhagen Ethereum meetup group.
 Oh, goodness.
 
-**SPEAKER_01:**
-So when do you think that started?
+SPEAKER_01: So when do you think that started?
 
-**SPEAKER_00:**
-I know exactly when it started.
+SPEAKER_00: I know exactly when it started.
 It started on the 14th of July 2015.
 Right, right.
 And the reason I got into Ethereum was I was studying computer science.
 Okay.
 And I knew about Bitcoin and thought it would be interesting to write my bachelor thesis on Bitcoin.
 
-**SPEAKER_01:**
-So this was an internship while you were still doing an undergraduate?
+SPEAKER_01: So this was an internship while you were still doing an undergraduate?
 
-**SPEAKER_00:**
-No, it was actually an internship that I got because I wrote my bachelor thesis on Ethereum in the spring of 2015.
+SPEAKER_00: No, it was actually an internship that I got because I wrote my bachelor thesis on Ethereum in the spring of 2015.
 I see.
 
-**SPEAKER_01:**
-So you had graduated.
+SPEAKER_01: So you had graduated.
 
-**SPEAKER_00:**
-Yeah, but just a bachelor.
+SPEAKER_00: Yeah, but just a bachelor.
 Right.
 And because the Ethereum ecosystem, so to speak, was so small back then.
-Right, right.
 
-**SPEAKER_00:**
-I...
+SPEAKER_01: Right, right.
+
+SPEAKER_00: I...
 We were in contact with the Ethereum Foundation during the internship.
 I think I opened my first issue in March 2015 to the C++ client or something like that.
 I've known of Ethereum since the end of 2014, but anyway.
@@ -86,11 +75,9 @@ Right, right.
 And, yeah, that was a very...
 interesting time like thinking back now i'm sad i didn't write down more things or right to take more pictures or appreciate some of the the things a little bit more but i also had no idea that things would get as big as they as they are now um yeah but yeah i enjoyed it a lot um so i mean it was primarily c++ development under gav that was that was happening in that office right but
 
-**SPEAKER_01:**
-But also Felix Lang I know was there on the Geth team.
+SPEAKER_01: But also Felix Lang I know was there on the Geth team.
 
-**SPEAKER_00:**
-Yeah, there were some different people.
+SPEAKER_00: Yeah, there were some different people.
 I remember Gustav Simonsen, I think he was doing Go stuff.
 And yeah, the Solidity team was also there.
 I think they were under the C++ team back then, but they were there.
@@ -118,18 +105,14 @@ I got to know him.
 He told me about all the testing he was doing and how they were testing.
 It was quite interesting.
 
-**SPEAKER_01:**
-And that's cross-client testing as well, wasn't it?
+SPEAKER_01: And that's cross-client testing as well, wasn't it?
 
-**SPEAKER_00:**
-Yeah, if I remember correctly, he was building a lot of JSON data that they fed to the clients.
+SPEAKER_00: Yeah, if I remember correctly, he was building a lot of JSON data that they fed to the clients.
 
-**SPEAKER_01:**
-And that was from the C++ client, I know, that CPP Ethereum was leading
+SPEAKER_01: And that was from the C++ client, I know, that CPP Ethereum was leading
 And the tests were generated from that, but then running those against the Python and Geth clients.
 
-**SPEAKER_00:**
-Yeah, that sounds about right.
+SPEAKER_00: Yeah, that sounds about right.
 There are a lot of more stories.
 You told me we don't have too much time.
 I'll try to keep it short.
@@ -141,14 +124,12 @@ kind of split that was taking place at this point in time because the foundation
 Yeah, that's right.
 And the C++ team was kind of cut off.
 
-**SPEAKER_01:**
-And you also had, you know, Ming-Chan, her first official date was 1st of August of 2015.
+SPEAKER_01: And you also had, you know, Ming-Chan, her first official date was 1st of August of 2015.
 So, yeah, you basically had those kind of cost-cutting measures coming in quite fast of looking at the spend where...
 You know, it had been going for a year.
 It was the July of the previous year that the foundation had been formed and you had the crowd sale, but nearly all of the money was gone in that year.
 
-**SPEAKER_00:**
-Yeah, and I think that was also maybe not the most responsible, like...
+SPEAKER_00: Yeah, and I think that was also maybe not the most responsible, like...
 usage of money, but also the Bitcoin price was doing really poorly.
 Yeah, that's right.
 And the Ether price itself was also, I think it dipped below the pre-sale price at some point in September.
@@ -158,11 +139,9 @@ Actually, one thing I just remembered now, I was actually supposed to have done 
 on the C++ team in London, but a couple of weeks before that, I was told, sorry, we can't do it anyway because we don't have the money anymore.
 Right.
 
-**SPEAKER_01:**
-Well, because they were getting very rapidly the funding or even shut down entirely, I think.
+SPEAKER_01: Well, because they were getting very rapidly the funding or even shut down entirely, I think.
 
-**SPEAKER_00:**
-Yeah, probably already.
+SPEAKER_00: Yeah, probably already.
 Or that was coming.
 Yeah, so that's why it ended up being the Python team instead because there was some budget.
 But yeah, like sitting as the only person working on the Python client in that office in my small corner, I had a lot of fun kind of following how people came and went and went into Gavin's office and had a chat there with him in Utah or whatever.
@@ -170,26 +149,22 @@ And I didn't really know in the beginning what was going on until I was also ask
 And it was basically like,
 Presenting ideas of what would happen next with the C++ team and if we wanted to consider joining there or whatever.
 
-**SPEAKER_01:**
-So that was sort of the pre-formation of what became F-Core, later Parity.
+SPEAKER_01: So that was sort of the pre-formation of what became F-Core, later Parity.
 
-**SPEAKER_00:**
-Yeah, I think so.
+SPEAKER_00: Yeah, I think so.
 I was witnessing that without knowing what was going on.
 I had no insight into the finances of the foundation or anything like that.
 I only found out about most of those things later.
 But it was quite interesting to see.
 
-**SPEAKER_01:**
-Yeah, so maybe let's talk about DevCon 1.
+SPEAKER_01: Yeah, so maybe let's talk about DevCon 1.
 So the first DevCon was DevCon 0.
 which happened in November 2014 before your time, which was the closed event, mainly Ethereum Foundation-y people, but some broader ecosystem people.
 But then DEVCON1 happened in November 2015 in London.
 it had got announced early in the year and got cancelled because of this funding squeeze but then consensus basically stepped up and filled that funding gap and and did some organizing so that was in November of that year I was not present myself that I couldn't afford to go or whatever at the time but I watched a lot of the limestream but
 you know that was a really very seminal uh... uh... conference so how was that for me it was amazing
 
-**SPEAKER_00:**
-I've never been good at sitting still on a chair for a long period of time.
+SPEAKER_00: I've never been good at sitting still on a chair for a long period of time.
 But there I was at every talk from the beginning in the morning until the end.
 I think I missed one talk because I had to go catch my flight to go back on the last day.
 But I was just sitting there and sucking up all of these ideas and visions.
@@ -210,13 +185,10 @@ And of course the project I was working on, the people there, we were presenting
 So it was so interesting.
 And Hydrochain as well, right?
 Yeah, I was not so sold on Hydrochain back then because it was aimed at...
-One of the very first permissioned Ethereum.
 
-**SPEAKER_01:**
-One of the very first permissioned Ethereum.
+SPEAKER_01: One of the very first permissioned Ethereum.
 
-**SPEAKER_00:**
-Exactly.
+SPEAKER_00: Exactly.
 It was like a round-robin kind of algorithm.
 And now it seems like something people would actually have used these days.
 So only 10 years too early.
@@ -227,11 +199,9 @@ I barely remember.
 I just remember it was an app.
 What was the name of the Haskell project?
 
-**SPEAKER_01:**
-Block App Strato.
+SPEAKER_01: Block App Strato.
 
-**SPEAKER_00:**
-yeah i remember they had like a small booth i think right right some stickers uh yeah very sad that i lost that sticker right but uh um other than that it was just like yeah just people there was one stage and everyone was like in the same room uh more yes um and in the evenings yeah people would go out go out for dinner maybe but there was not a single side event
+SPEAKER_00: yeah i remember they had like a small booth i think right right some stickers uh yeah very sad that i lost that sticker right but uh um other than that it was just like yeah just people there was one stage and everyone was like in the same room uh more yes um and in the evenings yeah people would go out go out for dinner maybe but there was not a single side event
 There was not a single party.
 Glory days.
 It was just dinners and a couple of shepherd's pies somewhere.
@@ -273,14 +243,10 @@ It took days.
 Even if you had the devs available right next to you, it wasn't easy.
 So yeah, I think that's mainly what I have to share without going into too much detail about things.
 Well, thanks so much.
-You're very welcome.
 
-**SPEAKER_01:**
-Great chatting always.
+SPEAKER_01: You're very welcome.
+
+SPEAKER_00: Great chatting always.
 Yeah.
 Okay.
 All the very best.
-
-**SPEAKER_00:**
-Thank you.
-You too.
