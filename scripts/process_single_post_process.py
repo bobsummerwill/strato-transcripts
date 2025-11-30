@@ -2,7 +2,7 @@
 """
 AI transcript post-processor for Ethereum/blockchain content.
 Batch process transcripts with multiple AI providers.
-Supports: sonnet, opus, gemini.
+Supports: opus, gemini.
 """
 
 import os
@@ -267,35 +267,6 @@ def build_context_summary():
     
     return "\n\n".join(context_parts) if context_parts else "No additional context available."
 
-def process_with_anthropic(transcript, api_key, context):
-    """Process transcript using Claude Sonnet 4.5 with streaming."""
-    try:
-        import anthropic
-    except ImportError:
-        raise ImportError("anthropic package not installed. Install with: pip install anthropic")
-    
-    client = anthropic.Anthropic(api_key=api_key)
-    prompt = build_prompt(context, transcript)
-    
-    print(f"      Processing: ", end='', flush=True)
-
-    result = ""
-    chunk_count = 0
-
-    with client.messages.stream(
-        model="claude-sonnet-4-5",
-        max_tokens=64000,
-        messages=[{"role": "user", "content": prompt}]
-    ) as stream:
-        for text in stream.text_stream:
-            result += text
-            chunk_count += 1
-            if chunk_count % 100 == 0:
-                print(".", end='', flush=True)
-
-    print(" ✓")
-    return result
-
 def process_with_opus(transcript, api_key, context):
     """Process transcript using Claude Opus 4.5 with streaming."""
     try:
@@ -416,9 +387,7 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
     new_ollama_process = None
     
     try:
-        if provider == "sonnet":
-            corrected = process_with_anthropic(transcript, api_keys['sonnet'], context)
-        elif provider == "opus":
+        if provider == "opus":
             corrected = process_with_opus(transcript, api_keys['opus'], context)
         elif provider == "gemini":
             corrected = process_with_gemini(transcript, api_keys['gemini'], context)
@@ -489,7 +458,7 @@ def main():
     
     parser.add_argument("transcripts", nargs='+', help="Transcript file path(s)")
     parser.add_argument("--processors", required=True,
-                       help="Comma-separated list of processors (sonnet,opus,gemini)")
+                       help="Comma-separated list of processors (opus,gemini)")
     
     args = parser.parse_args()
     
@@ -517,7 +486,7 @@ def main():
     
     # Parse processors
     processors = [p.strip() for p in args.processors.split(',')]
-    valid_processors = {'sonnet', 'opus', 'gemini'}
+    valid_processors = {'opus', 'gemini'}
     
     for proc in processors:
         if proc not in valid_processors:
@@ -531,7 +500,6 @@ def main():
     
     # Map processor names to their environment variable names
     key_mapping = {
-        'sonnet': 'ANTHROPIC_API_KEY',     # Claude Sonnet 4.5 via Anthropic
         'opus': 'ANTHROPIC_API_KEY',       # Claude Opus 4.5 via Anthropic
         'gemini': 'GOOGLE_API_KEY'         # Gemini 3.0 Pro via Google
     }

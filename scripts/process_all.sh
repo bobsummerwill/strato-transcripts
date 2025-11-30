@@ -13,9 +13,9 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/shell_utils.sh"
 
-# Defaults: WhisperX (local/FREE) + Claude Sonnet 4.5 (highest quality)
+# Defaults: WhisperX (local/FREE) + Claude Opus 4.5 (highest quality)
 DEFAULT_TRANSCRIBERS="whisperx"
-DEFAULT_PROCESSORS="sonnet"
+DEFAULT_PROCESSORS="opus"
 
 # Parse arguments
 TRANSCRIBERS="$DEFAULT_TRANSCRIBERS"
@@ -42,19 +42,19 @@ while [[ $# -gt 0 ]]; do
             echo "                           Default: whisperx"
             echo ""
             echo "  --processors <list>      Comma-separated AI post-processors"
-            echo "                           (sonnet, opus, gemini)"
-            echo "                           Default: sonnet (Claude Sonnet 4.5)"
+            echo "                           (opus, gemini)"
+            echo "                           Default: opus (Claude Opus 4.5)"
             echo ""
             echo "Examples:"
-            echo "  # Use defaults (whisperx + sonnet)"
+            echo "  # Use defaults (whisperx + opus)"
             echo "  $0"
             echo ""
             echo "  # Deepgram + Multiple processors"
-            echo "  $0 --transcribers deepgram --processors sonnet,gemini"
+            echo "  $0 --transcribers deepgram --processors opus,gemini"
             echo ""
             echo "  # Multiple combinations"
             echo "  $0 --transcribers whisperx,deepgram \\"
-            echo "     --processors sonnet,opus,gemini"
+            echo "     --processors opus,gemini"
             exit 1
             ;;
     esac
@@ -202,6 +202,6 @@ for TRANSCRIBER in "${TRANSCRIBER_ARRAY[@]}"; do
 done
 echo ""
 echo -e "${GREEN}Customize settings:${NC}"
-echo "  Defaults: --transcribers whisperx --processors sonnet"
-echo "  Example: $0 --transcribers deepgram --processors sonnet,gemini"
+echo "  Defaults: --transcribers whisperx --processors opus"
+echo "  Example: $0 --transcribers deepgram --processors opus,gemini"
 echo ""

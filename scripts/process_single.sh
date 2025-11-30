@@ -20,16 +20,16 @@ if [ $# -eq 0 ]; then
     echo "  --transcribers <list>       Comma-separated transcription services"
     echo "                              (whisperx, whisperx-cloud, deepgram, assemblyai)"
     echo "  --processors <list>         Comma-separated AI post-processors"
-    echo "                              (sonnet, opus, gemini)"
+    echo "                              (opus, gemini)"
     echo ""
     echo "Optional:"
     echo "  --batch-size <n>            Batch size for WhisperX (default: 16 GPU, 8 CPU)"
     echo "  --force-cpu                 Force CPU mode for WhisperX (fixes torchvision issues)"
     echo ""
     echo "Examples:"
-    echo "  $0 interview.mp3 --transcribers deepgram --processors sonnet,gemini"
-    echo "  $0 interview.mp3 --transcribers whisperx,deepgram --processors sonnet,opus"
-    echo "  $0 interview.mp3 --transcribers whisperx --processors sonnet --force-cpu"
+    echo "  $0 interview.mp3 --transcribers deepgram --processors opus,gemini"
+    echo "  $0 interview.mp3 --transcribers whisperx,deepgram --processors opus"
+    echo "  $0 interview.mp3 --transcribers whisperx --processors gemini --force-cpu"
     exit 1
 fi
 
