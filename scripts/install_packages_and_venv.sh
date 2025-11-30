@@ -320,7 +320,7 @@ elif [ "$OS_TYPE" = "ubuntu" ]; then
     fi
 fi
 
-# Start Ollama service and pull default model
+# Start Ollama service for local AI processing
 if command -v ollama &> /dev/null; then
     echo "Starting Ollama service..."
     # Start in background, redirect output to avoid clutter
@@ -332,23 +332,10 @@ if command -v ollama &> /dev/null; then
         echo "✓ Ollama service already running"
     fi
     
-    echo "Pulling Ollama model for qwen (lightweight: qwen2.5:7b)..."
-    echo "Note: Qwen requires NVIDIA GPU with 6GB+ VRAM for transcript processing"
-    echo "This will download ~4.7GB - may take 3-7 minutes depending on your internet speed..."
     echo ""
-    
-    if ollama pull qwen2.5:7b 2>&1 | grep -q "success"; then
-        echo -e "${GREEN}✓ Model qwen2.5:7b downloaded${NC}"
-    else
-        echo -e "${YELLOW}⚠ Model qwen2.5:7b pull completed (check with: ollama list)${NC}"
-    fi
-    
-    echo ""
-    echo -e "${GREEN}✓ Qwen 7B model ready (lightweight, stable):${NC}"
-    echo "  • Optimized for: RTX 5070, RTX 4060+, and similar GPUs (6GB+ VRAM)"
-    echo "  • Uses: ~5-6GB VRAM during processing"
-    echo "  • CPU-only systems: Qwen will be automatically skipped with warning"
-    echo "  • Performance: 15-30 seconds per transcript"
+    echo -e "${GREEN}✓ Ollama ready for local AI processing${NC}"
+    echo "  • Pull models as needed: ollama pull <model>"
+    echo "  • See available models: ollama list"
 fi
 echo ""
 
@@ -751,7 +738,7 @@ echo "  source venv/bin/activate"
 echo "  ./scripts/process_single.sh audio.mp3 --transcribers whisperx --processors openai"
 echo ""
 echo "Available transcribers: whisperx, deepgram, assemblyai"
-echo "Available processors: sonnet, chatgpt, gemini, llama, qwen"
+echo "Available processors: sonnet, chatgpt, gemini, llama"
 echo ""
 echo "Batch Processing:"
 echo "  ./scripts/process_all.sh --transcribers deepgram --processors anthropic"

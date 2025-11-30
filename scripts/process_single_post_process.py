@@ -2,7 +2,7 @@
 """
 AI transcript post-processor for Ethereum/blockchain content.
 Batch process transcripts with multiple AI providers.
-Supports: sonnet, opus, chatgpt, gemini, llama, qwen-cloud, qwen.
+Supports: sonnet, opus, chatgpt, gemini, llama.
 """
 
 import os
@@ -432,44 +432,6 @@ def process_with_groq(transcript, api_key, context):
     print(" ✓")
     return result
 
-def process_with_groq_qwen(transcript, api_key, context):
-    """Process transcript using Qwen3 32B (via Groq) with streaming - MAXIMUM QUALITY - No cost/speed limits."""
-    model = "qwen/qwen3-32b"
-    try:
-        import openai
-    except ImportError:
-        raise ImportError("openai package not installed")
-
-    client = openai.OpenAI(api_key=api_key, base_url="https://api.groq.com/openai/v1")
-    prompt = build_prompt(context, transcript)
-
-    print(f"      Model: {model} (hosted)")
-    print(f"      Processing: ", end='', flush=True)
-
-    result = ""
-    chunk_count = 0
-
-    stream = client.chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": prompt}
-        ],
-        max_tokens=32000,  # Groq Qwen supports up to 32K output tokens
-        temperature=0.3,
-        stream=True
-    )
-
-    for chunk in stream:
-        if chunk.choices[0].delta.content:
-            result += chunk.choices[0].delta.content
-            chunk_count += 1
-            if chunk_count % 100 == 0:
-                print(".", end='', flush=True)
-
-    print(" ✓")
-    return result
-
 def estimate_tokens(text):
     """Estimate tokens (words × 1.3)."""
     return int(len(text.split()) * 1.3)
@@ -514,74 +476,6 @@ def validate_output_quality(input_text, output_text, provider):
     
     return len(issues) == 0, issues
 
-def process_with_qwen(transcript, context, ollama_process=None):
-    """Process transcript using Qwen 2.5 7B (via Ollama)."""
-    import subprocess
-    import time
-    
-    try:
-        import requests
-        import json
-    except ImportError:
-        raise ImportError("requests package not installed")
-    
-    # Use 7B model (lighter, more stable for transcript processing)
-    model = "qwen2.5:7b"
-    print(f"      Model: {model}")
-    
-    started_ollama = False
-    
-    try:
-        # Start Ollama if not running
-        if ollama_process is None:
-            ollama_process = start_ollama()
-            if ollama_process is not None:
-                started_ollama = True
-        
-        # Process transcript
-        prompt = build_prompt(context, transcript)
-        print(f"      Processing: ", end='', flush=True)
-        
-        response = requests.post(
-            "http://localhost:11434/api/generate",
-            json={
-                "model": model,
-                "prompt": prompt,
-                "stream": True,
-                "options": {
-                    "temperature": 0.3,
-                    "num_ctx": 32768,      # Increase context window to 32K
-                    "num_predict": -1,     # No output limit (generate until done)
-                    "stop": []             # No early stopping tokens
-                }
-            },
-            timeout=1800,
-            stream=True
-        )
-        response.raise_for_status()
-        
-        result = ""
-        chunk_count = 0
-        for line in response.iter_lines():
-            if line:
-                chunk = json.loads(line)
-                if "response" in chunk:
-                    result += chunk["response"]
-                    chunk_count += 1
-                    if chunk_count % 50 == 0:
-                        print(".", end='', flush=True)
-                if chunk.get("done", False):
-                    break
-        
-        print(" ✓")
-        return result, ollama_process if started_ollama else None
-        
-    except Exception as e:
-        print(f" {failure(f'Error: {e}')}")
-        if started_ollama and ollama_process:
-            ollama_process.terminate()
-        return None, None
-
 def process_single_combination(transcript_path, provider, api_keys, context, ollama_process=None):
     """Process single transcript with single provider."""
     start_time = time.time()
@@ -610,10 +504,6 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
             corrected = process_with_gemini(transcript, api_keys['gemini'], context)
         elif provider == "llama":
             corrected = process_with_groq(transcript, api_keys['llama'], context)
-        elif provider == "qwen-cloud":
-            corrected = process_with_groq_qwen(transcript, api_keys['qwen-cloud'], context)
-        elif provider == "qwen":
-            corrected, new_ollama_process = process_with_qwen(transcript, context, ollama_process)
     except Exception as e:
         elapsed = time.time() - start_time
         print(f"      {failure(f'Processing failed ({elapsed:.1f}s): {e}')}")
@@ -652,8 +542,8 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
         for issue in issues:
             print(f"        • {issue}")
         
-        # For ChatGPT/Qwen failures, note the issue but save anyway (user can review)
-        if provider in ['chatgpt', 'qwen']:
+        # For ChatGPT failures, note the issue but save anyway (user can review)
+        if provider == 'chatgpt':
             print(f"      → Saving output anyway (manual review recommended)")
         else:
             # For other providers, save with warning
@@ -687,7 +577,7 @@ def main():
     
     parser.add_argument("transcripts", nargs='+', help="Transcript file path(s)")
     parser.add_argument("--processors", required=True,
-                       help="Comma-separated list of processors (sonnet,opus,chatgpt,gemini,llama,qwen-cloud,qwen)")
+                       help="Comma-separated list of processors (sonnet,opus,chatgpt,gemini,llama)")
     
     args = parser.parse_args()
     
@@ -715,50 +605,13 @@ def main():
     
     # Parse processors
     processors = [p.strip() for p in args.processors.split(',')]
-    valid_processors = {'sonnet', 'opus', 'chatgpt', 'gemini', 'llama', 'qwen-cloud', 'qwen'}
+    valid_processors = {'sonnet', 'opus', 'chatgpt', 'gemini', 'llama'}
     
     for proc in processors:
         if proc not in valid_processors:
             print(f"Error: Unknown processor '{proc}'")
             print(f"Valid options: {', '.join(sorted(valid_processors))}")
             sys.exit(1)
-    
-    # Check if Qwen requested on CPU-only system
-    if 'qwen' in processors:
-        try:
-            import torch
-            has_gpu = torch.cuda.is_available()
-            
-            if not has_gpu:
-                # CPU-only system - skip Qwen with warning
-                print()
-                print(f"{Colors.YELLOW}⚠️  QWEN SKIPPED: GPU Required{Colors.RESET}")
-                print()
-                print("Qwen requires NVIDIA GPU with 12GB+ VRAM for transcript processing.")
-                print("Current system: CPU-only")
-                print()
-                print("• Qwen 7B (CPU) is insufficient for complex transcript editing tasks")
-                print("• Qwen 32B (GPU) would work excellently on RTX 5070 12GB or similar")
-                print()
-                print("Skipping Qwen processing - all other processors will continue normally.")
-                print()
-                
-                # Remove qwen from processors list
-                processors = [p for p in processors if p != 'qwen']
-                
-                if not processors:
-                    print("Error: No processors remaining after skipping Qwen")
-                    sys.exit(1)
-        except ImportError:
-            # If torch not available, can't use Qwen anyway
-            print()
-            print(f"{Colors.YELLOW}⚠️  QWEN SKIPPED: PyTorch not available{Colors.RESET}")
-            print()
-            processors = [p for p in processors if p != 'qwen']
-            
-            if not processors:
-                print("Error: No processors remaining after skipping Qwen")
-                sys.exit(1)
     
     # Check API keys using utility
     api_keys = {}
@@ -770,15 +623,10 @@ def main():
         'opus': 'ANTHROPIC_API_KEY',       # Claude Opus 4.5 via Anthropic
         'chatgpt': 'OPENAI_API_KEY',       # ChatGPT-4o-latest via OpenAI
         'gemini': 'GOOGLE_API_KEY',        # Gemini 3.0 Pro via Google
-        'llama': 'GROQ_API_KEY',           # Llama 3.3 70B via Groq
-        'qwen-cloud': 'GROQ_API_KEY'       # Qwen3 32B via Groq
+        'llama': 'GROQ_API_KEY'            # Llama 3.3 70B via Groq
     }
     
     for proc in processors:
-        if proc == 'qwen':
-            # Qwen (local via Ollama) doesn't need an API key
-            continue
-        
         env_var = key_mapping.get(proc)
         if env_var:
             key, error = validate_api_key(env_var)
