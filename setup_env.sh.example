@@ -17,39 +17,26 @@ export HF_TOKEN=""
 # ==============================================================================
 # OPTIONAL: AI Provider API Keys (for post-processing transcripts)
 # ==============================================================================
-# Only add the providers you plan to use. Ollama requires no API key (local).
 
-# OpenAI (GPT-4.1, GPT-4o, etc.)
-# Get key from: https://platform.openai.com/api-keys
-export OPENAI_API_KEY=""
-
-# Anthropic (Claude Sonnet, Claude Opus, etc.)
+# Anthropic (Claude Opus 4.5)
 # Get key from: https://console.anthropic.com/
 export ANTHROPIC_API_KEY=""
 
-# Google (Gemini 2.0 Flash, Gemini Pro, etc.)
+# Google (Gemini 3.0 Pro)
 # Get key from: https://makersuite.google.com/app/apikey
 export GOOGLE_API_KEY=""
 
-# Groq (Llama 3.3 70B - BLAZING FAST, 300+ tokens/sec)
-# Get key from: https://console.groq.com/
-export GROQ_API_KEY=""
+# ==============================================================================
+# OPTIONAL: Transcription Service API Keys
+# ==============================================================================
 
 # AssemblyAI (Cloud transcription with speaker diarization)
 # Get key from: https://www.assemblyai.com/
 export ASSEMBLYAI_API_KEY=""
 
-# Deepgram (Most cost-effective cloud transcription with diarization)
-# Get key from: https://console.deepgram.com/
-export DEEPGRAM_API_KEY=""
-
 # Replicate (Cloud WhisperX with speaker diarization)
 # Get key from: https://replicate.com/account/api-tokens
 export REPLICATE_API_TOKEN=""
-
-# Ollama - No API key needed (runs locally, FREE, private)
-# Just ensure service is running: ollama serve
-# Models available: llama3.3:70b
 
 # ==============================================================================
 # PyTorch CUDA Library Path (for GPU operations)
@@ -73,12 +60,6 @@ else
   echo "  HF_TOKEN: NOT SET"
 fi
 
-if [ -n "$OPENAI_API_KEY" ] && [ "$OPENAI_API_KEY" != "" ]; then
-  echo "  OPENAI_API_KEY: SET"
-else
-  echo "  OPENAI_API_KEY: NOT SET"
-fi
-
 if [ -n "$ANTHROPIC_API_KEY" ] && [ "$ANTHROPIC_API_KEY" != "" ]; then
   echo "  ANTHROPIC_API_KEY: SET"
 else
@@ -91,23 +72,16 @@ else
   echo "  GOOGLE_API_KEY: NOT SET"
 fi
 
-if [ -n "$GROQ_API_KEY" ] && [ "$GROQ_API_KEY" != "" ]; then
-  echo "  GROQ_API_KEY: SET"
-else
-  echo "  GROQ_API_KEY: NOT SET"
-fi
-
-
 if [ -n "$ASSEMBLYAI_API_KEY" ] && [ "$ASSEMBLYAI_API_KEY" != "" ]; then
   echo "  ASSEMBLYAI_API_KEY: SET"
 else
   echo "  ASSEMBLYAI_API_KEY: NOT SET"
 fi
 
-if [ -n "$DEEPGRAM_API_KEY" ] && [ "$DEEPGRAM_API_KEY" != "" ]; then
-  echo "  DEEPGRAM_API_KEY: SET"
+if [ -n "$REPLICATE_API_TOKEN" ] && [ "$REPLICATE_API_TOKEN" != "" ]; then
+  echo "  REPLICATE_API_TOKEN: SET"
 else
-  echo "  DEEPGRAM_API_KEY: NOT SET"
+  echo "  REPLICATE_API_TOKEN: NOT SET"
 fi
 
 
