@@ -2,7 +2,7 @@
 """
 AI transcript post-processor for Ethereum/blockchain content.
 Batch process transcripts with multiple AI providers.
-Supports: sonnet, opus, chatgpt, gemini, llama.
+Supports: sonnet, opus, gemini, llama.
 """
 
 import os
@@ -325,46 +325,6 @@ def process_with_opus(transcript, api_key, context):
     print(" ✓")
     return result
 
-def process_with_openai(transcript, api_key, context):
-    """Process transcript using ChatGPT-4o-latest with streaming."""
-    model = "chatgpt-4o-latest"
-    try:
-        import openai
-    except ImportError:
-        raise ImportError("openai package not installed. Install with: pip install openai")
-    
-    client = openai.OpenAI(api_key=api_key)
-    prompt = build_prompt(context, transcript)
-    
-    print(f"      Processing: ", end='', flush=True)
-    
-    result = ""
-    chunk_count = 0
-    
-    stream = client.chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": prompt}
-        ],
-        max_tokens=16384,
-        temperature=0.1,          # Lower for more deterministic output
-        top_p=0.9,               # Reduce randomness
-        presence_penalty=0.0,    # No penalty for repetition
-        frequency_penalty=0.0,   # Allow natural conversation flow
-        stream=True
-    )
-    
-    for chunk in stream:
-        if chunk.choices[0].delta.content:
-            result += chunk.choices[0].delta.content
-            chunk_count += 1
-            if chunk_count % 100 == 0:
-                print(".", end='', flush=True)
-    
-    print(" ✓")
-    return result
-
 def process_with_gemini(transcript, api_key, context):
     """Process transcript using Gemini 3.0 Pro with streaming."""
     model = "models/gemini-3-pro-preview"
@@ -498,8 +458,6 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
             corrected = process_with_anthropic(transcript, api_keys['sonnet'], context)
         elif provider == "opus":
             corrected = process_with_opus(transcript, api_keys['opus'], context)
-        elif provider == "chatgpt":
-            corrected = process_with_openai(transcript, api_keys['chatgpt'], context)
         elif provider == "gemini":
             corrected = process_with_gemini(transcript, api_keys['gemini'], context)
         elif provider == "llama":
@@ -541,13 +499,7 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
         print(f"      ⚠ Quality validation failed:")
         for issue in issues:
             print(f"        • {issue}")
-        
-        # For ChatGPT failures, note the issue but save anyway (user can review)
-        if provider == 'chatgpt':
-            print(f"      → Saving output anyway (manual review recommended)")
-        else:
-            # For other providers, save with warning
-            print(f"      → Saving output with quality warning")
+        print(f"      → Saving output with quality warning")
     else:
         print(f"      ✓ Quality validation passed")
     
@@ -577,7 +529,7 @@ def main():
     
     parser.add_argument("transcripts", nargs='+', help="Transcript file path(s)")
     parser.add_argument("--processors", required=True,
-                       help="Comma-separated list of processors (sonnet,opus,chatgpt,gemini,llama)")
+                       help="Comma-separated list of processors (sonnet,opus,gemini,llama)")
     
     args = parser.parse_args()
     
@@ -605,7 +557,7 @@ def main():
     
     # Parse processors
     processors = [p.strip() for p in args.processors.split(',')]
-    valid_processors = {'sonnet', 'opus', 'chatgpt', 'gemini', 'llama'}
+    valid_processors = {'sonnet', 'opus', 'gemini', 'llama'}
     
     for proc in processors:
         if proc not in valid_processors:
@@ -621,7 +573,6 @@ def main():
     key_mapping = {
         'sonnet': 'ANTHROPIC_API_KEY',     # Claude Sonnet 4.5 via Anthropic
         'opus': 'ANTHROPIC_API_KEY',       # Claude Opus 4.5 via Anthropic
-        'chatgpt': 'OPENAI_API_KEY',       # ChatGPT-4o-latest via OpenAI
         'gemini': 'GOOGLE_API_KEY',        # Gemini 3.0 Pro via Google
         'llama': 'GROQ_API_KEY'            # Llama 3.3 70B via Groq
     }
