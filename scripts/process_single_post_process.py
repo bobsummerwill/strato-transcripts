@@ -13,8 +13,8 @@ from pathlib import Path
 import argparse
 
 # Import shared utilities
-from common import (Colors, success, failure, skip, validate_api_key, 
-                    load_people_list, load_terms_list, start_ollama, stop_ollama, cleanup_gpu_memory)
+from common import (Colors, success, failure, skip, validate_api_key,
+                    load_people_list, load_terms_list, cleanup_gpu_memory)
 
 
 # ============================================================================
@@ -369,7 +369,7 @@ def validate_output_quality(input_text, output_text, provider):
     
     return len(issues) == 0, issues
 
-def process_single_combination(transcript_path, provider, api_keys, context, ollama_process=None):
+def process_single_combination(transcript_path, provider, api_keys, context):
     """Process single transcript with single provider."""
     start_time = time.time()
     
@@ -384,7 +384,6 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
     
     # Process with appropriate provider
     corrected = None
-    new_ollama_process = None
     
     try:
         if provider == "opus":
@@ -404,7 +403,7 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
                 except Exception as cleanup_error:
                     print(f"      ⚠ Could not delete {partial_file.name}: {cleanup_error}")
         
-        return None, new_ollama_process, elapsed
+        return None, elapsed
     
     if not corrected:
         elapsed = time.time() - start_time
@@ -419,7 +418,7 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
                 except Exception as cleanup_error:
                     print(f"      ⚠ Could not delete {partial_file.name}: {cleanup_error}")
         
-        return None, new_ollama_process, elapsed
+        return None, elapsed
     
     # Validate output quality
     valid, issues = validate_output_quality(transcript, corrected, provider)
@@ -448,7 +447,7 @@ def process_single_combination(transcript_path, provider, api_keys, context, oll
     else:
         print(f"      ⚠ Saved: {output_path} ({elapsed:.1f}s) - REVIEW RECOMMENDED")
     
-    return output_path, new_ollama_process, elapsed
+    return output_path, elapsed
 
 def main():
     parser = argparse.ArgumentParser(
@@ -461,28 +460,6 @@ def main():
                        help="Comma-separated list of processors (opus,gemini)")
     
     args = parser.parse_args()
-    
-    # Clean up any dangling Ollama processes at startup
-    try:
-        import subprocess
-        import requests
-        
-        # Check if Ollama is running
-        try:
-            response = requests.get("http://localhost:11434/api/tags", timeout=1)
-            if response.status_code == 200:
-                print("Stopping dangling Ollama process...")
-                subprocess.run(['pkill', '-f', 'ollama serve'], 
-                             stdout=subprocess.DEVNULL, 
-                             stderr=subprocess.DEVNULL,
-                             timeout=5)
-                time.sleep(2)  # Give it time to stop
-                print("✓ Cleared")
-        except:
-            pass  # Not running, nothing to clean up
-    except Exception as e:
-        # Non-fatal if cleanup fails
-        print(f"⚠ Warning: Could not clean up dangling processes: {e}")
     
     # Parse processors
     processors = [p.strip() for p in args.processors.split(',')]
@@ -539,40 +516,29 @@ def main():
     print("="*70)
     print()
     
-    ollama_process = None
     pipeline_start = time.time()
     
-    try:
-        for transcript_path in args.transcripts:
-            if not Path(transcript_path).exists():
-                print(f"✗ Transcript not found: {transcript_path}")
-                failed_count += len(processors)
-                continue
+    for transcript_path in args.transcripts:
+        if not Path(transcript_path).exists():
+            print(f"✗ Transcript not found: {transcript_path}")
+            failed_count += len(processors)
+            continue
+        
+        for processor in processors:
+            combo_num += 1
+            print(f"[{combo_num}/{total}] {Path(transcript_path).name} + {processor}")
             
-            for processor in processors:
-                combo_num += 1
-                print(f"[{combo_num}/{total}] {Path(transcript_path).name} + {processor}")
-                
-                result, new_ollama_process, elapsed = process_single_combination(
-                    transcript_path, processor, api_keys, context, ollama_process
-                )
-                
-                # Update Ollama process reference if it was started
-                if new_ollama_process:
-                    ollama_process = new_ollama_process
-                
-                if result:
-                    success_count += 1
-                    combo_times.append((Path(transcript_path).name, processor, elapsed))
-                else:
-                    failed_count += 1
-                
-                print()
-    
-    finally:
-        # Clean up Ollama if we started it (using shared function)
-        if ollama_process:
-            stop_ollama(ollama_process)
+            result, elapsed = process_single_combination(
+                transcript_path, processor, api_keys, context
+            )
+            
+            if result:
+                success_count += 1
+                combo_times.append((Path(transcript_path).name, processor, elapsed))
+            else:
+                failed_count += 1
+            
+            print()
     
     # Summary with timing
     pipeline_elapsed = time.time() - pipeline_start
