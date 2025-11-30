@@ -1,0 +1,44 @@
+```
+**[00:00] SPEAKER_01:** We are live.
+
+**[00:02] SPEAKER_03:** Are we live?
+
+**[00:03] SPEAKER_01:** We are live, yes. So StreamYard says.
+
+**[00:06] SPEAKER_03:** My window doesn't say live.
+
+**[00:08] SPEAKER_00:** You guys have an intro you'd like to do? Yeah, well, first...
+
+**[00:10] SPEAKER_03:** Here we go, here we go. Yeah, there we are.
+
+**[00:12] SPEAKER_01:** Go ahead, Bob.
+
+**[00:13] SPEAKER_03:** So hello, everybody. I guess we're ready to go. So today we have a special guest with us. It's the first time that you and I have met, Brian, but you are very familiar to all of my colleagues here as an ex-BlockApsa.
+
+**[00:24] SPEAKER_01:** You're never an ex-BlockApsa. You're always like part of Team BlockApsa.
+
+**[00:27] SPEAKER_02:** The alumni network.
+
+**[00:28] SPEAKER_01:** Yes, exactly.
+
+**[00:29] UNKNOWN:** Yeah.
+
+**[00:30] SPEAKER_00:** Yeah, yeah. You guys gave me my first opportunity to work in Ethereum back in 2017, which it feels like ages ago. I mean, it is ages ago.
+
+**[00:36] SPEAKER_02:** Lifetime. Yeah.
+
+**[00:37] SPEAKER_00:** Yeah. So thank you guys for that. Happy to be on here. It's always great seeing you guys around. And so talking about one of my favorite topics. Welcome.
+
+**[00:43] SPEAKER_03:** So, yeah. So welcome back. Would you like to introduce yourself and talk a little bit about what Pistachio is?
+
+**[00:47] SPEAKER_00:** Yeah, sure. So Brian Smokovich, bsmokes.eth on Twitter. We're building PistachioFi. It's a mobile-first neobank built entirely on crypto rails, meant to provide premium savings with premium security. And the whole concept of better UX, right? I will get to the question in the moment of, is UX the key to mainstream adoption? But I wanted to really just build something that, you know, I think self-custody is really important to me. And I think really important to a lot of people about why we originally got into the space, but the UX for a lot of these apps was just always so terrible. Right. And so I just wanted to be the change that I wanted to see in the world. And so decided to just say, screw it. I built my own, basically taught myself UI design in order to kind of begin this in the beginning. And then built it literally by willing Pistachio into existence and many, many, many, many, many iterations of building the app. And now we're at a point where I feel very blessed that we've been publicly recognized by many Ethereum talking heads in the sense of being recognized for our UX and what we've been designing and doing and building and doing things in a way to just bring more people on-chain.
+
+**[01:47] SPEAKER_03:** I see that the number you said was 18 versions in five months.
+
+**[01:50] SPEAKER_00:** Oh, we've pushed out several since that tweet. Probably at least three or four. So, yeah, we ship a lot. It's a lot of just talking to users and finding what's broken, what's wrong. I'll be at a conference and we'll literally stand over people's shoulders as they download the app and watch every little tap, right? Like, oh, the focus is wrong. The focus is not beyond the keyboard in this one certain instance, or the search is showing the wrong things, you know? And so every little—that's the kind of the thing about UX is you design something and then you build it, right? And then it's, of course, it's going to be bugged. Everything is always bugged, right? And we go through rigorous testing to do it. But then when it goes onto somebody's very specific use case because they touch certain things in a certain way and that's what triggered this one bug, or it's on a certain app or a certain operating system or phone, it behaves in a certain way. And then also when you get to see the person use it, you're like, oh, there's a big button there, right? They're going to press it. They're going to press it. And then they don't press it. And you're like, why? Why did they not press the very clear call to action that I made? And so it's just like the only real way you can track things through things like Mixpanel and AppsFlyer to see the UX flows. But you're going to miss all the little details of every single user interaction. And so just being able to watch and categorize that and implement that is a big portion of what I think makes our app more successful.
+
+**[03:03] SPEAKER_02:** Let me ask maybe a slightly controversial question. So if you think about like fintech 1.0 companies, I would say they greatly improved the UX on the legacy financial system. Like it looks way better, it works, it's not nearly as much of a mess as the like Schwab interface or what have you. And this worked significantly—maybe Robinhood's perhaps the best example. But you know, I think that's like the baseline expectation. But is that sort of like the totality of UX? Because I think one of the challenges in crypto is like there's stuff that's bleeding through that's complicated or scary and all of that too. And, you know, so what is your take? Like, from my understanding, I think you guys are multi-chain, but like inheriting all of the problems from the layers below too, you know? So like, how do you think about that?
+
+**[03:45] SPEAKER_00:** There's a lot to fix. I think you're right in that Robinhood is sort of that shining example of fintech generational UX/UI of making things easy, fast, gamified in a way. I really love Venmo as an example. I think Venmo is a very good example of really, really good UX, but not really being good UI. And that UI doesn't necessarily matter so much. Like the UI of Venmo is sort of even like almost antiquated in a way, but the UX is done beautifully. And that reason is because it's like the user, they approach it from just like, instead of like a feature, it's just a user problem. Like what is the user problem? It's like of sending money, right? You open the app, it's got this big send button and it's just, it's so simple to just like a few clicks to send money to someone and then withdraw it to their bank. And so like they very much honed in on that very specific UX without even really caring so much about how sexy the UI is, right? And so with Web3 UX, we have an entirely different set of problems that goes very deep just to get to parity with traditional finance and fintech. And that's—so it's like when it comes to Web3, for example, especially with Ethereum, it's like, okay, we have gas we have to worry about, we have token approvals we have to worry about, we have multi-chain which we have to worry about, we have bundled transactions if there's multiple transactions, right? And so luckily all of these things are now—like there are solutions for these, right? Between like ERC-4337 and ERC-7702, there are ways to implement Paymasters. There are ways to bundle transactions together. There's ways to do zaps. Not everyone does all of these things and does it all together. It's like PistachioFi, we do all of this, right? We do it all together, all in one go. One thing that we don't do, for example, is maybe within Web3 gaming, there's this concept of session keys. And it's like, oh, okay, if I'm going to have a game, do I then have to sign every single transaction for everything that gets written to the blockchain? It's like, no, you just do a session key. You sign once as you sign in. Basically, as you're signing into the game or app, you sign a session key that extends for that period of your gaming session, right? And so that basically absolves away or abstracts away that problem as well. So there's a lot that it takes for a Web3 company, again, to get to parity of all these things. There are ways to solve it all. It's just a matter of like, does the app creator understand all of these things? Are they aware of all of these things? Do they care enough to do all of these things? Right? Like some of the major apps or wallets even—like I love, I'm a big Rabby user—they still don't have 7702 implemented. Right? And so there's a lot of these big players that still don't have these available UX implementations live and integrated into their apps.
+```
+(Continued in next message due to length)

@@ -1,0 +1,281 @@
+SPEAKER_00: What are you using? I use Restream. We tried to use something, and it streams on Twitter, I think YouTube, and LinkedIn at the same time. So we're using StreamYard.
+
+SPEAKER_02: We're using StreamYard, and I'm just double checking, screwing around with different tools, trying to find anything that's everything seems a bit.
+
+SPEAKER_04: I'm perfect. Yeah, yeah. Then I'll share the one. I don't know if you've tried this one, but this one looks pretty cool, pretty good. Because you're thinking that there must be good software for this, right? It's such a common need.
+
+SPEAKER_02: Like, is there just an answer that just works?
+
+SPEAKER_04: But the thing is, like, those platforms, they're not built with interoperability in mind. They don't like it. They want to track you in. Yeah, exactly. And so that's against our vision. On X, there isn't even a means to download the bloody audio. Yeah. Why would you want to download it? I guess the next step in the maybe, like, five, ten years, somebody else be able to own your data in all those platforms. Even own a query or just access. Something I love about Google is, like, I can go I can activate the tracking, but at least I can go and say, what did I do that week? I went in front of that restaurant or that store. It was pretty nice. And I can go and see and check. I have access to that. It can be helpful. But most of those things, they have, like, thousands of data, but they don't even share it with you.
+
+SPEAKER_03: Yeah, exactly. That's right. And I find it quite well.
+
+SPEAKER_01: Five zero one. Oh, yeah. We are live. So we are live. No, no, no, I'm ready. No, but that was a good cold intro, right? So we have a very special guest today, but a special format because all of us for the first time are in real life in the same room. In the same room, amazing. And you are a special guest.
+
+SPEAKER_02: Yeah, sure. So, yeah, we have here today with us Meslam. Yes, exactly. Meslam, who is the executive director of the EEA, the Enterprise Ethereum Alliance, which all of us at this table have had a hand in a part in over the years. Yeah, healthy run. Yes, exactly.
+
+SPEAKER_03: Right. So yeah, it's like eight years now? Since 2017. Yep. February 2017 was the launch date on the twenty-eighth. There was prework solidly before. At least three months. There were meetings I was part of in December and January.
+
+SPEAKER_02: There would, I mean, those were the first big meetings, right? With whatever thirty, forty people, crazy amounts. But, yeah, like, it really started probably at DevCon Two, really. It did. It did. Those were the discussions. So that was Shanghai, October. But there was the kickoff meeting at the JPMorgan office, which was pretty big. And even before there were the closed door meetings at Microsoft.
+
+SPEAKER_03: Right.
+
+SPEAKER_02: So that was public launch in February. It was February. But December, there was an internal, like, one, and then JPMorgan was in January 2017. But, yeah, like, a lot of those initial contacts happened at DevCon Two. Yep, in October the previous year. Well, in DevCon Two.
+
+SPEAKER_01: Oh, yes. Yeah. So, like, basically there was a lot of conversations there about figuring out how to bring on enterprises too. And there were a lot of interested parties. And, yeah, like, the group of people, which was I think about six people that were interested, met at, like, a Starbucks just off-site. And that was sort of the idea formation thing about the...
+
+SPEAKER_02: And then Matt Spoke of Nuco held a little bar side event as well, which we have some technical issues.
+
+SPEAKER_04: Space. Yeah. 5 a.m. That's not... Oh, okay. Hold on one second. Just going to push. James is going to tell everybody.
+
+SPEAKER_02: We have a technical issue, everybody.
+
+SPEAKER_01: I can... I was... I will fix that. Oh, did I? I messed up the Twitter. You did a bad one. Yeah, I did a bad one. So everyone please join us on YouTube. Spaces at 5 a.m.
+
+SPEAKER_02: Right. Yes. Half by 12 a.m. Matt Spoke held a little event at one of the bars upstairs, which I went to where there were various others there, if you went to that as well.
+
+SPEAKER_01: I didn't go to that one. So I think the main thing was that yeah. So I think the main thing I'm going to try and fix this right now on Twitter. Live technical support, see if I can resolve it right now. If not...
+
+SPEAKER_04: I am.
+
+SPEAKER_02: I did choose a... There also has parallel in that, because I was still working for the Ethereum Foundation at the time, was that there was like an enterprise Slack set up there, which was actually started by Vitalik, who afterwards said people kept badgering him about enterprise. That's right. So at some point, he just dumped the ball in a stack in a Slack and ran away. That was the technique. So that was not quite the same group. It was a larger group, but slightly different. Luca was part of that. Luca was part of that. Yeah. Also by the way, we should introduce ourselves.
+
+SPEAKER_03: Oh, we should. Like that. Yeah.
+
+SPEAKER_02: Hi. I'm Bob Summerwill. I'm head of ecosystem at...
+
+SPEAKER_03: ChainSafe. James, CEO of BlockOps. Victor Wong, creators of...
+
+SPEAKER_01: Yeah. I'm Victor Wong, chief product officer of BlockOps. So sorry, back. But, yeah, AMIS as well. Do you remember them? Yeah. Oh, yeah. So Taiwan. We should check in on...
+
+SPEAKER_02: I haven't thought about AMIS until, like, several years until the beginning. So the interesting thing about what they were doing, so that was, like, some Taiwan bank consortium thing. Yep. But then they did, like, work on, like, Chinese cryptography and stuff like they've got different requirements, right? Yeah. And the Masterchain, which was in Russia, that was like a Sberbank thing. Yeah.
+
+SPEAKER_04: Sberbank was sanctioned. I have a question. I could even do it in Russian. Because you have, you know, I was not at that time. And so it's very interesting for me, you know, what were the hopes and really excitement that you see. You were part of those early conversations when this was created. Yeah. Thirteen, I think, companies. It's like a pretty, it was a pretty big event, you know. Yeah. As you mentioned, you know, like, JPMorgan and everything, all those big names coming into the ecosystem. And what were the hopes and really, like, the overall, like, atmosphere, you know, when the EEA was created, like, eight years ago?
+
+SPEAKER_02: Yeah. Well, I mean so I mean, Consensys were very critical as well because, you know, they were doing a load of the enterprise engagement stuff, right? They... it was... you've got many, many companies, like, starting to get interested in, hey, you know, we want to do a pilot. We want to get involved. So Consensys were doing a lot of those. So they ended up having a lot of those connections of bringing those in together. But, yeah, you really have, like, over those months, you've got a hell of a lot of momentum.
+
+SPEAKER_03: Yeah. Really, really quick. So the observation during DevCon Two when the idea was hatched was basically that at least at the innovation lab level, a lot of the enterprises were just using and forking their own flavor of Ethereum. They had, like, hacked their own consensus algorithms and security and many guests.
+
+SPEAKER_02: Many guests, indeed. We learned later that, like, a lot of JPMorgan's Quorum was initially built by Jeff Wilcke. He had, like, some kind of... And that was not announced at the time of DevCon Two. That was still behind the scenes for a few months. Yeah. That happened just before the EEA started. But, yeah, you'd got all of this stuff brewing up, I mean, for years earlier. Like, if you think of, like, Eris DB that became Monax, that became Hyperledger Burrow, so that was a permissioned Ethereum client of POC Five pre-mainnet. Mhmm. Yeah, mid twenty fourteen of sticking Tendermint onto an EVM. So, yeah, like, you know, it was all a bit smashed apart, but it was like, the time is right for us to work together because we've all got the same needs.
+
+SPEAKER_03: Us too. We had our own client, and it got used in a bunch of the Consensys consulting engagements at that time, and we started, even then, kind of tuning it for enterprise. And so I guess the idea was like, well, maybe enterprises won't adopt if there isn't a standard. Yeah. For all of this new stuff that they need that's above and beyond the base...
+
+SPEAKER_01: Well, I think clients... I think it was even beyond that. Like, there was just tons of technical work going on in each individual company siloed to get Ethereum to do what they wanted to do in a private way. Yeah. So everyone was, like, bolting on these things. And what came out of those early conversations at DevCon was, wait, like, we're all doing similar things. Maybe if we all kind of work together, we could do it faster and get this up faster. And that was all around private Ethereum.
+
+SPEAKER_02: And I guess also, like, a marriage between, like, kind of customers of these things and builders of, of saying you've got all these kind of startup-y kind of companies that are making Ethereum things, and you've obviously got big demand from really major enterprises to have this, but there's... but, yeah, on that standardization side, there was, like, nothing, and it's, like, you're all going to get vendor locked, like, instantly, and it'll all just be arbitrarily different and painful and horrible. So let's try and work out... because well, at some point as well with Quorum, it was kind of like, you know, are we going to, like, collaboratively do code bases as well? Like, you know, Hyperledger... another pause. Was another piece into this is that a few months earlier, I'd spent a bunch of time working on C++ relicensing, C++ client to get back to Apache Two, so it could have been contributed into Hyperledger and we could have, like, gathered around that. That fucked up. So the EEA was kind of a backup, I guess. It's like, right, we can't have this grand fusion, but there's enough happening on the Ethereum side that we can at least get all the Ethereum pieces together. And then, yeah, I guess it went quite quickly from, okay, we're not... we don't want to straight compete with Hyperledger. Having a shared code base also kind of, like, screws up companies.
+
+SPEAKER_03: Commoditized. So I think let me, you know, in the spirit of spiciness...
+
+SPEAKER_01: I think the enterprise users would have preferred a shared code base. Right. And they wanted to commoditize any difference among the startups out of existence so that they could never be vendor locked again. They've had these...
+
+SPEAKER_03: Horrific, you know, IBM nightmares, Oracle nightmares over the years, and they're just like, not this time. We're not going to live through this.
+
+SPEAKER_02: I mean, also, you know, you have got that market pressure, right, of Quorum coming out. Mhmm. Of IBM launching Fabric. They were already going to end up that kind of, you know, nominally open source but quite proprietary. So those were both shooting for release in February 2017. So it's that kind of timeline is like, right, we've got to get our shit together to be able to do like an Ethereum product thing that can have some hope against IBM, UBS, etcetera.
+
+SPEAKER_03: I suppose, you know, R3 at that time, I remember one of our prominent enterprise user EEA members said, you know, yeah, they've got a call with, you know, 300 people on it every week trying to sell into the big banks, let's say, right? And it's funny that all of the like, Ethereum just survived all of this more or less not paying any attention to, like, you know, this competition kind of came in...
+
+SPEAKER_01: Well, I think there was another parallel thing that was happening. At that DevCon, really, were, like, the first like, the kind of enterprise use cases we talk about today. Like, for example, Santander talked about, you know, US dollar on chain, which we all recognize as a stablecoin now.
+
+SPEAKER_04: And they didn't make it design that button or... Yeah, yeah, yeah. Tokenized bank deposit effects.
+
+SPEAKER_01: You see, Victor, I think that's a very cool parallel. Like, you set the stage pretty well for, like, you know, where it's coming from.
+
+SPEAKER_04: Yeah. And then where it started eight years ago, you mentioned, you know, innovation labs, like, starting to contribute to some code. We've known, like, the use cases that blockchain and Ethereum can solve for a long time, right? Oh, yeah. But it's only actually now, and it's been for probably, like, for the last year, that things have really been changing drastically. Yeah. And to take, you know, like, your words for, like, when you say innovation lab, it's not innovation lab anymore looking at how they implement blockchain in their ecosystem. It's really like...
+
+SPEAKER_02: It's actually...
+
+SPEAKER_04: Executive team that say, hey, we want to plan what is the production, like, how we get it to market. Thankfully, like, they're scared now. So, like, they better move for us. I don't know if there is... There were some interesting talks, you know, like, when we were at Sibos, like, SWIFT conference, like, last time.
+
+SPEAKER_01: I mentioned that because, like, you were just at Sibos, and you're dealing with, like, what we think of as traditional institutional players. And that's, you know, where you have a lot of communication. So, like, what were your impressions about where they're at with that? Because that's the other side that we talk about last year. The digital asset tokenization...
+
+SPEAKER_04: Is definitely a hot topic everyone is looking at. Because they know it's happening. They want to be involved, and it's more... and now, especially, like, there is less regulatory... I'm sure the listeners may not know what Sibos is. Oh, yeah. So Sibos is the big SWIFT conference. SWIFT, if you're not familiar, is a messaging system that 11,000 financial institutions around the world... it's actually a co-op. It's a DAO for a trade guild.
+
+SPEAKER_03: Kudos to Danielle from Consensys who said that to me once. It is a DAO. Although, it's like, can we buy in now? I feel like a very easy... I guess you're best.
+
+SPEAKER_04: Restricted. Yeah. That's, you know, like, token gated. Yeah. And the token is having probably a bank license. The London Metal Exchange is like this too. It's like you want to sign up, you've got to, like, buy a bunch of shares and, like...
+
+SPEAKER_03: See. You know, then there's an annual fee and whatnot, and you have to, like, put someone there all the time.
+
+SPEAKER_04: To join the trade guild. Yes. Yes. That you've got to do your... Yes. Yeah. Exactly. And so Sibos, big conference is the... it's a big makeup of payments, I would say, every year. So you have all the big financial institutions. Also, like, you know, global financial institutions, like, you know, like clearing house settlements. So Euroclear, DTCC, etcetera, but also, like, all the banks. And they gather there, and then there is a lot of conversation. What is very interesting is actually Sibos and SWIFT is a very, like, kind of standard organization. Because what they do is, like, how we make sure, like, we send messaging across all of us that everyone is sure is going to understand. And so they used to have a different, like, kind of messaging format, and recently now, they're migrating to something new, which is ISO 20022. Okay. Which is... if you want to go and dive deeper into this, this is really, like, how every financial institution wants to discuss. They've been working on that spec for a long time, and that's how anything that can touch finance...
+
+SPEAKER_03: From securities to payment, like, they have to be qualified. Yeah. I think it's good to explain. So, like, most of finance gets cleared through messaging. Mhmm. And it's like... so crypto people are used to, like, putting a transaction in and then it goes everywhere. Yes. It's not really like this.
+
+SPEAKER_04: Oh, yes. Thank you. Thank you. Yeah. Indeed. That's a very key point. It is that the process of a... you know, what we call delivery versus payment in traditional finance, it's a pretty complex thing because how you make sure, like, when you deliver the money, the money has been received, that you receive the asset, that everything has been... you know? And it's kind of a lot of dance because you receive a message, you send another one, and it's not like how we used to do where in crypto, we submit, and it's actually an atomic transaction, which is, like, just one thing. And when the transaction is complete, you know it's been executed, it's been delivered, and all the parties... that is actually, you know, like, I give you the can. Well, I know you've been giving me, like, the money exactly. You know? Like, where actually there is, like, a little bit of a dance. Well, I put the can here. Like, you see the can that has been moving here. Like, you send the money. And so the blockchain here offers such efficiencies because things that were, like, you know, like, the T+1 or T+2 for some of those different exchanges. Now you do it, like, well, depending on what chain you're going to deploy... Yeah. Between a second to even, like, less than that. Yeah.
+
+SPEAKER_03: And also, SWIFT isn't a payments mechanism, right? No. It's a message... another... that's another comment. So let me, I think, interject with this specific example. I think they're biggest in FX, right? Yes. So let's say I've got some USD, and I want some euro. And we kind of, like, agree to a USD euro trade. And so we... like I guess we look up whatever the pair is trading at. And I think it's like, I send my side of the trade with some unique ID to SWIFT, and you do too. And then SWIFT, like, checks if it matches. It charges, like, $7 either way. If it does match, then it'll, like, tell us that it matched.
+
+SPEAKER_04: Well, I don't think it's actually exactly this way. It's more SWIFT offers a type of envelope and a format of envelope and paper and ink that we know how to use and how we're supposed to fill up some forms. Then how we trade those forms between different market participants, it's not much, you know, like, the people like, they're going to be some corresponding banking that's going to be, like, locally taking your cash, and everyone is going to take their share. But it's... It's not moving the asset. It's just...
+
+SPEAKER_03: It's like... like I have the USD on my bank list. That's the big thing. You've got the euro... Yeah. On your bank list. Talking to each other in a in a secure...
+
+SPEAKER_04: And compliant way because it's also, oh, you send that. You have to send, like, some specific messaging for, like, compliance and that. Then I send another one saying, hey, I checked. There is all the information, and you...
+
+SPEAKER_02: A bunch of, like, local jurisdiction...
+
+SPEAKER_04: Specific... Yeah. It's like a lot of different handshakes, you know, for, like, all the...
+
+SPEAKER_01: Yeah. I looked at... the way someone described it, it's like a funny TCP handshake. It's sort of like what they're doing is tracking the transfers, but no money is actually moving, and then they have a list of IOUs. So, like, when I send a SWIFT transaction from, like, let's say I send $100 to you in France. And I go to my bank. I put in $100. The money doesn't go anywhere.
+
+SPEAKER_04: It just... Oh, yeah. So the... It's like the bank... I have to... write... bank off by the bank. The end of the day... Yes. Right. Money. RTGS. They're going to do, like, the transfer actually. Exactly. That's like a different messaging. Like, the... Yeah. If you research... and I'm not a SWIFT expert, but I have to learn that in the last couple of months, you know, I've done, like, a little bit more, like, deep dive. And it's fascinating because there is such a huge dance, you know, between, you know, like, transfer of money because you have, you know, the money in your bank account, but then you actually have central bank money, then you have this, like, the deposit money. Yeah. So, like, those, like, what you call, like, M0, M1, M2. And so all of that is pretty complex. And then we're just talking about payment here, not talking about, you know, securities or, like, those other, like, financial instruments that you can exchange also using blockchain in a very efficient way. But that's... you know, using stablecoin, you can make everything super simple. And also one misconception maybe I would love to mention is, like, you know what? We talked about stablecoin and CBDCs. Yeah. Yeah. Yeah. They're actually exactly the same thing. It's just in a different context. A CBDC is a stablecoin for central banks. And... It's just the issuer. It's just the issuer is not the same as... you know, we're never really going to touch, like, CBDCs... Yeah. Because this is, like, the money... the money of banks, if you say. But almost, I think, from a technical level, it's very, like, almost like a copy-paste of the same contract. It's the mechanism. It's... it's not. But we create, like, a whole different language and terminology for that, but they're actually very similar. And funny fact, those CBDCs, they've been doing, you know, like, the... I think the baby needed to grow. You know, like, you said, DevCon Two. So it was a two-year-old kid, Ethereum.
+
+SPEAKER_01: And we were like, hey, come in here. You can manage, like, the most critical...
+
+SPEAKER_04: Infrastructure of the planet, which is our money and how we do trade, and you can do all of this. And I think, like, the Ethereum Foundation, I have to give them credit. Like, they... yes, for a long time, they were saying, hey, guys, you're not considering the enterprise, everything. But I think they did the right thing because they protected, you know, like that baby. So it could grow, and we'd become like, you know... now we're at an age of, you know, it's more mature. It's more than ten years. It's still, like, not even a teenager. Like, the analogy was, like, was human... is going to take some limits. But we're at a point now where we have a technology, and Ethereum is really at a capacity to answer all the challenges that are facing, you know, that we're... that are blocking institutions, which is, you know, well, scalability, privacy, you know, like, composability, and interoperability. You know? Yeah. Like, the four points that you had in the ARCC paper from from Circle. And now we have this. You know? Like, just last week, you know, ZKsync announced, like, up to 15,000 TPS. Yeah. And there is a new thing that almost every week is going on. So we really, like, now, like, the technology, when it comes... I say, well, I need to make sure, like, this is private. I need to make sure, like, this is going to be executed in a seamless way. Also, like, the decentralization, it's more about the... the way they look at it is more like the vendor lock-in, I would say, the best analogy, is that you want to make sure the infrastructure you rely on is going to be able to absorb your activity, but also be resilient enough. Yeah. We still have some work because it's definitely... and I understand the perspective of institutions to deploy on, like, public infrastructure.
+
+SPEAKER_01: You know, at first, when we... Wikipedia, yeah, showed up, like, you know...
+
+SPEAKER_04: Twenty, twenty-five years ago, something like that, I think. I mean, I remember I was in my in my college of... in my engineering college. I was at the board, and we were talking about having a wiki, you know, for doing some articles. And they were, like, those very academic guys that... this is unacceptable.
+
+SPEAKER_01: It's not a... you know, all that French accent. And this is unacceptable whenever you are going to do this.
+
+SPEAKER_04: This is anyone can put any information. This is not trustworthy. To be clear, you are French. Yeah. You are allowed to. Yeah. You are allowed to.
+
+SPEAKER_01: French too. Yeah.
+
+SPEAKER_04: And so... and but they were... in French. Like, they were very, you know, and protecting this and at that time, I said, well, we cannot trust, you know, something that's been built collectively like this. But now we know you have to take a grain of salt, but it's actually much more accepted. You know? Like, those are, like, reliable sources of information and that you can have things that are being built publicly that are actually very resilient.
+
+SPEAKER_01: I mean, I'm sorry. I was just going to ask, like... but, like, there's always this, like, gap between what traditional institutions understand about... like, we all understand what's been capable for a really, really long time. But are there still gaps, or do you think that's been closed now? Like, it's maybe grown up fully? Or but, like... but even if even, like, when the capability is there, there's still, like, a knowledge gap, I think, sometimes.
+
+SPEAKER_04: You know what? Let me put it this way. There is about... if you combine all the different types of money, $123 trillion of cash around the world, right? Right. $300 billion are on chain, right? So the numbers talk for themselves. We're very early. So there are people like they... I think we still have, like, a lot of work to do in terms of education. But by education, I mean, really talking from a product perspective. What business problem I can solve for you? How it's going to be done, what is going to be the maintenance after, how, like, how you're going to deal with a very specific use case. And so you can have, like, some teams that already, like, have an understanding, you know, like, what you can achieve. Yeah. But we still, like, need to provide, I think, as an ecosystem more structuring, you know, like, who you can work with, well, like, the different vendors, what services they can do, where they can help, what's the type of contract you're going to have after. And really giving, like, that overall perspective of, like, a new entrant, you know, in the market. And so some of them, they understand very well, and they have already, like, some pretty detailed questions, you know, even, like, asking me... Well, one, we need to increase, like, the contract size from the 24 to 48 kilobytes, and we have some, you know, like, those stack overflow issues, like, well known. So...
+
+SPEAKER_02: Yeah. The stack depth one that was always a problem.
+
+SPEAKER_04: And so... Yeah. There are some of them. It's this. But then some other ones in this... this more product, they're going to ask me, okay, why should I go on an L2? What is the L1? What does it mean? And what about those chains? What are, like, the primitives, you know, explaining, like, well, if you build on any L2...
+
+SPEAKER_01: You actually going to choose maybe one vendor in some way, but...
+
+SPEAKER_04: You can completely move your asset freely among all the ecosystem. The wallets are going to be the same. A lot of things are going to be equivalent that you don't have to rebuild. Mhmm. And so those are... saying, you know, like, you need to explain. Some of them, maybe people, they're going to say, well, what is... what is this? This is just, like, some scammy thing or something like that. I think you can find all the layers, but now people, they also... they see, like, the potential of, like, what you can do with digital assets, you know, tokenization, right? And people were a little bit, like, looking around. I'm very excited to see what's going to happen in the next six to twelve months because, you know, like, Genius Tech was signed in July, you know, or something like this. Clarity Act, I think, is still a bit ongoing. But so now... the like... and we kind of also hear that, like, there's really companies from either direction. So, okay, how... how are we going to implement this? The fintech is also moving, so they're... they're like, the fact that they're building their L1... even if they're building their L1, I wish they would do some L2s, and my door will always be open... Right. When you want to consider that. There is a pretty great tool that can help. But that's going to push the market and from a, like, financial institution to really, like, adopting this. There are organizations like DTCC, you know, like, the biggest clearinghouse in the world. Like, all the securities in the world basically are being cleared over there. They released, like, an incredible product, like, four months ago in April, like, Digital Collateral, where they have, like, a collection of, like, hundreds of smart contracts that allows you to clear and to make some margin calls and collateral management from different jurisdictions, which is a fantastic use case when you see... I'm not a... I'm not a collateral management expert. Mhmm. But I understand the value, like, how this unlocks, you know, like, you actually have something that you can take from your bank in Japan that you're going to post for something in US because you have a market event. And this is something you would not even imagine before. And now you can do it, and it's, like, compliant. It's actually, like, it's legal, and then that's going to unlock so much efficiency. And so that's in the next, like, twelve months. That's going to be, like, a huge game changer.
+
+SPEAKER_01: So it sounds like, you know, the lid has been lifted off, and there's a ton of demand. But it's like walking down the path to supply that demand. That's the part that people are figuring out, right? Like, it... is that right? Like, is that how...
+
+SPEAKER_04: Very... I think it's such a very transformative technology for how those businesses operate. There is also how am I going to make money? Okay.
+
+SPEAKER_03: So there's a fear element to it, right? Like, go ahead. At least I... It's like, where... well, now I can have, like, chat. Yeah. Like...
+
+SPEAKER_02: Yeah. I mean...
+
+SPEAKER_03: I'm a PSP provider. Like... Let me ask you this. So in the early days, it felt like there was a focus on more like back office use cases, like, yeah, how do I move the collateral from, like, my Japan regional branch to my, you know, whatever. Business process improvement. Business process improvements. I felt that eventually there became a... I think this started, like, 2020, 2021, a shift for big corporations wanting top line use cases. Like, you know, like, Nike was the first to, like, sell a ton of NFTs. And then you're seeing, like, I think, like, the digital assets treasuries are a kind of genius way for a token to... like, the company doesn't have to IPO. But, like, there could be a token, and there can be something that kind of provides the traditional protections of equity that's publicly traded. And then you could just leave this part sort of where it was, and somehow there's kind of like a merger going on. And, you know, this is creating good top line revenue for investment banks and, you know, etcetera, etcetera. So, like, is your sense that people want the efficiency to compete, or, like, are they starting to think about it as, like, a new revenue line or, you know, like, a transformed revenue line or something?
+
+SPEAKER_04: Well, that's a billion... trillion dollar question right there. I don't have, like, the answer. What I could say is I see... I see how... I think if you look at, you know, operational optimization, it's more than that. If capital flows more seamlessly, you make more money in the financials. Cash flow. So the more you have a flow of your money easy, the more you're going to be able to make some... to make some money because you're going to unlock, you know, some capital improvement. Yet, I think... and from, like, conversations I've seen and where, like, the... we still don't have, like, the golden... I'd say, hey, that's going to remix a little bit of, like, all the different people and intermediaries and people working. Because if you suddenly have something that is being done in a much, much more efficient way, well, some different intermediaries, then they might have, like, to rethink the way of doing their business. This is not going to happen from one day to another. What I can say is that because we're going to have those new forms of, like, working with digital assets, that's going to be more, like, a golden era for, like, opportunities to build, like, to build pretty fantastic products. And the people that understand pretty well the ethos of the Ethereum ecosystem and also, like, blockchain in general, and, like, some operations in traditional finance and be able to bridge those two, you're going to be able to bring, like, some amazing products. And that's what we see a little bit more with Convergence, you know, of Aave is doing, like, a collateral product with Horizon... Yeah. And knocking, you know, like, you have, like, Figure, like, you have Spiko or you have some of, like, how... as we're going to have, like, now some assets that are on chain that maybe you can loan and you can collateralize and you can borrow money and you can have some liquidity from in front of those assets while being the actual... like, and also, like, I want to stress, like, we do... we say RWAs, RWAs, RWAs. But there is a lot of... we need probably to find some new language because there is...
+
+SPEAKER_03: You know how I feel about that. I think the RWA term is so broad. We... yeah. We need... this can be... this can be an RWA. You know?
+
+SPEAKER_04: It does. And I can also take a picture of my, I guess, my bank account and say, hey, this is a tokenization of my bank account. Like, I know. Exactly. And so there is all of... The IOUs, but most of them, they actually kind of are elaborate IOUs, you know? And not all... and now we're moving towards more and more having some standards and, like, things like... like the... it's the legal... 10... like...
+
+SPEAKER_02: Yeah. You want the native issue. It's a... the token is the... is the legal claim to the asset.
+
+SPEAKER_04: Yes. Yeah. And that's when this happens and when, like, focusing on that, that's going to unlock some pretty incredible things because then it's the... the... and you connect this with DeFi. Maybe we... some... you're always going to need some form of AML, KYC, and everything, like... like the DeFi, like, the... Yeah. Yeah. There's... it's... for the last year, they're probably going to have, like, two of those. But once you connect this, that's... I think that's going to be pretty incredible.
+
+SPEAKER_01: But how do the institutions feel about, like... obviously, as the head of the EEA, and you feel strongly about Ethereum too, right? Like, the Ethereum ecosystem broadly of L1 and multiple L2s. Like, how do they feel about that? Do they see any other... you know, like, we know that Ripple has tried to attract that interest for a really long time. Like, are they kind of sold on Ethereum at this point, or are they still kind of needing to be convinced?
+
+SPEAKER_04: I've heard, like, several executives at presentations at Sibos saying, hey, you know, like, Ethereum is the standard. You know? EVM is the standard. This is the ecosystem. Having said that, and as, you know, decision makers, they also want to make sure, like, they keep the door open and not being locked. They move progressively. You know, 60% of the stablecoin issuance is on Ethereum. I think probably 85 to 90% of all the RWAs, it's the same. Some similar statistics about DeFi activities. That's, you know, like, Electric Capital, like... Yeah. You can see a graph, like, three times more than that. And then you also have the ecosystem in terms of, like, builders and everything. So that's the most strategic and advanced, you know, ecosystem in terms of research and on every facet. And so they know. They recognize. But it doesn't mean that we need to keep educating, to keep, like...
+
+SPEAKER_02: Right.
+
+SPEAKER_04: You know, working with the EF for instance. Like, they've been doing incredible work for the last few months of really, like, packaging the message in a better way that can be more digestible. But there's more work. For instance, like, you know, like, the protocol team, they're already addressing so many of the fears that different digital asset managers and financial institutions can have. But how we bring that message to the right people, package it in a way that it's easy to understand, that's some of the work that is being done as we speak, and I... and that's going to really help, you know, like, continuing solidifying, you know, the dominant position. But to also answer your question, like, some of those institutions, they say, hey, we want to be multichain. We want to look at everything, which I think it's absolutely fair, and I would do the same if I were in their shoes. So, okay. Well, they have some different assessment, you know, criteria, and they say, well, we're going to take this chain, this chain, this chain, this chain, and then we'll see.
+
+SPEAKER_02: I mean... go back to... Beyond... beyond EVM, I mean, you've obviously got competition between Ethereum and other EVM... Mhmm. Flavors. What's the competition outside of that? Because I know there's... you know, you've obviously got competition within that.
+
+SPEAKER_03: But... Yeah. What do you hear institutions doing non-EVM things as well? Just like Hedera, Solana. I don't know what they're using. Like, do institutions use Avalanche at all? Well, I know, but does R3 still have its own, like, big proprietary-ish stack? It's not proprietary anymore, but...
+
+SPEAKER_02: It's Canton. Well, Hedera. Is anyone using Hedera?
+
+SPEAKER_04: Canton... What do you hear? Competitive.
+
+SPEAKER_03: I got it.
+
+SPEAKER_04: Canton is probably the one that's the most advanced in terms of, like, you know, connection with the rest of the ecosystem. Mhmm. And I would say, like, not the rest, but the traditional finance. They have... they have, like, a way... it's structured, though it's something I still don't completely understand. Like, you can be validators, have some tokens that they're going to exchange on some private market and get some form of revenue. And then they have already, like, that... it's a consortium. You know? Like, it's a Quorum Part Two, I would say. And they've been able to bring into their governance, like, a lot of the different financial institutions. So but then once again, and if you ask me, and I'm biased, of course, but this is an ecosystem. Like, Canton's code is open source and everything. But, well, you're still building on a technology that is not... not super, like, very... like, there's not a lot of people. You know? Like, when you're going to be, like, the CIO of a company and you need to have some maintenance or something? It's going to be, what, like, 20 guys in a country that can do this... some work on this? And so that's the way I look at this. But, like, the... I think, like, Solana, I'm not sure who's the institution. I don't hear anything institutional...
+
+SPEAKER_03: From Solana, but it seems popular nonetheless.
+
+SPEAKER_01: Oddly enough, like, Ripple has been trying to do this for a long time, but I don't hear them brought up in the conversation that much in...
+
+SPEAKER_02: Nobody ever used Ripple.
+
+SPEAKER_04: I've been in the blockchain space since... Not as long as you guys, but since 2019. And I spent, like, almost four years at ChainSafe. You know, very authentic, like, you know, builders, crypto native protocol development. And I've been to conferences, you know, with the engineers, and I asked them in a very candid way. I said, have you ever built on Ripple or some of their... and I had conversations with the engineers at ChainSafe. And we had some calls, we had some conversations in the Slack, I remember, and no one really came up with some very...
+
+SPEAKER_02: Smart. It just got an infinite war chest for marketing... Well... and lobbying.
+
+SPEAKER_01: I mean, at one point, one of the Sibos I went to years and years ago, right? Ripple was supposed to have a huge booth and, you know, like, I guess SWIFT decided, oh, they're too much of a competitor, so they kicked them out.
+
+SPEAKER_03: And this was... They were calling themselves the SWIFT killer... Right. For a while.
+
+SPEAKER_01: They decided, like, Ripple decided, you know what? We're just going to run our own conference in parallel with Sibos. They put on a parallel conference... Yeah. And Vitalik was speaking at their conference. And I remember...
+
+SPEAKER_03: At the Ripple one?
+
+SPEAKER_01: At the Ripple one. And I remember... Oh, you nearly interned that. They had buses in front of Sibos, like, taking you to where their new conference was. And I remember, like, seeing Vitalik, like, running across, like, looking for this conference because, like, it was in this new place and, like, we were all trying to figure out where it was. I remember, like, waving him over... over here, Vitalik. Over there. Like, it's all right.
+
+SPEAKER_02: Is Corda... Are people still using Corda? Are people...
+
+SPEAKER_04: Right? Like, it's being bought out by Celona. Corda is Celona. I don't think they're... Really?
+
+SPEAKER_01: I don't think they would... they would use actually those terms. I think it's a partnership, a collaboration.
+
+SPEAKER_02: Yeah. Yes. They were not absolutely... they weren't bought by...
+
+SPEAKER_01: Not bought out enough. But yes. But I mean, I will say... Are you using Fabric still?
+
+SPEAKER_04: Fabric? Anyone? Well, yes. Fabric. Behind the scenes, like, Fabric is still, like, very present. You know, I think central banks and those types of more very closed environments, you know... even I'm not sure. BIS, we know Bank of International Settlement, which is... you know, for those who don't know, it's 40 different international banks that work together to optimize, I would say, like, the collaboration and exchange. But they had, like, a project Agora that they started a couple of, like, months ago. Yeah. Those are, like, institutions where it takes, like, much longer time, I think, to...
+
+SPEAKER_02: They're starting new projects. That's not the same. The same Agora. But I would imagine, like, maybe they were having some POCs before.
+
+SPEAKER_04: I know some few central banks, they run, you know, like, using Fabric.
+
+SPEAKER_02: You know, like the... It's probably like the Hyperledger and Fabric, you know, like... Probably like the asbestos, isn't it? It's just going to take years to sort of chat out.
+
+SPEAKER_01: You need people in suits to, like...
+
+SPEAKER_04: Yeah. I will say, I think we're almost at 45 minutes. Everyone's been very generous with their time. I think we asked. Do you have any final thoughts that you want to share with...
+
+SPEAKER_02: On the Fabric. I know, like, IBM is working on a bridge between Fabric to mainnet... to Ethereum. It's called Fabric XK.
+
+SPEAKER_04: To Ethereum. So...
+
+SPEAKER_02: Well, I can see that, right? Well, one of their... the big sell at New York Blockchain Week in 2018 was their was their EVM integration, right? They did the...
+
+SPEAKER_03: Yeah. They did the chaincode or something. It was...
+
+SPEAKER_02: Fabric chaincode dot js or whatever. That they did do this bunching together, and that was using Burrow, right? Because you've got the Burrow. Burrow went into Hyperledger before Besu. Mhmm. And that was the continuation of that ErisDB, Monax, on you went. It was never mainnet compatible, though. But there was that Go EVM within Hyperledger under the same licensing so they could wham those together. And, I mean, that's seven years ago. So, yeah, I'm sure that they need to have an even better EVM story these days.
+
+SPEAKER_04: So if to answer your question and, like, EVM is really the standard as... everyone, that's what they're saying. You know? Like, you go through, like, some different stages. You have, like, the chief innovation officer of, like, SWIFT and some different institutions. They understand that. They're like, that's going to be... they understand that. That's what they say. You know? I was really... everywhere I went, on all those different panels, you know, we had a panel at 8:30 on, like, permissionless versus private... Yeah. Mhmm. Networks. It was hosted by Applied Blockchain, a member of the EEA. There was, like, Citibank, Linux Foundation, Decentralized Trust, UBX, and me. And it was... we were full. There were people standing up, and there was, you know, the SWIFT innovation officers. Some other banks that came to talk to us. So people, they understand. Ethereum is definitely seen as, like, the standard and the place where you want to build because that's where you have access to the most liquidity, the most users, the most vibrant DeFi ecosystem... Mhmm. Which is something that is getting closer, I think, and say, well, maybe there is some way to make some money here. I don't know exactly how, but there is some potential. So I think the future is very bright for us.
+
+SPEAKER_02: And I think that ties very nicely back to the start of the conversation and about the thoughts of the EEA and so on was something that Jeremy Miller said in the opening speech on the opening day was think of this as being like a router, an internet/intranet. There's no reason why suitably modular code bases shouldn't serve all of these use cases, public and private. And what we did not want to happen, and I remember being driven very much by this, was saying, let's not have arbitrarily different code bases for these different things because we can't be bothered having that conversation and making the effort to try and bridge those worlds. And that was really coming from that Fabric and Corda competition of these big enterprises basically being told, you Ethereum guys have got to get your stuff together or we're going to get mandated to use this other stuff, and it doesn't matter what you want. It's like the spending will have been spent, and it's never coming back. So I think it's, from my mind, it's, like, really superb to see where we are. It's like, that's what we were thinking. That was kind of the goal, right, is that this can be a standard for everything and, yeah, things were, like, immature and maybe, you know, you needed to be doing consortium chains and you needed to take these baby steps on the way and wait for the tech to catch up. But really, it's like this can be the answer for everything.
+
+SPEAKER_04: So... Yeah. And I think that's where we are. And we're talking more and more, you know, like, Ethereum Foundation has done an incredible job. They have, like, an enterprise team also that's in conversation with everyone, and they can have... like, they have access to all the different leaders, and this has been pretty fantastic. And so the more we discuss about this and say, hey, you know, there is no CEO of Ethereum. This is not a private company. There's no CEO of the Internet, you know, like that. Yeah. That's what was saying. They always use Linux, right?
+
+SPEAKER_02: So... Yeah.
+
+SPEAKER_04: That's something that is, like, catching up more and more. And the more, you know, we're going... that's also, like, the mission that what we do at the EEA, you know, like, going to have this conversation, doing events, like, bringing some people together from, like, a few events that we do where we try to remix, like, DeFi, traditional finance institutions, like pure Ethereum players, and have all those people talking together. That's how we make that, you know, moving forward.
+
+SPEAKER_01: Well, on that note, I think we'll wrap up. But where can people find more about you and the EEA in general?
+
+SPEAKER_04: The website of... we are present on all the social media. Like, the website is EntErprise EthereumAlliance.org. We have the same handle, like, on Twitter, on LinkedIn. I'm also on LinkedIn and on Twitter and try to post, you know, like, often some few articles and some insights. And there's some more work that I'm going to put, like, together in a couple of weeks around RWAs and everything. And also always looking for some, like, large institutions that would like to collaborate on some writing pieces. Yep. So we can really put some, like, thought leadership and helping, you know, explaining what's being done. Like, and I think bridging, you know, like, Ethereum world with the traditional finance also, like, something that we're pretty excited to do in a, you know, couple of weeks.
+
+SPEAKER_02: Yeah. That's awesome.
+
+SPEAKER_04: We'll be also in Singapore FinTech Week next month, in DevCon in Argentina, and we'll be also in Abu Dhabi for Finance Week.
+
+SPEAKER_02: Cool. And, Bob, where can people find you?
+
+SPEAKER_01: So, yeah, I'm on Twitter. Same as my name, Bob Summerwill with a W-I-L-L, not ville, not sommerwill.
+
+SPEAKER_02: And...
+
+SPEAKER_01: Not the German spelling.
+
+SPEAKER_03: No. Yeah. James?
+
+SPEAKER_01: K James Logan on X, YouTube, etcetera.
+
+SPEAKER_02: And you can find me on X at vic, V-I-C, the number four, W-O-N-G.
+
+SPEAKER_01: Thank you for joining us for our first in-person roundtable.
+
+SPEAKER_04: Thanks again.
+
+SPEAKER_03: It's awesome. It's awesome.
+
+SPEAKER_01: Thanks for coming. Take care.
+
+SPEAKER_04: That's pretty cool to be in the bushwick end.

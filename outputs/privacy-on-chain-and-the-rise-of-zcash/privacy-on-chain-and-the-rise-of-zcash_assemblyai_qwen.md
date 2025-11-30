@@ -1,0 +1,165 @@
+**[00:00] SPEAKER_00:** Okay, welcome, everyone. We have a very special and very timely topic today. Privacy on chain and the rise of zcash. And we sort of have a special guest today. So I'm Victor Wong. I am founder and chief product officer at blockapps. I'll get to our normal guests, but today we have Jim, do you want to give us a quick intro?
+
+**[00:16] SPEAKER_02:** Yeah.
+
+**[00:17] SPEAKER_03:** I'm also. I've known Victor and Kieran for years. I'm one of the founders of BlockApps and CTO.
+
+**[00:24] SPEAKER_00:** And you're here in particularly because I would call you a zcash expert, having written your own zcash client.
+
+**[00:31] SPEAKER_02:** Well, I think I'm more aspirational at this point in time. I mean, the way I learn about things is I try to, like, write. Write a client for it. So I was doing that, but then we got pulled in different directions. I got to the point where I had sort of replicated the actual client that could connect. It would bring the data in. It would bring the proofs in. But just about when I was getting to the good parts, that's when. When we moved on to other things.
+
+**[01:02] SPEAKER_00:** Well, I'm gonna put the number.
+
+**[01:04] SPEAKER_01:** Answer my own question between like, 10 and 100, maybe 10.
+
+**[01:08] SPEAKER_00:** I would say there. There's definitely less than 20 people who have written their own Zcash clients. Probably.
+
+**[01:16] SPEAKER_01:** Well, yeah, there's probably some core contributors. I imagine there's more than a handful into zcash. But, you know, when Jim says non expert, he. You know, it's like there are. Let's say, yes, I'll expand the range 5 to 100 people who understand Zcash better on the planet. Big, big, big range there. But we're talking about pretty small numbers and absolute terms, so.
+
+**[01:36] SPEAKER_00:** Yeah, yes, exactly. I would say if Jim's not an expert, I don't know what even expert means. Anyways. Karen, do you want to do a quick intro of yourself before?
+
+**[01:45] SPEAKER_03:** Certainly. I'm our CEO. Been on these before. By the way, Vic, you're letting Jim off the hook, calling him a special guest. He has to do this all the time now with our, you know, continued in the public press. So special in the future.
+
+**[01:59] SPEAKER_00:** Special today. Today is special, but it's the first of many.
+
+**[02:04] SPEAKER_03:** Let's just say that I was looking through the prior videos Jim has never appeared on one of our own spaces. He's only been on early days of.
+
+**[02:15] SPEAKER_01:** Okay, there you go.
+
+**[02:16] SPEAKER_02:** Oh no, you found out but it.
+
+**[02:18] SPEAKER_00:** Won't be special soon. Bob, by the way, since you've spoken up, can you do give a quick intro to yourself?
+
+**[02:26] SPEAKER_03:** So hi, I'm. I'm Bob, I'm head of ecosystem and yeah been doing a lot of. A lot of spaces.
+
+**[02:34] SPEAKER_00:** Yeah so I, I think you know to level set because I think there's a lot of misunderstanding about what privacy is.
+
+**[02:39] SPEAKER_01:** What.
+
+**[02:40] SPEAKER_00:** How would you define blockchain privacy and why do you think it's important?
+
+**[02:44] SPEAKER_03:** Who's that a question for?
+
+**[02:45] SPEAKER_00:** Could be for anyone. Whoever wants to go Karen, you want.
+
+**[02:48] SPEAKER_01:** To kick us off so and for the. I assume that the viewer is pretty deep in the space but I'll bring it down to a fairly low technical level. So blockchains are great. They let you move digitally scarce value from party to party. And the way that this is typically done is that you've got a big address which is almost but not quite a public key and you sort of sign a message that says I Kieran, but it's not Kirin because it's this address. Send three Bitcoin to Bob and it doesn't say Bob. It's another address you don't quite know either of those parties are. However you've got the address forever. And often it is the case that you can piece together what happened based on that address. So say you're on a centralized Exchange which has KYC'd. It knows how to associate you to maybe withdrawal address. It may not know down the line but if you start to get a bunch of data points you can kind of piece together who sent what to whom and you're actually in an extremely transparent scenario where everyone's financial transactions are visible to everyone and it's not. While it's a cryptographic technology, it's not necessarily a private technology. This has been a problem both in the consumer setting just for. People don't like this. Satoshi makes a comment, I believe in the white paper saying that obviously to prevent the double spend problem which basically is just that to ensure that Bitcoin can't be created or destroyed except by the agreed mechanism. Obviously you need to know the whole history and so he sees the problem as intrinsic. But some technologies come out later that maybe calls that into question that we'll talk about. It's also an enterprise problem so we can talk separately about our experience there. Sort of what the enterprises Want is kind of the same as what the public blockchain people want, except with selective visibility. So they want to say you're doing like a. On chain stock trade, which is actually now starting to happen. You sort of want to know the other party has the stock. You don't necessarily want to know who the other party is, but you want to know that they acquired that stock legitimately. And then when you get it, you want to be able to pass it on legitimately in the same way. And then there's sometimes this extra requirement that like, the regulator can see everything, you know, so you, you want sort of like a unlinkability of balance to person or company, but also this mass preservation property that I was talking about can't create or destroy assets. They have to be acquired legitimately and so on. So it's a perennial problem and closer to solved and, you know, but we can go into that shortly.
+
+**[05:34] SPEAKER_00:** Yeah, Bob, did you want to add anything to that?
+
+**[05:36] SPEAKER_03:** Yeah, Yes. I mean, going back to those Bitcoin, you know, beginnings in the Bitcoin white paper, you know, it just talks about severing identity from transactions, but, but really that's just Sudan pseudonymous, you know, not, not anonymous. And I think a lot of people didn't understand that differentiation back in those early days. And it's like, oh, bitcoin's private, untrackable, you know, digital money. But, you know, very rapidly you have blockchain analytics coming in, you know, looking for correlations and patterns. And it's like, yeah, that's. You're not getting a lot of security, you know, even if you're not reusing addresses, just, just sort of normal things that people would do. There's, there's lots of correlations and you know, you can get unmasked that way. But yeah, Satoshi did talk a bit about zero knowledge. I can't remember who raised it. Somebody raised it early and, and he was like, yeah, you know, that would be interesting if we could do that. But, but it was just like a lot of that cryptography, you know, just hadn't happened, you know, so Zcash started in 2016, and it was only around that kind of time or a little before that you started having, you know, these, these papers on, on Snark Constructions and going through all these different kind of rounds. So, yeah, I mean, what that's meant is Bitcoin and then Ethereum following that same path. You know, they are an immutable public ledger forever. Ethereum. Even worse because it's an account model. So you're, you are reusing the addresses all the time, right? And if your address is unmasked, you are forever doxxed. That's happened to at least one of the Ethereum founders who moved hundreds of millions of dollars and out of a known address of his, which probably not desired.
+
+**[08:12] SPEAKER_00:** And you guys have been talking about Satoshi, but Jim, I remember, I think it's like early at like 2014, Vitalik was talking like, he was like, ZK, Snark will fix all of this at some point in time. Do you remember that?
+
+**[08:23] SPEAKER_02:** Well, I mean, like, I think we went through a learning process about privacy. And that's sort of like we're understating this right now. Maybe it's because we put a lot of time and effort into some privacy solutions that technically worked but were a business failure, I think is fair to say. And so the audience can learn from our failed mistakes in the past right now. But we sort of built. So we had heard years ago about zk, but we sort of just, I don't know, at the time, looked into it and said like, oh, this looks like overly complicated. You can get privacy through these other means. And we ended up building a system that, that allowed for sort of like quick spin up of, of private chains that everything was sort of like in a, an encrypted tunnel. And you could, you could have like these chains completely secure. Nobody else would see what was happening there. But, but long story short, you know, slow learning process, we, we found out that customers want everything. And to the point that it made it worthless, we would go into enterprise. We would say, oh, you can set up these private channels with others. And they love that because they could sort of control that and they could control who goes in there. But then once everything was going through these private channels, then they wanted to be able to transfer from private chain to private chain. And that's where everything started to fall apart. Getting things back onto the main chain became sort of this extra complicated system. And at the same time, customers wanted to have full flexibility in having extensions to solidity where you could just name a chain and send some money from chain A to chain B. And really the only way to make that stuff work is you have to go back to zk. So ZK is overly complicated, but it is necessary. And so we started looking at that again. But I think the safe thing to do is start with a proven technology. And zcash had been around for years and nobody had stolen money. And this is just sort of like a subset of zk, but it's kind of a cool thing. You can build what they call tumblers of money, throw a bunch of money in and then the money that you put into the tumbler is, you know how much went in but, but the ownership is completely scrambled up and at any time you can go and transfer money from within the tumbler from one user to another, but only the users who did the transferring and got the money know what was there, but nobody else can see what's happening. So again like you have these systems of multiple users with lots of money, but you don't know who owns a percentage of the money.
+
+**[12:07] SPEAKER_00:** Yeah. Actually before we even go that far, can we talk just like what is ZK and how does it work and why is it an important part of the solution?
+
+**[12:15] SPEAKER_01:** I want to pull back for also a second. I remember, I think there was an Ethereum meetup in New York. I'm not sure if either of you guys were there. I think I spoke at it maybe and there was also a zcash I think presentation there. And it was at that time taking seven minutes to generate the ZK proofs. So you wanted to make a transaction you'd like, did this thing, it took seven minutes and then the verification was kind of fast. Once you had it and you sent it to the network, things could go on. But the usability was not there in those days. This is part of the reason we weren't gonna tell our enterprise customers like oh yeah, let's, let's ZK everything. You know, even if we had it all integrated nicely, there's a lot of devil in the details and it was unbelievably slow for a while and I think it's fixed.
+
+**[13:02] SPEAKER_00:** But yeah, well, it's complicated.
+
+**[13:04] SPEAKER_01:** I mean this is what I was.
+
+**[13:05] SPEAKER_02:** Trying to say before is like I have like sort of nuts and bolts experience of what's going on in zcash. But the more complicated world of zero knowledge, that's my aspirational part right now. I can sort of see pieces moving within there but, but would hesitate to speak more broadly on this except let's say that, that, that it is more complicated than any of the like for instance, Ethereum client implementation stuff that we were doing back in the day.
+
+**[13:36] SPEAKER_00:** Yeah, yeah. It can get pretty high level summary of what zero knowledge is like. I think very few people understand.
+
+**[13:42] SPEAKER_01:** I, I, I have a good layman example. Okay. I think and Jim can correct me. So I, I did want to take a theoretical cryptography class and the example they bring up is the CEO problem, so to speak. So you've got two CEOs and they're high ego guys, you know, and they want to know do you stand up.
+
+**[13:58] SPEAKER_00:** From experience, Kieran, or.
+
+**[14:00] SPEAKER_01:** Yeah, I'm not speaking about myself. They want to know who has the most between the two, but they don't want to know how much money, they merely want to know which one has more. And you would think that there wouldn't really be a way to create a scheme in which they could learn that information and nothing else. But there actually is. Again, this is almost 10 years ago now, so I may be describing the example incorrectly, but yeah, that's like a case where you might want zero knowledge. Similarly, like an ID check at a bar, you're leaking all your personal info when you hand the ID to the bouncer, to your home address, your full name, your date of birth, etc. So you may want to prove to the bar that you're over 21 without handing any other info over. Basically I think this is the general setting that it ends up at. Jim. Do I. You want to take that and run with it? Correct it?
+
+**[15:07] SPEAKER_00:** Yeah.
+
+**[15:08] SPEAKER_02:** So this is when you first look up zero knowledge. There are lots of little examples like this that are all pretty cool. And what's really happening in zcash is that what you're trying to do is pass money from person A to person B. And person A wants to prove to person B that they have the money and that it was actually transferred, but without giving away the amount of money that person A has. Or without person A learning how much that person B has. Just that you know, that the state before was that you had the amount and that the state after is that it was transferred over. And then also no one else in the world can know this. So you're proving sort of the important parts but not others. But zero knowledge could get pretty complicated too because when you start looking into it, there are a lot of one off examples like you're talking about that you can sort of see a solution to. But the problem comes about in trying to come up with sort of a generic solution where you can almost just compile any amount of code into some ZK proof and then run that for anything. I don't remember because it's been about a year now, but, but in Zero cash there were multiple, multiple zero knowledge proofs in there for various aspects. If I, you know, I might be making up some of the details here, but I think there was like one proof was like to show that you had more than such and such money before the transfer. I might have it slightly off, but there were multiple of these zero knowledge algorithms in there. But put together they allowed for the, for the full sort of transfer of money within the tumbler. And each one sort of had been worked out independently of each other using a more generic system where they compiled certain algorithms in there, let me add. So making it generic can get really.
+
+**[17:02] SPEAKER_01:** Complicated terminology for the listener that you heard that I barely remember. So snarks and Starks were a thing that Vitalik was talking about a lot and still does. So it's like succinct, non interactive arbitrary something computation. I can't remember.
+
+**[17:23] SPEAKER_03:** Like but basically interactive proof.
+
+**[17:25] SPEAKER_01:** Yes, but what's the whole acronym? But so there is a way I think to take an arbitrary computation and to prove that it has a certain result without revealing like the intermediate states and so on. But it's not computationally feasible. Like or it's just so slow that if you try to do it that way it becomes very difficult. So I believe just, just tying back to Jim's point, like you could try to do this in a generality. Like I can verify like the evm. Like I can verify there are these zkevms like I verify any computation that comes out of this thing. And I think the problem with them has been performance. And so the zcash people, I guess had to decompose every little step into specific circuits. Right. Like or. Yeah, it's very, very low level programming thinking in the ZK world. Like literally they're circuits that you end up compiling and so on and so forth.
+
+**[18:06] SPEAKER_03:** So yeah, zcash is onto it.
+
+**[18:07] SPEAKER_01:** Yeah.
+
+**[18:08] SPEAKER_02:** And sort of by identifying a certain set of algorithms and just focusing on them, they were able to sort of solve this one Tumblr problem without going any more in depth than that. So this isn't like in the dream world. You would take any Ethereum contract and compile it somehow as a something zero knowledge and then prove that, that you had run the, the full contract. That's something that at the time, at least so far in the world as it is, I, I didn't want to get into it or have us get into it as a company, but just to have these tumblers in place, I think that solves a lot of.
+
+**[18:42] SPEAKER_00:** Yeah, Bob, you were saying something.
+
+**[18:43] SPEAKER_03:** Yeah. So zcash is onto its fourth round of different cryptography. So I forget what they're called sapling something else or onto Orchard now. But I mean that's been now over the course of nearly a decade. You know, each time you've got another sort of two years worth of leading edge advancement and yeah like talking about that performance thing. So something which I think has been a key piece in zcash price appreciation recently has been the arrival of a functional mobile wallet. So that's called Zashi, which is made by the electric coin company. But you're basically at the point where you can run that proof on your phone. So something which used to be laptop 7 minutes is now phone second. So what you've seen if you look at the size of these shielding pools, where these pools are effectively like, you know, all of these things are all, you know, mixed and hidden together. Right. The, the more that you've got in a pool, the more you know, the more unlinkable you are if you have a, you know, if you do something simple like ring signatures where you just whatever. I think Monero's got 16 transactions that get all joined together. So you can trace through that to a degree. But if you've got hundreds or thousands or millions of people in that same pool, it's effectively completely anonymous at that point. But if you look at the stats of usage of these particular pools, are you seeing what proportion of the money supply has been shielded versus being transparent? I guess that's another thing to say, right? Is, is Bitcoin is transparent, you know, so same, same with Ethereum. But then they, they, they use the world word shielded to talk about, you know, that you are within this anonymity set. So these earlier rounds, you know, you had a bit of use but not a ton of use. But right now I can't find the view. But it, but it was something like about 4 or 5 million of the 21 million were within that shielding pool. So you know, a significant chunk of it is shielded now which was never the case in the past. You know I remember on etc at some point we were looking at whether we were going to bring over the pre compiles to do with some of the curves. I don't know if you remember that happened in Ethereum at some point. One of the Blake curves I think went into the pre compile and we were talking about whether we were going to do that or not. And really talking about gas limit as well. How gas expensive would operations be using these things even? And the stats at that time were it's like maybe 2% of transactions on Zcash were shielded, something like that. It's basically not being used at all functionally. Pretty much identical to Bitcoin but Probably a lot of end users going, yeah, I'm using zcash, I'm private. It's like, yeah, you're not at all. You are getting zero benefit at all. But yeah, that's really happening now. And I think it's just these rounds and rounds and years and years of research and then implementation of those. An engineering effort and it's like, hey, it works now.
+
+**[21:49] SPEAKER_00:** Well, from your standpoint, Jim, like, is it a technological advancement that zcash has created or is it just simply that these tumblers have gotten big enough that they offer real privacy? Do you know what I mean?
+
+**[21:58] SPEAKER_02:** It's, I mean any of these things are technological advancements, but I mean, you want to have the tumblers big enough so that, that you have some amount of anonymity within there. If it's a tumbler of one person, then it's not much of a Tumblr.
+
+**[22:10] SPEAKER_01:** I need to interject. I have a crypto friend who was, was texting about 30 seconds ago about whether I like Zcash at this price. This is a pre recorded podcast. So, you know, well, I guess it'll run on Wednesday, November 12, but very timely. You know, it's the zcash meta. I don't know, like, maybe that means there's room to run, maybe, maybe it's tops.
+
+**[22:34] SPEAKER_00:** But, well, as they say, it's like catching a falling knife, right? Like, you know, trying to figure out the, the peak of the market. I, I, okay, like we've talked about kind of how zcash works and it uses ZK in these sort of very specific areas and it's not, you know, programmable generally. Now obviously there's a lot of talk in the ethereum world about ZKEVMs. Do you guys have any thoughts on that? And like, you know how those work? Because, you know, at what point do we get like, is it truly impossible to get full programmability? Or do you know, is that something.
+
+**[23:08] SPEAKER_01:** That is just getting closer from a market perspective? I think they're mostly ZKAVMs have been used for scaling as opposed to privacy. Even there you tend to see some amount of specificity. Like I think I mentioned on a podcast before, I'm, you know, friend acquaintances with the lighter CEO and lighter uses. Lighter is like the L2 version of hyper liquid, if you will, or where they do perps and they do zero knowledge matching off chain but you know, it actually works and it gets written to Ethereum which is pretty cool and supposedly they're achieving really high throughputs this way. It's not necessarily privacy tech at all. I ran into some of the Aztec folks in Singapore that seems trending. General purpose still on testnet but not full evm. It's like a restricted UTXO type language of sorts I believe. I think there's probably not being nearly as expert as Jim, who I'll defer to in a second not being an expert. I think it will be. There's no intrinsic reason you can't make it full EVM or full Rust or JavaScript or whatever. But probably there will be a tremendous amount of optimization that would have to happen to make that happen. So you probably see special purpose for a while.
+
+**[24:35] SPEAKER_03:** I saw that and now I'm blanking on the name. The ZK tech that was happening under the Polygon banner with Jordi Balina and I can't remember the name of the project now they posted within the last few months that they were real time ZK proving Mainnet now but you know, it was with a battery of GPUs. It was not a thing that you would be doing yourself. But yeah, that full proving is, you know, is possible, possible. But yeah, you, you, you have that optimization to, to be done. But I mean I think, I think that's where things are going to end up that you've had this sort of improvement where starting at Bitcoin, it's like well how are we going to prove, you know, get to global consensus and, and solve the double spend problem? Well it, it's by publishing all of the details and then we're going to have redundant state machines running in parallel. Right. And that's the answer. We know that works. It was like what Satoshi did the big ugly thing but it worked and it made this stuff possible that had never been possible before, but it is, you know, it's an incredibly big, ugly, expensive way of doing that. And then I think just over time it's like okay, well having things public was sort of a requirement for that consensus model. But that was never intentional. Like having them all as a public ledger like that, that's not a positive feature. Now if you look at the cypherpunk culture that many of these people were coming out of, yeah, it's, it's private, unstoppable money. Like yeah, no, it wouldn't be public. So I Saw that, yeah. Within weeks of bitcoin starting, Hal Finney said, you know, looking at ways of improving anonymity in bitcoin. So that was January 2009. You know, that was a cypherpunk's obvious first reaction is, yeah, this is cool now, but yeah, we should have privacy as well. And I think we're sort of getting to that point of the tech has become good enough to, to solve that without broadcasting everything to everyone.
+
+**[27:03] SPEAKER_00:** Yeah. Jim, what, what do you think, like, you know, on the sort of general programmability ZK front?
+
+**[27:09] SPEAKER_02:** I wish I had more, you know, hands on experience with general zk. I see a lot of people very excited by it and maybe in a way that makes me skeptical because it seems like a cool toy, but I am open to them working great. And so I don't want to make a strong, firm stance at the moment on them, but they would be great if they work.
+
+**[27:31] SPEAKER_00:** Yeah. It seems like the approach to Karen's point is like find specific areas where you can create circuits and apply them and optimize for those and then expand that over time. It's really about nailing those initial use cases.
+
+**[27:41] SPEAKER_02:** And that's why I was drawn to that, because if you really narrow it down to something really simple, then I think you can do it. Well.
+
+**[27:46] SPEAKER_01:** I've heard that people even maybe compile the specific circuits and then optimize like you kind of write them with the general tool. Some people do, I don't know. And then you kind of like, like, okay, I got the circuit for the specific thing, but then I got to make it like work, you know.
+
+**[27:58] SPEAKER_00:** Yeah, I think compiling a circuit is still pretty very like computational intensive. But it's way more, but it's way less for most circuits once the circuit is compiled. It's way less to do the proof, which is, you know, and you got to continue to push that down, but I think the ratio is very large. Okay, well, I think we are at time, you know, where can we find you? Jim, I'm going to start with you.
+
+**[28:15] SPEAKER_02:** Where can you find me?
+
+**[28:16] SPEAKER_00:** Yes, people, I hear more and learn more about Jim, which I, you know, please speak up. Ask Jim, where can, where they find you?
+
+**[28:23] SPEAKER_02:** I do have a Twitter handle. What is my Twitter handle? I can't remember, but probably J. Hermo.
+
+**[28:31] SPEAKER_00:** I guess it's jam. She probably try to check.
+
+**[28:34] SPEAKER_01:** Hold on.
+
+**[28:35] SPEAKER_02:** Yeah.
+
+**[28:36] SPEAKER_00:** But whatever it is, you should post more often. Okay.
+
+**[28:39] SPEAKER_02:** I, I Twitter. I like wake up one day and remember that Twitter exists. And then I Twitter, I tweet a lot and then. Then I forget about it for a couple.
+
+**[28:47] SPEAKER_00:** Sorry, it's J for months like J.
+
+**[28:50] SPEAKER_01:** H O in the chat. I don't know if we can all see that the studio chat.
+
+**[28:53] SPEAKER_00:** But yeah, so. So yes, you can find them at J Hermuz.
+
+**[29:00] SPEAKER_01:** Karen, where can people find Hermes?
+
+**[29:04] SPEAKER_00:** Oh, Jamsheed Hermos.
+
+**[29:06] SPEAKER_01:** Yeah, I'm on X Rubin. I'm also on substack trying to, you know, I have a couple old medium posts that I've linked from there. I'm getting a little bit into a substack rhythm. It'll probably be infrequent but at least of moderate to high quality. Also kjameslubin Substack I think for now maybe I'll change the URL and link it in the show notes when we start. Assuming we do show notes and you.
+
+**[29:30] SPEAKER_00:** Can find me on xicforwang. Bob has posted why I explained before in my handle. You can also find us on Telegram at the Strom Mercado Group. Just go to our website@straumercada.com and that will point you to Telegram. And Bob, where can people find you and what can people expect next week?
+
+**[29:45] SPEAKER_03:** Don't close it out, Bob. You're the resident zcash shill. One year from now, zcash price or market cap or both?
+
+**[29:51] SPEAKER_03:** I think it will be in the top 10.
+
+**[29:54] SPEAKER_01:** Top 10.
+
+**[29:56] SPEAKER_03:** It's been very close and the primary reason is privacy is a big need and it solved it, right? It's not some future promise like it works. Right now there's a mobile app, people are using it. You know, you've got like a 10 year, near 10 year history of, you know, top brainiacs working on this. Lots of credibility. So you know, I think it's great and then I'm looking forward to smart contracts with that kind of level as well. Just one more thing to mention. I couldn't remember Jordy's project Zisk. So that was. That's a spinoff group now from Polygon led by Jordi Balena and they announced real time proving of mainnet blocks that was announced at FCC this year. So proving a block in 7 1/2 to 12 seconds. So just under block time. However, it requires 24 very high powered GPUs or 48 more consumer spec. So you've got a rack.
+
+**[30:56] SPEAKER_00:** There we go. And Bob, with that prediction, where can we find you and can you give us a preview of what people can expect next week?
+
+**[31:02] SPEAKER_03:** Absolutely, yes. So I'm Bob Summerwill. Summer like the season. W I L L so on everything with that name. And yes. So next week we will have an early days of Ethereum interview with Christoph Jens, formerly of. Of FDEV, so was hired in September 2014 into that Berlin office, worked on testing, cross client testing and then later on slock it with their smart locks and the creation of the Dao, which was probably, you know, Ethereum's first killer app. Until killing.
+
+**[31:36] SPEAKER_00:** Killing in many different ways. Yes, by doing that. Or you can say birthing because etc came out of that.
+
+**[31:42] SPEAKER_03:** Correct. Right.
+
+**[31:45] SPEAKER_00:** Okay. Well, that's time. Thank you very much for joining us and we look forward to seeing you next week. Take care.
+
+**[31:51] SPEAKER_01:** Thanks, everybody.

@@ -1,0 +1,75 @@
+```
+**[00:00] SPEAKER_00:** Okay, I think we are live.
+
+**[00:02] SPEAKER_01:** Live? Us?
+
+**[00:03] SPEAKER_00:** Let's just give a minute for people to join.
+
+**[00:05] SPEAKER_01:** All righty.
+
+**[00:06] SPEAKER_02:** So I looked at the background noise reduction. It says not supported in this browser. I'm using Firefox. Perhaps it has to be Chrome.
+
+**[00:13] SPEAKER_01:** Yes. You must pick from the two available choices. Safari. Maybe three.
+
+**[00:17] SPEAKER_00:** Yeah, Safari has a huge amount just because of the iPhone.
+
+**[00:20] SPEAKER_01:** Is Edge, is it called Edge still? Yes.
+
+**[00:23] SPEAKER_02:** Yes. Nobody uses Edge. Nobody.
+
+**[00:25] SPEAKER_01:** Nobody uses it. I bet you it's a lot, hold on.
+
+**[00:28] SPEAKER_02:** I seem to remember seeing, and I can't remember if it was on Edge or Bing or probably both, but the most searched thing was how to install Chrome.
+
+**[00:34] SPEAKER_01:** That's funny. Try though, they might—wow, Chrome just continues to rise in market share. It's gone from 66% roughly about a year ago to 72% now worldwide. Safari is trending down. Yeah. They're just pretty tiny. Wow. Opera is still around. That's amazing.
+
+**[00:48] SPEAKER_02:** They all use Chromium, though.
+
+**[00:50] SPEAKER_01:** Okay. Fair enough.
+
+**[00:51] SPEAKER_00:** Oddly, my son uses Opera. Okay. We are live now on Twitter. Live. Live. Okay. So should we... Should we wait another minute or should we just start?
+
+**[01:00] SPEAKER_01:** That's a good question. We can ease into the substance of the content. Do we have any minute-long non sequiturs?
+
+**[01:05] SPEAKER_00:** Cold opens. Well, maybe we should do our intros because we—We could do the intros. So hi, everyone. Welcome to our weekly show. If you don't know, we are all part of the Strato Mercado project that is a layer one EVM-compatible blockchain focused on bringing DeFi to the masses. Now, the three of us here are all longtime builders and all Ethereum OGs. I'm Victor Wong.
+
+**[01:27] SPEAKER_01:** Vic, I don't know if you can describe yourself as an OG. I think someone else has to describe it.
+
+**[01:31] SPEAKER_00:** Someone has to bestow that. Exactly. Okay, you two are OGs. Can we say it to each other?
+
+**[01:36] SPEAKER_01:** Yeah, can we say it to each other? You are an OG. I said that as a collective. In a circle.
+
+**[01:40] SPEAKER_00:** Right, exactly.
+
+**[01:41] SPEAKER_01:** You can tell Bob. Bob's an OG. Bob can tell me. I can tell you.
+
+**[01:44] SPEAKER_00:** Yes. So, you know, we've been building since the launch of Ethereum and continue to follow this journey. So you'll get, hopefully, no shilling and a lot of good historical context about what we're going to talk about today. And today we are going to talk about the highlights from Token 2049. And was it more boring or more crazy in terms of the blockchain world? Joining me is Bob Summerwell. Bob, you want to do a quick intro?
+
+**[02:06] SPEAKER_02:** Hi there, I'm Bob Summerwell. We are all—we're not old—we're all very experienced. Thank you. But yes, I'm head of ecosystem.
+
+**[02:13] SPEAKER_00:** Yeah. And Kieran, of course.
+
+**[02:15] SPEAKER_01:** Yeah. I am also experienced, you know, not as long as you can be in the space, but it's starting to feel like it, right? Like we've really been around for some time. But yes, I'm...
+
+**[02:24] SPEAKER_00:** I will bestow the OG title on you, Kieran. So we could go... I mean, anyone that's been around since before the launch of Ethereum and was part of it, I think, you know, that would be... We can claim that title.
+
+**[02:35] SPEAKER_01:** How the time goes.
+
+**[02:36] SPEAKER_00:** So I will say that I was not in Singapore. I kind of played hooky with Kieran's approval. You know, international travel is brutal. But Bob and Kieran were there and wanted to get your kind of impressions. What do you think the big themes this year were at Token 2049?
+
+**[02:51] SPEAKER_01:** Yeah. Bunch of big topics. One thing that was notable is that it felt like meme coins had almost completely vanished. And there was a lot of that the previous year.
+
+**[02:59] SPEAKER_00:** Can I pour one out for the meme coins, basically?
+
+**[03:01] SPEAKER_01:** In meme coins' defense, I'm actually kind of pro-meme coin. The problem is just the time horizon. People want to make money in seconds. I think if a meme around a concept can kind of grow organically for some period of time, it's great. But yeah, it's just the impatience and nihilism seems to increase with each cycle. But maybe not this one. So the conference felt kind of less scammy in general. And a lot of digital asset treasury talk—I think we can go into that—as we go. A lot of stablecoin talk. You know, a lot of merger with TradFi sort of feel. I also think something has changed, and I can't tell if it's just that we're all being bombarded with the same content or something's qualitatively different about the world. A year ago, it felt like crypto was sort of peripheral to the problems with the world. And now it feels like it's a big part of the solution. It's very strange. And everyone sort of acknowledged that. You know, like Donald Trump Jr. was there. Like, that's a big changeover. You just feel... and you know, some weeks ago, Putin made his comments about how the United States was trying to use stablecoins to export American inflation—which is probably true—but it's like, that's a big turnaround. It's like a from-the-top policy as opposed to just... and you felt that at the conference as well.
+
+**[04:17] SPEAKER_02:** Well, I mean, that wasn't new on the Bitcoin conference side. So I was in Nashville 2014 and Vegas—sorry, 2014, 2020, 2024—and then this July in Vegas. So in Nashville last year, you had Trump, RFK Jr. Then this year you had both Trump boys—Ben Jr. and Eric were both there. And oh my goodness, I'm forgetting his name from the UK. That will come to me in a second. But yeah, and also tons of other Congress people and state-level stuff. That's been a real theme well in advance on the Bitcoin side. I mean, I guess essentially because you've just already got that monetary store of value use case. It's like getting into these boring ETF, treasury company, government-level adoption sort of stuff. That's happened earlier on the Bitcoin side than more generally. But yeah, also, I mean, obviously the Trumps have got their World Liberty nonsense going on and gotta be pumping that one.
+
+**[05:13] SPEAKER_00:** Well, actually, that's a good transition. Internally, we were trying to decide whether the conference was more boring or more crazy than usual. You kind of have talked about the boring elements, I guess, more institutional. And I'm curious, since this is in Singapore, a very global conference, what countries outside the U.S. seem to be moving in this direction? Obviously, the U.S. has been a holdout for a really long time. But how are things getting boring and how are things getting more global?
+
+**[05:39] SPEAKER_01:** Bob, I want to remind you not to criticize our friends in Washington, at least in a public forum. Supporters of the power.
+
+**[05:45] SPEAKER_02:** I'm not getting back in.
+
+**[05:46] SPEAKER_01:** So yeah, it's an interesting feel at the conference. I would say it obviously represented people who are close by pretty well. But also, a good number of people in from, let's say, UAE, some Europe, plenty of Americans who did the really long trip. Lots of Americans, I would say. And yeah, I think it's a strange... the institutional feeling was much stronger than the prior year. And it's not that much time to have passed. Like there were many... stablecoins have this institutional feel to them. Even at the beginning, they didn't. And it is funny to watch. I see these announcements like, "Tether's coming to the U.S. and we've set up a nice regulatory framework that they can work with." And I went to a side event and met some of the Tether people. It's also just funny to see them in the media, like buying sports teams and all of that. At a certain point, you get big enough, you become institutional. But yeah, I think even last year, it felt like blockchain technology—maybe at the lower levels of the stack—disproportionately gets created in the broader West, with the exception of some of the exchanges and such. And it gets used outside the West more. So you see stablecoin balances—yes, they're big in the U.S.—but it's kind of really a global story. Tether in particular being much larger than Circle. Obviously, I think both of them—Tether purports not to serve the U.S. I'm sure there's plenty of U.S. USDT holders. Circle may be preferencing the U.S., but probably covers global as well. It's a funny feeling in which the people at the conference are a little more like users than builders. And there's also just—I mean, the feel—Token is a little like... someone described it to me kind of like Comic-Con. And I thought that was actually very apt. People in funny... like, you know, there were astronauts. You could take yourself as an astronaut with Justin Sun pictures. And lots of shiny outfits. And I think the world's tallest man was there. Sadly, in a wheelchair. I think he has a hard time standing, at least for long periods of time. It was like... You saw this horse in a wheelchair. I was like, no, that's a human. Like a really large—eight-six or seven-ten or something—like a really large human being.
+```
