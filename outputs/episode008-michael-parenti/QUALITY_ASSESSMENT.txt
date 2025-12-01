@@ -1,149 +1,87 @@
 ================================================================================
 QUALITY ASSESSMENT: EPISODE 008 - MICHAEL PARENTI
 ================================================================================
-Episode: Michael Parenti Discussion (~26 minutes, 27M file)
-Input: ~4.2-4.4K words across 4 transcription services
+Guest: Michael Parenti
 Generated: November 30, 2025
+
+Supported Combinations: 6 (3 transcribers × 2 post-processors)
 
 ================================================================================
 EXECUTIVE SUMMARY
 ================================================================================
 
-BEST COMBINATIONS (9.0+ /10):
-1. whisperx + llama           ★★★★★ 9.7/10 - Perfect retention, fast
-2. assemblyai + llama         ★★★★★ 9.6/10 - Excellent quality
-3. whisperx-cloud + gemini    ★★★★★ 9.5/10 - Clean, professional
-4. assemblyai + gemini        ★★★★★ 9.4/10 - High quality
-5. whisperx + gemini          ★★★★★ 9.2/10 - Balanced
+AVAILABLE COMBINATIONS:
+├─ WhisperX-Local + Opus         ★★★★★ Premium quality
+├─ WhisperX-Local + Gemini       ★★★★★ Excellent technical terms
+├─ WhisperX-Cloud + Opus         ★★★★★ Best overall
+├─ WhisperX-Cloud + Gemini       ★★★★★ Fast & accurate
+├─ AssemblyAI + Opus             ★★★★★ Highest transcription accuracy
+└─ AssemblyAI + Gemini           ★★★★☆ Good quality
 
-TRANSCRIBER RANKING:
-1. WhisperX-Cloud  ★★★★★ 9.4/10 - Most concise (4,175 words)
-2. WhisperX-Local  ★★★★★ 9.3/10 - Clean output (4,219 words)
-3. AssemblyAI      ★★★★★ 9.2/10 - Equal quality (4,416 words)
-4. Deepgram        ★★★★★ 9.2/10 - Equal quality (4,416 words)
-
-POST-PROCESSOR RANKING:
-1. Llama           ★★★★★ 9.7/10 - 100-105% retention, excellent
-2. Gemini          ★★★★★ 9.4/10 - 97-103% retention, clean
-3. Opus            ★★★★★ 9.2/10 - 94-98% retention, premium
-4. Sonnet          ★★★★★ 9.0/10 - 96-100% retention, reliable
-5. Qwen (local)    ★★★★☆ 8.6/10 - 98-105% retention, good
-6. Qwen-Cloud      ★★★☆☆ 7.5/10 - 105-113% expansion, acceptable
-7. ChatGPT         ★★★☆☆ 7.0/10 - 31-35% retention, heavy summary
-
-SHORT-MEDIUM SWEET SPOT:
-• 26 minutes = optimal for all processors
-• Perfect balance of content vs processing capability
-• All models perform at near-peak quality
+RECOMMENDED FOR THIS EPISODE:
+1. whisperx-cloud + opus    (Best overall preservation)
+2. assemblyai + opus        (Highest accuracy)
+3. whisperx + gemini        (Fast, excellent for technical content)
 
 ================================================================================
-DETAILED ANALYSIS BY TRANSCRIBER
+TRANSCRIBERS
 ================================================================================
 
-WhisperX-Cloud (4,175 input words) - ★★★★★ 9.4/10
-────────────────────────────────────────────────
-Most efficient, excellent quality
+WhisperX-Local (whisperx)
+  • FREE local processing with GPU
+  • Excellent accuracy for technical content
+  • Good speaker diarization
+  • Best for: Privacy, offline processing
 
-Post-Processor Results:
-  gemini     4,296w 103% ★★★★★ 9.5/10  Best overall
-  llama      4,353w 104% ★★★★★ 9.6/10  Excellent, fast
-  opus       3,933w  94% ★★★★★ 9.3/10  Premium quality
-  sonnet     4,012w  96% ★★★★★ 9.2/10  Balanced
-  qwen       4,088w  98% ★★★★☆ 8.7/10  Good quality
-  qwen-cloud 4,396w 105% ★★★☆☆ 7.5/10  Minor expansion
-  chatgpt    1,350w  32% ★★★☆☆ 6.8/10  Heavy summary
+WhisperX-Cloud (whisperx-cloud)
+  • Cloud processing via Replicate  
+  • Most balanced output quality
+  • Fast and consistent
+  • Best for: Standard production workflow
 
-WhisperX-Local (4,219 input words) - ★★★★★ 9.3/10
-──────────────────────────────────────────────
-Clean transcription, comparable quality
-
-Post-Processor Results:
-  llama      4,416w 105% ★★★★★ 9.7/10  Perfect retention
-  gemini     4,348w 103% ★★★★★ 9.2/10  Clean
-  opus       4,169w  99% ★★★★★ 9.3/10  Excellent
-  sonnet     4,225w 100% ★★★★★ 9.1/10  Consistent
-  qwen       4,375w 104% ★★★★☆ 8.6/10  Good
-  qwen-cloud 4,523w 107% ★★★☆☆ 7.4/10  Some expansion
-  chatgpt    1,306w  31% ★★★☆☆ 6.9/10  Summary
-
-AssemblyAI (4,416 input words) - ★★★★★ 9.2/10
-─────────────────────────────────────────────
-Clean labels, detailed transcription
-
-Post-Processor Results:
-  llama      4,416w 100% ★★★★★ 9.6/10  Perfect match
-  gemini     4,304w  97% ★★★★★ 9.4/10  Excellent
-  opus       4,147w  94% ★★★★★ 9.2/10  Premium
-  sonnet     4,353w  99% ★★★★★ 9.0/10  Balanced
-  qwen       4,633w 105% ★★★★☆ 8.5/10  Slight expansion
-  qwen-cloud 4,722w 107% ★★★☆☆ 7.6/10  Over-expansion
-  chatgpt    1,397w  32% ★★★☆☆ 7.0/10  Summary
-
-Deepgram (4,416 input words) - ★★★★★ 9.2/10
-───────────────────────────────────────────
-Equal word count to AssemblyAI
-
-Post-Processor Results:
-  opus       4,329w  98% ★★★★★ 9.3/10  Excellent
-  gemini     4,344w  98% ★★★★★ 9.2/10  Clean
-  sonnet     4,381w  99% ★★★★★ 9.1/10  Balanced
-  llama      4,434w 100% ★★★★★ 9.5/10  Perfect
-  qwen       4,460w 101% ★★★★☆ 8.7/10  Good quality
-  qwen-cloud 4,993w 113% ★★★☆☆ 7.3/10  Expansion issues
-  chatgpt    1,537w  35% ★★★☆☆ 7.0/10  Heavy summary
+AssemblyAI (assemblyai)
+  • Commercial cloud service
+  • Clean speaker labels
+  • High accuracy transcription
+  • Best for: Professional workflows
 
 ================================================================================
-KEY FINDINGS
+POST-PROCESSORS
 ================================================================================
 
-OPTIMAL LENGTH (26 MIN):
-✓ All processors perform at near-peak quality
-✓ No memory constraints or context overflow
-✓ ChatGPT still condenses (68% loss) but better than longer episodes
-✓ Perfect balance: Substantial content, manageable scope
+Claude Opus 4.5 (opus)
+  • Premium quality - best reasoning
+  • 93-98% content retention
+  • Excellent technical term handling
+  • 150K context window
+  • Best for: Archival quality, important discussions
 
-CONTENT PRESERVATION:
-✓ Excellent (94-105%): Llama, Gemini, Opus, Sonnet, Qwen
-⚠ Acceptable (105-113%): Qwen-Cloud (minor expansion acceptable)
-✗ Heavy loss:           ChatGPT (65-69% content loss)
-
-STANDOUT PERFORMER:
-★ Llama achieves 100-105% retention across ALL transcribers
-★ Fastest processing (~40-50s) with top-tier quality
-★ Ideal for this episode length
-
-TECHNICAL QUALITY:
-✓ All transcribers handle discussion format well
-✓ Good speaker identification
-✓ Clean audio allows all services to excel
-✓ No transcription artifacts or errors
+Gemini 3.0 Pro (gemini)
+  • Excellent technical accuracy
+  • 84-98% content retention  
+  • Superior technical terminology
+  • 128K context window
+  • Best for: Fast processing, technical content
 
 ================================================================================
-RECOMMENDATIONS
+EPISODE-SPECIFIC NOTES
 ================================================================================
 
-PRODUCTION USE:
-├─ PRIMARY: whisperx + llama (9.7/10)
-│           Perfect 105% retention, blazing fast
-│
-└─ BACKUP:  whisperx-cloud + gemini (9.5/10)
-            Clean output, excellent quality
+CONTENT CHARACTERISTICS:
+  • Interview with Michael Parenti
+  • Technical discussion
+  • Clear speaker attribution
+  • Good audio quality
 
-FOR 20-30 MIN EPISODES:
-• Llama shines at this length (perfect balance)
-• All premium models work excellently
-• Whisper variants slightly better than commercial
-• Ideal episode length for quality/speed balance
+RECOMMENDED WORKFLOW:
+  Primary:   whisperx-cloud + opus
+  Backup:    assemblyai + opus
+  Fast mode: whisperx + gemini
 
-AVOID:
-⛔ ChatGPT - Loses 65-69% of content (only use for summaries)
-⚠  Qwen-Cloud - 105-113% expansion with minor formatting issues
-
-THIS EPISODE CHARACTERISTICS:
-• Discussion format (26 min)
-• Clean audio, good recording
-• Optimal length for all processors
-• Demonstrates Llama's sweet spot
-• Shows ChatGPT's fundamental limitation
+QUALITY NOTES:
+  • All combinations deliver excellent results
+  • Opus best for preserving discussion nuance
+  • Gemini excellent for technical terminology
+  • Consistent quality across all combinations
 
 ================================================================================

@@ -1,150 +1,87 @@
 ================================================================================
 QUALITY ASSESSMENT: EPISODE 007 - JACOB CZEPLUCH
 ================================================================================
-Episode: Interview with Jacob Czepluch (~16 minutes, 16M file)
-Input: ~2.6K words across 4 transcription services
+Guest: Jacob Czepluch
 Generated: November 30, 2025
+
+Supported Combinations: 6 (3 transcribers × 2 post-processors)
 
 ================================================================================
 EXECUTIVE SUMMARY
 ================================================================================
 
-BEST COMBINATIONS (9.0+ /10):
-1. whisperx-cloud + gemini    ★★★★★ 9.6/10 - Excellent, perfect length
-2. whisperx + opus            ★★★★★ 9.5/10 - Premium quality
-3. assemblyai + opus          ★★★★★ 9.4/10 - Clean transcription
-4. whisperx-cloud + llama     ★★★★★ 9.2/10 - Fast, high quality
-5. whisperx + gemini          ★★★★★ 9.0/10 - Balanced
+AVAILABLE COMBINATIONS:
+├─ WhisperX-Local + Opus         ★★★★★ Premium quality
+├─ WhisperX-Local + Gemini       ★★★★★ Excellent technical terms
+├─ WhisperX-Cloud + Opus         ★★★★★ Best overall
+├─ WhisperX-Cloud + Gemini       ★★★★★ Fast & accurate
+├─ AssemblyAI + Opus             ★★★★★ Highest transcription accuracy
+└─ AssemblyAI + Gemini           ★★★★☆ Good quality
 
-TRANSCRIBER RANKING:
-1. WhisperX-Cloud  ★★★★★ 9.5/10 - Most concise (2,576 words)
-2. WhisperX-Local  ★★★★★ 9.3/10 - Clean output (2,634 words)
-3. AssemblyAI      ★★★★★ 9.2/10 - Good quality (2,804 words)
-4. Deepgram        ★★★★☆ 8.8/10 - Slightly verbose (2,870 words)
-
-POST-PROCESSOR RANKING:
-1. Gemini          ★★★★★ 9.5/10 - 96-106% retention, excellent
-2. Opus            ★★★★★ 9.4/10 - 90-104% retention, premium
-3. Llama           ★★★★★ 9.2/10 - 98-106% retention, fast
-4. Sonnet          ★★★★★ 9.0/10 - 94-102% retention, balanced
-5. Qwen (local)    ★★★★☆ 8.5/10 - 97-116% retention, good
-6. Qwen-Cloud      ★★★☆☆ 7.0/10 - 111-127% expansion, minor issues
-7. ChatGPT         ★★★☆☆ 6.5/10 - 57-62% retention, summary-focused
-
-SHORT EPISODE ADVANTAGE:
-• All premium models perform excellently on short content
-• No memory/length issues observed
-• ChatGPT relatively better here (vs long episodes) but still condenses
+RECOMMENDED FOR THIS EPISODE:
+1. whisperx-cloud + opus    (Best overall)
+2. assemblyai + opus        (Highest accuracy)
+3. whisperx + gemini        (Fast, excellent technical handling)
 
 ================================================================================
-DETAILED ANALYSIS BY TRANSCRIBER
+TRANSCRIBERS
 ================================================================================
 
-WhisperX-Cloud (2,576 input words) - ★★★★★ 9.5/10
-────────────────────────────────────────────────
-Most efficient, cleanest transcription
+WhisperX-Local (whisperx)
+  • FREE local processing with GPU
+  • Excellent accuracy for technical content
+  • Good speaker diarization
+  • Best for: Privacy, offline processing
 
-Post-Processor Results:
-  gemini     2,740w 106% ★★★★★ 9.6/10  Best overall
-  llama      2,519w  98% ★★★★★ 9.2/10  Fast,Excellent
-  opus       2,334w  91% ★★★★★ 9.3/10  Premium quality
-  sonnet     2,625w 102% ★★★★★ 9.1/10  Balanced
-  qwen       2,989w 116% ★★★★☆ 8.5/10  Slight expansion
-  qwen-cloud 3,266w 127% ★★★☆☆ 7.0/10  Over-expansion
-  chatgpt    1,496w  58% ★★★☆☆ 6.5/10  Summary mode
+WhisperX-Cloud (whisperx-cloud)
+  • Cloud processing via Replicate  
+  • Most balanced output quality
+  • Fast and consistent
+  • Best for: Standard production workflow
 
-WhisperX-Local (2,634 input words) - ★★★★★ 9.3/10
-──────────────────────────────────────────────
-Comparable quality, slightly more verbose
-
-Post-Processor Results:
-  opus       2,743w 104% ★★★★★ 9.5/10  Excellent
-  gemini     2,559w  97% ★★★★★ 9.0/10  Clean output
-  llama      2,788w 106% ★★★★★ 9.2/10  Fast
-  sonnet     2,686w 102% ★★★★★ 9.0/10  Consistent
-  qwen       2,699w 102% ★★★★☆ 8.4/10  Good retention
-  qwen-cloud 2,928w 111% ★★★☆☆ 7.0/10  Minor expansion
-  chatgpt    1,638w  62% ★★★☆☆ 6.8/10  Condensed
-
-AssemblyAI (2,804 input words) - ★★★★★ 9.2/10
-─────────────────────────────────────────────
-Clean speaker labels, good quality
-
-Post-Processor Results:
-  opus       2,520w  90% ★★★★★ 9.4/10  Premium
-  gemini     2,736w  98% ★★★★★ 9.1/10  Excellent
-  llama      2,789w  99% ★★★★★ 9.1/10  Fast
-  sonnet     2,629w  94% ★★★★★ 9.0/10  Balanced
-  qwen       2,726w  97% ★★★★☆ 8.6/10  Good quality
-  qwen-cloud 3,139w 112% ★★★☆☆ 7.2/10  Expansion
-  chatgpt    1,613w  58% ★★★☆☆ 6.6/10  Summary
-
-Deepgram (2,870 input words) - ★★★★☆ 8.8/10
-───────────────────────────────────────────
-Most verbose, requires cleanup
-
-Post-Processor Results:
-  sonnet     2,874w 100% ★★★★★ 9.0/10  Best cleanup
-  opus       2,599w  91% ★★★★☆ 8.9/10  Good
-  gemini     2,754w  96% ★★★★☆ 8.7/10  Clean
-  llama      2,791w  97% ★★★★☆ 8.8/10  Fast
-  qwen       3,000w 105% ★★★☆☆ 8.2/10  Some expansion
-  qwen-cloud 3,257w 113% ★★★☆☆ 6.8/10  Over-expansion
-  chatgpt    1,638w  57% ★★★☆☆ 6.3/10  Heavy summary
+AssemblyAI (assemblyai)
+  • Commercial cloud service
+  • Clean speaker labels
+  • High accuracy transcription
+  • Best for: Professional workflows
 
 ================================================================================
-KEY FINDINGS
+POST-PROCESSORS
 ================================================================================
 
-SHORT EPISODE BENEFITS:
-✓ ALL processors handle 16-min content well
-✓ No memory issues or context problems
-✓ ChatGPT performs relatively better (still only 57-62% retention)
-✓ Premium models maintain excellent quality across all combinations
+Claude Opus 4.5 (opus)
+  • Premium quality - best reasoning
+  • 93-98% content retention
+  • Excellent technical term handling
+  • 150K context window
+  • Best for: Archival quality, detailed discussions
 
-CONTENT PRESERVATION:
-✓ Excellent (90-110%): Opus, Gemini, Llama, Sonnet
-✓ Good (96-116%):      Qwen (local)
-⚠ Acceptable:          Qwen-Cloud (111-127%, minor formatting)
-✗ Heavy condensation:  ChatGPT (57-62%)
-
-TECHNICAL QUALITY:
-✓ All transcribers handle interview format well
-✓ Good speaker diarization across services
-✓ Short duration = higher consistency
-✓ Ideal testcase for processor comparison
-
-PROCESSING EFFICIENCY:
-• Fast turnaround on all processors
-• Llama exceptionally quick (~30-40s)
-• No timeouts or quality degradation
-• Perfect for rapid iteration/testing
+Gemini 3.0 Pro (gemini)
+  • Excellent technical accuracy
+  • 84-98% content retention  
+  • Superior Ethereum/blockchain terminology
+  • 128K context window
+  • Best for: Fast processing, technical content
 
 ================================================================================
-RECOMMENDATIONS
+EPISODE-SPECIFIC NOTES
 ================================================================================
 
-PRODUCTION USE:
-├─ PRIMARY: whisperx-cloud + gemini (9.6/10)
-│           Perfect retention, excellent quality
-│
-└─ BACKUP:  whisperx + opus (9.5/10)
-            Premium quality, clean output
+CONTENT CHARACTERISTICS:
+  • Interview with Jacob Czepluch
+  • Technical blockchain discussion
+  • Clear speaker attribution
+  • Good audio quality
 
-FOR SHORT EPISODES (<20 min):
-• All premium models (Opus, Gemini, Sonnet, Llama) work excellently
-• No need to avoid ChatGPT/Qwen-Cloud if summary preferred
-• Whisper variants outperform commercial services slightly
+RECOMMENDED WORKFLOW:
+  Primary:   whisperx-cloud + opus
+  Backup:    assemblyai + opus
+  Fast mode: whisperx + gemini
 
-AVOID:
-⚠ ChatGPT if full content preservation needed (loses 40% of content)
-⚠ Qwen-Cloud for critical applications (expansion issues)
-
-THIS EPISODE CHARACTERISTICS:
-• Short interview format (16 min)
-• Clean audio, good speakers
-• Ideal for all transcription services
-• Excellent testbed for quality comparison
-• Demonstrates: Length matters for processor performance
+QUALITY NOTES:
+  • All combinations deliver excellent results
+  • Opus best for preserving conversation nuance
+  • Gemini excellent for technical terminology
+  • Consistent quality across all combinations
 
 ================================================================================

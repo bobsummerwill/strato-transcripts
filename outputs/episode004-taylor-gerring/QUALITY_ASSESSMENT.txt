@@ -1,117 +1,87 @@
 ================================================================================
 QUALITY ASSESSMENT: EPISODE 004 - TAYLOR GERRING
 ================================================================================
-Episode: Taylor Gerring Interview (~71 minutes, 35M file)
-Input: ~10.4-10.7K words across 4 transcription services
+Guest: Taylor Gerring
 Generated: November 30, 2025
+
+Supported Combinations: 6 (3 transcribers × 2 post-processors)
 
 ================================================================================
 EXECUTIVE SUMMARY
 ================================================================================
 
-BEST COMBINATIONS (9.0+ /10):
-1. whisperx-cloud + gemini    ★★★★★ 9.5/10 - Excellent
-2. whisperx + opus            ★★★★★ 9.4/10 - Premium quality
-3. assemblyai + opus          ★★★★★ 9.3/10 - Clean
-4. whisperx-cloud + sonnet    ★★★★★ 9.2/10 - Balanced
-5. assemblyai + gemini        ★★★★★ 9.0/10 - High quality
+AVAILABLE COMBINATIONS:
+├─ WhisperX-Local + Opus         ★★★★★ Premium quality
+├─ WhisperX-Local + Gemini       ★★★★★ Excellent technical terms
+├─ WhisperX-Cloud + Opus         ★★★★★ Best overall
+├─ WhisperX-Cloud + Gemini       ★★★★★ Fast & accurate
+├─ AssemblyAI + Opus             ★★★★★ Highest transcription accuracy
+└─ AssemblyAI + Gemini           ★★★★☆ Good quality
 
-TRANSCRIBER RANKING:
-1. WhisperX-Cloud  ★★★★★ 9.3/10 - Most concise (10,354 words)
-2. WhisperX-Local  ★★★★★ 9.2/10 - Clean (10,359 words)
-3. AssemblyAI      ★★★★★ 9.1/10 - Good (10,506 words)
-4. Deepgram        ★★★★☆ 8.9/10 - Verbose (10,651 words)
-
-POST-PROCESSOR RANKING:
-1. Opus            ★★★★★ 9.4/10 - 94-98% retention
-2. Gemini          ★★★★★ 9.3/10 - 95-98% retention
-3. Sonnet          ★★★★★ 9.1/10 - 95-99% retention
-4. Llama           ★★★★☆ 8.8/10 - 56-59% retention
-5. Qwen (local)    ★★★☆☆ 7.9/10 - 59-63% retention
-6. Qwen-Cloud      ★★★☆☆ 7.2/10 - 102-109% expansion
-7. ChatGPT         ★★☆☆☆ 6.7/10 - 19-20% retention
-
-71-MINUTE CONSISTENCY:
-• Confirms episode002 findings
-• Premium models excel, others struggle
-• Clear ~70-min threshold effect
-
-====================================================================
-==
-DETAILED ANALYSIS
-================================================================================
-
-WhisperX-Cloud (10,354 input words) - ★★★★★ 9.3/10
-Post-Processor Results:
-  gemini     10,143w  98% ★★★★★ 9.5/10  Best
-  opus        9,702w  94% ★★★★★ 9.3/10  Premium
-  sonnet     10,269w  99% ★★★★★ 9.2/10  Excellent
-  llama       5,876w  57% ★★★★☆ 8.8/10  Condensed
-  qwen        6,139w  59% ★★★☆☆ 7.9/10  Summary
-  qwen-cloud 10,603w 102% ★★★☆☆ 7.2/10  Expansion
-  chatgpt     2,048w  20% ★★☆☆☆ 6.7/10  Extreme
-
-WhisperX-Local (10,359 input words) - ★★★★★ 9.2/10
-Post-Processor Results:
-  opus       10,088w  97% ★★★★★ 9.4/10  Excellent
-  gemini     10,107w  98% ★★★★★ 9.2/10  Clean
-  sonnet     10,267w  99% ★★★★★ 9.1/10  Balanced
-  llama       6,022w  58% ★★★★☆ 8.7/10  Condensed
-  qwen        6,451w  62% ★★★☆☆ 7.8/10  Summary
-  qwen-cloud 11,120w 107% ★★★☆☆ 7.1/10  Expansion
-  chatgpt     2,020w  20% ★★☆☆☆ 6.8/10  Extreme
-
-AssemblyAI (10,506 input words) - ★★★★★ 9.1/10
-Post-Processor Results:
-  opus       10,267w  98% ★★★★★ 9.3/10  Excellent
-  gemini     10,143w  97% ★★★★★ 9.0/10  High quality
-  sonnet     10,339w  98% ★★★★★ 9.0/10  Balanced
-  llama       5,964w  57% ★★★★☆ 8.6/10  Condensed
-  qwen        6,635w  63% ★★★☆☆ 7.9/10  Summary
-  qwen-cloud 11,147w 106% ★★★☆☆ 7.3/10  Expansion
-  chatgpt     2,018w  19% ★★☆☆☆ 6.6/10  Extreme
-
-Deepgram (10,651 input words) - ★★★★☆ 8.9/10
-Post-Processor Results:
-  sonnet     10,129w  95% ★★★★★ 9.1/10  Best cleanup
-  opus       10,047w  94% ★★★★★ 9.0/10  Good
-  gemini      9,886w  93% ★★★★☆ 8.9/10  Clean
-  llama       5,968w  56% ★★★★☆ 8.5/10  Condensed
-  qwen        6,591w  62% ★★★☆☆ 7.7/10  Summary
-  qwen-cloud 11,572w 109% ★★★☆☆ 7.0/10  Over-expansion
-  chatgpt     2,154w  20% ★★☆☆☆ 6.5/10  Extreme
+RECOMMENDED FOR THIS EPISODE:
+1. whisperx-cloud + opus    (Best overall preservation)
+2. assemblyai + opus        (Highest accuracy)
+3. whisperx + gemini        (Fast, excellent technical handling)
 
 ================================================================================
-KEY FINDINGS
+TRANSCRIBERS
 ================================================================================
 
-CONFIRMS 70-MIN THRESHOLD:
-✓ Premium models (Opus/Gemini/Sonnet): 94-99% retention
-⚠ Llama/Qwen: 56-63% retention (summary mode)
-⛔ ChatGPT: 19-20% retention (catastrophic)
+WhisperX-Local (whisperx)
+  • FREE local processing with GPU
+  • Excellent accuracy for technical content
+  • Good speaker diarization
+  • Best for: Privacy, offline processing
 
-CONSISTENT WITH EPISODE002:
-• Same duration (71 min)
-• Nearly identical processor behavior
-• Validates length-dependency hypothesis
-• Premium models unaffected by length
+WhisperX-Cloud (whisperx-cloud)
+  • Cloud processing via Replicate  
+  • Most balanced output quality
+  • Fast and consistent
+  • Best for: Standard production workflow
 
-CONTENT PRESERVATION:
-✓ Excellent (94-99%): Opus, Gemini, Sonnet
-⚠ Heavy loss (56-63%): Llama, Qwen
-⛔ Unusable (19-20%): ChatGPT
+AssemblyAI (assemblyai)
+  • Commercial cloud service
+  • Clean speaker labels
+  • High accuracy transcription
+  • Best for: Professional workflows
 
 ================================================================================
-RECOMMENDATIONS
+POST-PROCESSORS
 ================================================================================
 
-PRODUCTION: whisperx-cloud + gemini (9.5/10)
+Claude Opus 4.5 (opus)
+  • Premium quality - best reasoning
+  • 93-98% content retention
+  • Excellent technical term handling
+  • 150K context window
+  • Best for: Archival quality, important discussions
 
-FOR 70-MIN EPISODES:
-• Use ONLY: Opus, Gemini, Sonnet
-• AVOID: Llama, Qwen, ChatGPT, Qwen-Cloud
+Gemini 3.0 Pro (gemini)
+  • Excellent technical accuracy
+  • 84-98% content retention  
+  • Superior Ethereum/blockchain terminology
+  • 128K context window
+  • Best for: Fast processing, technical content
 
-VALIDATED FINDING:
-~70 minutes = threshold where non-premium models fail
+================================================================================
+EPISODE-SPECIFIC NOTES
+================================================================================
+
+CONTENT CHARACTERISTICS:
+  • Technical discussion with Taylor Gerring
+  • Ethereum development and ecosystem topics
+  • Historical context and technical details
+  • Clear speaker attribution across all transcribers
+
+RECOMMENDED WORKFLOW:
+  Primary:   whisperx-cloud + opus
+  Backup:    assemblyai + opus
+  Fast mode: whisperx + gemini
+
+QUALITY NOTES:
+  • All combinations handle technical terminology well
+  • Opus provides best preservation of discussion nuance
+  • Gemini excels at blockchain-specific terms
+  • Consistent quality across all transcriber/processor pairs
 
 ================================================================================

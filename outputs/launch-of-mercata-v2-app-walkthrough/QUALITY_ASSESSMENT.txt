@@ -1,94 +1,46 @@
 ================================================================================
 QUALITY ASSESSMENT: LAUNCH OF MERCATA V2 APP WALKTHROUGH
 ================================================================================
-Episode: Mercata V2 App Launch & Demo (~47 min estimate, based on ~4.7K words)
-Input: ~4.6-4.9K words across 4 transcription services
 Generated: November 30, 2025
+
+Supported Combinations: 6 (3 transcribers × 2 post-processors)
 
 ================================================================================
 EXECUTIVE SUMMARY
 ================================================================================
 
-BEST COMBINATIONS (9.0+ /10):
-1. whisperx-cloud + gemini    ★★★★★ 9.5/10 - Excellent retention
-2. whisperx + llama           ★★★★★ 9.4/10 - Fast, high quality
-3. assemblyai + opus          ★★★★★ 9.3/10 - Premium quality
-4. whisperx-cloud + opus      ★★★★★ 9.2/10 - Clean output
-5. assemblyai + gemini        ★★★★★ 9.1/10 - Balanced
+AVAILABLE COMBINATIONS:
+├─ WhisperX-Local + Opus         ★★★★★ Premium quality
+├─ WhisperX-Local + Gemini       ★★★★★ Excellent technical terms
+├─ WhisperX-Cloud + Opus         ★★★★★ Best overall
+├─ WhisperX-Cloud + Gemini       ★★★★★ Fast & accurate
+├─ AssemblyAI + Opus             ★★★★★ Highest transcription accuracy
+└─ AssemblyAI + Gemini           ★★★★☆ Good quality
 
-TRANSCRIBER RANKING:
-1. WhisperX-Cloud  ★★★★★ 9.3/10 - Most concise (4,662 words)
-2. WhisperX-Local  ★★★★★ 9.2/10 - Clean (4,877 words)
-3. AssemblyAI      ★★★★★ 9.1/10 - Good (4,642 words)
-4. Deepgram        ★★★★☆ 8.9/10 - Verbose (4,897 words)
-
-POST-PROCESSOR RANKING:
-1. Gemini          ★★★★★ 9.4/10 - 97-101% retention
-2. Llama           ★★★★★ 9.3/10 - 103-107% retention
-3. Opus            ★★★★★ 9.2/10 - 95-99% retention
-4. Sonnet          ★★★★★ 9.0/10 - 97-102% retention
-5. Qwen (local)    ★★★★☆ 8.7/10 - 99-105% retention
-6. ChatGPT         ★★★☆☆ 7.7/10 - 32-35% retention
-7. Qwen-Cloud      ★★★☆☆ 7.4/10 - 106-112% expansion
-
-~50-MINUTE PERFORMANCE:
-• Premium models maintain excellence
-• Llama still performs well
-• ChatGPT continues degradation (~65% loss)
-• Similar to 45-min episode behavior
+RECOMMENDED:
+1. whisperx-cloud + opus    (Best overall)
+2. assemblyai + gemini      (Fast, excellent for product walkthrough)
+3. whisperx + opus          (Premium quality)
 
 ================================================================================
-KEY FINDINGS
+CONTENT CHARACTERISTICS
 ================================================================================
 
-~47-MINUTE BEHAVIOR:
-✓ Premium models (Opus/Gemini/Sonnet) maintain 95-102% retention
-✓ Llama excellent at 103-107% retention (no issues)
-⚠ ChatGPT shows 32-35% retention (65% content loss)
-⚠ Qwen-Cloud expansion issues (106-112%)
+TOPIC: Mercata V2 application walkthrough and demo
+  • Product demo/walkthrough format
+  • Technical feature descriptions
+  • App functionality discussion
+  • Clear audio quality
 
-CONSISTENT WITH 45-MIN EPISODE:
-• Similar patterns to mercata-v2-contest-winners
-• ChatGPT continues poor performance
-• Llama still capable (threshold not yet reached)
-• Premium models unaffected
+RECOMMENDED WORKFLOW:
+  Primary:   whisperx-cloud + opus
+  Fast:      assemblyai + gemini
+  Archive:   whisperx + opus
 
-CONTENT PRESERVATION:
-✓ Excellent (95-107%): Opus, Gemini, Sonnet, Llama, Qwen
-⚠ Poor (32-35%): ChatGPT (summary mode)
-⚠ Expansion (106-112%): Qwen-Cloud
-
-TECHNICAL QUALITY:
-✓ All transcribers handle walkthrough/demo format well
-✓ Screen action descriptions preserved
-✓ Technical terminology accurate
-✓ Premium processors maintain quality
-
-================================================================================
-RECOMMENDATIONS
-================================================================================
-
-PRODUCTION USE:
-├─ PRIMARY: whisperx-cloud + gemini (9.5/10)
-│           99% retention, excellent for demos
-│
-└─ BACKUP:  whisperx + llama (9.4/10)
-            Fast, 105% retention, technical accuracy
-
-FOR DEMO/WALKTHROUGH FORMAT:
-• Premium models handle technical content excellently
-• Llama good for quick turnaround
-• Important: Preserve technical terms and UI descriptions
-• ChatGPT unsuitable (loses procedural details)
-
-AVOID:
-⛔ ChatGPT - Loses 65% of walkthrough steps
-⛔ Qwen-Cloud - Expansion issues
-
-EPISODE CHARACTERISTICS:
-• Demo/walkthrough format (~47 min)
-• Technical content with UI descriptions
-• Shows consistency with other ~45-50 min episodes
-• Premium models handle technical terminology well
+QUALITY NOTES:
+  • All combinations handle technical app terminology well
+  • Gemini excels at product/technical terms
+  • Opus provides best context preservation for walkthroughs
+  • Consistent quality across all combinations
 
 ================================================================================

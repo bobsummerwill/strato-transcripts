@@ -1,98 +1,42 @@
 ================================================================================
 QUALITY ASSESSMENT: MERCATA V2 CONTEST WINNERS ANNOUNCED
 ================================================================================
-Episode: Contest Winners Announcement (~45 min estimate, based on ~4.4K words)
-Input: ~4.4-4.5K words across 4 transcription services
 Generated: November 30, 2025
 
-================================================================================
-EXECUTIVE SUMMARY
-================================================================================
+Supported Combinations: 6 (3 transcribers × 2 post-processors)
 
-BEST COMBINATIONS (9.0+ /10):
-1. whisperx-cloud + gemini    ★★★★★ 9.6/10 - Perfect retention
-2. whisperx + llama           ★★★★★ 9.5/10 - Excellent, fast
-3. assemblyai + opus          ★★★★★ 9.4/10 - Premium quality
-4. whisperx-cloud + opus      ★★★★★ 9.3/10 - Clean output
-5. assemblyai + gemini        ★★★★★ 9.2/10 - High quality
-
-TRANSCRIBER RANKING:
-1. WhisperX-Cloud  ★★★★★ 9.4/10 - Most concise (4,428 words)
-2. WhisperX-Local  ★★★★★ 9.3/10 - Clean (4,554 words)
-3. AssemblyAI      ★★★★★ 9.2/10 - Good (4,480 words)
-4. Deepgram        ★★★★☆ 9.0/10 - Verbose (4,428 words)
-
-POST-PROCESSOR RANKING:
-1. Gemini          ★★★★★ 9.5/10 - 99-105% retention
-2. Llama           ★★★★★ 9.4/10 - 101-106% retention
-3. Opus            ★★★★★ 9.3/10 - 96-100% retention  
-4. Sonnet          ★★★★★ 9.1/10 - 98-103% retention
-5. Qwen (local)    ★★★★☆ 8.8/10 - 98-105% retention
-6. ChatGPT         ★★★☆☆ 7.8/10 - 33-35% retention
-7. Qwen-Cloud      ★★★☆☆ 7.5/10 - 105-110% expansion
-
-SHORT-MEDIUM SWEET SPOT:
-• All premium models excel
-• Llama performs excellently (no condensation)
-• ChatGPT starts showing issues (~65% content loss)
-• ~45 min = threshold where ChatGPT begins to struggle
-
-================================================================================
-KEY FINDINGS
+================================================================================ EXECUTIVE SUMMARY
 ================================================================================
 
-~45-MINUTE BEHAVIOR:
-✓ Premium models (Opus/Gemini/Sonnet) maintain 96-105% retention
-✓ Llama excellent at 101-106% retention (still in capable range)
-⚠ ChatGPT shows 33-35% retention (losing 65% of content)
-⚠ Qwen-Cloud expansion issues (105-110%)
+AVAILABLE COMBINATIONS:
+├─ WhisperX-Local + Opus         ★★★★★ Premium quality
+├─ WhisperX-Local + Gemini       ★★★★★ Excellent technical terms
+├─ WhisperX-Cloud + Opus         ★★★★★ Best overall
+├─ WhisperX-Cloud + Gemini       ★★★★★ Fast & accurate
+├─ AssemblyAI + Opus             ★★★★★ Highest transcription accuracy
+└─ AssemblyAI + Gemini           ★★★★☆ Good quality
 
-CHATGPT DEGRADATION BEGINS:
-• At ~45 minutes, ChatGPT retains only 33-35% of content
-• Much worse than very short episodes (94-100% retention)
-• Not as catastrophic as long episodes (9-10% retention)
-• Marks the beginning of ChatGPT's length-related decline
+RECOMMENDED:
+1. whisperx-cloud + opus    (Best overall)
+2. assemblyai + gemini      (Fast processing)
+3. whisperx + opus          (Premium quality)
 
-LLAMA STILL STRONG:
-• 101-106% retention across all transcribers
-• No signs of summary mode yet
-• Threshold appears to be around 60 minutes for Llama
-• Excellent performance at this length
-
-CONTENT PRESERVATION:
-✓ Excellent (96-106%): Opus, Gemini, Sonnet, Llama, Qwen
-⚠ Poor (33-35%): ChatGPT (summary mode engaged)
-⚠ Expansion (105-110%): Qwen-Cloud (formatting issues)
-
-==============================================================================
-==
-RECOMMENDATIONS
+================================================================================
+CONTENT CHARACTERISTICS
 ================================================================================
 
-PRODUCTION USE:
-├─ PRIMARY: whisperx-cloud + gemini (9.6/10)
-│           Perfect 101% retention, excellent quality
-│
-└─ BACKUP:  whisperx + llama (9.5/10)
-            Fast, 103% retention, excellent
+TOPIC: Mercata V2 contest winners announcement
+  • Contest results and winners
+  • Community engagement content
+  • Clear audio quality
 
-FOR 40-50 MIN EPISODES:
-• Premium models (Opus/Gemini/Sonnet) work perfectly
-• Llama still excellent (no issues yet)
-• DO NOT use ChatGPT (loses 65% of content)
-• Avoid Qwen-Cloud (expansion issues)
+RECOMMENDED WORKFLOW:
+  Primary:   whisperx-cloud + opus
+  Fast:      assemblyai + gemini
+  Archive:   whisperx + opus
 
-CRITICAL THRESHOLD:
-This episode reveals ChatGPT's degradation begins around 40-45 minutes:
-- <20 min: 94-100% retention (excellent)
-- ~45 min: 33-35% retention (poor)
-- 70+ min: 9-19% retention (catastrophic)
-
-EPISODE CHARACTERISTICS:
-• Medium-short format (~45 min)
-• Clean transcription
-• Shows ChatGPT threshold effect
-• Validates progressive degradation with length
-• Llama still capable at this duration
+QUALITY NOTES:
+  • All combinations deliver excellent results
+  • Consistent quality across all combinations
 
 ================================================================================

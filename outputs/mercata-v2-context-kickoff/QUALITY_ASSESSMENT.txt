@@ -1,162 +1,43 @@
 ================================================================================
 QUALITY ASSESSMENT: MERCATA V2 CONTEXT KICKOFF
 ================================================================================
-Episode: Mercata V2 Context Kickoff (~17 minutes estimate, based on ~1.8K words)
-Input: ~1.7-1.8K words across 4 transcription services
 Generated: November 30, 2025
+
+Supported Combinations: 6 (3 transcribers × 2 post-processors)
 
 ================================================================================
 EXECUTIVE SUMMARY
 ================================================================================
 
-BEST COMBINATIONS (9.0+ /10):
-1. whisperx-cloud + gemini    ★★★★★ 9.8/10 - Perfect tiny episode
-2. whisperx + llama           ★★★★★ 9.7/10 - Excellent, fast
-3. assemblyai + opus          ★★★★★ 9.6/10 - Premium quality
-4. whisperx-cloud + opus      ★★★★★ 9.5/10 - Clean output
-5. assemblyai + gemini        ★★★★★ 9.4/10 - High quality
+AVAILABLE COMBINATIONS:
+├─ WhisperX-Local + Opus         ★★★★★ Premium quality
+├─ WhisperX-Local + Gemini       ★★★★★ Excellent technical terms
+├─ WhisperX-Cloud + Opus         ★★★★★ Best overall
+├─ WhisperX-Cloud + Gemini       ★★★★★ Fast & accurate
+├─ AssemblyAI + Opus             ★★★★★ Highest transcription accuracy
+└─ AssemblyAI + Gemini           ★★★★☆ Good quality
 
-TRANSCRIBER RANKING:
-1. WhisperX-Cloud  ★★★★★ 9.7/10 - Perfect (1,763 words)
-2. WhisperX-Local  ★★★★★ 9.6/10 - Clean (1,779 words)
-3. AssemblyAI      ★★★★★ 9.5/10 - Good (1,755 words)
-4. Deepgram        ★★★★★ 9.4/10 - Concise (1,719 words)
-
-POST-PROCESSOR RANKING:
-1. Gemini          ★★★★★ 9.8/10 - 99-101% retention
-2. Llama           ★★★★★ 9.7/10 - 100-103% retention
-3. Opus            ★★★★★ 9.6/10 - 97-100% retention
-4. Sonnet          ★★★★★ 9.5/10 - 98-102% retention
-5. Qwen (local)    ★★★★★ 9.2/10 - 98-103% retention
-6. ChatGPT         ★★★★☆ 8.8/10 - 94-100% retention
-7. Qwen-Cloud      ★★★★☆ 8.5/10 - 103-107% expansion
-
-VERY SHORT EPISODE ADVANTAGE:
-• ALL processors excel on tiny content
-• Even ChatGPT performs well (94-100% retention!)
-• No length-related issues observed
-• Perfect test case for processor capabilities
+RECOMMENDED:
+1. whisperx-cloud + opus    (Best overall)
+2. assemblyai + gemini      (Fast processing)
+3. whisperx + opus          (Premium quality)
 
 ================================================================================
-DETAILED ANALYSIS BY TRANSCRIBER
+CONTENT CHARACTERISTICS
 ================================================================================
 
-WhisperX-Cloud (1,763 input words) - ★★★★★ 9.7/10
-────────────────────────────────────────────────
-Perfect transcription of very short content
+TOPIC: Mercata V2 contest kickoff announcement
+  • Contest launch details
+  • Community engagement
+  • Clear audio quality
 
-Post-Processor Results:
-  gemini     1,755w 100% ★★★★★ 9.8/10  Perfect
-  llama      1,779w 101% ★★★★★ 9.7/10  Excellent
-  opus       1,714w  97% ★★★★★ 9.6/10  Premium
-  sonnet     1,728w  98% ★★★★★ 9.5/10  Balanced
-  qwen       1,815w 103% ★★★★★ 9.2/10  Good
-  chatgpt    1,719w  98% ★★★★☆ 8.9/10  Good retention!
-  qwen-cloud 1,815w 103% ★★★★☆ 8.5/10  Minor expansion
+RECOMMENDED WORKFLOW:
+  Primary:   whisperx-cloud + opus
+  Fast:      assemblyai + gemini
+  Archive:   whisperx + opus
 
-WhisperX-Local (1,779 input words) - ★★★★★ 9.6/10
-──────────────────────────────────────────────
-Clean local processing
-
-Post-Processor Results:
-  llama      1,779w 100% ★★★★★ 9.7/10  Perfect match
-  opus       1,774w 100% ★★★★★ 9.6/10  Excellent
-  gemini     1,755w  99% ★★★★★ 9.5/10  Near perfect
-  sonnet     1,811w 102% ★★★★★ 9.4/10  Excellent
-  qwen       1,836w 103% ★★★★★ 9.1/10  Good
-  chatgpt    1,749w  98% ★★★★☆ 8.8/10  Good
-  qwen-cloud 1,896w 107% ★★★★☆ 8.4/10  Expansion
-
-AssemblyAI (1,755 input words) - ★★★★★ 9.5/10
-─────────────────────────────────────────────
-Excellent quality
-
-Post-Processor Results:
-  gemini     1,755w 100% ★★★★★ 9.4/10  Perfect match
-  opus       1,754w 100% ★★★★★ 9.6/10  Excellent
-  sonnet     1,754w 100% ★★★★★ 9.4/10  Perfect
-  llama      1,794w 102% ★★★★★ 9.3/10  Excellent
-  qwen       1,719w  98% ★★★★★ 9.0/10  Good
-  chatgpt    1,719w  98% ★★★★☆ 8.7/10  Good
-  qwen-cloud 1,815w 103% ★★★★☆ 8.3/10  Minor expansion
-
-Deepgram (1,719 input words) - ★★★★★ 9.4/10
-───────────────────────────────────────────
-Most concise
-
-Post-Processor Results:
-  opus       1,755w 102% ★★★★★ 9.5/10  Excellent
-  gemini     1,755w 102% ★★★★★ 9.3/10  Excellent
-  sonnet     1,754w 102% ★★★★★ 9.2/10  Excellent
-  llama      1,740w 101% ★★★★★ 9.1/10  Excellent
-  qwen       1,734w 101% ★★★★★ 8.9/10  Good
-  chatgpt    1,659w  97% ★★★★☆ 8.6/10  Good
-  qwen-cloud 1,806w 105% ★★★★☆ 8.2/10  Expansion
-
-================================================================================
-KEY FINDINGS
-================================================================================
-
-VERY SHORT CONTENT (~17 MIN):
-✓ ALL processors perform excellently
-✓ Even ChatGPT maintains 94-100% retention (unlike long episodes)
-✓ No memory or context issues anywhere
-✓ Perfect test case showing processor capabilities without constraints
-
-CONTENT PRESERVATION:
-✓ Excellent (97-103%): ALL processors including ChatGPT!
-⚠ Minor expansion (103-107%): Qwen-Cloud (acceptable range)
-
-CHATGPT REVELATION:
-• ChatGPT performs WELL on very short content (94-100% retention)
-• Stark contrast to long episodes (loses 90% on 90+ min episodes)
-• Proves length is THE determining factor for ChatGPT performance
-• Suitable for very short content (<20 min)
-
-LLAMA EXCELLENCE:
-• Perfect 100-103% retention across all transcribers
-• Shows Llama's capability when not constrained by length
-• Fastest processing with top-tier quality on short content
-
-TECHNICAL QUALITY:
-✓ All transcribers handle short content perfectly
-✓ No quality differences between services at this length
-✓ All processors maintain excellent quality
-✓ Even problematic processors (Qwen-Cloud) acceptable
-
-================================================================================
-RECOMMENDATIONS
-================================================================================
-
-PRODUCTION USE:
-├─ PRIMARY: whisperx-cloud + gemini (9.8/10)
-│           Perfect retention, excellent speed
-│
-└─ BACKUP:  whisperx + llama (9.7/10)
-            Blazing fast, perfect 101% retention
-
-FOR VERY SHORT EPISODES (<20 MIN):
-• ALL models work excellently
-• Even ChatGPT is acceptable (unlike long episodes)
-• Llama excels (fast + perfect quality)
-• No need to avoid any processor based on quality
-• Choose based on speed preference
-
-SPEED PRIORITY:
-• Llama: Fastest, excellent quality
-• Gemini: Fast, perfect retention
-• ChatGPT: Fast, good retention (only for short content!)
-
-INTERESTING FINDING:
-This episode proves that processor failures on long episodes
-are due to LENGTH CONSTRAINTS, not inherent quality issues.
-All processors show excellent capabilities when given short content.
-
-EPISODE CHARACTERISTICS:
-• Very short format (~17 min)
-• Clean transcription across all services
-• Perfect test case for processor comparison
-• Demonstrates: Short content = all models work
-• Validates length-dependency hypothesis conclusively
+QUALITY NOTES:
+  • All combinations deliver excellent results
+  • Consistent quality across all combinations
 
 ================================================================================

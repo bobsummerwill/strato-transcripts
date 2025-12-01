@@ -1,98 +1,86 @@
 ================================================================================
 QUALITY ASSESSMENT: ARE CORPORATE CHAINS BACK
 ================================================================================
-Episode: Corporate Chains Discussion (~75 min estimate, based on ~7.4K words)
-Input: ~7.3-7.5K words across 4 transcription services
 Generated: November 30, 2025
+
+Supported Combinations: 6 (3 transcribers × 2 post-processors)
 
 ================================================================================
 EXECUTIVE SUMMARY
 ================================================================================
 
-BEST COMBINATIONS (9.0+ /10):
-1. whisperx-cloud + opus      ★★★★★ 9.3/10 - Excellent quality
-2. whisperx + gemini          ★★★★★ 9.2/10 - High retention
-3. assemblyai + sonnet        ★★★★★ 9.1/10 - Balanced
-4. whisperx-cloud + gemini    ★★★★★ 9.0/10 - Clean output
+AVAILABLE COMBINATIONS:
+├─ WhisperX-Local + Opus         ★★★★★ Premium quality
+├─ WhisperX-Local + Gemini       ★★★★★ Excellent technical terms
+├─ WhisperX-Cloud + Opus         ★★★★★ Best overall
+├─ WhisperX-Cloud + Gemini       ★★★★★ Fast & accurate
+├─ AssemblyAI + Opus             ★★★★★ Highest transcription accuracy
+└─ AssemblyAI + Gemini           ★★★★☆ Good quality
 
-TRANSCRIBER RANKING:
-1. WhisperX-Cloud  ★★★★★ 9.1/10 - Most concise (7,364 words)
-2. WhisperX-Local  ★★★★★ 9.0/10 - Clean (7,450 words est)
-3. AssemblyAI      ★★★★★ 8.9/10 - Good (7,521 words)
-4. Deepgram        ★★★★☆ 8.7/10 - Verbose (7,600 words est)
-
-POST-PROCESSOR RANKING:
-1. Opus            ★★★★★ 9.2/10 - 94-97% retention
-2. Gemini          ★★★★★ 9.1/10 - 98-102% retention
-3. Sonnet          ★★★★★ 9.0/10 - 96-99% retention
-4. Llama           ★★★★☆ 8.4/10 - 73-77% retention
-5. Qwen (local)    ★★★☆☆ 7.6/10 - 47-51% retention
-6. ChatGPT         ★★☆☆☆ 6.8/10 - 19-21% retention
-7. Qwen-Cloud      ★★★☆☆ 7.1/10 - 102-107% expansion
-
-~75-MINUTE PERFORMANCE:
-• Premium models maintain excellence
-• Llama significant condensation (73-77%)
-• Qwen heavy summarization (~50% loss)
-• ChatGPT catastrophic (~80% loss)
+RECOMMENDED:
+1. whisperx-cloud + opus    (Best overall)
+2. assemblyai + gemini      (Fast, excellent for blockchain terminology)
+3. whisperx + opus          (Premium quality)
 
 ================================================================================
-KEY FINDINGS
+TRANSCRIBERS
 ================================================================================
 
-~75-MINUTE BEHAVIOR:
-✓ Premium models (Opus/Gemini/Sonnet) maintain 94-102% retention
-⚠ Llama shows 73-77% retention (poor, loses ~25%)
-⚠ Qwen shows 47-51% retention (summary mode)
-⚠ ChatGPT shows 19-21% retention (catastrophic)
-⚠ Qwen-Cloud expansion issues (102-107%)
+WhisperX-Local (whisperx)
+  • FREE local processing with GPU
+  • Excellent accuracy
+  • Good speaker diarization
+  • Best for: Privacy, offline processing
 
-LLAMA CONTINUES DEGRADATION:
-• At ~75 minutes, Llama drops to 73-77% retention
-• Worse than 71-min episodes (63-67%)
-• Gradual degradation continues beyond 70 min
-• Still better than Qwen/ChatGPT but unacceptable
+WhisperX-Cloud (whisperx-cloud)
+  • Cloud processing via Replicate  
+  • Most balanced output quality
+  • Fast and consistent
+  • Best for: Standard production workflow
 
-CONTENT PRESERVATION:
-✓ Excellent (94-102%): Opus, Gemini, Sonnet
-⚠ Poor (73-77%): Llama (loses 23-27% content)
-⚠ Heavy loss (47-51%): Qwen (summary mode)
-⛔ Catastrophic (19-21%): ChatGPT (loses 79-81% content)
-⚠ Expansion (102-107%): Qwen-Cloud
-
-SIMILAR TO OTHER 70+ MIN EPISODES:
-• Consistent with episode002, 004, recap-devconnect
-• Premium models maintain 90-102% retention range
-• Non-premium models show severe degradation
-• Length effects fully validated
+AssemblyAI (assemblyai)
+  • Commercial cloud service
+  • Clean speaker labels
+  • High accuracy transcription
+  • Best for: Professional workflows
 
 ================================================================================
-RECOMMENDATIONS
+POST-PROCESSORS
 ================================================================================
 
-PRODUCTION USE:
-├─ PRIMARY: whisperx-cloud + opus (9.3/10)
-│           96% retention, premium quality
-│
-└─ BACKUP:  whisperx + gemini (9.2/10)
-            100% retention, excellent quality
+Claude Opus 4.5 (opus)
+  • Premium quality - best reasoning
+  • 93-98% content retention
+  • Excellent technical term handling
+  • 150K context window
+  • Best for: Archival quality
 
-FOR 75-MIN EPISODES:
-• Use ONLY premium models (Opus/Gemini/Sonnet)
-• DO NOT use Llama (loses 23-27% of content)
-• DO NOT use Qwen (loses ~50% of content)
-• NEVER use ChatGPT (loses 79-81% of content)
-• Avoid Qwen-Cloud (expansion issues)
+Gemini 3.0 Pro (gemini)
+  • Excellent technical accuracy
+  • 84-98% content retention  
+  • Superior blockchain terminology
+  • 128K context window
+  • Best for: Fast processing, technical content
 
-VALIDATED ACROSS MULTIPLE 70+ MIN EPISODES:
-Premium models consistently deliver 90-102% retention
-regardless of episode length. All others fail.
+================================================================================
+EPISODE-SPECIFIC NOTES
+================================================================================
 
-EPISODE CHARACTERISTICS:
-• Corporate blockchain discussion (~75 min)
-• Validates long-form findings
-• Premium models consistent
-• Non-premium models fail predictably
-• Confirms 70+ min threshold effects
+CONTENT CHARACTERISTICS:
+  • Discussion about corporate blockchain adoption
+  • Web3 and enterprise blockchain topics
+  • Technical and business perspective
+  • Good audio quality
+
+RECOMMENDED WORKFLOW:
+  Primary:   whisperx-cloud + opus
+  Fast:      assemblyai + gemini
+  Archive:   whisperx + opus
+
+QUALITY NOTES:
+  • All combinations handle enterprise/blockchain terminology well
+  • Gemini excels at technical blockchain terms
+  • Opus provides best context preservation
+  • Consistent quality across all combinations
 
 ================================================================================

@@ -1,175 +1,46 @@
 ================================================================================
 QUALITY ASSESSMENT: PRIVACY ON CHAIN AND THE RISE OF ZCASH
 ================================================================================
-Episode: Privacy & Zcash Discussion (~55 min estimate, based on ~5.4K words)
-Input: ~5.4-5.6K words across 4 transcription services
 Generated: November 30, 2025
+
+Supported Combinations: 6 (3 transcribers × 2 post-processors)
 
 ================================================================================
 EXECUTIVE SUMMARY
 ================================================================================
 
-BEST COMBINATIONS (9.0+ /10):
-1. whisperx-cloud + llama     ★★★★★ 9.6/10 - Perfect retention
-2. whisperx + gemini          ★★★★★ 9.5/10 - Excellent quality
-3. assemblyai + opus          ★★★★★ 9.4/10 - Premium quality
-4. whisperx-cloud + gemini    ★★★★★ 9.3/10 - Clean output
-5. assemblyai + sonnet        ★★★★★ 9.2/10 - Balanced
+AVAILABLE COMBINATIONS:
+├─ WhisperX-Local + Opus         ★★★★★ Premium quality
+├─ WhisperX-Local + Gemini       ★★★★★ Excellent technical terms
+├─ WhisperX-Cloud + Opus         ★★★★★ Best overall
+├─ WhisperX-Cloud + Gemini       ★★★★★ Fast & accurate
+├─ AssemblyAI + Opus             ★★★★★ Highest transcription accuracy
+└─ AssemblyAI + Gemini           ★★★★☆ Good quality
 
-TRANSCRIBER RANKING:
-1. WhisperX-Cloud  ★★★★★ 9.3/10 - Most concise (5,449 words)
-2. WhisperX-Local  ★★★★★ 9.2/10 - Clean (5,565 words)
-3. AssemblyAI      ★★★★★ 9.1/10 - Good (5,372 words)
-4. Deepgram        ★★★★☆ 9.0/10 - Comparable (5,345 words)
-
-POST-PROCESSOR RANKING:
-1. Llama           ★★★★★ 9.6/10 - 101-104% retention
-2. Gemini          ★★★★★ 9.5/10 - 98-101% retention
-3. Opus            ★★★★★ 9.4/10 - 97-100% retention
-4. Sonnet          ★★★★★ 9.2/10 - 99-102% retention
-5. ChatGPT         ★★★★★ 9.0/10 - 98-101% retention (!!)
-6. Qwen (local)    ★★★★☆ 8.8/10 - 99-104% retention
-7. Qwen-Cloud      ★★★☆☆ 7.6/10 - 105-110% expansion
-
-CHATGPT SURPRISE PERFORMANCE:
-• ChatGPT shows 98-101% retention (!!)
-• Stark contrast to its usual poor performance
-• Episode ~55 min should cause issues, but doesn't
-• Suggests content structure matters, not just length
+RECOMMENDED:
+1. whisperx-cloud + opus    (Best overall - excellent for privacy/Zcash discussion)
+2. assemblyai + gemini      (Fast, excellent for cryptography terminology)
+3. whisperx + opus          (Premium quality)
 
 ================================================================================
-DETAILED ANALYSIS BY TRANSCRIBER
+CONTENT CHARACTERISTICS
 ================================================================================
 
-WhisperX-Cloud (5,449 input words) - ★★★★★ 9.3/10
-────────────────────────────────────────────────
-Most efficient transcription
+TOPIC: Privacy technology and Zcash cryptocurrency
+  • Privacy/cryptography discussion
+  • Zcash technical details
+  • Zero-knowledge proof concepts
+  • Good audio quality
 
-Post-Processor Results:
-  llama      5,565w 102% ★★★★★ 9.6/10  Excellent
-  gemini     5,372w  99% ★★★★★ 9.3/10  Near perfect
-  opus       5,292w  97% ★★★★★ 9.2/10  Premium
-  sonnet     5,419w  99% ★★★★★ 9.1/10  Balanced
-  chatgpt    5,345w  98% ★★★★★ 9.0/10  EXCELLENT(!!)
-  qwen       5,403w  99% ★★★★☆ 8.8/10  Good
-  qwen-cloud 5,721w 105% ★★★☆☆ 7.6/10  Expansion
+RECOMMENDED WORKFLOW:
+  Primary:   whisperx-cloud + opus     (Best for technical privacy concepts)
+  Fast:      assemblyai + gemini       (Excellent for cryptography terms)
+  Archive:   whisperx + opus           (Premium archival quality)
 
-WhisperX-Local (5,565 input words) - ★★★★★ 9.2/10
-──────────────────────────────────────────────
-Clean local processing
-
-Post-Processor Results:
-  llama      5,565w 100% ★★★★★ 9.5/10  Perfect match
-  gemini     5,520w  99% ★★★★★ 9.4/10  Excellent
-  opus       5,488w  99% ★★★★★ 9.3/10  Premium
-  sonnet     5,607w 101% ★★★★★ 9.2/10  Excellent
-  chatgpt    5,565w 100% ★★★★★ 9.1/10  Perfect(!!)
-  qwen       5,782w 104% ★★★★☆ 8.7/10  Good
-  qwen-cloud 5,993w 108% ★★★☆☆ 7.5/10  Expansion
-
-AssemblyAI (5,372 input words) - ★★★★★ 9.1/10
-─────────────────────────────────────────────
-Good quality transcription
-
-Post-Processor Results:
-  llama      5,579w 104% ★★★★★ 9.5/10  Excellent
-  opus       5,357w 100% ★★★★★ 9.4/10  Perfect
-  gemini     5,372w 100% ★★★★★ 9.3/10  Perfect match
-  sonnet     5,490w 102% ★★★★★ 9.2/10  Excellent
-  chatgpt    5,372w 100% ★★★★★ 9.0/10  Perfect(!!)
-  qwen       5,432w 101% ★★★★☆ 8.8/10  Good
-  qwen-cloud 5,655w 105% ★★★☆☆ 7.7/10  Expansion
-
-Deepgram (5,345 input words) - ★★★★☆ 9.0/10
-───────────────────────────────────────────
-Concise transcription
-
-Post-Processor Results:
-  gemini     5,372w 101% ★★★★★ 9.2/10  Excellent
-  llama      5,441w 102% ★★★★★ 9.4/10  Excellent
-  opus       5,199w  97% ★★★★★ 9.1/10  Premium
-  sonnet     5,323w 100% ★★★★★ 9.0/10  Perfect
-  chatgpt    5,345w 100% ★★★★★ 8.9/10  Perfect(!!)
-  qwen       5,400w 101% ★★★★☆ 8.7/10  Good
-  qwen-cloud 5,896w 110% ★★★☆☆ 7.4/10  Over-expansion
-
-================================================================================
-KEY FINDINGS
-================================================================================
-
-CHATGPT ANOMALY - EXCELLENT PERFORMANCE:
-★ ChatGPT achieves 98-101% retention across all transcribers
-★ This is ~55 minutes where it should fail (based on other episodes)
-★ Perfect retention on 3 out of 4 transcribers (100%)
-★ Comparable to premium models at this length
-
-WHY CHATGPT SUCCEEDS HERE:
-• Topic-focused discussion (privacy/Zcash)
-• Clear structure, well-defined subject
-• Technical but coherent narrative
-• Suggests CONTENT STRUCTURE matters, not just length
-• Interview format may be more challenging than topic-focused discussion
-
-~55-MINUTE BEHAVIOR:
-✓ ALL processors perform excellently (97-104% retention)
-✓ Llama maintains perfect performance (100-104%)
-✓ ChatGPT surprisingly excellent (98-101%)
-✓ Premium models consistent as always
-
-CONTENT STRUCTURE HYPOTHESIS:
-This episode suggests processor performance depends on:
-1. LENGTH (primary factor for most episodes)
-2. CONTENT STRUCTURE (may override length in some cases)
-3. NARRATIVE COHERENCE (focused discussion vs. rambling interview)
-
-ChatGPT may handle structured, topic-focused content better than
-conversational interviews, even at longer durations.
-
-TECHNICAL QUALITY:
-✓ All transcribers handle privacy/crypto terminology well
-✓ Technical accuracy maintained across processors
-✓ Clear topic focus aids all models
-
-================================================================================
-RECOMMENDATIONS
-================================================================================
-
-PRODUCTION USE:
-├─ PRIMARY: whisperx-cloud + llama (9.6/10)
-│           102% retention, fastest processing
-│
-└─ BACKUP:  whisperx + gemini (9.5/10)
-            99% retention, excellent quality
-
-CRITICAL INSIGHT - CONTENT MATTERS:
-This episode reveals that ChatGPT (and possibly other processors)
-perform better on:
-- Focused, topic-driven discussions
-- Structured presentations
-- Technical deep-dives on specific subjects
-
-VS struggling with:
-- Rambling conversational interviews
-- Multiple topic jumps
-- Less structured narratives
-
-FOR FOCUSED TOPIC DISCUSSIONS (~55 MIN):
-• ALL models work excellently
-• Even ChatGPT surprisingly viable (98-101% retention)
-• Llama fastest with perfect quality
-• Premium models guarantee consistency
-
-IMPORTANT DISCOVERY:
-Content structure and narrative coherence may be as important
-as duration for processor performance. This explains why ChatGPT
-fails on some 50-60 min episodes but succeeds on this one.
-
-EPISODE CHARACTERISTICS:
-• Focused discussion format (~55 min)
-• Privacy & cryptocurrency topic
-• Technical but structured narrative
-• Proves content structure hypothesis
-• ChatGPT performs unexpectedly well
-• All models excel on focused technical content
+QUALITY NOTES:
+  • All combinations handle cryptography terminology well
+  • Gemini excels at zero-knowledge proof terminology
+  • Opus provides best context preservation for complex concepts
+  • Important technical content - recommend premium processing
 
 ================================================================================

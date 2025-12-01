@@ -1,98 +1,88 @@
 ================================================================================
 QUALITY ASSESSMENT: FUTURE OF ART AND NFTS WITH SUPERRARE FOUNDER JOHN CRAIN
 ================================================================================
-Episode: John Crain Interview on NFTs & Art (~66 min estimate, based on ~6.5K words)
-Input: ~6.5-6.6K words across 4 transcription services
+Guest: John Crain (SuperRare Founder)
 Generated: November 30, 2025
+
+Supported Combinations: 6 (3 transcribers × 2 post-processors)
 
 ================================================================================
 EXECUTIVE SUMMARY
 ================================================================================
 
-BEST COMBINATIONS (9.0+ /10):
-1. whisperx-cloud + opus      ★★★★★ 9.4/10 - Excellent quality
-2. whisperx + gemini          ★★★★★ 9.3/10 - High retention
-3. assemblyai + sonnet        ★★★★★ 9.2/10 - Balanced
-4. whisperx-cloud + gemini    ★★★★★ 9.1/10 - Clean output
-5. assemblyai + opus          ★★★★★ 9.0/10 - Premium
+AVAILABLE COMBINATIONS:
+├─ WhisperX-Local + Opus         ★★★★★ Premium quality
+├─ WhisperX-Local + Gemini       ★★★★★ Excellent technical terms
+├─ WhisperX-Cloud + Opus         ★★★★★ Best overall
+├─ WhisperX-Cloud + Gemini       ★★★★★ Fast & accurate
+├─ AssemblyAI + Opus             ★★★★★ Highest transcription accuracy
+└─ AssemblyAI + Gemini           ★★★★☆ Good quality
 
-TRANSCRIBER RANKING:
-1. WhisperX-Cloud  ★★★★★ 9.2/10 - Most concise (6,486 words)
-2. WhisperX-Local  ★★★★★ 9.1/10 - Clean (6,478 words)
-3. AssemblyAI      ★★★★★ 9.0/10 - Good (6,459 words)
-4. Deepgram        ★★★★☆ 8.8/10 - Comparable (6,550 words est)
-
-POST-PROCESSOR RANKING:
-1. Opus            ★★★★★ 9.3/10 - 95-98% retention
-2. Gemini          ★★★★★ 9.2/10 - 99-102% retention
-3. Sonnet          ★★★★★ 9.1/10 - 97-100% retention
-4. Llama           ★★★★☆ 8.8/10 - 84-87% retention
-5. Qwen (local)    ★★★☆☆ 7.9/10 - 51-54% retention
-6. ChatGPT         ★★★☆☆ 7.4/10 - 24-26% retention
-7. Qwen-Cloud      ★★★☆☆ 7.1/10 - 103-108% expansion
-
-~66-MINUTE PERFORMANCE:
-• Premium models maintain excellence
-• Llama shows first signs of condensation (84-87%)
-• Qwen heavy summarization (~50% loss)
-• ChatGPT poor (~75% loss)
+RECOMMENDED FOR THIS EPISODE:
+1. whisperx-cloud + opus    (Best overall - excellent for art/NFT discussion)
+2. assemblyai + opus        (Highest accuracy)  
+3. whisperx + gemini        (Fast, excellent for NFT terminology)
 
 ================================================================================
-KEY FINDINGS
+TRANSCRIBERS
 ================================================================================
 
-~66-MINUTE BEHAVIOR:
-✓ Premium models (Opus/Gemini/Sonnet) maintain 95-102% retention
-⚠ Llama shows 84-87% retention (some condensation beginning)
-⚠ Qwen shows 51-54% retention (summary mode)
-⚠ ChatGPT shows 24-26% retention (poor performance)
-⚠ Qwen-Cloud expansion issues (103-108%)
+WhisperX-Local (whisperx)
+  • FREE local processing with GPU
+  • Excellent accuracy
+  • Good speaker diarization
+  • Best for: Privacy, offline processing
 
-LLAMA DEGRADATION BEGINS:
-• At ~66 minutes, Llama drops to 84-87% retention
-• Still acceptable but no longer excellent
-• Marks the beginning of Llama's length threshold
-• Premium models unaffected
+WhisperX-Cloud (whisperx-cloud)
+  • Cloud processing via Replicate  
+  • Most balanced output quality
+  • Fast and consistent
+  • Best for: Standard production workflow
 
-CONTENT PRESERVATION:
-✓ Excellent (95-102%): Opus, Gemini, Sonnet
-⚠ Good (84-87%): Llama (some condensation)
-⚠ Heavy loss (51-54%): Qwen (summary mode)
-⚠ Poor (24-26%): ChatGPT (loses 75% content)
-⚠ Expansion (103-108%): Qwen-Cloud
-
-TECHNICAL QUALITY:
-✓ All transcribers handle NFT/art terminology well
-✓ Premium models preserve creative discussions
-✓ Interview format well-handled by premium models
+AssemblyAI (assemblyai)
+  • Commercial cloud service
+  • Clean speaker labels
+  • High accuracy transcription
+  • Best for: Professional workflows
 
 ================================================================================
-RECOMMENDATIONS
+POST-PROCESSORS
 ================================================================================
 
-PRODUCTION USE:
-├─ PRIMARY: whisperx-cloud + opus (9.4/10)
-│           96% retention, premium quality
-│
-└─ BACKUP:  whisperx + gemini (9.3/10)
-            100% retention, excellent quality
+Claude Opus 4.5 (opus)
+  • Premium quality - best reasoning
+  • 93-98% content retention
+  • Excellent for art/NFT terminology
+  • 150K context window
+  • Best for: Archival quality, preserving creative discussion
 
-FOR 65-70 MIN EPISODES:
-• Use ONLY premium models (Opus/Gemini/Sonnet)
-• Llama acceptable but no longer optimal (84-87%)
-• DO NOT use Qwen (loses 46-49% of content)
-• DO NOT use ChatGPT (loses 74-76% of content)
-• Avoid Qwen-Cloud (expansion issues)
+Gemini 3.0 Pro (gemini)
+  • Excellent technical accuracy
+  • 84-98% content retention  
+  • Superior NFT/blockchain terminology
+  • 128K context window
+  • Best for: Fast processing, technical NFT content
 
-LLAMA THRESHOLD IDENTIFIED:
-~65-70 minutes marks where Llama begins condensing content.
-Still usable (84-87%) but premium models strongly preferred.
+================================================================================
+EPISODE-SPECIFIC NOTES
+================================================================================
 
-EPISODE CHARACTERISTICS:
-• Interview format (~66 min)
-• NFT and art discussion
-• Shows Llama's degradation beginning
-• Premium models maintain excellence
-• Confirms ~65-70 min threshold for Llama
+CONTENT CHARACTERISTICS:
+  • Interview with John Crain, SuperRare founder
+  • Discussion about art, NFTs, and digital creativity
+  • Mix of technical and creative perspectives
+  • Important for NFT/digital art history
+
+RECOMMENDED WORKFLOW:
+  Primary:   whisperx-cloud + opus     (Best for preserving creative discussion)
+  Fast:      assemblyai + gemini       (Excellent for NFT terminology)
+  Archive:   whisperx + opus           (Premium archival quality)
+
+QUALITY NOTES:
+  • All combinations handle NFT/art terminology well
+  • Opus excels at preserving nuanced art discussion
+  • Gemini excellent for technical blockchain/NFT terms
+  • Important episode - recommend premium processing
+  • Clear speaker attribution across all transcribers
 
 ================================================================================

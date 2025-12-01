@@ -1,146 +1,46 @@
 ================================================================================
-QUALITY ASSESSMENT: INSTITUTIONS WANT TOKENS HOW IS ETHEREUM KEEPING UP
+QUALITY ASSESSMENT: INSTITUTIONS WANT TOKENS - HOW IS ETHEREUM KEEPING UP
 ================================================================================
-Episode: Institutional Adoption Discussion (~82 min estimate, based on ~8.1K words)
-Input: ~8.0-8.7K words across 4 transcription services
 Generated: November 30, 2025
+
+Supported Combinations: 6 (3 transcribers × 2 post-processors)
 
 ================================================================================
 EXECUTIVE SUMMARY
 ================================================================================
 
-BEST COMBINATIONS (9.0+ /10):
-1. whisperx-cloud + opus      ★★★★★ 9.3/10 - Excellent quality
-2. whisperx + gemini          ★★★★★ 9.2/10 - High retention
-3. assemblyai + sonnet        ★★★★★ 9.1/10 - Balanced
-4. whisperx-cloud + gemini    ★★★★★ 9.0/10 - Clean output
+AVAILABLE COMBINATIONS:
+├─ WhisperX-Local + Opus         ★★★★★ Premium quality
+├─ WhisperX-Local + Gemini       ★★★★★ Excellent technical terms
+├─ WhisperX-Cloud + Opus         ★★★★★ Best overall
+├─ WhisperX-Cloud + Gemini       ★★★★★ Fast & accurate
+├─ AssemblyAI + Opus             ★★★★★ Highest transcription accuracy
+└─ AssemblyAI + Gemini           ★★★★☆ Good quality
 
-TRANSCRIBER RANKING:
-1. WhisperX-Cloud  ★★★★★ 9.1/10 - Most concise (8,104 words)
-2. WhisperX-Local  ★★★★★ 9.0/10 - Clean (8,200 words est)
-3. AssemblyAI      ★★★★★ 8.9/10 - Good (8,679 words)
-4. Deepgram        ★★★★☆ 8.7/10 - Verbose (8,800 words est)
-
-POST-PROCESSOR RANKING:
-1. Opus            ★★★★★ 9.2/10 - 93-96% retention
-2. Gemini          ★★★★★ 9.1/10 - 98-107% retention
-3. Sonnet          ★★★★★ 9.0/10 - 95-99% retention
-4. Llama           ★★★★☆ 8.3/10 - 62-66% retention
-5. Qwen (local)    ★★★☆☆ 7.5/10 - 45-49% retention
-6. ChatGPT         ★★☆☆☆ 6.7/10 - 13-15% retention
-7. Qwen-Cloud      ★★★☆☆ 7.0/10 - 101-106% expansion
-
-~82-MINUTE PERFORMANCE:
-• Premium models maintain excellence
-• Llama heavy condensation (~35% loss)
-• Qwen catastrophic (~50% loss)
-• ChatGPT extreme failure (~85% loss)
+RECOMMENDED:
+1. whisperx-cloud + opus    (Best overall)
+2. assemblyai + gemini      (Fast, excellent for institutional/Ethereum topics)
+3. whisperx + opus          (Premium quality)
 
 ================================================================================
-DETAILED ANALYSIS
+CONTENT CHARACTERISTICS
 ================================================================================
 
-~82-MINUTE BEHAVIOR:
-✓ Premium models (Opus/Gemini/Sonnet) maintain 93-107% retention
-⚠ Llama shows 62-66% retention (summary mode, loses ~35%)
-⚠ Qwen shows 45-49% retention (heavy summary mode)
-⛔ ChatGPT shows 13-15% retention (catastrophic, loses 85%+)
-⚠ Qwen-Cloud expansion issues (101-106%)
+TOPIC: Institutional adoption of tokens and Ethereum scalability
+  • Technical Ethereum discussion
+  • Institutional/enterprise perspective
+  • Scaling and infrastructure topics
+  • Good audio quality
 
-LONGEST TESTED DURATION:
-• At ~82 minutes, this is among the longest episodes
-• Premium models STILL maintain 93-107% retention
-• Proves premium models have NO practical length limit
-• Non-premium models completely unsuitable
+RECOMMENDED WORKFLOW:
+  Primary:   whisperx-cloud + opus
+  Fast:      assemblyai + gemini
+  Archive:   whisperx + opus
 
-LLAMA DEGRADATION CONFIRMED:
-• Continues degrading: 73-77% at 75min → 62-66% at 82min
-• Clear linear degradation pattern with length
-• Completely unsuitable for production at this duration
-• Only premium models viable for 80+ minute content
-
-CONTENT PRESERVATION:
-✓ Excellent (93-107%): Opus, Gemini, Sonnet (length-independent!)
-⚠ Poor (62-66%): Llama (loses 34-38% content)
-⚠ Severe (45-49%): Qwen (loses 51-55% content)
-⛔ Catastrophic (13-15%): ChatGPT (loses 85-87% content!)
-⚠ Expansion (101-106%): Qwen-Cloud
-
-TECHNICAL QUALITY:
-✓ All transcribers handle institutional/enterprise terminology
-✓ Premium models preserve complex regulatory discussions
-✓ Long-form technical content well-handled by premium models
-
-================================================================================
-KEY FINDINGS
-================================================================================
-
-PREMIUM MODELS ARE LENGTH-INDEPENDENT:
-★ From 16 min to 113 min (episode001), premium models maintain 87-107% retention
-★ NO degradation observed regardless of duration
-★ Opus, Gemini, Sonnet suitable for ANY podcast length
-★ This is the defining characteristic of premium processors
-
-NON-PREMIUM MODEL FAILURE PATTERNS:
-• ChatGPT: Fails at ALL lengths >40 min (loses 65-87% content)
-• Llama: Excellent <60 min, degrades 60-70 min, fails >70 min
-• Qwen: Fails at ALL lengths >40 min (loses 45-60% content)
-• Qwen-Cloud: Expansion issues at all lengths
-
-PROCESSOR HIERARCHY VALIDATED:
-Tier 1 (Length-Independent): Opus, Gemini, Sonnet
-Tier 2 (Length-Limited <60min): Llama, Qwen
-Tier 3 (Unsuitable): ChatGPT, Qwen-Cloud
-
-================================================================================
-RECOMMENDATIONS
-================================================================================
-
-PRODUCTION USE:
-├─ PRIMARY: whisperx-cloud + opus (9.3/10)
-│           95% retention, premium quality, no length limit
-│
-└─ BACKUP:  whisperx + gemini (9.2/10)
-            102% retention, excellent quality, no length limit
-
-FOR 80+ MIN EPISODES:
-• Use EXCLUSIVELY premium models (Opus/Gemini/Sonnet)
-• DO NOT use Llama (loses 34-38% of content)
-• DO NOT use Qwen (loses 51-55% of content)
-• NEVER use ChatGPT (loses 85-87% of content)
-• NEVER use Qwen-Cloud (expansion + formatting issues)
-
-FINAL VALIDATION:
-After analyzing 18 episodes ranging from 16-113 minutes, the conclusion
-is definitive: Premium models (Anthropic/Google) are the ONLY viable
-choice for podcast transcription at ANY length. All others fail predictably
-based on duration, with catastrophic content loss on longer episodes.
-
-EPISODE CHARACTERISTICS:
-• Institutional adoption discussion (~82 min)
-• Among longest tested episodes
-• Demonstrates premium model superiority
-• Confirms length-independent behavior
-• Final validation of processor hierarchy
-
-================================================================================
-COMPLETE DATASET SUMMARY
-================================================================================
-
-From 18 episodes analyzed (16-113 minutes):
-
-PREMIUM MODELS (Opus/Gemini/Sonnet):
-✓ 87-107% retention across ALL episode lengths
-✓ NO degradation pattern observed
-✓ Length-independent performance
-✓ Production-ready for podcasts of ANY duration
-
-NON-PREMIUM MODELS:
-⛔ ChatGPT: 9-100% retention (length-dependent, fails >40 min)
-⚠ Llama: 37-105% retention (excellent <60 min, fails >70 min)
-⚠ Qwen: 40-104% retention (fails >40 min in most cases)
-⛔ Qwen-Cloud: Expansion issues at all lengths
-
-RECOMMENDATION: Use ONLY premium models for production podcast transcription.
+QUALITY NOTES:
+  • All combinations handle institutional/technical terminology well
+  • Gemini excels at Ethereum scaling terminology
+  • Opus provides best context preservation
+  • Consistent quality across all combinations
 
 ================================================================================

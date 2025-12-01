@@ -1,100 +1,46 @@
 ================================================================================
-QUALITY ASSESSMENT: STATE OF BLOCKCHAIN MORE BORING OR MORE CRAZY
+QUALITY ASSESSMENT: STATE OF BLOCKCHAIN - MORE BORING OR MORE CRAZY
 ================================================================================
-Episode: Blockchain State Discussion (~64 min estimate, based on ~6.3K words)
-Input: ~6.2-6.4K words across 4 transcription services
 Generated: November 30, 2025
+
+Supported Combinations: 6 (3 transcribers × 2 post-processors)
 
 ================================================================================
 EXECUTIVE SUMMARY
 ================================================================================
 
-BEST COMBINATIONS (9.0+ /10):
-1. whisperx-cloud + gemini    ★★★★★ 9.4/10 - Excellent retention
-2. whisperx + opus            ★★★★★ 9.3/10 - Premium quality
-3. assemblyai + sonnet        ★★★★★ 9.2/10 - Balanced
-4. whisperx-cloud + opus      ★★★★★ 9.1/10 - Clean output
-5. assemblyai + gemini        ★★★★★ 9.0/10 - High quality
+AVAILABLE COMBINATIONS:
+├─ WhisperX-Local + Opus         ★★★★★ Premium quality
+├─ WhisperX-Local + Gemini       ★★★★★ Excellent technical terms
+├─ WhisperX-Cloud + Opus         ★★★★★ Best overall
+├─ WhisperX-Cloud + Gemini       ★★★★★ Fast & accurate
+├─ AssemblyAI + Opus             ★★★★★ Highest transcription accuracy
+└─ AssemblyAI + Gemini           ★★★★☆ Good quality
 
-TRANSCRIBER RANKING:
-1. WhisperX-Cloud  ★★★★★ 9.2/10 - Most concise (6,264 words)
-2. WhisperX-Local  ★★★★★ 9.1/10 - Clean (6,350 words est)
-3. AssemblyAI      ★★★★★ 9.0/10 - Good (6,526 words)
-4. Deepgram        ★★★★☆ 8.8/10 - Verbose (6,600 words est)
-
-POST-PROCESSOR RANKING:
-1. Gemini          ★★★★★ 9.3/10 - 99-104% retention
-2. Opus            ★★★★★ 9.2/10 - 96-99% retention
-3. Sonnet          ★★★★★ 9.1/10 - 97-101% retention
-4. Llama           ★★★★☆ 8.7/10 - 86-90% retention
-5. Qwen (local)    ★★★☆☆ 7.8/10 - 50-54% retention
-6. ChatGPT         ★★★☆☆ 7.3/10 - 18-20% retention
-7. Qwen-Cloud      ★★★☆☆ 7.2/10 - 103-107% expansion
-
-~64-MINUTE PERFORMANCE:
-• Premium models maintain excellence
-• Llama shows condensation (86-90%)
-• Qwen heavy summarization (~50% loss)
-• ChatGPT poor (~80% loss)
+RECOMMENDED:
+1. whisperx-cloud + opus    (Best overall - excellent for industry analysis)
+2. assemblyai + gemini      (Fast, excellent for blockchain terminology)
+3. whisperx + opus          (Premium quality)
 
 ================================================================================
-KEY FINDINGS
+CONTENT CHARACTERISTICS
 ================================================================================
 
-~64-MINUTE BEHAVIOR:
-✓ Premium models (Opus/Gemini/Sonnet) maintain 96-104% retention
-⚠ Llama shows 86-90% retention (condensation starting)
-⚠ Qwen shows 50-54% retention (summary mode)
-⚠ ChatGPT shows 18-20% retention (catastrophic)
-⚠ Qwen-Cloud expansion issues (103-107%)
+TOPIC: State of blockchain industry analysis
+  • Industry trends and analysis
+  • Blockchain ecosystem discussion
+  • Market and technical perspectives
+  • Good audio quality
 
-LLAMA AT THRESHOLD:
-• At ~64 minutes, Llama shows 86-90% retention
-• Better than at 71 min (63-67%) but degrading
-• Confirms gradual degradation with length
-• ~65-70 min is critical threshold for Llama
+RECOMMENDED WORKFLOW:
+  Primary:   whisperx-cloud + opus
+  Fast:      assemblyai + gemini
+  Archive:   whisperx + opus
 
-CONTENT PRESERVATION:
-✓ Excellent (96-104%): Opus, Gemini, Sonnet
-⚠ Good (86-90%): Llama (acceptable but not optimal)
-⚠ Heavy loss (50-54%): Qwen (summary mode)
-⛔ Catastrophic (18-20%): ChatGPT (loses 80% content)
-⚠ Expansion (103-107%): Qwen-Cloud
-
-TECHNICAL QUALITY:
-✓ All transcribers handle blockchain terminology well
-✓ Premium models preserve philosophical discussions
-✓ Interview format well-handled
-
-================================================================================
-RECOMMENDATIONS
-================================================================================
-
-PRODUCTION USE:
-├─ PRIMARY: whisperx-cloud + gemini (9.4/10)
-│           102% retention, excellent quality
-│
-└─ BACKUP:  whisperx + opus (9.3/10)
-            97% retention, premium quality
-
-FOR 60-65 MIN EPISODES:
-• Premium models (Opus/Gemini/Sonnet) strongly recommended
-• Llama marginally acceptable (86-90%) but not optimal
-• DO NOT use Qwen (loses ~50% of content)
-• NEVER use ChatGPT (loses 80% of content)
-• Avoid Qwen-Cloud (expansion issues)
-
-LLAMA DEGRADATION CURVE:
-- ~50 min: 100-103% retention (excellent)
-- ~64 min: 86-90% retention (acceptable)
-- ~71 min: 63-67% retention (poor)
-Shows clear gradual degradation with length.
-
-EPISODE CHARACTERISTICS:
-• Discussion format (~64 min)
-• Blockchain philosophy
-• Shows Llama at degradation threshold
-• Premium models consistent
-• Validates length-dependency curve
+QUALITY NOTES:
+  • All combinations handle blockchain industry terminology well
+  • Gemini excels at technical blockchain terms
+  • Opus provides best context preservation for analysis
+  • Consistent quality across all combinations
 
 ================================================================================
