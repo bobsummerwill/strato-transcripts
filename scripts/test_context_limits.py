@@ -12,25 +12,17 @@ COMPLETE PROVIDER MATRIX:
 POST-PROCESSING PROVIDERS (AI TEXT CORRECTION):
 - Opus (Claude Opus 4.5 via Anthropic) - PREMIUM REASONING, 150K context
 - Sonnet (Claude Sonnet 4.5 via Anthropic) - BALANCED QUALITY, 150K context
-- ChatGPT (GPT-4o via OpenAI) - GENERAL PURPOSE, 120K context
 - Gemini (Gemini 3.0 Pro via Google) - TECHNICAL EXCELLENCE, 128K context
-- Llama (Llama 3.3 70B via Groq) - ULTRAFAST, 128K context, 300+ tok/s
-- Qwen-Cloud (Qwen3 32B via Groq) - MAXIMUM QUALITY, 128K context
-- Qwen (Qwen2.5:14B via Ollama local) - FREE LOCAL GPU, 32K context
+- DeepSeek (DeepSeek-V3.2 via DeepSeek) - COST-EFFECTIVE, 128K context
 
 TRANSCRIPTION PROVIDERS (ASR + DIARIZATION):
 - WhisperX (local GPU/CPU) - NO context limit, FREE, processes audio directly
 - WhisperX-Cloud (Replicate) - NO context limit, $2.88/hr, 2-3 min
 - AssemblyAI (cloud) - NO context limit, $1.08/hr, 3-4 min
-- Deepgram (cloud) - NO context limit, $0.27/hr, 23 sec
-
-AVAILABLE WORKFLOWS:
-All combinations: transcribers × processors
-Example: whisperx,deepgram × sonnet,opus,gemini = 6 combinations
 
 USAGE EXAMPLES:
 Test all major providers:
-    python3 scripts/test_context_limits.py --providers sonnet,opus,chatgpt,gemini,llama,qwen-cloud
+    python3 scripts/test_context_limits.py --providers sonnet,opus,gemini,deepseek
 
 Test specific model:
     python3 scripts/test_context_limits.py --providers opus
@@ -179,26 +171,6 @@ def test_anthropic_context(test_sizes=[10000, 50000, 100000, 150000, 190000, 200
             })
             break  # Stop at first failure
 
-    # Test for 1M token access (beta)
-    if results["max_working"] >= 190000:
-        print_info("Testing for 1M token beta access...")
-        try:
-            payload, actual_tokens = generate_test_payload(500000)
-            response = client.messages.create(
-                model="claude-sonnet-4-5-20250929",
-                max_tokens=100,
-                messages=[{
-                    "role": "user",
-                    "content": f"{payload}\n\nRespond with: OK"
-                }],
-                extra_headers={"anthropic-beta": "max-tokens-3-5-sonnet-2024-07-15"}
-            )
-            print_success(f"1M token beta access: AVAILABLE")
-            results["beta_access"] = True
-        except Exception as e:
-            print_info(f"1M token beta access: Not available ({str(e)[:50]})")
-            results["beta_access"] = False
-
     return results
 
 
@@ -267,69 +239,6 @@ def test_opus_context(test_sizes=[10000, 50000, 100000, 150000, 190000, 200000])
     return results
 
 
-def test_openai_context(test_sizes=[10000, 50000, 100000, 120000, 128000]):
-    """Test GPT-4o context limits"""
-    try:
-        import openai
-    except ImportError:
-        return {"error": "openai package not installed", "status": "skip"}
-
-    api_key = os.environ.get('OPENAI_API_KEY')
-    if not api_key:
-        return {"error": "OPENAI_API_KEY not set", "status": "skip"}
-
-    print_info("Testing OpenAI GPT-4o...")
-    client = openai.OpenAI(api_key=api_key)
-
-    results = {
-        "provider": "OpenAI",
-        "model": "gpt-4o-2024-11-20",
-        "advertised": "128,000 tokens",
-        "tested": [],
-        "max_working": 0,
-        "status": "tested"
-    }
-
-    for size in test_sizes:
-        print(f"  Testing {size:,} tokens...", end=" ", flush=True)
-        payload, actual_tokens = generate_test_payload(size, "gpt-4")
-
-        try:
-            start = time.time()
-            response = client.chat.completions.create(
-                model="gpt-4o-2024-11-20",
-                max_tokens=50,
-                messages=[{
-                    "role": "user",
-                    "content": f"{payload}\n\nRespond with just: OK"
-                }]
-            )
-            elapsed = time.time() - start
-
-            print_success(f"{actual_tokens:,} tokens OK ({elapsed:.1f}s)")
-            results["tested"].append({
-                "target": size,
-                "actual": actual_tokens,
-                "success": True,
-                "time": elapsed
-            })
-            results["max_working"] = actual_tokens
-            time.sleep(1)
-
-        except Exception as e:
-            error_msg = str(e)
-            print_failure(f"Failed - {error_msg[:100]}")
-            results["tested"].append({
-                "target": size,
-                "actual": actual_tokens,
-                "success": False,
-                "error": error_msg[:200]
-            })
-            break
-
-    return results
-
-
 def test_gemini_context(test_sizes=[10000, 50000, 100000, 120000, 128000]):
     """Test Gemini 3.0 Pro context limits"""
     try:
@@ -393,24 +302,24 @@ def test_gemini_context(test_sizes=[10000, 50000, 100000, 120000, 128000]):
     return results
 
 
-def test_llama_context(test_sizes=[20000, 40000, 60000, 80000, 100000]):
-    """Test Llama 3.3 70B (via Groq) context limits"""
+def test_deepseek_context(test_sizes=[10000, 50000, 100000, 120000, 128000]):
+    """Test DeepSeek V3.2 context limits"""
     try:
         import openai
     except ImportError:
         return {"error": "openai package not installed", "status": "skip"}
 
-    api_key = os.environ.get('GROQ_API_KEY')
+    api_key = os.environ.get('DEEPSEEK_API_KEY')
     if not api_key:
-        return {"error": "GROQ_API_KEY not set", "status": "skip"}
+        return {"error": "DEEPSEEK_API_KEY not set", "status": "skip"}
 
-    print_info("Testing Llama 3.3 70B (via Groq)...")
-    client = openai.OpenAI(api_key=api_key, base_url="https://api.groq.com/openai/v1")
+    print_info("Testing DeepSeek V3.2...")
+    client = openai.OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
 
     results = {
-        "provider": "Meta",
-        "model": "llama-3.3-70b-versatile",
-        "advertised": "128,000 tokens (hosted via Groq)",
+        "provider": "DeepSeek",
+        "model": "deepseek-chat",
+        "advertised": "128,000 tokens",
         "tested": [],
         "max_working": 0,
         "status": "tested"
@@ -423,7 +332,7 @@ def test_llama_context(test_sizes=[20000, 40000, 60000, 80000, 100000]):
         try:
             start = time.time()
             response = client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model="deepseek-chat",
                 messages=[
                     {"role": "system", "content": "You are a helpful assistant."},
                     {"role": "user", "content": f"{payload}\n\nRespond with just: OK"}
@@ -453,184 +362,6 @@ def test_llama_context(test_sizes=[20000, 40000, 60000, 80000, 100000]):
                 "error": error_msg[:200]
             })
             break
-
-    return results
-
-
-def test_qwen_cloud_context(test_sizes=[20000, 40000, 60000, 80000, 100000]):
-    """Test Qwen3 32B (via Groq) context limits"""
-    try:
-        import openai
-    except ImportError:
-        return {"error": "openai package not installed", "status": "skip"}
-
-    api_key = os.environ.get('GROQ_API_KEY')
-    if not api_key:
-        return {"error": "GROQ_API_KEY not set", "status": "skip"}
-
-    print_info("Testing Qwen Cloud (Qwen3 32B via Groq)...")
-    client = openai.OpenAI(api_key=api_key, base_url="https://api.groq.com/openai/v1")
-
-    results = {
-        "provider": "Qwen",
-        "model": "qwen/qwen3-32b",
-        "advertised": "128,000 tokens (hosted via Groq)",
-        "tested": [],
-        "max_working": 0,
-        "status": "tested"
-    }
-
-    for size in test_sizes:
-        print(f"  Testing {size:,} tokens...", end=" ", flush=True)
-        payload, actual_tokens = generate_test_payload(size, "gpt-4")  # Use GPT-4 tokenizer approximation
-
-        try:
-            start = time.time()
-            response = client.chat.completions.create(
-                model="qwen/qwen3-32b",
-                messages=[
-                    {"role": "system", "content": "You are a helpful assistant."},
-                    {"role": "user", "content": f"{payload}\n\nRespond with just: OK"}
-                ],
-                max_tokens=50,
-                temperature=0.1
-            )
-            elapsed = time.time() - start
-
-            print_success(f"{actual_tokens:,} tokens OK ({elapsed:.1f}s)")
-            results["tested"].append({
-                "target": size,
-                "actual": actual_tokens,
-                "success": True,
-                "time": elapsed
-            })
-            results["max_working"] = actual_tokens
-            time.sleep(1)
-
-        except Exception as e:
-            error_msg = str(e)
-            print_failure(f"Failed - {error_msg[:100]}")
-            results["tested"].append({
-                "target": size,
-                "actual": actual_tokens,
-                "success": False,
-                "error": error_msg[:200]
-            })
-            break
-
-    return results
-
-
-def test_qwen_context(test_sizes=[2000, 8000, 16000, 24000, 32000]):
-    """Test Qwen 32B (GPU-only via Ollama) context limits"""
-    import subprocess
-    import time
-
-    try:
-        import requests
-    except ImportError:
-        return {"error": "requests package not installed", "status": "skip"}
-
-    # Check for GPU
-    try:
-        import torch
-        has_gpu = torch.cuda.is_available()
-    except:
-        has_gpu = False
-
-    if not has_gpu:
-        return {
-            "provider": "Qwen",
-            "model": "qwen2.5:7b",
-            "error": "GPU Required - Qwen skipped on CPU-only system",
-            "status": "skip"
-        }
-
-    model = "qwen2.5:7b"
-
-    print_info(f"Testing Qwen ({model} via Ollama)...")
-    print_info("GPU detected - using 32B model")
-
-    results = {
-        "provider": "Qwen",
-        "model": model,
-        "advertised": "32,768 tokens",
-        "tested": [],
-        "max_working": 0,
-        "status": "tested"
-    }
-
-    ollama_process = None
-    started_ollama = False
-
-    # Check if Ollama is running, start if needed
-    try:
-        response = requests.get("http://localhost:11434/api/tags", timeout=2)
-        if response.status_code != 200:
-            raise Exception("Ollama not responding")
-    except:
-        print_info("Starting Ollama service...")
-        ollama_process = subprocess.Popen(
-            ['ollama', 'serve'],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
-        )
-        started_ollama = True
-        time.sleep(3)  # Give service time to start
-        print_success("Ollama started")
-
-    try:
-        for size in test_sizes:
-            print(f"  Testing {size:,} tokens...", end=" ", flush=True)
-            payload, actual_tokens = generate_test_payload(size)
-
-            try:
-                start = time.time()
-                response = requests.post(
-                    "http://localhost:11434/api/generate",
-                    json={
-                        "model": model,
-                        "prompt": f"{payload}\n\nRespond with just: OK",
-                        "stream": False,
-                        "options": {
-                            "num_predict": 10
-                        }
-                    },
-                    timeout=60
-                )
-                elapsed = time.time() - start
-
-                if response.status_code == 200:
-                    print_success(f"{actual_tokens:,} tokens OK ({elapsed:.1f}s)")
-                    results["tested"].append({
-                        "target": size,
-                        "actual": actual_tokens,
-                        "success": True,
-                        "time": elapsed
-                    })
-                    results["max_working"] = actual_tokens
-                else:
-                    raise Exception(f"HTTP {response.status_code}")
-
-            except Exception as e:
-                error_msg = str(e)
-                print_failure(f"Failed - {error_msg[:100]}")
-                results["tested"].append({
-                    "target": size,
-                    "actual": actual_tokens,
-                    "success": False,
-                    "error": error_msg[:200]
-                })
-                break
-    finally:
-        # Stop Ollama if we started it
-        if started_ollama and ollama_process:
-            print_info("Stopping Ollama service...")
-            ollama_process.terminate()
-            try:
-                ollama_process.wait(timeout=5)
-            except:
-                ollama_process.kill()
 
     return results
 
@@ -729,8 +460,8 @@ def main():
     )
     parser.add_argument(
         "--providers",
-        default="sonnet,opus,chatgpt,gemini,llama,qwen,qwen-cloud",
-        help="Comma-separated list of providers to test (sonnet,opus,chatgpt,gemini,llama,qwen,qwen-cloud)"
+        default="sonnet,opus,gemini,deepseek",
+        help="Comma-separated list of providers to test (sonnet,opus,gemini,deepseek)"
     )
     parser.add_argument(
         "--output",
@@ -754,19 +485,13 @@ def main():
             result = test_anthropic_context()
         elif provider == 'opus':
             result = test_opus_context()
-        elif provider == 'chatgpt':
-            result = test_openai_context()
         elif provider == 'gemini':
             result = test_gemini_context()
-        elif provider == 'llama':
-            result = test_llama_context()
-        elif provider == 'qwen':
-            result = test_qwen_context()
-        elif provider == 'qwen-cloud':
-            result = test_qwen_cloud_context()
+        elif provider == 'deepseek':
+            result = test_deepseek_context()
         else:
             print_warning(f"Unknown provider: {provider}")
-            print_info(f"Valid providers: sonnet, opus, chatgpt, gemini, llama, qwen, qwen-cloud")
+            print_info(f"Valid providers: sonnet, opus, gemini, deepseek")
             continue
 
         all_results.append(result)

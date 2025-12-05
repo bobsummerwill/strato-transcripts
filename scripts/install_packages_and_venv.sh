@@ -267,11 +267,6 @@ elif [ "$OS_TYPE" = "ubuntu" ]; then
     
     echo -e "${GREEN}✓ System dependencies installed${NC}"
 fi
-
-    echo -e "${GREEN}✓ Ollama ready for local AI processing${NC}"
-    echo "  • Pull models as needed: ollama pull <model>"
-    echo "  • See available models: ollama list"
-fi
 echo ""
 
 # ==============================================================================
@@ -670,7 +665,7 @@ echo "  source venv/bin/activate"
 echo "  ./scripts/process_single.sh audio.mp3 --transcribers whisperx --processors opus"
 echo ""
 echo "Available transcribers: whisperx, whisperx-cloud, assemblyai"
-echo "Available processors: opus, gemini"
+echo "Available processors: opus, gemini, deepseek"
 echo ""
 echo "Batch Processing:"
 echo "  ./scripts/process_all.sh --transcribers assemblyai --processors opus"

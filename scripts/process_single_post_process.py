@@ -2,7 +2,7 @@
 """
 AI transcript post-processor for Ethereum/blockchain content.
 Batch process transcripts with multiple AI providers.
-Supports: opus, gemini.
+Supports: opus, gemini, deepseek.
 """
 
 import os
@@ -325,6 +325,41 @@ def process_with_gemini(transcript, api_key, context):
     print(" ✓")
     return result
 
+def process_with_deepseek(transcript, api_key, context):
+    """Process transcript using DeepSeek-V3 with streaming."""
+    try:
+        from openai import OpenAI
+    except ImportError:
+        raise ImportError("openai package not installed. Install with: pip install openai")
+
+    client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
+    prompt = build_prompt(context, transcript)
+
+    print(f"      Processing: ", end='', flush=True)
+
+    result = ""
+    chunk_count = 0
+
+    stream = client.chat.completions.create(
+        model="deepseek-chat",  # DeepSeek-V3.2 (latest)
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=65536,  # DeepSeek-V3 supports large outputs
+        stream=True
+    )
+
+    for chunk in stream:
+        if chunk.choices[0].delta.content:
+            result += chunk.choices[0].delta.content
+            chunk_count += 1
+            if chunk_count % 100 == 0:
+                print(".", end='', flush=True)
+
+    print(" ✓")
+    return result
+
 def estimate_tokens(text):
     """Estimate tokens (words × 1.3)."""
     return int(len(text.split()) * 1.3)
@@ -390,6 +425,8 @@ def process_single_combination(transcript_path, provider, api_keys, context):
             corrected = process_with_opus(transcript, api_keys['opus'], context)
         elif provider == "gemini":
             corrected = process_with_gemini(transcript, api_keys['gemini'], context)
+        elif provider == "deepseek":
+            corrected = process_with_deepseek(transcript, api_keys['deepseek'], context)
     except Exception as e:
         elapsed = time.time() - start_time
         print(f"      {failure(f'Processing failed ({elapsed:.1f}s): {e}')}")
@@ -457,13 +494,13 @@ def main():
     
     parser.add_argument("transcripts", nargs='+', help="Transcript file path(s)")
     parser.add_argument("--processors", required=True,
-                       help="Comma-separated list of processors (opus,gemini)")
+                       help="Comma-separated list of processors (opus,gemini,deepseek)")
     
     args = parser.parse_args()
     
     # Parse processors
     processors = [p.strip() for p in args.processors.split(',')]
-    valid_processors = {'opus', 'gemini'}
+    valid_processors = {'opus', 'gemini', 'deepseek'}
     
     for proc in processors:
         if proc not in valid_processors:
@@ -478,7 +515,8 @@ def main():
     # Map processor names to their environment variable names
     key_mapping = {
         'opus': 'ANTHROPIC_API_KEY',       # Claude Opus 4.5 via Anthropic
-        'gemini': 'GOOGLE_API_KEY'         # Gemini 3.0 Pro via Google
+        'gemini': 'GOOGLE_API_KEY',        # Gemini 3.0 Pro via Google
+        'deepseek': 'DEEPSEEK_API_KEY'     # DeepSeek-V3 via DeepSeek
     }
     
     for proc in processors:

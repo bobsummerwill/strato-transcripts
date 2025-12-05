@@ -26,6 +26,10 @@ export ANTHROPIC_API_KEY=""
 # Get key from: https://makersuite.google.com/app/apikey
 export GOOGLE_API_KEY=""
 
+# DeepSeek (DeepSeek-V3)
+# Get key from: https://platform.deepseek.com/
+export DEEPSEEK_API_KEY=""
+
 # ==============================================================================
 # OPTIONAL: Transcription Service API Keys
 # ==============================================================================
@@ -70,6 +74,12 @@ if [ -n "$GOOGLE_API_KEY" ] && [ "$GOOGLE_API_KEY" != "" ]; then
   echo "  GOOGLE_API_KEY: SET"
 else
   echo "  GOOGLE_API_KEY: NOT SET"
+fi
+
+if [ -n "$DEEPSEEK_API_KEY" ] && [ "$DEEPSEEK_API_KEY" != "" ]; then
+  echo "  DEEPSEEK_API_KEY: SET"
+else
+  echo "  DEEPSEEK_API_KEY: NOT SET"
 fi
 
 if [ -n "$ASSEMBLYAI_API_KEY" ] && [ "$ASSEMBLYAI_API_KEY" != "" ]; then

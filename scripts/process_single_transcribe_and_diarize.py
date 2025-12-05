@@ -273,29 +273,6 @@ def main():
             print(f"Valid options: {', '.join(sorted(valid_transcribers))}")
             sys.exit(1)
     
-    # Clean up any dangling Ollama processes at startup
-    # This prevents GPU memory issues with WhisperX when Ollama is left running
-    try:
-        import subprocess
-        import requests
-        
-        # Check if Ollama is running
-        try:
-            response = requests.get("http://localhost:11434/api/tags", timeout=1)
-            if response.status_code == 200:
-                print("Stopping dangling Ollama process...")
-                subprocess.run(['pkill', '-f', 'ollama serve'], 
-                             stdout=subprocess.DEVNULL, 
-                             stderr=subprocess.DEVNULL,
-                             timeout=5)
-                time.sleep(2)  # Give it time to stop
-                print("✓ Cleared")
-        except:
-            pass  # Not running, nothing to clean up
-    except Exception as e:
-        # Non-fatal if cleanup fails
-        print(f"⚠ Warning: Could not clean up dangling processes: {e}")
-    
     print("="*70)
     print("Unified Transcription Pipeline")
     print("="*70)
@@ -400,7 +377,7 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False):
     import gc
 
     # ========================================================================
-    # GPU CLEANUP - Gentle cleanup (stops Ollama, clears PyTorch cache)
+    # GPU CLEANUP - Clears PyTorch cache to free VRAM
     # ========================================================================
     cleanup_gpu_memory(force_cpu)
     if torch.cuda.is_available() and not force_cpu:
@@ -471,7 +448,7 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False):
             if model_a is not None:
                 del model_a
                 model_a = None
-            cleanup_gpu_memory(force_cpu)  # Gentle cleanup (stops Ollama gracefully)
+            cleanup_gpu_memory(force_cpu)  # Clear GPU memory
             time.sleep(3)
 
             # Retry with smaller batch size

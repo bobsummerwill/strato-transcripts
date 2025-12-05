@@ -20,7 +20,7 @@ if [ $# -eq 0 ]; then
     echo "  --transcribers <list>       Comma-separated transcription services"
     echo "                              (whisperx, whisperx-cloud, assemblyai)"
     echo "  --processors <list>         Comma-separated AI post-processors"
-    echo "                              (opus, gemini)"
+    echo "                              (opus, gemini, deepseek)"
     echo ""
     echo "Optional:"
     echo "  --batch-size <n>            Batch size for WhisperX (default: 16 GPU, 8 CPU)"
