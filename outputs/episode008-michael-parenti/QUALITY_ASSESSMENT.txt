@@ -2,121 +2,107 @@
 QUALITY ASSESSMENT: EPISODE 008 - MICHAEL PARENTI
 ================================================================================
 Guest: Michael Parenti
-Generated: December 5, 2025
+Generated: December 16, 2025
 
-Supported Combinations: 9 (3 transcribers × 3 post-processors)
+Supported Combinations: 12 (3 transcribers × 4 post-processors)
 
 ================================================================================
 EXECUTIVE SUMMARY
 ================================================================================
 
-AVAILABLE COMBINATIONS:
-├─ WhisperX-Local + DeepSeek     ★★★★★ Best content retention (99.9%)
-├─ WhisperX-Local + Gemini       ★★★★★ Excellent (98.4% retention)
-├─ WhisperX-Local + Opus         ★★★★☆ Good (95.7% retention)
-├─ WhisperX-Cloud + DeepSeek     ★★★★★ Best content retention (100.1%)
-├─ WhisperX-Cloud + Gemini       ★★★★★ Excellent (97.7% retention)
-├─ WhisperX-Cloud + Opus         ★★★★☆ Good (95.5% retention)
-├─ AssemblyAI + DeepSeek         ★★★★★ Best content retention (99.9%)
-├─ AssemblyAI + Gemini           ★★★★★ Excellent (97.5% retention)
-└─ AssemblyAI + Opus             ★★★★☆ Good (92.5% retention)
+This quality report was refreshed after regenerating all 12 post-processing
+outputs (opus, gemini, deepseek, chatgpt) for all 3 intermediate transcripts
+(whisperx, whisperx-cloud, assemblyai).
 
-RECOMMENDED FOR THIS EPISODE:
-1. assemblyai + deepseek      (Highest source accuracy + best retention)
-2. whisperx-cloud + deepseek  (Best overall content preservation)
-3. whisperx + gemini          (Fast, excellent for technical content)
+KEY FINDINGS:
 
-================================================================================
-WORD COUNT ANALYSIS
-================================================================================
+1) WORD-COUNT RETENTION is generally good
+   Most outputs are ~93–101% of the input transcript word count.
 
-INPUT (Intermediate Transcripts):
-  • episode008-michael-parenti_assemblyai.txt:      4,416 words
-  • episode008-michael-parenti_whisperx-cloud.txt:  4,175 words
-  • episode008-michael-parenti_whisperx.txt:        4,219 words
+2) TIMESTAMP INTEGRITY in POST-PROCESSED .md is NOT reliable
+   Post-processing was run on intermediate .txt transcripts, which do NOT
+   contain timestamps. As a result:
+   - Some providers emitted NO timestamps at all (md_headers=0).
+   - Some providers generated timestamps, but they are largely synthetic.
 
-OUTPUT (Post-Processed):
-                              Words    Retention
-  assemblyai + deepseek       4,410    99.9%  ★★★★★
-  assemblyai + gemini         4,304    97.5%  ★★★★★
-  assemblyai + opus           4,084    92.5%  ★★★★☆
-  
-  whisperx-cloud + deepseek   4,178    100.1% ★★★★★
-  whisperx-cloud + gemini     4,078    97.7%  ★★★★★
-  whisperx-cloud + opus       3,989    95.5%  ★★★★☆
-  
-  whisperx + deepseek         4,215    99.9%  ★★★★★
-  whisperx + gemini           4,152    98.4%  ★★★★★
-  whisperx + opus             4,037    95.7%  ★★★★☆
+   If you need accurate timestamps aligned to audio, treat the intermediate
+   .md transcripts as the ground truth.
+
+RECOMMENDED OUTPUTS (TEXT QUALITY / RETENTION):
+
+  • AssemblyAI + DeepSeek       (99.9% retention; good content preservation)
+  • WhisperX-Cloud + DeepSeek   (101.1% retention; slight expansion)
+  • WhisperX + Gemini           (98.6% retention; BUT md is missing timestamps)
+
+NOTE ON “ChatGPT” PROCESSOR:
+  ChatGPT outputs have good word retention in some cases, but they do not
+  follow the required timestamped markdown format (md_headers=0 everywhere).
 
 ================================================================================
-TRANSCRIBERS
+INPUT (INTERMEDIATE) TRANSCRIPTS
 ================================================================================
 
-AssemblyAI (assemblyai)
-  • Commercial cloud service
-  • Highest source word count (4,416 words)
-  • Clean speaker labels
-  • Best for: Professional workflows, highest fidelity
+Word counts (baseline for retention):
+  • episode008-michael-parenti_assemblyai.txt:      4,540 words
+  • episode008-michael-parenti_whisperx-cloud.txt:  4,316 words
+  • episode008-michael-parenti_whisperx.txt:        4,427 words
 
-WhisperX-Cloud (whisperx-cloud)
-  • Cloud processing via Replicate  
-  • Balanced output quality (4,175 words)
-  • Fast and consistent
-  • Best for: Standard production workflow
-
-WhisperX-Local (whisperx)
-  • FREE local processing with GPU
-  • Good accuracy (4,219 words)
-  • Excellent for technical content
-  • Best for: Privacy, offline processing
+Timestamp/header counts in intermediate .md (GROUND TRUTH timing):
+  • episode008-michael-parenti_assemblyai.md:       194 timestamped headers
+  • episode008-michael-parenti_whisperx-cloud.md:    26 timestamped headers
+  • episode008-michael-parenti_whisperx.md:         100 timestamped headers
 
 ================================================================================
-POST-PROCESSORS
+OUTPUT (POST-PROCESSED) WORD COUNT ANALYSIS
 ================================================================================
 
-DeepSeek-V3 (deepseek) - NEW WINNER
-  • Best content retention: 99.9-100.1%
-  • Preserves nearly all original content
-  • Excellent formatting compliance
-  • 8K output token limit (sufficient for this episode)
-  • Best for: Maximum content preservation
+Legend:
+  retention = output_words / input_words
+  md_headers = number of "**[MM:SS] SPEAKER_XX:**" headers detected in the .md
+  ts_overlap = percent overlap between output timestamps and intermediate .md
+               timestamps (unique set overlap; NOT sequence).
 
-Gemini 3.0 Pro (gemini)
-  • Very good retention: 97.5-98.4%
-  • Excellent technical terminology handling
-  • Fast processing
-  • 128K context window
-  • Best for: Fast processing, technical content
+ASSEMBLYAI (input: 4,540 words)
+  processor     words    retention   md_headers   md_ts    ts_overlap
+  opus          4,227     93.1%         194        194      13.0%
+  gemini        4,389     96.7%         194        194      13.6%
+  deepseek      4,535     99.9%         194        194      14.1%
+  chatgpt       3,996     88.0%           0          0       0.0%   ⚠ no timestamped headers
 
-Claude Opus 4.5 (opus)
-  • Good retention: 92.5-95.7%
-  • Highest editorial polish
-  • More aggressive cleanup of filler words
-  • 150K context window
-  • Best for: Archival quality, polished presentation
+WHISPERX-CLOUD (input: 4,316 words)
+  processor     words    retention   md_headers   md_ts    ts_overlap
+  opus          4,185     97.0%         159        159       7.7%
+  gemini        4,453    103.1%           0          0       0.0%   ⚠ no timestamped headers
+  deepseek      4,362    101.1%          82         82       0.0%   ⚠ timestamps appear fully synthetic
+  chatgpt       4,024     93.2%           0          0       0.0%   ⚠ no timestamped headers
+
+WHISPERX (input: 4,427 words)
+  processor     words    retention   md_headers   md_ts    ts_overlap
+  opus          4,178     94.4%         175        175      10.8%
+  gemini        4,366     98.6%           0          0       0.0%   ⚠ no timestamped headers
+  deepseek      4,276     96.6%         110        110      11.8%
+  chatgpt       4,290     96.9%           0          0       0.0%   ⚠ no timestamped headers
 
 ================================================================================
-EPISODE-SPECIFIC NOTES
+QUALITY FLAGS / REVIEW NOTES
 ================================================================================
 
-CONTENT CHARACTERISTICS:
-  • Interview with Michael Parenti (exiled cypherpunk)
-  • Rich early Ethereum history content
-  • Bitcoin Foundation background
-  • Berlin/Prague crypto scene connections
-  • Good audio quality, clear speakers
+1) Formatting non-compliance (missing required timestamped headers)
+   The following outputs have md_headers=0, meaning they do not follow the
+   required "**[MM:SS] SPEAKER_XX:**" format:
+     - episode008-michael-parenti_assemblyai_chatgpt.md
+     - episode008-michael-parenti_whisperx-cloud_chatgpt.md
+     - episode008-michael-parenti_whisperx-cloud_gemini.md
+     - episode008-michael-parenti_whisperx_chatgpt.md
+     - episode008-michael-parenti_whisperx_gemini.md
 
-KEY FINDING:
-  DeepSeek significantly outperforms both Opus and Gemini in content
-  retention for this episode, achieving near-perfect 100% preservation
-  while maintaining proper formatting. This makes it the recommended
-  choice when maximum content fidelity is the priority.
+2) Timestamp reliability warning
+   Even when md_headers exist, timestamp overlap vs the intermediate .md is low
+   (0–14%). This strongly suggests timestamps in outputs are not copied from
+   the source transcript and should be treated as synthetic.
 
-RECOMMENDED WORKFLOW:
-  Maximum Fidelity: assemblyai + deepseek (99.9% retention)
-  Balanced:         whisperx-cloud + deepseek (100.1% retention)
-  Editorial Polish: whisperx-cloud + opus (95.5% retention)
-  Fast Processing:  whisperx + gemini (98.4% retention)
+RECOMMENDATION:
+  • Use intermediate .md files as the canonical timestamped transcript.
+  • Use post-processed .txt outputs for corrected wording / readability.
 
 ================================================================================
