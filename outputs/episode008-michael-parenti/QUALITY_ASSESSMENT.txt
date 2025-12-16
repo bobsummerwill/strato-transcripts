@@ -100,3 +100,67 @@ RECOMMENDATION:
   • Use post-processed .txt outputs for corrected wording / readability.
 
 ================================================================================
+MANUAL SPOT-CHECK NOTES (CONTENT QUALITY)
+================================================================================
+
+These notes are based on manual inspection of multiple excerpts across the
+intermediate transcripts and the post-processed outputs.
+
+Key content issues observed:
+
+1) Critical proper-name / phrase errors in the *baseline* transcript(s)
+   Example (AssemblyAI intermediate intro):
+     - "I'm Bob Samuel" (should be Bob Summerwill)
+     - "Exalt server" / "ex-Altcoin server" (clearly a mis-hearing)
+     - guest surname varies (Parenti / Peranti / Paranti)
+
+2) Hallucination risk in post-processing
+   Gemini (AssemblyAI input) changed the guest name to "Michael Pölzl" in the
+   first line. This is not supported by the intermediate transcript and is a
+   disqualifying failure mode unless entity constraints are added.
+
+3) Some models over-segment speaker turns
+   WhisperX-cloud + Opus and WhisperX + Opus massively increased timestamp
+   counts, indicating new timestamps / over-segmentation.
+
+================================================================================
+PROJECT IMPROVEMENT RECOMMENDATIONS (TO REDUCE MANUAL EDITING)
+================================================================================
+
+High-impact pipeline improvements (cost/time not a barrier):
+
+1) Deterministic timestamp preservation (recommended architecture)
+   Do NOT ask the model to "preserve timestamps" in free-form text.
+   Instead:
+     a) Parse the intermediate .md into structured turns:
+        {timestamp, speaker_label, text}
+     b) Send ONLY `text` to the LLM for correction (return JSON: {"text": "..."})
+     c) Reassemble the transcript by reusing the original timestamp + speaker_label
+        verbatim.
+     d) Derive the output .txt by stripping timestamps from the final .md.
+
+   This prevents timestamp drift, reordering, and timestamp explosion.
+
+2) Entity constraints + validation
+   Add a per-episode allowlist for critical names (host + guest) and reject
+   outputs that introduce new PERSON entities not present in the input or allowlist.
+
+3) Validation + auto-retry
+   Expand automated checks to include:
+     - timestamps must be strictly non-decreasing
+     - exact timestamp sequence must match input (when using .md as input)
+     - reject added/dropped timestamps
+     - reject UNKNOWN speaker labels
+   On failure: retry with stricter prompting or a different model.
+
+4) Episode-specific vocabulary injection
+   Inject guest/host names (e.g. from the filename) into:
+     - AssemblyAI word boosting
+     - post-processor allowlist/context
+   This should fix cases like Parenti/Peranti/Paranti at the source.
+
+Best current baseline choice for this episode:
+   AssemblyAI intermediate is the cleanest starting point (best segmentation,
+   consistent timestamps, no UNKNOWN speakers).
+
+================================================================================
