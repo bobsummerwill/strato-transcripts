@@ -1,81 +1,167 @@
 ================================================================================
-QUALITY ASSESSMENT: EPISODE 001
+MANUAL ASSESSMENT (DRAFT; excerpt-based spot-check)
 ================================================================================
-Episode: "Early Bitcoin Memories & Origins" (~113 minutes)
-Generated: November 30, 2025
 
-Supported Combinations: 6 (3 transcribers × 2 post-processors)
+This section is generated from a deterministic excerpt spot-check (5 blocks per transcriber)
+plus simple novelty/similarity heuristics. It is *not* a substitute for listening to audio,
+but it does catch common failure modes: summarization, hallucinated entities, timestamp drift,
+and formatting corruption.
+
+See excerpt pack: outputs/episode001/REVIEW_EXCERPTS.md
+
+--------------------------------------------------------------------------------
+Transcriber: assemblyai
+-
+Baseline: 18,975 words, 276 timestamps (fmt_bad=0, nonmono=0)
+
+Top candidates (excerpt similarity / novelty / timestamp drift):
+  • gemini   sim=0.20 ret=85.6% ts=207/276 (×0.75) novel_caps=29 fmt_bad=0  ⚠ timestamp drift
+  • opus     sim=0.00 ret=99.5% ts=365/276 (×1.32) novel_caps=39 fmt_bad=365  ⚠ timestamp drift
+
+Draft recommendation for this transcriber: gemini
+Rationale: chosen by highest excerpt similarity while avoiding obvious timestamp/format corruption and excessive entity novelty.
+
+--------------------------------------------------------------------------------
+Transcriber: whisperx-cloud
+-
+Baseline: 19,191 words, 97 timestamps (fmt_bad=0, nonmono=0)
+
+Top candidates (excerpt similarity / novelty / timestamp drift):
+  • gemini   sim=0.19 ret=97.8% ts=132/97 (×1.36) novel_caps=89 fmt_bad=0  ⚠ timestamp drift  ⚠ entity novelty
+  • opus     sim=0.00 ret=96.9% ts=411/97 (×4.24) novel_caps=98 fmt_bad=411  ⚠ timestamp drift  ⚠ entity novelty
+
+Draft recommendation for this transcriber: gemini
+Rationale: chosen by highest excerpt similarity while avoiding obvious timestamp/format corruption and excessive entity novelty.
+
+--------------------------------------------------------------------------------
+Transcriber: whisperx
+-
+Baseline: 19,155 words, 137 timestamps (fmt_bad=1, nonmono=0)
+
+Top candidates (excerpt similarity / novelty / timestamp drift):
+  • gemini   sim=0.19 ret=98.4% ts=150/137 (×1.09) novel_caps=70 fmt_bad=0  ⚠ entity novelty
+  • opus     sim=0.00 ret=95.4% ts=386/137 (×2.82) novel_caps=87 fmt_bad=386  ⚠ timestamp drift  ⚠ entity novelty
+
+Draft recommendation for this transcriber: gemini
+Rationale: chosen by highest excerpt similarity while avoiding obvious timestamp/format corruption and excessive entity novelty.
+
+================================================================================
+
+================================================================================
+QUALITY ASSESSMENT: EPISODE001
+================================================================================
+Episode: episode001
+Generated: December 17, 2025
+
+Supported Combinations: 6 (found) / 12 (expected: 3 transcribers × 4 post-processors)
 
 ================================================================================
 EXECUTIVE SUMMARY
 ================================================================================
 
-AVAILABLE COMBINATIONS:
-├─ WhisperX-Local + Opus         ★★★★★ Premium quality
-├─ WhisperX-Local + Gemini       ★★★★★ Excellent technical terms
-├─ WhisperX-Cloud + Opus         ★★★★★ Best overall
-├─ WhisperX-Cloud + Gemini       ★★★★★ Fast & accurate
-├─ AssemblyAI + Opus             ★★★★★ Highest transcription accuracy
-└─ AssemblyAI + Gemini           ★★★★☆ Good quality, slightly condensed
+IMPORTANT PIPELINE NOTE:
+  Post-processing should run on the intermediate *.md transcripts (not *.txt)
+  so post-processors can preserve the original timestamps.
+
+KEY FINDINGS:
+
+1) WORD-COUNT RETENTION: 5/6 outputs are within 90–110% of baseline
+2) TIMESTAMP PRESERVATION: 0/6 outputs have an exact timestamp count match
+3) CRITICAL: 5 outputs show timestamp explosion (likely regenerated timestamps)
 
 RECOMMENDED FOR THIS EPISODE:
-1. whisperx-cloud + opus    (Best overall - excellent preservation)
-2. assemblyai + opus        (Highest accuracy)
-3. whisperx + gemini        (Fast, excellent technical terminology)
+  • whisperx + gemini
+      - timestamps: 73/51
+      - retention:  96.6%
+  • whisperx-cloud + gemini
+      - timestamps: 132/42
+      - retention:  96.7%
+  • assemblyai + opus
+      - timestamps: 365/129
+      - retention:  96.5%
 
 ================================================================================
-TRANSCRIBERS
+INPUT (INTERMEDIATE) TRANSCRIPTS
 ================================================================================
 
-WhisperX-Local (whisperx)
-  • FREE local processing
-  • Requires GPU for best performance
-  • Excellent accuracy for technical content
-  • Good speaker diarization
+Word counts (baseline for retention; computed from the intermediate .md
+transcripts with timestamps stripped):
+  • episode001_assemblyai.md                      19,563 words
+  • episode001_whisperx-cloud.md                  19,411 words
+  • episode001_whisperx.md                        19,499 words
 
-WhisperX-Cloud (whisperx-cloud)
-  • Cloud processing via Replicate
-  • Most balanced output quality
-  • Fast processing
-  • Consistent results
-
-AssemblyAI (assemblyai)
-  • Commercial cloud service
-  • Clean speaker labels
-  • High accuracy transcription
-  • Slightly more condensed output
+Timestamp/header counts in intermediate .md (GROUND TRUTH timing):
+  • episode001_assemblyai.md                       129 timestamps (129 timestamped headers)
+  • episode001_whisperx-cloud.md                    42 timestamps (42 timestamped headers)
+  • episode001_whisperx.md                          51 timestamps (50 timestamped headers)
 
 ================================================================================
-POST-PROCESSORS
+OUTPUT (POST-PROCESSED) WORD COUNT ANALYSIS
 ================================================================================
 
-Claude Opus 4.5 (opus)
-  • Premium quality - best reasoning
-  • 93-98% content retention
-  • Excellent technical term handling
-  • 150K context window
-  • Best for: Archival quality, important episodes
+Legend:
+  retention = output_words / input_words
+  timestamps = output timestamp count / input timestamp count
 
-Gemini 3.0 Pro (gemini)
-  • Excellent technical accuracy
-  • 84-98% content retention  
-  • Superior technical terminology
-  • 128K context window
-  • Best for: Fast processing, technical discussions
+ASSEMBLYAI (input: 19,563 words; 129 timestamps)
+  processor     words    retention   timestamps
+  gemini     16,249      83.1%   141/129   ⚠
+  opus       18,878      96.5%   365/129   ⚠ CRITICAL
+
+WHISPERX-CLOUD (input: 19,411 words; 42 timestamps)
+  processor     words    retention   timestamps
+  gemini     18,776      96.7%   132/42   ⚠ CRITICAL
+  opus       18,599      95.8%   411/42   ⚠ CRITICAL
+
+WHISPERX (input: 19,499 words; 51 timestamps)
+  processor     words    retention   timestamps
+  gemini     18,840      96.6%   73/51   ⚠ CRITICAL
+  opus       18,273      93.7%   386/51   ⚠ CRITICAL
 
 ================================================================================
-RECOMMENDATIONS
+QUALITY FLAGS / REVIEW NOTES
 ================================================================================
 
-FOR PRODUCTION USE:
-  Primary:   whisperx-cloud + opus
-  Backup:    assemblyai + opus
-  Fast mode: whisperx + gemini
+1) Timestamp count changes are the primary red flag
+   Any output with far more timestamps than the input is not preserving the
+   diarization paragraphing and is likely regenerating timestamps.
 
-FOR THIS LONG EPISODE (113 min):
-  • All combinations handle the length well
-  • Premium models (Opus, Gemini) preserve narrative flow
-  • Opus provides best archival quality
-  • Gemini offers excellent speed/quality balance
+   CRITICAL failures observed:
+     - assemblyai + opus: 365 timestamps vs 129 input
+     - whisperx + gemini: 73 timestamps vs 51 input
+     - whisperx + opus: 386 timestamps vs 51 input
+     - whisperx-cloud + gemini: 132 timestamps vs 42 input
+     - whisperx-cloud + opus: 411 timestamps vs 42 input
+
+2) Format / ordering issues
+     - assemblyai + opus: fmt_bad=365
+     - whisperx + opus: fmt_bad=386
+     - whisperx-cloud + opus: fmt_bad=411
+
+RECOMMENDATION:
+  • Use intermediate .md files as the canonical timestamped transcript.
+  • Use post-processed .txt outputs for corrected wording / readability.
+
+================================================================================
+MANUAL SPOT-CHECK NOTES (CONTENT QUALITY)
+================================================================================
+
+This file is generated from automated metrics only.
+Add manual notes here if you spot entity errors, hallucinations, or other
+content issues specific to this episode.
+
+================================================================================
+PROJECT IMPROVEMENT RECOMMENDATIONS (TO REDUCE MANUAL EDITING)
+================================================================================
+
+1) Deterministic timestamp preservation (recommended architecture)
+   Do NOT ask the model to 'preserve timestamps' in free-form text.
+   Instead: parse -> correct text only -> reassemble with original timestamps.
+
+2) Entity constraints + validation
+   Reject outputs that introduce new PERSON entities not present in input/allowlist.
+
+3) Validation + auto-retry
+   Enforce exact timestamp sequence match, non-decreasing timestamps, and header format.
 
 ================================================================================

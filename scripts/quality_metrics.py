@@ -27,9 +27,9 @@ class TxtMetrics:
     word_count: int
 
 
-TS_RE = re.compile(r"\[(\d{1,2}):(\d{2})\]")
-HEADER_RE = re.compile(r"^\*\*\[\d{1,2}:\d{2}\]\s*SPEAKER_\d+:\*\*\s+\S")
-HEADER_ANYWHERE_RE = re.compile(r"\*\*\[\d{1,2}:\d{2}\]\s*SPEAKER_\d+:\*\*")
+TS_RE = re.compile(r"\[(?:(\d+):)?(\d{1,2}):(\d{2})\]")
+HEADER_RE = re.compile(r"^\*\*\[\d{1,2}:\d{2}(?::\d{2})?\]\s*SPEAKER_\d+:\*\*\s+\S")
+HEADER_ANYWHERE_RE = re.compile(r"\*\*\[\d{1,2}:\d{2}(?::\d{2})?\]\s*SPEAKER_\d+:\*\*")
 SPEAKER_RE = re.compile(r"SPEAKER_\d+")
 WORD_RE = re.compile(r"\b\w+\b")
 
@@ -39,7 +39,11 @@ def _read_text(path: Path) -> str:
 
 
 def _timestamps_seconds(md_text: str) -> list[int]:
-    return [int(m) * 60 + int(s) for m, s in TS_RE.findall(md_text)]
+    out: list[int] = []
+    for h, m, s in TS_RE.findall(md_text):
+        hh = int(h) if h else 0
+        out.append(hh * 3600 + int(m) * 60 + int(s))
+    return out
 
 
 def compute_md_metrics(md_path: Path) -> MdMetrics:
@@ -130,4 +134,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
