@@ -27,97 +27,76 @@
 ## Transcriber: `assemblyai`
 
 ### Quick heuristics
-- baseline words (md stripped): **8,934**
-- baseline timestamps: **410** (headers=410)
+- baseline words (md stripped): **8,924**
+- baseline timestamps: **408** (headers=408)
 
-- **opus**: retention=104.3%, timestamps=407/410 (×0.99), fmt_bad=0, nonmono=0, novel_CAPS=28
-  - examples: Bitcoin Association, Bitcoin Decentral, Bitcoin Magazine, Bitcoin Miami, Bitcointalk, Bitlaw, Calafou, Canadian Bitcoin, Dark Market, Eric Voskuil
-- **gemini**: retention=100.3%, timestamps=382/410 (×0.93), fmt_bad=0, nonmono=0, novel_CAPS=54
-  - examples: Alisie, Anarchist Amir, And Gav, Being, Bitcoin Association, Bitcoin Decentral, Bitcoin Magazine, Bitcoin Maxi, Bitcoin Maxis, Bitcoin Miami
-- **deepseek**: retention=56.1%, timestamps=203/410 (×0.50), fmt_bad=0, nonmono=0, novel_CAPS=0
-- **chatgpt**: retention=92.6%, timestamps=302/410 (×0.74), fmt_bad=0, nonmono=0, novel_CAPS=43
-  - examples: Also, And Gavin Wood, Aya Miyaguchi, Being, Bitcoin Association, Bitcoin Decentral, Bitcoin Magazine, Bitcoin Miami, Bitcointalk, Bitlaw
+- **opus**: retention=104.0%, timestamps=406/408 (×1.00), fmt_bad=0, nonmono=0, novel_CAPS=32
+  - examples: Bitcoin Association, Bitcoin Decentral, Bitcoin Magazine, Bitcoin Magazine Vitalik, Bitcoin Miami, Bitcointalk, Bitlaw, Calafou, Canadian Bitcoin, Dark Market
+- **gemini**: retention=104.4%, timestamps=408/408 (×1.00), fmt_bad=0, nonmono=0, novel_CAPS=39
+  - examples: Anarchist Amir, Archive, Bitcoin Association, Bitcoin Decentral, Bitcoin Magazine, Bitcoin Magazine Vitalik, Bitcoin Miami, Bitcointalk, Bitlaw, Boomer
+- **deepseek**: retention=56.4%, timestamps=202/408 (×0.50), fmt_bad=0, nonmono=0, novel_CAPS=13
+  - examples: Bitcoin Magazine, Bitcoin Magazine Vitalik, Bitcoin Miami, Bitcoin Talk, Enables, Ethereum Foundation, Internet Archive, Jurassic Park, Kieran, Libbitcoin
+- **chatgpt**: retention=93.2%, timestamps=352/408 (×0.86), fmt_bad=0, nonmono=0, novel_CAPS=44
+  - examples: And Gavin Wood, Bitcoin Association, Bitcoin Decentral, Bitcoin Magazine, Bitcoin Miami, Bitcointalk, Bitlaw, Bro, Calafou, Can
 
 ### Excerpts (baseline vs outputs)
-#### [00:00] SPEAKER_00 (block 1/410)
+#### [00:03] SPEAKER_00 (block 1/408)
 
 **Intermediate:**
 
-> Hello, hello, hello, hello. Great to see you, my friend. So we are here. We are here in Prague, in beautiful Prague, Dark Prague. The inaugural Dark Prague 0 Congress conference. I'm not quite sure what you'd call it, but yeah, delighted to talk to you today, really within a context of this early days of Ethereum project that I've been looking at. And one of the things I remember seeing earliest was the two Amirs that you had. Capitalist Amir and anarchist Amir. So tell me, you know, before all that started even, you know, how did your.
+> Hello, hello, hello, hello. Great to see you, my friend. So we are here. We are here in Prague, in beautiful Prague, Dark Prague. The inaugural Dark Prague 0 Congress conference. I'm not quite sure what you'd call it, but yeah, delighted to talk to you today, really within a context of this early days of Ethereum project I've been looking at. And one of the things I remember seeing earliest was the two Amirs that you had. Capitalist Amir and anarchist Amir. So tell me, you know, before all that started even, you know, how did your.
 
 **opus:**
 
-> Hello, hello, hello, hello. Great to see you, my friend. So we are here. We are here in Prague, in beautiful Prague, Dark Prague. The inaugural Dark Prague 0 Congress conference. I'm not quite sure what you'd call it, but yeah, delighted to talk to you today, really within a context of this early days of Ethereum project that I've been looking at. And one of the things I remember seeing earliest was the two Amirs that you had. Capitalist Amir and anarchist Amir. So tell me, you know, before all that started even, you know, how did your...
+> Hello, hello, hello, hello. Great to see you, my friend. So we are here. We are here in Prague, in beautiful Prague, Dark Prague. The inaugural Dark Prague 0 Congress conference. I'm not quite sure what you'd call it, but yeah, delighted to talk to you today, really within a context of this early days of Ethereum project I've been looking at. And one of the things I remember seeing earliest was the two Amirs that you had. Capitalist Amir and anarchist Amir. So tell me, you know, before all that started even, you know, how did your...
 
 **gemini:**
 
-> Hello, hello, hello. Great to see you, my friend. So we are here. We are here in Prague, in beautiful Prague, Dark Prague. The inaugural Dark Prague 0 Congress conference. I'm not quite sure what you'd call it, but yeah, delighted to talk to you today, really within a context of this early days of Ethereum project that I've been looking at. And one of the things I remember seeing earliest was the two Amirs that you had: Capitalist Amir and Anarchist Amir. So tell me, before all that started even, how did your...
+> Hello, hello, hello, hello. Great to see you, my friend. So we are here. We are here in Prague, in beautiful Prague, Dark Prague. The inaugural Dark Prague #0 Congress conference. I'm not quite sure what you'd call it, but yeah, delighted to talk to you today, really within a context of this early days of Ethereum project I've been looking at. And one of the things I remember seeing earliest was the two Amirs that you had. Capitalist Amir and Anarchist Amir. So tell me, you know, before all that started even, you know, how did your...
 
 **deepseek:**
 
-> Hello, hello, hello, hello. Great to see you, my friend. So we are here. We are here in Prague, in beautiful Prague, Dark Prague. The inaugural Dark Prague 0 Congress conference. I'm not quite sure what you'd call it, but yeah, delighted to talk to you today, really within a context of this early days of Ethereum project that I've been looking at. And one of the things I remember seeing earliest was the two Amirs that you had. Capitalist Amir and anarchist Amir. So tell me, you know, before all that started even, you know, how did your.
+> Hello, hello, hello, hello. Great to see you, my friend. So we are here. We are here in Prague, in beautiful Prague, Dark Prague. The inaugural Dark Prague 0 Congress conference. I'm not quite sure what you'd call it, but yeah, delighted to talk to you today, really within a context of this early days of Ethereum project I've been looking at. And one of the things I remember seeing earliest was the two Amirs that you had. Capitalist Amir and anarchist Amir. So tell me, you know, before all that started even, you know, how did your.
 
 **chatgpt:**
 
-> Hello, hello, hello, hello. Great to see you, my friend. So we are here. We are here in Prague, in beautiful Prague, dark Prague. The inaugural Dark Prague 0 Congress conference. I’m not quite sure what you’d call it, but yeah, delighted to talk to you today, really within a context of this early days of the Ethereum project that I’ve been looking at. And one of the things I remember seeing earliest was the two Amirs that you had: capitalist Amir and anarchist Amir. So tell me, you know, before all that started even, you know, how did your—
+> Hello, hello, hello, hello. Great to see you, my friend. So we are here. We are here in Prague, in beautiful Prague—Dark Prague. The inaugural Dark Prague 0 Congress conference. I’m not quite sure what you’d call it, but yeah, delighted to talk to you today, really within a context of this early days of Ethereum project I’ve been looking at. And one of the things I remember seeing earliest was the two Amirs that you had: capitalist Amir and anarchist Amir. So tell me, you know, before all that started even, how did your—
 
-#### [19:27] SPEAKER_00 (block 103/410)
+#### [20:09] SPEAKER_00 (block 103/408)
 
 **Intermediate:**
 
-> You're putting people off. All this anarchist talk. You know, we're trying to sell this thing.
+> Right.
 
 **opus:**
 
-> You're putting people off. All this anarchist talk. You know, we're trying to sell this thing.
+> Right.
 
 **gemini:**
 
-> You're putting people off. All this anarchist talk. You know, we're trying to sell this thing.
+> Right.
 
 **deepseek:**
 
-> You're putting people off. All this anarchist talk. You know, we're trying to sell this thing.
+> Right.
 
 **chatgpt:**
 
-> You’re putting people off. All this anarchist talk. You know, we’re trying to sell this thing.
+> Right.
 
-#### [30:12] SPEAKER_01 (block 206/410)
-
-**Intermediate:**
-
-> Oh no, it was Agora or something.
-
-**opus:**
-
-> Oh no, it was Agora or something.
-
-**gemini:**
-
-> Oh no, it was Agora or something.
-
-**deepseek:**
-
-> (No matching timestamp found in output; likely timestamp regeneration or formatting drift.)
-
-**chatgpt:**
-
-> Oh no, it was Agora or something.
-
-#### [39:08] SPEAKER_01 (block 308/410)
+#### [30:44] SPEAKER_00 (block 205/408)
 
 **Intermediate:**
 
-> Yeah, yeah, because I, I know you can build it on bitcoin.
+> Yeah. Right.
 
 **opus:**
 
-> Yeah, yeah, because I, I know you can build it on Bitcoin.
+> Yeah. Right.
 
 **gemini:**
 
-> Yeah, yeah, because I know you can build it on Bitcoin.
+> Yeah. Right.
 
 **deepseek:**
 
@@ -125,9 +104,31 @@
 
 **chatgpt:**
 
-> Yeah, yeah, because I know you can build it on Bitcoin at the time. And I kept also pressing the guy to explain to me what it can be used for. And he just kind of in frustration went, “Marriage contracts.”
+> Yeah.
 
-#### [56:33] SPEAKER_01 (block 410/410)
+#### [39:24] SPEAKER_00 (block 307/408)
+
+**Intermediate:**
+
+> Yeah.
+
+**opus:**
+
+> Yeah.
+
+**gemini:**
+
+> Yeah.
+
+**deepseek:**
+
+> (No matching timestamp found in output; likely timestamp regeneration or formatting drift.)
+
+**chatgpt:**
+
+> Yeah.
+
+#### [56:36] SPEAKER_01 (block 408/408)
 
 **Intermediate:**
 
@@ -154,527 +155,98 @@
 ## Transcriber: `whisperx-cloud`
 
 ### Quick heuristics
-- baseline words (md stripped): **8,606**
-- baseline timestamps: **37** (headers=37)
-
-- **opus**: retention=89.3%, timestamps=170/37 (×4.59), fmt_bad=0, nonmono=0, novel_CAPS=30
-  - examples: Actually, Afterwards, Anthony Eufemio, Aya, Bitcoin Magazine, Bitcointalk, Calafou, Early Days, Gavin Andresen, Hive Wallet
-- **gemini**: retention=98.8%, timestamps=37/37 (×1.00), fmt_bad=0, nonmono=0, novel_CAPS=26
-  - examples: Anthony Eufemio, Aya, Bitcoin Magazine, Bitcoin Talk, Calafou, Early Days, Eric Voskuil, Gav Andresen, Gavin Andresen, Great Man
-- **deepseek**: retention=75.0%, timestamps=25/37 (×0.68), fmt_bad=0, nonmono=0, novel_CAPS=1
-  - examples: Aya Miyaguchi
-- **chatgpt**: retention=92.8%, timestamps=39/37 (×1.05), fmt_bad=0, nonmono=0, novel_CAPS=35
-  - examples: Actually, Afterwards, Amirs, And Gavin, And Gavin Wood, Archive, Aya Miyaguchi, Bitcoin Magazine, Bitcointalk, Calafou
-
-### Excerpts (baseline vs outputs)
-#### [00:00] SPEAKER_03 (block 1/37)
-
-**Intermediate:**
-
-> Hello, hello. Hello, hello. Great to see you, my friend. So we are here. We are here in Prague, in beautiful Prague, dark Prague, the inaugural Dark Prague Zero Congress, conference, I'm not quite sure what you'd call it. But yeah, delighted to talk to you today, really within a context of this early days of Ethereum project that I've been looking at. And one of the things I remember seeing earliest was the two EMEAs that you had capitalist Amir and anarchist Amir. So tell me, you know, before all that started even, you know, how did your... Just curious, how come you're doing this project? How come I'm doing it? Yeah, yeah, what's the... Well, it was quite, I mean, it was quite coincidental, you know, I'd... I'd gathered a bunch of information back in 2017-2018 basically because Ming Chan was getting hoofed out and I asked Vitalik if what I could do to help, you know, anything with help with the transition or whatever. And he said, can you can you like go and talk to people in the community and sort of see what they think the Ethereum Foundation should be like? What should we be doing? Oh dear, if you ask that question, it's already a bad sign. Well, my question at that point was, so Ming was terrible. She was one of the least professional people I've ever worked with. She was an absolute nightmare. And my thought was, well... what the hell was happening before that, that she looked like a good choice. And there was a real sort of shroud of mystery as to what had happened then, even though it was only like three or four years before. And so like there just was no canonical history. Nobody really knew what happened. Even something as basic as like, was Charles like kind of a co-founder or not? He kind of says he was maybe, but maybe he wasn't. which is just crazy because, you know, he was there, like, doing videos and, like, there's just tons of evidence. But anyway, so I started digging back into that stuff. What about Anthony Di Iorio as well? Anthony Di Iorio, yes, that's right. Didn't he get rocked or something? There was Anthony Di Iorio. I don't know the history. There was Anthony D'Onofrio that was Texture. And there was another guy called Anthony Euphamio who did this Digix Gold thing. But anyway, that's where I started getting interested in Ethereum history. It's just like, well, what the hell happened? I mean, what ended up happening is everything I recommended to Vitalik never happened. It was just completely... a disaster. You know, Ming went and he just got AYA. Here you go. It's a new one. No changes. Like the, what people wanted was like transparency. They wanted community input. They wanted like professional executive, like operational. It's like, you know, let's have organization to help the devs basically. um but primarily it was like don't be a swiss opaque foundation with no accountability or any public information at all anyway so i put the stuff aside at that point it's like great that was a good use of my time you know advising the millionaire for free for months um but then just recently um So the guys I now work with, they started recording some videos. So Kieran James Lubin is Joe's son. So he was actually around from March 2014. And the others were sort of involved from 2015. And they were just like, we should like, get some of these memories down, right? It was like eight years ago at that point. So they did a couple of those videos and I really loved them and I was making tons of notes and finding links and photos and all of this. And then they interviewed me for the third one But then more recently, I did interviews with Taylor Goering and with Texture and just tons of stuff came out of that. And then I just kind of like shoved those together and there you go. That's early days of Ethereum is this sort of combination of sort of biographical stuff and photos and videos, links to articles, and then, you know, conversations with people. And it's really just because it's like this is history, right?
-
-**opus:**
-
-> Hello, hello. Hello, hello. Great to see you, my friend. So we are here. We are here in Prague, in beautiful Prague, dark Prague, the inaugural Dark Prague Zero Congress, conference, I'm not quite sure what you'd call it. But yeah, delighted to talk to you today, really within a context of this early days of Ethereum project that I've been looking at. And one of the things I remember seeing earliest was the two AMAs that you had, capitalist Amir and anarchist Amir. So tell me, before all that started even, how did your... Just curious, how come you're doing this project? How come I'm doing it? Yeah, yeah, what's the...
-
-**gemini:**
-
-> Hello, hello. Hello, hello. Great to see you, my friend. So we are here. We are here in Prague, in beautiful Prague, dark Prague, the inaugural Dark Prague Zero Congress, conference, I'm not quite sure what you'd call it. But yeah, delighted to talk to you today, really within a context of this Early Days of Ethereum project that I've been looking at. And one of the things I remember seeing earliest was the two AMAs that you had, capitalist Amir and anarchist Amir. So tell me, before all that started even, how come you're doing this project? How come I'm doing it? Yeah, yeah, what's the... Well, it was quite coincidental, you know. I'd gathered a bunch of information back in 2017-2018, basically because Ming Chan was getting hoofed out and I asked Vitalik what I could do to help, anything with help with the transition or whatever. And he said, can you go and talk to people in the community and sort of see what they think the Ethereum Foundation should be like? What should we be doing? Oh dear, if you ask that question, it's already a bad sign. Well, my question at that point was, so Ming was terrible. She was one of the least professional people I've ever worked with. She was an absolute nightmare. And my thought was, well, what the hell was happening before that, that she looked like a good choice? And there was a real sort of shroud of mystery as to what had happened then, even though it was only like three or four years before. And so just there was no canonical history. Nobody really knew what happened. Even something as basic as, was Charles like kind of a co-founder or not? He kind of says he was maybe, but maybe he wasn't. Which is just crazy because he was there doing videos and there's just tons of evidence. But anyway, so I started digging back into that stuff. What about Anthony Di Iorio as well? Anthony Di Iorio, yes, that's right. Didn't he get rocked or something? There was Anthony Di Iorio. I don't know the history. There was Anthony D'Onofrio that was Texture. And there was another guy called Anthony Eufemio who did this Digix Gold thing. But anyway, that's where I started getting interested in Ethereum history. It's just like, well, what the hell happened? I mean, what ended up happening is everything I recommended to Vitalik never happened. It was just completely a disaster. Ming went and he just got Aya. Here you go. It's a new one. No changes. What people wanted was transparency. They wanted community input. They wanted professional executive, operational... It's like, let's have organization to help the devs basically. But primarily it was don't be a Swiss opaque foundation with no accountability or any public information at all. Anyway, so I put the stuff aside at that point. It's like great, that was a good use of my time advising the millionaire for free for months. But then just recently, the guys I now work with, they started recording some videos. So Kieran James Lubin is Joe's son. So he was actually around from March 2014. And the others were sort of involved from 2015. And they were just like, we should get some of these memories down, right? It was like eight years ago at that point. So they did a couple of those videos and I really loved them and I was making tons of notes and finding links and photos and all of this. And then they interviewed me for the third one. But then more recently, I did interviews with Taylor Gerring and with Texture and just tons of stuff came out of that. And then I just kind of shoved those together and there you go. That's Early Days of Ethereum, is this sort of combination of biographical stuff and photos and videos, links to articles, and then conversations with people. And it's really just because this is history, right?
-
-**deepseek:**
-
-> Hello, hello. Hello, hello. Great to see you, my friend. So we are here. We are here in Prague, in beautiful Prague, dark Prague, the inaugural Dark Prague Zero Congress, conference, I'm not quite sure what you'd call it. But yeah, delighted to talk to you today, really within a context of this early days of Ethereum project that I've been looking at. And one of the things I remember seeing earliest was the two EMEAs that you had capitalist Amir and anarchist Amir. So tell me, you know, before all that started even, you know, how did your... Just curious, how come you're doing this project? How come I'm doing it? Yeah, yeah, what's the... Well, it was quite, I mean, it was quite coincidental, you know, I'd... I'd gathered a bunch of information back in 2017-2018 basically because Ming Chan was getting hoofed out and I asked Vitalik if what I could do to help, you know, anything with help with the transition or whatever. And he said, can you can you like go and talk to people in the community and sort of see what they think the Ethereum Foundation should be like? What should we be doing? Oh dear, if you ask that question, it's already a bad sign. Well, my question at that point was, so Ming was terrible. She was one of the least professional people I've ever worked with. She was an absolute nightmare. And my thought was, well... what the hell was happening before that, that she looked like a good choice. And there was a real sort of shroud of mystery as to what had happened then, even though it was only like three or four years before. And so like there just was no canonical history. Nobody really knew what happened. Even something as basic as like, was Charles like kind of a co-founder or not? He kind of says he was maybe, but maybe he wasn't. which is just crazy because, you know, he was there, like, doing videos and, like, there's just tons of evidence. But anyway, so I started digging back into that stuff. What about Anthony Di Iorio as well? Anthony Di Iorio, yes, that's right. Didn't he get rocked or something? There was Anthony Di Iorio. I don't know the history. There was Anthony D'Onofrio that was Texture. And there was another guy called Anthony Euphamio who did this Digix Gold thing. But anyway, that's where I started getting interested in Ethereum history. It's just like, well, what the hell happened? I mean, what ended up happening is everything I recommended to Vitalik never happened. It was just completely... a disaster. You know, Ming went and he just got Aya Miyaguchi. Here you go. It's a new one. No changes. Like the, what people wanted was like transparency. They wanted community input. They wanted like professional executive, like operational. It's like, you know, let's have organization to help the devs basically. um but primarily it was like don't be a swiss opaque foundation with no accountability or any public information at all anyway so i put the stuff aside at that point it's like great that was a good use of my time you know advising the millionaire for free for months um but then just recently um So the guys I now work with, they started recording some videos. So Kieran James Lubin is Joe's son. So he was actually around from March 2014. And the others were sort of involved from 2015. And they were just like, we should like, get some of these memories down, right? It was like eight years ago at that point. So they did a couple of those videos and I really loved them and I was making tons of notes and finding links and photos and all of this. And then they interviewed me for the third one But then more recently, I did interviews with Taylor Goering and with Texture and just tons of stuff came out of that. And then I just kind of like shoved those together and there you go. That's early days of Ethereum is this sort of combination of sort of biographical stuff and photos and videos, links to articles, and then, you know, conversations with people. And it's really just because it's like this is history, right?
-
-**chatgpt:**
-
-> Hello, hello. Hello, hello. Great to see you, my friend. So we are here. We are here in Prague, in beautiful Prague, dark Prague, the inaugural Dark Prague Zero Congress, conference, I’m not quite sure what you’d call it. But yeah, delighted to talk to you today, really within a context of these early days of the Ethereum project that I’ve been looking at. And one of the things I remember seeing earliest was the two Amirs that you had: capitalist Amir and anarchist Amir. So tell me, before all that started even, how did your—just curious—how come you’re doing this project? How come I’m doing it? Yeah, yeah, what’s the— Well, it was quite, I mean, it was quite coincidental. I’d gathered a bunch of information back in 2017–2018 basically because Ming Chan was getting hoofed out, and I asked Vitalik if what I could do to help, anything to help with the transition or whatever. And he said, can you go and talk to people in the community and sort of see what they think the Ethereum Foundation should be like? What should we be doing? Oh dear, if you ask that question, it’s already a bad sign. Well, my question at that point was, so Ming was terrible. She was one of the least professional people I’ve ever worked with. She was an absolute nightmare. And my thought was, well, what the hell was happening before that, that she looked like a good choice? And there was a real sort of shroud of mystery as to what had happened then, even though it was only like three or four years before. And so there just was no canonical history. Nobody really knew what happened. Even something as basic as, was Charles kind of a co-founder or not? He kind of says he was, maybe, but maybe he wasn’t, which is just crazy because he was there doing videos and there’s just tons of evidence. But anyway, so I started digging back into that stuff. What about Anthony Di Iorio as well? Anthony Di Iorio, yes, that’s right. Didn’t he get rocked or something? There was Anthony Di Iorio. I don’t know the history. There was Anthony D’Onofrio that was “Texture.” And there was another guy called Anthony Euphamio who did this Digix Gold thing. But anyway, that’s where I started getting interested in Ethereum history. It’s just like, well, what the hell happened? What ended up happening is everything I recommended to Vitalik never happened. It was just completely a disaster. Ming went and he just got Aya Miyaguchi. Here you go. It’s a new one. No changes. Like, what people wanted was transparency. They wanted community input. They wanted professional executive, like operational—let’s have an organization to help the devs basically. But primarily it was like: don’t be a Swiss opaque foundation with no accountability or any public information at all. Anyway, so I put the stuff aside at that point. It’s like, great, that was a good use of my time, advising the millionaire for free for months. But then just recently, so the guys I now work with, they started recording some videos. So Kieran James Lubin is Joe’s son, so he was actually around from March 2014. And the others were sort of involved from 2015. And they were just like, we should get some of these memories down, right? It was like eight years ago at that point. So they did a couple of those videos and I really loved them, and I was making tons of notes and finding links and photos and all of this. And then they interviewed me for the third one. But then more recently I did interviews with Taylor Gerring and with Texture, and just tons of stuff came out of that. And then I just kind of shoved those together and there you go. That’s Early Days of Ethereum: this sort of combination of biographical stuff and photos and videos, links to articles, and then conversations with people. And it’s really just because it’s like, this is history, right?
-
-#### [11:39] SPEAKER_01 (block 10/37)
-
-**Intermediate:**
-
-> So I was working on free software for five, six years. And then I became a professional poker player. Right, right. That was for over two years. And the poker sites, you know, you're playing against other players. Right. But the way the sites operate, the platform, they take a cut. out of every pot, basically, every game that you play. Right. But the sites charge a huge amount of fees for a really crappy service. So I had this idea, what if you could have a P2P site, then it wouldn't have rake and fees. Right. So I had like the design for it, but then the main issue was the payment system. And so then I was on IRC in this channel with other anarcho-hackers I know. And I was telling them about that. And this guy just, he's like a mathematician that worked for the W3C. His name's Melvin. He dumped just like 10 links in there. And, you know, they're like random open source projects for like money. And there's stuff like Letts. Have you heard of Letts? No, no. That was, at one point, people were really into that. But it's like... I think it's like offering your labor, you get like a token or something, but anyway. So I was like going through all of these links and they were going, no, no, no, no. I saw Bitcoin, I opened the page for Bitcoin, it goes, Bitcoin is a P2P currency that cannot be controlled by governments or central banks. And I was like, that's garbage. Obviously not. Because there's like loads of random projects like that on SourceForge back in the day. I once saw like a Jurassic Park video game and it was going... Like, you could do everything. You can punch through the walls, you can hack the terminals, you can hunt the dinosaurs. And I was like, whoa, sounds amazing. And I checked the code and it said, like, main.cpp. And it had, like, just, you know. One file. Yeah, like, it just got bored of it. It just wrote the idea. Right, right. And then, like, I kept checking months every so often. And there was, like, zero progress on that. So I thought Bitcoin was, like, one of those kind of projects. I went, no, no, no, no, no. I was like, oh, they're all shit. So I was like, okay, let's take a deeper look at all of them then. And so then when it came to Bitcoin one, I downloaded the source code and I started going through the source code and I was like, oh, that's really interesting. First of all, Bitcoin source code is about 15,000 lines of code at that time. Yeah. which, you know, 15,000 lines of code, it's actually a small amount of lines of code. Like some programmers can even do that in like a week or something like very talented programmers. But so I was like, oh, but it's not nothing either. It's not like that Jurassic Park game I was just describing. So it's like 20, you know, 15,000 lines of code like less. You can read through and kind of understand that pretty well. Yeah, so I printed it all out and I covered it all over my floor. Right. You know, it's like my pornography that I'm looking at. I started studying it. Yeah. And it started to make sense. I was like, oh, very interesting. Oh, interesting. And so when I figured out how it worked, I was like, whoa, this is amazing. I'm going to work on this. So what month do you think that was? That was the summer of 2010. Right. So that's when I, like, basically, I was like, okay, I'm just doing this from now on. And so then I had, like, then I made, like, a plan of, like, oh, in 10 years we'll be here, et cetera. Right, right. Because this is, like, a long-term thing I'm going to work on. but then that basically just happened really quickly like just started growing massively so it's pretty crazy but i started working on bitcoin so i'm writing code you know i was one of the first five bitcoin developers which i was like listed on bitcoin dog right but that page is gone from the internet so people it's like maybe maybe it got archived No, I don't think so. No, just gone. The very first Bitcoin webpage with the list of names. Right. So, like, I had a war with Gavin Andreessen. Yep. Because he was, like, he's a motherfucker, like, in many ways. But... Basically, he really likes regulations and the state and stuff like that. He's a statist. And he's into the banks and stuff. But also, he was just not that good a dev. And when there was other young devs that were coming up, instead of trying to nurture them, he was instead trying to push them out and try and keep control. So I became his main enemy, basically. I was like his first enemy. And then he kind of seemed like he never wanted the role. Even he just sort of got kind of locked into it. Yeah. And then he was there and he's like, oh, I want to keep it. I really like it, you know. So, yeah, I went to the very first event presenting Bitcoin to the audience of bankers. And so I did my talking afterwards, Gavin Andreessen, he DM me and he goes, I think you should not talk at conferences ever again. I was like, who the fuck is this guy? You're not in charge of project. Fuck you. But was this in London or in the US? Amsterdam. Amsterdam. Yeah. But anyway, so You know, one of the first things that Gav Andreessen did was to try and get my name off of that list. He got his name added. But anyway. Right. So he was like that. And, you know...
-
-**opus:**
-
-> So I was working on free software for five, six years. And then I became a professional poker player. Right, right. That was for over two years. And the poker sites, you're playing against other players. Right. But the way the sites operate, the platform, they take a cut out of every pot, basically, every game that you play. Right. But the sites charge a huge amount of fees for a really crappy service. So I had this idea, what if you could have a P2P site, then it wouldn't have rake and fees. Right. So I had the design for it, but then the main issue was the payment system. And so then I was on IRC in this channel with other anarcho-hackers I know. And I was telling them about that. And this guy, he's like a mathematician that worked for the W3C. His name's Melvin. He dumped just like 10 links in there. And they're like random open source projects for money. And there's stuff like LETS. Have you heard of LETS?
-
-**gemini:**
-
-> So I was working on free software for five, six years. And then I became a professional poker player. Right, right. That was for over two years. And the poker sites, you know, you're playing against other players. Right. But the way the sites operate, the platform, they take a cut out of every pot, basically, every game that you play. Right. But the sites charge a huge amount of fees for a really crappy service. So I had this idea, what if you could have a P2P site, then it wouldn't have rake and fees. Right. So I had like the design for it, but then the main issue was the payment system. And so then I was on IRC in this channel with other anarcho-hackers I know. And I was telling them about that. And this guy, he's like a mathematician that worked for the W3C. His name's Melvin. He dumped just like 10 links in there. And they're like random open source projects for like money. And there's stuff like LETS. Have you heard of LETS? No, no. That was, at one point, people were really into that. But I think it's like offering your labor, you get like a token or something, but anyway. So I was like going through all of these links and they were going, no, no, no, no. I saw Bitcoin, I opened the page for Bitcoin, it goes, Bitcoin is a P2P currency that cannot be controlled by governments or central banks. And I was like, that's garbage. Obviously not. Because there's like loads of random projects like that on SourceForge back in the day. I once saw like a Jurassic Park video game and it was going... Like, you could do everything. You can punch through the walls, you can hack the terminals, you can hunt the dinosaurs. And I was like, whoa, sounds amazing. And I checked the code and it said, like, main.cpp. And it had, like, just one file. Yeah, like, it just got bored of it. It just wrote the idea. Right, right. And then I kept checking months every so often. And there was zero progress on that. So I thought Bitcoin was like one of those kind of projects. I went, no, no, no, no, no. I was like, oh, they're all shit. So I was like, okay, let's take a deeper look at all of them then. And so then when it came to the Bitcoin one, I downloaded the source code and I started going through the source code and I was like, oh, that's really interesting. First of all, Bitcoin source code is about 15,000 lines of code at that time. Yeah. Which, you know, 15,000 lines of code, it's actually a small amount of lines of code. Like some programmers can even do that in like a week or something, like very talented programmers. But so I was like, oh, but it's not nothing either. It's not like that Jurassic Park game I was just describing. So it's like 20, you know, 15,000 lines of code like less. You can read through and kind of understand that pretty well. Yeah, so I printed it all out and I covered it all over my floor. Right. You know, it's like my pornography that I'm looking at. I started studying it. Yeah. And it started to make sense. I was like, oh, very interesting. Oh, interesting. And so when I figured out how it worked, I was like, whoa, this is amazing. I'm going to work on this. So what month do you think that was? That was the summer of 2010. Right. So that's when I basically, I was like, okay, I'm just doing this from now on. And so then I had like a plan of like, oh, in 10 years we'll be here, et cetera. Right, right. Because this is like a long-term thing I'm going to work on. But then that basically just happened really quickly. Like just started growing massively so it's pretty crazy but I started working on Bitcoin so I'm writing code. I was one of the first five Bitcoin developers which I was like listed on Bitcoin.org. Right. But that page is gone from the internet so people it's like maybe maybe it got archived. No, I don't think so. No, just gone. The very first Bitcoin webpage with the list of names. Right. So, like, I had a war with Gavin Andresen. Yep. Because he was, like, he's a motherfucker, like, in many ways. But basically he really likes regulations and the state and stuff like that. He's a statist. And he's into the banks and stuff. But also, he was just not that good a dev. And when there was other young devs that were coming up, instead of trying to nurture them, he was instead trying to push them out and try and keep control. So I became his main enemy, basically. I was like his first enemy. And then he kind of seemed like he never wanted the role. Even he just sort of got kind of locked into it. Yeah. And then he was there and he's like, oh, I want to keep it. I really like it, you know. So, yeah, I went to the very first event presenting Bitcoin to the audience of bankers. And so I did my talking afterwards, Gavin Andresen, he DM me and he goes, I think you should not talk at conferences ever again. I was like, who the fuck is this guy? You're not in charge of project. Fuck you. But was this in London or in the US? Amsterdam. Amsterdam. Yeah. But anyway, so you know, one of the first things that Gav Andresen did was to try and get my name off of that list. He got his name added. But anyway. Right. So he was like that. And, you know...
-
-**deepseek:**
-
-> So I was working on free software for five, six years. And then I became a professional poker player. Right, right. That was for over two years. And the poker sites, you know, you're playing against other players. Right. But the way the sites operate, the platform, they take a cut. out of every pot, basically, every game that you play. Right. But the sites charge a huge amount of fees for a really crappy service. So I had this idea, what if you could have a P2P site, then it wouldn't have rake and fees. Right. So I had like the design for it, but then the main issue was the payment system. And so then I was on IRC in this channel with other anarcho-hackers I know. And I was telling them about that. And this guy just, he's like a mathematician that worked for the W3C. His name's Melvin. He dumped just like 10 links in there. And, you know, they're like random open source projects for like money. And there's stuff like Letts. Have you heard of Letts? No, no. That was, at one point, people were really into that. But it's like... I think it's like offering your labor, you get like a token or something, but anyway. So I was like going through all of these links and they were going, no, no, no, no. I saw Bitcoin, I opened the page for Bitcoin, it goes, Bitcoin is a P2P currency that cannot be controlled by governments or central banks. And I was like, that's garbage. Obviously not. Because there's like loads of random projects like that on SourceForge back in the day. I once saw like a Jurassic Park video game and it was going... Like, you could do everything. You can punch through the walls, you can hack the terminals, you can hunt the dinosaurs. And I was like, whoa, sounds amazing. And I checked the code and it said, like, main.cpp. And it had, like, just, you know. One file. Yeah, like, it just got bored of it. It just wrote the idea. Right, right. And then, like, I kept checking months every so often. And there was, like, zero progress on that. So I thought Bitcoin was, like, one of those kind of projects. I went, no, no, no, no, no. I was like, oh, they're all shit. So I was like, okay, let's take a deeper look at all of them then. And so then when it came to Bitcoin one, I downloaded the source code and I started going through the source code and I was like, oh, that's really interesting. First of all, Bitcoin source code is about 15,000 lines of code at that time. Yeah. which, you know, 15,000 lines of code, it's actually a small amount of lines of code. Like some programmers can even do that in like a week or something like very talented programmers. But so I was like, oh, but it's not nothing either. It's not like that Jurassic Park game I was just describing. So it's like 20, you know, 15,000 lines of code like less. You can read through and kind of understand that pretty well. Yeah, so I printed it all out and I covered it all over my floor. Right. You know, it's like my pornography that I'm looking at. I started studying it. Yeah. And it started to make sense. I was like, oh, very interesting. Oh, interesting. And so when I figured out how it worked, I was like, whoa, this is amazing. I'm going to work on this. So what month do you think that was? That was the summer of 2010. Right. So that's when I, like, basically, I was like, okay, I'm just doing this from now on. And so then I had, like, then I made, like, a plan of, like, oh, in 10 years we'll be here, et cetera. Right, right. Because this is, like, a long-term thing I'm going to work on. but then that basically just happened really quickly like just started growing massively so it's pretty crazy but i started working on bitcoin so i'm writing code you know i was one of the first five bitcoin developers which i was like listed on bitcoin dog right but that page is gone from the internet so people it's like maybe maybe it got archived No, I don't think so. No, just gone. The very first Bitcoin webpage with the list of names. Right. So, like, I had a war with Gavin Andreessen. Yep. Because he was, like, he's a motherfucker, like, in many ways. But... Basically, he really likes regulations and the state and stuff like that. He's a statist. And he's into the banks and stuff. But also, he was just not that good a dev. And when there was other young devs that were coming up, instead of trying to nurture them, he was instead trying to push them out and try and keep control. So I became his main enemy, basically. I was like his first enemy. And then he kind of seemed like he never wanted the role. Even he just sort of got kind of locked into it. Yeah. And then he was there and he's like, oh, I want to keep it. I really like it, you know. So, yeah, I went to the very first event presenting Bitcoin to the audience of bankers. And so I did my talking afterwards, Gavin Andreessen, he DM me and he goes, I think you should not talk at conferences ever again. I was like, who the fuck is this guy? You're not in charge of project. Fuck you. But was this in London or in the US? Amsterdam. Amsterdam. Yeah. But anyway, so You know, one of the first things that Gav Andreessen did was to try and get my name off of that list. He got his name added. But anyway. Right. So he was like that. And, you know...
-
-**chatgpt:**
-
-> So I was working on free software for five, six years. And then I became a professional poker player. That was for over two years. And the poker sites, you’re playing against other players, right? But the way the sites operate, the platform, they take a cut out of every pot, basically, every game that you play. But the sites charge a huge amount of fees for a really crappy service. So I had this idea: what if you could have a P2P site? Then it wouldn’t have rake and fees, right? So I had the design for it, but then the main issue was the payment system. And so then I was on IRC in this channel with other anarcho-hackers I know. And I was telling them about that. And this guy—he’s like a mathematician that worked for the W3C—his name’s Melvin. He dumped just like 10 links in there. They’re like random open source projects for money. And there’s stuff like LETS. Have you heard of LETS? No, no. That was, at one point, people were really into that. But it’s like, I think it’s offering your labor, you get a token or something, but anyway. So I was going through all of these links and they were going, no, no, no, no. I saw Bitcoin. I opened the page for Bitcoin. It goes, “Bitcoin is a P2P currency that cannot be controlled by governments or central banks.” And I was like, that’s garbage. Obviously not. Because there’s loads of random projects like that on SourceForge back in the day. I once saw a Jurassic Park video game and it was going, like, you could do everything. You can punch through the walls, you can hack the terminals, you can hunt the dinosaurs. And I was like, whoa, sounds amazing. And I checked the code and it said, like, main.cpp. And it had just one file. Yeah, it just got bored of it. It just wrote the idea. And then I kept checking months every so often and there was zero progress on that. So I thought Bitcoin was one of those kind of projects. I went, no, no, no, no, no. I was like, oh, they’re all shit. So I was like, okay, let’s take a deeper look at all of them then. And so then when it came to Bitcoin, I downloaded the source code and I started going through the source code and I was like, oh, that’s really interesting. First of all, Bitcoin source code is about 15,000 lines of code at that time, which, you know, 15,000 lines of code, it’s actually a small amount of lines of code. Some programmers can even do that in like a week or something, like very talented programmers. But it’s not nothing either. It’s not like that Jurassic Park game I was just describing. So it’s like 15,000 lines of code. You can read through and kind of understand that pretty well. So I printed it all out and I covered it all over my floor. It’s like my pornography that I’m looking at. I started studying it. And it started to make sense. I was like, oh, very interesting. Oh, interesting. And so when I figured out how it worked, I was like, whoa, this is amazing. I’m going to work on this. So what month do you think that was? That was the summer of 2010. So that’s when I basically was like, okay, I’m just doing this from now on. And so then I had a plan of like, oh, in 10 years we’ll be here, etc., because this is like a long-term thing I’m going to work on. But then that basically just happened really quickly, like it just started growing massively, so it’s pretty crazy. But I started working on Bitcoin. So I’m writing code. I was one of the first five Bitcoin developers, which I was listed on Bitcoin.org, right, but that page is gone from the internet. People—it’s like, maybe it got archived. No, I don’t think so. No, just gone. The very first Bitcoin webpage with the list of names. So, like, I had a war with Gavin Andresen. Yep. Because he was a motherfucker, like, in many ways. But basically, he really likes regulations and the state and stuff like that. He’s a statist. And he’s into the banks and stuff like that. But also, he was just not that good a dev. And when there was other young devs that were coming up, instead of trying to nurture them, he was instead trying to push them out and try and keep control. So I became his main enemy, basically. I was like his first enemy. And then he kind of seemed like he never wanted the role. Even he just sort of got kind of locked into it. Yeah. And then he was there and he’s like, oh, I want to keep it. I really like it, you know. So, yeah, I went to the very first event presenting Bitcoin to the audience of bankers. And so I did my talk. Afterwards, Gavin Andresen, he DMed me and he goes, “I think you should not talk at conferences ever again.” I was like, who the fuck is this guy? You’re not in charge of project. Fuck you. But was this in London or in the US? Amsterdam. Amsterdam. Yeah. But anyway, so one of the first things that Gavin Andresen did was to try and get my name off of that list. He got his name added. But anyway. Right. So he was like that.
-
-#### [33:47] SPEAKER_03 (block 19/37)
-
-**Intermediate:**
-
-> And so then he went to Mastercoin and then he went to do Ethereum. He was saying he'd also seen what happened with Counterparty, right, where they were like chopping down the, you know, the up returns stuff. Yeah, it's like, okay, don't want to like build some meta protocol on top of this if it's going to get like, they're going to change the mind next month and it's like, right, you know, your protocol's dead.
-
-**opus:**
-
-> And so then he went to Mastercoin and then he went to do Ethereum. He was saying he'd also seen what happened with Counterparty, right, where they were like chopping down the OP_RETURN stuff.
-
-**gemini:**
-
-> And so then he went to Mastercoin and then he went to do Ethereum. He was saying he'd also seen what happened with Counterparty, right, where they were like chopping down the, you know, the OP_RETURN stuff. Yeah, it's like, okay, don't want to like build some meta protocol on top of this if it's going to get like, they're going to change the mind next month and it's like, right, you know, your protocol's dead.
-
-**deepseek:**
-
-> And so then he went to Mastercoin and then he went to do Ethereum. He was saying he'd also seen what happened with Counterparty, right, where they were like chopping down the, you know, the up returns stuff. Yeah, it's like, okay, don't want to like build some meta protocol on top of this if it's going to get like, they're going to change the mind next month and it's like, right, you know, your protocol's dead.
-
-**chatgpt:**
-
-> And so then he went to Mastercoin and then he went to do Ethereum. He was saying he’d also seen what happened with Counterparty, right, where they were like chopping down the OP_RETURN stuff. Yeah, it’s like, okay, don’t want to build some meta-protocol on top of this if it’s going to get—if they’re going to change their mind next month and it’s like, right, you know, your protocol’s dead.
-
-#### [43:45] SPEAKER_01 (block 28/37)
-
-**Intermediate:**
-
-> Yeah, yeah. I remember Adam Levine and Stephanie and Andreas. Right, yeah, yeah. They hung out with each other a lot. Yeah, yeah.
-
-**opus:**
-
-> Yeah, yeah.
-
-**gemini:**
-
-> Yeah, yeah. I remember Adam Levine and Stephanie and Andreas. Right, yeah, yeah. They hung out with each other a lot. Yeah, yeah.
-
-**deepseek:**
-
-> (No matching timestamp found in output; likely timestamp regeneration or formatting drift.)
-
-**chatgpt:**
-
-> It was a fun conference. It wasn’t like an exceptional conference. Yeah, I had a good time. I was just going around chatting to people. Yeah, it was good. Yeah, yeah. I remember Adam Levine and Stephanie and Andreas. Right, yeah, yeah. They hung out with each other a lot. Yeah, yeah.
-
-#### [56:13] SPEAKER_03 (block 37/37)
-
-**Intermediate:**
-
-> I've heard some people say perhaps Monero with smart contracts. Would that be reasonable? But we're not using Ring 6, we're using ZK. Zcash with smart contracts. Yeah, well, yeah, maybe, yeah. Okay, thanks so much. Thank you.
-
-**opus:**
-
-> I've heard some people say perhaps Monero with smart contracts. Would that be reasonable?
-
-**gemini:**
-
-> I've heard some people say perhaps Monero with smart contracts. Would that be reasonable? But we're not using Ring 6, we're using ZK. Zcash with smart contracts. Yeah, well, yeah, maybe, yeah. Okay, thanks so much. Thank you.
-
-**deepseek:**
-
-> (No matching timestamp found in output; likely timestamp regeneration or formatting drift.)
-
-**chatgpt:**
-
-> I’ve heard some people say perhaps Monero with smart contracts. Would that be reasonable? But we’re not using ring sigs, we’re using ZK. Zcash with smart contracts. Yeah, well, yeah, maybe, yeah. Okay, thanks so much. Thank you.
-
----
-
-## Transcriber: `whisperx`
-
-### Quick heuristics
-- baseline words (md stripped): **8,610**
-- baseline timestamps: **221** (headers=219)
-
-- **opus**: retention=98.3%, timestamps=246/221 (×1.11), fmt_bad=0, nonmono=0, novel_CAPS=32
-  - examples: About, Amirs, And Ethereum, Aya, Bitcoin Magazine, Bitcointalk, Calafou, Counterparty, Dark Market, Eric Voskuil
-- **gemini**: retention=102.3%, timestamps=219/221 (×0.99), fmt_bad=0, nonmono=0, novel_CAPS=27
-  - examples: About, Anthony Eufemio, Aya, Bitcoin Magazine, Bitcoin Talk, Calafou, Counterparty, Early Days, Eric Voskuil, Gav Andresen
-- **deepseek**: retention=66.3%, timestamps=127/221 (×0.57), fmt_bad=1, nonmono=0, novel_CAPS=6
-  - examples: Aya Miyaguchi, Joe, Kieran, Kieran James Lubin, March, Taylor Gerring
-- **chatgpt**: retention=93.9%, timestamps=222/221 (×1.00), fmt_bad=2, nonmono=0, novel_CAPS=43
-  - examples: Also, And Ethereum, And Gavin Wood, Aya, Bitcoin Magazine, Bitcointalk, Bro, Calafou, Counterparty, Dark
-
-### Excerpts (baseline vs outputs)
-#### [00:00] SPEAKER_02 (block 1/219)
-
-**Intermediate:**
-
-> Hello, hello.
-
-**opus:**
-
-> Hello, hello.
-
-**gemini:**
-
-> Hello, hello.
-
-**deepseek:**
-
-> Hello, hello.
-
-**chatgpt:**
-
-> Hello, hello.
-
-#### [17:15] SPEAKER_02 (block 55/219)
-
-**Intermediate:**
-
-> But anyway, so... You know, one of the first things that Gav Andreessen did was to try and get my name off of that list. He got his name added. But anyway.
-
-**opus:**
-
-> But anyway, so, one of the first things that Gavin Andresen did was to try and get my name off of that list. He got his name added. But anyway.
-
-**gemini:**
-
-> But anyway, so... You know, one of the first things that Gav Andresen did was to try and get my name off of that list. He got his name added. But anyway.
-
-**deepseek:**
-
-> But anyway, so... You know, one of the first things that Gav Andreessen did was to try and get my name off of that list. He got his name added. But anyway.
-
-**chatgpt:**
-
-> Amsterdam.
-
-#### [33:47] SPEAKER_00 (block 110/219)
-
-**Intermediate:**
-
-> no and so then he he went to master coin and then he went to do it he was saying he'd also seen what happened with counterparty right where they were like chopping down the the you know the yeah yeah the uh stuff yeah it's like yeah okay don't want to like build some meta protocol on top of this if it's going to get like they're going to change the mind next month and it's like right you you know your protocol's dead
-
-**opus:**
-
-> No, and so then he went to Mastercoin and then he went to do it. He was saying he'd also seen what happened with Counterparty, right, where they were like chopping down the, the stuff. Yeah, it's like, yeah, okay, don't want to like build some meta protocol on top of this if it's going to get, they're going to change their mind next month and it's like, right, your protocol's dead.
-
-**gemini:**
-
-> No, and so then he he went to Mastercoin and then he went to do it he was saying he'd also seen what happened with Counterparty right where they were like chopping down the the you know the yeah yeah the uh stuff yeah it's like yeah okay don't want to like build some meta protocol on top of this if it's going to get like they're going to change the mind next month and it's like right you you know your protocol's dead
-
-**deepseek:**
-
-> no and so then he he went to master coin and then he went to do it he was saying he'd also seen what happened with counterparty right where they were like chopping down the the you know the yeah yeah the uh stuff yeah it's like yeah okay don't want to like build some meta protocol on top of this if it's going to get like they're going to change the mind next month and it's like right you you know your protocol's dead
-
-**chatgpt:**
-
-> No. And so then he went to Mastercoin, and then he went to do it. He was saying he’d also seen what happened with Counterparty, right, where they were like chopping down the… It’s like, yeah, okay, don’t want to build some meta-protocol on top of this if they’re going to change their mind next month and it’s like, right, your protocol’s dead.
-
-#### [43:36] SPEAKER_02 (block 165/219)
-
-**Intermediate:**
-
-> It was a fun conference. It wasn't like an exceptional conference. Yeah, I had a good time. I was just going around chatting to people. Yeah, it was good.
-
-**opus:**
-
-> It was a fun conference. It wasn't like an exceptional conference. Yeah, I had a good time. I was just going around chatting to people. Yeah, it was good.
-
-**gemini:**
-
-> It was a fun conference. It wasn't like an exceptional conference. Yeah, I had a good time. I was just going around chatting to people. Yeah, it was good.
-
-**deepseek:**
-
-> (No matching timestamp found in output; likely timestamp regeneration or formatting drift.)
-
-**chatgpt:**
-
-> It was a fun conference. It wasn’t like an exceptional conference. I had a good time. I was just going around chatting to people. It was good. I remember Adam Levine and Stephanie and Andreas. They hung out with each other a lot.
-
-#### [56:33] SPEAKER_02 (block 219/219)
-
-**Intermediate:**
-
-> Thank you.
-
-**opus:**
-
-> Thank you.
-
-**gemini:**
-
-> Thank you.
-
-**deepseek:**
-
-> (No matching timestamp found in output; likely timestamp regeneration or formatting drift.)
-
-**chatgpt:**
-
-> Thank you.
-
-
-
----
-
-# Manual Review Excerpts: `onchain-oracles-end-of-year-wrap-up-and-easy-savings`
-
-## Files present
-- intermediate: `intermediates/onchain-oracles-end-of-year-wrap-up-and-easy-savings/onchain-oracles-end-of-year-wrap-up-and-easy-savings_assemblyai.md`
-- intermediate: `intermediates/onchain-oracles-end-of-year-wrap-up-and-easy-savings/onchain-oracles-end-of-year-wrap-up-and-easy-savings_whisperx-cloud.md`
-- intermediate: `intermediates/onchain-oracles-end-of-year-wrap-up-and-easy-savings/onchain-oracles-end-of-year-wrap-up-and-easy-savings_whisperx.md`
-- output: `outputs/onchain-oracles-end-of-year-wrap-up-and-easy-savings/onchain-oracles-end-of-year-wrap-up-and-easy-savings_assemblyai_opus.md`
-- output: `outputs/onchain-oracles-end-of-year-wrap-up-and-easy-savings/onchain-oracles-end-of-year-wrap-up-and-easy-savings_assemblyai_gemini.md`
-- output: `outputs/onchain-oracles-end-of-year-wrap-up-and-easy-savings/onchain-oracles-end-of-year-wrap-up-and-easy-savings_assemblyai_deepseek.md`
-- output: `outputs/onchain-oracles-end-of-year-wrap-up-and-easy-savings/onchain-oracles-end-of-year-wrap-up-and-easy-savings_assemblyai_chatgpt.md`
-- output: `outputs/onchain-oracles-end-of-year-wrap-up-and-easy-savings/onchain-oracles-end-of-year-wrap-up-and-easy-savings_whisperx-cloud_opus.md`
-- output: `outputs/onchain-oracles-end-of-year-wrap-up-and-easy-savings/onchain-oracles-end-of-year-wrap-up-and-easy-savings_whisperx-cloud_gemini.md`
-- output: `outputs/onchain-oracles-end-of-year-wrap-up-and-easy-savings/onchain-oracles-end-of-year-wrap-up-and-easy-savings_whisperx-cloud_deepseek.md`
-- output: `outputs/onchain-oracles-end-of-year-wrap-up-and-easy-savings/onchain-oracles-end-of-year-wrap-up-and-easy-savings_whisperx-cloud_chatgpt.md`
-- output: `outputs/onchain-oracles-end-of-year-wrap-up-and-easy-savings/onchain-oracles-end-of-year-wrap-up-and-easy-savings_whisperx_opus.md`
-- output: `outputs/onchain-oracles-end-of-year-wrap-up-and-easy-savings/onchain-oracles-end-of-year-wrap-up-and-easy-savings_whisperx_gemini.md`
-- output: `outputs/onchain-oracles-end-of-year-wrap-up-and-easy-savings/onchain-oracles-end-of-year-wrap-up-and-easy-savings_whisperx_deepseek.md`
-- output: `outputs/onchain-oracles-end-of-year-wrap-up-and-easy-savings/onchain-oracles-end-of-year-wrap-up-and-easy-savings_whisperx_chatgpt.md`
-
----
-
-## Transcriber: `assemblyai`
-
-### Quick heuristics
-- baseline words (md stripped): **9,396**
-- baseline timestamps: **93** (headers=93)
-
-- **opus**: retention=100.8%, timestamps=93/93 (×1.00), fmt_bad=0, nonmono=0, novel_CAPS=27
-  - examples: Aave, Base, Cypherpunk Congress, Enterprise Ethereum Alliance, Hyperliquid, Hyperliquids, Jim Hermosilla, Kieren, Kieren James, Lighter
-- **gemini**: retention=97.6%, timestamps=91/93 (×0.98), fmt_bad=0, nonmono=0, novel_CAPS=40
-  - examples: Aave, Base, Before, Centaur Phase, Chain Oracles, Chief Product Officer, Cypherpunk Congress, Dapps, Easy Savings, Enterprise Ethereum Alliance
-- **deepseek**: retention=67.8%, timestamps=70/93 (×0.75), fmt_bad=0, nonmono=0, novel_CAPS=9
-  - examples: Like Zcash, On Chain Oracles, Solidity, Stripe, Telegram, Tempo, Tornado Cash, Wall Street, Zcash
-- **chatgpt**: retention=91.4%, timestamps=83/93 (×0.89), fmt_bad=0, nonmono=0, novel_CAPS=49
-  - examples: Aave, Actually, And Pump, Base, Before, Chief Product Officer, Cypherpunk Congress, Early, Easy Savings, Everything
-
-### Excerpts (baseline vs outputs)
-#### [00:01] SPEAKER_00 (block 1/93)
-
-**Intermediate:**
-
-> Okay, we are live. Welcome to this week's on chain Oracles. As usual I am joined. I'm Victor Wong, I'm founder and chief product officer at Strato and as usual I am joined with Kieran James Leuven, CEO of Strato and in the man with the oranges, Jim Hermostiard, CTO of.
-
-**opus:**
-
-> Okay, we are live. Welcome to this week's On Chain Oracles. As usual, I am joined. I'm Victor Wong, I'm founder and chief product officer at Strato, and as usual I am joined with Kieren James-Lubin, CEO of Strato, and the man with the oranges, Jim Hermosilla, CTO of.
-
-**gemini:**
-
-> Okay, we are live. Welcome to this week's On-Chain Oracles. As usual, I am joined... I'm Victor Wong, I'm founder and Chief Product Officer at Strato. And as usual, I am joined with Kieran James-Lubin, CEO of Strato, and the man with the oranges, Jim Hermostiard, CTO of Strato, from sunny California.
-
-**deepseek:**
-
-> Okay, we are live. Welcome to this week's On Chain Oracles. As usual I am joined. I'm Victor Wong, I'm founder and chief product officer at Strato and as usual I am joined with Kieran James Leuven, CEO of Strato and in the man with the oranges, Jim Hermostiard, CTO of.
-
-**chatgpt:**
-
-> Okay, we are live. Welcome to this week’s Onchain Oracles. As usual, I am joined—I’m Victor Wong, I’m founder and Chief Product Officer at Strato—and as usual I am joined with Kieran James Leuven, CEO of Strato, and the man with the oranges, Jim Hermostiard, CTO of—
-
-#### [08:12] SPEAKER_02 (block 24/93)
-
-**Intermediate:**
-
-> That's actually a little bit starting to happen in crypto. And I think at some point you'll see some of the DAPs get included in indexes. So that same pool of capital will start to flow into crypto. It's been friendly on the regulatory side, at least largely. You know, the US is passing some of the laws, the laws May not be perfect, but they're better than before. And also just the behavior of the regulatory agencies is far less aggressive, you know, far less, you know, arbitrary and capricious, if you will. And yet the prices are not up. So to me, this is okay. It might be a sign of maturity, but this is the story.
-
-**opus:**
-
-> That's actually a little bit starting to happen in crypto. And I think at some point you'll see some of the dapps get included in indexes. So that same pool of capital will start to flow into crypto. It's been friendly on the regulatory side, at least largely. You know, the US is passing some of the laws, the laws may not be perfect, but they're better than before. And also just the behavior of the regulatory agencies is far less aggressive, you know, far less, you know, arbitrary and capricious, if you will. And yet the prices are not up. So to me, this is okay. It might be a sign of maturity, but this is the story.
-
-**gemini:**
-
-> That's actually a little bit starting to happen in crypto. And I think at some point you'll see some of the Dapps get included in indexes. So that same pool of capital will start to flow into crypto. It's been friendly on the regulatory side, at least largely. You know, the US is passing some of the laws; the laws may not be perfect, but they're better than before. And also just the behavior of the regulatory agencies is far less aggressive, you know, far less arbitrary and capricious, if you will. And yet the prices are not up. So to me, this is okay. It might be a sign of maturity, but this is the story.
-
-**deepseek:**
-
-> That's actually a little bit starting to happen in crypto. And I think at some point you'll see some of the dapps get included in indexes. So that same pool of capital will start to flow into crypto. It's been friendly on the regulatory side, at least largely. You know, the US is passing some of the laws, the laws may not be perfect, but they're better than before. And also just the behavior of the regulatory agencies is far less aggressive, you know, far less, you know, arbitrary and capricious, if you will. And yet the prices are not up. So to me, this is okay. It might be a sign of maturity, but this is the story.
-
-**chatgpt:**
-
-> That’s actually a little bit starting to happen in crypto. And I think at some point you’ll see some of the dapps get included in indexes, so that same pool of capital will start to flow into crypto. It’s been friendly on the regulatory side, at least largely. The US is passing some of the laws—the laws may not be perfect, but they’re better than before. And also just the behavior of the regulatory agencies is far less aggressive, far less arbitrary and capricious, if you will. And yet the prices are not up. So to me, this is okay. It might be a sign of maturity, but this is the story.
-
-#### [20:38] SPEAKER_02 (block 47/93)
-
-**Intermediate:**
-
-> And then just like everything blew up. Like you know, you're up the next one. It's like whoa, like, like, like 20 billion. It was like the 20x larger liquidation than it ever happened before. I guess there's a lot more leverage in the system with hyper liquid and, and all these. But sort of a perfect storm of circumstances and it just happened so fast and I guess, I guess all financial markets are like this. Like things can just explode, you know, in an instant. Or all financial markets with the enough liquidity and derivatives. Right. But that was wild. I'm gonna add a related but you know, you know, on the edge. So metals are at an all time high right now. Yes, we like when we were starting to build out metals we you know, acquired some for direct sale on our like version one marketplace. And like, like our average silver cost basis was like 25 bucks. 27, 29. It's like over 70. So like at least in the last day. I don't know what it's at right now. Gold also on all time high and crypto's down and it sort of shows. I've believed Sort of this for a while, but. And I hope it maybe becomes not true in the future. Mostly crypto does not behave like a defensive asset. It behaves like a high beta tech stock. It's risk on, you know, so you'll see if you know, the, the major tech companies go down, Bitcoin goes down and, and vice versa. Vice versa. It's not always true. I think Liberation Day, we saw that happen for both and then crypto actually went up in sort of a. Well, you know, if they're going to restrict the movement of goods and they're not going to restrict the movement of crypto, it's hard to do. Why is it, why is this? I think it's just like it's the same type of people buying both and they see it as a future facing technology speculative asset.
-
-**opus:**
-
-> And then just like everything blew up. Like you know, you're up the next one. It's like whoa, like, like, like 20 billion. It was like the 20x larger liquidation than had ever happened before. I guess there's a lot more leverage in the system with Hyperliquid and, and all these. But sort of a perfect storm of circumstances and it just happened so fast and I guess, I guess all financial markets are like this. Like things can just explode, you know, in an instant. Or all financial markets with enough liquidity and derivatives. Right. But that was wild. I'm gonna add a related but you know, you know, on the edge. So metals are at an all time high right now. Yes, we like when we were starting to build out metals we you know, acquired some for direct sale on our like version one marketplace. And like, like our average silver cost basis was like 25 bucks. 27, 29. It's like over 70. So like at least in the last day. I don't know what it's at right now. Gold also on all time high and crypto's down and it sort of shows. I've believed sort of this for a while, but. And I hope it maybe becomes not true in the future. Mostly crypto does not behave like a defensive asset. It behaves like a high beta tech stock. It's risk on, you know, so you'll see if you know, the, the major tech companies go down, Bitcoin goes down and, and vice versa. Vice versa. It's not always true. I think Liberation Day, we saw that happen for both and then crypto actually went up in sort of a. Well, you know, if they're going to restrict the movement of goods and they're not going to restrict the movement of crypto, it's hard to do. Why is it, why is this? I think it's just like it's the same type of people buying both and they see it as a future facing technology speculative asset.
-
-**gemini:**
-
-> And then just like everything blew up. Like you know, you're up the next one. It's like whoa, like 20 billion. It was like the 20x larger liquidation than had ever happened before. I guess there's a lot more leverage in the system with Hyperliquid and all these. But sort of a perfect storm of circumstances and it just happened so fast and I guess all financial markets are like this. Like things can just explode, you know, in an instant. Or all financial markets with enough liquidity and derivatives. Right? But that was wild. I'm gonna add a related but you know, on the edge. So metals are at an all-time high right now. Yes, we like... when we were starting to build out metals we acquired some for direct sale on our like version one marketplace. And our average silver cost basis was like 25 bucks. 27, 29. It's like over 70. So like at least in the last day. I don't know what it's at right now. Gold also on all-time high and crypto's down and it sort of shows... I've believed sort of this for a while, but... and I hope it maybe becomes not true in the future. Mostly crypto does not behave like a defensive asset. It behaves like a high beta tech stock. It's risk-on, you know, so you'll see if the major tech companies go down, Bitcoin goes down and vice versa. It's not always true. I think Liberation Day, we saw that happen for both and then crypto actually went up in sort of a... "Well, you know, if they're going to restrict the movement of goods and they're not going to restrict the movement of crypto, it's hard to do." Why is it... why is this? I think it's just like it's the same type of people buying both and they see it as a future-facing technology speculative asset.
-
-**deepseek:**
-
-> And then just like everything blew up. Like you know, you're up the next one. It's like whoa, like, like, like 20 billion. It was like the 20x larger liquidation than it ever happened before. I guess there's a lot more leverage in the system with hyper liquid and, and all these. But sort of a perfect storm of circumstances and it just happened so fast and I guess, I guess all financial markets are like this. Like things can just explode, you know, in an instant. Or all financial markets with the enough liquidity and derivatives. Right. But that was wild. I'm gonna add a related but you know, you know, on the edge. So metals are at an all time high right now. Yes, we like when we were starting to build out metals we you know, acquired some for direct sale on our like version one marketplace. And like, like our average silver cost basis was like 25 bucks. 27, 29. It's like over 70. So like at least in the last day. I don't know what it's at right now. Gold also on all time high and crypto's down and it sort of shows. I've believed sort of this for a while, but. And I hope it maybe becomes not true in the future. Mostly crypto does not behave like a defensive asset. It behaves like a high beta tech stock. It's risk on, you know, so you'll see if you know, the, the major tech companies go down, Bitcoin goes down and, and vice versa. Vice versa. It's not always true. I think Liberation Day, we saw that happen for both and then crypto actually went up in sort of a. Well, you know, if they're going to restrict the movement of goods and they're not going to restrict the movement of crypto, it's hard to do. Why is it, why is this? I think it's just like it's the same type of people buying both and they see it as a future facing technology speculative asset.
-
-**chatgpt:**
-
-> And then just everything blew up. You wake up the next one, it’s like, whoa. Like 20 billion. It was like the 20x larger liquidation than had ever happened before. I guess there’s a lot more leverage in the system with Hyperliquid and all these, but sort of a perfect storm of circumstances, and it just happened so fast. And I guess all financial markets are like this. Things can just explode in an instant—or all financial markets with enough liquidity and derivatives, right? But that was wild. I’m going to add a related but on-the-edge one. Metals are at an all-time high right now. When we were starting to build out metals, we acquired some for direct sale on our version-one marketplace. Our average silver cost basis was like 25 bucks—27, 29—and it’s like over 70, at least in the last day. I don’t know what it’s at right now. Gold also at an all-time high, and crypto’s down. And it sort of shows—I’ve believed sort of this for a while, and I hope it maybe becomes not true in the future—mostly crypto does not behave like a defensive asset. It behaves like a high-beta tech stock. It’s risk-on. So you’ll see if the major tech companies go down, Bitcoin goes down, and vice versa. It’s not always true. I think Liberation Day, we saw that happen for both, and then crypto actually went up in sort of a—well, if they’re going to restrict the movement of goods and they’re not going to restrict the movement of crypto—it’s hard to do. Why is it? I think it’s just the same type of people buying both, and they see it as a future-facing technology speculative asset.
-
-#### [37:09] SPEAKER_00 (block 70/93)
-
-**Intermediate:**
-
-> I mean. Yes. But like, it's one of these things where like every developer always wants to write like they're like these. This language is terrible. I'm going to write my own language. It's going to be so much better. And no one ever uses that language. Right. Like, it's like. Yeah. Where. Whereas what actually happens is people make JavaScript much faster.
-
-**opus:**
-
-> I mean. Yes. But like, it's one of these things where like every developer always wants to write like they're like these. This language is terrible. I'm going to write my own language. It's going to be so much better. And no one ever uses that language. Right. Like, it's like. Yeah. Where. Whereas what actually happens is people make JavaScript much faster.
-
-**gemini:**
-
-> I mean. Yes. But like, it's one of these things where like every developer always wants to write like they're like, "This language is terrible. I'm going to write my own language. It's going to be so much better." And no one ever uses that language. Right? It's like, yeah. Where what actually happens is people make JavaScript much faster.
-
-**deepseek:**
-
-> I mean. Yes. But like, it's one of these things where like every developer always wants to write like they're like these. This language
-
-**chatgpt:**
-
-> I mean, yes. But it’s one of these things where every developer always wants to write—like, “This language is terrible. I’m going to write my own language. It’s going to be so much better.” And no one ever uses that language. Whereas what actually happens is people make JavaScript much faster.
-
-#### [55:41] SPEAKER_02 (block 93/93)
-
-**Intermediate:**
-
-> Thanks everybody. Happy holidays.
-
-**opus:**
-
-> Thanks everybody. Happy holidays.
-
-**gemini:**
-
-> Thanks everybody. Happy holidays.
-
-**deepseek:**
-
-> (No matching timestamp found in output; likely timestamp regeneration or formatting drift.)
-
-**chatgpt:**
-
-> Thanks everybody. Happy holidays.
-
----
-
-## Transcriber: `whisperx-cloud`
-
-### Quick heuristics
-- baseline words (md stripped): **9,346**
+- baseline words (md stripped): **8,646**
 - baseline timestamps: **35** (headers=35)
 
-- **opus**: retention=94.2%, timestamps=70/35 (×2.00), fmt_bad=0, nonmono=0, novel_CAPS=28
-  - examples: And Zcash, Argentinian, At Strato, Base, Board, Building, Cypherpunk Congress, Double, Early, Enterprise Ethereum Alliance
-- **gemini**: retention=99.9%, timestamps=33/35 (×0.94), fmt_bad=0, nonmono=0, novel_CAPS=19
-  - examples: Argentinian, Base, Cypherpunk Congress, Hyperliquids, Jim Hormuzdiar, Kind, Know, Mercata, Merkle Patricia, Milei
-- **deepseek**: retention=71.3%, timestamps=39/35 (×1.11), fmt_bad=0, nonmono=0, novel_CAPS=2
-  - examples: Kind, Solidity
-- **chatgpt**: retention=89.9%, timestamps=48/35 (×1.37), fmt_bad=0, nonmono=2, novel_CAPS=39
-  - examples: Argentine, Base, Before, Board, Chief Product Officer, Cypherpunk Congress, Definitely, Devconnect, Early, Enterprise Ethereum Alliance
+- **opus**: retention=99.6%, timestamps=35/35 (×1.00), fmt_bad=0, nonmono=0, novel_CAPS=36
+  - examples: Actually, Afterwards, Anthony Eufemio, Aya, Bitcoin Magazine, Bitcointalk, Calafou, Catalan, Dark, Dark Market
+- **gemini**: retention=99.6%, timestamps=35/35 (×1.00), fmt_bad=0, nonmono=0, novel_CAPS=33
+  - examples: Anarchist Amir, Anthony Eufemio, Aya, Bitcoin Magazine, Bitcoin Talk, Bitlaw, Calafou, Capitalist Amir, Catalan, Dark Market
+- **deepseek**: retention=72.5%, timestamps=59/35 (×1.69), fmt_bad=0, nonmono=0, novel_CAPS=11
+  - examples: Aya, Dark Prague, Funny, Gav Andresen, Gavin Andresen, Hello, Is Anthony Di Iorio, Libbitcoin, North Korea, Sailors
+- **chatgpt**: retention=90.9%, timestamps=41/35 (×1.17), fmt_bad=0, nonmono=0, novel_CAPS=47
+  - examples: Afterwards Gavin Andresen, Amirs, And Ethereum, And Gavin Wood, Anthony Euphemio, At, Aya Miyaguchi, Bitcoin Magazine, Bitlaw, Calafou
 
 ### Excerpts (baseline vs outputs)
-#### [00:01] SPEAKER_02 (block 1/35)
+#### [00:03] SPEAKER_02 (block 1/35)
 
 **Intermediate:**
 
-> Okay, we are live. Welcome to this week's Unchained Oracles. As usual, I am joined. I'm Victor Wong. I'm founder and chief product officer at Strato. And as usual, I am joined with Kieran James Lubin, CEO of Strato. And And the man with the oranges, Jim Hermosdior, CTO of Strato. From sunny California that's not so sunny right now. Have you eaten many oranges or are they just for show? There's a tree behind me. Oh, nice. Well, this week we are going to do our crypto year in review recap. But before we get into that, two quick things. One is, at some point during the show, I will announce a special giveaway. And it's going to be a really special year-end giveaway. But in preparation, we recommend that everyone get a Strato account, if you don't have one already, and join our Telegram, because those will be two parts of it. And before we get into the- The URL to sign up? Yes. Thank you. It is strato, S-T-R-A-T-O,.nexus to sign up. Yeah. And you can go straight to app.strato.nexus. Yes. And thanks, Karen. And Ben, we are joined by Michael Tan today for our Strato Spotlight because we have lots of new features to show. So Michael, go ahead.
+> hello hello hello hello great to see you my friend so we are here we are here in prague in beautiful prague at dark prague the inaugural Dark Prague Zero Congress, conference, I'm not quite sure what you'd call it. But yeah, delighted to talk to you today, really within a context of this early days of Ethereum project that I've been looking at. And one of the things I remember seeing earliest was the two EMEAs that you had capitalist Amir and anarchist Amir. So tell me, you know, before all that started even, you know, how did your... Just curious, how come you're doing this project? How come I'm doing it? Yeah, yeah, what's the... Well, it was quite, I mean, it was quite coincidental, you know, I'd... I'd gathered a bunch of information back in 2017, 2018, basically because Ming Chan was getting hoofed out and I asked Vitalik if what I could do to help, you know, anything with help with the transition or whatever. And he said, can you can you like go and talk to people in the community and sort of see what they think the Ethereum Foundation should be like? What should we be doing? Oh dear, if you ask that question, it's already a bad sign. Well, my question at that point was, so Ming was terrible. She was one of the least professional people I've ever worked with. She was an absolute nightmare. And my thought was, well... what the hell was happening before that that she looked like a good choice and there was a real sort of shroud of mystery as to what happened then even though it was only like three or four years before and so like there just was no canonical history nobody really knew what happened even something as basic as like was Charles like kind of a co-founder or not he kind of says he was maybe but maybe he wasn't Which is just crazy. Because, you know, he was there, like, doing videos and, like, there's just tons of evidence. But anyway, so I started digging back into that stuff. What about Anthony Delorio as well? Anthony Delorio, yes, that's right. Didn't he get rocked or something? There was Anthony Delorio. I don't know the history. There was Anthony D'Onofrio that was Texture. And there was another guy called Anthony Euphamio who did this Digix Gold thing. But anyway, so that's where I started getting interested in Ethereum history. It's just like, well, what the hell happened? I mean, what ended up happening is everything I recommended to Vitalik never happened. It was just completely... a disaster. You know, Ming went and he just got AYA. Here you go. It's a new one. No changes. What people wanted was like transparency. They wanted community input. They wanted like professional executive, like operational. It's like, you know, let's have organization to help the devs basically. Um, but primarily it was like, don't be a Swiss opaque foundation with no accountability or any public information at all. Anyway, so I put the stuff aside at that point. It's like, great. That was a good use of my time, you know, advising the millionaire for free for months. Um, but then just recently, um, So the guys I now work with, they started recording some videos because, so Kieran is, Kieran James Lubin is Joe's son. So he was actually around from March 2014 and the others were sort of involved from 2015 and they were just like, we should like, get some of these memories down, right? It was like eight years ago at that point. So they did a couple of those videos and I really loved them and I was making tons of notes and finding links and photos and all of this. And then they interviewed me for the third one But then more recently, I did interviews with Taylor Goering and with Texture and just tons of stuff came out of that. And then I just kind of like shoved those together and there you go. That's early days of Ethereum is this sort of combination of sort of biographical stuff and photos and videos, links to articles, and then, you know, conversations with people. And it's really just because it's like this is history, right?
 
 **opus:**
 
-> Okay, we are live. Welcome to this week's Unchained Oracles. As usual, I am joined. I'm Victor Wong. I'm founder and chief product officer at Strato. And as usual, I am joined with Kieran James Lubin, CEO of Strato. And the man with the oranges, Jim Hermosdior, CTO of Strato. From sunny California that's not so sunny right now. Have you eaten many oranges or are they just for show?
+> Hello, hello, hello, hello. Great to see you, my friend. So we are here, we are here in Prague, in beautiful Prague, at Dark Prague, the inaugural Dark Prague Zero Congress, conference, I'm not quite sure what you'd call it. But yeah, delighted to talk to you today, really within a context of this early days of Ethereum project that I've been looking at. And one of the things I remember seeing earliest was the two AMAs that you had, capitalist Amir and anarchist Amir. So tell me, you know, before all that started even, you know, how did your... Just curious, how come you're doing this project? How come I'm doing it? Yeah, yeah, what's the... Well, it was quite, I mean, it was quite coincidental, you know, I'd gathered a bunch of information back in 2017, 2018, basically because Ming Chan was getting hoofed out and I asked Vitalik what I could do to help, you know, anything with help with the transition or whatever. And he said, can you like go and talk to people in the community and sort of see what they think the Ethereum Foundation should be like? What should we be doing? Oh dear, if you ask that question, it's already a bad sign. Well, my question at that point was, so Ming was terrible. She was one of the least professional people I've ever worked with. She was an absolute nightmare. And my thought was, well, what the hell was happening before that that she looked like a good choice? And there was a real sort of shroud of mystery as to what happened then even though it was only like three or four years before and so like there just was no canonical history. Nobody really knew what happened. Even something as basic as like was Charles like kind of a co-founder or not? He kind of says he was maybe but maybe he wasn't. Which is just crazy. Because, you know, he was there, like, doing videos and, like, there's just tons of evidence. But anyway, so I started digging back into that stuff. What about Anthony Di Iorio as well? Anthony Di Iorio, yes, that's right. Didn't he get rocked or something? There was Anthony Di Iorio. I don't know the history. There was Anthony D'Onofrio that was Texture. And there was another guy called Anthony Eufemio who did this Digix Gold thing. But anyway, so that's where I started getting interested in Ethereum history. It's just like, well, what the hell happened? I mean, what ended up happening is everything I recommended to Vitalik never happened. It was just completely a disaster. You know, Ming went and he just got Aya. Here you go. It's a new one. No changes. What people wanted was like transparency. They wanted community input. They wanted like professional executive, like operational. It's like, you know, let's have organization to help the devs basically. But primarily it was like, don't be a Swiss opaque foundation with no accountability or any public information at all. Anyway, so I put the stuff aside at that point. It's like, great. That was a good use of my time, you know, advising the millionaire for free for months. But then just recently, so the guys I now work with, they started recording some videos because, so Kieran is, Kieran James-Lubin is Joe's son. So he was actually around from March 2014 and the others were sort of involved from 2015 and they were just like, we should like, get some of these memories down, right? It was like eight years ago at that point. So they did a couple of those videos and I really loved them and I was making tons of notes and finding links and photos and all of this. And then they interviewed me for the third one. But then more recently, I did interviews with Taylor Gerring and with Texture and just tons of stuff came out of that. And then I just kind of like shoved those together and there you go. That's early days of Ethereum is this sort of combination of sort of biographical stuff and photos and videos, links to articles, and then, you know, conversations with people. And it's really just because it's like this is history, right?
 
 **gemini:**
 
-> Okay, we are live. Welcome to this week's Unchained Oracles. As usual, I am joined... I'm Victor Wong. I'm founder and chief product officer at Strato. And as usual, I am joined with Kieran James Lubin, CEO of Strato. And the man with the oranges, Jim Hormuzdiar, CTO of Strato. From sunny California that's not so sunny right now. Have you eaten many oranges or are they just for show? There's a tree behind me. Oh, nice. Well, this week we are going to do our crypto year in review recap. But before we get into that, two quick things. One is, at some point during the show, I will announce a special giveaway. And it's going to be a really special year-end giveaway. But in preparation, we recommend that everyone get a Strato account, if you don't have one already, and join our Telegram, because those will be two parts of it. And before we get into the... The URL to sign up? Yes. Thank you. It is strato.nexus to sign up. Yeah. And you can go straight to app.strato.nexus. Yes. And thanks, Kieran. And then, we are joined by Michael Tan today for our Strato Spotlight because we have lots of new features to show. So Michael, go ahead.
+> Hello, hello, hello. Great to see you, my friend. So we are here in Prague, in beautiful Prague at Dark Prague, the inaugural Dark Prague Zero Congress, conference, I'm not quite sure what you'd call it. But yeah, delighted to talk to you today, really within a context of this Early Days of Ethereum project that I've been looking at. And one of the things I remember seeing earliest was the two EMEAs that you had, Capitalist Amir and Anarchist Amir. So tell me, you know, before all that started even, just curious, how come you're doing this project? How come I'm doing it? Yeah, yeah, what's the... Well, it was quite coincidental. I'd gathered a bunch of information back in 2017, 2018, basically because Ming Chan was getting hoofed out and I asked Vitalik if what I could do to help, you know, anything with help with the transition or whatever. And he said, can you go and talk to people in the community and sort of see what they think the Ethereum Foundation should be like? What should we be doing? Oh dear, if you ask that question, it's already a bad sign. Well, my question at that point was, so Ming was terrible. She was one of the least professional people I've ever worked with. She was an absolute nightmare. And my thought was, well, what the hell was happening before that that she looked like a good choice? And there was a real sort of shroud of mystery as to what happened then, even though it was only like three or four years before. And so just there was no canonical history. Nobody really knew what happened. Even something as basic as, was Charles like kind of a co-founder or not? He kind of says he was, maybe, but maybe he wasn't. Which is just crazy. Because, you know, he was there doing videos and there's just tons of evidence. But anyway, so I started digging back into that stuff. What about Anthony Di Iorio as well? Anthony Di Iorio, yes, that's right. Didn't he get rocked or something? There was Anthony Di Iorio. I don't know the history. There was Anthony D'Onofrio that was Texture. And there was another guy called Anthony Eufemio who did this Digix Gold thing. But anyway, so that's where I started getting interested in Ethereum history. It's just like, well, what the hell happened? I mean, what ended up happening is everything I recommended to Vitalik never happened. It was just completely a disaster. You know, Ming went and he just got Aya. Here you go. It's a new one. No changes. What people wanted was transparency. They wanted community input. They wanted like professional executive, operational. It's like, let's have organization to help the devs basically. But primarily it was like, don't be a Swiss opaque foundation with no accountability or any public information at all. Anyway, so I put the stuff aside at that point. It's like, great. That was a good use of my time, advising the millionaire for free for months. But then just recently, so the guys I now work with, they started recording some videos because, so Kieran James Lubin is Joe's son. So he was actually around from March 2014 and the others were sort of involved from 2015 and they were just like, we should get some of these memories down, right? It was like eight years ago at that point. So they did a couple of those videos and I really loved them and I was making tons of notes and finding links and photos and all of this. And then they interviewed me for the third one. But then more recently, I did interviews with Taylor Gerring and with Texture and just tons of stuff came out of that. And then I just kind of shoved those together and there you go. That's Early Days of Ethereum, is this sort of combination of sort of biographical stuff and photos and videos, links to articles, and then conversations with people. And it's really just because it's like this is history, right?
 
 **deepseek:**
 
-> Okay, we are live. Welcome to this week's Unchained Oracles. As usual, I am joined. I'm Victor Wong. I'm founder and chief product officer at Strato. And as usual, I am joined with Kieran James Lubin, CEO of Strato. And the man with the oranges, Jim Hermosdior, CTO of Strato. From sunny California that's not so sunny right now. Have you eaten many oranges or are they just for show? There's a tree behind me. Oh, nice. Well, this week we are going to do our crypto year in review recap. But before we get into that, two quick things. One is, at some point during the show, I will announce a special giveaway. And it's going to be a really special year-end giveaway. But in preparation, we recommend that everyone get a Strato account, if you don't have one already, and join our Telegram, because those will be two parts of it. And before we get into the- The URL to sign up? Yes. Thank you. It is strato, S-T-R-A-T-O,.nexus to sign up. Yeah. And you can go straight to app.strato.nexus. Yes. And thanks, Karen. And Ben, we are joined by Michael Tan today for our Strato Spotlight because we have lots of new features to show. So Michael, go ahead.
+> Hello hello hello hello, great to see you my friend. So we are here, we are here in Prague, in beautiful Prague, at Dark Prague, the inaugural Dark Prague Zero Congress, conference, I'm not quite sure what you'd call it. But yeah, delighted to talk to you today, really within a context of this early days of Ethereum project that I've been looking at. And one of the things I remember seeing earliest was the two EMEAs that you had, capitalist Amir and anarchist Amir. So tell me, you know, before all that started even, you know, how did your... Just curious, how come you're doing this project? How come I'm doing it? Yeah, yeah, what's the... Well, it was quite, I mean, it was quite coincidental. You know, I'd gathered a bunch of information back in 2017, 2018, basically because Ming Chan was getting hoofed out and I asked Vitalik if what I could do to help, you know, anything with help with the transition or whatever. And he said, can you go and talk to people in the community and sort of see what they think the Ethereum Foundation should be like? What should we be doing? Oh dear, if you ask that question, it's already a bad sign. Well, my question at that point was, so Ming was terrible. She was one of the least professional people I've ever worked with. She was an absolute nightmare. And my thought was, well, what the hell was happening before that that she looked like a good choice and there was a real sort of shroud of mystery as to what happened then even though it was only like three or four years before. And so like there just was no canonical history, nobody really knew what happened, even something as basic as like was Charles like kind of a co-founder or not. He kind of says he was maybe, but maybe he wasn't. Which is just crazy. Because, you know, he was there, like, doing videos and, like, there's just tons of evidence. But anyway, so I started digging back into that stuff.
 
 **chatgpt:**
 
-> Okay, we are live. Welcome to this week’s Unchained Oracles. As usual, I am joined—I’m Victor Wong. I’m founder and Chief Product Officer at Strato. And as usual, I am joined with Kieran James Lubin, CEO of Strato, and the man with the oranges, Jim Hermosdior, CTO of Strato, from sunny California that’s not so sunny right now. Have you eaten many oranges, or are they just for show? There’s a tree behind me. Oh, nice. Well, this week we are going to do our crypto year-in-review recap. But before we get into that, two quick things. One is, at some point during the show, I will announce a special giveaway, and it’s going to be a really special year-end giveaway. But in preparation, we recommend that everyone get a Strato account, if you don’t have one already, and join our Telegram, because those will be two parts of it. And before we get into the—The URL to sign up? Yes, thank you. It is strato, S-T-R-A-T-O, .nexus to sign up. Yeah. And you can go straight to app.strato.nexus. Yes. And thanks, Kieran. And then we are joined by Michael Tan today for our Strato Spotlight because we have lots of new features to show. So, Michael, go ahead.
+> Hello, hello, hello, hello. Great to see you, my friend. So we are here in Prague, in beautiful Prague, at Dark Prague, the inaugural Dark Prague Zero Congress, conference. I’m not quite sure what you’d call it. But yeah, delighted to talk to you today, really within a context of these early days of the Ethereum project that I’ve been looking at. And one of the things I remember seeing earliest was the two “Amirs” that you had: capitalist Amir and anarchist Amir. So tell me, before all that started even, how did your… Just curious, how come you’re doing this project? How come I’m doing it? Yeah, yeah, what’s the… Well, it was quite coincidental. I’d gathered a bunch of information back in 2017, 2018 basically because Ming Chan was getting hoofed out, and I asked Vitalik if what I could do to help, anything with help with the transition or whatever. And he said, “Can you go and talk to people in the community and sort of see what they think the Ethereum Foundation should be like? What should we be doing?” Oh dear, if you ask that question, it’s already a bad sign. Well, my question at that point was: so Ming was terrible. She was one of the least professional people I’ve ever worked with. She was an absolute nightmare. And my thought was, what the hell was happening before that, that she looked like a good choice? And there was a real sort of shroud of mystery as to what happened then even though it was only like three or four years before. There just was no canonical history. Nobody really knew what happened, even something as basic as: was Charles kind of a co-founder or not? He kind of says he was, maybe, but maybe he wasn’t, which is just crazy because he was there doing videos and there’s just tons of evidence. But anyway, so I started digging back into that stuff. What about Anthony Di Iorio as well? Anthony Di Iorio, yes, that’s right. Didn’t he get rocked or something? There was Anthony Di Iorio. I don’t know the history. There was Anthony D’Onofrio—that was Texture. And there was another guy called Anthony Euphemio who did this Digix Gold thing. But anyway, so that’s where I started getting interested in Ethereum history. It’s just like, well, what the hell happened? I mean, what ended up happening is everything I recommended to Vitalik never happened. It was just completely a disaster. Ming went and he just got Aya Miyaguchi. Here you go. It’s a new one. No changes. What people wanted was transparency. They wanted community input. They wanted professional executive, operational—like, let’s have an organization to help the devs, basically. But primarily it was like: don’t be a Swiss opaque foundation with no accountability or any public information at all. Anyway, so I put the stuff aside at that point. It’s like, great. That was a good use of my time, advising the millionaire for free for months. But then just recently, so the guys I now work with, they started recording some videos because Kieran is Kieran James Lubin, Joe’s son. So he was actually around from March 2014, and the others were sort of involved from 2015. And they were just like, we should get some of these memories down, right? It was like eight years ago at that point. So they did a couple of those videos and I really loved them, and I was making tons of notes and finding links and photos and all of this. And then they interviewed me for the third one. But then more recently, I did interviews with Taylor Gerring and with Texture, and just tons of stuff came out of that. And then I just kind of shoved those together, and there you go. That’s Early Days of Ethereum. It’s this sort of combination of biographical stuff and photos and videos, links to articles, and then conversations with people. And it’s really just because it’s like: this is history, right?
 
-#### [12:54] SPEAKER_01 (block 9/35)
+#### [11:12] SPEAKER_02 (block 9/35)
 
 **Intermediate:**
 
-> Which is an important step in this because now that's going to bring us to the next stage. Like early in the year, it just looked like it was magic and can do everything. But we knew it wasn't doing everything because, you know, it hasn't taken over the world yet. But now we're sort of understanding what it is that it can do and can't do. Yeah, I agree. And even hard to check.
+> Well, that's it. Yeah. I mean, so, yeah, that was Freddie's super normie story is still using Facebook even though, you know, it's Facebook. So, yeah, I mean, you know, you were a... You're a free software guy and a general developer on that thread and early Bitcoin devs. How did you find Bitcoin?
 
 **opus:**
 
-> Which is an important step in this because now that's going to bring us to the next stage. Early in the year, it just looked like it was magic and can do everything. But we knew it wasn't doing everything because it hasn't taken over the world yet. But now we're sort of understanding what it is that it can do and can't do.
+> Well, that's it. Yeah. I mean, so, yeah, that was Freddie's super normie story is still using Facebook even though, you know, it's Facebook. So, yeah, I mean, you know, you were a free software guy and a general developer on that thread and early Bitcoin devs. How did you find Bitcoin?
 
 **gemini:**
 
-> Which is an important step in this because now that's going to bring us to the next stage. Like early in the year, it just looked like it was magic and can do everything. But we knew it wasn't doing everything because, you know, it hasn't taken over the world yet. But now we're sort of understanding what it is that it can do and can't do. Yeah, I agree. And even hard to check.
+> Well, that's it. Yeah. I mean, so, yeah, that was Freddie's super normie story is still using Facebook even though, you know, it's Facebook. So, yeah, I mean, you know, you were a... You're a free software guy and a general developer on that thread and early Bitcoin devs. How did you find Bitcoin?
 
 **deepseek:**
 
-> Which is an important step in this because now that's going to bring us to the next stage. Like early in the year, it just looked like it was magic and can do everything. But we knew it wasn't doing everything because, you know, it hasn't taken over the world yet. But now we're sort of understanding what it is that it can do and can't do.
+> Well, that's it. Yeah. I mean, so, yeah, that was Freddie's super normie story is still using Facebook even though, you know, it's Facebook. So, yeah, I mean, you know, you were a... You're a free software guy and a general developer on that thread and early Bitcoin devs. How did you find Bitcoin?
 
 **chatgpt:**
 
-> Which is an important step in this because now that’s going to bring us to the next stage. Early in the year, it just looked like it was magic and can do everything. But we knew it wasn’t doing everything because it hasn’t taken over the world yet. Now we’re understanding what it can do and can’t do. Yeah, I agree. And even hard to check.
+> Well, that’s it. Yeah. Freddie’s super normie story is still using Facebook even though it’s Facebook. So yeah. You were a free software guy and a general developer on that thread, and early Bitcoin devs. How did you find Bitcoin?
 
-#### [20:15] SPEAKER_03 (block 18/35)
+#### [25:13] SPEAKER_01 (block 18/35)
 
 **Intermediate:**
 
-> Okay, so I thought about this. I have a two-part answer, slightly related. One, October 10th, that was like a Friday. I think we had wrapped some work up. I was sort of like, I can't remember exactly what was going on. But then, you know, it just, everything just, was it November 10th? 10-10, right? Yeah. And then just like everything blew up. Like, you know, you're up the next one. It's like, whoa! Like... Like 20 billion. It was like the 20x larger liquidation than had ever happened before. I guess there's a lot more leverage in the system with hyperliquid and all of these. But sort of a perfect storm of circumstances. And it just happened so fast. And I guess all financial markets are like this. Like things can just... explode or you know in an instant or all financial markets with the enough liquidity and derivatives right but um that was wild um i'm gonna add a related but you know you know on the edge so metals are at an all-time high right now yes we like when we were starting to build out metals we you know acquired some for direct sale on our like version one marketplace. And like, I feel like our average silver cost basis was like 25 bucks, 27, 29. It's like over 70. So like at least in the last day, I don't know what's that right now. Gold also on all time high and cryptos down. And it sort of shows, I believe, sort of this for a while. But and I hope it maybe becomes not true in the future. Mostly crypto does not behave like a defensive asset. It behaves like a high beta tech stock. It's risk on, you know, so you'll see if The major tech companies go down, Bitcoin goes down and vice versa. It's not always true. I think Liberation Day, we saw that happen for both. And then crypto actually went up in sort of a, well, if they're going to restrict the movement of goods, they're not going to restrict the movement of crypto. It's hard to do. Why is it? Why is this? I think it's just like it's the same type of people buying both and they see it as a future facing technology speculative asset. I mean, for a long time, people have pointed out that if you look at crypto instead of acting as a hedge against the stock market it acts as more of a high alpha line of the stock market which either rather um the um early on Bitcoin was totally uncorrelated with the stock market but I think I think probably started being correlated at least by 2020 but maybe even like 2018 let's say okay Jim what was your biggest surprise of the year
+> Yeah, I was traveling a bit. I actually come from a movement of anarchist hackers in Europe, which were living in squatted buildings. Right, right. So, you know, there's like in Europe, there's all these squatters laws, which if a building is like abandoned, you can move into the building. And some some squats, they last for years. Yeah. And we'd get amazing buildings. So in Amsterdam, we had a huge house. Imagine we're working on free software. We're broke devs. It's a really useful lifeline to have. and also like living in the center of the cities. I mean, like now even working in crypto, I look at the price of property and like it's ridiculous. Yeah. It's like really ridiculous. I think like societies really need that kind of stuff, like support people working on projects and software and stuff like that. It's a shame we don't. But anyway, I was part of those hacker movements, so I had, like, lots of places in Europe I could go to. You know, we would have communities, people working on free software, you know, in Barcelona, in London. London, I saw them. Yeah, yeah, yeah. So when did your focus switch to Dark Wallet? So actually I made the first CoinJoin and Stealth implementations in Bitcoin, which are the very first privacy techniques. So I was working on Bitcoin implementations nodes, but I was also focused on the privacy. So I already did those projects before. Right. And then the Dark Wallet, I was like, we need to create a product. Like, we need to create, like, a wallet or something. Right. So that's why, you know, we made the Dark Wallet. And when did you first meet Vitalik? Can you remember? Yeah, so I was, like, I said I was living in these squats around Europe. Yeah. So after 2012, then... Then there was like, okay, there was like a friend I met many, many years ago when I was hitchhiking. And he was a really cool dude. And I just saw him randomly on the internet. And I was like, bro, I'm making a conference. Come to my conference. And he's like, okay. And I didn't hear back from him. It turns out he just walked onto a ferry without any documentation. He came from Estonia across Europe. He came into England. And he was like, he now looked like Jesus. But he had like long hair and long beard and stuff. Didn't look good for an entry. Anyway, Mihai met him at the conference. It was like enchanted by him. He was like, I just met this guy, your friend. He looks like Jesus, man. And then I can't remember how it happened, but yeah. so then he he was meant to come back with me to my house actually he missed the train okay and so he ended up just walking into around the building in london and that was like the building of the occupy activists right then i went there and then mihi came and we just started living there and then we started setting up our hat club right there But then also I have friends in Spain that are hackers that also they're making these communities. They also had Calafo. So then they decided to make Calafo, which was eco-industrial. Near Barcelona, right? Yeah. So I was living with Mihai, I think, for like a year in London. Right. And then we went to Calafo in Barcelona. Right. And Mihai co-founded the Bitcoin magazine with Vitalik. Right, right. And so then I was also working on the Bitcoin magazine with them. Oh, I see. Right, right. you know not I wasn't I didn't write loads of stuff it was mainly those guys writing stuff but like for example I helped Mihai with the graphic design right like some of the covers I helped design right when we were high there you go so then anyway we went to California and then Vitalik came to live with us yeah So then it was and then there was like two other Spanish hackers, which are old friends of mine and we We were working together on projects. Yeah, so I'm right that was when we started dark wallet, right? I knew Cody from the conference So I says like Cody let's start the wallet which conference from the Amsterdam conference the one that you Right, right Was that the one that you organized? Yeah, I did the 2011 one in Prague. Right. And the 2012 one in London as well. Right, right. Yeah. So, yeah, at the time we were working together in the Hack Lab. Mihaly had his, I think it was Akasha. I'm not sure. No, I think he did that later. Oh, no, it was Agora or something. Right. Anyway, he was creating, I guess, what Darkfire is going to be now, like a social network marketplace. Okay. So then he was working on that, and my friends were working on that. And Vitalik was working on Bitcoin stuff. I was working on Bitcoin stuff. Right, right. And then he was also working, they were working on the magazine. Yeah. So we were doing a whole bunch of stuff there in Hack Lab. Yeah, right. And then, you know, we co-founded the Dark Wallet. Right. And Peter Todd as well? No, Peter Todd came later. But you can see the original Dark Wallet announcement video on YouTube. And it has all the co-founders listed. Right, right. So, yeah, we were working on that. And then, so the CIC was a network of 10,000 cooperatives throughout Catalonia. Okay. And the whole reason that was made is because there's like a big anarchist movement in Catalonia. Yeah, yeah. And they... You know, they'd been doing their thing for many years. Right. But then they started to mature as anarchists, and they were like, so to think more about economics. Right. And organization and stuff. Right. It's something I also like about this Spanish tradition of anarchists. Right. They're a lot more organized than, for example, like London, where it's just like crazy people going, you know, like. Yeah. So they... Yeah, so they were like, okay, we need to make a network of cooperatives. And cooperatives need to provide all the basic things that people need to live. And we would therefore become autonomous from the state. So we'd become our own parallel system, which is cool, cool stuff. And so our team... was actually the cryptocurrency part of that. They were interested in cryptocurrency because, for example, trading inside the network allowed people to avoid paying taxes because they consume from each other. But they also wanted to exchange outside of it. So they were like, oh, we can use cryptocurrency to do that. So we set up the first ATMs in Catalonia for cryptocurrency as part of this cooperative. but they also had a research lab which was a giant factory complex in the catalan countryside right which is um it was burnt down and the people came there with a proposal to the owner to buy it from the owner right but then also there they had like it was it's like a village basically it's massive um but they had like a industrial research sector electronics one of them was the hacking stuff which is our club right and that's where we were doing our cryptocurrency stuff right right um but anyway as part of that research of the cic and the tools that the cic needed that's how we came up we came up with these ideas which is the ones maybe you've seen the page it's on archive right on system one talking about bit law anyway i'm not sure anyway there's like a bunch of pages on our old wiki right and it's talking about like oh what the applications we need to build with bitcoin right so then um that's when vitalik started to become interested in in those ideas right right so then afterwards he left to master coin yes the bitcoin he was like okay yeah uh loosen the restrictions on the op codes yeah and the bitcoin people were like no yeah we're not changing
 
 **opus:**
 
-> Okay, so I thought about this. I have a two-part answer, slightly related. One, October 10th, that was like a Friday. I think we had wrapped some work up. I was sort of like, I can't remember exactly what was going on. But then, everything just, was it November 10th? 10-10, right? And then just everything blew up. It's like, whoa! Like 20 billion. It was like the 20x larger liquidation than had ever happened before. I guess there's a lot more leverage in the system with Hyperliquid and all of these. But sort of a perfect storm of circumstances. And it just happened so fast. And I guess all financial markets are like this. Things can just explode in an instant. All financial markets with enough liquidity and derivatives, right? But that was wild. I'm gonna add a related but on the edge. So metals are at an all-time high right now. When we were starting to build out metals, we acquired some for direct sale on our version one marketplace. And like, I feel like our average silver cost basis was like 25 bucks, 27, 29. It's like over 70. So at least in the last day, I don't know what that's right now. Gold also on all time high and crypto's down. And it sort of shows, I believe, sort of this for a while. But and I hope it maybe becomes not true in the future. Mostly crypto does not behave like a defensive asset. It behaves like a high beta tech stock. It's risk on. So you'll see if the major tech companies go down, Bitcoin goes down and vice versa. It's not always true. I think Liberation Day, we saw that happen for both. And then crypto actually went up in sort of a, well, if they're going to restrict the movement of goods, they're not going to restrict the movement of crypto. It's hard to do.
+> Yeah, I was traveling a bit. I actually come from a movement of anarchist hackers in Europe, which were living in squatted buildings. Right, right. So, you know, there's like in Europe, there's all these squatters laws, which if a building is like abandoned, you can move into the building. And some squats, they last for years. Yeah. And we'd get amazing buildings. So in Amsterdam, we had a huge house. Imagine we're working on free software. We're broke devs. It's a really useful lifeline to have. And also like living in the center of the cities. I mean, like now even working in crypto, I look at the price of property and like it's ridiculous. Yeah. It's like really ridiculous. I think like societies really need that kind of stuff, like support people working on projects and software and stuff like that. It's a shame we don't. But anyway, I was part of those hacker movements, so I had, like, lots of places in Europe I could go to. You know, we would have communities, people working on free software, you know, in Barcelona, in London. London, I saw them. Yeah, yeah, yeah. So when did your focus switch to Dark Wallet? So actually I made the first CoinJoin and Stealth implementations in Bitcoin, which are the very first privacy techniques. So I was working on Bitcoin implementations, nodes, but I was also focused on the privacy. So I already did those projects before. Right. And then the Dark Wallet, I was like, we need to create a product. Like, we need to create, like, a wallet or something. Right. So that's why, you know, we made the Dark Wallet. And when did you first meet Vitalik? Can you remember? Yeah, so I was, like, I said I was living in these squats around Europe. Yeah. So after 2012, then there was like, okay, there was like a friend I met many, many years ago when I was hitchhiking. And he was a really cool dude. And I just saw him randomly on the internet. And I was like, bro, I'm making a conference. Come to my conference. And he's like, okay. And I didn't hear back from him. It turns out he just walked onto a ferry without any documentation. He came from Estonia across Europe. He came into England. And he was like, he now looked like Jesus. But he had like long hair and long beard and stuff. Didn't look good for an entry. Anyway, Mihai met him at the conference. It was like enchanted by him. He was like, I just met this guy, your friend. He looks like Jesus, man. And then I can't remember how it happened, but yeah, so then he was meant to come back with me to my house. Actually, he missed the train. Okay. And so he ended up just walking into around the building in London and that was like the building of the Occupy activists. Right. Then I went there and then Mihai came and we just started living there and then we started setting up our hack club right there. But then also I have friends in Spain that are hackers that also, they're making these communities. They also had Calafou. So then they decided to make Calafou, which was eco-industrial. Near Barcelona, right? Yeah. So I was living with Mihai, I think, for like a year in London. Right. And then we went to Calafou in Barcelona. Right. And Mihai co-founded the Bitcoin Magazine with Vitalik. Right, right. And so then I was also working on the Bitcoin Magazine with them. Oh, I see. Right, right. You know, not I wasn't, I didn't write loads of stuff. It was mainly those guys writing stuff but like, for example, I helped Mihai with the graphic design. Right. Like some of the covers I helped design. Right. When we were high. There you go. So then anyway, we went to Calafou and then Vitalik came to live with us. Yeah. So then it was, and then there was like two other Spanish hackers, which are old friends of mine and we were working together on projects. Yeah, so. Right. That was when we started Dark Wallet, right? I knew Cody from the conference. So I says like, Cody, let's start the wallet. Which conference, from the Amsterdam conference, the one that you... Right, right. Was that the one that you organized? Yeah, I did the 2011 one in Prague. Right. And the 2012 one in London as well. Right, right. Yeah. So, yeah, at the time we were working together in the Hack Lab. Mihai had his, I think it was Akasha. I'm not sure. No, I think he did that later. Oh, no, it was Agora or something. Right. Anyway, he was creating, I guess, what DarkFi is going to be now, like a social network marketplace. Okay. So then he was working on that, and my friends were working on that. And Vitalik was working on Bitcoin stuff. I was working on Bitcoin stuff. Right, right. And then he was also working, they were working on the magazine. Yeah. So we were doing a whole bunch of stuff there in Hack Lab. Yeah, right. And then, you know, we co-founded the Dark Wallet. Right. And Peter Todd as well? No, Peter Todd came later. But you can see the original Dark Wallet announcement video on YouTube. And it has all the co-founders listed. Right, right. So, yeah, we were working on that. And then, so the CIC was a network of 10,000 cooperatives throughout Catalonia. Okay. And the whole reason that was made is because there's like a big anarchist movement in Catalonia. Yeah, yeah. And they, you know, they'd been doing their thing for many years. Right. But then they started to mature as anarchists, and they were like, so to think more about economics. Right. And organization and stuff. Right. It's something I also like about this Spanish tradition of anarchists. Right. They're a lot more organized than, for example, like London, where it's just like crazy people going, you know, like. Yeah. So they, yeah, so they were like, okay, we need to make a network of cooperatives. And cooperatives need to provide all the basic things that people need to live. And we would therefore become autonomous from the state. So we'd become our own parallel system, which is cool, cool stuff. And so our team was actually the cryptocurrency part of that. They were interested in cryptocurrency because, for example, trading inside the network allowed people to avoid paying taxes because they consume from each other. But they also wanted to exchange outside of it. So they were like, oh, we can use cryptocurrency to do that. So we set up the first ATMs in Catalonia for cryptocurrency as part of this cooperative. But they also had a research lab which was a giant factory complex in the Catalan countryside. Right. Which is, it was burnt down and the people came there with a proposal to the owner to buy it from the owner. Right. But then also there they had, like, it was, it's like a village basically. It's massive. But they had like an industrial research sector, electronics, one of them was the hacking stuff, which is our club. Right. And that's where we were doing our cryptocurrency stuff. Right, right. But anyway, as part of that research of the CIC and the tools that the CIC needed, that's how we came up, we came up with these ideas, which is the ones maybe you've seen the page, it's on archive. Right. On System D, talking about BitLaw. Anyway, I'm not sure, anyway, there's like a bunch of pages on our old wiki. Right. And it's talking about like, oh, what are the applications we need to build with Bitcoin? Right. So then Vitalik started to become interested in those ideas. Right, right. So then afterwards he left to Mastercoin. Yes, the Bitcoin, he was like, okay, yeah, loosen the restrictions on the op codes. Yeah. And the Bitcoin people were like, no. Yeah, we're not changing.
 
 **gemini:**
 
-> Okay, so I thought about this. I have a two-part answer, slightly related. One, October 10th, that was like a Friday. I think we had wrapped some work up. I was sort of like, I can't remember exactly what was going on. But then, you know, it just, everything just, was it November 10th? 10-10, right? Yeah. And then just like everything blew up. Like, you know, you're up the next one. It's like, whoa! Like... Like 20 billion. It was like the 20x larger liquidation than had ever happened before. I guess there's a lot more leverage in the system with Hyperliquid and all of these. But sort of a perfect storm of circumstances. And it just happened so fast. And I guess all financial markets are like this. Like things can just... explode or you know in an instant or all financial markets with the enough liquidity and derivatives right but um that was wild um i'm gonna add a related but you know you know on the edge so metals are at an all-time high right now yes we like when we were starting to build out metals we you know acquired some for direct sale on our like version one marketplace. And like, I feel like our average silver cost basis was like 25 bucks, 27, 29. It's like over 70. So like at least in the last day, I don't know what's that right now. Gold also on all time high and cryptos down. And it sort of shows, I believe, sort of this for a while. But and I hope it maybe becomes not true in the future. Mostly crypto does not behave like a defensive asset. It behaves like a high beta tech stock. It's risk on, you know, so you'll see if the major tech companies go down, Bitcoin goes down and vice versa. It's not always true. I think Liberation Day, we saw that happen for both. And then crypto actually went up in sort of a, well, if they're going to restrict the movement of goods, they're not going to restrict the movement of crypto. It's hard to do. Why is it? Why is this? I think it's just like it's the same type of people buying both and they see it as a future facing technology speculative asset. I mean, for a long time, people have pointed out that if you look at crypto instead of acting as a hedge against the stock market it acts as more of a high alpha line of the stock market which either rather um the um early on Bitcoin was totally uncorrelated with the stock market but I think I think probably started being correlated at least by 2020 but maybe even like 2018 let's say okay Jim what was your biggest surprise of the year
+> Yeah, I was traveling a bit. I actually come from a movement of anarchist hackers in Europe, which were living in squatted buildings. Right, right. So, you know, there's like in Europe, there's all these squatters laws, which if a building is like abandoned, you can move into the building. And some some squats, they last for years. Yeah. And we'd get amazing buildings. So in Amsterdam, we had a huge house. Imagine we're working on free software. We're broke devs. It's a really useful lifeline to have. And also like living in the center of the cities. I mean, like now even working in crypto, I look at the price of property and like it's ridiculous. Yeah. It's like really ridiculous. I think like societies really need that kind of stuff, like support people working on projects and software and stuff like that. It's a shame we don't. But anyway, I was part of those hacker movements, so I had, like, lots of places in Europe I could go to. You know, we would have communities, people working on free software, you know, in Barcelona, in London. London, I saw them. Yeah, yeah, yeah. So when did your focus switch to Dark Wallet? So actually I made the first CoinJoin and Stealth implementations in Bitcoin, which are the very first privacy techniques. So I was working on Bitcoin implementations nodes, but I was also focused on the privacy. So I already did those projects before. Right. And then the Dark Wallet, I was like, we need to create a product. Like, we need to create, like, a wallet or something. Right. So that's why, you know, we made the Dark Wallet. And when did you first meet Vitalik? Can you remember? Yeah, so I was, like, I said I was living in these squats around Europe. Yeah. So after 2012, then... Then there was like, okay, there was like a friend I met many, many years ago when I was hitchhiking. And he was a really cool dude. And I just saw him randomly on the internet. And I was like, bro, I'm making a conference. Come to my conference. And he's like, okay. And I didn't hear back from him. It turns out he just walked onto a ferry without any documentation. He came from Estonia across Europe. He came into England. And he was like, he now looked like Jesus. But he had like long hair and long beard and stuff. Didn't look good for an entry. Anyway, Mihai met him at the conference. It was like enchanted by him. He was like, I just met this guy, your friend. He looks like Jesus, man. And then I can't remember how it happened, but yeah. So then he he was meant to come back with me to my house actually he missed the train okay and so he ended up just walking into around the building in London and that was like the building of the Occupy activists right then I went there and then Mihai came and we just started living there and then we started setting up our hack club right there. But then also I have friends in Spain that are hackers that also they're making these communities. They also had Calafou. So then they decided to make Calafou, which was eco-industrial. Near Barcelona, right? Yeah. So I was living with Mihai, I think, for like a year in London. Right. And then we went to Calafou in Barcelona. Right. And Mihai co-founded the Bitcoin Magazine with Vitalik. Right, right. And so then I was also working on the Bitcoin Magazine with them. Oh, I see. Right, right. You know, not I wasn't I didn't write loads of stuff it was mainly those guys writing stuff but like for example I helped Mihai with the graphic design right like some of the covers I helped design right when we were high there you go so then anyway we went to Calafou and then Vitalik came to live with us yeah so then it was and then there was like two other Spanish hackers, which are old friends of mine and we were working together on projects. Yeah, so I'm right that was when we started Dark Wallet, right? I knew Cody from the conference. So I says like Cody, let's start the wallet. Which conference? From the Amsterdam conference, the one that you... Right, right. Was that the one that you organized? Yeah, I did the 2011 one in Prague. Right. And the 2012 one in London as well. Right, right. Yeah. So, yeah, at the time we were working together in the Hack Lab. Mihai had his, I think it was Akasha. I'm not sure. No, I think he did that later. Oh, no, it was Agora or something. Right. Anyway, he was creating, I guess, what DarkFi is going to be now, like a social network marketplace. Okay. So then he was working on that, and my friends were working on that. And Vitalik was working on Bitcoin stuff. I was working on Bitcoin stuff. Right, right. And then he was also working, they were working on the magazine. Yeah. So we were doing a whole bunch of stuff there in Hack Lab. Yeah, right. And then, you know, we co-founded the Dark Wallet. Right. And Peter Todd as well? No, Peter Todd came later. But you can see the original Dark Wallet announcement video on YouTube. And it has all the co-founders listed. Right, right. So, yeah, we were working on that. And then, so the CIC was a network of 10,000 cooperatives throughout Catalonia. Okay. And the whole reason that was made is because there's like a big anarchist movement in Catalonia. Yeah, yeah. And they... You know, they'd been doing their thing for many years. Right. But then they started to mature as anarchists, and they were like, so to think more about economics. Right. And organization and stuff. Right. It's something I also like about this Spanish tradition of anarchists. Right. They're a lot more organized than, for example, like London, where it's just like crazy people going, you know, like. Yeah. So they... Yeah, so they were like, okay, we need to make a network of cooperatives. And cooperatives need to provide all the basic things that people need to live. And we would therefore become autonomous from the state. So we'd become our own parallel system, which is cool, cool stuff. And so our team... was actually the cryptocurrency part of that. They were interested in cryptocurrency because, for example, trading inside the network allowed people to avoid paying taxes because they consume from each other. But they also wanted to exchange outside of it. So they were like, oh, we can use cryptocurrency to do that. So we set up the first ATMs in Catalonia for cryptocurrency as part of this cooperative. But they also had a research lab which was a giant factory complex in the Catalan countryside. Right. Which is... it was burnt down and the people came there with a proposal to the owner to buy it from the owner right but then also there they had like it was it's like a village basically it's massive um but they had like a industrial research sector electronics one of them was the hacking stuff which is our club right and that's where we were doing our cryptocurrency stuff right right um but anyway as part of that research of the CIC and the tools that the CIC needed that's how we came up we came up with these ideas which is the ones maybe you've seen the page it's on archive right on system one talking about Bitlaw anyway i'm not sure anyway there's like a bunch of pages on our old wiki right and it's talking about like oh what the applications we need to build with Bitcoin right so then um that's when Vitalik started to become interested in in those ideas right right so then afterwards he left to Mastercoin yes the Bitcoin he was like okay yeah uh loosen the restrictions on the op codes yeah and the Bitcoin people were like no yeah we're not changing.
 
 **deepseek:**
 
-> Okay, so I thought about this. I have a two-part answer, slightly related. One, October 10th, that was like a Friday. I think we had wrapped some work up. I was sort of like, I can't remember exactly what was going on. But then, you know, it just, everything just, was it November 10th? 10-10, right? Yeah. And then just like everything blew up. Like, you know, you're up the next one. It's like, whoa! Like... Like 20 billion. It was like the 20x larger liquidation than had ever happened before. I guess there's a lot more leverage in the system with hyperliquid and all of these. But sort of a perfect storm of circumstances. And it just happened so fast. And I guess all financial markets are like this. Like things can just explode or you know in an instant or all financial markets with the enough liquidity and derivatives right but um that was wild um i'm gonna add a related but you know you know on the edge so metals are at an all-time high right now yes we like when we were starting to build out metals we you know acquired some for direct sale on our like version one marketplace. And like, I feel like our average silver cost basis was like 25 bucks, 27, 29. It's like over 70. So like at least in the last day, I don't know what's that right now. Gold also on all time high and cryptos down. And it sort of shows, I believe, sort of this for a while. But and I hope it maybe becomes not true in the future. Mostly crypto does not behave like a defensive asset. It behaves like a high beta tech stock. It's risk on, you know, so you'll see if The major tech companies go down, Bitcoin goes down and vice versa. It's not always true. I think Liberation Day, we saw that happen for both. And then crypto actually went up in sort of a, well, if they're going to restrict the movement of goods, they're not going to restrict the movement of crypto. It's hard to do. Why is it? Why is this? I think it's just like it's the same type of people buying both and they see it as a future facing technology speculative asset. I mean, for a long time, people have pointed out that if you look at crypto instead of acting as a hedge against the stock market it acts as more of a high alpha line of the stock market which either rather um the um early on Bitcoin was totally uncorrelated with the stock market but I think I think probably started being correlated at least by 2020 but maybe even like 2018 let's say okay Jim what was your biggest surprise of the year
+> Yeah, I was traveling a bit. I actually come from a movement of anarchist hackers in Europe, which were living in squatted buildings. Right, right. So, you know, there's like in Europe, there's all these squatters laws, which if a building is like abandoned, you can move into the building. And some some squats, they last for years. Yeah. And we'd get amazing buildings. So in Amsterdam, we had a huge house. Imagine we're working on free software. We're broke devs. It's a really useful lifeline to have, and also like living in the center of the cities. I mean, like now even working in crypto, I look at the price of property and like it's ridiculous. Yeah. It's like really ridiculous. I think like societies really need that kind of stuff, like support people working on projects and software and stuff like that. It's a shame we don't. But anyway, I was part of those hacker movements, so I had, like, lots of places in Europe I could go to. You know, we would have communities, people working on free software, you know, in Barcelona, in London.
 
 **chatgpt:**
 
-> Okay, so I thought about this. I have a two-part answer, slightly related. One, October 10th—that was like a Friday. I think we had wrapped some work up. I can’t remember exactly what was going on. But then everything just—was it November 10th? 10-10, right? Yeah. And then everything blew up. You wake up the next one, it’s like, whoa. Like 20 billion. It was like the 20x larger liquidation than had ever happened before. I guess there’s a lot more leverage in the system with Hyperliquid and all of these. But sort of a perfect storm of circumstances, and it just happened so fast. I guess all financial markets are like this. Things can just explode in an instant—all financial markets with enough liquidity and derivatives. But that was wild. I’m going to add a related but on-the-edge thing: metals are at an all-time high right now. When we were starting to build out metals, we acquired some for direct sale on our Version One marketplace. I feel like our average silver cost basis was like 25 bucks, 27, 29. It’s like over 70—at least in the last day. I don’t know what it’s at right now. Gold also all-time high and crypto’s down. It sort of shows—this for a while, and I hope it maybe becomes not true in the future—mostly crypto does not behave like a defensive asset. It behaves like a high beta tech stock. It’s risk-on. You’ll see if the major tech companies go down, Bitcoin goes down and vice versa. It’s not always true. I think Liberation Day, we saw that happen for both, and then crypto actually went up in sort of a, “Well, if they’re going to restrict the movement of goods, they’re not going to restrict the movement of crypto. It’s hard to do.” Why is this? I think it’s just the same type of people buying both, and they see it as a future-facing technology speculative asset. For a long time people have pointed out that if you look at crypto, instead of acting as a hedge against the stock market it acts as more of a high alpha line of the stock market—rather, early on Bitcoin was totally uncorrelated with the stock market, but I think it probably started being correlated at least by 2020, but maybe even like 2018.
+> Yeah, I was traveling a bit. I actually come from a movement of anarchist hackers in Europe, which were living in squatted buildings. So there’s in Europe all these squatter laws, which if a building is abandoned, you can move into the building. And some squats, they last for years. And we’d get amazing buildings. So in Amsterdam, we had a huge house. Imagine we’re working on free software. We’re broke devs. It’s a really useful lifeline to have, and also living in the center of the cities. I mean, now even working in crypto, I look at the price of property and it’s ridiculous. It’s really ridiculous. I think societies really need that kind of stuff, like support people working on projects and software and stuff like that. It’s a shame we don’t. But anyway, I was part of those hacker movements, so I had lots of places in Europe I could go to. We would have communities, people working on free software, in Barcelona, in London. London, I saw them. Yeah, yeah, yeah. So when did your focus switch to Dark Wallet? So actually I made the first CoinJoin and stealth implementations in Bitcoin, which are the very first privacy techniques. So I was working on Bitcoin implementations, nodes, but I was also focused on the privacy. So I already did those projects before. And then the Dark Wallet, I was like, we need to create a product. We need to create a wallet or something. So that’s why we made the Dark Wallet. And when did you first meet Vitalik? Can you remember? Yeah, so I was living in these squats around Europe. So after 2012, then there was a friend I met many, many years ago when I was hitchhiking. He was a really cool dude, and I just saw him randomly on the internet. And I was like, bro, I’m making a conference. Come to my conference. And he’s like, okay. And I didn’t hear back from him. It turns out he just walked onto a ferry without any documentation. He came from Estonia across Europe. He came into England. And he now looked like Jesus. He had long hair and long beard and stuff. Didn’t look good for an entry. Anyway, Mihai met him at the conference. He was enchanted by him. He was like, “I just met this guy, your friend. He looks like Jesus, man.” And then I can’t remember how it happened, but yeah, so then he was meant to come back with me to my house actually. He missed the train. Okay. And so he ended up just walking around the building in London, and that was the building of the Occupy activists. Then I went there, and then Mihai came and we just started living there, and then we started setting up our hacklab right there. But then also I have friends in Spain that are hackers that also are making these communities. They also had Calafou. So then they decided to make Calafou, which was eco-industrial. Near Barcelona, right? Yeah. So I was living with Mihai, I think, for like a year in London, and then we went to Calafou in Barcelona. And Mihai co-founded Bitcoin Magazine with Vitalik. And so then I was also working on Bitcoin Magazine with them. Oh, I see. Not—I wasn’t—I didn’t write loads of stuff. It was mainly those guys writing stuff. But for example, I helped Mihai with the graphic design, like some of the covers I helped design when we were in Calafou. There you go. So then anyway, we went to Calafou, and then Vitalik came to live with us. So then it was—and then there was like two other Spanish hackers, which are old friends of mine, and we were working together on projects. So I’m right, that was when we started Dark Wallet, right? I knew Cody from the conference. So I said, Cody, let’s start the wallet. Which conference, from the Amsterdam conference? The one that you—right, right. Was that the one that you organized? Yeah, I did the 2011 one in Prague and the 2012 one in London as well. So yeah, at the time we were working together in the hacklab. Mihai had his—I think it was Akasha. I’m not sure. No, I think he did that later. Oh no, it was Agora or something. Anyway, he was creating, I guess, what DarkFi is going to be now, like a social network marketplace. Okay. So then he was working on that, and my friends were working on that. And Vitalik was working on Bitcoin stuff. I was working on Bitcoin stuff. And then they were working on the magazine. So we were doing a whole bunch of stuff there in the hacklab. And then we co-founded the Dark Wallet. And Peter Todd as well? No, Peter Todd came later. But you can see the original Dark Wallet announcement video on YouTube, and it has all the co-founders listed. So yeah, we were working on that. And then, so the CIC was a network of 10,000 cooperatives throughout Catalonia. And the whole reason that was made is because there’s a big anarchist movement in Catalonia. They’d been doing their thing for many years, but then they started to mature as anarchists and they were like, so think more about economics and organization and stuff. It’s something I also like about this Spanish tradition of anarchists. They’re a lot more organized than, for example, London, where it’s just like crazy people going… So they were like, okay, we need to make a network of cooperatives. And cooperatives need to provide all the basic things that people need to live. And we would therefore become autonomous from the state. So we’d become our own parallel system, which is cool stuff. And so our team was actually the cryptocurrency part of that. They were interested in cryptocurrency because, for example, trading inside the network allowed people to avoid paying taxes because they consume from each other. But they also wanted to exchange outside of it. So they were like, oh, we can use cryptocurrency to do that. So we set up the first ATMs in Catalonia for cryptocurrency as part of this cooperative. But they also had a research lab which was a giant factory complex in the Catalan countryside. It was burnt down, and the people came there with a proposal to the owner to buy it from the owner. But then also there they had—it’s like a village basically, it’s massive. But they had an industrial research sector, electronics. One of them was the hacking stuff, which is our club, and that’s where we were doing our cryptocurrency stuff. But anyway, as part of that research of the CIC and the tools that the CIC needed, that’s how we came up with these ideas, which is the ones maybe you’ve seen the page. It’s on archive, right, on “system1” talking about Bitlaw. Anyway, I’m not sure. There’s like a bunch of pages on our old wiki, and it’s talking about what applications we need to build with Bitcoin. So then that’s when Vitalik started to become interested in those ideas. So then afterwards he left to Mastercoin. Yes, the Bitcoin—he was like, okay, loosen the restrictions on the opcodes. And the Bitcoin people were like, no, we’re not changing.
 
-#### [37:09] SPEAKER_02 (block 27/35)
-
-**Intermediate:**
-
-> I mean, yes, but like, it's one of these things where like every developer always wants to write, like, they're like, this language is terrible. I'm going to write my own language. It's going to be so much better. And no one ever uses that language, right? Like it's like, yeah. Whereas what actually happens is people make JavaScript much faster. Yeah.
-
-**opus:**
-
-> I mean, yes, but it's one of these things where every developer always wants to write, they're like, this language is terrible. I'm going to write my own language. It's going to be so much better. And no one ever uses that language, right? Whereas what actually happens is people make JavaScript much faster.
-
-**gemini:**
-
-> I mean, yes, but like, it's one of these things where like every developer always wants to write, like, they're like, this language is terrible. I'm going to write my own language. It's going to be so much better. And no one ever uses that language, right? Like it's like, yeah. Whereas what actually happens is people make JavaScript much faster. Yeah.
-
-**deepseek:**
-
-> I mean, yes, but like, it's one of these things where like every developer always wants to write, like, they're like, this language is terrible. I'm going to write my own language. It's going to be so much better. And no one ever uses that language, right? Like it's like, yeah. Whereas what actually happens is people make JavaScript much faster. Yeah.
-
-**chatgpt:**
-
-> I mean, yes, but it’s one of these things where every developer always wants to write, “This language is terrible. I’m going to write my own language. It’s going to be so much better.” And no one ever uses that language. Whereas what actually happens is people make JavaScript much faster.
-
-#### [54:56] SPEAKER_02 (block 35/35)
+#### [43:28] SPEAKER_02 (block 27/35)
 
 **Intermediate:**
 
-> Yeah, the way I think of it is kind of adoption over research. Like, you know, I think when we started all the big new chains were effectively like research projects, right? Like they were big ideas and things that may or may never be delivered. And now like, really, it's about, you know, kind of like deliver the whole thing before the TGE now. Yeah, exactly. Exactly. Well, with that, thank you very much for joining us for our Year in Review recap. I'm Victor Wong. You can find us at strato.nexus. And we hope you have a happy holidays. And please sign up for our giveaway and enjoy some vitamin C and sunshine. At least Jim is. Take care. Thanks, everybody. Happy holidays. See you.
+> Yeah, absolutely. So, I mean, can you remember like what the vibe was like at that conference as compared to other Bitcoin conferences you've been at? It was a fun conference. It wasn't like an exceptional conference. Yeah, I had a good time. I was just going around chatting to people. Yeah, it was good. Yeah, yeah. Yeah, I remember Adam Levine and Stephanie and Andreas. Right, yeah, yeah. They hung out with each other a lot. Yeah, yeah. So, I mean, I guess, you know, Ethereum kind of, you know, kept ticking along there, like... Was that something, you know, happening in parallel or were you still kind of crossing paths with these people through that year? No, I didn't interact with Ethereum after that. No, no. And I mean, in terms of like... think all the money started to come in and they all started to go and then i was in like europe right then i went to syria so yes yes but yeah i mean the timeline of that was ethereum white paper november kind of team starting together about december uh btc miami were you at btc miami in january did you go to that one no um i went to the toronto thing Right. So then, yeah, Toronto in April and the crowd sale actually was like July, August-ish of 2014. And then you had the Ethereum Foundation starting to do the crowd sale. And then, yeah, early contributors got paid back for their work in those prior months. And, you know, Ethereum was often live. We did the dark market just purely for money. Right. Because, you know, 15K. Right. So that was pretty cool. And, I mean, with Dark Wallet, like, what kind of time span were you working on that for? We...
 
 **opus:**
 
-> Yeah, the way I think of it is kind of adoption over research. I think when we started, all the big new chains were effectively research projects, right? They were big ideas and things that may or may never be delivered. And now really, it's about deliver the whole thing before the TGE now.
+> Yeah, absolutely. So, I mean, can you remember like what the vibe was like at that conference as compared to other Bitcoin conferences you've been at? It was a fun conference. It wasn't like an exceptional conference. Yeah, I had a good time. I was just going around chatting to people. Yeah, it was good. Yeah, yeah. Yeah, I remember Adam Levine and Stephanie and Andreas. Right, yeah, yeah. They hung out with each other a lot. Yeah, yeah. So, I mean, I guess, you know, Ethereum kind of, you know, kept ticking along there, like was that something, you know, happening in parallel or were you still kind of crossing paths with these people through that year? No, I didn't interact with Ethereum after that. No, no. And I mean, in terms of like... Think all the money started to come in and they all started to go and then I was in like Europe. Right. Then I went to Syria. So yes, yes. But yeah, I mean, the timeline of that was Ethereum white paper November, kind of team starting together about December, BTC Miami, were you at BTC Miami in January? Did you go to that one? No. I went to the Toronto thing. Right. So then, yeah, Toronto in April and the crowd sale actually was like July, August-ish of 2014. And then you had the Ethereum Foundation starting to do the crowd sale. And then, yeah, early contributors got paid back for their work in those prior months. And, you know, Ethereum was off and live. We did the Dark Market just purely for money. Right. Because, you know, 15K. Right. So that was pretty cool. And, I mean, with Dark Wallet, like, what kind of time span were you working on that for? We...
 
 **gemini:**
 
-> Yeah, the way I think of it is kind of adoption over research. Like, you know, I think when we started all the big new chains were effectively like research projects, right? Like they were big ideas and things that may or may never be delivered. And now like, really, it's about, you know, kind of like deliver the whole thing before the TGE now. Yeah, exactly. Exactly. Well, with that, thank you very much for joining us for our Year in Review recap. I'm Victor Wong. You can find us at strato.nexus. And we hope you have a happy holidays. And please sign up for our giveaway and enjoy some vitamin C and sunshine. At least Jim is. Take care. Thanks, everybody. Happy holidays. See you.
+> Yeah, absolutely. So, I mean, can you remember like what the vibe was like at that conference as compared to other Bitcoin conferences you've been at? It was a fun conference. It wasn't like an exceptional conference. Yeah, I had a good time. I was just going around chatting to people. Yeah, it was good. Yeah, yeah. Yeah, I remember Adam Levine and Stephanie and Andreas. Right, yeah, yeah. They hung out with each other a lot. Yeah, yeah. So, I mean, I guess, you know, Ethereum kind of, you know, kept ticking along there, like... Was that something, you know, happening in parallel or were you still kind of crossing paths with these people through that year? No, I didn't interact with Ethereum after that. No, no. And I mean, in terms of like... think all the money started to come in and they all started to go and then i was in like Europe right then i went to Syria so yes yes but yeah i mean the timeline of that was Ethereum white paper November kind of team starting together about December uh BTC Miami were you at BTC Miami in January did you go to that one no um i went to the Toronto thing Right. So then, yeah, Toronto in April and the crowd sale actually was like July, August-ish of 2014. And then you had the Ethereum Foundation starting to do the crowd sale. And then, yeah, early contributors got paid back for their work in those prior months. And, you know, Ethereum was often live. We did the Dark Market just purely for money. Right. Because, you know, 15K. Right. So that was pretty cool. And, I mean, with Dark Wallet, like, what kind of time span were you working on that for? We...
 
 **deepseek:**
 
@@ -682,126 +254,127 @@
 
 **chatgpt:**
 
-> Yeah, the way I think of it is adoption over research. When we started, all the big new chains were effectively research projects—big ideas and things that may or may not be delivered. Now it’s really about delivering the whole thing before the TGE now.
+> Yeah, absolutely. So can you remember what the vibe was like at that conference as compared to other Bitcoin conferences you’ve been at?
+
+#### [56:16] SPEAKER_02 (block 35/35)
+
+**Intermediate:**
+
+> I've heard some people say perhaps Monero with smart contracts. Would that be reasonable? But we're not using Ring 6, we're using ZK. Zcash with smart contracts. Yeah, well, yeah, maybe, yeah. Okay, thanks so much. Thank you.
+
+**opus:**
+
+> I've heard some people say perhaps Monero with smart contracts. Would that be reasonable? But we're not using ring sigs, we're using ZK. Zcash with smart contracts. Yeah, well, yeah, maybe, yeah. Okay, thanks so much. Thank you.
+
+**gemini:**
+
+> I've heard some people say perhaps Monero with smart contracts. Would that be reasonable? But we're not using Ring 6, we're using ZK. Zcash with smart contracts. Yeah, well, yeah, maybe, yeah. Okay, thanks so much. Thank you.
+
+**deepseek:**
+
+> (No matching timestamp found in output; likely timestamp regeneration or formatting drift.)
+
+**chatgpt:**
+
+> I’ve heard some people say perhaps Monero with smart contracts. Would that be reasonable? But we’re not using ring signatures, we’re using ZK. Zcash with smart contracts. Yeah, well, maybe, yeah. Okay, thanks so much. Thank you.
 
 ---
 
 ## Transcriber: `whisperx`
 
 ### Quick heuristics
-- baseline words (md stripped): **9,331**
-- baseline timestamps: **74** (headers=71)
+- baseline words (md stripped): **8,623**
+- baseline timestamps: **172** (headers=172)
 
-- **opus**: retention=99.0%, timestamps=69/74 (×0.93), fmt_bad=0, nonmono=0, novel_CAPS=17
-  - examples: Again, Also, Argentinian, Base, Board, Cypherpunk Congress, Enterprise Ethereum Alliance, Hyperliquids, Know, Lighters
-- **gemini**: retention=99.5%, timestamps=73/74 (×0.99), fmt_bad=2, nonmono=0, novel_CAPS=19
-  - examples: Again, Argentinian, Base, Bridge, Hyperliquids, Jim Harasimowicz, Kieran James, Know, Lighters, Lubin
-- **deepseek**: retention=69.5%, timestamps=64/74 (×0.86), fmt_bad=2, nonmono=0, novel_CAPS=0
-- **chatgpt**: retention=90.8%, timestamps=68/74 (×0.92), fmt_bad=1, nonmono=0, novel_CAPS=31
-  - examples: Are, Argentine, Base, Before, Board, Building, Cypherpunk Congress, Definitely, Devconnect, Even
+- **opus**: retention=102.2%, timestamps=243/172 (×1.41), fmt_bad=0, nonmono=1, novel_CAPS=28
+  - examples: About, Actually, Amirs, Anthony Eufemio, At, Aya, Bitcoin Magazine, Bitcointalk, Calafou, Dark
+- **gemini**: retention=101.5%, timestamps=172/172 (×1.00), fmt_bad=0, nonmono=0, novel_CAPS=34
+  - examples: About, Actually, Amirs, Anthony Eufemio, Aya, Bitcoin Magazine, Bitcoin Talk, Bitlaw, Bitlaw Anyway, Calafou
+- **deepseek**: retention=68.0%, timestamps=107/172 (×0.62), fmt_bad=0, nonmono=0, novel_CAPS=9
+  - examples: About, Amirs, Aya, California, Dark Prague Zero Congress, Everything, Funny, Melvin, Sovereign Individual
+- **chatgpt**: retention=91.0%, timestamps=162/172 (×0.94), fmt_bad=0, nonmono=0, novel_CAPS=37
+  - examples: Amirs, And Gavin Wood, At, Aya Miyaguchi, Bitcoin Magazine, Bitcointalk, Bro, Calafou, Dark, Dark Market
 
 ### Excerpts (baseline vs outputs)
-#### [00:01] SPEAKER_01 (block 1/71)
+#### [00:03] SPEAKER_01 (block 1/172)
 
 **Intermediate:**
 
-> Okay, we are live. Welcome to this week's Unchained Oracles. As usual, I am joined. I'm Victor Wong. I'm Founder and Chief Product Officer at Strato. And as usual, I am joined with Kieran James Lubin, CEO of Strato. And And the man with the oranges, Jim Hermosdior, CTO of Strato.
+> Hello, hello.
 
 **opus:**
 
-> Okay, we are live. Welcome to this week's Unchained Oracles. As usual, I am joined. I'm Victor Wong. I'm Founder and Chief Product Officer at Strato. And as usual, I am joined with Kieran James Lubin, CEO of Strato. And the man with the oranges, Jim Hermosdior, CTO of Strato.
+> Hello, hello.
 
 **gemini:**
 
-> Okay, we are live. Welcome to this week's Unchained Oracles. As usual, I'm Victor Wong, I'm Founder and Chief Product Officer at Strato. And as usual, I am joined with Kieran James-Lubin, CEO of Strato. And the man with the oranges, Jim Harasimowicz, CTO of Strato.
+> Hello, hello.
 
 **deepseek:**
 
-> Okay, we are live. Welcome to this week's Unchained Oracles. As usual, I am joined. I'm Victor Wong. I'm Founder and Chief Product Officer at Strato. And as usual, I am joined with Kieran James Lubin, CEO of Strato. And the man with the oranges, Jim Hermosdior, CTO of Strato.
+> Hello, hello.
 
 **chatgpt:**
 
-> Okay, we are live. Welcome to this week’s Unchained Oracles. As usual, I am joined—I’m Victor Wong. I’m Founder and Chief Product Officer at Strato. And as usual, I am joined with Kieran James Lubin, CEO of Strato. And the man with the oranges, Jim Hermosdior, CTO of Strato.
+> Hello, hello.
 
-#### [05:58] SPEAKER_02 (block 18/71)
-
-**Intermediate:**
-
-> Okay, so I'll quibble with Jim a little bit. I think, I guess mine's a little bit a meta story. So it depends what you mean by big. Like I have a little bit of a philosophical objection to news. News is always point in time and it doesn't really tell you trend. I think we would agree on this. And people that over-index on the current and then under-index on like what's really going on. And the biggest one for me was that adoption and in price have continued to decouple. We started to see maybe 2023, 2024, that the supply of stables on chain, it previously was correlated with crypto prices and it started to stop being correlated with crypto prices. And stables on chain are all time high and transaction volumes and stables doubled again between 2024 and 2025. I believe, I asked the AIs this, they all said that. So at the same time, prices are a little bit down from beginning of the year to end of the year. So this may just be how it is for a while. There's also other metrics like active wallets are up by maybe 10 million, depending on the time interval that you consider. There are different estimates. Mobile's up 20-ish percent. um and also the the institutions are clearly doing more than waiting in they're actually like quietly moving money with stables especially around the world um and there's more of a kind of recurring institutional buy that's going on where crypto part of the reason it's been so volatile is that you know a bunch of very aggressive speculators are buying and selling rapidly and if you compare stocks the stocks that get included in the major indexes you know quite often people have their send 500 bucks a month to vanguard right and so that smooths out the volatility to some degree in let's say high you know medium to high market cap stocks right that's actually a little bit starting to happen in crypto and i think at some point you'll see some of the debts get included in indexes so that same pool of capital will start to flow into crypto um It's been friendly on the regulatory side, at least largely. The U.S. is passing some of the laws. The laws may not be perfect, but they're better than before. And also just the behavior of the regulatory agencies is far less aggressive, far less arbitrary and capricious, if you will. And yet the prices are not up. So to me, this is OK. It might be a sign of maturity, but this is the story.
-
-**opus:**
-
-> Okay, so I'll quibble with Jim a little bit. I think, I guess mine's a little bit a meta story. So it depends what you mean by big. Like I have a little bit of a philosophical objection to news. News is always point in time and it doesn't really tell you trend. I think we would agree on this. And people that over-index on the current and then under-index on like what's really going on. And the biggest one for me was that adoption and price have continued to decouple. We started to see maybe 2023, 2024, that the supply of stables on chain, it previously was correlated with crypto prices and it started to stop being correlated with crypto prices. And stables on chain are all time high and transaction volumes and stables doubled again between 2024 and 2025. I believe, I asked the AIs this, they all said that. So at the same time, prices are a little bit down from beginning of the year to end of the year. So this may just be how it is for a while. There's also other metrics like active wallets are up by maybe 10 million, depending on the time interval that you consider. There are different estimates. Mobile's up 20-ish percent. And also the institutions are clearly doing more than waiting in, they're actually like quietly moving money with stables especially around the world. And there's more of a kind of recurring institutional buy that's going on where crypto, part of the reason it's been so volatile is that a bunch of very aggressive speculators are buying and selling rapidly. And if you compare stocks, the stocks that get included in the major indexes, quite often people have their send 500 bucks a month to Vanguard, right? And so that smooths out the volatility to some degree in, let's say, high, medium to high market cap stocks, right? That's actually a little bit starting to happen in crypto and I think at some point you'll see some of the assets get included in indexes. So that same pool of capital will start to flow into crypto. It's been friendly on the regulatory side, at least largely. The U.S. is passing some of the laws. The laws may not be perfect, but they're better than before. And also just the behavior of the regulatory agencies is far less aggressive, far less arbitrary and capricious, if you will. And yet the prices are not up. So to me, this is okay. It might be a sign of maturity, but this is the story.
-
-**gemini:**
-
-> Okay, so I'll quibble with Jim a little bit. I think, I guess mine's a little bit a meta story. So it depends what you mean by big. Like I have a little bit of a philosophical objection to news. News is always point in time and it doesn't really tell you trend. I think we would agree on this. And people over-index on the current and then under-index on like what's really going on. And the biggest one for me was that adoption and price have continued to decouple. We started to see maybe 2023, 2024, that the supply of stables on-chain, it previously was correlated with crypto prices and it started to stop being correlated with crypto prices. And stables on-chain are all time high and transaction volumes and stables doubled again between 2024 and 2025. I believe, I asked the AIs this, they all said that. So at the same time, prices are a little bit down from beginning of the year to end of the year. So this may just be how it is for a while. There's also other metrics like active wallets are up by maybe 10 million, depending on the time interval that you consider. There are different estimates. Mobile's up 20-ish percent. And also the institutions are clearly doing more than waiting in, they're actually like quietly moving money with stables especially around the world. And there's more of a kind of recurring institutional buy that's going on where crypto part of the reason it's been so volatile is that, you know, a bunch of very aggressive speculators are buying and selling rapidly. And if you compare stocks, the stocks that get included in the major indexes, you know quite often people have their send 500 bucks a month to Vanguard, right? And so that smooths out the volatility to some degree in let's say high, you know, medium to high market cap stocks. That's actually a little bit starting to happen in crypto and I think at some point you'll see some of the debts get included in indexes so that same pool of capital will start to flow into crypto. It's been friendly on the regulatory side, at least largely. The U.S. is passing some of the laws. The laws may not be perfect, but they're better than before. And also just the behavior of the regulatory agencies is far less aggressive, far less arbitrary and capricious, if you will. And yet the prices are not up. So to me, this is OK. It might be a sign of maturity, but this is the story.
-
-**deepseek:**
-
-> Okay, so I'll quibble with Jim a little bit. I think, I guess mine's a little bit a meta story. So it depends what you mean by big. Like I have a little bit of a philosophical objection to news. News is always point in time and it doesn't really tell you trend. I think we would agree on this. And people that over-index on the current and then under-index on like what's really going on. And the biggest one for me was that adoption and in price have continued to decouple. We started to see maybe 2023, 2024, that the supply of stables on chain, it previously was correlated with crypto prices and it started to stop being correlated with crypto prices. And stables on chain are all time high and transaction volumes and stables doubled again between 2024 and 2025. I believe, I asked the AIs this, they all said that. So at the same time, prices are a little bit down from beginning of the year to end of the year. So this may just be how it is for a while. There's also other metrics like active wallets are up by maybe 10 million, depending on the time interval that you consider. There are different estimates. Mobile's up 20-ish percent. and also the institutions are clearly doing more than waiting in they're actually like quietly moving money with stables especially around the world and there's more of a kind of recurring institutional buy that's going on where crypto part of the reason it's been so volatile is that you know a bunch of very aggressive speculators are buying and selling rapidly and if you compare stocks the stocks that get included in the major indexes you know quite often people have their send 500 bucks a month to vanguard right and so that smooths out the volatility to some degree in let's say high you know medium to high market cap stocks right that's actually a little bit starting to happen in crypto and i think at some point you'll see some of the debts get included in indexes so that same pool of capital will start to flow into crypto It's been friendly on the regulatory side, at least largely. The U.S. is passing some of the laws. The laws may not be perfect, but they're better than before. And also just the behavior of the regulatory agencies is far less aggressive, far less arbitrary and capricious, if you will. And yet the prices are not up. So to me, this is OK. It might be a sign of maturity, but this is the story.
-
-**chatgpt:**
-
-> Okay, so I’ll quibble with Jim a little bit. I think mine’s a little bit of a meta story. So it depends what you mean by big. I have a little bit of a philosophical objection to news. News is always point-in-time and it doesn’t really tell you trend. I think we would agree on this. People over-index on the current and then under-index on what’s really going on. And the biggest one for me was that adoption and price have continued to decouple. We started to see in maybe 2023, 2024 that the supply of stables on-chain previously was correlated with crypto prices, and it started to stop being correlated with crypto prices. And stables on-chain are all-time high, and transaction volumes in stables doubled again between 2024 and 2025. I believe—I asked the AIs this; they all said that. So at the same time, prices are a little bit down from beginning of the year to end of the year. So this may just be how it is for a while. There’s also other metrics like active wallets are up by maybe 10 million, depending on the time interval that you consider. There are different estimates. Mobile’s up 20-ish percent. And also the institutions are clearly doing more than waiting in—they’re actually quietly moving money with stables, especially around the world. And there’s more of a kind of recurring institutional buy that’s going on, where crypto—part of the reason it’s been so volatile is that a bunch of very aggressive speculators are buying and selling rapidly. If you compare stocks: the stocks that get included in the major indexes, quite often people send 500 bucks a month to Vanguard, right? And so that smooths out the volatility to some degree in medium-to-high market cap stocks. That’s actually starting to happen in crypto, and I think at some point you’ll see some of the dapps get included in indexes so that same pool of capital will start to flow into crypto. It’s been friendly on the regulatory side, at least largely. The U.S. is passing some of the laws. The laws may not be perfect, but they’re better than before. And also just the behavior of the regulatory agencies is far less aggressive, far less arbitrary and capricious, if you will. And yet the prices are not up. So to me, this is OK. It might be a sign of maturity, but this is the story.
-
-#### [19:38] SPEAKER_02 (block 36/71)
+#### [15:38] SPEAKER_02 (block 44/172)
 
 **Intermediate:**
 
-> You would need to train it on a bunch of engineering diagrams or something. Actually, someone should do that. I'm surprised. Probably a bunch of people are working on it.
+> Right, right.
 
 **opus:**
 
-> You would need to train it on a bunch of engineering diagrams or something. Actually, someone should do that. I'm surprised. Probably a bunch of people are working on it.
+> Right, right.
 
 **gemini:**
 
-> You would need to train it on a bunch of engineering diagrams or something. Actually, someone should do that. I'm surprised. Probably a bunch of people are working on it.
+> Right, right.
 
 **deepseek:**
 
-> You would need to train it on a bunch of engineering diagrams or something. Actually, someone should do that. I'm surprised. Probably a bunch of people are working on it.
-
-**chatgpt:**
-
-> You would need to train it on a bunch of engineering diagrams or something. Actually, someone should do that. I’m surprised. Probably a bunch of people are working on it.
-
-#### [35:56] SPEAKER_02 (block 54/71)
-
-**Intermediate:**
-
-> Standard. Someone who, like, maybe worked on it. Bob would have to tell the story. But, like, instantly started dedicating his life to trying to move to a different standard that's mostly the same, but better, gets rid of the approves.
-
-**opus:**
-
-> (No matching timestamp found in output; likely timestamp regeneration or formatting drift.)
-
-**gemini:**
-
-> Standard. Someone who, like, maybe worked on it. Bob would have to tell the story. But, like, instantly started dedicating his life to trying to move to a different standard that's mostly the same, but better, gets rid of the approves.
-
-**deepseek:**
-
-> Standard. Someone who, like, maybe worked on it. Bob would have to tell the story. But, like, instantly started dedicating his life to trying to move to a different standard that's mostly the same, but better, gets rid of the approves.
+> Right, right.
 
 **chatgpt:**
 
 > (No matching timestamp found in output; likely timestamp regeneration or formatting drift.)
 
-#### [55:41] SPEAKER_02 (block 71/71)
+#### [30:53] SPEAKER_01 (block 87/172)
 
 **Intermediate:**
 
-> Thanks, everybody. Happy holidays.
+> No, Peter Todd came later. But you can see the original Dark Wallet announcement video on YouTube. And it has all the co-founders listed. So yeah, we were working on that. Then about and and then The so this so the CIC was a network of 10,000 cooperatives throughout Catalonia Okay, the whole reason that was made is because there's like a big anarchist movement in Catalonia. Yeah, and they You know, they'd been doing their thing for many years. Right. But then they started to mature as anarchists, and they were like, so to think more about economics. Right. And organization and stuff. Right. It's something I also like about this Spanish tradition of anarchists. Right. They're a lot more organized than, for example, like London, where it's just like crazy people going, you know, like. Yeah. So they... Yeah, so they were like, okay, we need to make a network of cooperatives. And cooperatives need to provide all the basic things that people need to live. And we would therefore become autonomous from the state. So we'd become our own parallel system, which is cool, cool stuff. And so our team... was actually the cryptocurrency part of that. They were interested in cryptocurrency because, for example, trading inside the network allowed people to avoid paying taxes because they consume from each other. But they also wanted to exchange outside of it. So they were like, oh, we can use cryptocurrency to do that. So we set up the first ATMs in Catalonia for cryptocurrency as part of this cooperative. But they also had a research lab, which was a giant factory complex in the Catalan countryside, which is, it was burnt down and the people came there with a proposal to the owner to buy it from the owner. But then also there they had like, it's like a village basically, it's massive. um but they had like a industrial research sector electronics one of them was the hacking stuff which is our club right and that's where we were doing our cryptocurrency stuff right right um but anyway as part of that research of the cic and the tools that the cic needed that's how we came up we came up with these ideas which is the ones maybe you've seen the page it's on archive right on system one talking about bit law Anyway, I'm not sure. Anyway, there's like a bunch of pages on our old wiki.
 
 **opus:**
 
-> Thanks, everybody. Happy holidays.
+> No, Peter Todd came later. But you can see the original Dark Wallet announcement video on YouTube. And it has all the co-founders listed. So yeah, we were working on that. Then about and and then the, so this, so the CIC was a network of 10,000 cooperatives throughout Catalonia.
 
 **gemini:**
 
-> Thanks, everybody. Happy holidays.
+> No, Peter Todd came later. But you can see the original Dark Wallet announcement video on YouTube. And it has all the co-founders listed. So yeah, we were working on that. Then about and and then The so this so the CIC was a network of 10,000 cooperatives throughout Catalonia. Okay, the whole reason that was made is because there's like a big anarchist movement in Catalonia. Yeah, and they You know, they'd been doing their thing for many years. Right. But then they started to mature as anarchists, and they were like, so to think more about economics. Right. And organization and stuff. Right. It's something I also like about this Spanish tradition of anarchists. Right. They're a lot more organized than, for example, like London, where it's just like crazy people going, you know, like. Yeah. So they... Yeah, so they were like, okay, we need to make a network of cooperatives. And cooperatives need to provide all the basic things that people need to live. And we would therefore become autonomous from the state. So we'd become our own parallel system, which is cool, cool stuff. And so our team... was actually the cryptocurrency part of that. They were interested in cryptocurrency because, for example, trading inside the network allowed people to avoid paying taxes because they consume from each other. But they also wanted to exchange outside of it. So they were like, oh, we can use cryptocurrency to do that. So we set up the first ATMs in Catalonia for cryptocurrency as part of this cooperative. But they also had a research lab, which was a giant factory complex in the Catalan countryside, which is, it was burnt down and the people came there with a proposal to the owner to buy it from the owner. But then also there they had like, it's like a village basically, it's massive. um but they had like a industrial research sector electronics one of them was the hacking stuff which is our club right and that's where we were doing our cryptocurrency stuff right right um but anyway as part of that research of the CIC and the tools that the CIC needed that's how we came up we came up with these ideas which is the ones maybe you've seen the page it's on archive right on system one talking about Bitlaw Anyway, I'm not sure. Anyway, there's like a bunch of pages on our old wiki.
+
+**deepseek:**
+
+> No, Peter Todd came later. But you can see the original Dark Wallet announcement video on YouTube. And it has all the co-founders listed. So yeah, we were working on that. Then about and and then The so this so the CIC was a network of 10,000 cooperatives throughout Catalonia Okay, the whole reason that was made is because there's like a big anarchist movement in Catalonia. Yeah, and they You know, they'd been doing their thing for many years. Right. But then they started to mature as anarchists, and they were like, so to think more about economics. Right. And organization and stuff. Right. It's something I also like about this Spanish tradition of anarchists. Right. They're a lot more organized than, for example, like London, where it's just like crazy people going, you know, like. Yeah. So they... Yeah, so they were like, okay, we need to make a network of cooperatives. And cooperatives need to provide all the basic things that people need to live. And we would therefore become autonomous from the state. So we'd become our own parallel system, which is cool, cool stuff. And so our team was actually the cryptocurrency part of that. They were interested in cryptocurrency because, for example, trading inside the network allowed people to avoid paying taxes because they consume from each other. But they also wanted to exchange outside of it. So they were like, oh, we can use cryptocurrency to do that. So we set up the first ATMs in Catalonia for cryptocurrency as part of this cooperative. But they also had a research lab, which was a giant factory complex in the Catalan countryside, which is, it was burnt down and the people came there with a proposal to the owner to buy it from the owner. But then also there they had like, it's like a village basically, it's massive. But they had like a industrial research sector electronics one of them was the hacking stuff which is our club right and that's where we were doing our cryptocurrency stuff right right but anyway as part of that research of the CIC and the tools that the CIC needed that's how we came up we came up with these ideas which is the ones maybe you've seen the page it's on archive right on system one talking about bit law Anyway, I'm not sure. Anyway, there's like a bunch of pages on our old wiki.
+
+**chatgpt:**
+
+> No, Peter Todd came later. But you can see the original Dark Wallet announcement video on YouTube and it has all the co-founders listed. So yeah, we were working on that. Then about—and then the CIC was a network of 10,000 cooperatives throughout Catalonia. The whole reason that was made is because there’s like a big anarchist movement in Catalonia, and they’d been doing their thing for many years, but then they started to mature as anarchists, and they were like, so to think more about economics and organization and stuff. It’s something I also like about this Spanish tradition of anarchists. They’re a lot more organized than, for example, like London, where it’s just like crazy people going, you know. So they were like, okay, we need to make a network of cooperatives. And cooperatives need to provide all the basic things that people need to live, and we would therefore become autonomous from the state. So we’d become our own parallel system, which is cool stuff. And so our team was actually the cryptocurrency part of that. They were interested in cryptocurrency because, for example, trading inside the network allowed people to avoid paying taxes because they consume from each other. But they also wanted to exchange outside of it, so they were like, “Oh, we can use cryptocurrency to do that.” So we set up the first ATMs in Catalonia for cryptocurrency as part of this cooperative. But they also had a research lab, which was a giant factory complex in the Catalan countryside. It was burnt down, and the people came there with a proposal to the owner to buy it from the owner. But then also there they had— it’s like a village basically, it’s massive—but they had like an industrial research sector, electronics. One of them was the hacking stuff, which is our club, and that’s where we were doing our cryptocurrency stuff. But anyway, as part of that research of the CIC and the tools that the CIC needed, that’s how we came up with these ideas—maybe you’ve seen the page, it’s on archive—on “System 1,” talking about BitLaw. Anyway, I’m not sure. Anyway, there’s like a bunch of pages on our old wiki.
+
+#### [44:52] SPEAKER_01 (block 130/172)
+
+**Intermediate:**
+
+> I went to the Toronto thing.
+
+**opus:**
+
+> I went to the Toronto thing.
+
+**gemini:**
+
+> I went to the Toronto thing.
 
 **deepseek:**
 
@@ -809,5 +382,27 @@
 
 **chatgpt:**
 
-> Thanks, everybody. Happy holidays.
+> No. I went to the Toronto thing.
+
+#### [56:36] SPEAKER_01 (block 172/172)
+
+**Intermediate:**
+
+> Thank you.
+
+**opus:**
+
+> Thank you.
+
+**gemini:**
+
+> Thank you.
+
+**deepseek:**
+
+> (No matching timestamp found in output; likely timestamp regeneration or formatting drift.)
+
+**chatgpt:**
+
+> Thank you.
 
