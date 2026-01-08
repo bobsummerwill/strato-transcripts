@@ -2,8 +2,8 @@
 COMPREHENSIVE QUALITY ASSESSMENT: ALL EPISODES
 ================================================================================
 Project: Stratomercata Transcripts
-Generated: December 27, 2025 (refresh; historical Nov 30, 2025 analysis retained below)
-Episodes Evaluated: 20
+Generated: January 08, 2026 (refresh; historical Nov 30, 2025 analysis retained below)
+Episodes Evaluated: 21
 
 ================================================================================
 DECEMBER 2025 REFRESH (CURRENT, SUBJECTIVE RECOMMENDATIONS)
@@ -56,6 +56,9 @@ OVERALL RECOMMENDATIONS (2025-12-27):
 Recent episode notes (added 2025-12-27):
   • episode009-amir-taaki: whisperx-cloud + gemini achieved an exact timestamp-count match (37/37)
   • onchain-oracles-end-of-year-wrap-up-and-easy-savings: assemblyai + opus achieved an exact timestamp-count match (93/93)
+
+Recent episode notes (added 2026-01-08):
+  • online-oracles-the-impact-of-ai-on-cutting-edge-research-with-steve-hsu: assemblyai + opus achieved an exact timestamp-count match (71/71) with 99.5% retention. Best quality across all 8 combinations tested.
 
 For cross-episode validation metrics (retention + timestamp drift), see:
   • [`outputs/ALL_EPISODES_QUALITY_METRICS.txt`](outputs/ALL_EPISODES_QUALITY_METRICS.txt:1)
