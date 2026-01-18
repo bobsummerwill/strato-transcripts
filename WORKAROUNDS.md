@@ -324,12 +324,22 @@ pip show pyannote.audio
 # Or check PyPI: https://pypi.org/project/pyannote.audio/
 ```
 
-### Upstream Issues
+### Upstream Issues & Commits
 
-- **[pyannote/pyannote-audio #1320](https://github.com/pyannote/pyannote-audio/issues/1320)** - pip dependency mismatch issues
-- **[torchcodec #995](https://github.com/meta-pytorch/torchcodec/issues/995)** - Debates hard pins vs. version ranges
+**The Pin Commit:**
+- **[Commit 121054b6](https://github.com/pyannote/pyannote-audio/commit/121054b60a9497a09b3312b6bc518160f3dfb959)** - "setup: pin torch/audio/codec versions (#1954)" (Nov 19, 2025)
+  - Author: Hervé BREDIN
+  - Released in: pyannote.audio 4.0.2
+  - Changed from: `torch>=2.8.0` to `torch==2.8.0` (exact pin)
+  - Reason: "to avoid segmentation fault" per torchcodec issue #995
 
-**Status**: 🟡 Open - Community requesting relaxed constraints
+**Related Issues:**
+- **[torchcodec #995](https://github.com/meta-pytorch/torchcodec/issues/995)** - Version incompatibility causing segfaults (torchcodec 0.8 with torch 2.8.0)
+- **[pyannote.audio #1320](https://github.com/pyannote/pyannote-audio/issues/1320)** - pip dependency mismatch issues
+- **[pyannote.audio #1908](https://github.com/pyannote/pyannote-audio/issues/1908)** - Not readily compatible with torch 2.6 (weights_only issues)
+- **[pyannote.audio #1952](https://github.com/pyannote/pyannote-audio/issues/1952)** - AttributeError with torch 2.9.1 (torchaudio.AudioMetaData missing)
+
+**Status**: 🟡 Open - Exact pin was intentional to avoid segfaults, but blocks ecosystem compatibility
 
 ### Why Hard Pins Are Bad Practice
 
