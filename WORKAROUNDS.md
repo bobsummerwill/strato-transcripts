@@ -72,12 +72,17 @@ pip index versions whisperx
 # Or visit: https://github.com/m-bain/whisperx/releases
 ```
 
-### Upstream Issues
+### Upstream Issues & Pull Requests
 
+**Issues:**
 - **[WhisperX #992](https://github.com/m-bain/whisperx/issues/992)** - Pyannote authentication issues (January 2025)
 - **[WhisperX #1304](https://github.com/m-bain/whisperx/issues/1304)** - Shows `use_auth_token` in error traces (November 2025)
+- **[WhisperX #1322](https://github.com/m-bain/whisperx/issues/1322)** - Deprecated `use_auth_token` breaks compatibility (January 2026)
 
-**Status**: 🟡 Open - No PR merged yet
+**Pull Request:**
+- **[WhisperX #1323](https://github.com/m-bain/whisperx/pull/1323)** - Fix submitted (January 2026) ✅
+
+**Status**: 🟢 **PR submitted** - Awaiting maintainer review and merge
 
 ---
 
@@ -418,12 +423,13 @@ pip install --dry-run "pyannote.audio>=4.0.2"
 
 | Workaround | Upstream Package | Status | Estimated Fix | Likelihood | Removal Priority |
 |------------|------------------|--------|---------------|------------|------------------|
-| #1: Token param | WhisperX | 🟡 Open | Q2 2026 | Medium | **Medium** |
+| #1: Token param | WhisperX | 🟢 **PR submitted** | Q1-Q2 2026 | **High** | **High** |
 | #2: torchaudio API | SpeechBrain | ✅ Fixed in develop | Q1-Q2 2026 | Very High | **High** |
 | #3: weights_only | pyannote.audio | 🟡 Open | Q3-Q4 2026 | Medium | **Low** |
 | #4: torch pin | pyannote.audio | 🟡 Open | Q2 2026 | High | **High** |
 
 ### Legend
+- 🟢 **PR submitted** - Fix submitted, awaiting merge
 - 🟡 **Open** - Issue known, no fix yet
 - ✅ **Fixed** - Fix exists but not released
 - 🔴 **Blocked** - Requires major architectural changes
