@@ -128,10 +128,13 @@ echo ""
 echo "Phase 1 complete: $(format_duration $PHASE1_DURATION)"
 echo ""
 
-# Find generated transcript files (no _raw suffix)
+# Find generated transcript files.
+#
+# IMPORTANT: Post-processing should run on the timestamped Markdown transcripts
+# (the *.md files) so LLMs can preserve the original timestamps.
 TRANSCRIPT_FILES=()
 for TRANSCRIBER in "${TRANSCRIBER_ARRAY[@]}"; do
-    TRANSCRIPT_FILE="intermediates/${BASE_NAME}/${BASE_NAME}_${TRANSCRIBER}.txt"
+    TRANSCRIPT_FILE="intermediates/${BASE_NAME}/${BASE_NAME}_${TRANSCRIBER}.md"
 
     if [ -f "$TRANSCRIPT_FILE" ]; then
         TRANSCRIPT_FILES+=("$TRANSCRIPT_FILE")

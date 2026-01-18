@@ -2,121 +2,165 @@
 QUALITY ASSESSMENT: EPISODE 008 - MICHAEL PARENTI
 ================================================================================
 Guest: Michael Parenti
-Generated: December 5, 2025
+Generated: December 16, 2025
 
-Supported Combinations: 9 (3 transcribers × 3 post-processors)
+Supported Combinations: 12 (3 transcribers × 4 post-processors)
 
 ================================================================================
 EXECUTIVE SUMMARY
 ================================================================================
 
-AVAILABLE COMBINATIONS:
-├─ WhisperX-Local + DeepSeek     ★★★★★ Best content retention (99.9%)
-├─ WhisperX-Local + Gemini       ★★★★★ Excellent (98.4% retention)
-├─ WhisperX-Local + Opus         ★★★★☆ Good (95.7% retention)
-├─ WhisperX-Cloud + DeepSeek     ★★★★★ Best content retention (100.1%)
-├─ WhisperX-Cloud + Gemini       ★★★★★ Excellent (97.7% retention)
-├─ WhisperX-Cloud + Opus         ★★★★☆ Good (95.5% retention)
-├─ AssemblyAI + DeepSeek         ★★★★★ Best content retention (99.9%)
-├─ AssemblyAI + Gemini           ★★★★★ Excellent (97.5% retention)
-└─ AssemblyAI + Opus             ★★★★☆ Good (92.5% retention)
+This quality report was refreshed after regenerating all 12 post-processing
+outputs (opus, gemini, deepseek, chatgpt) for all 3 intermediate transcripts
+(whisperx, whisperx-cloud, assemblyai).
+
+IMPORTANT PIPELINE NOTE:
+  Post-processing is now being run on the intermediate *.md transcripts
+  (not the *.txt transcripts). This is required so post-processors can
+  preserve the original timestamps.
+
+KEY FINDINGS:
+
+1) WORD-COUNT RETENTION is generally good
+   Most outputs are ~90–103% of the input transcript word count.
+
+2) TIMESTAMP PRESERVATION is now mostly correct
+   Most processors preserve timestamps well when fed the intermediate .md.
+   However, there are notable failures (see WhisperX-Cloud + Opus).
 
 RECOMMENDED FOR THIS EPISODE:
-1. assemblyai + deepseek      (Highest source accuracy + best retention)
-2. whisperx-cloud + deepseek  (Best overall content preservation)
-3. whisperx + gemini          (Fast, excellent for technical content)
+  • AssemblyAI + DeepSeek
+      - Best timestamp preservation (194/194)
+      - High retention (98.7%)
+  • WhisperX-Cloud + Gemini
+      - Best timestamp preservation (26/26)
+      - Good retention (97.5%)
+  • WhisperX + DeepSeek
+      - Preserves timestamps (100/100)
+      - High retention (100.1%)
 
 ================================================================================
-WORD COUNT ANALYSIS
+INPUT (INTERMEDIATE) TRANSCRIPTS
 ================================================================================
 
-INPUT (Intermediate Transcripts):
-  • episode008-michael-parenti_assemblyai.txt:      4,416 words
-  • episode008-michael-parenti_whisperx-cloud.txt:  4,175 words
-  • episode008-michael-parenti_whisperx.txt:        4,219 words
+Word counts (baseline for retention; computed from the intermediate .md
+transcripts with timestamps stripped):
+  • episode008-michael-parenti_assemblyai.md:      4,540 words
+  • episode008-michael-parenti_whisperx-cloud.md:  4,316 words
+  • episode008-michael-parenti_whisperx.md:        4,427 words
 
-OUTPUT (Post-Processed):
-                              Words    Retention
-  assemblyai + deepseek       4,410    99.9%  ★★★★★
-  assemblyai + gemini         4,304    97.5%  ★★★★★
-  assemblyai + opus           4,084    92.5%  ★★★★☆
-  
-  whisperx-cloud + deepseek   4,178    100.1% ★★★★★
-  whisperx-cloud + gemini     4,078    97.7%  ★★★★★
-  whisperx-cloud + opus       3,989    95.5%  ★★★★☆
-  
-  whisperx + deepseek         4,215    99.9%  ★★★★★
-  whisperx + gemini           4,152    98.4%  ★★★★★
-  whisperx + opus             4,037    95.7%  ★★★★☆
+Timestamp/header counts in intermediate .md (GROUND TRUTH timing):
+  • episode008-michael-parenti_assemblyai.md:       194 timestamped headers
+  • episode008-michael-parenti_whisperx-cloud.md:    26 timestamped headers
+  • episode008-michael-parenti_whisperx.md:         100 timestamps (98 timestamped headers)
 
 ================================================================================
-TRANSCRIBERS
+OUTPUT (POST-PROCESSED) WORD COUNT ANALYSIS
 ================================================================================
 
-AssemblyAI (assemblyai)
-  • Commercial cloud service
-  • Highest source word count (4,416 words)
-  • Clean speaker labels
-  • Best for: Professional workflows, highest fidelity
+Legend:
+  retention = output_words / input_words
+  timestamps = output timestamp count / input timestamp count
 
-WhisperX-Cloud (whisperx-cloud)
-  • Cloud processing via Replicate  
-  • Balanced output quality (4,175 words)
-  • Fast and consistent
-  • Best for: Standard production workflow
+ASSEMBLYAI (input: 4,540 words; 194 timestamps)
+  processor     words    retention   timestamps
+  opus          4,220     93.0%      194/194
+  gemini        4,383     96.5%      193/194   ⚠ dropped 1 timestamp
+  deepseek      4,479     98.7%      194/194
+  chatgpt       4,093     90.2%      183/194   ⚠ dropped 11 timestamps
 
-WhisperX-Local (whisperx)
-  • FREE local processing with GPU
-  • Good accuracy (4,219 words)
-  • Excellent for technical content
-  • Best for: Privacy, offline processing
+WHISPERX-CLOUD (input: 4,316 words; 26 timestamps)
+  processor     words    retention   timestamps
+  opus          4,279     99.1%      141/26    ⚠ CRITICAL: regenerated/over-segmented timestamps
+  gemini        4,208     97.5%      26/26
+  deepseek      4,310     99.9%      25/26    ⚠ dropped 1 timestamp
+  chatgpt       3,916     90.7%      29/26    ⚠ added timestamps
 
-================================================================================
-POST-PROCESSORS
-================================================================================
-
-DeepSeek-V3 (deepseek) - NEW WINNER
-  • Best content retention: 99.9-100.1%
-  • Preserves nearly all original content
-  • Excellent formatting compliance
-  • 8K output token limit (sufficient for this episode)
-  • Best for: Maximum content preservation
-
-Gemini 3.0 Pro (gemini)
-  • Very good retention: 97.5-98.4%
-  • Excellent technical terminology handling
-  • Fast processing
-  • 128K context window
-  • Best for: Fast processing, technical content
-
-Claude Opus 4.5 (opus)
-  • Good retention: 92.5-95.7%
-  • Highest editorial polish
-  • More aggressive cleanup of filler words
-  • 150K context window
-  • Best for: Archival quality, polished presentation
+WHISPERX (input: 4,427 words; 100 timestamps)
+  processor     words    retention   timestamps
+  opus          4,081     92.2%      139/100   ⚠ CRITICAL: regenerated/over-segmented timestamps
+  gemini        4,396     99.3%      101/100   ⚠ added timestamps
+  deepseek      4,431    100.1%      100/100
+  chatgpt       3,972     89.7%      105/100   ⚠ added timestamps
 
 ================================================================================
-EPISODE-SPECIFIC NOTES
+QUALITY FLAGS / REVIEW NOTES
 ================================================================================
 
-CONTENT CHARACTERISTICS:
-  • Interview with Michael Parenti (exiled cypherpunk)
-  • Rich early Ethereum history content
-  • Bitcoin Foundation background
-  • Berlin/Prague crypto scene connections
-  • Good audio quality, clear speakers
+1) Timestamp count changes are the primary red flag
+   Any output with far more timestamps than the input is not preserving the
+   diarization paragraphing and is likely regenerating timestamps.
 
-KEY FINDING:
-  DeepSeek significantly outperforms both Opus and Gemini in content
-  retention for this episode, achieving near-perfect 100% preservation
-  while maintaining proper formatting. This makes it the recommended
-  choice when maximum content fidelity is the priority.
+   CRITICAL failures observed:
+     - whisperx-cloud + opus: 141 timestamps vs 26 input
+     - whisperx + opus: 139 timestamps vs 100 input
 
-RECOMMENDED WORKFLOW:
-  Maximum Fidelity: assemblyai + deepseek (99.9% retention)
-  Balanced:         whisperx-cloud + deepseek (100.1% retention)
-  Editorial Polish: whisperx-cloud + opus (95.5% retention)
-  Fast Processing:  whisperx + gemini (98.4% retention)
+RECOMMENDATION:
+  • Use intermediate .md files as the canonical timestamped transcript.
+  • Use post-processed .txt outputs for corrected wording / readability.
+
+================================================================================
+MANUAL SPOT-CHECK NOTES (CONTENT QUALITY)
+================================================================================
+
+These notes are based on manual inspection of multiple excerpts across the
+intermediate transcripts and the post-processed outputs.
+
+Key content issues observed:
+
+1) Critical proper-name / phrase errors in the *baseline* transcript(s)
+   Example (AssemblyAI intermediate intro):
+     - "I'm Bob Samuel" (should be Bob Summerwill)
+     - "Exalt server" / "ex-Altcoin server" (clearly a mis-hearing)
+     - guest surname varies (Parenti / Peranti / Paranti)
+
+2) Hallucination risk in post-processing
+   Gemini (AssemblyAI input) changed the guest name to "Michael Pölzl" in the
+   first line. This is not supported by the intermediate transcript and is a
+   disqualifying failure mode unless entity constraints are added.
+
+3) Some models over-segment speaker turns
+   WhisperX-cloud + Opus and WhisperX + Opus massively increased timestamp
+   counts, indicating new timestamps / over-segmentation.
+
+================================================================================
+PROJECT IMPROVEMENT RECOMMENDATIONS (TO REDUCE MANUAL EDITING)
+================================================================================
+
+High-impact pipeline improvements (cost/time not a barrier):
+
+1) Deterministic timestamp preservation (recommended architecture)
+   Do NOT ask the model to "preserve timestamps" in free-form text.
+   Instead:
+     a) Parse the intermediate .md into structured turns:
+        {timestamp, speaker_label, text}
+     b) Send ONLY `text` to the LLM for correction (return JSON: {"text": "..."})
+     c) Reassemble the transcript by reusing the original timestamp + speaker_label
+        verbatim.
+     d) Derive the output .txt by stripping timestamps from the final .md.
+
+   This prevents timestamp drift, reordering, and timestamp explosion.
+
+2) Entity constraints + validation
+   Add a per-episode allowlist for critical names (host + guest) and reject
+   outputs that introduce new PERSON entities not present in the input or allowlist.
+
+3) Validation + auto-retry
+   Expand automated checks to include:
+     - timestamps must be strictly non-decreasing
+     - exact timestamp sequence must match input (when using .md as input)
+     - reject added/dropped timestamps
+     - reject UNKNOWN speaker labels
+   On failure: retry with stricter prompting or a different model.
+
+4) Episode-specific vocabulary injection
+   Inject guest/host names (e.g. from the filename) into:
+     - AssemblyAI word boosting
+     - post-processor allowlist/context
+   This should fix cases like Parenti/Peranti/Paranti at the source.
+
+Best current baseline choice for this episode:
+   AssemblyAI intermediate is the cleanest starting point (best segmentation,
+   consistent timestamps, no UNKNOWN speakers).
 
 ================================================================================

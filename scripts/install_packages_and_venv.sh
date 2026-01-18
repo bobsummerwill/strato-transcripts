@@ -23,10 +23,10 @@
 #   3. Installs system dependencies (ffmpeg, build tools, Python dev)
 #   4. Creates isolated Python virtual environment
 #   5. Installs WhisperX and dependencies
-#   6. Installs PyTorch 2.9.0 (GPU or CPU)
+#   6. Installs PyTorch 2.9.1 (GPU or CPU)
 #   7. Verifies PyTorch installation
 #   8. Applies compatibility patches to WhisperX
-#   9. Installs pyannote.audio 4.0+
+#   9. Installs pyannote.audio 4.0.1 (last release without torch==2.8.0 pin)
 #  10. Applies compatibility patches to SpeechBrain
 #  11. Configures LD_LIBRARY_PATH for NVIDIA
 #  12. Verifies package installations
@@ -191,20 +191,20 @@ if [ "$FORCE_CPU" = true ]; then
     HAS_NVIDIA=false
     echo -e "${YELLOW}--force-cpu flag detected${NC}"
     echo -e "${YELLOW}⚠ Forcing CPU-only mode (ignoring any NVIDIA GPU)${NC}"
-    echo "Will install PyTorch 2.9.0 CPU-only version"
+    echo "Will install PyTorch 2.9.1 CPU-only version"
 elif [ "$OS_TYPE" = "macos" ]; then
     HAS_NVIDIA=false
     echo -e "${YELLOW}⚠ macOS detected - using CPU/MPS mode${NC}"
-    echo "Will install PyTorch 2.9.0 CPU-only version (Metal Performance Shaders supported)"
+    echo "Will install PyTorch 2.9.1 CPU-only version (Metal Performance Shaders supported)"
 elif command -v nvidia-smi &> /dev/null && nvidia-smi &> /dev/null; then
     HAS_NVIDIA=true
     GPU_NAME=$(nvidia-smi --query-gpu=name --format=csv,noheader 2>/dev/null || echo "NVIDIA GPU")
     echo -e "${GREEN}✓ Detected NVIDIA GPU: $GPU_NAME${NC}"
-    echo "Will install PyTorch 2.9.0 with CUDA 13.0 support"
+    echo "Will install PyTorch 2.9.1 with CUDA 13.0 support"
 else
     HAS_NVIDIA=false
     echo -e "${YELLOW}⚠ No NVIDIA GPU detected - using CPU mode${NC}"
-    echo "Will install PyTorch 2.9.0 CPU-only version"
+    echo "Will install PyTorch 2.9.1 CPU-only version"
 fi
 echo ""
 
@@ -305,41 +305,41 @@ source "$VENV_DIR/bin/activate"
 # ==============================================================================
 echo -e "${YELLOW}[5/15] Installing base packages...${NC}"
 echo "Installing WhisperX, AI provider SDKs, and dependencies from requirements.txt"
-echo "Note: WhisperX will pull PyTorch 2.8.0 (we'll upgrade to 2.9.0 next)"
+echo "Note: WhisperX will pull PyTorch 2.8.0 (we'll upgrade to 2.9.1 next)"
 echo "This may take 5-10 minutes..."
 pip install -r "$PROJECT_DIR/requirements.txt"
 echo -e "${GREEN}✓ Base packages installed${NC}"
 echo ""
 
 # ==============================================================================
-# Step 6: PyTorch Upgrade to 2.9.0
+# Step 6: PyTorch Upgrade to 2.9.1
 # ==============================================================================
-# Upgrades PyTorch from 2.8.0 (WhisperX default) to 2.9.0.
-# PyTorch 2.9.0 provides:
+# Upgrades PyTorch from 2.8.0 (WhisperX default) to 2.9.1.
+# PyTorch 2.9.1 provides:
 #   - Ubuntu: Full Blackwell (sm_120) support with CUDA 13.0 for RTX 50-series
 #   - macOS: Latest optimizations with MPS (Metal Performance Shaders) support
-# Both platforms use PyTorch 2.9.0 for version consistency.
+# Both platforms use PyTorch 2.9.1 for version consistency.
 # Uses --force-reinstall to ensure correct variant is installed.
 # ==============================================================================
-echo -e "${YELLOW}[6/15] Upgrading PyTorch to 2.9.0...${NC}"
-echo "Upgrading PyTorch 2.8.0 → 2.9.0 for consistency across platforms"
+echo -e "${YELLOW}[6/15] Upgrading PyTorch to 2.9.1...${NC}"
+echo "Upgrading PyTorch 2.8.0 → 2.9.1 for consistency across platforms"
 
 if [ "$OS_TYPE" = "ubuntu" ]; then
     echo "Platform: Ubuntu - installing with CUDA 13.0 support"
     echo "Provides full Blackwell (sm_120) support for RTX 50-series GPUs"
     echo "This may take 2-5 minutes depending on internet speed..."
     pip install --force-reinstall --index-url https://download.pytorch.org/whl/cu130 \
-        torch==2.9.0 \
-        torchvision==0.24.0 \
-        torchaudio==2.9.0
-    echo -e "${GREEN}✓ PyTorch 2.9.0+cu130 installed${NC}"
+        torch==2.9.1 \
+        torchvision==0.24.1 \
+        torchaudio==2.9.1
+    echo -e "${GREEN}✓ PyTorch 2.9.1+cu130 installed${NC}"
 else
     echo "Platform: macOS - installing with MPS (Metal) support"
     echo "This may take 2-5 minutes depending on internet speed..."
     pip install --force-reinstall \
-        torch==2.9.0 \
-        torchaudio==2.9.0
-    echo -e "${GREEN}✓ PyTorch 2.9.0 installed${NC}"
+        torch==2.9.1 \
+        torchaudio==2.9.1
+    echo -e "${GREEN}✓ PyTorch 2.9.1 installed${NC}"
 fi
 echo ""
 
@@ -432,24 +432,24 @@ echo ""
 # ==============================================================================
 # Step 9: pyannote.audio Installation
 # ==============================================================================
-# Installs pyannote.audio 4.0+, which provides PyTorch 2.9.0 compatibility.
-# Version 4.0+ is required to work with PyTorch 2.9.0's API and features.
+# Installs pyannote.audio 4.0.1, the last release that doesn't hard-pin torch==2.8.0.
+# Versions 4.0.2+ force torch 2.8.0, which conflicts with our upgrade to torch 2.9.1.
 # ==============================================================================
-echo -e "${YELLOW}[9/15] Installing pyannote.audio 4.0+...${NC}"
-echo "Installing pyannote.audio 4.0+ for PyTorch 2.9.0 compatibility..."
-pip install --upgrade "pyannote.audio>=4.0.1,<4.0.2"
-echo -e "${GREEN}✓ pyannote.audio 4.0+ installed${NC}"
+echo -e "${YELLOW}[9/15] Installing pyannote.audio 4.0.1...${NC}"
+echo "Installing pyannote.audio==4.0.1 (4.0.2+ pin torch==2.8.0 and conflict with Blackwell torch 2.9.1)..."
+pip install --upgrade "pyannote.audio==4.0.1"
+echo -e "${GREEN}✓ pyannote.audio 4.0.1 installed${NC}"
 echo ""
 
 # ==============================================================================
 # Step 10: SpeechBrain Compatibility Patches
 # ==============================================================================
-# Updates SpeechBrain to work with torchaudio 2.9.0's API.
+# Updates SpeechBrain to work with torchaudio 2.9.1's API.
 # Adds hasattr() check to gracefully handle different torchaudio versions.
 # This ensures SpeechBrain can detect available audio backends across versions.
 # ==============================================================================
 echo -e "${YELLOW}[10/15] Applying SpeechBrain compatibility patches...${NC}"
-echo "Updating SpeechBrain for torchaudio 2.9.0 compatibility"
+echo "Updating SpeechBrain for torchaudio 2.9.1 compatibility"
 echo "Adding version-agnostic audio backend detection"
 
 SPEECHBRAIN_BACKEND="$SITE_PACKAGES/speechbrain/utils/torch_audio_backend.py"
@@ -486,7 +486,7 @@ original = """    elif torchaudio_major >= 2 and torchaudio_minor >= 1:
             )"""
 
 replacement = """    elif torchaudio_major >= 2 and torchaudio_minor >= 1:
-        # list_audio_backends() is not available in torchaudio 2.9.0
+        # list_audio_backends() is not available in torchaudio 2.9.1
         if hasattr(torchaudio, 'list_audio_backends'):
             available_backends = torchaudio.list_audio_backends()
             if len(available_backends) == 0:

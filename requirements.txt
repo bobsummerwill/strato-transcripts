@@ -2,15 +2,16 @@
 whisperx==3.7.4
 pandas==2.2.3
 replicate==1.0.2
+# TODO: Add whisperx-server once a distributable package/URL is available
 
 # PyTorch versions COMMENTED OUT - installed by shell script instead
-# WhisperX 3.7.4 requires torch~=2.8.0, but we need 2.9.0 for RTX 5070 Blackwell support
+# WhisperX 3.7.4 requires torch~=2.8.0, but we need 2.9.x for RTX 5070 Blackwell support
 # This creates a dependency conflict that pip cannot resolve
-# Solution: Install WhisperX with its torch 2.8.0, then upgrade to 2.9.0 in shell script
+# Solution: Install WhisperX with its torch 2.8.0, then upgrade to 2.9.1 in shell script
 #--extra-index-url https://download.pytorch.org/whl/cu130
-#torch==2.9.0
-#torchvision==0.24.0
-#torchaudio==2.9.0
+#torch==2.9.1
+#torchvision==0.24.1
+#torchaudio==2.9.1
 
 # AI providers for post-processing
 anthropic==0.72.1

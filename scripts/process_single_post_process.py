@@ -470,6 +470,9 @@ def validate_output_quality(input_text, output_text, provider):
         if ts_ratio < 0.95:
             lost = input_timestamps - output_timestamps
             issues.append(f"Lost {lost} timestamps ({ts_ratio*100:.0f}% preserved)")
+        elif ts_ratio > 1.05:
+            added = output_timestamps - input_timestamps
+            issues.append(f"Added {added} timestamps ({ts_ratio*100:.0f}% of original) - likely regenerated or over-segmented")
     
     # Check 3: Minimum output length (prevent empty/truncated outputs)
     if output_words < 100:
@@ -494,8 +497,9 @@ def process_single_combination(transcript_path, provider, api_keys, context):
     
     # Get output file paths for potential cleanup
     basename, transcriber = extract_transcriber_from_filename(transcript_path)
-    output_txt = Path("outputs") / f"{basename}_{transcriber}_{provider}.txt"
-    output_md = Path("outputs") / f"{basename}_{transcriber}_{provider}.md"
+    # Note: outputs are stored under outputs/<basename>/...
+    output_txt = Path("outputs") / basename / f"{basename}_{transcriber}_{provider}.txt"
+    output_md = Path("outputs") / basename / f"{basename}_{transcriber}_{provider}.md"
     
     # Process with appropriate provider
     corrected = None

@@ -376,6 +376,70 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False):
     from pyannote.audio import Pipeline
     import gc
 
+    # ------------------------------------------------------------------------
+    # PyTorch 2.6+ compatibility: allowlist OmegaConf globals for weights-only
+    # checkpoint loading used by pyannote.
+    #
+    # PyTorch 2.6 changed torch.load(weights_only) default to True. Some
+    # pyannote checkpoints/configs reference OmegaConf classes and will fail to
+    # load unless those globals are allowlisted.
+    #
+    # This keeps weights-only loading enabled (safer than weights_only=False)
+    # while unblocking trusted checkpoints from HuggingFace.
+    # ------------------------------------------------------------------------
+    try:
+        import typing
+        from omegaconf.base import ContainerMetadata
+        from omegaconf.dictconfig import DictConfig
+        from omegaconf.listconfig import ListConfig
+
+        # add_safe_globals was introduced for the new safe unpickling path.
+        if hasattr(torch, "serialization") and hasattr(torch.serialization, "add_safe_globals"):
+            torch.serialization.add_safe_globals([
+                ContainerMetadata,
+                DictConfig,
+                ListConfig,
+                typing.Any,
+            ])
+    except Exception:
+        # Best-effort: if omegaconf isn't installed / API differs, we'll fail
+        # later with a clearer error from torch/pyannote.
+        pass
+
+    # ------------------------------------------------------------------------
+    # PyTorch 2.6+ fallback: pyannote/whisperx checkpoints may not be compatible
+    # with weights_only=True safe loading (it can error on common globals like
+    # builtins and typing types). When working with trusted HuggingFace
+    # checkpoints, forcing weights_only=False is the pragmatic fix.
+    #
+    # SECURITY NOTE: torch.load(weights_only=False) can execute arbitrary code
+    # contained in a malicious checkpoint. This is ONLY acceptable if you trust
+    # the checkpoint source (e.g., official pyannote models on HuggingFace).
+    # ------------------------------------------------------------------------
+    try:
+        from packaging.version import Version
+
+        torch_version = Version(torch.__version__.split("+")[0])
+        allow_unsafe = os.environ.get("WHISPERX_ALLOW_UNSAFE_TORCH_LOAD", "1").strip().lower() not in (
+            "0",
+            "false",
+            "no",
+        )
+
+        if allow_unsafe and torch_version >= Version("2.6.0"):
+            _orig_torch_load = torch.load
+
+            def _torch_load_compat(*args, **kwargs):
+                # Force-disable weights-only safe loading, even if a downstream
+                # library explicitly requests it.
+                kwargs["weights_only"] = False
+                return _orig_torch_load(*args, **kwargs)
+
+            torch.load = _torch_load_compat
+            print("  ⚠ PyTorch>=2.6 detected: forcing torch.load(weights_only=False) for pyannote/whisperx checkpoints")
+    except Exception:
+        pass
+
     # ========================================================================
     # GPU CLEANUP - Clears PyTorch cache to free VRAM
     # ========================================================================
@@ -388,11 +452,10 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False):
                           module='pyannote.audio.utils.reproducibility',
                           message='.*TensorFloat-32.*')
 
-    # Configure TF32 optimizations for Ampere/RDN RTX GPUs
+    # Configure TF32 optimizations for Ampere/Ada/Blackwell RTX GPUs
+    # Uses new PyTorch 2.9+ API (old allow_tf32 API deprecated)
     torch.backends.cudnn.conv.fp32_precision = 'tf32'
     torch.backends.cuda.matmul.fp32_precision = 'tf32'
-    torch.backends.cuda.matmul.allow_tf32 = True
-    torch.backends.cudnn.allow_tf32 = True
 
     # Get HuggingFace token
     hf_token = os.environ.get('HF_TOKEN')

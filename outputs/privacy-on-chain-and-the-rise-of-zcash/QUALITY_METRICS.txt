@@ -1,0 +1,113 @@
+================================================================================
+QUALITY ASSESSMENT: PRIVACY ON CHAIN AND THE RISE OF ZCASH
+================================================================================
+Episode: privacy-on-chain-and-the-rise-of-zcash
+Generated: December 17, 2025
+
+Supported Combinations: 6 (found) / 12 (expected: 3 transcribers × 4 post-processors)
+
+================================================================================
+EXECUTIVE SUMMARY
+================================================================================
+
+IMPORTANT PIPELINE NOTE:
+  Post-processing should run on the intermediate *.md transcripts (not *.txt)
+  so post-processors can preserve the original timestamps.
+
+KEY FINDINGS:
+
+1) WORD-COUNT RETENTION: 6/6 outputs are within 90–110% of baseline
+2) TIMESTAMP PRESERVATION: 3/6 outputs have an exact timestamp count match
+3) CRITICAL: 1 outputs show timestamp explosion (likely regenerated timestamps)
+4) WARNING: 1 outputs show major timestamp loss
+
+RECOMMENDED FOR THIS EPISODE:
+  • whisperx-cloud + gemini
+      - timestamps: 29/29
+      - retention:  99.9%
+  • whisperx + opus
+      - timestamps: 66/66
+      - retention:  97.9%
+  • whisperx-cloud + opus
+      - timestamps: 29/29
+      - retention:  96.6%
+
+================================================================================
+INPUT (INTERMEDIATE) TRANSCRIPTS
+================================================================================
+
+Word counts (baseline for retention; computed from the intermediate .md
+transcripts with timestamps stripped):
+  • privacy-on-chain-and-the-rise-of-zcash_assemblyai.md  5,690 words
+  • privacy-on-chain-and-the-rise-of-zcash_whisperx-cloud.md  5,658 words
+  • privacy-on-chain-and-the-rise-of-zcash_whisperx.md  5,637 words
+
+Timestamp/header counts in intermediate .md (GROUND TRUTH timing):
+  • privacy-on-chain-and-the-rise-of-zcash_assemblyai.md   85 timestamps (85 timestamped headers)
+  • privacy-on-chain-and-the-rise-of-zcash_whisperx-cloud.md   29 timestamps (29 timestamped headers)
+  • privacy-on-chain-and-the-rise-of-zcash_whisperx.md   66 timestamps (66 timestamped headers)
+
+================================================================================
+OUTPUT (POST-PROCESSED) WORD COUNT ANALYSIS
+================================================================================
+
+Legend:
+  retention = output_words / input_words
+  timestamps = output timestamp count / input timestamp count
+
+ASSEMBLYAI (input: 5,690 words; 85 timestamps)
+  processor     words    retention   timestamps
+  gemini      5,639      99.1%   365/85   ⚠ CRITICAL
+  opus        5,573      97.9%   81/85   ⚠
+
+WHISPERX-CLOUD (input: 5,658 words; 29 timestamps)
+  processor     words    retention   timestamps
+  gemini      5,652      99.9%   29/29
+  opus        5,463      96.6%   29/29
+
+WHISPERX (input: 5,637 words; 66 timestamps)
+  processor     words    retention   timestamps
+  gemini      5,610      99.5%   0/66   ⚠
+  opus        5,516      97.9%   66/66
+
+================================================================================
+QUALITY FLAGS / REVIEW NOTES
+================================================================================
+
+1) Timestamp count changes are the primary red flag
+   Any output with far more timestamps than the input is not preserving the
+   diarization paragraphing and is likely regenerating timestamps.
+
+   CRITICAL failures observed:
+     - assemblyai + gemini: 365 timestamps vs 85 input
+
+2) Format / ordering issues
+     - assemblyai + gemini: fmt_bad=365
+
+RECOMMENDATION:
+  • Use intermediate .md files as the canonical timestamped transcript.
+  • Use post-processed .txt outputs for corrected wording / readability.
+
+================================================================================
+MANUAL SPOT-CHECK NOTES (CONTENT QUALITY)
+================================================================================
+
+This file is generated from automated metrics only.
+Add manual notes here if you spot entity errors, hallucinations, or other
+content issues specific to this episode.
+
+================================================================================
+PROJECT IMPROVEMENT RECOMMENDATIONS (TO REDUCE MANUAL EDITING)
+================================================================================
+
+1) Deterministic timestamp preservation (recommended architecture)
+   Do NOT ask the model to 'preserve timestamps' in free-form text.
+   Instead: parse -> correct text only -> reassemble with original timestamps.
+
+2) Entity constraints + validation
+   Reject outputs that introduce new PERSON entities not present in input/allowlist.
+
+3) Validation + auto-retry
+   Enforce exact timestamp sequence match, non-decreasing timestamps, and header format.
+
+================================================================================
