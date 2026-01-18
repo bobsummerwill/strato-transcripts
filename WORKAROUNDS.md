@@ -339,6 +339,11 @@ pip show pyannote.audio
 - **[pyannote.audio #1908](https://github.com/pyannote/pyannote-audio/issues/1908)** - Not readily compatible with torch 2.6 (weights_only issues)
 - **[pyannote.audio #1952](https://github.com/pyannote/pyannote-audio/issues/1952)** - AttributeError with torch 2.9.1 (torchaudio.AudioMetaData missing)
 
+**Our Contribution:**
+- **[pyannote.audio #1976](https://github.com/pyannote/pyannote-audio/issues/1976)** - Exact torch==2.8.0 pin breaks compatibility with newer hardware and ecosystem (logged by strato-transcripts, January 2026)
+  - Requests relaxing exact pins to version ranges to support Blackwell GPUs and security updates
+  - Proposes `torch>=2.8.0,<3.0` instead of `torch==2.8.0`
+
 **Status**: 🟡 Open - Exact pin was intentional to avoid segfaults, but blocks ecosystem compatibility
 
 ### Why Hard Pins Are Bad Practice
