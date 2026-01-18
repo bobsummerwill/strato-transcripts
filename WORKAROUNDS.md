@@ -74,15 +74,18 @@ pip index versions whisperx
 
 ### Upstream Issues & Pull Requests
 
-**Issues:**
+**Related Issues (by community):**
 - **[WhisperX #992](https://github.com/m-bain/whisperx/issues/992)** - Pyannote authentication issues (January 2025)
 - **[WhisperX #1304](https://github.com/m-bain/whisperx/issues/1304)** - Shows `use_auth_token` in error traces (November 2025)
-- **[WhisperX #1322](https://github.com/m-bain/whisperx/issues/1322)** - Deprecated `use_auth_token` breaks compatibility (January 2026)
 
-**Pull Request:**
-- **[WhisperX #1323](https://github.com/m-bain/whisperx/pull/1323)** - Fix submitted (January 2026) ✅
+**Our Contribution:**
+- **Issue [#1322](https://github.com/m-bain/whisperx/issues/1322)** - Deprecated `use_auth_token` breaks compatibility with pyannote.audio 4.x (logged by strato-transcripts, January 2026)
+- **Pull Request [#1323](https://github.com/m-bain/whisperx/pull/1323)** - Fix `use_auth_token` → `token` migration (submitted by @bobsummerwill, January 2026) ✅
+  - Fork: https://github.com/bobsummerwill/whisperX
+  - Branch: `fix/use-auth-token-deprecation`
+  - Changes: Updated `whisperx/vads/pyannote.py` and `whisperx/asr.py` to use new HuggingFace API
 
-**Status**: 🟢 **PR submitted** - Awaiting maintainer review and merge
+**Status**: 🟢 **PR submitted by us** - Awaiting maintainer review and merge
 
 ---
 
