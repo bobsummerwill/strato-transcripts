@@ -146,8 +146,20 @@ pip index versions speechbrain
 
 ### Upstream References
 
-- **[SpeechBrain torch_audio_backend.py (develop)](https://github.com/speechbrain/speechbrain/blob/develop/speechbrain/utils/torch_audio_backend.py)** - Shows the fix already implemented
-- **[SpeechBrain #2821](https://github.com/speechbrain/speechbrain/pull/2821)** - torchaudio version bump PR (merged Feb 2025)
+**Pull Request:**
+- **[SpeechBrain #2988](https://github.com/speechbrain/speechbrain/pull/2988)** - "Bandaid fix for torchaudio 2.9+ compatibility" (merged Oct 29, 2025) ✅
+
+**Commit:**
+- **[927530f](https://github.com/speechbrain/speechbrain/commit/927530fa95e238fbc396000618e839a4a986dd7d)** - Adds `hasattr` checks for `list_audio_backends()`
+- **Author**: Oscar Friedman
+- **Co-author**: Peter Plantinga
+- **Date**: October 29, 2025
+
+**Source Code:**
+- **[torch_audio_backend.py (develop)](https://github.com/speechbrain/speechbrain/blob/develop/speechbrain/utils/torch_audio_backend.py)** - Shows the fix implemented
+
+**Related PR:**
+- **[SpeechBrain #2821](https://github.com/speechbrain/speechbrain/pull/2821)** - torchaudio version bump (merged Feb 2025)
 
 **Status**: ✅ **Fixed in develop, awaiting release** - Our patch matches their solution exactly
 
