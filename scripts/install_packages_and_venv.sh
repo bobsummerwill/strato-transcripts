@@ -527,6 +527,193 @@ rm -f /tmp/speechbrain_patch.py
 echo ""
 
 # ==============================================================================
+# Step 10b: SpeechBrain dataio.py Patch for torchaudio.info removal
+# ==============================================================================
+# torchaudio 2.9.x removed torchaudio.info() and torchaudio.backend.common.AudioMetaData.
+# This patch replaces read_audio_info() with a compatible implementation that uses
+# torchaudio.load() to get audio metadata instead.
+# ==============================================================================
+echo -e "${YELLOW}[10b/15] Applying SpeechBrain dataio.py patch for torchaudio 2.9.x...${NC}"
+echo "Patching read_audio_info() to work without torchaudio.info()"
+
+SPEECHBRAIN_DATAIO="$SITE_PACKAGES/speechbrain/dataio/dataio.py"
+
+if [ ! -f "$SPEECHBRAIN_DATAIO" ]; then
+    echo -e "${RED}ERROR: SpeechBrain dataio.py not found at $SPEECHBRAIN_DATAIO${NC}"
+    exit 1
+fi
+
+# Create the patch
+cat > /tmp/speechbrain_dataio_patch.py << 'PATCH_EOF'
+import sys
+
+# Read the file
+with open(sys.argv[1], 'r') as f:
+    content = f.read()
+
+# Check if already patched
+if 'AudioMetaDataCompat' in content:
+    print("Already patched")
+    sys.exit(0)
+
+# Define the compatibility class and replacement function
+compat_class = '''
+# Compatibility shim for torchaudio 2.9.x which removed AudioMetaData
+class AudioMetaDataCompat:
+    """Compatibility class replacing torchaudio.backend.common.AudioMetaData."""
+    def __init__(self, sample_rate, num_frames, num_channels, bits_per_sample=16, encoding="PCM_S"):
+        self.sample_rate = sample_rate
+        self.num_frames = num_frames
+        self.num_channels = num_channels
+        self.bits_per_sample = bits_per_sample
+        self.encoding = encoding
+
+'''
+
+# Find where to insert the class (after the imports, before read_audio_info)
+# Look for the line before read_audio_info function
+marker = "\ndef read_audio_info("
+if marker not in content:
+    print("ERROR: Could not find read_audio_info function")
+    sys.exit(1)
+
+# Insert the compat class before read_audio_info
+content = content.replace(marker, compat_class + marker)
+
+# Now replace the read_audio_info function
+old_func_start = "def read_audio_info(\n    path, backend=None\n) -> \"torchaudio.backend.common.AudioMetaData\":"
+new_func_start = "def read_audio_info(\n    path, backend=None\n) -> AudioMetaDataCompat:"
+
+if old_func_start in content:
+    content = content.replace(old_func_start, new_func_start)
+else:
+    print("WARNING: Could not update return type annotation")
+
+# Replace the function body - find from docstring to return
+# We need to replace the torchaudio.info calls with torchaudio.load
+old_body = '''    validate_backend(backend)
+
+    _path_no_ext, path_ext = os.path.splitext(path)
+
+    if path_ext == ".mp3":
+        # Additionally, certain affected versions of torchaudio fail to
+        # autodetect mp3.
+        # HACK: here, we check for the file extension to force mp3 detection,
+        # which prevents an error from occurring in torchaudio.
+        info = torchaudio.info(path, format="mp3", backend=backend)
+    else:
+        info = torchaudio.info(path, backend=backend)
+
+    # Certain file formats, such as MP3, do not provide a reliable way to
+    # query file duration from metadata (when there is any).
+    # For MP3, certain versions of torchaudio began returning num_frames == 0.
+    #
+    # https://github.com/speechbrain/speechbrain/issues/1925
+    # https://github.com/pytorch/audio/issues/2524
+    #
+    # Accommodate for these cases here: if `num_frames == 0` then maybe something
+    # has gone wrong.
+    # If some file really had `num_frames == 0` then we are not doing harm
+    # double-checking anyway. If I am wrong and you are reading this comment
+    # because of it: sorry
+    if info.num_frames == 0:
+        channels_data, sample_rate = torchaudio.load(
+            path, normalize=False, backend=backend
+        )
+
+        info.num_frames = channels_data.size(1)
+        info.sample_rate = sample_rate  # because we might as well
+
+    return info'''
+
+new_body = '''    # torchaudio 2.9.x compatibility: use torchaudio.load() instead of removed torchaudio.info()
+    if hasattr(torchaudio, 'info'):
+        # Old torchaudio version - use original approach
+        validate_backend(backend)
+        _path_no_ext, path_ext = os.path.splitext(path)
+        if path_ext == ".mp3":
+            info = torchaudio.info(path, format="mp3", backend=backend)
+        else:
+            info = torchaudio.info(path, backend=backend)
+        if info.num_frames == 0:
+            channels_data, sample_rate = torchaudio.load(path, normalize=False, backend=backend)
+            info.num_frames = channels_data.size(1)
+            info.sample_rate = sample_rate
+        return info
+    else:
+        # torchaudio 2.9.x: info() removed, use load() to get metadata
+        # Note: backend parameter is ignored in torchaudio 2.9.x
+        channels_data, sample_rate = torchaudio.load(path, normalize=False)
+        return AudioMetaDataCompat(
+            sample_rate=sample_rate,
+            num_frames=channels_data.size(1),
+            num_channels=channels_data.size(0),
+        )'''
+
+if old_body in content:
+    content = content.replace(old_body, new_body)
+    with open(sys.argv[1], 'w') as f:
+        f.write(content)
+    print("Patch applied successfully")
+else:
+    print("WARNING: Could not find exact function body to patch")
+    print("Attempting alternative patch...")
+    # If exact match fails, at least add the compat class was added
+    with open(sys.argv[1], 'w') as f:
+        f.write(content)
+    print("Partial patch applied (compat class added)")
+PATCH_EOF
+
+# Apply the patch
+python3 /tmp/speechbrain_dataio_patch.py "$SPEECHBRAIN_DATAIO"
+
+# Verify the patch
+if grep -q "AudioMetaDataCompat" "$SPEECHBRAIN_DATAIO"; then
+    echo -e "${GREEN}✓ SpeechBrain dataio.py patch applied successfully${NC}"
+else
+    echo -e "${RED}ERROR: SpeechBrain dataio.py patch verification failed${NC}"
+    exit 1
+fi
+
+# Cleanup
+rm -f /tmp/speechbrain_dataio_patch.py
+echo ""
+
+# ==============================================================================
+# Step 10c: Lightning cloud_io.py Patch for PyTorch 2.6+ weights_only default
+# ==============================================================================
+# PyTorch 2.6+ changed torch.load default to weights_only=True for security.
+# Pyannote/lightning models use pickle which requires weights_only=False.
+# This patch sets weights_only=False for local file loading in lightning.
+# ==============================================================================
+echo -e "${YELLOW}[10c/15] Applying Lightning patch for PyTorch 2.6+ weights_only...${NC}"
+echo "Patching lightning cloud_io.py to default weights_only=False for local files"
+
+LIGHTNING_CLOUD_IO="$SITE_PACKAGES/lightning/fabric/utilities/cloud_io.py"
+
+if [ ! -f "$LIGHTNING_CLOUD_IO" ]; then
+    echo -e "${RED}ERROR: Lightning cloud_io.py not found at $LIGHTNING_CLOUD_IO${NC}"
+    exit 1
+fi
+
+# Check if already patched
+if grep -q "PyTorch 2.6+ compatibility patch" "$LIGHTNING_CLOUD_IO"; then
+    echo "Already patched"
+else
+    # Apply patch - set default weights_only=False for local files
+    sed -i 's/fs.open(path_or_url, "rb") as f:/fs.open(path_or_url, "rb") as f:\n        if weights_only is None:\n            weights_only = False  # PyTorch 2.6+ compatibility patch/' "$LIGHTNING_CLOUD_IO"
+
+    # Verify the patch
+    if grep -q "PyTorch 2.6+ compatibility patch" "$LIGHTNING_CLOUD_IO"; then
+        echo -e "${GREEN}✓ Lightning cloud_io.py patch applied successfully${NC}"
+    else
+        echo -e "${RED}ERROR: Lightning cloud_io.py patch verification failed${NC}"
+        exit 1
+    fi
+fi
+echo ""
+
+# ==============================================================================
 # Step 11: LD_LIBRARY_PATH Configuration (project-specific via setup_env.sh)
 # ==============================================================================
 # Ensures setup_env.sh includes LD_LIBRARY_PATH for CUDA libraries

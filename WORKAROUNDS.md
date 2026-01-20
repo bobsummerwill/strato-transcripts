@@ -72,12 +72,16 @@ pip index versions whisperx
 # Or visit: https://github.com/m-bain/whisperx/releases
 ```
 
-### Upstream Issues
+### Upstream Issues & Pull Requests
 
-- **[WhisperX #992](https://github.com/m-bain/whisperx/issues/992)** - Pyannote authentication issues (January 2025)
-- **[WhisperX #1304](https://github.com/m-bain/whisperx/issues/1304)** - Shows `use_auth_token` in error traces (November 2025)
+**Our Contribution:**
+- **Issue [#1322](https://github.com/m-bain/whisperx/issues/1322)** - Deprecated `use_auth_token` breaks compatibility with pyannote.audio 4.x (logged by strato-transcripts, January 2026)
+- **Pull Request [#1323](https://github.com/m-bain/whisperx/pull/1323)** - Fix `use_auth_token` → `token` migration (submitted by @bobsummerwill, January 2026) ✅
+  - Fork: https://github.com/bobsummerwill/whisperX
+  - Branch: `fix/use-auth-token-deprecation`
+  - Changes: Updated `whisperx/vads/pyannote.py` and `whisperx/asr.py` to use new HuggingFace API
 
-**Status**: 🟡 Open - No PR merged yet
+**Status**: 🟢 **PR submitted by us** - Awaiting maintainer review and merge
 
 ---
 
@@ -141,8 +145,23 @@ pip index versions speechbrain
 
 ### Upstream References
 
-- **[SpeechBrain torch_audio_backend.py (develop)](https://github.com/speechbrain/speechbrain/blob/develop/speechbrain/utils/torch_audio_backend.py)** - Shows the fix already implemented
-- **[SpeechBrain #2821](https://github.com/speechbrain/speechbrain/pull/2821)** - torchaudio version bump PR (merged Feb 2025)
+**Issue:**
+- **[SpeechBrain #2977](https://github.com/speechbrain/speechbrain/issues/2977)** - UserWarning: torchaudio._backend.list_audio_backends has been deprecated (October 2025)
+
+**Pull Request:**
+- **[SpeechBrain #2988](https://github.com/speechbrain/speechbrain/pull/2988)** - "Bandaid fix for torchaudio 2.9+ compatibility" (merged Oct 29, 2025) ✅
+  - Fixes issue #2977
+  - Adds `hasattr()` checks before calling deprecated `list_audio_backends()`
+  - Note: PR author describes this as "temporary bandaid" - full fix would require migrating to torchcodec
+
+**Commit:**
+- **[927530f](https://github.com/speechbrain/speechbrain/commit/927530fa95e238fbc396000618e839a4a986dd7d)** - Adds `hasattr` checks for `list_audio_backends()`
+  - Author: Oscar Friedman
+  - Co-author: Peter Plantinga
+  - Date: October 29, 2025
+
+**Source Code:**
+- **[torch_audio_backend.py (develop)](https://github.com/speechbrain/speechbrain/blob/develop/speechbrain/utils/torch_audio_backend.py)** - Shows the fix implemented
 
 **Status**: ✅ **Fixed in develop, awaiting release** - Our patch matches their solution exactly
 
@@ -305,12 +324,31 @@ pip show pyannote.audio
 # Or check PyPI: https://pypi.org/project/pyannote.audio/
 ```
 
-### Upstream Issues
+### Upstream Issues & Commits
 
-- **[pyannote/pyannote-audio #1320](https://github.com/pyannote/pyannote-audio/issues/1320)** - pip dependency mismatch issues
-- **[torchcodec #995](https://github.com/meta-pytorch/torchcodec/issues/995)** - Debates hard pins vs. version ranges
+**The Pin Commit:**
+- **[Commit 121054b6](https://github.com/pyannote/pyannote-audio/commit/121054b60a9497a09b3312b6bc518160f3dfb959)** - "setup: pin torch/audio/codec versions (#1954)" (Nov 19, 2025)
+  - Author: Hervé BREDIN
+  - Released in: pyannote.audio 4.0.2
+  - Changed from: `torch>=2.8.0` to `torch==2.8.0` (exact pin)
+  - Reason: "to avoid segmentation fault" per torchcodec issue #995
 
-**Status**: 🟡 Open - Community requesting relaxed constraints
+**Related Issues:**
+- **[torchcodec #995](https://github.com/meta-pytorch/torchcodec/issues/995)** - Version incompatibility causing segfaults (torchcodec 0.8 with torch 2.8.0)
+- **[pyannote.audio #1320](https://github.com/pyannote/pyannote-audio/issues/1320)** - pip dependency mismatch issues
+- **[pyannote.audio #1908](https://github.com/pyannote/pyannote-audio/issues/1908)** - Not readily compatible with torch 2.6 (weights_only issues)
+- **[pyannote.audio #1952](https://github.com/pyannote/pyannote-audio/issues/1952)** - AttributeError with torch 2.9.1 (torchaudio.AudioMetaData missing)
+
+**Our Contribution:**
+- **Issue [#1976](https://github.com/pyannote/pyannote-audio/issues/1976)** - Exact torch==2.8.0 pin breaks compatibility with newer hardware and ecosystem (logged by strato-transcripts, January 2026)
+  - Requests relaxing exact pins to version ranges to support Blackwell GPUs and security updates
+  - Proposes `torch>=2.8.0,<3.0` instead of `torch==2.8.0`
+- **Pull Request [#1977](https://github.com/pyannote/pyannote-audio/pull/1977)** - Relax torch/torchaudio/torchcodec version pins to ranges (submitted by @bobsummerwill, January 2026) ✅
+  - Fork: https://github.com/bobsummerwill/pyannote-audio
+  - Branch: `fix/relax-torch-version-pins`
+  - Changes: Replaces exact pins with version ranges while maintaining torchcodec<0.8 constraint
+
+**Status**: 🟢 **PR submitted by us** - Awaiting maintainer review and merge
 
 ### Why Hard Pins Are Bad Practice
 
@@ -418,12 +456,13 @@ pip install --dry-run "pyannote.audio>=4.0.2"
 
 | Workaround | Upstream Package | Status | Estimated Fix | Likelihood | Removal Priority |
 |------------|------------------|--------|---------------|------------|------------------|
-| #1: Token param | WhisperX | 🟡 Open | Q2 2026 | Medium | **Medium** |
+| #1: Token param | WhisperX | 🟢 **PR submitted** | Q1-Q2 2026 | **High** | **High** |
 | #2: torchaudio API | SpeechBrain | ✅ Fixed in develop | Q1-Q2 2026 | Very High | **High** |
 | #3: weights_only | pyannote.audio | 🟡 Open | Q3-Q4 2026 | Medium | **Low** |
 | #4: torch pin | pyannote.audio | 🟡 Open | Q2 2026 | High | **High** |
 
 ### Legend
+- 🟢 **PR submitted** - Fix submitted, awaiting merge
 - 🟡 **Open** - Issue known, no fix yet
 - ✅ **Fixed** - Fix exists but not released
 - 🔴 **Blocked** - Requires major architectural changes

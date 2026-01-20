@@ -1,0 +1,39 @@
+================================================================================
+MANUAL ASSESSMENT (DRAFT; excerpt-based spot-check)
+================================================================================
+
+This section is generated from a deterministic excerpt spot-check (5 blocks per transcriber)
+plus simple novelty/similarity heuristics. It is *not* a substitute for listening to audio,
+but it does catch common failure modes: summarization, hallucinated entities, timestamp drift,
+and formatting corruption.
+
+See excerpt pack: outputs/episode010-viktor-tron/REVIEW_EXCERPTS.md
+
+--------------------------------------------------------------------------------
+Transcriber: assemblyai
+-
+Baseline: 11,644 words, 199 timestamps (fmt_bad=0, nonmono=0)
+
+Top candidates (excerpt similarity / novelty / timestamp drift):
+  • opus     sim=0.90 ret=97.8% ts=199/199 (×1.00) novel_caps=65 fmt_bad=0  ⚠ entity novelty
+  • gemini   sim=0.94 ret=97.8% ts=192/199 (×0.96) novel_caps=66 fmt_bad=0  ⚠ entity novelty
+  • deepseek sim=0.60 ret=52.3% ts=110/199 (×0.55) novel_caps=1 fmt_bad=0  ⚠ timestamp drift  ⚠ condensation
+
+Draft recommendation for this transcriber: opus
+Rationale: chosen by highest excerpt similarity while avoiding obvious timestamp/format corruption and excessive entity novelty.
+
+--------------------------------------------------------------------------------
+Transcriber: whisperx-cloud
+-
+Baseline: 11,677 words, 60 timestamps (fmt_bad=0, nonmono=0)
+
+Top candidates (excerpt similarity / novelty / timestamp drift):
+  • opus     sim=0.51 ret=97.0% ts=205/60 (×3.42) novel_caps=54 fmt_bad=0  ⚠ timestamp drift  ⚠ entity novelty
+  • deepseek sim=0.37 ret=52.4% ts=84/60 (×1.40) novel_caps=25 fmt_bad=0  ⚠ timestamp drift  ⚠ condensation
+  • gemini   sim=0.12 ret=99.0% ts=124/60 (×2.07) novel_caps=62 fmt_bad=0  ⚠ timestamp drift  ⚠ entity novelty
+
+Draft recommendation for this transcriber: opus
+Rationale: chosen by highest excerpt similarity while avoiding obvious timestamp/format corruption and excessive entity novelty.
+
+================================================================================
+
