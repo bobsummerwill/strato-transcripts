@@ -28,7 +28,7 @@ export HF_TOKEN=""
 #   chatgpt  - GPT-5.2 (OpenAI)                - 400K context
 #   qwen     - Qwen3-Max (Alibaba)             - 256K context
 #   kimi     - Kimi K2 (Moonshot)              - 256K context
-#   glm      - GLM-4-Plus (Zhipu)              - 128K context
+#   glm      - GLM-4.7 (Z.ai)                  - 203K context
 #   minimax  - MiniMax M2.1                    - 4M context
 #   llama    - Llama 4 Maverick (Meta)         - 1M context
 #   grok     - Grok 4 (xAI)                    - 256K context

@@ -7,7 +7,7 @@ Get your key from: https://openrouter.ai/keys
 
 | Processor | Model | OpenRouter ID | Context | Output |
 |-----------|-------|---------------|---------|--------|
-| **opus** | Claude Opus 4.5 | `anthropic/claude-opus-4-5` | 200K | 64K |
+| **opus** | Claude Opus 4.5 | `anthropic/claude-opus-4.5` | 200K | 64K |
 | **gemini** | Gemini 3 Pro | `google/gemini-3-pro-preview` | 1M | 64K |
 | **chatgpt** | GPT-5.2 | `openai/gpt-5.2` | 400K | 128K |
 | **grok** | Grok 4 | `x-ai/grok-4` | 256K | 8K |
@@ -16,7 +16,7 @@ Get your key from: https://openrouter.ai/keys
 | **mistral** | Mistral Large | `mistralai/mistral-large-2411` | 256K | 8K |
 | **minimax** | MiniMax M2.1 | `minimax/minimax-m2.1` | 4M | 8K |
 | **llama** | Llama 4 Maverick | `meta-llama/llama-4-maverick:free` | 1M | 8K |
-| **glm** | GLM-4-Plus | `zhipu/glm-4-plus` | 128K | 8K |
+| **glm** | GLM-4.7 | `z-ai/glm-4.7` | 203K | 8K |
 | **deepseek** | DeepSeek V3.2 | `deepseek/deepseek-chat` | 128K | 8K |
 
 ## Setup
@@ -114,10 +114,10 @@ python3 scripts/test_context_limits.py --providers all
 - **Context**: 256K tokens
 - **Best For**: Agent workflows, tool integration
 
-#### GLM-4-Plus (`glm`)
-- **Context**: 128K tokens
-- **Best For**: Chinese content, general reasoning
-- **Notes**: Via OpenRouter (not latest GLM-4.7)
+#### GLM-4.7 (`glm`)
+- **Context**: 203K tokens
+- **Best For**: Chinese content, agentic tasks, coding
+- **Notes**: Z.AI's latest flagship model via OpenRouter
 
 #### Mistral Large (`mistral`)
 - **Context**: 256K tokens

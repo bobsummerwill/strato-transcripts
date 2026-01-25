@@ -13,7 +13,7 @@ PROVIDER MATRIX (11 POST-PROCESSING PROVIDERS via OpenRouter):
 - chatgpt: GPT-5.2 - 400K context, 128K output
 - qwen: Qwen3-Max - 256K context
 - kimi: Kimi K2 - 256K context, 16K output
-- glm: GLM-4-Plus - 128K context (via OpenRouter)
+- glm: GLM-4.7 - 203K context (via OpenRouter)
 - minimax: MiniMax M2.1 - 4M context (200K recommended)
 - llama: Llama 4 Maverick - 1M context
 - grok: Grok 4 - 256K context
@@ -64,7 +64,7 @@ def print_warning(text):
 # OpenRouter model mapping and context limits
 OPENROUTER_MODELS = {
     'opus': {
-        'model_id': 'anthropic/claude-opus-4-5',
+        'model_id': 'anthropic/claude-opus-4.5',
         'display_name': 'Claude Opus 4.5',
         'provider': 'Anthropic',
         'advertised': '200,000 tokens',
@@ -106,11 +106,11 @@ OPENROUTER_MODELS = {
         'test_sizes': [10000, 50000, 100000, 150000, 200000, 256000],
     },
     'glm': {
-        'model_id': 'zhipu/glm-4-plus',
-        'display_name': 'GLM-4-Plus',
-        'provider': 'Zhipu',
-        'advertised': '128,000 tokens',
-        'test_sizes': [10000, 50000, 100000, 120000, 128000],
+        'model_id': 'z-ai/glm-4.7',
+        'display_name': 'GLM-4.7',
+        'provider': 'Z.ai',
+        'advertised': '203,000 tokens',
+        'test_sizes': [10000, 50000, 100000, 150000, 200000],
     },
     'minimax': {
         'model_id': 'minimax/minimax-m2.1',
@@ -145,13 +145,13 @@ OPENROUTER_MODELS = {
 # Model quality priority for recommendations
 MODEL_PRIORITY = {
     'x-ai/grok-4': 100,
-    'anthropic/claude-opus-4-5': 95,
+    'anthropic/claude-opus-4.5': 95,
     'openai/gpt-5.2': 90,
     'google/gemini-3-pro-preview': 85,
     'meta-llama/llama-4-maverick:free': 80,
     'qwen/qwen3-max': 75,
     'moonshotai/kimi-k2': 70,
-    'zhipu/glm-4-plus': 65,
+    'z-ai/glm-4.7': 65,
     'mistralai/mistral-large-2411': 60,
     'deepseek/deepseek-chat': 55,
     'minimax/minimax-m2.1': 50,

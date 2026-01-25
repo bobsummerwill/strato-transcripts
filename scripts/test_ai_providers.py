@@ -9,13 +9,13 @@ import sys
 
 # OpenRouter model IDs (same as in process_single_post_process.py)
 OPENROUTER_MODELS = {
-    'opus': ('anthropic/claude-opus-4-5', 'Claude Opus 4.5'),
+    'opus': ('anthropic/claude-opus-4.5', 'Claude Opus 4.5'),
     'gemini': ('google/gemini-3-pro-preview', 'Gemini 3 Pro'),
     'deepseek': ('deepseek/deepseek-chat', 'DeepSeek V3.2'),
     'chatgpt': ('openai/gpt-5.2', 'GPT-5.2'),
     'qwen': ('qwen/qwen3-max', 'Qwen3-Max'),
     'kimi': ('moonshotai/kimi-k2', 'Kimi K2'),
-    'glm': ('zhipu/glm-4-plus', 'GLM-4-Plus'),
+    'glm': ('z-ai/glm-4.7', 'GLM-4.7'),
     'minimax': ('minimax/minimax-m2.1', 'MiniMax M2.1'),
     'llama': ('meta-llama/llama-4-maverick:free', 'Llama 4 Maverick'),
     'grok': ('x-ai/grok-4', 'Grok 4'),
