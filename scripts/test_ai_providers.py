@@ -2,10 +2,15 @@
 """
 Test connectivity and model access for all AI providers via OpenRouter.
 All AI post-processing models are accessed through OpenRouter with a single API key.
+Also tests local mode support (ollama + GPU detection for dual RTX 3090s).
+
+Local models (fit on 48GB): glm, deepseek-local, qwen-local, mistral-local, llama-local
 """
 
 import os
 import sys
+import shutil
+import subprocess
 
 # OpenRouter model IDs (same as in process_single_post_process.py)
 OPENROUTER_MODELS = {
@@ -17,9 +22,18 @@ OPENROUTER_MODELS = {
     'kimi': ('moonshotai/kimi-k2', 'Kimi K2'),
     'glm': ('z-ai/glm-4.7', 'GLM-4.7'),
     'minimax': ('minimax/minimax-m2.1', 'MiniMax M2.1'),
-    'llama': ('meta-llama/llama-4-maverick:free', 'Llama 4 Maverick'),
+    'llama': ('meta-llama/llama-4-maverick', 'Llama 4 Maverick'),
     'grok': ('x-ai/grok-4', 'Grok 4'),
     'mistral': ('mistralai/mistral-large-2411', 'Mistral Large'),
+}
+
+# Local model mapping (models that fit on 48GB dual 3090s)
+LOCAL_MODELS = {
+    'glm': ('glm-4.7-flash:q4_K_M', 'GLM-4.7-Flash'),
+    'deepseek-local': ('deepseek-r1:70b', 'DeepSeek-R1 70B'),
+    'qwen-local': ('qwen3:72b', 'Qwen3 72B'),
+    'mistral-local': ('mixtral:8x7b', 'Mixtral 8x7B'),
+    'llama-local': ('llama3.3:70b', 'Llama 3.3 70B'),
 }
 
 
@@ -38,7 +52,7 @@ def test_openrouter_model(api_key, processor_name, model_id, display_name):
         response = client.chat.completions.create(
             model=model_id,
             messages=[{"role": "user", "content": "Say 'hello' in one word"}],
-            max_tokens=10,
+            max_tokens=20,  # GPT-5.2 requires >= 16
             extra_headers={
                 "HTTP-Referer": "https://github.com/strato-net/strato-transcripts",
                 "X-Title": "Strato Transcripts Test"
@@ -108,6 +122,103 @@ def test_all_openrouter_models(api_key):
         )
 
     return results
+
+
+def test_gpu_setup():
+    """Test GPU setup for local mode (dual RTX 3090 required)."""
+    print("\n" + "="*60)
+    print("Testing GPU SETUP (local mode requirements)")
+    print("="*60)
+
+    try:
+        import torch
+    except ImportError:
+        print("⚠️  PyTorch not installed - skipping GPU test")
+        return "skipped"
+
+    if not torch.cuda.is_available():
+        print("❌ CUDA not available")
+        return False
+
+    gpu_count = torch.cuda.device_count()
+    print(f"   Found {gpu_count} GPU(s)")
+
+    if gpu_count < 2:
+        print(f"⚠️  Local mode requires 2x RTX 3090 (found {gpu_count})")
+        return "insufficient"
+
+    # Check if both are RTX 3090
+    gpus_valid = True
+    for i in range(2):
+        name = torch.cuda.get_device_name(i)
+        memory_gb = torch.cuda.get_device_properties(i).total_memory / (1024**3)
+        is_3090 = "3090" in name
+        status = "✅" if is_3090 else "⚠️"
+        print(f"   GPU {i}: {name} ({memory_gb:.1f}GB) {status}")
+        if not is_3090:
+            gpus_valid = False
+
+    if gpus_valid:
+        print("✅ Dual RTX 3090 detected - local mode supported")
+        return True
+    else:
+        print("⚠️  Not dual RTX 3090 - local mode not supported")
+        return "insufficient"
+
+
+def test_ollama():
+    """Test ollama installation and connectivity."""
+    print("\n" + "="*60)
+    print("Testing OLLAMA (local inference)")
+    print("="*60)
+
+    # Check if ollama binary exists
+    if not shutil.which('ollama'):
+        print("❌ ollama not installed")
+        print("   Install from: https://ollama.ai")
+        return False
+
+    # Check if ollama server is running
+    try:
+        result = subprocess.run(
+            ['ollama', 'list'],
+            capture_output=True,
+            text=True,
+            timeout=5
+        )
+        if result.returncode != 0:
+            print("⚠️  ollama installed but server not running")
+            print("   Start with: ollama serve")
+            return "not_running"
+    except subprocess.TimeoutExpired:
+        print("⚠️  ollama server not responding")
+        return "not_running"
+    except Exception as e:
+        print(f"❌ Error checking ollama: {e}")
+        return False
+
+    print("✅ ollama is installed and running")
+
+    # Check for local models
+    print("\n   Checking local models:")
+    for processor, (model_name, display_name) in LOCAL_MODELS.items():
+        # Check if model is pulled
+        try:
+            result = subprocess.run(
+                ['ollama', 'show', model_name.split(':')[0]],
+                capture_output=True,
+                text=True,
+                timeout=5
+            )
+            if result.returncode == 0:
+                print(f"   ✅ {processor}: {model_name} (available)")
+            else:
+                print(f"   ⚠️  {processor}: {model_name} (not pulled)")
+                print(f"      Pull with: ollama pull {model_name}")
+        except Exception:
+            print(f"   ⚠️  {processor}: {model_name} (not checked)")
+
+    return True
 
 
 def test_assemblyai():
@@ -199,10 +310,19 @@ def main():
     print("="*60)
     print("AI Provider Connectivity Test")
     print("="*60)
-    print("All AI post-processing uses OpenRouter (single API key)")
+    print("Hosted: All AI post-processing uses OpenRouter (single API key)")
+    print("Local:  5 models via ollama (requires 2x RTX 3090 / 48GB)")
+    print("        glm, deepseek-local, qwen-local, mistral-local, llama-local")
     print("="*60)
 
     results = {}
+
+    # Test local mode support (GPU + ollama)
+    print("\n" + "="*60)
+    print("LOCAL MODE SUPPORT")
+    print("="*60)
+    results['gpu-setup'] = test_gpu_setup()
+    results['ollama'] = test_ollama()
 
     # Test local transcription services
     print("\n" + "="*60)
@@ -237,12 +357,17 @@ def main():
     passed = sum(1 for v in results.values() if v is True)
     failed = sum(1 for v in results.values() if v is False)
     skipped = sum(1 for v in results.values() if v == "skipped")
+    partial = sum(1 for v in results.values() if v in ("insufficient", "not_running"))
 
     for provider, result in results.items():
         if result is True:
             status = "✅ PASS"
         elif result == "skipped":
             status = "⚠️  SKIPPED"
+        elif result == "insufficient":
+            status = "⚠️  INSUFFICIENT"
+        elif result == "not_running":
+            status = "⚠️  NOT RUNNING"
         else:
             status = "❌ FAIL"
         print(f"{provider.upper():15} {status}")

@@ -18,8 +18,42 @@ import argparse
 from common import (Colors, success, failure, skip, validate_api_key,
                     load_people_list, load_terms_list, cleanup_gpu_memory)
 
-# OpenRouter model ID mapping for each processor
-# All accessed via https://openrouter.ai/api/v1
+# ============================================================================
+# Model Configuration: Hosted (OpenRouter) + Local (ollama)
+# ============================================================================
+# 11 models via OpenRouter. 4 local options for 48GB (dual 3090s).
+#
+# HOSTED MODELS (OpenRouter):
+# ┌───────────┬─────────────────────┬───────────────────────────────────┬─────────┐
+# │ Processor │ Model               │ OpenRouter ID                     │ Context │
+# ├───────────┼─────────────────────┼───────────────────────────────────┼─────────┤
+# │ opus      │ Claude Opus 4.5     │ anthropic/claude-opus-4.5         │ 200K    │
+# │ gemini    │ Gemini 3 Pro        │ google/gemini-3-pro-preview       │ 1M      │
+# │ chatgpt   │ GPT-5.2             │ openai/gpt-5.2                    │ 400K    │
+# │ grok      │ Grok 4              │ x-ai/grok-4                       │ 256K    │
+# │ qwen      │ Qwen3-Max           │ qwen/qwen3-max                    │ 256K    │
+# │ kimi      │ Kimi K2             │ moonshotai/kimi-k2                │ 256K    │
+# │ mistral   │ Mistral Large       │ mistralai/mistral-large-2411      │ 256K    │
+# │ minimax   │ MiniMax M2.1        │ minimax/minimax-m2.1              │ 4M      │
+# │ llama     │ Llama 4 Maverick    │ meta-llama/llama-4-maverick       │ 1M      │
+# │ deepseek  │ DeepSeek V3.2       │ deepseek/deepseek-chat            │ 128K    │
+# │ glm       │ GLM-4.7             │ z-ai/glm-4.7                      │ 203K    │
+# └───────────┴─────────────────────┴───────────────────────────────────┴─────────┘
+#
+# LOCAL MODELS (ollama, fit on 48GB):
+# ┌────────────────┬─────────────────────┬────────────────────────┬─────────┐
+# │ Processor      │ Model               │ ollama ID              │ VRAM    │
+# ├────────────────┼─────────────────────┼────────────────────────┼─────────┤
+# │ glm            │ GLM-4.7-Flash       │ glm-4.7-flash:q4_K_M   │ ~19GB   │
+# │ deepseek-local │ DeepSeek-R1 70B     │ deepseek-r1:70b        │ ~40GB   │
+# │ qwen-local     │ Qwen3 72B           │ qwen3:72b              │ ~45GB   │
+# │ mistral-local  │ Mixtral 8x7B        │ mixtral:8x7b           │ ~27GB   │
+# │ llama-local    │ Llama 3.3 70B       │ llama3.3:70b           │ ~40GB   │
+# └────────────────┴─────────────────────┴────────────────────────┴─────────┘
+#
+# See AI_PROVIDERS.md for full documentation.
+# ============================================================================
+
 OPENROUTER_MODELS = {
     'opus': 'anthropic/claude-opus-4.5',           # Claude Opus 4.5 - 200K context
     'gemini': 'google/gemini-3-pro-preview',       # Gemini 3 Pro - 1M context
@@ -29,7 +63,7 @@ OPENROUTER_MODELS = {
     'kimi': 'moonshotai/kimi-k2',                  # Kimi K2 - 256K context
     'glm': 'z-ai/glm-4.7',                         # GLM-4.7 - 203K context
     'minimax': 'minimax/minimax-m2.1',             # MiniMax M2.1 - 4M context
-    'llama': 'meta-llama/llama-4-maverick:free',   # Llama 4 Maverick - 1M context
+    'llama': 'meta-llama/llama-4-maverick',        # Llama 4 Maverick - 1M context
     'grok': 'x-ai/grok-4',                         # Grok 4 - 256K context
     'mistral': 'mistralai/mistral-large-2411',     # Mistral Large - 256K context
 }
@@ -43,6 +77,104 @@ OPENROUTER_MAX_TOKENS = {
     'glm': 8192,        # GLM standard
     'default': 8192,    # Default for others
 }
+
+# Local model mapping (ollama model names)
+# Models that fit on 48GB (dual 3090s) - maximized for quality
+# Note: These are DIFFERENT models than the hosted versions
+LOCAL_MODELS = {
+    'glm': 'glm-4.7-flash:q4_K_M',        # 30B MoE, 3B active, ~19GB VRAM
+    'deepseek-local': 'deepseek-r1:70b',  # 70B distilled (not V3.2), ~40GB Q4
+    'qwen-local': 'qwen3:72b',            # 72B dense (not Max), ~45GB Q4
+    'mistral-local': 'mixtral:8x7b',       # 47B MoE (8x7B), ~27GB Q4
+    'llama-local': 'llama3.3:70b',        # 70B Llama 3.3 (not Llama 4), ~40GB Q4
+}
+
+# Models that require OpenRouter (no local option for 48GB)
+# MoE models require VRAM for ALL weights, not just active parameters
+HOSTED_ONLY_MODELS = {
+    # Proprietary (API-only)
+    'opus', 'gemini', 'chatgpt', 'grok', 'qwen',
+    # Open weights but too large for 48GB even at Q4
+    'deepseek',   # 671B total → ~386GB Q4 (use deepseek-local for 32B distilled)
+    'kimi',       # 1T total → ~373GB Q4
+    'mistral',    # 675B total → ~400GB Q4 (use mistral-local for 12B Nemo)
+    'minimax',    # 230B total → ~55GB Q4 min
+    'llama',      # 400B total → ~243GB Q4
+}
+
+
+# ============================================================================
+# GPU Validation for Local Mode
+# ============================================================================
+
+def validate_dual_3090():
+    """Validate dual RTX 3090 setup. Hard fail if not detected.
+
+    Local mode requires exactly 2x RTX 3090 GPUs (48GB total VRAM)
+    for running GLM-4.7-Flash locally via ollama.
+    """
+    try:
+        import torch
+    except ImportError:
+        print("ERROR: PyTorch not installed. Local mode requires PyTorch with CUDA.")
+        print("Install with: pip install torch")
+        sys.exit(1)
+
+    if not torch.cuda.is_available():
+        print("ERROR: CUDA not available. Local mode requires 2x RTX 3090 GPUs.")
+        sys.exit(1)
+
+    gpu_count = torch.cuda.device_count()
+    if gpu_count < 2:
+        print(f"ERROR: Found {gpu_count} GPU(s). Local mode requires 2x RTX 3090 GPUs.")
+        sys.exit(1)
+
+    # Validate both GPUs are RTX 3090
+    for i in range(2):
+        name = torch.cuda.get_device_name(i)
+        if "3090" not in name:
+            print(f"ERROR: GPU {i} is '{name}'. Local mode requires RTX 3090.")
+            sys.exit(1)
+
+    gpu0 = torch.cuda.get_device_name(0)
+    gpu1 = torch.cuda.get_device_name(1)
+    print(f"✅ Validated: 2x RTX 3090 detected")
+    print(f"   GPU 0: {gpu0}")
+    print(f"   GPU 1: {gpu1}")
+
+
+def check_ollama_available():
+    """Check if ollama is installed and running."""
+    import shutil
+    import subprocess
+
+    # Check if ollama binary exists
+    if not shutil.which('ollama'):
+        print("ERROR: ollama not installed.")
+        print("Install from: https://ollama.ai")
+        sys.exit(1)
+
+    # Check if ollama server is running
+    try:
+        result = subprocess.run(
+            ['ollama', 'list'],
+            capture_output=True,
+            text=True,
+            timeout=5
+        )
+        if result.returncode != 0:
+            print("ERROR: ollama server not running.")
+            print("Start with: ollama serve")
+            sys.exit(1)
+    except subprocess.TimeoutExpired:
+        print("ERROR: ollama server not responding.")
+        print("Start with: ollama serve")
+        sys.exit(1)
+    except Exception as e:
+        print(f"ERROR: Could not connect to ollama: {e}")
+        sys.exit(1)
+
+    print("✅ ollama is available")
 
 
 # ============================================================================
@@ -302,6 +434,50 @@ def build_context_summary():
     
     return "\n\n".join(context_parts) if context_parts else "No additional context available."
 
+def process_with_local_model(transcript, context, processor):
+    """Process transcript using local ollama model.
+
+    Supported local models (48GB dual 3090s):
+      glm, deepseek-local, qwen-local, mistral-local, llama-local
+
+    Args:
+        transcript: The raw transcript text to process
+        context: Context summary (glossary, people, terms)
+        processor: Processor name from LOCAL_MODELS
+
+    Returns:
+        Processed transcript text
+    """
+    try:
+        import ollama
+    except ImportError:
+        raise ImportError("ollama package not installed. Install with: pip install ollama")
+
+    model_name = LOCAL_MODELS.get(processor)
+    if not model_name:
+        raise ValueError(f"Processor '{processor}' not available locally. Only 'glm' supports local mode.")
+
+    prompt = build_prompt(context, transcript)
+
+    print(f"      Processing locally with {model_name}: ", end='', flush=True)
+
+    # Use ollama chat API
+    response = ollama.chat(
+        model=model_name,
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": prompt}
+        ],
+        options={
+            "num_ctx": 32768,  # Context window
+        }
+    )
+
+    result = response['message']['content']
+    print(" ✓")
+    return result
+
+
 def process_with_openrouter(transcript, api_key, context, processor):
     """Process transcript using any model via OpenRouter with streaming.
 
@@ -415,25 +591,36 @@ def validate_output_quality(input_text, output_text, provider):
     
     return len(issues) == 0, issues
 
-def process_single_combination(transcript_path, provider, api_keys, context):
-    """Process single transcript with single provider."""
+def process_single_combination(transcript_path, provider, api_keys, context, mode='hosted'):
+    """Process single transcript with single provider.
+
+    Args:
+        transcript_path: Path to transcript file
+        provider: Processor name (opus, gemini, glm, etc.)
+        api_keys: Dict with 'openrouter' key (only needed for hosted mode)
+        context: Context summary for the prompt
+        mode: 'hosted' (OpenRouter API) or 'local' (ollama)
+    """
     start_time = time.time()
-    
+
     # Load transcript
     with open(transcript_path, 'r', encoding='utf-8') as f:
         transcript = f.read()
-    
+
     # Get output file paths for potential cleanup
     basename, transcriber = extract_transcriber_from_filename(transcript_path)
     # Note: outputs are stored under outputs/<basename>/...
     output_txt = Path("outputs") / basename / f"{basename}_{transcriber}_{provider}.txt"
     output_md = Path("outputs") / basename / f"{basename}_{transcriber}_{provider}.md"
-    
-    # Process with OpenRouter (all providers use single API key)
+
+    # Process with local model or OpenRouter based on mode
     corrected = None
 
     try:
-        corrected = process_with_openrouter(transcript, api_keys['openrouter'], context, provider)
+        if mode == 'local':
+            corrected = process_with_local_model(transcript, context, provider)
+        else:
+            corrected = process_with_openrouter(transcript, api_keys['openrouter'], context, provider)
     except Exception as e:
         elapsed = time.time() - start_time
         print(f"      {failure(f'Processing failed ({elapsed:.1f}s): {e}')}")
@@ -501,13 +688,21 @@ def main():
     
     parser.add_argument("transcripts", nargs='+', help="Transcript file path(s)")
     parser.add_argument("--processors", required=True,
-                       help="Comma-separated list of processors (opus,gemini,deepseek,chatgpt,qwen,kimi,glm,minimax,llama,grok,mistral)")
+                       help="Comma-separated list of processors. Hosted: opus,gemini,deepseek,chatgpt,qwen,kimi,glm,minimax,llama,grok,mistral. Local-only: deepseek-local,qwen-local,mistral-local,llama-local")
+    parser.add_argument("--mode", choices=['hosted', 'local'], default='hosted',
+                       help="Run models via OpenRouter API (hosted, default) or locally via ollama (local)")
 
     args = parser.parse_args()
 
     # Parse processors
     processors = [p.strip() for p in args.processors.split(',')]
-    valid_processors = {'opus', 'gemini', 'deepseek', 'chatgpt', 'qwen', 'kimi', 'glm', 'minimax', 'llama', 'grok', 'mistral'}
+    # All valid processor names (hosted + local-only)
+    valid_processors = {
+        # Hosted (OpenRouter) - full-size models
+        'opus', 'gemini', 'deepseek', 'chatgpt', 'qwen', 'kimi', 'glm', 'minimax', 'llama', 'grok', 'mistral',
+        # Local-only (ollama) - models that fit on 48GB
+        'deepseek-local', 'qwen-local', 'mistral-local', 'llama-local',
+    }
 
     for proc in processors:
         if proc not in valid_processors:
@@ -515,23 +710,71 @@ def main():
             print(f"Valid options: {', '.join(sorted(valid_processors))}")
             sys.exit(1)
 
-    # Check OpenRouter API key (single key for all providers)
     api_keys = {}
 
-    openrouter_key, error = validate_api_key('OPENROUTER_API_KEY')
-    if error:
-        print(f"\nError: {error}")
-        print("All processors require OPENROUTER_API_KEY to be set.")
-        print("Get your API key from: https://openrouter.ai/keys")
-        sys.exit(1)
+    # Handle local vs hosted mode
+    if args.mode == 'local':
+        print("\n" + "="*70)
+        print("LOCAL MODE - Running models via ollama")
+        print("="*70)
 
-    api_keys['openrouter'] = openrouter_key
+        # Validate hardware: require exactly 2x RTX 3090
+        validate_dual_3090()
 
-    # Show which models will be used
-    print("\nModels via OpenRouter:")
-    for proc in processors:
-        model_id = OPENROUTER_MODELS.get(proc, 'unknown')
-        print(f"  {proc}: {model_id}")
+        # Validate ollama is available
+        check_ollama_available()
+
+        # Validate all requested processors support local mode
+        unsupported = [p for p in processors if p not in LOCAL_MODELS]
+        if unsupported:
+            print(f"\nERROR: Processor(s) not available locally: {', '.join(unsupported)}")
+            print(f"\nAvailable local models (fit on 48GB dual 3090s):")
+            print(f"  glm            → GLM-4.7-Flash (~19GB)")
+            print(f"  deepseek-local → DeepSeek-R1 70B (~40GB)")
+            print(f"  qwen-local     → Qwen3 72B (~45GB)")
+            print(f"  mistral-local  → Mixtral 8x7B (~27GB)")
+            print(f"  llama-local    → Llama 3.3 70B (~40GB)")
+            print(f"\nNote: Full-size models require too much VRAM:")
+            print(f"  deepseek: ~386GB | kimi: ~373GB | mistral: ~400GB")
+            print(f"  minimax: ~55GB   | llama: ~243GB")
+            print(f"\nUse --mode hosted for: {', '.join(sorted(HOSTED_ONLY_MODELS))}")
+            sys.exit(1)
+
+        # Show which local models will be used
+        print("\nLocal models via ollama:")
+        for proc in processors:
+            model_name = LOCAL_MODELS.get(proc, 'unknown')
+            print(f"  {proc}: {model_name}")
+
+    else:
+        # Hosted mode (default) - use OpenRouter
+        # Validate no local-only processors are requested
+        local_only = [p for p in processors if p in LOCAL_MODELS and p not in OPENROUTER_MODELS]
+        if local_only:
+            print(f"\nERROR: Processor(s) only available in local mode: {', '.join(local_only)}")
+            print(f"\nThese are local-only models for ollama inference:")
+            print(f"  deepseek-local → DeepSeek-R1 70B (not V3.2)")
+            print(f"  qwen-local     → Qwen3 72B (not Max)")
+            print(f"  mistral-local  → Mixtral 8x7B (not Large)")
+            print(f"  llama-local    → Llama 3.3 70B (not Llama 4)")
+            print(f"\nUse --mode local to run these, or use the hosted equivalents:")
+            print(f"  deepseek, qwen, mistral, llama (via OpenRouter)")
+            sys.exit(1)
+
+        openrouter_key, error = validate_api_key('OPENROUTER_API_KEY')
+        if error:
+            print(f"\nError: {error}")
+            print("All processors require OPENROUTER_API_KEY to be set.")
+            print("Get your API key from: https://openrouter.ai/keys")
+            sys.exit(1)
+
+        api_keys['openrouter'] = openrouter_key
+
+        # Show which models will be used
+        print("\nModels via OpenRouter:")
+        for proc in processors:
+            model_id = OPENROUTER_MODELS.get(proc, 'unknown')
+            print(f"  {proc}: {model_id}")
     
     # Build context once
     print("\nBuilding context from glossary...")
@@ -564,7 +807,7 @@ def main():
             print(f"[{combo_num}/{total}] {Path(transcript_path).name} + {processor}")
             
             result, elapsed = process_single_combination(
-                transcript_path, processor, api_keys, context
+                transcript_path, processor, api_keys, context, mode=args.mode
             )
             
             if result:

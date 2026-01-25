@@ -3,21 +3,53 @@
 All 11 AI models are accessed through **OpenRouter** with a single API key.
 Get your key from: https://openrouter.ai/keys
 
-## Quick Reference
+**Local Mode**: 5 models run locally via ollama on dual RTX 3090s (48GB).
 
-| Processor | Model | OpenRouter ID | Context | Output |
-|-----------|-------|---------------|---------|--------|
-| **opus** | Claude Opus 4.5 | `anthropic/claude-opus-4.5` | 200K | 64K |
-| **gemini** | Gemini 3 Pro | `google/gemini-3-pro-preview` | 1M | 64K |
-| **chatgpt** | GPT-5.2 | `openai/gpt-5.2` | 400K | 128K |
-| **grok** | Grok 4 | `x-ai/grok-4` | 256K | 8K |
-| **qwen** | Qwen3-Max | `qwen/qwen3-max` | 256K | 8K |
-| **kimi** | Kimi K2 | `moonshotai/kimi-k2` | 256K | 16K |
-| **mistral** | Mistral Large | `mistralai/mistral-large-2411` | 256K | 8K |
-| **minimax** | MiniMax M2.1 | `minimax/minimax-m2.1` | 4M | 8K |
-| **llama** | Llama 4 Maverick | `meta-llama/llama-4-maverick:free` | 1M | 8K |
-| **glm** | GLM-4.7 | `z-ai/glm-4.7` | 203K | 8K |
-| **deepseek** | DeepSeek V3.2 | `deepseek/deepseek-chat` | 128K | 8K |
+## Hosted Models (OpenRouter)
+
+| Processor | Model | OpenRouter ID | Context | Weights |
+|-----------|-------|---------------|---------|---------|
+| **opus** | Claude Opus 4.5 | `anthropic/claude-opus-4.5` | 200K | Closed |
+| **gemini** | Gemini 3 Pro | `google/gemini-3-pro-preview` | 1M | Closed |
+| **chatgpt** | GPT-5.2 | `openai/gpt-5.2` | 400K | Closed |
+| **grok** | Grok 4 | `x-ai/grok-4` | 256K | Closed |
+| **qwen** | Qwen3-Max | `qwen/qwen3-max` | 256K | Closed |
+| **kimi** | Kimi K2 | `moonshotai/kimi-k2` | 256K | Open (1T) |
+| **mistral** | Mistral Large | `mistralai/mistral-large-2411` | 256K | Open (675B) |
+| **minimax** | MiniMax M2.1 | `minimax/minimax-m2.1` | 4M | Open (230B) |
+| **llama** | Llama 4 Maverick | `meta-llama/llama-4-maverick` | 1M | Open (400B) |
+| **deepseek** | DeepSeek V3.2 | `deepseek/deepseek-chat` | 128K | Open (671B) |
+| **glm** | GLM-4.7 | `z-ai/glm-4.7` | 203K | Open (30B) |
+
+## Local Models (ollama, fit on 48GB)
+
+| Processor | Model | ollama ID | VRAM | Notes |
+|-----------|-------|-----------|------|-------|
+| **glm** | GLM-4.7-Flash | `glm-4.7-flash:q4_K_M` | ~19GB | Same as hosted, just local |
+| **deepseek-local** | DeepSeek-R1 70B | `deepseek-r1:70b` | ~40GB | Distilled (not V3.2) |
+| **qwen-local** | Qwen3 72B | `qwen3:72b` | ~45GB | Dense (not Max) |
+| **mistral-local** | Mixtral 8x7B | `mixtral:8x7b` | ~27GB | MoE 47B (not Large) |
+| **llama-local** | Llama 3.3 70B | `llama3.3:70b` | ~40GB | Llama 3.3 (not Llama 4) |
+
+### Local-Only Models
+
+The `-local` suffix models are **different model families** that fit on 48GB:
+- `deepseek-local` → DeepSeek-R1 70B (reasoning distilled, not V3.2 671B)
+- `qwen-local` → Qwen3 72B (dense, not Qwen3-Max)
+- `mistral-local` → Mixtral 8x7B (47B MoE, not Mistral Large 675B)
+- `llama-local` → Llama 3.3 70B (not Llama 4 Maverick 400B)
+
+These are only available with `--mode local` and have no hosted equivalent.
+
+### Why Full-Size Open Models Don't Fit Locally
+
+MoE (Mixture of Experts) models need VRAM for ALL weights, not just active:
+- **Kimi K2**: 1T total, 32B active → still needs ~373GB
+- **Mistral Large**: 675B total, 41B active → still needs ~400GB
+- **Llama 4 Maverick**: 400B total, 17B active → still needs ~243GB
+- **DeepSeek V3.2**: 671B total, 37B active → still needs ~386GB
+
+**GLM-4.7-Flash** is the exception: 30B total, 3B active → only ~19GB at Q4
 
 ## Setup
 
@@ -40,7 +72,7 @@ python3 scripts/test_ai_providers.py
 
 ## Usage
 
-### Process Transcripts
+### Process Transcripts (Hosted Mode - Default)
 ```bash
 # Single processor
 python3 scripts/process_single_post_process.py transcript.txt --processors grok
@@ -50,7 +82,30 @@ python3 scripts/process_single_post_process.py transcript.txt --processors opus,
 
 # All processors
 python3 scripts/process_single_post_process.py transcript.txt --processors opus,gemini,deepseek,chatgpt,qwen,kimi,glm,minimax,llama,grok,mistral
+
+# Explicit hosted mode
+python3 scripts/process_single_post_process.py transcript.txt --processors grok --mode hosted
 ```
+
+### Process Transcripts (Local Mode)
+```bash
+# Run GLM locally via ollama (requires 2x RTX 3090)
+python3 scripts/process_single_post_process.py transcript.txt --processors glm --mode local
+
+# Run large local models (70B+)
+python3 scripts/process_single_post_process.py transcript.txt --processors deepseek-local --mode local
+python3 scripts/process_single_post_process.py transcript.txt --processors qwen-local --mode local
+python3 scripts/process_single_post_process.py transcript.txt --processors llama-local --mode local
+python3 scripts/process_single_post_process.py transcript.txt --processors mistral-local --mode local
+
+# Multiple local models (run sequentially)
+python3 scripts/process_single_post_process.py transcript.txt --processors glm,deepseek-local,llama-local --mode local
+```
+
+**Note**: Local mode requires:
+- 2x NVIDIA RTX 3090 GPUs (48GB total VRAM)
+- ollama installed and running (`ollama serve`)
+- Models pulled (see Local Model Setup below)
 
 ### Test Context Limits
 ```bash
@@ -89,7 +144,7 @@ python3 scripts/test_context_limits.py --providers all
 #### Llama 4 Maverick (`llama`)
 - **Context**: 1M tokens
 - **Best For**: Cost-effective processing of long documents
-- **Notes**: Open model, free tier available
+- **Notes**: Open model via Meta
 
 #### MiniMax M2.1 (`minimax`)
 - **Context**: 4M tokens (200K recommended)
@@ -140,7 +195,7 @@ All 11 models have sufficient context for typical transcripts.
 
 ### Best Value
 1. **DeepSeek V3.2** - Low cost, good quality
-2. **Llama 4 Maverick** - Free tier available
+2. **Llama 4 Maverick** - Open model, cost-effective
 3. **Kimi K2** - Aggressive cache pricing
 
 ## OpenRouter Benefits
@@ -150,6 +205,44 @@ All 11 models have sufficient context for typical transcripts.
 - **Automatic failover** if a provider is down
 - **Pay-as-you-go** with no monthly minimums
 - **~5% markup** over direct API pricing
+
+## Local Mode (--mode local)
+
+Run models locally via ollama instead of OpenRouter API.
+
+### Hardware Requirements
+- **Required**: 2x NVIDIA RTX 3090 (48GB total VRAM)
+- **Hard fail**: Script exits if hardware not detected
+
+### Available Local Models
+
+| Processor | Model | VRAM | ollama pull command |
+|-----------|-------|------|---------------------|
+| `glm` | GLM-4.7-Flash | ~19GB | `ollama pull glm-4.7-flash:q4_K_M` |
+| `deepseek-local` | DeepSeek-R1 70B | ~40GB | `ollama pull deepseek-r1:70b` |
+| `qwen-local` | Qwen3 72B | ~45GB | `ollama pull qwen3:72b` |
+| `mistral-local` | Mixtral 8x7B | ~27GB | `ollama pull mixtral:8x7b` |
+| `llama-local` | Llama 3.3 70B | ~40GB | `ollama pull llama3.3:70b` |
+
+### Local Model Setup
+```bash
+# Install ollama
+curl -fsSL https://ollama.ai/install.sh | sh
+
+# Start ollama server
+ollama serve
+
+# Pull the models you want to use
+ollama pull glm-4.7-flash:q4_K_M     # GLM-4.7-Flash (~19GB)
+ollama pull deepseek-r1:70b           # DeepSeek-R1 70B (~40GB)
+ollama pull qwen3:72b                 # Qwen3 72B (~45GB)
+ollama pull mixtral:8x7b              # Mixtral 8x7B (~27GB)
+ollama pull llama3.3:70b              # Llama 3.3 70B (~40GB)
+
+# Test local mode
+python3 scripts/process_single_post_process.py transcript.txt --processors glm --mode local
+python3 scripts/process_single_post_process.py transcript.txt --processors deepseek-local --mode local
+```
 
 ## Architecture Notes
 

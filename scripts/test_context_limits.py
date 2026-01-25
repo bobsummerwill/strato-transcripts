@@ -120,7 +120,7 @@ OPENROUTER_MODELS = {
         'test_sizes': [10000, 50000, 100000, 150000, 200000],
     },
     'llama': {
-        'model_id': 'meta-llama/llama-4-maverick:free',
+        'model_id': 'meta-llama/llama-4-maverick',
         'display_name': 'Llama 4 Maverick',
         'provider': 'Meta/Together',
         'advertised': '1,000,000 tokens',
@@ -148,7 +148,7 @@ MODEL_PRIORITY = {
     'anthropic/claude-opus-4.5': 95,
     'openai/gpt-5.2': 90,
     'google/gemini-3-pro-preview': 85,
-    'meta-llama/llama-4-maverick:free': 80,
+    'meta-llama/llama-4-maverick': 80,
     'qwen/qwen3-max': 75,
     'moonshotai/kimi-k2': 70,
     'z-ai/glm-4.7': 65,
