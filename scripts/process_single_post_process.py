@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """
 AI transcript post-processor for Ethereum/blockchain content.
-Batch process transcripts with multiple AI providers.
-Supports: opus, gemini, deepseek, chatgpt.
+Batch process transcripts with multiple AI providers via OpenRouter.
+Supports: opus, gemini, deepseek, chatgpt, qwen, kimi, glm, minimax, llama, grok, mistral.
+
+All models are accessed through OpenRouter (https://openrouter.ai) with a single API key.
 """
 
 import os
@@ -15,6 +17,32 @@ import argparse
 # Import shared utilities
 from common import (Colors, success, failure, skip, validate_api_key,
                     load_people_list, load_terms_list, cleanup_gpu_memory)
+
+# OpenRouter model ID mapping for each processor
+# All accessed via https://openrouter.ai/api/v1
+OPENROUTER_MODELS = {
+    'opus': 'anthropic/claude-opus-4-5',           # Claude Opus 4.5 - 200K context
+    'gemini': 'google/gemini-3-pro-preview',       # Gemini 3 Pro - 1M context
+    'deepseek': 'deepseek/deepseek-chat',          # DeepSeek V3.2 - 128K context
+    'chatgpt': 'openai/gpt-5.2',                   # GPT-5.2 - 400K context
+    'qwen': 'qwen/qwen3-max',                      # Qwen3-Max - 256K context
+    'kimi': 'moonshotai/kimi-k2',                  # Kimi K2 - 256K context
+    'glm': 'zhipu/glm-4-plus',                     # GLM-4-Plus - 128K context (4.6 equivalent)
+    'minimax': 'minimax/minimax-m2.1',             # MiniMax M2.1 - 4M context
+    'llama': 'meta-llama/llama-4-maverick:free',   # Llama 4 Maverick - 1M context
+    'grok': 'x-ai/grok-4',                         # Grok 4 - 256K context
+    'mistral': 'mistralai/mistral-large-2411',     # Mistral Large - 256K context
+}
+
+# Max output tokens per model (some models need higher limits)
+OPENROUTER_MAX_TOKENS = {
+    'opus': 64000,      # Opus supports 64K output
+    'gemini': 64000,    # Gemini supports 64K output
+    'chatgpt': 16384,   # GPT-5.2 conservative default
+    'grok': 32768,      # Grok uses internal reasoning, needs more tokens
+    'glm': 8192,        # GLM standard
+    'default': 8192,    # Default for others
+}
 
 
 # ============================================================================
@@ -125,8 +153,11 @@ WHAT TO FIX (Corrections Only)
 ✓ Technical term spellings and capitalization
   Examples: "etherium" → "Ethereum", "nfts" → "NFTs", "solidity" → "Solidity"
   
-✓ Proper names using the people list provided
-  Examples: Correct misspellings of "Vitalik", "Gavin Wood", etc.
+✓ Proper names - MUST use EXACT spellings from the "Key People" list above
+  - This list contains the CANONICAL spellings of all names
+  - "Bob Somersall" → "Bob Summerwill" (check the list!)
+  - "Viktor Tron" → "Viktor Trón" (if accented version in list)
+  - When in doubt, use the EXACT spelling from the Key People list
   
 ✓ Blockchain terminology to match standard usage
   Examples: "ethereum" → "Ethereum", "bit coin" → "Bitcoin"
@@ -271,72 +302,38 @@ def build_context_summary():
     
     return "\n\n".join(context_parts) if context_parts else "No additional context available."
 
-def process_with_opus(transcript, api_key, context):
-    """Process transcript using Claude Opus 4.5 with streaming."""
-    try:
-        import anthropic
-    except ImportError:
-        raise ImportError("anthropic package not installed. Install with: pip install anthropic")
+def process_with_openrouter(transcript, api_key, context, processor):
+    """Process transcript using any model via OpenRouter with streaming.
 
-    client = anthropic.Anthropic(api_key=api_key)
-    prompt = build_prompt(context, transcript)
+    OpenRouter provides unified access to all major AI models with a single API key.
+    See OPENROUTER_MODELS for the mapping of processor names to model IDs.
 
-    print(f"      Processing: ", end='', flush=True)
+    Args:
+        transcript: The raw transcript text to process
+        api_key: OpenRouter API key
+        context: Context summary (glossary, people, terms)
+        processor: Processor name (opus, gemini, deepseek, etc.)
 
-    result = ""
-    chunk_count = 0
-
-    with client.messages.stream(
-        model="claude-opus-4-5",
-        max_tokens=64000,  # Opus 4.5 max output tokens
-        messages=[{"role": "user", "content": prompt}]
-    ) as stream:
-        for text in stream.text_stream:
-            result += text
-            chunk_count += 1
-            if chunk_count % 100 == 0:
-                print(".", end='', flush=True)
-
-    print(" ✓")
-    return result
-
-def process_with_gemini(transcript, api_key, context):
-    """Process transcript using Gemini 3.0 Pro with streaming."""
-    model = "models/gemini-3-pro-preview"
-    try:
-        import google.generativeai as genai
-    except ImportError:
-        raise ImportError("google-generativeai package not installed")
-    
-    genai.configure(api_key=api_key)
-    prompt = build_prompt(context, transcript)
-    
-    print(f"      Processing: ", end='', flush=True)
-    
-    model_instance = genai.GenerativeModel(model)
-    result = ""
-    chunk_count = 0
-    
-    response = model_instance.generate_content(prompt, stream=True)
-    
-    for chunk in response:
-        if chunk.text:
-            result += chunk.text
-            chunk_count += 1
-            if chunk_count % 100 == 0:
-                print(".", end='', flush=True)
-    
-    print(" ✓")
-    return result
-
-def process_with_deepseek(transcript, api_key, context):
-    """Process transcript using DeepSeek-V3 with streaming."""
+    Returns:
+        Processed transcript text
+    """
     try:
         from openai import OpenAI
     except ImportError:
         raise ImportError("openai package not installed. Install with: pip install openai")
 
-    client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
+    # Get model ID for this processor
+    model_id = OPENROUTER_MODELS.get(processor)
+    if not model_id:
+        raise ValueError(f"Unknown processor: {processor}")
+
+    # Get max tokens for this model
+    max_tokens = OPENROUTER_MAX_TOKENS.get(processor, OPENROUTER_MAX_TOKENS['default'])
+
+    client = OpenAI(
+        api_key=api_key,
+        base_url="https://openrouter.ai/api/v1"
+    )
     prompt = build_prompt(context, transcript)
 
     print(f"      Processing: ", end='', flush=True)
@@ -344,18 +341,24 @@ def process_with_deepseek(transcript, api_key, context):
     result = ""
     chunk_count = 0
 
+    # OpenRouter uses standard OpenAI-compatible API
     stream = client.chat.completions.create(
-        model="deepseek-chat",  # DeepSeek-V3.2 (latest)
+        model=model_id,
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": prompt}
         ],
-        max_tokens=8192,  # DeepSeek API limit
-        stream=True
+        max_tokens=max_tokens,
+        stream=True,
+        # OpenRouter-specific headers can be passed via extra_headers if needed
+        extra_headers={
+            "HTTP-Referer": "https://github.com/strato-net/strato-transcripts",
+            "X-Title": "Strato Transcripts"
+        }
     )
 
     for chunk in stream:
-        if chunk.choices[0].delta.content:
+        if chunk.choices and chunk.choices[0].delta.content:
             result += chunk.choices[0].delta.content
             chunk_count += 1
             if chunk_count % 100 == 0:
@@ -364,81 +367,6 @@ def process_with_deepseek(transcript, api_key, context):
     print(" ✓")
     return result
 
-
-def process_with_chatgpt(transcript, api_key, context):
-    """Process transcript using ChatGPT 5.2 (OpenAI) with streaming.
-
-    Notes:
-    - Uses the OpenAI Python SDK already present in requirements.
-    - Prefers the Responses API for streaming, with a fallback to Chat Completions
-      to maximize compatibility across OpenAI account/model settings.
-    """
-    try:
-        from openai import OpenAI
-    except ImportError:
-        raise ImportError("openai package not installed. Install with: pip install openai")
-
-    client = OpenAI(api_key=api_key)
-    prompt = build_prompt(context, transcript)
-
-    model = os.getenv("CHATGPT_MODEL", "gpt-5.2")
-    # Keep default conservative; some accounts/models enforce tighter limits.
-    max_output_tokens = int(os.getenv("CHATGPT_MAX_OUTPUT_TOKENS", "16384"))
-
-    print(f"      Processing: ", end='', flush=True)
-
-    result = ""
-    chunk_count = 0
-
-    # Preferred: Responses API streaming
-    try:
-        with client.responses.stream(
-            model=model,
-            input=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": prompt},
-            ],
-            max_output_tokens=max_output_tokens,
-        ) as stream:
-            for event in stream:
-                # Event types vary slightly by SDK version; handle the common ones.
-                if getattr(event, "type", None) == "response.output_text.delta":
-                    delta = getattr(event, "delta", None)
-                    if delta:
-                        result += delta
-                        chunk_count += 1
-                        if chunk_count % 100 == 0:
-                            print(".", end='', flush=True)
-            # Ensure we drain and finalize cleanly.
-            _ = stream.get_final_response()
-
-        print(" ✓")
-        return result
-    except Exception:
-        # Fallback: Chat Completions streaming
-        pass
-
-    stream = client.chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": prompt},
-        ],
-        # Some OpenAI models (incl. ChatGPT 5.x) require max_completion_tokens.
-        max_completion_tokens=max_output_tokens,
-        stream=True,
-    )
-
-    for chunk in stream:
-        delta = chunk.choices[0].delta.content
-        if delta:
-            result += delta
-            chunk_count += 1
-            if chunk_count % 100 == 0:
-                print(".", end='', flush=True)
-
-    print(" ✓")
-    return result
 
 def estimate_tokens(text):
     """Estimate tokens (words × 1.3)."""
@@ -501,18 +429,11 @@ def process_single_combination(transcript_path, provider, api_keys, context):
     output_txt = Path("outputs") / basename / f"{basename}_{transcriber}_{provider}.txt"
     output_md = Path("outputs") / basename / f"{basename}_{transcriber}_{provider}.md"
     
-    # Process with appropriate provider
+    # Process with OpenRouter (all providers use single API key)
     corrected = None
-    
+
     try:
-        if provider == "opus":
-            corrected = process_with_opus(transcript, api_keys['opus'], context)
-        elif provider == "gemini":
-            corrected = process_with_gemini(transcript, api_keys['gemini'], context)
-        elif provider == "deepseek":
-            corrected = process_with_deepseek(transcript, api_keys['deepseek'], context)
-        elif provider == "chatgpt":
-            corrected = process_with_chatgpt(transcript, api_keys['chatgpt'], context)
+        corrected = process_with_openrouter(transcript, api_keys['openrouter'], context, provider)
     except Exception as e:
         elapsed = time.time() - start_time
         print(f"      {failure(f'Processing failed ({elapsed:.1f}s): {e}')}")
@@ -580,48 +501,37 @@ def main():
     
     parser.add_argument("transcripts", nargs='+', help="Transcript file path(s)")
     parser.add_argument("--processors", required=True,
-                       help="Comma-separated list of processors (opus,gemini,deepseek,chatgpt)")
-    
+                       help="Comma-separated list of processors (opus,gemini,deepseek,chatgpt,qwen,kimi,glm,minimax,llama,grok,mistral)")
+
     args = parser.parse_args()
-    
+
     # Parse processors
     processors = [p.strip() for p in args.processors.split(',')]
-    valid_processors = {'opus', 'gemini', 'deepseek', 'chatgpt'}
-    
+    valid_processors = {'opus', 'gemini', 'deepseek', 'chatgpt', 'qwen', 'kimi', 'glm', 'minimax', 'llama', 'grok', 'mistral'}
+
     for proc in processors:
         if proc not in valid_processors:
             print(f"Error: Unknown processor '{proc}'")
             print(f"Valid options: {', '.join(sorted(valid_processors))}")
             sys.exit(1)
-    
-    # Check API keys using utility
+
+    # Check OpenRouter API key (single key for all providers)
     api_keys = {}
-    skip_processors = []
-    
-    # Map processor names to their environment variable names
-    key_mapping = {
-        'opus': 'ANTHROPIC_API_KEY',       # Claude Opus 4.5 via Anthropic
-        'gemini': 'GOOGLE_API_KEY',        # Gemini 3.0 Pro via Google
-        'deepseek': 'DEEPSEEK_API_KEY',    # DeepSeek-V3 via DeepSeek
-        'chatgpt': 'OPENAI_API_KEY'        # ChatGPT 5.2 via OpenAI
-    }
-    
-    for proc in processors:
-        env_var = key_mapping.get(proc)
-        if env_var:
-            key, error = validate_api_key(env_var)
-            if error:
-                print(f"⊘ Skipping {proc}: {error}")
-                skip_processors.append(proc)
-            else:
-                api_keys[proc] = key
-    
-    # Remove skipped processors
-    processors = [p for p in processors if p not in skip_processors]
-    
-    if not processors:
-        print("\nError: No processors available (all API keys missing)")
+
+    openrouter_key, error = validate_api_key('OPENROUTER_API_KEY')
+    if error:
+        print(f"\nError: {error}")
+        print("All processors require OPENROUTER_API_KEY to be set.")
+        print("Get your API key from: https://openrouter.ai/keys")
         sys.exit(1)
+
+    api_keys['openrouter'] = openrouter_key
+
+    # Show which models will be used
+    print("\nModels via OpenRouter:")
+    for proc in processors:
+        model_id = OPENROUTER_MODELS.get(proc, 'unknown')
+        print(f"  {proc}: {model_id}")
     
     # Build context once
     print("\nBuilding context from glossary...")
@@ -674,7 +584,6 @@ def main():
     print(f"Total combinations: {total}")
     print(f"Successful: {success_count}")
     print(f"Failed: {failed_count}")
-    print(f"Skipped: {len(skip_processors) * len(args.transcripts)}")
     print()
     print(f"Total time: {pipeline_elapsed:.1f}s ({pipeline_elapsed/60:.1f}min)")
     

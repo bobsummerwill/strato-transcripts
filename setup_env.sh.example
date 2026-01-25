@@ -2,8 +2,9 @@
 # ==============================================================================
 # Environment Variables for WhisperX Transcription + AI Post-Processing
 # ==============================================================================
-# Copy this file to setup_env.sh and fill in your API keys
-# Only HF_TOKEN is required. AI provider keys are optional based on your usage.
+# Copy this file to setup_env.sh and fill in your API keys.
+# Only HF_TOKEN is required for transcription.
+# OPENROUTER_API_KEY provides access to all 11 AI post-processing models.
 
 # ==============================================================================
 # REQUIRED: HuggingFace Token (for WhisperX diarization models)
@@ -15,24 +16,27 @@
 export HF_TOKEN=""
 
 # ==============================================================================
-# OPTIONAL: AI Provider API Keys (for post-processing transcripts)
+# AI POST-PROCESSING: OpenRouter API Key (single key for all 11 models)
 # ==============================================================================
-
-# Anthropic (Claude Opus 4.5)
-# Get key from: https://console.anthropic.com/
-export ANTHROPIC_API_KEY=""
-
-# Google (Gemini 3.0 Pro)
-# Get key from: https://makersuite.google.com/app/apikey
-export GOOGLE_API_KEY=""
-
-# DeepSeek (DeepSeek-V3)
-# Get key from: https://platform.deepseek.com/
-export DEEPSEEK_API_KEY=""
-
-# OpenAI (ChatGPT 5.2)
-# Get key from: https://platform.openai.com/api-keys
-export OPENAI_API_KEY=""
+# OpenRouter provides unified access to all major AI models with one API key.
+# Get your key from: https://openrouter.ai/keys
+#
+# SUPPORTED MODELS (via OpenRouter):
+#   opus     - Claude Opus 4.5 (Anthropic)     - 200K context
+#   gemini   - Gemini 3 Pro (Google)           - 1M context
+#   deepseek - DeepSeek V3.2                   - 128K context
+#   chatgpt  - GPT-5.2 (OpenAI)                - 400K context
+#   qwen     - Qwen3-Max (Alibaba)             - 256K context
+#   kimi     - Kimi K2 (Moonshot)              - 256K context
+#   glm      - GLM-4-Plus (Zhipu)              - 128K context
+#   minimax  - MiniMax M2.1                    - 4M context
+#   llama    - Llama 4 Maverick (Meta)         - 1M context
+#   grok     - Grok 4 (xAI)                    - 256K context
+#   mistral  - Mistral Large (Mistral AI)      - 256K context
+#
+# All models have sufficient context for typical transcripts (20K-45K tokens).
+# OpenRouter charges ~5% markup over direct API pricing.
+export OPENROUTER_API_KEY=""
 
 # ==============================================================================
 # OPTIONAL: Transcription Service API Keys
@@ -42,7 +46,7 @@ export OPENAI_API_KEY=""
 # Get key from: https://www.assemblyai.com/
 export ASSEMBLYAI_API_KEY=""
 
-# Replicate (Cloud WhisperX with speaker diarization)
+# Replicate (Cloud WhisperX transcription)
 # Get key from: https://replicate.com/account/api-tokens
 export REPLICATE_API_TOKEN=""
 
@@ -62,34 +66,17 @@ fi
 # Display Configuration
 # ==============================================================================
 echo "Environment variables set"
+
 if [ -n "$HF_TOKEN" ] && [ "$HF_TOKEN" != "" ]; then
   echo "  HF_TOKEN: SET"
 else
-  echo "  HF_TOKEN: NOT SET"
+  echo "  HF_TOKEN: NOT SET (required for WhisperX diarization)"
 fi
 
-if [ -n "$ANTHROPIC_API_KEY" ] && [ "$ANTHROPIC_API_KEY" != "" ]; then
-  echo "  ANTHROPIC_API_KEY: SET"
+if [ -n "$OPENROUTER_API_KEY" ] && [ "$OPENROUTER_API_KEY" != "" ]; then
+  echo "  OPENROUTER_API_KEY: SET (access to all 11 AI models)"
 else
-  echo "  ANTHROPIC_API_KEY: NOT SET"
-fi
-
-if [ -n "$GOOGLE_API_KEY" ] && [ "$GOOGLE_API_KEY" != "" ]; then
-  echo "  GOOGLE_API_KEY: SET"
-else
-  echo "  GOOGLE_API_KEY: NOT SET"
-fi
-
-if [ -n "$DEEPSEEK_API_KEY" ] && [ "$DEEPSEEK_API_KEY" != "" ]; then
-  echo "  DEEPSEEK_API_KEY: SET"
-else
-  echo "  DEEPSEEK_API_KEY: NOT SET"
-fi
-
-if [ -n "$OPENAI_API_KEY" ] && [ "$OPENAI_API_KEY" != "" ]; then
-  echo "  OPENAI_API_KEY: SET"
-else
-  echo "  OPENAI_API_KEY: NOT SET"
+  echo "  OPENROUTER_API_KEY: NOT SET"
 fi
 
 if [ -n "$ASSEMBLYAI_API_KEY" ] && [ "$ASSEMBLYAI_API_KEY" != "" ]; then
@@ -103,7 +90,6 @@ if [ -n "$REPLICATE_API_TOKEN" ] && [ "$REPLICATE_API_TOKEN" != "" ]; then
 else
   echo "  REPLICATE_API_TOKEN: NOT SET"
 fi
-
 
 echo ""
 echo "See README.md for usage examples and documentation."

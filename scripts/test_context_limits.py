@@ -1,34 +1,30 @@
 #!/usr/bin/env python3
 """
-Context Window Limit Testing Tool
-==================================
-Tests actual context window limits for AI providers to determine:
-- Real usable token limits
-- Whether chunking is needed
-- Optimal prompt sizes for quality
+Context Window Limit Testing Tool (OpenRouter Edition)
+=======================================================
+Tests actual context window limits for AI providers via OpenRouter.
 
-COMPLETE PROVIDER MATRIX:
+All post-processing providers are accessed through OpenRouter with a single API key.
 
-POST-PROCESSING PROVIDERS (AI TEXT CORRECTION):
-- Opus (Claude Opus 4.5 via Anthropic) - PREMIUM REASONING, 150K context
-- Sonnet (Claude Sonnet 4.5 via Anthropic) - BALANCED QUALITY, 150K context
-- Gemini (Gemini 3.0 Pro via Google) - TECHNICAL EXCELLENCE, 128K context
-- DeepSeek (DeepSeek-V3.2 via DeepSeek) - COST-EFFECTIVE, 128K context
+PROVIDER MATRIX (11 POST-PROCESSING PROVIDERS via OpenRouter):
+- opus: Claude Opus 4.5 - 200K context, 64K output
+- gemini: Gemini 3 Pro - 1M context, 64K output
+- deepseek: DeepSeek V3.2 - 128K context
+- chatgpt: GPT-5.2 - 400K context, 128K output
+- qwen: Qwen3-Max - 256K context
+- kimi: Kimi K2 - 256K context, 16K output
+- glm: GLM-4-Plus - 128K context (via OpenRouter)
+- minimax: MiniMax M2.1 - 4M context (200K recommended)
+- llama: Llama 4 Maverick - 1M context
+- grok: Grok 4 - 256K context
+- mistral: Mistral Large - 256K context
 
-TRANSCRIPTION PROVIDERS (ASR + DIARIZATION):
-- WhisperX (local GPU/CPU) - NO context limit, FREE, processes audio directly
-- WhisperX-Cloud (Replicate) - NO context limit, $2.88/hr, 2-3 min
-- AssemblyAI (cloud) - NO context limit, $1.08/hr, 3-4 min
+TRANSCRIPTION PROVIDERS (ASR + DIARIZATION - no context limits):
+- WhisperX (local GPU/CPU), WhisperX-Cloud (Replicate), AssemblyAI
 
-USAGE EXAMPLES:
-Test all major providers:
-    python3 scripts/test_context_limits.py --providers sonnet,opus,gemini,deepseek
-
-Test specific model:
-    python3 scripts/test_context_limits.py --providers opus
-
-Post-processing providers listed above do have context limits.
-Transcription (ASR) providers have no context limits since they process audio.
+USAGE:
+    python3 scripts/test_context_limits.py --providers opus,gemini,deepseek,chatgpt
+    python3 scripts/test_context_limits.py --providers all
 """
 
 import os
@@ -65,6 +61,103 @@ def print_warning(text):
     print(f"{Colors.YELLOW}⚠{Colors.RESET} {text}")
 
 
+# OpenRouter model mapping and context limits
+OPENROUTER_MODELS = {
+    'opus': {
+        'model_id': 'anthropic/claude-opus-4-5',
+        'display_name': 'Claude Opus 4.5',
+        'provider': 'Anthropic',
+        'advertised': '200,000 tokens',
+        'test_sizes': [10000, 50000, 100000, 150000, 190000, 200000],
+    },
+    'gemini': {
+        'model_id': 'google/gemini-3-pro-preview',
+        'display_name': 'Gemini 3 Pro',
+        'provider': 'Google',
+        'advertised': '1,000,000 tokens',
+        'test_sizes': [10000, 50000, 100000, 200000, 500000, 1000000],
+    },
+    'deepseek': {
+        'model_id': 'deepseek/deepseek-chat',
+        'display_name': 'DeepSeek V3.2',
+        'provider': 'DeepSeek',
+        'advertised': '128,000 tokens',
+        'test_sizes': [10000, 50000, 100000, 120000, 128000],
+    },
+    'chatgpt': {
+        'model_id': 'openai/gpt-5.2',
+        'display_name': 'GPT-5.2',
+        'provider': 'OpenAI',
+        'advertised': '400,000 tokens',
+        'test_sizes': [10000, 50000, 100000, 200000, 300000, 400000],
+    },
+    'qwen': {
+        'model_id': 'qwen/qwen3-max',
+        'display_name': 'Qwen3-Max',
+        'provider': 'Alibaba',
+        'advertised': '256,000 tokens',
+        'test_sizes': [10000, 50000, 100000, 150000, 200000, 256000],
+    },
+    'kimi': {
+        'model_id': 'moonshotai/kimi-k2',
+        'display_name': 'Kimi K2',
+        'provider': 'Moonshot',
+        'advertised': '256,000 tokens',
+        'test_sizes': [10000, 50000, 100000, 150000, 200000, 256000],
+    },
+    'glm': {
+        'model_id': 'zhipu/glm-4-plus',
+        'display_name': 'GLM-4-Plus',
+        'provider': 'Zhipu',
+        'advertised': '128,000 tokens',
+        'test_sizes': [10000, 50000, 100000, 120000, 128000],
+    },
+    'minimax': {
+        'model_id': 'minimax/minimax-m2.1',
+        'display_name': 'MiniMax M2.1',
+        'provider': 'MiniMax',
+        'advertised': '4,000,000 tokens (200K recommended)',
+        'test_sizes': [10000, 50000, 100000, 150000, 200000],
+    },
+    'llama': {
+        'model_id': 'meta-llama/llama-4-maverick:free',
+        'display_name': 'Llama 4 Maverick',
+        'provider': 'Meta/Together',
+        'advertised': '1,000,000 tokens',
+        'test_sizes': [10000, 50000, 100000, 200000, 500000, 1000000],
+    },
+    'grok': {
+        'model_id': 'x-ai/grok-4',
+        'display_name': 'Grok 4',
+        'provider': 'xAI',
+        'advertised': '256,000 tokens',
+        'test_sizes': [10000, 50000, 100000, 150000, 200000, 256000],
+    },
+    'mistral': {
+        'model_id': 'mistralai/mistral-large-2411',
+        'display_name': 'Mistral Large',
+        'provider': 'Mistral',
+        'advertised': '256,000 tokens',
+        'test_sizes': [10000, 50000, 100000, 150000, 200000, 256000],
+    },
+}
+
+# Model quality priority for recommendations
+MODEL_PRIORITY = {
+    'x-ai/grok-4': 100,
+    'anthropic/claude-opus-4-5': 95,
+    'openai/gpt-5.2': 90,
+    'google/gemini-3-pro-preview': 85,
+    'meta-llama/llama-4-maverick:free': 80,
+    'qwen/qwen3-max': 75,
+    'moonshotai/kimi-k2': 70,
+    'zhipu/glm-4-plus': 65,
+    'mistralai/mistral-large-2411': 60,
+    'deepseek/deepseek-chat': 55,
+    'minimax/minimax-m2.1': 50,
+}
+
+
 # ============================================================================
 # Token Counting
 # ============================================================================
@@ -77,28 +170,25 @@ def count_tokens_tiktoken(text, model="gpt-4"):
         return len(encoding.encode(text))
     except ImportError:
         print_warning("tiktoken not installed, using rough estimate")
-        return len(text.split()) * 1.3  # Rough estimate
+        return int(len(text.split()) * 1.3)
     except Exception as e:
         print_warning(f"tiktoken error: {e}, using rough estimate")
-        return len(text.split()) * 1.3
+        return int(len(text.split()) * 1.3)
 
 
 def generate_test_payload(target_tokens, model="gpt-4"):
     """Generate text payload of approximately target_tokens size"""
-    # Use repetitive but varied text to avoid compression
     base_text = """The quick brown fox jumps over the lazy dog. This is a test of the context
 window limits for various AI language models. We are testing to determine the actual usable
 token limits versus advertised specifications. Understanding these limits helps optimize
 prompt engineering and determine when chunking strategies are necessary for long documents.
 """
 
-    # Repeat until we reach target
     current_text = ""
     current_tokens = 0
-
     counter = 0
+
     while current_tokens < target_tokens:
-        # Add variation to prevent compression
         chunk = f"\n[Section {counter}] {base_text}"
         current_text += chunk
         current_tokens = count_tokens_tiktoken(current_text, model)
@@ -108,27 +198,37 @@ prompt engineering and determine when chunking strategies are necessary for long
 
 
 # ============================================================================
-# Provider Testing Functions
+# OpenRouter Testing
 # ============================================================================
 
-def test_anthropic_context(test_sizes=[10000, 50000, 100000, 150000, 190000, 200000]):
-    """Test Claude Sonnet 4.5 context limits"""
+def test_openrouter_context(api_key, processor_name):
+    """Test context limits for a model via OpenRouter."""
     try:
-        import anthropic
+        import openai
     except ImportError:
-        return {"error": "anthropic package not installed", "status": "skip"}
+        return {"error": "openai package not installed", "status": "skip"}
 
-    api_key = os.environ.get('ANTHROPIC_API_KEY')
-    if not api_key:
-        return {"error": "ANTHROPIC_API_KEY not set", "status": "skip"}
+    config = OPENROUTER_MODELS.get(processor_name)
+    if not config:
+        return {"error": f"Unknown processor: {processor_name}", "status": "skip"}
 
-    print_info("Testing Anthropic Claude Sonnet 4.5...")
-    client = anthropic.Anthropic(api_key=api_key)
+    model_id = config['model_id']
+    display_name = config['display_name']
+    provider = config['provider']
+    test_sizes = config['test_sizes']
+
+    print_info(f"Testing {display_name} ({model_id}) via OpenRouter...")
+
+    client = openai.OpenAI(
+        api_key=api_key,
+        base_url="https://openrouter.ai/api/v1"
+    )
 
     results = {
-        "provider": "Anthropic",
-        "model": "claude-sonnet-4-5-20250929",
-        "advertised": "200,000 tokens (standard), 1,000,000 (beta)",
+        "provider": provider,
+        "model": model_id,
+        "display_name": display_name,
+        "advertised": config['advertised'],
         "tested": [],
         "max_working": 0,
         "status": "tested"
@@ -136,80 +236,22 @@ def test_anthropic_context(test_sizes=[10000, 50000, 100000, 150000, 190000, 200
 
     for size in test_sizes:
         print(f"  Testing {size:,} tokens...", end=" ", flush=True)
-        payload, actual_tokens = generate_test_payload(size)
+        payload, actual_tokens = generate_test_payload(size, "gpt-4")
 
         try:
             start = time.time()
-            response = client.messages.create(
-                model="claude-sonnet-4-5-20250929",
-                max_tokens=100,
-                messages=[{
-                    "role": "user",
-                    "content": f"{payload}\n\nPlease respond with just: OK"
-                }]
-            )
-            elapsed = time.time() - start
-
-            print_success(f"{actual_tokens:,} tokens OK ({elapsed:.1f}s)")
-            results["tested"].append({
-                "target": size,
-                "actual": actual_tokens,
-                "success": True,
-                "time": elapsed
-            })
-            results["max_working"] = actual_tokens
-            time.sleep(1)  # Rate limit courtesy
-
-        except Exception as e:
-            error_msg = str(e)
-            print_failure(f"Failed - {error_msg[:100]}")
-            results["tested"].append({
-                "target": size,
-                "actual": actual_tokens,
-                "success": False,
-                "error": error_msg[:200]
-            })
-            break  # Stop at first failure
-
-    return results
-
-
-def test_opus_context(test_sizes=[10000, 50000, 100000, 150000, 190000, 200000]):
-    """Test Claude Opus 4.5 context limits"""
-    try:
-        import anthropic
-    except ImportError:
-        return {"error": "anthropic package not installed", "status": "skip"}
-
-    api_key = os.environ.get('ANTHROPIC_API_KEY')
-    if not api_key:
-        return {"error": "ANTHROPIC_API_KEY not set", "status": "skip"}
-
-    print_info("Testing Anthropic Claude Opus 4.5...")
-    client = anthropic.Anthropic(api_key=api_key)
-
-    results = {
-        "provider": "Anthropic",
-        "model": "claude-opus-4-5",
-        "advertised": "200,000 tokens (advertised)",
-        "tested": [],
-        "max_working": 0,
-        "status": "tested"
-    }
-
-    for size in test_sizes:
-        print(f"  Testing {size:,} tokens...", end=" ", flush=True)
-        payload, actual_tokens = generate_test_payload(size)
-
-        try:
-            start = time.time()
-            response = client.messages.create(
-                model="claude-opus-4-5",
-                max_tokens=100,
-                messages=[{
-                    "role": "user",
-                    "content": f"{payload}\n\nPlease respond with just: OK"
-                }]
+            response = client.chat.completions.create(
+                model=model_id,
+                messages=[
+                    {"role": "system", "content": "You are a helpful assistant."},
+                    {"role": "user", "content": f"{payload}\n\nRespond with just: OK"}
+                ],
+                max_tokens=50,
+                temperature=0.1,
+                extra_headers={
+                    "HTTP-Referer": "https://github.com/strato-net/strato-transcripts",
+                    "X-Title": "Strato Transcripts Context Test"
+                }
             )
             elapsed = time.time() - start
 
@@ -226,7 +268,7 @@ def test_opus_context(test_sizes=[10000, 50000, 100000, 150000, 190000, 200000])
         except Exception as e:
             error_msg = str(e)
             if 'model_not_found' in error_msg.lower() or 'does not exist' in error_msg.lower():
-                return {"error": "Claude Opus 4.5 model not available", "status": "skip"}
+                return {"error": f"{display_name} not available via OpenRouter", "status": "skip"}
             print_failure(f"Failed - {error_msg[:100]}")
             results["tested"].append({
                 "target": size,
@@ -239,133 +281,6 @@ def test_opus_context(test_sizes=[10000, 50000, 100000, 150000, 190000, 200000])
     return results
 
 
-def test_gemini_context(test_sizes=[10000, 50000, 100000, 120000, 128000]):
-    """Test Gemini 3.0 Pro context limits"""
-    try:
-        import google.generativeai as genai
-    except ImportError:
-        return {"error": "google-generativeai package not installed", "status": "skip"}
-
-    api_key = os.environ.get('GOOGLE_API_KEY')
-    if not api_key:
-        return {"error": "GOOGLE_API_KEY not set", "status": "skip"}
-
-    print_info("Testing Google Gemini 3.0 Pro...")
-    genai.configure(api_key=api_key)
-
-    results = {
-        "provider": "Google",
-        "model": "gemini-3.0-pro",
-        "advertised": "128,000 tokens (some claim 1M)",
-        "tested": [],
-        "max_working": 0,
-        "status": "tested"
-    }
-
-    model = genai.GenerativeModel('models/gemini-3-pro-preview')
-
-    for size in test_sizes:
-        print(f"  Testing {size:,} tokens...", end=" ", flush=True)
-        payload, actual_tokens = generate_test_payload(size)
-
-        try:
-            start = time.time()
-            response = model.generate_content(
-                f"{payload}\n\nRespond with just: OK",
-                generation_config=genai.types.GenerationConfig(
-                    max_output_tokens=50,
-                )
-            )
-            elapsed = time.time() - start
-
-            print_success(f"{actual_tokens:,} tokens OK ({elapsed:.1f}s)")
-            results["tested"].append({
-                "target": size,
-                "actual": actual_tokens,
-                "success": True,
-                "time": elapsed
-            })
-            results["max_working"] = actual_tokens
-            time.sleep(1)
-
-        except Exception as e:
-            error_msg = str(e)
-            print_failure(f"Failed - {error_msg[:100]}")
-            results["tested"].append({
-                "target": size,
-                "actual": actual_tokens,
-                "success": False,
-                "error": error_msg[:200]
-            })
-            break
-
-    return results
-
-
-def test_deepseek_context(test_sizes=[10000, 50000, 100000, 120000, 128000]):
-    """Test DeepSeek V3.2 context limits"""
-    try:
-        import openai
-    except ImportError:
-        return {"error": "openai package not installed", "status": "skip"}
-
-    api_key = os.environ.get('DEEPSEEK_API_KEY')
-    if not api_key:
-        return {"error": "DEEPSEEK_API_KEY not set", "status": "skip"}
-
-    print_info("Testing DeepSeek V3.2...")
-    client = openai.OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
-
-    results = {
-        "provider": "DeepSeek",
-        "model": "deepseek-chat",
-        "advertised": "128,000 tokens",
-        "tested": [],
-        "max_working": 0,
-        "status": "tested"
-    }
-
-    for size in test_sizes:
-        print(f"  Testing {size:,} tokens...", end=" ", flush=True)
-        payload, actual_tokens = generate_test_payload(size, "gpt-4")  # Use GPT-4 tokenizer approximation
-
-        try:
-            start = time.time()
-            response = client.chat.completions.create(
-                model="deepseek-chat",
-                messages=[
-                    {"role": "system", "content": "You are a helpful assistant."},
-                    {"role": "user", "content": f"{payload}\n\nRespond with just: OK"}
-                ],
-                max_tokens=50,
-                temperature=0.1
-            )
-            elapsed = time.time() - start
-
-            print_success(f"{actual_tokens:,} tokens OK ({elapsed:.1f}s)")
-            results["tested"].append({
-                "target": size,
-                "actual": actual_tokens,
-                "success": True,
-                "time": elapsed
-            })
-            results["max_working"] = actual_tokens
-            time.sleep(1)
-
-        except Exception as e:
-            error_msg = str(e)
-            print_failure(f"Failed - {error_msg[:100]}")
-            results["tested"].append({
-                "target": size,
-                "actual": actual_tokens,
-                "success": False,
-                "error": error_msg[:200]
-            })
-            break
-
-    return results
-
-
 # ============================================================================
 # Report Generation
 # ============================================================================
@@ -374,7 +289,7 @@ def generate_report(all_results):
     """Generate comprehensive test report"""
     report = []
     report.append("="*70)
-    report.append("AI PROVIDER CONTEXT WINDOW TEST RESULTS")
+    report.append("AI PROVIDER CONTEXT WINDOW TEST RESULTS (via OpenRouter)")
     report.append("="*70)
     report.append(f"\nTest Date: {time.strftime('%Y-%m-%d %H:%M:%S')}")
     report.append(f"\nFor typical 60-90 minute transcripts:")
@@ -385,11 +300,12 @@ def generate_report(all_results):
 
     for result in all_results:
         if result["status"] == "skip":
-            report.append(f"\n{result['provider']}: SKIPPED")
+            report.append(f"\n{result.get('provider', 'Unknown')}: SKIPPED")
             report.append(f"  Reason: {result['error']}")
             continue
 
-        report.append(f"\n{result['provider']}: {result['model']}")
+        report.append(f"\n{result['provider']}: {result.get('display_name', result['model'])}")
+        report.append(f"  Model: {result['model']}")
         report.append(f"  Advertised: {result['advertised']}")
         report.append(f"  Maximum Tested: {result['max_working']:,} tokens")
 
@@ -413,41 +329,25 @@ def generate_report(all_results):
             else:
                 report.append(f"    ✗ {test['actual']:,} tokens - FAILED")
 
-        # Special notes
-        if 'beta_access' in result:
-            if result['beta_access']:
-                report.append("\n  🎉 EXTENDED CONTEXT: 1M token beta access available!")
-            else:
-                report.append("\n  ℹ Extended context (1M tokens) not available on your tier")
-
     report.append("\n" + "="*70)
     report.append("\nRECOMMENDATIONS FOR YOUR TRANSCRIPTS:")
     report.append("="*70)
 
-    # Find best provider (prefer higher quality models when context limits are equal)
-    # Model quality priority: opus > sonnet > gemini > deepseek
-    model_priority = {
-        'claude-opus-4-5': 100,       # Highest quality - premium reasoning
-        'claude-sonnet-4-5-20250929': 80,  # Great quality - balanced
-        'gemini-3.0-pro': 60,         # Good quality - technical
-        'deepseek-chat': 40           # Good quality - cost-effective
-    }
-    
+    # Find best provider
     best_providers = [r for r in all_results if r['status'] == 'tested' and r['max_working'] >= 50000]
     if best_providers:
-        # Sort by: 1) max_working tokens, 2) model quality priority
-        best = max(best_providers, key=lambda x: (x['max_working'], model_priority.get(x['model'], 0)))
-        report.append(f"\nBEST CHOICE: {best['provider']} ({best['model']})")
+        best = max(best_providers, key=lambda x: (x['max_working'], MODEL_PRIORITY.get(x['model'], 0)))
+        report.append(f"\nBEST CHOICE: {best['provider']} ({best.get('display_name', best['model'])})")
         report.append(f"  Context: {best['max_working']:,} tokens")
         report.append(f"  Perfect for your transcripts without chunking")
         report.append(f"  Maintains full context for best quality")
 
-    # Alternative providers
-    alternatives = [r for r in all_results if r['status'] == 'tested' and r['max_working'] >= 45000 and r['provider'] != (best['provider'] if best_providers else None)]
-    if alternatives:
-        report.append("\nALTERNATIVES:")
-        for alt in alternatives:
-            report.append(f"  - {alt['provider']}: {alt['max_working']:,} tokens")
+        # Alternative providers
+        alternatives = [r for r in all_results if r['status'] == 'tested' and r['max_working'] >= 45000 and r['provider'] != best['provider']]
+        if alternatives:
+            report.append("\nALTERNATIVES:")
+            for alt in sorted(alternatives, key=lambda x: -x['max_working']):
+                report.append(f"  - {alt['provider']} ({alt.get('display_name', alt['model'])}): {alt['max_working']:,} tokens")
 
     # Chunking required
     chunking_needed = [r for r in all_results if r['status'] == 'tested' and r['max_working'] < 45000]
@@ -465,12 +365,12 @@ def generate_report(all_results):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Test context window limits for AI providers"
+        description="Test context window limits for AI providers via OpenRouter"
     )
     parser.add_argument(
         "--providers",
-        default="sonnet,opus,gemini,deepseek",
-        help="Comma-separated list of providers to test (sonnet,opus,gemini,deepseek)"
+        default="opus,gemini,deepseek,chatgpt",
+        help="Comma-separated list of providers to test (opus,gemini,deepseek,chatgpt,qwen,kimi,glm,minimax,llama,grok,mistral) or 'all'"
     )
     parser.add_argument(
         "--output",
@@ -480,29 +380,46 @@ def main():
 
     args = parser.parse_args()
 
-    print_header("AI Context Window Limit Testing")
-    print_info("Testing all providers with real API calls")
-    print_info("Estimated cost: ~$0.01-0.05 total")
+    print_header("AI Context Window Limit Testing (via OpenRouter)")
+    print_info("All providers accessed through OpenRouter with single API key")
+    print_info("Estimated cost: ~$0.01-0.10 total")
     print()
 
-    providers = [p.strip() for p in args.providers.split(',')]
-    all_results = []
+    # Check OpenRouter API key
+    api_key = os.environ.get('OPENROUTER_API_KEY')
+    if not api_key:
+        print_failure("OPENROUTER_API_KEY not set")
+        print_info("Get your API key from: https://openrouter.ai/keys")
+        sys.exit(1)
+
+    print_success("OpenRouter API key found")
+    print()
+
+    # Parse providers
+    if args.providers.lower() == 'all':
+        providers = list(OPENROUTER_MODELS.keys())
+    else:
+        providers = [p.strip() for p in args.providers.split(',')]
+
+    # Validate providers
+    valid_providers = set(OPENROUTER_MODELS.keys())
+    for p in providers:
+        if p not in valid_providers:
+            print_warning(f"Unknown provider: {p}")
+            print_info(f"Valid providers: {', '.join(sorted(valid_providers))}")
+            providers.remove(p)
+
+    if not providers:
+        print_failure("No valid providers to test")
+        sys.exit(1)
+
+    print_info(f"Testing {len(providers)} provider(s): {', '.join(providers)}")
+    print()
 
     # Test each provider
+    all_results = []
     for provider in providers:
-        if provider == 'sonnet':
-            result = test_anthropic_context()
-        elif provider == 'opus':
-            result = test_opus_context()
-        elif provider == 'gemini':
-            result = test_gemini_context()
-        elif provider == 'deepseek':
-            result = test_deepseek_context()
-        else:
-            print_warning(f"Unknown provider: {provider}")
-            print_info(f"Valid providers: sonnet, opus, gemini, deepseek")
-            continue
-
+        result = test_openrouter_context(api_key, provider)
         all_results.append(result)
         print()
 
@@ -512,6 +429,7 @@ def main():
 
     # Save to file
     output_path = Path(args.output)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, 'w') as f:
         f.write(report)
 
