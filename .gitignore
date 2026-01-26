@@ -50,17 +50,11 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
-# Virtual environments
-venv/
+# Virtual environments (created by install_packages_and_venv.sh)
 venv-nvidia/
 venv-amd/
 venv-intel/
 venv-cpu/
-venv311/
-venv-rocm/
-ENV/
-env/
-.venv
 
 # Jupyter Notebook
 .ipynb_checkpoints

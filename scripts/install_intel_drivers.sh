@@ -42,6 +42,9 @@ ACTUAL_USER=${SUDO_USER:-$USER}
 
 # Step 1: Update system packages
 echo -e "${YELLOW}[1/6] Updating system packages...${NC}"
+# Remove any existing Intel GPU repo to avoid keyring conflicts during apt update
+rm -f /etc/apt/sources.list.d/intel-gpu.list 2>/dev/null || true
+rm -f /etc/apt/keyrings/intel-graphics.gpg 2>/dev/null || true
 apt update
 apt upgrade -y
 echo -e "${GREEN}Done${NC}"

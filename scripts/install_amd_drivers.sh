@@ -43,6 +43,8 @@ ACTUAL_USER=${SUDO_USER:-$USER}
 
 # Step 1: Update system packages
 echo -e "${YELLOW}[1/6] Updating system packages...${NC}"
+# Remove any existing ROCm repo to avoid stale config issues during apt update
+rm -f /etc/apt/sources.list.d/rocm.list 2>/dev/null || true
 apt update
 apt upgrade -y
 echo -e "${GREEN}Done${NC}"
@@ -65,10 +67,13 @@ wget -q -O - https://repo.radeon.com/rocm/rocm.gpg.key | gpg --dearmor > /etc/ap
 UBUNTU_CODENAME=$(lsb_release -cs)
 echo "Detected Ubuntu: $UBUNTU_CODENAME"
 
-# Add ROCm repository (using latest stable)
+# Add ROCm repository (using pinned version for stability)
+# Using 6.2.4 which matches PyTorch rocm6.2 wheel
+ROCM_VERSION="6.2.4"
 cat > /etc/apt/sources.list.d/rocm.list << EOF
-deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/latest $UBUNTU_CODENAME main
+deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/$ROCM_VERSION $UBUNTU_CODENAME main
 EOF
+echo "Using ROCm version: $ROCM_VERSION"
 
 # Set repository priority
 cat > /etc/apt/preferences.d/rocm-pin-600 << EOF
@@ -85,8 +90,13 @@ echo ""
 echo -e "${YELLOW}[4/6] Installing ROCm packages...${NC}"
 echo "This may take several minutes..."
 
-# Install AMDGPU driver and ROCm
-apt install -y amdgpu-dkms rocm-dev rocm-libs
+# Install AMDGPU kernel driver and minimal ROCm runtime
+# Note: PyTorch ROCm wheels include their own runtime libraries,
+# so we only need the kernel driver and HSA runtime
+apt install -y amdgpu-dkms
+
+# Install ROCm SMI for monitoring (optional but useful)
+apt install -y rocm-smi-lib || echo "rocm-smi-lib not available, skipping"
 
 echo -e "${GREEN}Done${NC}"
 echo ""
@@ -153,7 +163,7 @@ echo -e "${YELLOW}To reboot now, run:${NC}"
 echo "  sudo reboot"
 echo ""
 echo "After reboot, create a Python venv for ROCm:"
-echo "  python3 -m venv venv-rocm"
-echo "  source venv-rocm/bin/activate"
+echo "  python3 -m venv venv-amd"
+echo "  source venv-amd/bin/activate"
 echo "  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.2"
 echo ""

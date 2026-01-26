@@ -78,7 +78,7 @@ main() {
             echo "Will install PyTorch with CUDA support"
             ;;
         amd)
-            VENV_NAME="venv-rocm"
+            VENV_NAME="venv-amd"
             PYTORCH_URL=$(get_pytorch_url amd)
             echo "Will install PyTorch with ROCm support"
 
