@@ -17,7 +17,7 @@ python3 -m venv venv && source venv/bin/activate
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
 
 # Or manual setup for AMD:
-python3 -m venv venv-rocm && source venv-rocm/bin/activate
+python3 -m venv venv-amd && source venv-amd/bin/activate
 pip install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.3
 ```
 
