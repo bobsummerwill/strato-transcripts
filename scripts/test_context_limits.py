@@ -12,7 +12,7 @@ PROVIDER MATRIX (11 POST-PROCESSING PROVIDERS via OpenRouter):
 - deepseek: DeepSeek V3.2 - 128K context
 - chatgpt: GPT-5.2 - 400K context, 128K output
 - qwen: Qwen3-Max - 256K context
-- kimi: Kimi K2 - 256K context, 16K output
+- kimi: Kimi K2.5 - 256K context, 16K output
 - glm: GLM-4.7 - 203K context (via OpenRouter)
 - minimax: MiniMax M2.1 - 4M context (200K recommended)
 - llama: Llama 4 Maverick - 1M context
@@ -99,8 +99,8 @@ OPENROUTER_MODELS = {
         'test_sizes': [10000, 50000, 100000, 150000, 200000, 256000],
     },
     'kimi': {
-        'model_id': 'moonshotai/kimi-k2',
-        'display_name': 'Kimi K2',
+        'model_id': 'moonshotai/kimi-k2.5',
+        'display_name': 'Kimi K2.5',
         'provider': 'Moonshot',
         'advertised': '256,000 tokens',
         'test_sizes': [10000, 50000, 100000, 150000, 200000, 256000],
@@ -150,7 +150,7 @@ MODEL_PRIORITY = {
     'google/gemini-3-pro-preview': 85,
     'meta-llama/llama-4-maverick': 80,
     'qwen/qwen3-max': 75,
-    'moonshotai/kimi-k2': 70,
+    'moonshotai/kimi-k2.5': 70,
     'z-ai/glm-4.7': 65,
     'mistralai/mistral-large-2411': 60,
     'deepseek/deepseek-chat': 55,

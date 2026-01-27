@@ -14,7 +14,7 @@ Get your key from: https://openrouter.ai/keys
 | **chatgpt** | GPT-5.2 | `openai/gpt-5.2` | 400K | Closed |
 | **grok** | Grok 4 | `x-ai/grok-4` | 256K | Closed |
 | **qwen** | Qwen3-Max | `qwen/qwen3-max` | 256K | Closed |
-| **kimi** | Kimi K2 | `moonshotai/kimi-k2` | 256K | Open (1T) |
+| **kimi** | Kimi K2.5 | `moonshotai/kimi-k2.5` | 256K | Open (1T) |
 | **mistral** | Mistral Large | `mistralai/mistral-large-2411` | 256K | Open (675B) |
 | **minimax** | MiniMax M2.1 | `minimax/minimax-m2.1` | 4M | Open (230B) |
 | **llama** | Llama 4 Maverick | `meta-llama/llama-4-maverick` | 1M | Open (400B) |
@@ -44,7 +44,7 @@ These are only available with `--mode local` and have no hosted equivalent.
 ### Why Full-Size Open Models Don't Fit Locally
 
 MoE (Mixture of Experts) models need VRAM for ALL weights, not just active:
-- **Kimi K2**: 1T total, 32B active → still needs ~373GB
+- **Kimi K2.5**: 1T total, 32B active → still needs ~373GB
 - **Mistral Large**: 675B total, 41B active → still needs ~400GB
 - **Llama 4 Maverick**: 400B total, 17B active → still needs ~243GB
 - **DeepSeek V3.2**: 671B total, 37B active → still needs ~386GB
@@ -158,10 +158,10 @@ python3 scripts/test_context_limits.py --providers all
 - **Best For**: Budget-conscious processing
 - **Notes**: 685B params, very competitive pricing
 
-#### Kimi K2 (`kimi`)
+#### Kimi K2.5 (`kimi`)
 - **Context**: 256K tokens
-- **Best For**: Coding, long-context tasks
-- **Notes**: $0.15/1M cache hits
+- **Best For**: Coding, long-context tasks, multimodal (text/image/video)
+- **Notes**: $0.15/1M cache hits, can self-direct 100 sub-agents
 
 ### Tier 4: Specialized
 
@@ -196,7 +196,7 @@ All 11 models have sufficient context for typical transcripts.
 ### Best Value
 1. **DeepSeek V3.2** - Low cost, good quality
 2. **Llama 4 Maverick** - Open model, cost-effective
-3. **Kimi K2** - Aggressive cache pricing
+3. **Kimi K2.5** - Aggressive cache pricing
 
 ## OpenRouter Benefits
 
@@ -249,7 +249,7 @@ python3 scripts/process_single_post_process.py transcript.txt --processors deeps
 ### MoE (Mixture of Experts)
 Many models use MoE where only a subset of parameters are active:
 - Llama 4 Maverick: 400B total, 17B active
-- Kimi K2: 1T total, 32B active
+- Kimi K2.5: 1T total, 32B active
 - MiniMax M2.1: 230B total, 10B active
 - Mistral Large: 675B total, 41B active
 - DeepSeek V3.2: 685B total

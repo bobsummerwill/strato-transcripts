@@ -32,7 +32,7 @@ from common import (Colors, success, failure, skip, validate_api_key,
 # │ chatgpt   │ GPT-5.2             │ openai/gpt-5.2                    │ 400K    │
 # │ grok      │ Grok 4              │ x-ai/grok-4                       │ 256K    │
 # │ qwen      │ Qwen3-Max           │ qwen/qwen3-max                    │ 256K    │
-# │ kimi      │ Kimi K2             │ moonshotai/kimi-k2                │ 256K    │
+# │ kimi      │ Kimi K2.5           │ moonshotai/kimi-k2.5              │ 256K    │
 # │ mistral   │ Mistral Large       │ mistralai/mistral-large-2411      │ 256K    │
 # │ minimax   │ MiniMax M2.1        │ minimax/minimax-m2.1              │ 4M      │
 # │ llama     │ Llama 4 Maverick    │ meta-llama/llama-4-maverick       │ 1M      │
@@ -60,7 +60,7 @@ OPENROUTER_MODELS = {
     'deepseek': 'deepseek/deepseek-chat',          # DeepSeek V3.2 - 128K context
     'chatgpt': 'openai/gpt-5.2',                   # GPT-5.2 - 400K context
     'qwen': 'qwen/qwen3-max',                      # Qwen3-Max - 256K context
-    'kimi': 'moonshotai/kimi-k2',                  # Kimi K2 - 256K context
+    'kimi': 'moonshotai/kimi-k2.5',                # Kimi K2.5 - 256K context
     'glm': 'z-ai/glm-4.7',                         # GLM-4.7 - 203K context
     'minimax': 'minimax/minimax-m2.1',             # MiniMax M2.1 - 4M context
     'llama': 'meta-llama/llama-4-maverick',        # Llama 4 Maverick - 1M context
@@ -100,6 +100,17 @@ HOSTED_ONLY_MODELS = {
     'mistral',    # 675B total → ~400GB Q4 (use mistral-local for 12B Nemo)
     'minimax',    # 230B total → ~55GB Q4 min
     'llama',      # 400B total → ~243GB Q4
+}
+
+# Direct API endpoints (bypass OpenRouter for specific providers)
+# Use when you have a direct API key - better reliability than OpenRouter for new models
+DIRECT_API_CONFIG = {
+    'kimi': {
+        'base_url': 'https://api.moonshot.ai/v1',  # Global endpoint
+        'model_id': 'kimi-k2.5',
+        'env_var': 'MOONSHOT_API_KEY',
+        'max_tokens': 16384,
+    },
 }
 
 
@@ -544,6 +555,63 @@ def process_with_openrouter(transcript, api_key, context, processor):
     return result
 
 
+def process_with_direct_api(transcript, api_key, context, processor):
+    """Process transcript using direct provider API (bypasses OpenRouter).
+
+    Some providers (like Moonshot/Kimi) work better with direct API access,
+    especially for newly released models that may not be fully integrated
+    with OpenRouter yet.
+
+    Args:
+        transcript: The raw transcript text to process
+        api_key: Direct API key for the provider
+        context: Context summary (glossary, people, terms)
+        processor: Processor name (e.g., 'kimi')
+
+    Returns:
+        Processed transcript text
+    """
+    try:
+        from openai import OpenAI
+    except ImportError:
+        raise ImportError("openai package not installed. Install with: pip install openai")
+
+    config = DIRECT_API_CONFIG.get(processor)
+    if not config:
+        raise ValueError(f"No direct API config for processor: {processor}")
+
+    client = OpenAI(
+        api_key=api_key,
+        base_url=config['base_url']
+    )
+    prompt = build_prompt(context, transcript)
+
+    print(f"      Processing (direct API): ", end='', flush=True)
+
+    result = ""
+    chunk_count = 0
+
+    stream = client.chat.completions.create(
+        model=config['model_id'],
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=config['max_tokens'],
+        stream=True,
+    )
+
+    for chunk in stream:
+        if chunk.choices and chunk.choices[0].delta.content:
+            result += chunk.choices[0].delta.content
+            chunk_count += 1
+            if chunk_count % 100 == 0:
+                print(".", end='', flush=True)
+
+    print(" ✓")
+    return result
+
+
 def estimate_tokens(text):
     """Estimate tokens (words × 1.3)."""
     return int(len(text.split()) * 1.3)
@@ -613,12 +681,15 @@ def process_single_combination(transcript_path, provider, api_keys, context, mod
     output_txt = Path("outputs") / basename / f"{basename}_{transcriber}_{provider}.txt"
     output_md = Path("outputs") / basename / f"{basename}_{transcriber}_{provider}.md"
 
-    # Process with local model or OpenRouter based on mode
+    # Process with local model, direct API, or OpenRouter based on mode and available keys
     corrected = None
 
     try:
         if mode == 'local':
             corrected = process_with_local_model(transcript, context, provider)
+        elif provider in api_keys.get('direct', {}):
+            # Use direct API if available (better for newly released models)
+            corrected = process_with_direct_api(transcript, api_keys['direct'][provider], context, provider)
         else:
             corrected = process_with_openrouter(transcript, api_keys['openrouter'], context, provider)
     except Exception as e:
@@ -770,11 +841,24 @@ def main():
 
         api_keys['openrouter'] = openrouter_key
 
-        # Show which models will be used
-        print("\nModels via OpenRouter:")
+        # Check for direct API keys (bypass OpenRouter for specific providers)
+        api_keys['direct'] = {}
         for proc in processors:
-            model_id = OPENROUTER_MODELS.get(proc, 'unknown')
-            print(f"  {proc}: {model_id}")
+            if proc in DIRECT_API_CONFIG:
+                env_var = DIRECT_API_CONFIG[proc]['env_var']
+                direct_key = os.environ.get(env_var)
+                if direct_key:
+                    api_keys['direct'][proc] = direct_key
+
+        # Show which models will be used
+        print("\nModels:")
+        for proc in processors:
+            if proc in api_keys.get('direct', {}):
+                config = DIRECT_API_CONFIG[proc]
+                print(f"  {proc}: {config['model_id']} (direct API via {config['env_var']})")
+            else:
+                model_id = OPENROUTER_MODELS.get(proc, 'unknown')
+                print(f"  {proc}: {model_id} (OpenRouter)")
     
     # Build context once
     print("\nBuilding context from glossary...")

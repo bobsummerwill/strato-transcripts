@@ -163,6 +163,16 @@ vkmark                # integrated GPU
 | #5 | Intel MTL | iGPU | 28 GB* | - | 1,712 | 1,106 | 2,886 | 4.1 | 1.5 |
 
 *Intel MTL VRAM is shared system memory
+**RX 6750 XT requires `export HSA_OVERRIDE_GFX_VERSION=10.3.0` (unofficial ROCm support)
+
+### PyTorch Backend Support Status
+
+| Backend | PyTorch Support | Official GPU Support | Notes |
+|---------|-----------------|----------------------|-------|
+| **CUDA** (NVIDIA) | Official, built-in | All GeForce/Quadro/RTX | `torch.cuda` device |
+| **ROCm** (AMD) | Official wheels | MI series, RX 7900 | `torch.cuda` device (same API) |
+| **ROCm** (AMD) | Official wheels | RX 6000 series | Needs `HSA_OVERRIDE_GFX_VERSION=10.3.0` |
+| **XPU** (Intel) | Intel-maintained extension | Arc, Iris Xe, MTL/RPL/ADL | `torch.xpu` via IPEX package |
 
 ### Key Observations
 

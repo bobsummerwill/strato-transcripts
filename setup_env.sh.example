@@ -27,7 +27,7 @@ export HF_TOKEN=""
 #   deepseek - DeepSeek V3.2                   - 128K context
 #   chatgpt  - GPT-5.2 (OpenAI)                - 400K context
 #   qwen     - Qwen3-Max (Alibaba)             - 256K context
-#   kimi     - Kimi K2 (Moonshot)              - 256K context
+#   kimi     - Kimi K2.5 (Moonshot)            - 256K context
 #   glm      - GLM-4.7 (Z.ai)                  - 203K context
 #   minimax  - MiniMax M2.1                    - 4M context
 #   llama    - Llama 4 Maverick (Meta)         - 1M context
@@ -37,6 +37,17 @@ export HF_TOKEN=""
 # All models have sufficient context for typical transcripts (20K-45K tokens).
 # OpenRouter charges ~5% markup over direct API pricing.
 export OPENROUTER_API_KEY=""
+
+# ==============================================================================
+# OPTIONAL: Direct Provider API Keys (bypass OpenRouter)
+# ==============================================================================
+# For newly released models, direct API access may be more reliable than OpenRouter.
+# If set, these keys will be used instead of OpenRouter for the specific provider.
+
+# Moonshot Kimi K2.5 (direct API, bypasses OpenRouter)
+# Get key from: https://platform.moonshot.ai/
+# Useful when Kimi K2.5 is not yet fully integrated with OpenRouter
+export MOONSHOT_API_KEY=""
 
 # ==============================================================================
 # OPTIONAL: Transcription Service API Keys
@@ -77,6 +88,10 @@ if [ -n "$OPENROUTER_API_KEY" ] && [ "$OPENROUTER_API_KEY" != "" ]; then
   echo "  OPENROUTER_API_KEY: SET (access to all 11 AI models)"
 else
   echo "  OPENROUTER_API_KEY: NOT SET"
+fi
+
+if [ -n "$MOONSHOT_API_KEY" ] && [ "$MOONSHOT_API_KEY" != "" ]; then
+  echo "  MOONSHOT_API_KEY: SET (Kimi K2.5 direct API)"
 fi
 
 if [ -n "$ASSEMBLYAI_API_KEY" ] && [ "$ASSEMBLYAI_API_KEY" != "" ]; then

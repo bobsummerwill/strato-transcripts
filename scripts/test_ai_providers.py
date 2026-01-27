@@ -19,7 +19,7 @@ OPENROUTER_MODELS = {
     'deepseek': ('deepseek/deepseek-chat', 'DeepSeek V3.2'),
     'chatgpt': ('openai/gpt-5.2', 'GPT-5.2'),
     'qwen': ('qwen/qwen3-max', 'Qwen3-Max'),
-    'kimi': ('moonshotai/kimi-k2', 'Kimi K2'),
+    'kimi': ('moonshotai/kimi-k2.5', 'Kimi K2.5'),
     'glm': ('z-ai/glm-4.7', 'GLM-4.7'),
     'minimax': ('minimax/minimax-m2.1', 'MiniMax M2.1'),
     'llama': ('meta-llama/llama-4-maverick', 'Llama 4 Maverick'),
