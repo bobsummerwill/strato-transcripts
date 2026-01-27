@@ -793,7 +793,28 @@ def transcribe_assemblyai(audio_path, output_dir):
     # Count speakers
     num_speakers = len(set(utterance.speaker for utterance in transcript.utterances)) if transcript.utterances else 1
     print(f"  Detected {num_speakers} speakers")
-    
+
+    # Save word-level timing data as JSON for precise subtitle alignment
+    import json
+    if transcript.words:
+        word_data = []
+        for word in transcript.words:
+            word_data.append({
+                'text': word.text,
+                'start': word.start / 1000.0,  # Convert ms to seconds
+                'end': word.end / 1000.0,
+                'speaker': f"SPEAKER_{ord(word.speaker) - ord('A'):02d}" if hasattr(word, 'speaker') and word.speaker else None
+            })
+
+        # Create output directory
+        output_path = Path(output_dir) / audio_file_path.stem
+        output_path.mkdir(parents=True, exist_ok=True)
+
+        json_path = output_path / f"{audio_file_path.stem}_assemblyai_words.json"
+        with open(json_path, 'w') as f:
+            json.dump(word_data, f, indent=2)
+        print(f"  Saved word-level timing: {json_path}")
+
     # Save using utility function
     formatted_text = '\n'.join(output_lines) + '\n'
     return save_raw_transcript_from_text(output_dir, audio_file_path.stem, "assemblyai", formatted_text)

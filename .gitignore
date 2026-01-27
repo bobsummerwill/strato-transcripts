@@ -51,6 +51,7 @@ coverage.xml
 .pytest_cache/
 
 # Virtual environments (created by install_packages_and_venv.sh)
+venv
 venv-nvidia/
 venv-amd/
 venv-intel/
