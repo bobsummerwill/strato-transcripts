@@ -1,0 +1,315 @@
+SPEAKER_00: Test. Hello, can you hear me?
+
+SPEAKER_01: Hello? Hello?
+
+SPEAKER_00: We good? We’re both good, yeah. So, hello, I’m Bob Summerwill here with *Early Days of Ethereum*, and talking to Martin Baxter. Hello. Or is it Bexe?
+
+SPEAKER_01: We say “Bixby,” but “busy,” “busy,” you know, Bexy—that works.
+
+SPEAKER_00: Okay. So yeah, thanks for talking to us. You are a very OG OG. You are more OG than I am, by a couple of years maybe. Even so, what were you doing prior to Ethereum that led you to Ethereum?
+
+SPEAKER_01: Yeah, that’s a good question. Prior to Ethereum, I had gotten into Bitcoin for a bit. So I was actually at Occupy Wall Street, and I set up the Bitcoin donation address for OWS, and started doing some development—just regular Web2 development. But as my projects developed, I started wondering how to decentralize them, as you naturally do if you’ve played around with crypto. I was highly influenced by Bitcoin and BitTorrent, and this is around the time of Namecoin also.
+
+SPEAKER_00: Right, right.
+
+SPEAKER_01: So I sort of wanted to extend the concepts of Namecoin for my own project, which at the time was a geospatial map thing that displayed what was happening around you. It was supposed to be federated, and I wanted to have a DNS system where we could resolve a location to these servers. So I called it GoDNS. And I was looking at how Namecoin implemented it, and I was like, “Ah, this is going to be a pain. I’m going to have to fork it, rebuild everything, get people to mine it. This is a lot of work.” And then, as you naturally do, you’re like, “Well, this could just be generalized,” right?
+
+SPEAKER_00: Yes.
+
+SPEAKER_01: So, you know, this is around the time that Vitalik—he had written some articles, I believe in *Bitcoin Magazine*, but maybe not—on DAOs and DAX.
+
+SPEAKER_00: Right.
+
+SPEAKER_01: And I was very interested in that too, and I was following that work. And then, yeah, I saw the white paper drop, and as soon as I saw the white paper drop, I was like, “Yeah, I need that. That’s what I need. That makes a lot of sense.” So then I started hacking on it, because that was before any code, I think, was really operable.
+
+SPEAKER_00: Right.
+
+SPEAKER_01: And I wanted to get my hands onto it. I think AlethZero was up, but it was really rough. Yeah, it was up on GitHub. And I was a JavaScript programmer, right? So I was like, “Well, I better implement this in JavaScript, because that’s what I know.” And I really just wanted to get my hands on it and really understand how it worked.
+
+SPEAKER_00: Right, right. So, yeah, we were just looking at some first commit dates. So we saw that Joseph Chow had had a first commit on Node Ethereum in February, and then we found March 2014 is probably the first commit on your side. So, yeah, I mean, the white paper had come out in November of the previous year. But I was looking: the C and Go clients started in very late December. So, yeah, a couple of months in, as you say, it’s all going to be a bit rough. And yeah, I mean it wasn’t until April that you had the Yellow Paper. That came a little later, I think. I think maybe April-ish was when Geth and cpp-ethereum were maybe kind of working.
+
+SPEAKER_01: Talking to each other.
+
+SPEAKER_00: Yes. Yeah, yeah, yeah. I’ll have to find the date. I did see a tweet of when that was, and I think it was Charles sent a transaction to Gav, or the other way around.
+
+SPEAKER_01: Was it GavCoin maybe? Well, here’s an interesting—GavCoin came later.
+
+SPEAKER_00: Well, there was a meetup in London in October 2014 where both Gav and Jeff were basically doing “Hey, here’s the status of Ethereum and roadmap,” kind of thing—like an hour-long big thorough thing. But what they did at that was: Gav had GavCoin, which was written in LLL.
+
+SPEAKER_01: Yeah.
+
+SPEAKER_00: And Jeff had JeffCoin, which was written in Mutan. And they had an on-chain DEX. It was an on-chain order book. Really clunky, like: “Here, I’m offering three GavCoin for 10 JeffCoin,” or what have you. But they demonstrated it there, and did a transaction to put an offer into the order book, and then Jeff’s pressing the button to mine a block. And that really funny exchange happened. But, I mean, were there many people where you were living that were regularly having meetups and being involved with Ethereum?
+
+SPEAKER_01: No, not at all. I was living in Indiana, so very rural. It was completely—I only connected online.
+
+SPEAKER_00: Right, right.
+
+SPEAKER_01: And I remained that way for some time.
+
+SPEAKER_00: Right.
+
+SPEAKER_01: And it wasn’t until, I don’t know, a few months later—I was trying to get a job at Ripple.
+
+SPEAKER_00: Oh, yes.
+
+SPEAKER_01: Ripple also. So they had a—I don’t remember what it was called—but they were working on a VM.
+
+SPEAKER_00: Yeah. I can’t remember—CodeCodex or something. It wasn’t like that.
+
+SPEAKER_01: Maybe.
+
+SPEAKER_00: Yeah.
+
+SPEAKER_01: So I was interested in that, and I had been working on implementing the Ethereum Virtual Machine in JavaScript. So they thought that was pretty cool, and they flew me out for an interview at their office. And that is when I met Vitalik, because—
+
+SPEAKER_00: Right.
+
+SPEAKER_01: Not at Ripple—he just happened to be in San Francisco at the same time. And also Joseph Chow for the first time.
+
+SPEAKER_00: Do you know when that might have been?
+
+SPEAKER_01: Unfortunately, no. I’m really bad at this. But it was definitely past March, sometime in the summer. And then that’s when I met up with everyone proper. And Vitalik’s like, “Nah, just come work on Ethereum.” So, yeah, that’s what I did.
+
+SPEAKER_00: So was that working for ETH Dev as a contractor?
+
+SPEAKER_01: So yes, I was working for ETH Dev as a contractor at that point.
+
+SPEAKER_00: Right, right. And yeah, Vitalik notoriously also nearly worked for Ripple but could not get his work permit. So, yeah, the world might have looked very, very different if Vitalik had joined Ripple as an intern back then, rather than Ethereum.
+
+SPEAKER_01: Sort of like they failed to get everyone. But if they had, Ripple also may have looked a lot different.
+
+SPEAKER_00: Yeah, yeah, yeah. Well, some of my very earliest meetups I went to at the start of 2014, it was like, “Here’s a demo of Ripple,” because it really was a lot less of a tribal setup, right? Everyone was Bitcoiners because that’s all there was. And then it’s like, “Oh, there are these other things appearing.” And, “Oh yeah, it’s a different form of consensus. Here’s a different flavor.”
+
+SPEAKER_01: And I was actually interested in—there was an early version of Ripple made by this guy in Canada.
+
+SPEAKER_00: Yeah, Ryan Fugger.
+
+SPEAKER_01: Yes. Yeah.
+
+SPEAKER_00: Who lives in Vancouver, same as me.
+
+SPEAKER_01: Oh, nice.
+
+SPEAKER_00: I’ve not met him ever, though.
+
+SPEAKER_01: So I was interested in that version. You were able—you were able—yeah, I’m not sure if I’m going to be able to actually recall, but you were able to—It was like debt. You were able to open debt lines to various people, you know.
+
+SPEAKER_00: Yeah.
+
+SPEAKER_01: And then debt would flow through the people.
+
+SPEAKER_00: That’s right. It would ripple through.
+
+SPEAKER_01: Yeah, ripple through. And this was pre-blockchain. It was built in PHP. They had a demo in PHP. I had signed up on it, playing around. I was offering my services on it. But yeah, then that’s how I got interested in Ripple. But yeah, then they ended up moving in a slightly different direction.
+
+SPEAKER_00: Slightly different, yes. I think it was 2004, Ryan’s work. Yeah, around then.
+
+SPEAKER_01: Very early.
+
+SPEAKER_00: Absolutely. So when you were then working full time on Ethereum, did you have many collaborators? Were many people working on the code together with you?
+
+SPEAKER_01: It was like me and Joseph Chow to start with. And then Joseph Chow eventually went off and he started working on BTC Relay.
+
+SPEAKER_00: Yeah, I don’t know if that’s a very interesting project.
+
+SPEAKER_01: Yeah. So he did that next. But yeah, there was a bunch of people coming in and out. Kumavis Davis helped out quite a bit.
+
+SPEAKER_00: Right.
+
+SPEAKER_01: I was actually looking through the commits and saw he actually committed quite a few things. And then Alex Beregszaszi became involved, and there were several other people that I don’t remember anymore, but those, I think, were the main characters back then.
+
+SPEAKER_00: Yeah, yeah. So, I mean, for Kumavis, was that before he was doing MetaMask?
+
+SPEAKER_01: Yeah, yeah. So we met—I met Kumavis at, like, it was MailChimp, may have been MailChimp, at a party in SF or a hangout. And he started just asking me a ton of questions about Ethereum, and we ended up chatting for a very long time. And then, yeah, he was very proficient at JavaScript as well, so he started hacking a bit on Ethereum.js.
+
+SPEAKER_00: Right. Something I think some people have asked, and I didn’t know the answer to, is: was there ever a fully syncing JavaScript node? Were you able to keep up at any point?
+
+SPEAKER_01: Yes. So, yes, we did have a syncing full node that worked for a little bit, but yeah, it was difficult. I still think it’s doable today. It’s actually not that bad. I think the thing that didn’t become our focus, though, was that there was not a huge demand for that.
+
+SPEAKER_00: Right.
+
+SPEAKER_01: Everything else was going to go a lot faster. We were interested at the time in trying to embed a client in a browser.
+
+SPEAKER_00: Yeah, yeah.
+
+SPEAKER_01: Which is now possible.
+
+SPEAKER_00: Right.
+
+SPEAKER_01: But through the Helios project.
+
+SPEAKER_00: Right, yeah. So what’s that? I’m sorry, I don’t know about Helios.
+
+SPEAKER_01: Oh, it’s a light client from a16z.
+
+SPEAKER_00: Oh, right. Right.
+
+SPEAKER_01: They funded it. It’s in Rust.
+
+SPEAKER_00: Okay.
+
+SPEAKER_01: And they compile it to WASM. And it, you know—okay, it’s kind of “cheesy,” right? It just makes RPC requests, but it verifies the Merkle proofs and it verifies consensus.
+
+SPEAKER_00: Right, right, right.
+
+SPEAKER_01: So, yeah, it doesn’t do the full thing, right? But since I would say it’s like a light client, it’s definitely a light client where you have proof the consensus is correct, and then you pull state that’s verified from third-party RPCs. It’s all right.
+
+SPEAKER_00: Yeah, yeah, yeah. And so you attended Devcon 0 in Berlin in November 2014.
+
+SPEAKER_01: Yes. Yeah.
+
+SPEAKER_00: So how was that?
+
+SPEAKER_01: That was really cool. It was my first time leaving the US. No, not quite. It was my first time flying over the ocean.
+
+SPEAKER_00: Right.
+
+SPEAKER_01: I’d been in Canada—
+
+SPEAKER_00: Oh, yes. Nice.
+
+SPEAKER_01: Right—and saw Niagara Falls and stuff. But yeah, first time in Europe, so I was super excited. And yeah, I stayed in a big Airbnb with Juan Benet and Vitalik.
+
+SPEAKER_00: Right.
+
+SPEAKER_01: I think Vlad was in the Airbnb as well. It was super cool. Just, you know, see everyone for the first time. Meet up and, yeah.
+
+SPEAKER_00: Right. Because there are a good chunk of people there. I was trying to count—I think 40 to 50 is about the number that were there. Pretty much everyone who was working on things, I was looking through. I don’t think I could spot really anyone who was still involved who wasn’t there, with maybe—yeah, Anthony Di Iorio wasn’t there. And he didn’t technically leave until the end of 2015, but he was a little involved.
+
+SPEAKER_01: Yeah, I don’t have—well, actually I had a small contact with Anthony, but yeah, I never met him. I don’t think I’ve ever met him in real life. I know what he looks like, though, right?
+
+SPEAKER_00: Yeah, I have a few times. Hoping to talk to him soon.
+
+SPEAKER_01: Oh, nice.
+
+SPEAKER_00: But yeah, there are missing videos from Devcon 0, which I’m still looking for. There’s 10 of them on the playlist on YouTube. There’s one further which didn’t go in the playlist, but is on there. But there seem to be about 10 missing sessions in there. Can you remember—sorry—did you talk at Devcon 0?
+
+SPEAKER_01: I did, yeah. And I gave a big presentation—well, big. I had my slides printed off. I gave a talk on Ethereum.js and how I architected it. Yeah.
+
+SPEAKER_00: So I think that video is currently lost, and I hope to recover it.
+
+SPEAKER_01: May have never got recorded. I don’t know.
+
+SPEAKER_00: I think they all did.
+
+SPEAKER_01: Okay.
+
+SPEAKER_00: And the other thing Tex was saying was that he did interviews with nearly everyone as well. Can you remember, did you talk to Tex? Did he go off into some back room and do an interview with him?
+
+SPEAKER_01: I do not remember that. I remember Tex though. Yeah. And he’s still around.
+
+SPEAKER_00: Absolutely. Yeah. So, yeah, he was one of the earlier interviewees. I’ve known Tex for a long time, and it was funny because he had the water cooler channel—the Skype water cooler.
+
+SPEAKER_01: Yes.
+
+SPEAKER_00: So when I joined the EF, I joined the EF channel and the water cooler, and I thought they were both foundation things, but it wasn’t. It was basically Tex’s control room. So then you got a bunch of people outside—it was a broader group. Skype are about to delete all their data, by the way. But you can request a download. So if you want to do that, do it fast.
+
+SPEAKER_01: I don’t have access to my Skype account anymore.
+
+SPEAKER_00: Well, I didn’t—I mean, you can just log in and do a password recovery thing, and then you can request it anyway. So I’m hoping to recover mine, and maybe there’s some interesting tidbits in that water cooler channel.
+
+SPEAKER_01: Yeah, definitely. That’d be interesting.
+
+SPEAKER_00: Yeah. So then, you know, I guess on into 2015 and through all the PoCs, were you generally just continuing to maintain that as new features and changes came in through the PoCs?
+
+SPEAKER_01: Yeah. So a lot of time was spent on the virtual machine, as you can imagine. That’s one of the larger components. I also was working on networking. Ethereum.js was a smaller team than everyone else, so we always lagged behind a bit. But yep, the networking protocols—RLPx went through several iterations, and then the virtual machine went through several iterations. We contributed to the testing. And yeah, that was our main focus.
+
+SPEAKER_00: Right. So, yeah, more about tooling use versus straight consensus client, because there are many Ethereum.js repos and components.
+
+SPEAKER_01: Yeah. So the original architecture—it doesn’t exist this way anymore; it’s been merged into a monorepo. But originally it was a bunch of small modules. It still is a bunch of small modules, but it’s a monorepo. It’s much more sensible.
+
+SPEAKER_00: Yes, yes.
+
+SPEAKER_01: But at that time, yeah, small repos for everything. And yeah, the focus was on building reusable components. So the most widely used component, or most widely used module, was ethereumjs-tx, used for creating and signing transactions.
+
+SPEAKER_00: Right.
+
+SPEAKER_01: So wallets such as MetaMask would use that internally to construct and sign a transaction. Then we had everything broken out: so RLP for serialization, the networking libraries, the virtual machine proper. Some of the high-level ones. The fun thing about Ethereum.js was that I tried to make these modules very approachable and easy to use. So people did stuff like write a DHT scraper with it to see all the nodes, see what version they’re running, and things of that nature.
+
+SPEAKER_00: Yeah, great, great. So do you have memories of launch day? Where were you on that day? How did that play out?
+
+SPEAKER_01: Yeah, that was just like—I think I was hacking away somewhere. I don’t think I was anywhere special though. It was just sort of another day for me.
+
+SPEAKER_00: Right. You weren’t in a room with people watching the screen with bated breath?
+
+SPEAKER_01: No, no, I wasn’t. It wasn’t really—yeah, I was just like, “Yeah, I’ll just keep coding,” you know.
+
+SPEAKER_00: Because there were a bunch of them were in the Berlin office together. There’s a few photos of that.
+
+SPEAKER_01: Yeah, I wasn’t there in the Berlin office for that, unfortunately. I don’t remember where I was, but yeah.
+
+SPEAKER_00: Did you do any mining at any point?
+
+SPEAKER_01: No, no. I was too nomadic.
+
+SPEAKER_00: You haven’t got the place to put the hardware.
+
+SPEAKER_01: Yes. I never had a storage place for it.
+
+SPEAKER_00: No, no. So then I guess, you know, through 2015, probably the next big piece was Devcon 1. Did you attend Devcon 1 in London?
+
+SPEAKER_01: Yeah, London. I slept in a closet.
+
+SPEAKER_00: That’s my big Harry Potter.
+
+SPEAKER_01: Yeah, that’s my memory from Devcon 1. I also gave a talk at Devcon 1.
+
+SPEAKER_00: Right.
+
+SPEAKER_01: Also on Ethereum.js, surprisingly.
+
+SPEAKER_00: Right. Something somebody pointed out recently was: if you look at the talks at Devcon 1, it’s like everything. There were so many different talks on so many different ideas and concepts, many of which foreshadowing things which are pretty big today, but probably nearly all of it was like 10 years too early.
+
+SPEAKER_01: Yeah, exactly. We had a lot of—there’s just so many layers that needed to be built. Obviously when you start off, you see this thing, “I can do this.” You don’t fully understand all the layers that need to be created for that. That’s a hard problem, though. And I think we’re still probably catching up to some of the original use cases that were envisioned.
+
+SPEAKER_00: I was mentioning this to someone last night and he was saying, “I think it’s maybe another five or 10 years from here before all of this stuff is in a viable kind of state.” It’s a lot more work than perhaps we envisaged at the start.
+
+SPEAKER_01: Yeah, it sounds so easy when you start, but yeah, it is hard.
+
+SPEAKER_00: Zsolt was saying, I think when he joined the Geth team, he was thinking this would be six months, 12 months kind of thing to work on. Slightly longer, I guess. And yeah, he asked Jeff, “So how long do you think for all of these pieces? AlethZero and Mix and Mist and Proof of Stake and sharding?” And Jeff said, “Maybe about seven months, or a little more.”
+
+SPEAKER_01: That’s hilarious.
+
+SPEAKER_00: So it was a little more.
+
+SPEAKER_01: Yeah, slightly. A little bit more.
+
+SPEAKER_00: I mean, I had that same delusion, because the very first thing I was doing was doing ARM Linux cross-builds of the C client to try and run it on my smartwatch, really with the thought that a light client was close, right? So just do the porting of the full clients, and then the LES support will drop in in a few months, and we can run a full node or a good-enough light node on a watch, or everywhere. It’s just like, “This is going to be everywhere,” right? Every computing device, every router—it’ll just pop in. It’ll just be another protocol like TCP/IP. It’ll be in the Linux kernel. Just be like another thing, another service.
+
+SPEAKER_01: It definitely has a ways to go before Linus merges that.
+
+SPEAKER_00: Yes, yes, I think. Yep.
+
+SPEAKER_01: So I would still like—I think it would be really cool though if someone built a filesystem interface for Ethereum where, you know, you could `cd` into a folder with all the blocks, and `cd` into a particular block and see a list of transactions, etc. Kind of like a Plan 9—
+
+SPEAKER_00: So you did a talk on this theme in Seattle. There was a meetup with yourselves—like Kenny Rowe, some of the Dappsis people. I think Kumavis as well.
+
+SPEAKER_01: Yeah, I think Kumavis was there. Juan from IPFS was definitely there. I think David Diaz was there.
+
+SPEAKER_00: Yeah, “Into the Merkle Forest” was one of the talks, and I think yours was like “Interplanetary OS.”
+
+SPEAKER_01: Yeah. Interplanetary Operating System.
+
+SPEAKER_00: There we go. There we go.
+
+SPEAKER_01: It was a fun talk.
+
+SPEAKER_00: That’s it. Merkle computing.
+
+SPEAKER_01: Yeah.
+
+SPEAKER_00: Can still happen.
+
+SPEAKER_01: Yeah, yeah. And there’s no technical reason you can’t do those things. It’s just, you know, layers. Layers need to be built.
+
+SPEAKER_00: Yeah, absolutely. So we’re getting the Oscars-style music coming on. I’m going to have to wrap up. I did intend to talk about eWASM and things, but maybe that’s for another time.
+
+SPEAKER_01: Sounds good.
+
+SPEAKER_00: Okay, so, yeah, we’re up to the end of 2015.
+
+SPEAKER_01: Nice.
+
+SPEAKER_00: Okay, thanks so much, man.
+
+SPEAKER_01: Yep. Thank you, bub. Oh, wow.

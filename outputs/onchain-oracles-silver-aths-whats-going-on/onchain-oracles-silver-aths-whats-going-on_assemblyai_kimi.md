@@ -1,0 +1,33 @@
+**[00:02] SPEAKER_00:** Okay. Hello, hello. We are live. So welcome to Online Oracles. I am Bob Summerwell. I'd like to welcome the rest of our guests here. So we have Michael Tan, we have Victor Wong, Kieran James Lubin and also today making an appearance is Jeff Powell who would you like to please do introduce yourself Jeff.
+
+**[00:36] SPEAKER_01:** Thanks Bob. I'm Jeff Powell, head of business development at Block Apps. I've been working with people on this for getting close to five years now. And in recent years I've done a great deal of work on our tokenized metals campaigns. So very excited to be here today to talk about silver.
+
+**[01:02] SPEAKER_00:** Absolutely.
+
+**[01:03] SPEAKER_02:** Yeah, it seems, I mean maybe a little bit.
+
+**[01:06] SPEAKER_01:** And gold.
+
+**[01:08] SPEAKER_00:** That's it. You bet. You're absolutely perfect for the topic today. So yeah, our topic today is silver all time high. What's going on. But we've also got gold at all time highs having happened after that. Before we get onto those we are going to have a little bit of a demo or conversation from Michael. What have you got for us?
+
+**[01:32] SPEAKER_03:** Sure.
+
+**[01:33] SPEAKER_04:** So I'm going to be demoing the Strato Easy Save bridging process. Right now we have a bridging contest going on where if you bridge in a certain amount, 10% of that goes to a pool that will be distributed to the winner through a lucky draw. Points are generated are calculated through the Strato rewards program. So everyone has a chance to win. You got to be in it to win it. This is the current leaderboard on Stratoscan if you want to check it out. But now I'll demo the Easy Save. So once you log in to your account, a lot of money here you go to this deposit function. I mean deposit button. Connect your wallet.
+
+**[02:15] SPEAKER_03:** To be clear, Testnet doing this on the Testnet but the process on the prod is exactly the same.
+
+**[02:22] SPEAKER_00:** Yep.
+
+**[02:23] SPEAKER_04:** So you can bridge in either USDT or USDC. Let's do USDT for this one we'll do let's say 100. Make sure this is checked so that it goes directly to the lending pool. Pause and earn.
+
+**[02:40] SPEAKER_00:** Confirm.
+
+**[02:42] SPEAKER_03:** Confirm.
+
+**[02:46] SPEAKER_04:** Takes a second.
+
+**[02:54] SPEAKER_02:** The bridge is that's on the Ethereum slash.
+
+**[02:58] SPEAKER_04:** All your side bridge did go into auto save and there you have it. One to two minutes it'll be directly in the lending pool and if you want to check it out you can go to advanced lending pool and your funds will be in here. Okay, back over to you, Bob.
+
+**[03:17] SPEAKER_00:** Very nice. Well thank you Kier
