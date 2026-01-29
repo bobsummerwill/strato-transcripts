@@ -101,19 +101,23 @@ def save_transcript_files(output_dir, basename, service_name, segments, speaker_
     Consecutive segments from the same speaker are merged into paragraphs.
     TXT format: No timestamps, no markdown - just "SPEAKER_XX: text"
     MD format: With rounded timestamps - "**[MM:SS] SPEAKER_XX:** text"
-    
+
     Args:
         output_dir: Directory to save files
         basename: Base filename without extension
         service_name: Name of transcription service (whisperx, deepgram, etc.)
         segments: List of segment dicts with 'speaker', 'start', 'text' keys
         speaker_key: Key name for speaker in segments (default: 'speaker')
-    
+
     Returns:
         Path object for the .txt file
     """
-    # Create episode-specific subdirectory
-    episode_dir = Path(output_dir) / basename
+    # Create episode-specific subdirectory, but avoid nesting if output_dir already ends with basename
+    output_dir_path = Path(output_dir)
+    if output_dir_path.name == basename:
+        episode_dir = output_dir_path
+    else:
+        episode_dir = output_dir_path / basename
     episode_dir.mkdir(parents=True, exist_ok=True)
     
     output_path = episode_dir / f"{basename}_{service_name}.txt"
@@ -167,21 +171,25 @@ def save_raw_transcript_from_text(output_dir, basename, service_name, formatted_
     Consecutive segments from the same speaker are merged into paragraphs.
     TXT format: No timestamps, no markdown - "SPEAKER_XX: text"
     MD format: With rounded timestamps - "**[MM:SS] SPEAKER_XX:** text"
-    
+
     Args:
         output_dir: Directory to save files
         basename: Base filename without extension
         service_name: Name of transcription service
         formatted_text: Pre-formatted text with speaker labels and timestamps
                        Format: "SPEAKER_XX:\n[123.4s] text\n[125.0s] more text\n"
-    
+
     Returns:
         Path object for the .txt file
     """
     import re
-    
-    # Create episode-specific subdirectory
-    episode_dir = Path(output_dir) / basename
+
+    # Create episode-specific subdirectory, but avoid nesting if output_dir already ends with basename
+    output_dir_path = Path(output_dir)
+    if output_dir_path.name == basename:
+        episode_dir = output_dir_path
+    else:
+        episode_dir = output_dir_path / basename
     episode_dir.mkdir(parents=True, exist_ok=True)
     
     output_path = episode_dir / f"{basename}_{service_name}.txt"
@@ -806,8 +814,12 @@ def transcribe_assemblyai(audio_path, output_dir):
                 'speaker': f"SPEAKER_{ord(word.speaker) - ord('A'):02d}" if hasattr(word, 'speaker') and word.speaker else None
             })
 
-        # Create output directory
-        output_path = Path(output_dir) / audio_file_path.stem
+        # Create output directory, but avoid nesting if output_dir already ends with basename
+        output_dir_path = Path(output_dir)
+        if output_dir_path.name == audio_file_path.stem:
+            output_path = output_dir_path
+        else:
+            output_path = output_dir_path / audio_file_path.stem
         output_path.mkdir(parents=True, exist_ok=True)
 
         json_path = output_path / f"{audio_file_path.stem}_assemblyai_words.json"
