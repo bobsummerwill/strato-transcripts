@@ -265,6 +265,17 @@ Raw Transcript (from speech recognition):
 
 PRIMARY OBJECTIVE: Create a clean, readable transcript that preserves ALL dialogue and content.
 
+CRITICAL OUTPUT RULES - READ FIRST
+
+**DO NOT** add any preamble, introduction, or meta-commentary. Examples of what NOT to write:
+- "Here is the cleaned transcript..."
+- "Below is Part 1 of the transcript..."
+- "I have processed the transcript following the guidelines..."
+- Any analysis, reasoning, or explanation of your changes
+
+**START IMMEDIATELY** with the first speaker label: **[MM:SS] SPEAKER_XX:** followed by their speech.
+Your output should contain ONLY the formatted transcript, nothing else.
+
 CRITICAL CONTENT PRESERVATION RULES
 
 1. **PRESERVE COMPLETE CONTENT** - Do NOT summarize, condense, or skip any dialogue
