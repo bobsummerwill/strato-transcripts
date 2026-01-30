@@ -13,9 +13,54 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
-# Activate virtual environment and load API keys
-source "$PROJECT_DIR/venv/bin/activate"
+# Detect and activate appropriate virtual environment
+detect_venv() {
+    # Check for NVIDIA GPU
+    if command -v nvidia-smi &> /dev/null && nvidia-smi &> /dev/null; then
+        if [ -d "$PROJECT_DIR/venv-nvidia" ]; then
+            echo "venv-nvidia"
+            return
+        fi
+    fi
+    # Check for AMD GPU (ROCm)
+    if command -v rocminfo &> /dev/null && rocminfo &> /dev/null 2>&1; then
+        if [ -d "$PROJECT_DIR/venv-amd" ]; then
+            echo "venv-amd"
+            return
+        fi
+    fi
+    # Check for Intel GPU
+    if [ -d "$PROJECT_DIR/venv-intel" ]; then
+        echo "venv-intel"
+        return
+    fi
+    # Fallback to CPU
+    if [ -d "$PROJECT_DIR/venv-cpu" ]; then
+        echo "venv-cpu"
+        return
+    fi
+    # Legacy fallback
+    if [ -d "$PROJECT_DIR/venv" ]; then
+        echo "venv"
+        return
+    fi
+    echo ""
+}
+
+VENV_NAME=$(detect_venv)
+if [ -z "$VENV_NAME" ]; then
+    echo "Error: No virtual environment found. Run install_packages_and_venv.sh first."
+    exit 1
+fi
+
+echo "Using venv: $VENV_NAME"
+source "$PROJECT_DIR/$VENV_NAME/bin/activate"
 source "$PROJECT_DIR/setup_env.sh"
+
+# Set HSA override for AMD GPUs (needed for RX 6000 series)
+if [ "$VENV_NAME" = "venv-amd" ]; then
+    export HSA_OVERRIDE_GFX_VERSION=10.3.0
+fi
 
 # Default values
 TRANSCRIBER="whisperx"
