@@ -61,7 +61,7 @@ OPENROUTER_MODELS = {
     'chatgpt': 'openai/gpt-5.2',                   # GPT-5.2 - 400K context
     'qwen': 'qwen/qwen3-max',                      # Qwen3-Max - 256K context
     'kimi': 'moonshotai/kimi-k2.5',                # Kimi K2.5 - 256K context
-    'glm': 'z-ai/glm-4.7',                         # GLM-4.7 - 203K context
+    'glm': 'z-ai/glm-4.7',                         # GLM-4.7 - 203K context (reasoning model)
     'minimax': 'minimax/minimax-m2.1',             # MiniMax M2.1 - 4M context
     'llama': 'meta-llama/llama-4-maverick',        # Llama 4 Maverick - 1M context
     'grok': 'x-ai/grok-4',                         # Grok 4 - 256K context
@@ -74,7 +74,7 @@ OPENROUTER_MAX_TOKENS = {
     'gemini': 64000,    # Gemini supports 64K output
     'chatgpt': 16384,   # GPT-5.2 conservative default
     'grok': 32768,      # Grok uses internal reasoning, needs more tokens
-    'glm': 8192,        # GLM standard
+    'glm': 65536,       # GLM 4.7 is a reasoning model, needs tokens for reasoning + output
     'default': 8192,    # Default for others
 }
 
@@ -551,11 +551,15 @@ def process_with_openrouter(transcript, api_key, context, processor):
     )
 
     for chunk in stream:
-        if chunk.choices and chunk.choices[0].delta.content:
-            result += chunk.choices[0].delta.content
-            chunk_count += 1
-            if chunk_count % 100 == 0:
-                print(".", end='', flush=True)
+        if chunk.choices:
+            delta = chunk.choices[0].delta
+            # GLM and other reasoning models use 'reasoning' field instead of 'content'
+            text = delta.content or getattr(delta, 'reasoning', None)
+            if text:
+                result += text
+                chunk_count += 1
+                if chunk_count % 100 == 0:
+                    print(".", end='', flush=True)
 
     print(" ✓")
     return result
