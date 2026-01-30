@@ -1,0 +1,199 @@
+Here is the cleaned transcript with all critical content preserved and formatted correctly:
+
+SPEAKER_00: All right, well, welcome back everybody. The first episode of the early days of Ethereum actually got quite good critical reception on LinkedIn and Twitter. I have a total of nine YouTube subscribers now, which I think is not so bad for a first video. And there have been a few people who reached out, who we've known a long time who really appreciated the content. One of them called it essential viewing. So anyway, we're back for another episode, so remind everybody. I'm Kieren James-Lubin, CEO of BlockApps, here with my co-founders Victor. Do you want to introduce yourself quickly?
+
+SPEAKER_01: Oh, okay. I'm Victor Wong, co-founder and chief product officer of BlockApps.
+
+SPEAKER_02: I'm James Hermos-DIA or Jim, CTO and founder, co-founder of BlockApps.
+
+SPEAKER_00: All right, thank you. And so I believe where we left. So I can't watch video of myself, so I forget exactly how we ended the last episode, but I believe we pretty much ended with the Ethereum launch. And there were some things we left out even prior to launch that we can kind of backtrack to a little bit and then go forward to all of the kind of after launch activity. So with that said, maybe I'll hand it to Victor to talk about the first consensus Dappathon, which was June 2015, I believe.
+
+SPEAKER_01: Yeah, so that was I think the first actual hackathon building what in those days were known as dapps, I guess some people still call it, but that seems to go on out of favor with blockchain applications. So the first idea was to really try to build blockchain applications directly on Ethereum. And that was in the first consensus office, which was like a very small co-working space in like Greenpoint, I think it was water in. It was called Green desks, maybe green ducks.
+
+SPEAKER_00: Yeah, that's right.
+
+SPEAKER_02: Yeah, it's right next to the modern day Domino park, maybe a block away from there or so.
+
+SPEAKER_00: Exactly. Yeah, that's right. So and it of course, Domino park did not exist at that time. In fact, Domino park went up really quickly and took me by surprise. I like looked up one day and there was like a big kind of well manicured park there.
+
+SPEAKER_02: Yeah, well, they kind of walled it off and so it just was like, I don't know, I thought it was like an abandoned site. And then one day all of a sudden the wall was gone and there was a beautiful. So.
+
+SPEAKER_01: So at that, so at that event, which was I think two months, two to three months before the actual launch of Ethereum, the concepts were really interesting. People were coming up, and it was mostly I think interns that were interning at consensus over that summer. And consensus at this point was only like maybe 20 people at max.
+
+SPEAKER_00: 20 or 30.
+
+SPEAKER_01: Yeah, it was really really small. And some great concepts came up. But like even with the stuff we built, we realized pretty quickly that no one could build anything in a short period of time. Like it was just impossible. Very basic stuff like reading a variable off the blockchain was kind of impossible. Like you could read the state off the blockchain, all this kind of stuff. So that kind of led into everything building in those days were incredibly hard. And that led into so we decided at that event we were going to at the launch of Ethereum, we were going to do a bigger hackathon. And that became the second consensus Dappathon, which kind of coincided with the launch of Ethereum. And it was us, the Java client, which I think was called Ethercap at that time, and like other tools that were kind of combined together. But what was really interesting about that one was it was bigger. Like I think the first one we had like six participants. The other one we had like I think close to 30. And but it introduced like a lot of ideas that would become more developed pretty quickly. Like the winner was a gamefi app. Like it really had that element of tokenized gameplay. There was a decentralized social app, I think called Truther or something. Something like that. And then there was like a traceability supply chain app in those early days. And that kind of all coincided with like the launch of Ethereum.
+
+SPEAKER_00: Yeah. So okay, and this. So you're talking about the second one.
+
+SPEAKER_01: I'm talking about the second one.
+
+SPEAKER_00: Yeah, the second one. Also, the offices had shifted. So we had our consensus, which we were kind of working as a part of at that time, had moved to a much larger office in Bushwick, which is I believe they still have a presence there, though they've gone mostly remote. I remember there was like a horse Lineage app. Yeah, pretty interesting. And we ended up actually hiring a couple people who participated in the hackathon. But that one was open to externals. Right. So that was the big difference. And it actually was quite well attended. The room I think never had the greatest air conditioning, but it was really quite hot in there, if I recall. And you think that one was like 24 hours or it was two days. I can't remember.
+
+SPEAKER_01: I think it was two days. And yeah, like the air conditioning thing. So we moved into that space to have the hackathon, like consensus was playing because they had outgrown that co-working space already. And so we moved into that space, which can was a reasonably sized room. Like you could probably get 80 to 100 people in that room. Right. But yes, the air conditioning was terrible and we had to frantically. We only realized this after we got into the room, so we had to like frantically buy some and set them up.
+
+SPEAKER_00: Okay, I do have a memory of that.
+
+SPEAKER_01: Yeah, I don't know if you recall that, but yeah, we were like trying to like get those air conditioning units in place before a ton of people showed up because yeah like we were sweating when there were only like five people in the room.
+
+SPEAKER_00: These were the scrappy days.
+
+SPEAKER_01: Yeah.
+
+SPEAKER_00: Manually configuring air conditioning. I think the amount of like furniture assembly that you do is like a good proxy for you are in your startup journey.
+
+SPEAKER_01: There was a lot of furniture. I mean we we like it was basically an empty room when we moved in there. And I think we moved in there a day or two before the hackathon actually started. So get everything running.
+
+SPEAKER_00: And was this to like sort of commemorate the launch, I think, or was it like right before the launch?
+
+SPEAKER_01: It was it was it was right. It actually you know if you recall at the time we didn't know when the launch would be. Like the dates were always shifting. Right. And we just said we kind of arbitrarily chose like we wanted to actually synchronize it with the launch, but because it was because we couldn't know exactly when the launch was, and even when they declared the date, it was still a little bit vague. Like we were like is that going to actually happen? So we we kind of at some point had to arbitrarily chose the date and they they more or less. What was the right date? Like I think it was off by maybe a day or two.
+
+SPEAKER_00: Jim, I might have asked you this last episode, but I'll ask again. Do you remember one, trying to predict the launch and could you explain how. And two, there was some complicated mechanism for how the launch would actually happen because it's hard for like a decentralized group to decide on a launch time. I can't remember that at all.
+
+SPEAKER_02: You were mentioning it in the last video, and I didn't remember this, but I don't doubt it. It sounds correct. You were saying we were looking through the Git commits at the time we were.
+
+SPEAKER_00: Yes, you made this plot. It was like commits by day and as like the commits and you like extrapolated it forward. I think probably got within a couple days of the launch date but. Okay, so I have to. Yeah, I still don't know how they like set the clock on the first block so to speak. Maybe we can like dig this up. There was something they did and that.
+
+SPEAKER_02: We had probably in our DMs. I wish I thought to look between the first and second video to find the actual discussion that we had. Maybe the graph is in there.
+
+SPEAKER_00: Yeah, yeah, that's very funny. The slack is a treasure trove of interesting things. All right, so yeah, so it launched and I kind of felt like there was a sort of and then what going on. You know it took a little time for things to get going and you know this, it obviously it's been a smashing success. Right. It's just sort of the reality of a new platform. You sort of get it out there, you see what people do, you learn from it and you know it took a minute for the activity to kick in.
+
+SPEAKER_01: Jim.
+
+SPEAKER_02: I remember like like a lot of people around us at the time had had been buying a lot of pre sale ether beforehand and so the day it came out I think they were expecting it to like have a huge jump in value immediately. And when when like you know a couple weeks had gone by and it was only still like 20 cents an ether or so I remember people around us were kind of like some of the people there were like oh this thing was a flop. It's never going to go anywhere.
+
+SPEAKER_00: Yeah, yeah, yeah. And it's just psychologically yeah the expectations were super high. There was this concept floating around consensus of day one dapps like you had to be ready right for the launch because you know it was a land grab and things were going to the moon and it turned out to not quite be obviously again smashing success. But yeah the price is like under a dollar for a little bit and then around a dollar for like a while I believe. And I did want to mention so I had to look this up. So the first ICO whatever you want to call it that was on Ethereum obviously Ethereum did its own crowd sale but it was like you know they took in bitcoin and there was it was something like 2000 ether to one bitcoin at the time which I believe at the time was like 20 or 30 cents and then it had gone up to a dollar on launch which is already a pretty good return you know but that is what it is. The first ICO apparently was Augur. And I knew the Augur guys a little bit. I was digging through the Crypto Economicon videos. I believe one or two of them presented or run panels at Crypto Economicon for folks who are listening to this. Crypto Economicon was a conference that we had in January 2015 that involved a lot of the people who then including Vitalik and some of the other Ethereum folks then subsequently created really big and interesting mostly layer 1 projects in the Ethereum space but others as well. So the videos are actually up. I tweeted a couple of them but there was a apparently I think I created a YouTube channel like in 2015 and uploaded all those. I definitely remember getting them recorded. So check those out if that's of interest. So Augur was the first I guess of the prediction markets platforms. There since have been a couple new ones that have popped up that seem to be popular. There was also this sort of competing project called Truthcoin. And I was kind of confused about how the two related to each other. I think there was no formal relation though. I remember meeting up this guy named Matt Liston I met who. I checked his LinkedIn. He's been at a couple different places. So I think Augur. Maybe we should look up who actually founded Augur. So Jeremy Gardner I've known over the years and he. I met him in San Francisco with Vitalik because Vitalik was staying at what was termed at the time the Crypto castle. And you know it's kind of what you would imagine sort of like a co-working co-living crypto space for. And not everyone there was working on Augur. They were all working on different things. Kind of common thing to do.
+
+SPEAKER_01: I think if you hear the term Crypto castle now people would imagine an actual castle say you know what you're describing which is more like a dormitory.
+
+SPEAKER_00: Yes it was more like a dorm. I mean it was nice nice little house. I can't remember. It might have been like adjacent to the Mission in San Francisco. And so Vitalik would stay there sometimes. Joey Krug probably met two or three times over the years. I'm not even sure if I ever met Jack Peterson. So those are the three founders of Augur. So I guess they had you know they were good friends with Vitalik and or just sort of had realized early on that would be easier to develop on Ethereum than it would be to try to do something with Bitcoin which was kind of the predominant suggestion at the time but they did the first on Ethereum crowdfund like I guess right after launch the Wikipedia is saying August 2015 which is really really early. I don't know if I believe this Wikipedia page. It says soon after the platform launched users had created the death pools or assassination markets on famous people. So back in 2015 every discussion about blockchain eventually led both to prediction markets and then this sort of uncensorability you can't shut it down would lead then to assassination markets. Assassination markets being you predict you bet on the day someone dies and then someone takes the other side of that bed kills them and collects on it. So apparently there actually were assassination markets created on Augur according to this Wikipedia page. I'm yeah I have to look into that. I'm a little bit dubious. But in any case I guess Augur then blazed the trail sort of after Ethereum did with its successful crowd sale for the wave of ICOs that came later. But yeah so Truthcoin was also this competing project. I just remember meeting up with Matt at like a Berkeley coffee shop and talking about both Augur and Truthcoin had some sort.
+
+SPEAKER_01: Of.
+
+SPEAKER_00: Machine learning slightly computer science graph theoretic way of determining what the truth was. So you take a bunch of votes from a bunch of people but then determine the principal components of how the voting is then extract the truth from there. So it sounded like very high end math mechanistic which is very common of the space. Every you know the crypto has a lot of these like and I was in the math department at Berkeley a lot of these like mathematician types who like kind of came in and wanted to create like really complicated schemes and mechanisms and all that sort of stuff that had provable theoretical properties for something interesting about you know this space. But yeah so they must have launched it like right away. That's very interesting.
+
+SPEAKER_01: I remember us talking to them at some point and they were developing that like they did want to be a day one dap. I remember. And they were I think the first.
+
+SPEAKER_00: One went live 2018 the Wikipedia page says. But they did the crowd sale like basically right away.
+
+SPEAKER_01: Right right yeah.
+
+SPEAKER_00: So should we go on to Devcon 1? Which I guess I can talk about. So kind of concurrently while all this is happening we started to work a bunch. So consensus had a business development team a little bit of a mix of marketing BD actual sales you know etc. That was starting to generate interest from big companies in the technology. So you know for us ourselves we definitely worked with companies far more than sort of the crypto public for most of the history of the company. Still don't really work with the crypto public today. But consensus was kind of conflicted on this front. So they had sort of pure blockchain native project and eventually in big numbers. They also had an enterprise arm which is really more consulting oriented although they kind of ended up sort of backfilling what they saw demand for with products at times. But in any case the BD folks were reaching out to everybody and they actually got a fair bit of interest from Microsoft. And I think Microsoft had already been kind of watching the Ethereum revolution and seeing it as something interesting the new front of the cloud war perhaps. And so know we got to working with them and actually maybe for the technical part of this I could kind of transition but basically. So consensus had a couple you know preferred projects which had the low level you know like low level I mean like the blockchain client itself infrastructure that could be deployed on cloud platforms and maybe. Yeah so that ended up being basically us and the you know the Java folks. Vic do you want to you know take any I think you were saying before.
+
+SPEAKER_01: Yeah sure. So like like they. So they were interested in kind of being able to deploy a one of the clients that we had. You know we had the Haskell client and then the Java folks they were actually more interested in the Java folks. Wait I should take a step back here. Just mentioning that Devcon 1 almost didn't happen if you recall right. Because it was in this low period and the Ethereum foundation was kind of running out of money because this is why the launch had to happen when it happened. And in that low period they were still trying to preserve a lot of cash. And so it almost didn't happen. And I remember a lot of people inside Consensus were like no like we have to like bring this to kind of bring this up and make an event out of this you know like I think Andrew Keys was leading the charge in that really saying like we got to do this and then this Microsoft thing kind of bundled into that. Right. So it was us and the Java client. And my background was like you know in my previous company I had tried to work with Microsoft in building apps like when they had their first mobile platform. And it took me like six months to get a meeting. And I had a cousin who was like a VP at Microsoft. So it was really hard. So it was amazing to me that they were just coming to us and they wanted to launch something with us in two months. And I think at that point we decided okay this is a huge opportunity. We're going to drop everything and focus on that launch which turned out to be the launch of Blockchain as a service. But oddly enough the Java guys started and then they just kind of faded away. Like they they weren't really interested in kind of pursuing it. They just had other things going on. So we we like went over it. So by the time Devcon 1 happened the only thing that was working was you know our client on it was ready on the cloud. You could download it and you could start building on it right away. And I remember like we we started to get like downloads immediately. People started to get you know people using it immediately. But that's also in that run up. That was like when kind of we realized and Microsoft realized like if we're going to make this as a developer tool it can't you know connect to the public Ethereum network because people wouldn't be able to get Ether. Like it was quite hard to get Ether at that point. There weren't really that many exchanges or anything to go on. So we were that's kind of how we have created like private Ethereum you know and private enterprise what what became known as private Ethereum or enterprise Ethereum. So that that kind of all led up and then the launch itself in London when we got up with Microsoft I think people were shocked that Microsoft.
+
+SPEAKER_00: Was into it you know so I just looked that up and didn't have in our little outline but I I had forgotten about this. So I think Coinbase listed ether like mid-2016. Right. I'm seeing May 24 2016.
+
+SPEAKER_01: So.
+
+SPEAKER_00: And I guess like Kraken was the popular exchange at the time you know.
+
+SPEAKER_01: I think it was Poloniex.
+
+SPEAKER_00: Sorry you're right. Yeah Poloniac still exists.
+
+SPEAKER_01: And I just remember there was like the chat function on Poloniex. Like man like that was like crazy. Like that was Discord before there was discord.
+
+SPEAKER_00: Oh wait hold on. Circle bought it maybe and then it seems to have shut it down anyway. I'm confused by all this but yeah so it was like it was sketchy for sure. There was like a whale chat box. I never really used it but I would like to see it on people's computers and all that sort of thing. It was it was difficult to get it in and out of Ether for a while. Jim are you gonna say something?
+
+SPEAKER_02: I'm just kind of remembering back then. Remind me because I'm sort of like not sure if I've got this right But I sort of I think maybe you're you're downplaying the Java thing a little bit. I think if I remember right Microsoft guys were pretty mad at that time. Am I misremembering that?
+
+SPEAKER_01: No you're not. They they they. Well the thing is they really want something that they could pitch to companies and you know like just you know companies use Java right? So they were like really like. And so like when we kind of like were like like we just dropped everything and just focused on that. And I remember like we sort of had the internal mantra like we gotta get on stage and be able to write a DAP in like 30 seconds. Like that was our internal mantra.
+
+SPEAKER_02: They had like pre announced something or something and then the Java guys sort of disappeared or something.
+
+SPEAKER_01: Yeah they pre announced that you know they were going to show like the Java client and the Haskell client and we were like this we were like the runner up. Like they were like I think they kind of accepted us because we were willing to work really hard and the Java got like. I think they knew that they needed a backup.
+
+SPEAKER_02: The other thing I I remember about Microsoft is that there was a little bit of like tension within there because there were the they were just launching Azure at that time and at the same time they had blockchain people and the blockchain people really wanted to focus on the blockchain side of it and the Azure people wanted to like use this as a way to to promote the new platform. So so there was always a little bit of friction within.
+
+SPEAKER_01: Yeah I mean like I remember like I think there you know Marley Gray was really driving those efforts inside Microsoft at the time and KO Teeter like they were like really really pushing it. And I remember like they were trying to get people in the room to talk to us and some of them wouldn't even go in the room. I mean it was probably like you said they were launching Azure so that's a huge project. I'm sure they were just busy with other stuff but we spent a lot of time in their New York office. I remember we were like going there all the time.
+
+SPEAKER_00: Yeah I'm seeing The Azure launches 2010 I checked it. But it did feel much more nascent than it is today. Like Amazon got out AWS got out there and like took the whole market and then Azure was kind of like in a catch up mode. But I think it might have even like exceeded AWS revenues at some point.
+
+SPEAKER_02: They were running around one of the conferences. I can't remember which one. Handing out free passes to or to everyone.
+
+SPEAKER_01: It was that conference DEFCON 1.
+
+SPEAKER_02: Okay.
+
+SPEAKER_01: Yeah they were they were handing it out and that's why they wanted to make sure we were on their marketplace. So like they could hand out this free pass and you could get the you know you could get the our client up and running and start building something right away. And that was like a revelation to a lot of people. I remember like dozens of companies were like starting in that first week their.
+
+SPEAKER_02: Devious plan worked on us that we grabbed a whole bunch of free passes and then a year later we were like giving them like $10,000 a month to stay on.
+
+SPEAKER_01: It definitely works but I get you.
+
+SPEAKER_00: Yeah.
+
+SPEAKER_01: But I don't know if you remember like the day after the Microsoft announcement there was a spike in the price and we were like I think we just did that.
+
+SPEAKER_00: The price? You mean the Microsoft stock price?
+
+SPEAKER_01: No no no. I meant the Ethereum price.
+
+SPEAKER_00: I think it was both actually. Yeah I think memory of the Microsoft stock price like slightly ticking.
+
+SPEAKER_01: Yeah I think they up and we were like hey I think we actually did that.
+
+SPEAKER_02: So like either went from $0.20 to $0.30.
+
+SPEAKER_01: No I think it actually went significantly up. I I remember like like it was. I think it might have like doubled for a day or something like that.
+
+SPEAKER_02: 20 cents to 40 cents maybe.
+
+SPEAKER_01: I think it was like a dollar to a dollar eighty or. I I don't remember the price.
+
+SPEAKER_00: Check it out. It's hard to see. It's funny. The price range is like so.
+
+SPEAKER_01: Yeah because the prices.
+
+SPEAKER_00: Oh okay. So it's interesting right? So DEFCON's like December right? Yeah something like that. It's around a dollar. Yeah there it is ticking up like. And I think we definitely got calls related to the Microsoft announcement into January.
+
+SPEAKER_01: Yeah for sure.
+
+SPEAKER_00: So we probably had something to do with it. Yeah you never know really what's causing price action.
+
+SPEAKER_02: But I I'm joking but I just remember like sort of the mentality within was that until it was up to $20 people thought it was a flop. And somehow when it hit $20 everybody around me all of a sudden got really excited then.
+
+SPEAKER_00: Yeah the average person you know buys high sells low. So yeah.
+
+SPEAKER_01: That's.
+
+SPEAKER_00: That's pretty successful at 20 and it was still low. Okay. So moving along kind of on the back of the enterprise announcement. Sorry the Microsoft announcement we started to get customers and a lot of it was like enterprises that were fairly early in their journey and you know wanted just some advice on on blockchain technology. Some of them were actually ready to implement something. I don't know. Vic you took a whole lot of phone calls you know.
+
+SPEAKER_01: Oh man. Yeah you know.
+
+SPEAKER_00: Do you want to comment on any of that?
+
+SPEAKER_01: I mean it was kind of amazing. Now the numbers in relative size seem pretty small but in the first couple months we went from zero to dozens of companies calling us. And the amazing thing to me was they had actually tried our software they had played around and I remember over and over people were like oh you know like we've been working on a blockchain project for the last two years and haven't been able to build anything and now we can do something. Right. So I remember like we were getting them from financial companies and like you know resource company and mining companies and like it was like all across the spectrum of people trying things because I don't think they really knew what they wanted to do but they wanted an easy way to get in and for the first time they had that.
+
+SPEAKER_00: Gotcha. Do you remember? So I believe I'm trying to keep this straight. So I remember the the Project Slocket was sort of being marketed at devcon one but I believe it's a lot of the same people as the Dao. And do you remember? Like I think they. But I can't. I'm having a hard time keeping it straight.
+
+SPEAKER_01: So Slock it was this sort of Iot kind of strange thing that you could unlock a lock. But they it was structured around what actually became the dao. Like they I think they invented the concept. Not the concept but I think they practically created a DAO in order to their end this lock. And then they realized well you know I think they realized well we don't actually need the lock. Like the DAO is the most important thing and the lock the actual lock thing is not that interesting. So yeah it was 100% the same people like they were introducing both ideas at the same time.
+
+SPEAKER_00: So let me transition into the DAO part. I'm going to go slightly out of order here. So Victor what was the dao?
+
+SPEAKER_01: So the DAO was basically it was kind of like a investment fund on the Ethereum blockchain. Right. So basically people would put like money into this contract and this contract would basically fund the the goal of it was it would fund different projects but it started to like consume a huge amount of you know the overall ether supply. I think it was as high as like 20 or 25% of the entire ether supply got locked up into this contract.
+
+SPEAKER_00: Yeah I'm looking on the Wikipedia right now. So the part of the reason I thought of it in this sequence is like looking at the price action. Part of it is that the supply the extant ether supply went down because. Okay so as of May 2016 the DAO had attracted nearly 14% of all ether tokens issued to date. So they ran a crowd sale and crowd sale raised $34 million 34 million by May 10 2016 more than 50 by May 12 over 100 by May 15. So sometimes the dynamics of these ICOs this is one thing one. It's kind of crazy but like one thing that blockchain seem to do that are it's really difficult to do with other technologies is to have this sort of really large scale collaboration and in this case to pool capital basically. So I suppose the there was a some sort of virality going on. People are talking about the DAO and you just see this like enormous movement of funds sort of overnight and you know so okay by the they end up holding by May 21 2016 over $150 million in ether from over 10,000 people. Which is about it says according to the article about 14% of all ether tokens issued at that time.
+
+SPEAKER_01: Yeah.
+
+SPEAKER_00: Okay so it was really fast right? Like it took everybody's surprise. I remember I think I had a meeting that the enterprise folks at Consensus had set up with I'm gonna say the people at BVVA forgetting last names but I think it was with like Scarlet and Carlos. I don't think you went to this one Vic. I think you were in town. But they were just like it just caught everyone's attention. It was crazy you know and they were we were talking a bit about like operational use cases for the bank. But then it was also like you know there was a sense that like this is where the future is. Like the money just moved you know like there were no really you know there's heavy subscription agreements and you know all that sort of thing. And you know it was also a cautionary tale of what was to come over the next couple years. Yeah. So by by June the people discovered that you could exploit the DAO to siphon off the funds. Do you remember anything about that beyond you know it was crazy.
+
+SPEAKER_01: So so there were. So you had all the supply locked into this contract and I think the hack was like yeah so there was this massive race between there was a flaw in the contract logic and because it's immutable the smart contract couldn't be changed. Right. And when people realized there was this massive race between the people who were trying to extract the money out of the contract and the people who actually worked on the DAO itself. So it was like this. But the people who were successful at kind of extracting the money pulled out a lot of it. Like I think I don't remember the number but I think it was like a huge amount of the value. They were able to pull that out.
+
+SPEAKER_00: Yeah.
+
+SPEAKER_01: Now the the the ironic thing was that it got pulled out and put into an account and everyone knew where it went because you know everything on the blockchain is completely transparent but no one could do anything about it. Like they couldn't take the money out. And so the money was just sitting there basically that got like it was like it got stolen and left on the side of the street or something. And no one knew what to do about this situation.
+
+SPEAKER_00: Yeah yeah. And so okay I'm kind of looking back on it. So it was yeah it blew up and it also caused the creation to. I remember there was a at this time and we had to implement this in our software a hard fork debate because. So it's pretty early. It's like less than a year after Ethereum launched. Probably a lot of the you know big ether holders participated in this. You know they've lost significant funds maybe all of their funds. And the question was like do you make people whole or do you stick true to the absolute you know immutability of you know in in the.
+
+SPEAKER_01: In.
+
+SPEAKER_00: The classic blockchain sense where you know it's totally buyer beware. Shouldn't have put your Ether in this contract if you weren't going to you know if you weren't prepared to lose it. And the refund group one. So in a sense I mean both like Ethereum Bitcoin really all the projects are governed to an extent. Right. By the people who develop the software and kind of on an ongoing basis discuss additions to the protocol et cetera et cetera. Right. And even in the early days of Bitcoin I was not really around for this but supposedly they had to be extremely creative about having about keeping the protocol running while not ever reverting any of the history. Right. So I don't believe they did. They've ever done a hard fork of the nature described here though there have been maybe not sponsored by the founders. Obviously there are forks of bitcoin now Bitcoin cash you know all that sort of thing. And so the Ethereum community elected to or the foundation or whatever that is elected to sort of forcibly revert the funds. There's just like a credit as of a certain block number. So everyone got their funds back. Jim had to code it. Maybe I helped a little bit. Now I was not coding anymore at this point. And so then Ethereum Classic was like the hard line. Like we're sticking the immutability. Sorry Jim are you going to say something? Oh no Victor you're going to say something.
+
+SPEAKER_01: No no.
+
+SPEAKER_00: And so Ethereum Classic got some backers I think maybe famously I think Barry Silbert was in their Ethereum Classic maybe still is. And eventually it was I think someday. Victor you told me this right? Someday later it had a hard fork itself. Right. When some issue was discovered with the protocol. Is that correct?
+
+SPEAKER_01: I think I don't know if it was a hard fork or a soft fork but yeah there have been like you know there have been debates inside. There have been

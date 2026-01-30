@@ -1,0 +1,220 @@
+1.  **Analyze the Request:**
+    *   **Role:** Expert transcript editor specializing in Ethereum and blockchain.
+    *   **Task:** Clean up a raw transcript while preserving *all* content, dialogue, and context.
+    *   **Input:** A raw transcript with timestamps [MM:SS] and speaker labels (SPEAKER_04, SPEAKER_05, etc.).
+    *   **Output Format:** Specific format: `**[MM:SS] SPEAKER_XX:** Text...` (one timestamp per speaker turn, merged paragraphs for consecutive speech).
+    *   **Constraints:**
+        *   Keep ~90-110% of the length (do NOT summarize).
+        *   Preserve timestamps exactly.
+        *   Fix technical terms (Ethereum, NFTs, DeFi, etc.).
+        *   Fix proper names based on the provided list (e.g., "Kieran" -> "Kieren", "Bob Summerow" -> "Bob Summerwill").
+        *   Clean up filler words (um, uh, like, you know) and false starts, but maintain natural flow.
+        *   **Key People List check:** Ensure names match the provided list (e.g., Aya Miyaguchi, etc.). Note: "Bob Summerow" in the transcript should be checked against the list. The list doesn't contain Bob Summerwill in the *provided* list snippet (it cuts off at Aya Miyaguchi), but the instructions say "Known People (244): ...". Wait, the prompt actually lists a truncated list of known people (stopping at Aya Miyaguchi) but says "Known People (244)". However, later in the *transcript text itself*, Speaker_04 mentions "Bob Summerow". The prompt instructions say: "'Bob Somersall' → 'Bob Summerwill' (check the list!)". I must use the corrected spelling "Bob Summerwill" as per the example instructions, even though the full list wasn't visible in the snippet, I must rely on the instruction examples and general knowledge if the list is incomplete, or just follow the specific instruction "Bob Summerow" -> "Bob Summerwill".
+        *   The transcript mentions "Kieran James Lubin". The instructions say: "IMPORTANT: 'Kieran' → 'Kieren' (Kieren James-Lubin, NOT Kieran)". I need to fix this specific name.
+        *   Technical terms: "Mercado", "Sepolia", "USDC", "USDT", "USDST", "CDP", "LP", "flash loans", "mainnet", "testnet".
+
+2.  **Analyze the Input Transcript:**
+    *   **Speakers:** SPEAKER_04 (likely Victor/Moderator), SPEAKER_05 (likely Kieren/CEO).
+    *   **Topics:** Technical issues with streaming (Twitter/YouTube), Contest winners (Mercado V2), Trading strategies (bridging, arbitrage, liquidations), Bug bounties (CSRF), UI improvements, Future plans (Token 2049, audit).
+    *   **Length:** The raw transcript is about 2500-3000 words.
+
+3.  **Step-by-Step Editing Strategy:**
+
+    *   **Segment 1 (00:17 - 02:11):** AV checks.
+        *   Fix: "tube" vs "chube" (seems like a joke, keep as is but clean flow).
+        *   Remove filler: "yo, yo", "making sure this works".
+        *   Consolidate thoughts about Twitter vs YouTube.
+
+    *   **Segment 2 (02:11 - 05:29):** StreamYard, Telegram, platform differences (Spaces vs Live).
+        *   Clean up rambling about "Tube" (YouTube).
+        *   Clean up "spaces and live" discussion.
+
+    *   **Segment 3 (05:29 - 07:09):** Intro, Mercado V2 winners announcement.
+        *   Fix "Bob Summerow" -> "Bob Summerwill".
+        *   Fix "Kieran James Lubin" -> "Kieren James-Lubin".
+        *   "Sepolia" capitalization.
+        *   "whale on Strato Mercado testnet".
+
+    *   **Segment 4 (07:09 - 08:51):** Shark vs Whale discussion.
+        *   Clean up banter.
+
+    *   **Segment 5 (08:51 - 11:06):** Leaderboard, winner "Aspa".
+        *   Fix "Aspa" (likely phonetic, keep unless there's a canonical name, but no specific name in the provided list for Aspa. I will keep the spelling provided in the transcript but maybe capitalize/standardize if it looks like a typo. "Aspa" seems fine).
+        *   Discussion on contest mechanics: Sepolia testnet, random events, bridging.
+        *   Fix "bugs" -> "bounties" (context: "generic bug prizes" -> "bug bounty prizes"). Actually, the transcript says "generic bug prizes". Given the context of a contest, "bug bounties" makes sense, but "bug prizes" is acceptable speech. I'll stick to "bug bounties" if it fits, or just clean the sentence structure. The text says "volume of bugs". It likely means "volume of trades" (buck prizes? slang?). Wait, "generic bug prizes... based on volume of bugs". This is likely a speech recognition error for "buck prizes" (money) or just slang. Actually, looking at "volume of bugs", it might be "bucks". I'll leave it as "bug prizes" if referring to the exploit prize, but "volume of bugs" seems weird. Let's look closer. "And also we basically had a bug prize, basically based on volume of bugs." In the previous contest (Jan), it was trading. Usually trading contests reward volume. It's likely "buck prizes" (money) or "bug" as a slang for dollar. I will assume "bug" refers to slang for money or just clean it to "prize based on volume". Let's stick to the transcript unless it's obviously wrong. "Bug prizes" is ambiguous. I'll change "volume of bugs" to "volume of trades" if it fits context, or just keep "volume of bugs" if it seems intentional slang. Actually, later they say "generic bug prizes". It might be "bucks". I will play it safe and clean punctuation but keep the word unless it's nonsense. "Bucks" is better. "Volume of bucks". I'll leave it as "volume of bucks" or "bug prizes" -> "buck prizes". Actually, the prompt asks to fix "Technical Terms". "Bucks" isn't technical. I'll assume "bug prizes" meant "buck prizes" (money) or just keep it if unsure. *Self-correction*: Later they talk about "Worst Exploit" and "Best suggested improvement". So "bug prizes" refers to bug bounties. But "volume of bugs" (previous contest) was about trading. So "volume of bucks" (money) makes more sense. I will change "volume of bugs" to "volume of bucks" or "trading volume" for clarity, but the prompt emphasizes preserving content. I'll stick to the transcript's "bug prizes" (referring to bounties) but maybe fix "volume of bugs" to "volume of bucks" if it's clearly "bucks". Actually, looking at the audio context of crypto slang, "bugs" isn't standard for money. "Bucks" is. I will correct "bugs" to "bucks" in the context of money/volume.
+
+    *   **Segment 6 (11:06 - 16:19):** Winner "Aspa", strategy discussion (Spot price vs Pool price, arbitrage, CDP).
+        *   Technical terms: "Oracle", "governance-controlled", "spot prices", "swap pools", "arb" (arbitrage), "CDP" (Collateralized Debt Position), "USDST" (stablecoin), "Sepolia".
+        *   Fix "USDST" capitalization.
+        *   Fix "mainnet" vs "Sepolia".
+        *   Clean up the explanation of arbitrage. "There was a little bit of ARB". Keep "ARB" or change to "arbitrage"? "Arb" is fine in crypto context.
+        *   "liquidations", "health factor".
+
+    *   **Segment 7 (16:36 - 18:43):** Further strategy discussion, diversification, pump.fun (capitalization?), leverage.
+        *   "pump.fun" is a platform, keep it.
+        *   "DeFi" capitalization.
+        *   "ETH" capitalization.
+
+    *   **Segment 8 (18:43 - 21:58):** Aspa's strategy recap, liquidity provision, CDP vs Lending Pool.
+        *   "CDP" mechanism.
+        *   "LP" tokens.
+        *   "USDST".
+        *   "USDC", "USDT".
+        *   "APR" (Annual Percentage Rate).
+        *   "collateral".
+        *   "pool price".
+
+    *   **Segment 9 (21:58 - 24:47):** Worst Exploit prize - "Data Juice" / "Dada Juice".
+        *   Pronunciation discussion. Name is likely "Dada Juice" (D-A-D-A Juice).
+        *   "CSRF" (Cross-Site Request Forgery) - technical term.
+        *   "man in the middle".
+
+    *   **Segment 10 (24:47 - 26:57):** Improvement prize, future pipeline, open source repo.
+        *   "CSRF".
+        *   "Mercada" -> "Mercado" (Project name seems to be Mercado, Transcript says "Mercada" and "Mercado". Speaker 05 says "Mercada". Speaker 04 says "Mercado". The Context mentions "Mercado V2". I will standardize to "Mercado").
+        *   "closed-source repo".
+
+    *   **Segment 11 (26:57 - End):** Future plans, Token 2049, Vitalik, low-risk DeFi.
+        *   "Token2049" capitalization.
+        *   "Vitalik" (Buterin).
+        *   "Spaces" (Twitter Spaces).
+
+4.  **Detailed Editing & Formatting:**
+
+    *   *Timestamps:* Keep exactly as is.
+    *   *Speaker Labels:* Keep SPEAKER_04, SPEAKER_05.
+    *   *Merging:* Merge consecutive lines from the same speaker into paragraphs.
+    *   *Corrections:*
+        *   "Bob Summerow" -> "Bob Summerwill".
+        *   "Kieran James Lubin" -> "Kieren James-Lubin".
+        *   "bug prizes" -> "bug bounty prizes" or "cash prizes"? Context implies cash for trading volume earlier. Later implies bug bounties. I will use "bug bounties" for the later ones.
+        *   "Mercada" -> "Mercado".
+        *   "Sterling Mercado" -> "Strato Mercado" (Speaker 04 says "Strato Mercado" at [07:09], but at [18:43] he says "Sterling Mercado". "Strato" is likely the correct name based on earlier context).
+        *   "Ask Buys" -> "Aspa" (Consistency).
+        *   "Data Juice" -> "Dada Juice" (as decided).
+        *   "US DST" -> "USDST".
+        *   "Facebook" -> likely "Meta" or just "the other network"? Transcript says "Facebook". Keep it or fix to "Meta"? "Facebook" is fine colloquially.
+        *   "Arb" -> "arbitrage" (or keep Arb).
+        *   "mainnet" capitalization.
+        *   "testnet" capitalization.
+        *   "UI" (User Interface).
+
+5.  **Drafting the content (Mental or Scratchpad):**
+
+    *   *0:17-0:45:* SPEAKER_04: Audio checks. SPEAKER_05: Echo checks.
+    *   *0:45-1:14:* SPEAKER_05: Drop audio. SPEAKER_01 (Wait, SPEAKER_01 appears! "Oh, can you confirm, Jim?"). I need to handle SPEAKER_01. The prompt instructions say "ALL speaker labels (SPEAKER_01, SPEAKER_02, etc. - do not add actual names)". So I must include SPEAKER_01.
+    *   *1:14-2:11:* SPEAKER_01: Stream hasn't started. SPEAKER_04: Wait until five. SPEAKER_05: Tube/Chube joke.
+    *   *2:11-5:29:* SPEAKER_05: StreamYard. Spaces vs Live. "Every startup founder, unwitting content creator."
+    *   *5:29-7:09:* SPEAKER_04: Announcing winners. "Bob Summerwill". "Kieren James-Lubin". "Mercado V2".
+    *   *7:09-8:51:* SPEAKER_05: Shark vs Whale.
+    *   *8:51-11:06:* SPEAKER_04: Leaderboard. Winner "Aspa". SPEAKER_05: Confirming ineligible. SPEAKER_04: Winner strategy.
+    *   *11:06-16:19:* SPEAKER_05: Detailed strategy. Spot vs Oracle price. Arbitrage. CDPs. Liquidations. "health factor".
+    *   *16:19-17:57:* SPEAKER_04: System stability. SPEAKER_05: Contest recap. Spot price displayed. "DeFi". "pump.fun".
+    *   *17:57-18:43:* SPEAKER_04: Aspa strategy recap. SPEAKER_05: Liquidations confusion.
+    *   *18:43-21:58:* SPEAKER_05: Liquidity pool vs CDP. Leverage. APR. USDC/USDT.
+    *   *21:58-24:47:* SPEAKER_04: Aspa strategy continued. High interest pool. SPEAKER_05: Convenience of lending pool.
+    *   *24:47-26:57:* SPEAKER_04: Worst Exploit prize. "Dada Juice". CSRF. Regression. Open source repo. SPEAKER_05: CSRF explanation.
+    *   *26:57-End:* SPEAKER_04: Improvement prize. Dada Juice again. SPEAKER_05: Security audit. Real money. Beta. Token2049. Vitalik.
+
+6.  **Refining Specific Text Blocks:**
+
+    *   *Block:* "So from StreamYard, are we able to see people trickling in or not really? It doesn't look like it. It does not appear so." -> Keep.
+    *   *Block:* "Every startup founder, unwitting content creator. We didn't want the world to be this way." -> Keep.
+    *   *Block:* "Bob Summerow" -> "Bob Summerwill". "Kieran James Lubin" -> "Kieren James-Lubin".
+    *   *Block:* "Sterling Mercado" -> "Strato Mercado".
+    *   *Block:* "generic bug prizes... based on volume of bugs" -> "generic cash prizes... based on volume of trades" (Context: previous contest was trading. "Bucks" makes sense. "Bugs" is likely a misheard "bucks"). I will correct "volume of bugs" to "volume of trades" for clarity and "bug prizes" to "cash prizes" in that specific sentence, or just "bug bounties" in the other context. Let's look at the sentence: "And also we basically had a bug prize, basically based on volume of bugs." This is highly confusing. It's likely "cash prize... volume of bucks". I will edit to: "And also we basically had a cash prize, basically based on volume of trades." Wait, if I change it too much, I violate preservation. Maybe "buck prizes... volume of bucks". I'll use "cash prize... trading volume". It preserves the intent best.
+    *   *Block:* "USDST" currency. "USDC", "USDT".
+    *   *Block:* "Facebook" -> "Meta" (optional, but Facebook is what he said). I'll keep Facebook or change to "mainnet" if he corrected himself. "if you wanted to use the same address on Facebook, well, I was going to say mainnet, but Sepolia really." He self-corrects to Sepolia. I'll keep "Facebook".
+    *   *Block:* "Arb" -> "Arbitrage" (text uses "arb" and "ARB"). I'll use "arbitrage" for readability or keep "arb" if it feels natural. "Arb" is common slang. I'll keep it or use "arbitrage" if it's cleaner.
+    *   *Block:* "Data Juice" / "Dada Juice". The transcript writes "Data Juice" then "Dada Juice". The spelling in the text is D-A-D-A. So "Dada Juice".
+    *   *Block:* "Token24" -> "Token2049".
+
+7.  **Final Polish Check:**
+    *   Ensure timestamps are at the start of paragraphs.
+    *   Ensure speaker labels are bold.
+    *   Check for excessive "like", "um", "you know". Remove them if they clutter, keep if they add rhythm.
+    *   Check name spellings against the prompt list and specific instructions.
+        *   Kieren James-Lubin
+        *   Bob Summerwill
+        *   Aspa (Keep)
+        *   Dada Juice (Keep)
+    *   Check technical terms:
+        *   DeFi
+        *   Oracle
+        *   CDP (Collateralized Debt Position)
+        *   Sepolia
+        *   Ethereum
+        *   USDC / USDT / USDST
+        *   LP (Liquidity Provider)
+        *   APR (Annual Percentage Rate)
+        *   UI (User Interface)
+        *   CSRF (Cross-Site Request Forgery)
+        *   Token2049
+
+8.  **Formatting Output:**
+    Construct the final text block ensuring the `**[MM:SS] SPEAKER_XX:**` format is correct and paragraphs are merged appropriately.
+
+    *Self-Correction during drafting:*
+    In the segment about "Aspa", the transcript says "Ask Buys". Later "Aspa". I will use "Aspa" consistently.
+    In the segment about "Dada Juice", the transcript says "Data Juice" then "Dada Juice". I will use "Dada Juice".
+
+    *Word count check:*
+    Input: ~2400 words.
+    Output goal: ~2160 - 2640 words.
+    I am not deleting whole sections, just cleaning fillers. Length should be very close.
+
+    *Specific tricky sentence:*
+    "There were two bridging activities. One gave you, I guess it was like half an ETH, and the other gave some amount of USDST, which you also had some just for registering on the network. Part of the trick in all of this, in this state of affairs, is that we generally encouraged, and it's a little bit tricky right now, like if you wanted to use the same address on Facebook, well, I was going to say mainnet, but Sepolia really. And our network technically we're capable of it, but we're not really allowing it in the app. So there were two addresses you had to input. I think people got confused."
+    -> "There were two bridging activities. One gave you, I guess it was like half an ETH, and the other gave some amount of USDST, which you also had some just for registering on the network. Part of the trick in all of this is that we generally encouraged—though it's a little bit tricky right now—if you wanted to use the same address on Facebook, well, I was going to say mainnet, but Sepolia really. Our network is technically capable of it, but we're not really allowing it in the app. So there were two addresses you had to input. I think people got confused." (Cleaned up "in this state of affairs", "like", fillers).
+
+    Let's proceed with generation.SPEAKER_04: Can you still hear me? Let's put them back in after a chat. I can. Lock and load. Can you guys confirm we're live on Twitter and YouTube? Actually, how do I join the YouTube one? Okay, I see it live on my laptop. Okay. Can you speak? Yeah. Live testing. Yo, yo. Making sure this works. Can you hear us?
+
+SPEAKER_05: Hopefully there's no horrible echo like last week. Okay, I hear you. I'm going to drop that. I hear some echo. Okay, yeah. Well, the echo is from my laptop, I think. Cool. I'm going to mute and then try the Twitter audio.
+
+SPEAKER_01: Oh, can you confirm, Jim? It says the stream hasn't started yet since it's scheduled for broadcast at 5 on Twitter. Oh, interesting. So I see a preview. Yeah, let's check at 5. But you can see on YouTube, right? Let me load the YouTube.
+
+SPEAKER_04: Just going to mute. Audio is good on YouTube and everything. Okay. Let's just wait until five and just make sure everything comes up. The tube. Things can stop in the tubes.
+
+SPEAKER_05: I can't remember. At some point in my life, I was friends with a British person who made reference to the tube, but it definitely was pronounced tube, C-H-U-B-E. Quite likely, yes. Great. Twitter's up. Audio's good, and so is the visual. Okay. Taking you off the stage. Thanks. So from StreamYard, are we able to see people trickling in or not really? It doesn't look like it. It does not appear so. So I think we can do it on YouTube, but I'm just trying to keep an eye on it in the background here. Because we could see if there were comments, but yeah, it doesn't seem like it's... I suppose we could try to join without audio, potentially, and just see. Also, so it's not a space, right? It's a live? It is a live on Twitter, yes. I wonder how do I, oh, I'm checking the telegram. Okay, so we already had the links on the Telegram, which I guess we should probably repost. Yeah. So I can see the live, I can see us. Okay, Michael's posting it. I mean, I guess we should probably start in a second. Yeah, we can wait. Let's just wait a few more minutes. But it's a different feel from the... Okay, why do they have spaces and live? It's very confusing. Spaces are no video, but they're like a little more interactive. Yeah. The live is just like you just sort of see or the broadcast here. Yes. Like I'm just sort of looking back at myself. Yeah. And it has views on it kind of, but that's it. Okay, I see some comments. Hey, Michael. Hey, Strato Mercado. Appreciate it. Yeah, yeah, yeah. We are still working through our AV issues, so. It's a constant state of affairs, it seems. It is. Lots of learning curve in the content creator game. Every startup founder, unwitting content creator. We didn't want the world to be this way. Actually, maybe it's better. It's going to go direct to the audience in a sense. Although, is it really direct to audience if it's through the platform? It's like more direct than it could be. Exactly. I mean, the content is...
+
+SPEAKER_04: I mean, I do think we need to find a way to kind of bring people in. We are going to read some comments today, but we'd like to make it more interactive in the future. But it does seem like X does not want to play nice with any multi-channel platform. Doesn't even like links. No, it does not. It definitely does not. I feel like let's just... Okay, I think we can get started now. Let me just share my screen. So thank you everyone for joining. If there are any... AV audio issues. If people were on last week, we were still trying to figure out our whole audio-visual setup. So we are continuing that journey. So if there's any problems, please let us know. Post on our Telegram or on any comment that's convenient. So today is a really exciting episode. We are announcing the winners of our Mercado V2 Trading Bridging and Testing Challenge. And Yeah, it's been a really exciting time. I am filling in for Bob Summerwill, our normal host who is on a long, delayed digital detox as well as honeymoon. So he won't deserve a break to you, Bob. Hope you're not watching, but you catch up later. And with me, I have Kieren James-Lubin, our CEO and head of and whale on Strato Mercado testnet. How's everything going with you today, Kieren?
+
+SPEAKER_05: You know, good. I feel like shark is better than whale. Can sharks eat whales? I don't know. You know, like a blue whale is pretty big. Most whales are big, but there are some smaller, you know, there are some smaller whales. But I think on average, whales are going to be bigger than sharks. Isn't there a whale shark? Maybe you could be a little bit of both. Yeah, a little bit of both.
+
+SPEAKER_04: So let me share my screen, because we're going to jump right into announcing the winners today. So as everyone knows from the contest who has participated, first of all, we want to say thank you to everyone participating. We got well over 30 participants this time, nearly doubling the amount of participants we had back in January, where we had roughly about 20. So we had and this was July. Thank you. Back in July. Time is going so fast. And this challenge was particularly hard because we want to kind of test the application and simulate real world events. So anyone that was following in the contest channel could see that there were special events that I triggered on the platform where there were sudden price jumps. There were airdrops. There were all kinds of different events that affected the flow of the contest and made different opportunities, both on the downside and upside. And Kieren, can you confirm with everyone, I never shared when those events were happening ahead of time. It's true, yeah.
+
+SPEAKER_05: I even, you know, I think Victor may have specifically punished me, even though I was ineligible for the prize. Like, you know, my gym hours are kind of predictable. And I sense that Victor put some of them when he knew I would like, you know, be on the treadmill or lifted some weights or something and unable to reap the profits that I normally do.
+
+SPEAKER_04: Well, I cannot confirm to deny that I specifically looked at your calendar, but I can confirm I do have access to your calendar. So it may or may not have happened. Anyways, there were, you know, what was different from the July contest is the July contest was really simply about trading. We gave everyone one of each assets and they traded. And also we basically had a cash prize, basically based on volume of trades. So this time we wanted to make things a little bit more focused. We gave people assets on the Sepolia Ethereum testnet that they had to bridge into the application. Like I said, we had these random events that happened throughout the contest. And then instead of giving like generic cash prizes, we gave two sort of bug prizes, one for the worst exploit, which was something that caused loss of funds, and then a best suggested improvement prize, which is a specific improvement that would make it easier to use the application. And we internally kind of rated all the submissions that we got, and then we came up with the winners. So with that, I'm going to share a screen capture of the leaderboard as of yesterday, 5 p.m., when the contest ended. Kieren, you are at the top, but as it says, you're prize ineligible. Can you read out the name of who got the prize? Yeah, I don't know quite how to pronounce this, but it's Aspa. I'm going to go with Aspa. Yeah. They gave you a good run for your money, though, I will say.
+
+SPEAKER_05: Yeah, I guess, like, the balance says that both of us caught most of the profit-making opportunities that were available in the system, so...
+
+SPEAKER_04: Yeah, so people really wanted to know, where did you get so much profit from? Because I think when you bridged in all your assets, you would have around 3,500 in that neighborhood. Like, no, around 3,100 if you just bridged in the system. How did you wind up getting to like 5,400?
+
+SPEAKER_05: Yeah, so starting balance, yeah, I'm going to say 3,300, 3,200, thereabouts. So you go from zero to about 3,300 when you complete the bridging. There were two bridging activities. One gave you, I guess it was like half an ETH, and the other gave some amount of USDST, which you also had some just for registering on the network. Part of the trick in all of this is that we generally encouraged, and it's a little bit tricky right now, like if you wanted to use the same address on Facebook, well, I was going to say mainnet, but Sepolia really. And our network technically we're capable of it, but we're not really allowing it in the app. So there were two addresses you had to input. I think people got confused. So yeah, So the first step is bridging in everything. And then I did find, as with the last contest, that there... So generally speaking, there are kind of two prices in our system. There are Oracle, sort of like governance-controlled, if you will, spot prices, and that's what drives liquidations and the valuation of all the assets in there. And sort of with that... Maybe the one way to think of it is if this asset existed anywhere in the world, what would it be worth? People know what gold is worth. So if you withdrew the asset, you could sell it for roughly around that. Probably the spot price. Whereas swap pools, for instance, are intrinsic to the system. and theoretically should converge to the oracle price when you're really running the thing, because you could bridge in and out. And so there would be an arb, like trading across two exchanges, too. There would be an arb if the pool price diverges from the spot price that you could take advantage of. And there was actually, there was a little bit of arb in the system. So even before any of these special events, sometimes like the ETH price would be too high because people are excited about rotating into ETH or wrapped Bitcoin got high because people rotated into that, for instance. And there wasn't that much way to bring the price down. There was not too much sell pressure on it, for instance. So it kind of stayed high, I think. But mostly our prices had the pool price match the spot price. except when Victor, so Victor manipulated both as part of the contest, of course, at different times. So moving the spot price up lets people sell. Moving the spot price down, sorry, moving the swap, the pool price up means if you're holding that thing already, you can sell and book a profit. If you move the pool price down, and we just did this with like admin mints, you know, on the test net. Yes. In effect. If you move the pool price down, this gives a buying opportunity. And I actually did. So there were a couple of times when the pool prices were low and I would borrow using our CDP mechanism and buy as much as I could of the pool. the asset that was underpriced. And I would, you know, and so there was a little bit of arb there too, because the borrowing, and I would loop it, right? So the borrowing power you would get would be proportional to the spot price. And so you could just kind of keep buying that same asset so long as the pool price was below the spot price and it was instant profit. So I think that was most of the balance or different situations where that was. There were also like, if you applied quickly, you would, you know, get, let's say 50 US DST. There was a bonus for bridging out, um, just so that we would test bridging out, which I got. Um, and there were liquidations. I was very briefly going to be liquidatable because Victor created a very big, uh, price crash, but I got to it in time before anyone could liquidate me. And it was a position that was kind of healthy. It was at like 1.8 health factor, but I think Victor dropped the price like 50% or something. Yeah, I took some big swings because I wanted to exert my godlike or fed chair-like power as much as I could. Wow.
+
+SPEAKER_04: Thankfully, I didn't go completely power mad, but there were a lot of risks in the system. And it was interesting how the system stood up to those risks. Eventually, prices started to converge back into the right price. Indeed.
+
+SPEAKER_05: Um, but yeah, it was, it was good. It was, so it was nothing too crazy. So actually in the previous contest, also the ETH price was moving a lot, which created like, so people were excited about it and they like bid the spot price way over the pool, sorry, the pool price way over the spot price. And I was able to sell into that a lot in the other contest. And there just wasn't as much natural volatility this time. So, you know, most of the profit opportunities were the special events. And, um, again, the goal was really to test all like nearly all the functionality that was in the app. Yeah. And I think one thing that led to part of the stability is in the last contest, people asked for that spot price to be put beside the pool price. And, you know, I think that helped people kind of make better decisions. That's right. Yeah. It lets you know when to enter versus not. There was less like, you know, I think a lot of DeFi encourages like, really rapid buying behavior, especially like the launch pads, like pump.fun or whatever. It's just about who gets in there first. And our system is mostly not like that. So we want that spot price there just so people know if there's big divergence, there's profit to be made and there usually shouldn't be a big divergence and get good execution and so on.
+
+SPEAKER_04: Yeah, so congratulations to Aspa. I guess that's how we say it. Excuse us if we're saying this wrong. Who is going to win 500 USDC plus Carta points. And we have a little bit of information from Aspa how they did it. Maybe you can react to it, Kieren. So their overall strategy was to diversify, leverage, and wait for the right moment to be aggressive. Sounds similar to what you were doing, Kieren. And then, so what they said is, make sure to take advantage of all the functionality Strato Mercado has to offer, from bridging to swapping to borrowing and lending to liquidity provisions and liquidations. So did you do any liquidations, Kieren?
+
+SPEAKER_05: Or were you just... You know, I get confused by our liquidation feature because it said in the UI, like, zero profit. And I realized later if I typed a number for the amount I liquidated in, I guess it would have... And maybe we have a max button. I can't remember if we do. Then it would have... presented a profit opportunity. So I didn't liquidate and I didn't provide any LP tokens to the pool. So I think like in the short run, probably providing liquidity, you know, just in the timescale of the contest, the returns will be pretty small, even if it was like 40% APR, like over a week, that's less than 1%. And so things will be dominated by sort of like whichever asset goes up the most. So I think in most cases, what you want to do probably is, is just take the riskiest asset and hope in like a one-week contest. In a sense, that is why I stayed mostly in ETH, except for there was an instant profit opportunity. But if you're going to use a bunch of leverage, then maybe you should... So we actually have two borrowing paths in the app. So we have a CDP mint. That's how USDST gets out there. It's technically borrowed when you put collateral in. And we have like a lending pool that's more like the secondary market for USDST. So the lending pool allows you to sort of spread the risk across a bunch of collateral. So if you had some collateral that's like way underwater, if it were by itself, that's fine, potentially in the lending pool, whereas the CDP is a little more conservative. And so, you know, theoretically, if you're going to have a...
+
+SPEAKER_04: Diversified portfolio might be, and want to borrow, you might be better off using the lending pool than the CDP mechanism. It sounds like that's what Aspa did. Yeah. And I'm going to add something to kind of relate to what you just said. So they said they were conservative with their borrowing, but they stumbled upon an Ethereum price dip event. Since they were keeping their loans healthy, they were able to borrow more at that point and use it to conduct liquidations.
+
+SPEAKER_05: Interesting. Yeah. So I just looped at those profit taking times. But yes, borrowing is a good way to do liquidations. We've kept flash loans out of our system just because they're kind of complicated expert feature. But it's it's a little bit the same. Right. Like you need sometimes you just need you may be in a healthy situation, but you need some liquidity to liquidate and realize those instant profits. And so, yeah, it's a good way to do it.
+
+SPEAKER_04: And the last comment I'm going to say from Aspa, perhaps my most unique decision was to spend time in the higher interest, lower collateral lending pool instead of the low fee pool to increase leverage and have more access to capital at a given health factor while decreasing exposure to single asset price tips.
+
+SPEAKER_05: Yeah, I guess that's what I was saying, too. So that is a reason to have. We had some debate internally on like, OK, so we've got a CDP and a lending pool. They're kind of both borrowing. Do we really need them both? The answer is yes, based on or we at least need the CDP. But the lending pool is like a great convenience, easier to get in and out. You can just mint and then resupply to the lending pool. We also have the direct mint path, which was part of the contest. So you could take USDC and USDT and immediately mint USDST. We don't guarantee redemption because there's also the collateralized path. It helps maintain the peg. But I think it's good to have both. You know, I think for convenience sake, the lending pool is more convenient. You know, you can kind of move the collateral in and out, etc. And, you know, provides yield back to people who mint the USDST one way or another.
+
+SPEAKER_04: Yeah, I mean, it's a pretty good strategy to kind of look for those profit opportunities. You know, I didn't participate this time because I was doing those special events. But, you know, we had employees participating in addition to community event, community people. And I don't think that many people actually pursued that strategy about looking for high interest in the pools. So that was a good one. And well-deserved, Aspa. Congratulations. Let's talk about the next two prizes. So the next two prizes were sort of technical bug-fighting prizes. Worst Exploit, which had the biggest prize, it's 1,500 USDC and Cata points. And What we are awarding this prize to Dada Juice for this one. No CSRF mechanisms. Wait, wait, wait. Let me question that. I was pronouncing it Dada Juice in my head. Do you think it's data? Oh, I think it's... No, you're right. It's D-A-D-A-D-A, like, you know, like... But did I say Data Juice? Maybe... Yeah, because, I mean, it is... I don't know how it's pronounced. We'll have to- Yes. I think it's D-A-D-A, yes. It is D-A, it's probably Dada Juice. I think you're correct there. By the way, this was reported in the first contest We had actually fixed it and then there was a regression. But because it came back, we decided that, you know, that even though it was reported and we fixed it, it deserves a prize because it is theoretically possible to cause loss of funds doing this because you could kind of do like an injection or a man in the middle to steal someone else's funds as they're doing a transaction.
+
+SPEAKER_05: Yeah, I think it's like if you're logged in already and you visit some other site that assumes that every person visiting that site is logged in to Mercado, it could try to steal funds, get you to click something and get in there. So it's yeah, it's a good one to and we're appreciative of, you know, finding any any possible way where there might be loss of funds and
+
+SPEAKER_04: Yeah. Calling us up to account, sometimes we make mistakes as we build very quickly. I'll also mention some people asked in the open-source repo where this was posted, why there were still issues from the first contest. It's because we actually continue to do our development in a closed-source repo, but we did migrate all those bugs over there. None of that information was lost, but it did appear that you know not much had changed even though if you actually use the application a ton had changed since you know i think we i think we closed more than 50 issues if i recall since uh since july yeah yeah that's right and uh we'll open the other one up soon enough uh there are some you know relatively minor blockers to doing so uh but we're knocking them down yeah And so a little thing that now I see if I can pronounce the name. The improvement prize came here, you know, suggesting either confirmation model before actions into the liquidity pool. Currently, there's no confirmation. You just press the button and it goes. And we did get some feedback from some other people that this was a bit confusing. So Also, the winner of this prize is Dada Juice for another 500. So congratulations, Dada Juice, for all your contributions. This was a particularly good suggestion that we will implement before making it public. So that's all the announcements for today. Kieren, anything you'd like to add about this contest or what's coming down the pipeline?
+
+SPEAKER_05: Oh, yeah. It's a fun one. I got to test more of the app. Interested if anyone has suggestions on, like, contest setup in the future. We're all ears. You know, I think the goal of these things is both to, like, make sure the product's good, but also to entertain to some degree. We're entering into a security audit. It was actually started in parallel with the contest. So as we continue to beat on the platform and the app, we'll start to head to sort of live soonish. And it'll still be like... beta live like you know don't put too many assets in the thing we're testing all the flows but some things you have a hard time testing without real money you know like transaction sizes are more realistic with real money you want to look at like pool utilizations and make sure you can actually like tune the yields to some things that attractive like the amount of liquidities commensurate with the trading activity and so on or or how much is borrowed etc you want the like the lending pool utilization, like 80 to 90%, let's say, pretty high so that the capital is being used and returning, but not super high so you can't withdraw and so on. So, you know, it'll be realer next time. Maybe next time will just be just real money. I will probably keep doing that. keep doing contests although once it's live it's like all a contest right but um you know just uh thanks everybody out there who's helping us on this journey stay tuned um and yeah hopefully i mentioned to just make it real you know just gotta Do all of the, you know, we're trying to be really serious both about kind of low level security that could lead to loss of funds, but also things that are unintuitive. You know, we're trying to think most DeFi has pretty sharp edges. You know, it's mostly expert products, not easy to use. We're trying to make it easy.
+
+SPEAKER_04: simple, barely easy to use, to some extent consumer-protecting, but still fun for the degens out there. Yeah, and I will say we got some amazing feedback this time, both on the repo and privately. Thanks to everyone that participated, provided us that information. Just for everyone to know, we're going to be at Token... Kieren and I will both be at Token... 2049 in Singapore next week. If you're around, please ping us on Telegram. We'd love to get together with you, but we won't be having a Spaces next week. So there will be a week delay from our next Spaces, though we have a lot to talk about, including a short preview. Vitalik's announcement that low-risk DeFi is the future of Ethereum, and we believe the future of blockchain projects in general. So we'll talk a little bit more about that and maybe a recap of Token2049 in our next spaces. Thanks for everyone that's joining. Take care. The truth is out there.

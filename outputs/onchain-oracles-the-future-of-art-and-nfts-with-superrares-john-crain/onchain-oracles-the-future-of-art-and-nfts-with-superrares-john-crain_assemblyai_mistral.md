@@ -1,0 +1,117 @@
+**[00:02] SPEAKER_00:** Okay, well, we have a special treat for you. Before we get into our regular scheduled content, we are adding a new weekly segment called Strato Spotlight where we highlight the latest and greatest features on Strado. And for this week we have a really special one. Karen, why don't you announce it?
+
+**[00:23] SPEAKER_01:** Thanks Victor. So we completed our relaunch onto version 2 a little over a month ago. And wanted to monitor the system a little bit to just make sure everything was working well before we turned rewards back on. We have done that as of this Thursday and not been loud about it just yet. We've been testing a little bit internally and it seems all good to go. So Michael will show you a little bit about what I'd call season one of our rewards program. Season one, season zero was very successful bringing in about 8 million of TVL and we hope to see similar and greater results with the new rewards program. Over to Michael.
+
+**[01:06] SPEAKER_02:** Hi everyone. So I'm introducing new rewards program. This page will be under the rewards section under the tab. You can find it here. This activities tab shows all the different activities people are doing in order to obtain rewards on the platform. Some are one time such as lending from the borrowing pool here or just like making a contributing liquidity to the swapping pools as this person has done. We're going to start with the CDP mint. Go to advanced. Go to here. We have to first add collateral to the vault. I believe this account has some. USD going to deposit it. There you go. Deposited. We can borrow. Just going to borrow. Let's say 100 us 100. Oops sorry 100 usds 91 rather. There you go. Now we borrowed 191 USDST. And that would be accruing rewards as a, as a position. Next we're going to do deposit to lending pool. We have about, let's see 496. Let's deposit 100 here. Great. Now we're going to do a swap which is a one time position. Let's do 100. Swap assets. And add to liquidity pools. When you add to liquidity pools it is an ongoing position so that every time as long as you leave your funds in the pool you'll be accruing rewards. Turn deposit here.
+
+**[03:42] SPEAKER_03:** Great.
+
+**[03:42] SPEAKER_02:** And now we have the regular borrow functionality. Right now I had deposited I believe 2 ETH earlier so I'm going to just borrow a little bit here. And this will be accruing rewards ongoing also.
+
+**[04:01] SPEAKER_03:** Great.
+
+**[04:02] SPEAKER_02:** Borrowed. Now I just want to show you the my rewards section of the page. We have this claimable section that you can claim at any time. There's no minimum. But this also shows your active positions, such as the lending pool position that we took, blending and borrowing, and any kind of liquidity that you contribute to the swap pools that I'm going to claim here. And it's as simple as that. Back over to you guys.
+
+**[04:32] SPEAKER_00:** Awesome. Thank you, Michael. And we should highlight for everyone. If you look at the activities, there's a long list of activities that you can do to earn straddle points. And also like if you currently are engaged in one of the activities, for example, if you already have put some into a swapping pool or the lending pool, you have to take it out and put it back in to re enable rewards for the system. Kiran, anything you want to add?
+
+**[05:05] SPEAKER_01:** Just that this was on testnet. It is live on livenet. You'll see very slight differences when you do so.
+
+**[05:12] SPEAKER_00:** Yeah. So thank you everyone. Please start using the reward system. We'd love to give out lots of rewards to you. We, you know, in kind of preparation to launching our full main net and making these rewards tradable in the future. So thank you for tuning in. Hope you use our rewards and tune in for more Strauss Spotlight segments in the future. Take care. Okay, we are live and we have a very special episode today. We are talking about the future of art and NFTs. And we're joined by special guest and very old friend, John Crane. Welcome, John Crane.
+
+**[06:00] SPEAKER_03:** Hey, Victor. Hey, everyone. Hey, guys. Thanks for having me.
+
+**[06:04] SPEAKER_00:** John Crane, of course, as everyone knows, is the founder of Super Rare. But do you want to give a quick intro for anyone who is not intimately familiar with all the amazing things you've done over the past couple years?
+
+**[06:16] SPEAKER_03:** Yeah, sure. So, yeah, I. Let's see. My crypto journey started in around 2015, going to the consensus hackathon where I met at least three of the other folks on this call there. Yeah, I was. Before that, my background was kind of in art and technology. I worked in advertising. I studied architecture and structural engineering for undergrad. And yeah, I was always really interested in when crypto and blockchain were gonna intersect more with kind of the consumer tech and just things that were a little bit past finance and trading and so, yeah, when I saw NFTs, it was an instant win for digital art. So it doubled down immediately.
+
+**[07:05] SPEAKER_00:** Yeah.
+
+**[07:05] SPEAKER_01:** Remember how you heard about the hackathon or Ethereum generally? Obviously we met there, but like, what was that?
+
+**[07:13] SPEAKER_03:** Yeah. No, so I was. I was kind of hanging out with the New York bitcoin crowd. Yeah. I had actually met I think John Lilick, which I forgot, but I met him at the like the New York Bitcoin Center. I don't know if you guys remember that.
+
+**[07:29] SPEAKER_00:** Yeah, I do. Yeah.
+
+**[07:31] SPEAKER_03:** Yeah. So I was hanging around and actually I was like, I was super into counterparty, so I was very much like, Ethereum is too complicated. You know, Vitalik's full of shit, it's not going to work. And then the network launched and I was like, okay, I was wrong. This is actually super cool. I have no problem changing. I was totally wrong. This is amazing. And I was just like Googling Ethereum blockchain hackathon. I was trying to find. Get deeper involved. I was trying to quit my day job and go full time crypto. And so then I think I just googled it and it was like, oh shit, there's this hackathon in two weeks. And I applied with Charles and then. Yeah. Met you guys.
+
+**[08:15] SPEAKER_00:** Yeah. And to be clear to let everyone know that we were blown away by you and your brother Charles's project and we gave you I think your first job, both of you in Web three, right?
+
+**[08:28] SPEAKER_03:** Yeah, yeah, yeah, for sure. Exactly. I think the, like the Monday after, I don't like, I. I feel like I immediately quit and started working with you guys full time on block apps.
+
+**[08:39] SPEAKER_00:** Yeah, well, I, we, I think we tried to give you a job on the spot because you guys. Yeah, yeah, exactly.
+
+**[08:45] SPEAKER_01:** There was like a couple week consulting transition period while, you know.
+
+**[08:50] SPEAKER_03:** Yeah, I think that's true. Yeah. Maybe it was like we started like hourly, like you know, getting to know each other a little bit and then. Full time. Yeah, so.
+
+**[09:00] SPEAKER_04:** So with counterparty you, you could have been on Christa Rose Tech.
+
+**[09:04] SPEAKER_03:** Yeah, exactly. If only.
+
+**[09:09] SPEAKER_00:** So what inspired SuperRare? I know when you were working with us, you kind of became our head of product and you were working on a bunch of those enterprise implementations. But. What triggered you to kind of create super rare, which is for anyone who doesn't know why, the first NFT platform really out there.
+
+**[09:30] SPEAKER_03:** Yeah, I, Well, I mean it was super interesting, right? You know, like we were all kind of on the ground floor at the consensus office or like, you know, at least me and Kieran were hanging out there and like watching the ICO boom happen was fascinating because I was like, I remember me and Kieran talked a bunch about erc20 tokens and like I found it was like super interesting that it was this very small bit of standard is a super simple protocol, very simple code. But the adoption created this. There's massive wealth generation. And even if there were also lots of scams, I'd say generally net positive for humans and the economy. It was incredible to see that happen. So then I saw some of the standards conversations around ERC721 and I saw the Crypto Punks launch. And I was like, oh, this is pretty crazy. If you think about the consumer web, it's all. An image and a title tag and some metadata. It could be that the entire consumer web turns into NFTs and that I don't know exactly what the business model is going to look like, but the total addressable market is probably pretty large. So that got me into NFTs. And then on the flip side of that, I was also kind of in and around the New York art scene, like, you know, going to the art fairs. I had friends who were, you know, looking for gallery representation and kind of part of the, you know, the business of art. And it just seemed obvious. I was like, oh, there's now a way to kind of like truly own digital assets and this is obviously going to apply to digital art. So it's kind of like the marriage of, you know, like my interest in the tech side, but then also my interests and passions around art.
+
+**[11:22] SPEAKER_00:** And like, what was it like to be at the forefront of like the NFT explosion? Because you guys, like, I, I know for a long time you were building and it was like, oh, you know, like, how's it going? And you know that like no one is really paying attention. And all of a sudden, you know, next day everyone's talking.
+
+**[11:44] SPEAKER_03:** It was absolutely crazy. It was hard to like, it was just like completely surreal the whole time. Like it felt like a dream. Like we, you know, we started in 2018. We were, we tried to raise money. It never really worked. Like by the time we raised, we were already, you know, cash flow positive and like making more than we were paying ourselves.
+
+**[12:05] SPEAKER_00:** So that's the best situation to possibly be.
+
+**[12:08] SPEAKER_03:** Yeah, it was like, it was much easier to raise then than when I was like, I have this really cool idea. So yeah, it was like, you know, it was a grind. It was super volatile. Many times I was just like, what am I doing with my life? But yeah, then it just, it just really started. Like, I remember the numbers were like doubling every month for a while. And like, I remember it was October 2020. It was our first million dollar month in volume. And, and I was just like, this is wild. But 12 months ago we were like, all right, so the volume was like $5,000 and we made a couple hundred bucks. Okay. Yeah.
+
+**[12:51] SPEAKER_00:** And were you guys the first self minting NFT platform? I think, like we were trying to talk about that actually.
+
+**[12:59] SPEAKER_03:** Yeah, we, yeah, we were the first to come. Like, I think there were maybe a couple other minting tools, but like we were the first to combine like the minting and the marketplace. So it was like there weren't like great minting tools then. So we started with the minting tool and then we're like, all right, I guess people need a place to sell this. So we'll like, we'll build the marketplace too. And you know, partially just out of necessity because like the tooling sucked at the time.
+
+**[13:29] SPEAKER_00:** Yeah. It's funny because I remember if you recall, what later became the flow, guys doing cryptokitties, they were based in Vancouver and I was like talking to them about, you know, running it on our blockchain and doing that kind of stuff too at the time. But. And I mean you've done so much. One of the amazing things, it's the launch of the rare token. And you guys seem to be one of the first projects that was really committed to sort of figuring out dao governance in reality. Like how, you know, what, what led to that and how did that go? Like how, you know, what did you figure out there?
+
+**[14:08] SPEAKER_03:** Yeah, I mean, early on I was like part of what got me excited about Bitcoin and Ethereum is just the idea of these networks where the users of the networks also participate in upside of the network. There's. The fat protocol article. That was super popular 2016. So just thinking about, okay, what does monetization look like and can you build platforms that are. More collaborative than extractive, where it's like if you're meta, you're just like, I'm just going to extract as much metadata and sell ads, which is a great business. But partially for me it was almost like a thought experiment of is it possible to build a network where you don't have to sell ads? And it could be, maybe it's a marketplace as the business model and then it's like collective ownership via the token. So yeah, I was, you know, drink drinking a lot of the crypto Kool Aid at the time. Still am, yeah. To be, yeah.
+
+**[15:13] SPEAKER_01:** Did you do it like classic ICO style? Was there like fixed price auction? How, how did it, how did the rare get in there?
+
+**[15:21] SPEAKER_03:** Yeah, yeah, we actually just did a huge airdrop. Probably one of our mistakes. Yeah. So like we should have probably, you know, sold a bunch of tokens, but we actually just gave them away. And yeah, I mean, you know, there's plenty of challenges to, you know, dows are hard to manage and run, but you know, it's cool to see the current administration kind of like change tech and actually seem like they're interested in like building and pushing forward.
+
+**[15:52] SPEAKER_00:** So what do you think the biggest challenge was? And what do you think? You know, the biggest challenge was in running a dao because I think all of us had that sort of. As an ideal state with the crypto, Kool Aid, you know, running things completely decentralized. What do you think are, you know, the challenges you faced when you did it and that are still out there, do you think?
+
+**[16:14] SPEAKER_03:** Yeah, I mean, I think still one of the bigger challenges is regulatory. Like you have, you're like, you're kind of like trying to read the tea leaves and then rather than just making like the bet, you're like, okay, well this is the simplest, best decision. You're like, okay, well this is not clear what this means, so maybe we should do this. And like, how do we, you know, not get in trouble for trying to experiment? And it's obviously, you know, the position is friendlier, but there's still no clear like rules. You know, it's like the obviously like the Gensler era of enforcement. The dark ages, you know.
+
+**[16:53] SPEAKER_04:** Gary's going to be turning up for a job somewhere soon, isn't he?
+
+**[16:57] SPEAKER_03:** Yeah, man.
+
+**[16:59] SPEAKER_01:** Do you think of it, the advice. Do you think of it more like it should be like a representative democracy. Like should we be like passing bills in there? I think they're like, they're proposals and there's like delegation usually is the model.
+
+**[17:17] SPEAKER_03:** Yeah.
+
+**[17:18] SPEAKER_00:** Yes.
+
+**[17:18] SPEAKER_01:** It could also be like just like you got a couple leaders but the stake could call no confidence vote or something. Or like people like Futarchy too. I haven't tried it yet, but what's that like Metadow is trying to do that?
+
+**[17:32] SPEAKER_03:** Sort of. Yeah, I think, I think it kind of depends on specifically what you're doing. If it's something like. Bitcoin and Ethereum are obviously not daos, but just like, you know, where it's like if small changes can have potentially like catastrophic impact, I think that's one thing. If you know, it's you know, like super rare, where it's like there's a low level protocol and there's application and like, you know, other than like the escrow contracts for auctions and things the stakes are like fairly low. I do kind of like the idea of like you'd sort of like if you can empower like a team or a few individuals to kind of just keep going and then the token holders can say like, tell people to stop versus like having to approve everything. Like that's a very silly, arduous process. And I feel like it should be more like, okay, if you're like veering off in the wrong direction, you can like there's a way to kind of like raise your voice and influence it. But like, you know, having a vote on like what color the button should be or something is very absurd.
+
+**[18:38] SPEAKER_00:** I'm curious like, you know, given that you're a decentralization advocate, how do you balance like being a curated kind of platform and being open, you know, like, how do you think about those two? Because I think one of the advantages of super rare with the curation side in art, you keep the quality very, very high and yeah, unlike you know, more marketplace type NFT platforms, which just frankly puts a ton of crap like out there. So.
+
+**[19:06] SPEAKER_03:** Yeah, yeah.
+
+**[19:07] SPEAKER_00:** How do you balance those two and kind of keep decentralized, do you think?
+
+**[19:12] SPEAKER_03:** Yeah, no, it is. I mean it's kind of challenging and it's almost a paradox. I think we've kind of always taken the minimal decentralization. So it's like have it where it's useful. And then one example is we were talking about token models early on. It was like, maybe we'll have token holders vote on artists. And I was just like, that sounds like the most dramatic, terrible thing I could ever imagine. It's like people voting like your art's terrible. Like, oh my word.
+
+**[19:45] SPEAKER_01:** I mean, in the, the Pump fun streamer heyday, I think that it could have really worked during that period of time.
+
+**[19:52] SPEAKER_03:** Exactly. Yeah. You know, maybe. Yeah, it's like live voting, like, is the art good or bad?
+
+**[19:58] SPEAKER_01:** Watch this artist threaten to commit suicide.
+
+**[20:01] SPEAKER_00:** I. I did start on a dating project once where, where you basically had to be voted in based on your looks, which just seems horrible. Yeah, Very, very evil.
+
+**[20:14] SPEAKER_04:** You know, but there's breaking out 10 pages. Remember those?
+
+**[20:17] SPEAKER_00:** Yes, yes. Or hot or not or all those.
+
+**[20:19] SPEAKER_03:** Oh yeah, yeah.
+
+**[20:20] SPEAKER_00:** It's. Yeah, yeah. Just, just brutal. But I. And yeah, especially in places, you know, the art industry can be quite vicious.
+
+**[20:30] SPEAKER_03:** Yeah. It's challenging and you know, are like good art is subjective. Um, so that, you know, it's like, I feel like

@@ -1,0 +1,1 @@
+**[00:18] SPEAKER_00:** Okay, can anyone confirm that
