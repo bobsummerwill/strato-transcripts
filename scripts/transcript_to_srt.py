@@ -253,11 +253,24 @@ def load_word_timing(filepath):
             break
         project_root = project_root.parent
 
-    # Look for word timing JSON in intermediates directory
+    # Look for word timing JSON - prefer aligned (post-processed) over raw
+    # First check for aligned word JSON (from align_words_with_corrections.py)
+    # e.g., episode009_whisperx-cloud_opus_aligned_words.json
+    aligned_json = filepath.parent / f"{filepath.stem}_aligned_words.json"
+    if aligned_json.exists():
+        print(f"Found aligned word-level timing: {aligned_json}")
+        with open(aligned_json, 'r') as f:
+            word_timing = json.load(f)
+        # Apply corrections
+        word_timing = apply_word_corrections(word_timing)
+        return word_timing
+
+    # Fall back to raw word JSON from pre-processors
     json_patterns = [
         project_root / 'intermediates' / base_name / f"{base_name}_assemblyai_words.json",
         project_root / 'intermediates' / base_name / f"{base_name}_whisperx_words.json",
-        filepath.parent / f"{filepath.stem.replace('_opus', '').replace('_gemini', '').replace('_deepseek', '').replace('_chatgpt', '')}_words.json",
+        project_root / 'intermediates' / base_name / f"{base_name}_whisperx-cloud_words.json",
+        filepath.parent / f"{filepath.stem.replace('_opus', '').replace('_gemini', '').replace('_deepseek', '').replace('_chatgpt', '').replace('_grok', '').replace('_kimi', '').replace('_llama', '').replace('_minimax', '').replace('_mistral', '').replace('_qwen', '')}_words.json",
     ]
 
     for json_path in json_patterns:

@@ -147,7 +147,7 @@ echo "========================================================================"
 echo ""
 
 # Step 1: Extract audio
-echo "[1/4] Extracting audio..."
+echo "[1/5] Extracting audio..."
 if [ -f "$AUDIO_FILE" ]; then
     echo "  Audio file already exists: $AUDIO_FILE"
 else
@@ -156,7 +156,7 @@ fi
 echo ""
 
 # Step 2: Run transcription
-echo "[2/4] Running transcription with $TRANSCRIBER..."
+echo "[2/5] Running transcription with $TRANSCRIBER..."
 TRANSCRIBE_CMD="python3 $SCRIPT_DIR/process_single_transcribe_and_diarize.py \"$AUDIO_FILE\" --transcribers \"$TRANSCRIBER\""
 if [ -n "$FORCE_CPU" ]; then
     TRANSCRIBE_CMD="$TRANSCRIBE_CMD $FORCE_CPU"
@@ -171,19 +171,35 @@ echo ""
 
 # Step 3: Run post-processor if specified
 if [ -n "$PROCESSOR" ]; then
-    echo "[2.5/4] Running post-processor: $PROCESSOR..."
+    echo "[2.5/5] Running post-processor: $PROCESSOR..."
     python3 "$SCRIPT_DIR/process_single_post_process.py" "$TRANSCRIPT_FILE" --processors "$PROCESSOR"
     # Use processed transcript for subtitles
     PROCESSED_FILE="${PROJECT_DIR}/outputs/${VIDEO_BASE}/${VIDEO_BASE}_${TRANSCRIBER}_${PROCESSOR}.md"
     if [ -f "$PROCESSED_FILE" ]; then
         TRANSCRIPT_FILE="$PROCESSED_FILE"
         SRT_FILE="${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}_${PROCESSOR}.srt"
+
+        # Step 3.5: Align word timestamps with corrected text
+        echo ""
+        echo "[3/5] Aligning word timestamps with corrected text..."
+        WORDS_JSON="${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}_words.json"
+        ALIGNED_JSON="${PROJECT_DIR}/outputs/${VIDEO_BASE}/${VIDEO_BASE}_${TRANSCRIBER}_${PROCESSOR}_aligned_words.json"
+
+        if [ -f "$WORDS_JSON" ]; then
+            python3 "$SCRIPT_DIR/align_words_with_corrections.py" \
+                "$WORDS_JSON" \
+                "$TRANSCRIPT_FILE" \
+                --output "$ALIGNED_JSON"
+        else
+            echo "  Warning: No word-level JSON found at $WORDS_JSON"
+            echo "  Subtitles will use estimated word timing"
+        fi
     fi
     echo ""
 fi
 
 # Step 4: Convert to subtitles (ASS format for colors)
-echo "[3/4] Converting transcript to subtitles..."
+echo "[4/5] Converting transcript to subtitles..."
 SUBTITLE_CMD="python3 \"$SCRIPT_DIR/transcript_to_srt.py\" \"$TRANSCRIPT_FILE\" \"$SRT_FILE\""
 if [ -n "$TITLE" ]; then
     SUBTITLE_CMD="$SUBTITLE_CMD --title \"$TITLE\""
@@ -193,7 +209,7 @@ ASS_FILE="${SRT_FILE%.srt}.ass"
 echo ""
 
 # Step 5: Burn subtitles into video (use ASS for color support)
-echo "[4/4] Burning subtitles into video..."
+echo "[5/5] Burning subtitles into video..."
 ffmpeg -y -loglevel error -stats -i "$VIDEO_FILE" -vf "ass='$ASS_FILE'" -c:a copy "$OUTPUT_VIDEO"
 
 echo ""

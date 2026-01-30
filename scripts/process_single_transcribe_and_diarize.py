@@ -145,6 +145,83 @@ def save_transcript_files(output_dir, basename, service_name, segments, speaker_
     return output_path
 
 
+def save_word_level_json(output_dir, basename, service_name, segments):
+    """
+    Save word-level timing data as JSON for precise subtitle alignment.
+
+    Extracts words from segments (if available) and saves with timestamps.
+    Works with whisperx, whisperx-cloud, and assemblyai segment formats.
+
+    Args:
+        output_dir: Directory to save files
+        basename: Base filename without extension
+        service_name: Name of transcription service
+        segments: List of segment dicts, may contain 'words' key with word-level data
+
+    Returns:
+        Path to JSON file, or None if no word data available
+    """
+    import json
+
+    word_data = []
+
+    for seg in segments:
+        speaker = seg.get('speaker', 'SPEAKER_00')
+
+        # Check for word-level data in segment
+        if 'words' in seg and seg['words']:
+            for word in seg['words']:
+                word_entry = {
+                    'text': word.get('word', word.get('text', '')),
+                    'start': float(word.get('start', 0)),
+                    'end': float(word.get('end', 0)),
+                    'speaker': word.get('speaker', speaker)
+                }
+                if word_entry['text']:
+                    word_data.append(word_entry)
+        else:
+            # No word-level data - create pseudo-words from segment text
+            # This allows alignment scripts to work with estimated timing
+            text = seg.get('text', '').strip()
+            if text:
+                words = text.split()
+                seg_start = float(seg.get('start', 0))
+                seg_end = float(seg.get('end', seg_start + 1))
+                duration = seg_end - seg_start
+                word_duration = duration / len(words) if words else 0
+
+                for i, word_text in enumerate(words):
+                    word_data.append({
+                        'text': word_text,
+                        'start': seg_start + i * word_duration,
+                        'end': seg_start + (i + 1) * word_duration,
+                        'speaker': speaker,
+                        'estimated': True  # Flag that timing is estimated
+                    })
+
+    if not word_data:
+        return None
+
+    # Create output directory
+    episode_dir = Path(output_dir) / basename
+    episode_dir.mkdir(parents=True, exist_ok=True)
+
+    json_path = episode_dir / f"{basename}_{service_name}_words.json"
+    with open(json_path, 'w', encoding='utf-8') as f:
+        json.dump(word_data, f, indent=2)
+
+    # Count actual vs estimated words
+    actual_count = sum(1 for w in word_data if not w.get('estimated', False))
+    estimated_count = sum(1 for w in word_data if w.get('estimated', False))
+
+    if actual_count > 0:
+        print(f"  Saved word-level timing: {json_path} ({actual_count} words with precise timing)")
+    else:
+        print(f"  Saved word-level timing: {json_path} ({estimated_count} words with estimated timing)")
+
+    return json_path
+
+
 def clean_text(text):
     """
     Clean up text by removing spaces before punctuation marks.
@@ -613,7 +690,15 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False):
             "whisperx",
             result_with_speakers["segments"]
         )
-        
+
+        # Save word-level JSON for precise subtitle alignment
+        save_word_level_json(
+            output_dir,
+            audio_path_obj.stem,
+            "whisperx",
+            result_with_speakers["segments"]
+        )
+
         elapsed = time.time() - start
         print(f"  → Completed in {elapsed:.1f}s ({elapsed/60:.1f} min)")
         
@@ -684,12 +769,18 @@ def transcribe_whisperx_cloud(audio_path, output_dir):
                     speaker = f'SPEAKER_{int(speaker):02d}'
                 text = seg.get('text', '').strip()
 
-                segments.append({
+                segment_data = {
                     'start': start,
                     'end': end,
                     'speaker': speaker,
                     'text': text
-                })
+                }
+
+                # Capture word-level data if available
+                if 'words' in seg and seg['words']:
+                    segment_data['words'] = seg['words']
+
+                segments.append(segment_data)
 
         if not segments:
             raise ValueError("No transcription segments returned from Replicate")
@@ -705,9 +796,17 @@ def transcribe_whisperx_cloud(audio_path, output_dir):
             "whisperx-cloud",
             segments
         )
-        
+
+        # Save word-level JSON for precise subtitle alignment
+        save_word_level_json(
+            output_dir,
+            audio_path_obj.stem,
+            "whisperx-cloud",
+            segments
+        )
+
         return output_path
-        
+
     except Exception as e:
         raise RuntimeError(f"WhisperX Cloud transcription failed: {e}")
 
