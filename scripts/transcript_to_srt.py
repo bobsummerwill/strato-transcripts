@@ -398,7 +398,17 @@ def segments_to_srt(segments, speaker_names, word_timing=None, max_duration=8.0,
 
         return srt_entries, speaker_color_map
 
-    # Fall back to proportional timing from segments
+    # No word-level timing - hard fail
+    print("ERROR: No word-level timing data available")
+    print("")
+    print("Word-level JSON is required for precise subtitle generation.")
+    print("The transcript was likely created before word-level JSON was enabled.")
+    print("")
+    print("To fix: Delete the transcript and re-run the transcription pipeline")
+    print("to generate word-level JSON (*_words.json file).")
+    sys.exit(1)
+
+    # Legacy fallback code (disabled - kept for reference)
     print("Using estimated timing (no word-level data available)")
 
     for i, segment in enumerate(segments):

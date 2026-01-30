@@ -185,15 +185,23 @@ if [ -n "$PROCESSOR" ]; then
         WORDS_JSON="${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}_words.json"
         ALIGNED_JSON="${PROJECT_DIR}/outputs/${VIDEO_BASE}/${VIDEO_BASE}_${TRANSCRIBER}_${PROCESSOR}_aligned_words.json"
 
-        if [ -f "$WORDS_JSON" ]; then
-            python3 "$SCRIPT_DIR/align_words_with_corrections.py" \
-                "$WORDS_JSON" \
-                "$TRANSCRIPT_FILE" \
-                --output "$ALIGNED_JSON"
-        else
-            echo "  Warning: No word-level JSON found at $WORDS_JSON"
-            echo "  Subtitles will use estimated word timing"
+        if [ ! -f "$WORDS_JSON" ]; then
+            echo "  ERROR: No word-level JSON found at $WORDS_JSON"
+            echo ""
+            echo "  Word-level timestamps are required for precise subtitle alignment."
+            echo "  The transcript was created before word-level JSON was enabled."
+            echo ""
+            echo "  To fix: Delete the transcript and re-run to generate word JSON:"
+            echo "    rm ${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}.md"
+            echo "    rm ${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}.txt"
+            echo "    ./scripts/process_video.sh $VIDEO_FILE --transcriber $TRANSCRIBER --processor $PROCESSOR"
+            exit 1
         fi
+
+        python3 "$SCRIPT_DIR/align_words_with_corrections.py" \
+            "$WORDS_JSON" \
+            "$TRANSCRIPT_FILE" \
+            --output "$ALIGNED_JSON"
     fi
     echo ""
 fi
