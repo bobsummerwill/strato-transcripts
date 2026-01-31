@@ -45,10 +45,22 @@ class GPUBenchmark:
         self.gpu_name = props.name
         self.total_memory = props.total_memory / 1024**3
 
+        # Get GPU UUID for identification
+        try:
+            import subprocess
+            result = subprocess.run(
+                ['nvidia-smi', '--query-gpu=uuid', '--format=csv,noheader', '-i', str(gpu_id)],
+                capture_output=True, text=True
+            )
+            self.gpu_uuid = result.stdout.strip() if result.returncode == 0 else None
+        except Exception:
+            self.gpu_uuid = None
+
         # Build GPU properties dict (works for both NVIDIA and AMD)
         self.gpu_props = {
             'id': gpu_id,
             'name': props.name,
+            'uuid': self.gpu_uuid,
             'total_memory_gb': self.total_memory,
             'multiprocessor_count': props.multi_processor_count,
             'max_threads_per_multiprocessor': props.max_threads_per_multi_processor,
@@ -286,9 +298,9 @@ class GPUBenchmark:
         }
 
         if save_results:
-            # Create GPU-specific filename (no GPU index since always GPU 0)
+            # Create GPU-specific filename with GPU index
             gpu_name_safe = self.gpu_name.replace(' ', '_').replace('/', '-')
-            filename = f"benchmark_{gpu_name_safe}_{timestamp.strftime('%Y%m%d_%H%M%S')}.json"
+            filename = f"benchmark_GPU{self.gpu_id}_{gpu_name_safe}_{timestamp.strftime('%Y%m%d_%H%M%S')}.json"
             with open(filename, 'w') as f:
                 json.dump(all_results, f, indent=2)
             print(f"\nResults saved to: {filename}")
@@ -300,11 +312,11 @@ def main():
     parser.add_argument('--test', choices=['matmul', 'memory', 'compute', 'all'], default='all',
                         help='Benchmark type (default: all)')
     parser.add_argument('--save', action='store_true', help='Save results to JSON file')
+    parser.add_argument('--gpu', type=int, default=0, help='GPU ID to benchmark (default: 0)')
 
     args = parser.parse_args()
 
-    # Always use GPU 0 (for single-card testing by swapping cards)
-    benchmark = GPUBenchmark(gpu_id=0)
+    benchmark = GPUBenchmark(gpu_id=args.gpu)
 
     if args.test == 'all':
         benchmark.run_full_benchmark(save_results=args.save)
