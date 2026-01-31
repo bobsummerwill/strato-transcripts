@@ -1,5 +1,3 @@
-Here's the cleaned transcript with all content preserved and formatted correctly:
-
 **[00:02] SPEAKER_01:** So, welcome to Early Days of Ethereum. I'm Bob Samuel here at Dark Prague with my good friend, exiled server, Michael Peranti. Hello. Hey, good to see you again, Bob.
 
 **[00:15] SPEAKER_00:** Good to see you too. It's the first city we ever met. Right, right. DEF CON 4, man. Ah, yes, 2018. First hug that I got from you. There we are. You were competing with Griff for being the best.

@@ -1,5 +1,3 @@
-Here is the cleaned transcript with all content preserved and formatted according to the specifications:
-
 ```
 SPEAKER_01: Okay. Welcome everyone. We have a very special and very timely topic today. Privacy on-chain and the rise of Zcash. And we sort of have a special guest today. So I'm Victor Wong. I am founder and chief product officer at BlockApps. I'll get to our normal guests, but today we have Jim. Do you want to give us a quick intro?
 

@@ -1,5 +1,3 @@
-Here is the cleaned and formatted transcript following all the specified requirements:
-
 **[00:03] SPEAKER_00:** Okay, I think we are live.
 
 **[00:06] SPEAKER_01:** Live? Us?

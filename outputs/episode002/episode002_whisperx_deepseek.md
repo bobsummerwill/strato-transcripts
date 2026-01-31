@@ -1,5 +1,3 @@
-Here's the cleaned transcript with all critical content preserved:
-
 **[00:00] SPEAKER_03:** All right, well welcome back everybody. The first episode of The Early Days of Ethereum actually got quite good critical reception on LinkedIn and Twitter. I have a total of nine YouTube subscribers now which I think is not so bad for a first video. There have been a few people who reached out who we've known a long time who really appreciated the content. One of them called it essential viewing. So anyway, we're back for another episode. Remind everybody I'm Kieren James-Lubin, CEO of BlockApps. Here with my co-founders. Victor, do you want to introduce yourself quickly?
 
 **[00:38] SPEAKER_00:** Oh okay. I'm Victor Wong, co-founder and chief product officer of BlockApps.

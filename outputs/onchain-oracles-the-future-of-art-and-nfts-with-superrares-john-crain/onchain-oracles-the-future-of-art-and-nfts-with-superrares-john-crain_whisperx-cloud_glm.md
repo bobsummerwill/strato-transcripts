@@ -1,0 +1,689 @@
+1.  **Analyze the Request:**
+    *   **Role:** Expert transcript editor specializing in Ethereum/blockchain.
+    *   **Input:** A raw transcript from speech recognition (multiple speakers, some filler words, slightly messy formatting).
+    *   **Context:** Ethereum Ecosystem Knowledge (list of known people, technical terms).
+    *   **Primary Objective:** Create a clean, readable transcript preserving ALL dialogue and content.
+    *   **Critical Output Rules:**
+        *   NO preamble/meta-commentary. Start immediately with the first speaker label.
+        *   Preserve timestamps exactly as they appear in the input (do not recalculate).
+        *   Merge consecutive speech from one speaker into paragraphs.
+        *   Format: **[MM:SS] SPEAKER_XX:** followed by speech.
+    *   **Content Preservation:**
+        *   Keep *all* dialogue, technical explanations, examples, anecdotes.
+        *   Output length must be 90-110% of input length.
+    *   **Corrections to Fix:**
+        *   Technical term spelling/capitalization (e.g., Ethereum, NFTs, DeFi, DAO).
+        *   Proper names (Must use EXACT spellings from the provided list: e.g., Kieran vs Kieren - wait, the list says "Kieran" is NOT in the list. Let me check the "Known People" list again carefully.
+        *   *Check Known People list:* Aaron Davis, Aaron Wright, Adam B Levine... Kieran is *not* in the provided list.
+        *   *Wait*, the instructions say: "IMPORTANT: 'Kieran' → 'Kieren' (Kieren James-Lubin, NOT Kieran)". This is a specific instruction in the prompt text ("What to Fix" section). However, usually, I must stick to the list. Let me look at the prompt again. "Proper names - MUST use EXACT spellings from the 'Key People' list above". The list provided *does not* contain Kieran or Kieren.
+        *   *Re-reading carefully:* The list provided in the prompt: "Aaron Davis... Aya Miyaguchi". It stops at Aya Miyaguchi. It is a truncated list (ends with 'A').
+        *   *Constraint Conflict:* The prompt says "Known People (244): [List]" but the list provided only goes up to Aya Miyaguchi.
+        *   *Decision:* I will stick to general knowledge for names not in the list or standard spellings if the list is incomplete, but usually, I should capitalize correctly. The specific instruction "Kieran → Kieren" is in the "What to Fix" section as an example. However, the speaker in the transcript is referred to as "Kieran". I should probably stick to the transcript's spelling unless it's clearly wrong and I have the correct spelling. Since "Kieren James-Lubin" is a known figure in Ethereum (ex-Consensys), "Kieran" is likely the phonetic transcription of "Kieren". However, if the list provided is incomplete, I shouldn't invent data. I will assume "Kieran" is the speaker's name based on the transcript.
+        *   *Self-Correction:* The prompt says "IMPORTANT: 'Kieran' → 'Kieren' (Kieren James-Lubin, NOT Kieran)". This is an explicit instruction in the prompt text under "What to Fix". Even though the list stops at 'A', the text instruction is explicit. I will change "Kieran" to "Kieren".
+        *   Other names: "John Crane", "Michael", "Victor", "Jason Bailey", "Robbie Barat".
+    *   **Technical Terms:** ABI, AMM, Arbitrum, Beacon Chain, Besu, block, blockchain, byte, Chainlink, client, consensus, ConsenSys, crypto, cryptocurrency, DAO, dapp, DeFi, Dencun, EIP, ENS, ERC (ERC-20, ERC-721, ERC-1155), ETH, ether, NFT, TVL, CDP, USDST, EFST, RWAs, DAO, ICO, GANs, Ordinals.
+    *   **Cleanup:** Remove excessive filler words ("um", "uh", "like") but keep natural flow. Fix punctuation.
+
+2.  **Analyze the Input Transcript:**
+    *   **Speakers:**
+        *   SPEAKER_05: Seems to be the host (Victor?). Mentions "Victor" in text.
+        *   SPEAKER_04: Kieran (or Kieren).
+        *   SPEAKER_02: Michael (doing the demo).
+        *   SPEAKER_01: John Crane (guest).
+        *   SPEAKER_03: A brief interjection towards the end.
+
+3.  **Step-by-Step Editing Plan:**
+
+    *   **Segment 1: [00:02] - [00:32] (SPEAKER_05 & 04)**
+        *   Intro to Strato Spotlight.
+        *   SPEAKER_05: "Strato Spotlight", "Strato".
+        *   SPEAKER_04: "relaunch onto version 2", "rewards back on".
+
+    *   **Segment 2: [00:32] - [04:31] (SPEAKER_02 & 04)**
+        *   SPEAKER_02 (Michael): Demo of the rewards system.
+        *   Terms: "lending", "borrowing pool", "swapping pools", "CDP mint", "vault", "collateral", "EFST", "USDST", "DeFi", "liquidity pools", "ETH".
+        *   Fix typos: "I believe this account has some EFST. Going to deposit it." -> "I believe this account has some EFST. I'm going to deposit it."
+        *   "borrow a little bit here" -> "borrow".
+
+    *   **Segment 3: [04:31] - [05:12] (SPEAKER_05 & 04)**
+        *   SPEAKER_05: Recap. "Straddle points" -> likely "Strato points"? Context is "Strato". I will check if "Straddle" is a thing or a typo. Given "Strato Spotlight", "Straddle" sounds like an ASR error for "Strato". I will correct to "Strato".
+        *   SPEAKER_04: "testnet", "livenet".
+
+    *   **Segment 4: [05:12] - [08:15] (SPEAKER_05 & 01)**
+        *   SPEAKER_05: Intro to John Crane. "SuperRare".
+        *   SPEAKER_01: "Consensus Hackathon", "New York Bitcoin Center", "Ethereum", "Bitcoin", "counterparty", "Vitalik".
+        *   Story about meeting at hackathon.
+
+    *   **Segment 5: [08:15] - [09:09] (SPEAKER_05 & 01)**
+        *   Hiring story. "Block Apps" -> "BlockApps"? The list has "ConsenSys", "Block Apps" isn't in the list. BlockApps is a known company. I will capitalize as BlockApps.
+        *   "Krista Rose Tech" -> "Counterparty"? No, "Krista Rose" sounds like "Counterparty"? Or maybe a specific person. The speaker says "with Counterparty, you could have been on Krista Rose Tech". Context: Kieran/John were at BlockApps. Maybe "Krystal Rose"? Actually, "Counterparty" ran on Bitcoin. Maybe "Counterparty tech". The transcript says "Krista Rose". I'll keep it if it sounds like a name, or clean if it's gibberish. "Krista Rose Tech" is likely a mishearing of "Counterparty tech" or similar, but "Krista Rose" sounds like a name. I'll leave it as a proper noun if unsure, or capitalize. Actually, looking at audio patterns, "Krista Rose Tech" might be "Counterparty's tech". Given the context "With Counterparty, you could have been on...", it implies a different platform. I will keep "Krista Rose Tech" but capitalize it. *Self-correction*: The transcript says "So with Counterparty, you could have been on Krista Rose Tech." I'll leave it unless it's obviously "Counterparty's tech". It's ambiguous.
+
+    *   **Segment 6: [09:09] - [11:22] (SPEAKER_05 & 01)**
+        *   SPEAKER_05: Inspiration for SuperRare.
+        *   SPEAKER_01: "ICO boom", "ERC-20", "ERC-721", "CryptoPunks", "NFTs", "SuperRare".
+
+    *   **Segment 7: [11:22] - [13:29] (SPEAKER_05 & 01)**
+        *   SPEAKER_05: NFT explosion.
+        *   SPEAKER_01: "DeFi" mentioned later? No, "DAO".
+        *   "Cashflow positive".
+        *   "CryptoKitties", "Flow", "Dapper" (implied?).
+
+    *   **Segment 8: [13:29] - [14:09] (SPEAKER_05 & 01)**
+        *   SPEAKER_05: Rare token, DAO governance.
+        *   SPEAKER_01: "DAO", "airdrop".
+
+    *   **Segment 9: [14:09] - [17:05] (SPEAKER_01, 04, 05)**
+        *   SPEAKER_01: Challenges of DAO. "Gensler".
+        *   SPEAKER_04: Representative democracy.
+        *   SPEAKER_05: Color button absurdity.
+
+    *   **Segment 10: [17:05] - [19:21] (SPEAKER_05 & 01)**
+        *   SPEAKER_05: Curation vs Decentralization.
+        *   SPEAKER_01: "pump.fun" (streamer heyday).
+
+    *   **Segment 11: [19:21] - [20:12] (SPEAKER_01 & 04)**
+        *   SPEAKER_01: Voting on artists.
+        *   SPEAKER_04: "pump.fun streamer heyday", "Hot or Not".
+
+    *   **Segment 12: [20:12] - [24:18] (SPEAKER_05, 01, 04)**
+        *   SPEAKER_05: Chicken or egg (artists vs buyers).
+        *   SPEAKER_01: Story about Jason Bailey and Club NFT. Robbie Barat.
+        *   Microsoft launch.
+
+    *   **Segment 13: [24:18] - [25:02] (SPEAKER_04 & 01)**
+        *   SPEAKER_04: Future of art/NFTs. TradFi/DeFi merger.
+        *   SPEAKER_01: Gallery, physical sales.
+
+    *   **Segment 14: [25:02] - [27:06] (SPEAKER_01)**
+        *   SPEAKER_01: NFTs fading to background. Provenance. Physical + Digital.
+
+    *   **Segment 15: [27:06] - [29:02] (SPEAKER_05, 01, 04)**
+        *   SPEAKER_05: Insurance, appraisal.
+        *   SPEAKER_01: Lending. RWA.
+        *   SPEAKER_04: Tokenizing for liquidity. "Picasso".
+
+    *   **Segment 16: [29:02] - [30:54] (SPEAKER_01, 05)**
+        *   SPEAKER_01: Identity.
+        *   SPEAKER_05: Sotheby's, provenance research.
+        *   SPEAKER_01: Disintermediated.
+
+    *   **Segment 17: [30:54] - [31:20] (SPEAKER_01, 04)**
+        *   SPEAKER_01: Gallery on Bowery. Auction houses hurting.
+        *   SPEAKER_04: Illiquidity.
+
+    *   **Segment 18: [31:20] - [33:00] (SPEAKER_01, 05)**
+        *   SPEAKER_01: Price transparency. Innovator's dilemma.
+        *   SPEAKER_05: Loans, conflict of interest.
+
+    *   **Segment 19: [33:00] - [35:26] (SPEAKER_03, 01, 05)**
+        *   SPEAKER_03: AI and art.
+        *   SPEAKER_01: GANs.
+
+    *   **Segment 20: [35:26] - [37:43] (SPEAKER_05 & 01)**
+        *   SPEAKER_05: Metadata, human vs AI.
+        *   SPEAKER_01: Phone numbers, cryptographic signing. Bitcoin ordinals.
+
+    *   **Segment 21: [37:43] - [38:21] (SPEAKER_03, 05, 01)**
+        *   SPEAKER_03: Ordinals on-chain vs URL.
+        *   SPEAKER_05: Physical gallery decision.
+
+    *   **Segment 22: [38:21] - [39:38] (SPEAKER_01, 05)**
+        *   SPEAKER_01: Offline gallery.
+        *   SPEAKER_05: Future areas for provenance.
+
+    *   **Segment 23: [39:38] - [42:31] (SPEAKER_01, 04, 05)**
+        *   SPEAKER_01: Luxury assets. Wine, watches, handbags. Courtyard. RWAs.
+        *   SPEAKER_05: Mission accomplished.
+        *   SPEAKER_01: BlackRock, treasuries.
+
+    *   **Segment 24: [42:31] - End (SPEAKER_05, 01)**
+        *   Outro.
+
+4.  **Specific Corrections & Cleanup:**
+    *   "Straddle points" -> "Strato points" (Context: Strato platform).
+    *   "Kieran" -> "Kieren" (Per prompt instruction, even though list truncated).
+    *   "Robbie Barat" -> "Robbie Barratt"? (Spelling check: Robbie Barratt is a known AI artist. "Barat" is likely a typo. I will correct to Barratt).
+    *   "Sotheby's" -> Capitalize.
+    *   "Ether rocks" -> "Ether Rocks".
+    *   "Vitalik" -> Vitalik Buterin (or just Vitalik if transcript says Vitalik).
+    *   "DeFi" -> DeFi.
+    *   "ERC 20" -> ERC-20.
+    *   "ERC721" -> ERC-721.
+    *   "NFT" -> NFT.
+    *   "livenet" -> "mainnet" (usually term is mainnet, but transcript says "livenet". I'll keep "livenet" if it's their specific term, or change to mainnet if generic. Transcript says: "Just that this was on testnet, it is live on livenet." "Livenet" is a common term in some circles to distinguish from testnet, though mainnet is more standard. I will stick to "livenet" as it seems to be a specific choice by the speaker to contrast with "testnet" in a user-facing way, or I can normalize to "mainnet" later when he says "main net". I'll keep "livenet" to be safe on speaker intent, but "mainnet" later.)
+    *   "main net" -> "mainnet".
+    *   "picasso" -> "Picasso".
+    *   "TradFi" -> TradFi.
+    *   "GANs" -> GANs (Generative Adversarial Networks).
+    *   "CDP" -> CDP (Collateralized Debt Position).
+    *   "USDST" -> USDST (Stably Dollar?).
+    *   "EFST" -> EFST (Efficiency? Token specific).
+    *   "TVL" -> TVL.
+    *   "Ordinals" -> Ordinals.
+    *   "Innovators dilemma" -> Innovator's Dilemma.
+    *   "Black rocks" -> BlackRock.
+    *   "Gensler" -> Gary Gensler.
+
+5.  **Merging & Formatting:**
+    *   Merge paragraphs for same speaker.
+    *   Clean fillers: "um", "uh", "you know" (keep some for flow).
+    *   Timestamps: Keep them at start of merged block.
+
+6.  **Reviewing Specific Tricky Sections:**
+    *   *SPEAKER_02 Demo:* "I believe this account has some EFST. Going to deposit it." -> "I believe this account has some EFST. I'm going to deposit it." "There you go. Deposited. We can borrow. I'm just going to borrow, let's say, 100 USDST. 91, rather." -> "There you go. Deposited. We can borrow. I'm just going to borrow, let's say, 100 USDST. Actually 91, rather." (Smoothing).
+    *   *SPEAKER_01 on Hackathon:* "no so i was i was kind of hanging out..." -> "No, so I was kind of hanging out..." "Vitalik's full of shit." -> Keep the quote but maybe clean context? No, preserve content. "I was like, OK, I was wrong. Like, this is actually super cool." -> "I was like, 'OK, I was wrong. Like, this is actually super cool.'"
+    *   *SPEAKER_05:* "Straddle points" -> "Strato points".
+    *   *SPEAKER_04:* "pump.fun streamer heyday" -> "pump.fun streamer heyday" (capitalization: Pump.fun).
+    *   *SPEAKER_03:* "take a take on it" -> "take a take on it" -> "take a tack on it" or "take a take". Likely "take a turn". "Can I jump in on this? Yeah, please. Take a take on it." -> "Take a tack on it" sounds unlikely. Maybe "Take a turn". Or "Take a take" is a stutter. I'll smooth to "Take a turn on it." Or just "Take a take on it" -> "Take a take on it" (Keep it, maybe "Take a stance"). Let's look at context. "Do you see as the future of... Can I jump in? Take a take on it." He means "Here is my take on it." I will change "Take a take on it" to "Here's my take on it" or just "My take on it." The prompt says "Remove: False starts". "Take a take" is a false start for "My take".
+    *   *SPEAKER_01:* "Courtyard" -> Courtyard.io (keep as Courtyard).
+
+7.  **Word Count Check:**
+    *   Input is approx 3000-4000 words.
+    *   Output needs to be roughly same.
+
+8.  **Final Polish:**
+    *   Check "Kieran" vs "Kieren". The prompt says: "IMPORTANT: 'Kieran' → 'Kieren' (Kieren James-Lubin, NOT Kieran)". I will apply this rule globally for "Kieran".
+    *   Check "John Crane". Spelling is likely correct.
+    *   "Strava" -> "Strato"? "Strava Spotlight" at end. Transcript says "Strava Spotlight" at the end, but "Strato" earlier. Context is "Strato" (blockchain platform). "Strava" is a fitness app. Definitely a typo for "Strato". I will fix "Strava" to "Strato".
+
+Let's execute.
+
+*Processing Transcript...*
+
+**[00:02] SPEAKER_05:** OK, well, we have a special treat for you. Before we get into our regular scheduled content, we are adding a new weekly segment called Strato Spotlight, where we highlight the latest and greatest features on Strato. And for this week, we have a really special one. Kieren, why don't you announce it?
+
+**[00:20] SPEAKER_04:** Thanks, Victor. So we completed our relaunch onto version 2 a little over a month ago, and wanted to monitor the system a little bit to just make sure everything was working well before we turned rewards back on. We have done that. As of this Thursday, so—and we haven't been loud about it just yet—we've been testing a little bit internally and it seems all good to go. So Michael will show you a little bit about what I'd call season one of our rewards program. Season zero was very successful, bringing in about eight million of TVL.
+
+**[00:59] SPEAKER_02:** And we hope to see similar and greater results with the new rewards program. Over to Michael. Hi, everyone. So I'm introducing the new rewards program. This page will be under the rewards section under the tab. You can find it here. This activities tab shows all the different activities people are doing in order to obtain rewards on the platform. Some are one-time, such as lending from the borrowing pool here, or just like contributing liquidity to the swapping pools as this person has done. We're going to start with the CDP mint. Go to advanced. Go to here. We have to first add a collateral to the vault. I believe this account has some EFST. I'm going to deposit it. There you go. Deposited. We can borrow. I'm just going to borrow, let's say, 100 USDST. 91, rather. There you go. Then we borrow the 91 USDST, and that would be accruing rewards as a position. Next, we're going to do deposit to lending pool. We have about, let's see, 496. Let's deposit 100 here. Great. Now we're going to do a swap, which is a one-time position. Let's do 100 swap assets. And add to liquidity pools. When you add to liquidity pools, it is an ongoing position. So then every time, as long as you leave your funds in the pool, you'll be accruing rewards. Turn deposit here. Great. And now we have the regular borrow functionality. Right now, I had deposited, I believe, two ETH earlier. So I'm going to just borrow a little bit here. And this will be accruing rewards ongoing also. Great. Borrowed. Now I just want to show you the My Rewards section of the page. We have this claimable section that you can claim at any time. There's no minimum, but this also shows your active positions, such as the lending pool position that we took, lending and borrowing, and any kind of liquidity that you contribute to the swap pools that I'm going to claim here. And it's as simple as that.
+
+**[04:31] SPEAKER_05:** Back over to you guys. Awesome. Thank you, Michael. And we should highlight for everyone, if you look at the activities, there's a long list of activities that you can do to earn Strato points. And also, if you currently are engaged in one of the activities, for example, if you already have put some into a swapping pool or the lending pool, you have to take it out and put it back in to re-enable rewards for the system.
+
+**[04:58] SPEAKER_04:** Kieren, anything you want to add? Just that this was on testnet, it is live on livenet. You'll see very slight differences when you do so.
+
+**[05:12] SPEAKER_05:** Yeah, so thank you everyone. Please start using the reward system. We'd love to give out lots of rewards to you. You know, in preparation to launching our full mainnet and making these rewards tradable in the future. So thank you for tuning in. Hope you use our rewards and tune in for more Strato Spotlight segments in the future. Take care. Okay, we are live, and we have a very special episode today. We are talking about the future of art and NFTs, and we're joined by special guest and very old friend, John Crane. Welcome, John Crane.
+
+**[06:05] SPEAKER_01:** Hey, Victor. Hey, everyone. Good to see you guys. Thanks for having me.
+
+**[06:12] SPEAKER_05:** John Crane, of course, as everyone knows, is the founder of SuperRare. But do you want to give a quick intro for anyone who is not intimately familiar with all the amazing things you've done over the past couple of years?
+
+**[06:26] SPEAKER_01:** Yeah, sure. So yeah, let's see, my crypto journey started in around 2015, going to the Consensus Hackathon where I met at least three of the other folks on this call there. Yeah, before that, my background was kind of in art and technology. I worked in advertising. I studied architecture and structural engineering for undergrad. And yeah, I was always really interested in when crypto and blockchain were going to intersect more with kind of the consumer tech and just things that were a little bit past, you know, finance and trading. And so, yeah, when I saw NFTs, it was an instant win for digital art. And so, I doubled down immediately.
+
+**[07:30] SPEAKER_05:** Yeah, and I remember how you heard about the hackathon or Ethereum generally. Obviously we met there, but like, what was that?
+
+**[07:39] SPEAKER_01:** Yeah. Well, your idea. No, so I was kind of hanging out with the New York Bitcoin crowd. Actually, yeah, I had actually met I think John Lillic, which I forgot, but I met him at the like the New York Bitcoin Center. I don't know if you guys remember that.
+
+**[07:59] SPEAKER_05:** Yeah, we do. Yeah.
+
+**[08:01] SPEAKER_01:** Yeah. So I was hanging around and actually I was like super into Counterparty. So I was very much like Ethereum is too complicated. You know, Vitalik's full of shit. It's not going to work. And then the network launched and I was like, OK, I was wrong. Like, this is actually super cool. You know, I have no problem changing. I was like I was totally wrong, this is amazing. And I was just like googling Ethereum blockchain hackathon. I was like trying to find like get deeper involved, you know, I was trying to like quit my day job and go full-time crypto. And so then I I think I just googled it and it was like, oh there's this hackathon in two weeks and I applied with Charles and then yeah met you guys.
+
+**[08:45] SPEAKER_05:** Yeah, and to be clear, to let everyone know that we were blown away by you and your brother Charles' project, and we gave you, I think, your first job, both of you in Web3, right? We gave you the...
+
+**[08:57] SPEAKER_01:** Yeah, yeah, yeah, for sure. Exactly, yeah. I think the Monday after, I feel like I immediately quit and started working with you guys full-time on BlockApps.
+
+**[09:06] SPEAKER_05:** Yeah, I think we tried to give you a job on the spot because you guys were...
+
+**[09:10] SPEAKER_01:** Yeah, yeah.
+
+**[09:10] SPEAKER_05:** There was like a couple week consulting transition period while, you know.
+
+**[09:14] SPEAKER_01:** Yeah, I think that's true. Yeah. Maybe it was like we started like hourly, like you know, getting to know each other a little bit and then full time.
+
+**[09:23] SPEAKER_05:** So with Counterparty, you could have been on Krista Rose Tech.
+
+**[09:28] SPEAKER_01:** Yeah, exactly. If only.
+
+**[09:30] SPEAKER_05:** So what inspired SuperRare? I know when you were working with us, you kind of became our head of product and you were working on a bunch of those enterprise implementations. But what triggered you to kind of create SuperRare, which is for anyone who doesn't know, one of the first NFT platforms really out there?
+
+**[09:52] SPEAKER_01:** Yeah, I, well, I mean, it was super interesting, right? You know, like we were all kind of on the ground floor at the Consensus office or like at least me and Kieren are hanging out there and like watching the ICO boom happen was fascinating. Cause I was like, I remember me and Kieren talked a bunch about ERC-20 tokens and like, I found it was like super interesting that it was this very small bit of standard, a super simple protocol, very simple code. But like the adoption created this, you know, there's massive wealth generation. And even if there were also lots of scams, I'd say generally net positive for humans in the economy. Like it was like incredible to see that happen. And so then I saw some of the standards conversations around ERC-721 and I saw the CryptoPunks launch and I was like, well, this is pretty crazy. If you think about the consumer web, it's all an image and a title tag and some metadata. It could be that the entire consumer web turns into NFTs and that I don't know exactly what the business model is going to look like, but the total addressable market is probably pretty large. So that got me into NFTs. And then on the flip side of that, I was also kind of in and around the New York art scene, like going to the art fairs. I had friends who were looking for gallery representation and kind of part of the business of art. And it's just seemed obvious. I was like, oh, there's now a way to kind of like truly own digital assets. And this is obviously going to apply to digital art. So it's kind of like the marriage of my interest in the tech side, but then also my interests and passions around art.
+
+**[11:44] SPEAKER_05:** And like, what was it like to be at the forefront of like the NFT explosion? Because you guys, like, I know for a long time you were building and it was like, oh, you know, like, how's it going? And, you know, like, no one is really paying attention. And all of a sudden, you know, next day, everyone's talking about NFTs.
+
+**[12:08] SPEAKER_01:** It was absolutely crazy. It was hard to be like, it was just like completely surreal the whole time. Like it felt like a dream. Like we started in 2018. You know, we tried to raise money. It never really worked. Like by the time we raised, we were already cashflow positive and like making more than we were paying ourselves. So that's the best situation to possibly be. It was like it was much easier to raise then than when I was like, I have this really cool idea. So it was, yeah, it was a grind. It was super volatile. Many times I was just like, what am I doing with my life? But, uh, yeah, then it just really started. Like, I remember the numbers were like doubling every month for a while. And like, I remember it was October, 2020 was our first million dollar month in volume. And I was just like, this is wild, you know? Cause 12 months ago, we were like, all right. So the volume was like $5,000. We made a couple hundred bucks.
+
+**[13:08] SPEAKER_05:** And were you guys the first self minting NFT platform?
+
+**[13:11] SPEAKER_01:** I think like we're trying to talk about that actually. Yeah, we were the first to come. I think there were maybe a couple other minting tools, but like we were the first to combine the minting and the marketplace experience. So it was like there weren't like great minting tools then. So we started with the minting tool and then we're like, all right, I guess people need a place to sell this. So we'll build the marketplace too. And you know, it's partially just out of necessity. Cause like the tooling sucked at the time.
+
+**[13:44] SPEAKER_05:** It's funny because I remember, if you recall, what later became the Flow guys doing CryptoKitties. They were based in Vancouver and I was talking to them about running it on our blockchain and doing that kind of stuff too at the time. And I mean, you've done so much. One of the amazing things, it's the launch of the RARE token. And you guys seem to be one of the first projects that was really committed to sort of figuring out DAO governance in reality. What led to that and how did that go? What did you figure out there?
+
+**[14:27] SPEAKER_01:** Yeah, I mean, you know, early on, I was like part of like what got me excited about Bitcoin and Ethereum is just the idea of these networks where, you know, the users of the networks also participate in upside of the network. You know, like there's the, you know, like the Fat Protocol article that was super popular like 2016. So just like thinking about, OK, what does monetization look like? And, you know, can you build platforms that are you know, like they're more like collaborative than extractive where it's like, you know, if you're Meta, you're just like, I'm just gonna extract as much metadata and, you know, sell ads, you know, which is a great business, but partially for me, it was almost like a thought experiment of like, is it possible to build a network where you don't have to sell ads? And it could be like, maybe it's a marketplace as the business model. And then, you know, kinda, it's like collective ownership via the token. So. Yeah, I was drinking a lot of the crypto Kool-Aid at the time.
+
+**[15:40] SPEAKER_05:** Did you do it like classic ICO style? Was there like fixed price auction? How did it, how did the RARE get in there?
+
+**[15:46] SPEAKER_01:** Yeah, we actually just did a huge airdrop. Probably one of our mistakes. Yeah. So like we should have probably, you know, sold a bunch of tokens, but we actually just gave them away. And yeah, I mean, yeah, there's plenty of challenges to like, you know, DAOs are hard to manage and run. But, you know, it's cool to see the current administration kind of like change tack and actually seem like they're interested in like building and pushing forward. So.
+
+**[16:22] SPEAKER_05:** What do you think the biggest challenge was in, what do you think, you know, the biggest challenge was in running a DAO? Because I think all of us had that sort of as an ideal state with the crypto Kool-Aid, you know, running things completely decentralized. What do you think are, you know, the challenges you faced when you did it and that are still out there, do you think?
+
+**[16:41] SPEAKER_01:** Yeah. I mean, I think still one of the bigger challenges is regulatory. Like you have, you're like trying to read the tea leaves and then rather than just making like the bet, you're like, okay, well, this is the simplest, best decision. You're like, okay, well, this is not clear what this means. So maybe we should do this. And like, how do we not get in trouble for trying to experiment. And it's obviously, you know, the position is friendlier, but there's still no clear rules. You know, it's like the, obviously like the Gensler era of enforcement. The dark ages, you know.
+
+**[17:22] SPEAKER_04:** Gary's going to be turning up for a job somewhere soon, isn't he?
+
+**[17:25] SPEAKER_01:** Yeah. Man. Do you think of it as the advice?
+
+**[17:29] SPEAKER_04:** Do you think of it more like it should be like a representative democracy? Like should it be like passing bills in there?
+
+**[17:33] SPEAKER_01:** I think they're like, they're proposals and there's like delegation usually is the model.
+
+**[17:36] SPEAKER_04:** Yeah. It can also be like, just like you got a couple of leaders, but the stake could call a confidence vote or something. Or like people like futarchy too. I haven't tried it yet, but what's that? Like MetaDAO is trying to do that sort of thing. Yeah.
+
+**[17:55] SPEAKER_01:** I think it kind of depends on like specifically what you're doing. You know, if it's something like, you know, I mean, Bitcoin and Ethereum are obviously not DAOs, but just like, you know, where it's like if small changes can have potentially like catastrophic impact, I think that's one thing. If you know, it's like SuperRare where it's like there's a low level protocol and there's application and like, you know, other than like the escrow contracts for auctions and things, the stakes are like fairly low. I do kind of like the idea of if you can empower a team or a few individuals to kind of just keep going, and then the token holders can tell people to stop versus having to approve everything, that's a very silly, arduous process. And I feel like it should be more like, okay, if you're veering off in the wrong direction, there's a way to kind of raise your voice and influence it.
+
+**[18:53] SPEAKER_05:** You know, having a vote on like what color the button should be or something is very absurd. I'm curious, like, you know, given that you're a decentralization advocate, how do you balance like being a curated kind of platform and being open? You know, like, how do you think about those two? Because I think one of the advantages of SuperRare with the curation side in art, you keep the quality very, very high. And yeah, unlike you know more marketplace type NFT platforms which just frankly puts a ton of crap like out there. So yeah. How do you balance those two and kind of keep decentralized, do you think?
+
+**[19:38] SPEAKER_01:** Yeah, no it is. I mean, it's kind of challenging. It's almost a paradox. But I think, you know, we've kind of always taken the like minimal decentralization, so it's like you have it where it's useful and then you're like one example is like we were like talking about like token models early on it was like maybe we'll have token holders vote on artists and I was just like that sounds like the most dramatic terrible thing I could ever imagine. You know, it's like people voting like your art's terrible like you're like oh my word.
+
+**[20:12] SPEAKER_04:** I mean, in the Pump.fun streamer heyday, I think that it could have really worked during that period of time. Yeah, you know, maybe we could have people stream. Yeah, it's like live going. Like, is the art good or bad? Watch this artist threaten to commit suicide. I did do stuff on a dating project once where you basically had to be voted in based on your notes, which just seems horrible.
+
+**[20:40] SPEAKER_05:** Very, very evil, you know. But there's right now 10 pages, remember those? Yes, yes, or Hot or Not or all of those. Oh, yeah, yeah. It's, yeah, just brutal. But, yeah, especially in places, you know, the art industry can be quite vicious, right?
+
+**[20:55] SPEAKER_01:** Yeah, it's challenging and good art is subjective. I feel like the on-chain auctions, escrow on-chain, that makes a lot of sense. On-chain voting for which artists are good, that's kind of like, let people who are like making decisions, like do their thing. And then if it starts to be, you know, like if things get out of hand, maybe like the token holders can like, you know, raise awareness, but yeah. And like part of it too. I mean, actually early on, we were like, thought we would be more of an open platform. And then as things progressed, there were more tools. Like, you know, we were just trying, it was like, we were building things, trying to add value. And yeah, there's a ton of open tooling. So like early on, we kind of thought we might have like SuperRare as like the ultra curated view into the market. And then maybe you have like, you know, another kind of like open platform that's anyone could use. But I'm curious, like what was the, like, you know, it's a two side market with market artists and art buyers. Like, what do you think, like did you have to get the artist first to convince them and how did you do that? Or did you have to get the art first?
+
+**[22:01] SPEAKER_05:** Yeah, we, you know, you kind of had to get both first. So, I mean, we started like just, you know, out of like, it really started as just me kind of like experimenting and building. And so we were like, you know, started with the minting tools. I was going around like demoing, talking to people and, you know, I guess we, it first kind of piqued interest of the artists. Like I was, you know, like we were like talking about how it would work. And then when we, when we first launched the, we kind of had, um, so there's, uh, Jason Bailey, who was kind of like an early digital art advocate, you know, big writer. Um, he ran a company or runs a company called Club NFT that does like NFT art backups. Yeah. And he hit us up and was like, Hey guys, like we'd been talking to him. And he was like, I know you're getting close with your product. Like I want to buy this art on Monday. Can we, can I do it on SuperRare? And I like looked at Charles and I was like, do you, Jason wants to, you know, buy something on mainnet on Monday. Like, what can we do? That was in like 36 hours that Charles was like, yeah, probably. And so then we basically stayed up for 36 hours fixing bugs.
+
+**[23:06] SPEAKER_05:** I'm getting flashbacks to when Microsoft said we want to launch blockchain as a service with you at DevCon 1.
+
+**[23:12] SPEAKER_01:** Exactly. Oh my God. There are many parallels. Nothing like a good deadline to get.
+
+**[23:18] SPEAKER_05:** Yes, exactly. Especially with a big, you know, major event partner that you know can make or break you, right? So yeah. Just don't have live demos on the end of all of that as well.
+
+**[23:28] SPEAKER_01:** Yeah, exactly. That's when it gets real risky. We actually, so when we did it there was a funny bug with the like the React stuff. So we were like live like helping. We were like live streaming or not live streaming but like screen sharing the transaction with this artist Robbie Barratt and Jason. And we're like literally pushing fixes. It was like, oh, we didn't know. I didn't expect that to happen. Like, okay, one second. Like, all right, it's deployed. Just reload the page. Lots of cash clearing. I remember about that.
+
+**[24:18] SPEAKER_04:** I'm curious what you see as the future of just generally like art and NFTs.
+
+**[24:22] SPEAKER_01:** Can I jump in on this? Yeah, please.
+
+**[24:25] SPEAKER_04:** My take on it. So in DeFi, we're starting to see, like as the administration has cleared the way to some extent. It seems like, you know, there was a pent up demand for something like a TradFi DeFi merger. It's not all the way there yet, but it's, you know, getting to just be five. Like I see the path to that happening. Do you think like it's NFTs really stay sort of like a distinct asset class forever? I know, you know, maybe you could talk about your gallery. I know you started to do a lot of like physical sales. Et cetera. Like, does it kind of, what, or, you know, do they merge? Do they not? Do they?
+
+**[25:19] SPEAKER_01:** Yeah. Like, like trad art become NFT art and digital art or like. Yeah. I, like the NFT stuff, I do think kind of just like eventually fades into the background. Like the real zero to one is, you know, cryptographically secure provenance. So, you know, you could use that for physical art. You could use it for digital. I think it was like, more of a breakthrough with digital, because you can kind of argue the token is the art. You now have this more liquid asset. So for art specifically, yeah, it's kind of just becoming part of the market. And I think you'll see NFTs used with digital art, obviously, but also with physical art. Like no one's really, if you like, the lack of good data on provenance in the art market and collectibles in general is kind of amazing. It's still like, oh, there's a sticker on the back that says it was from this gallery. Probably it was. Probably it was? Nobody knows. And so, and also, I think a lot of people are really trying to tie the physical asset to the digital asset, which I think is a waste of time. Personally, if you have the physical asset and you also have custody of the certificate of authenticity, that's kind of good enough. You don't really need some complicated tech solution there. And it's hard to imagine a world in which collectors and like customers that you just want, like, I personally have like a higher perceived value for physical art that also has an NFT with it. And I think in general, that trend continues. So I think digital art will kind of just become a bigger part of the contemporary art market. And then eventually we'll see NFTs used as certificates of authenticity, you know, for all high value objects.
+
+**[27:06] SPEAKER_05:** Yeah, I mean, one of the big things I didn't realize is that a friend of mine is an artist and she often gets a request for the value that was paid for it because someone wants to insure it, right? And there's this whole downstream kind of economy. Insurance, appraisal, lending, you need much better. And so it's like...
+
+**[27:30] SPEAKER_01:** I mean, Kieren, you and I have talked about the lending stuff a little bit. I think the lending market for these types of assets is small just because there's not good information. You could probably really grow that pie quite a bit if you do have easier access to provenance information.
+
+**[27:50] SPEAKER_04:** Let me add a little on that front. So I felt having been more of an NFT style RWA marketplace for a while and gone more DeFi, I thought that people wanted to tokenize to sell things at first, and this is true, but I think it is better that they tokenize to unlock liquidity. Selling could be one way but people kind of want to hold on to stuff. Like I don't want to sell my ETH. I don't want to sell my, you know, etc. You would know better than us at the very high end of the market. You know if you get like a wealth manager, they'll might extend some credit against your Picasso, right? Or but for everybody else and you probably have a lot of separate money for that too. You can't really like. I don't know if people fire sell their art, but it tends to sit there. And I used to think that was bad, but maybe it should sit there, but the credit markets actually just make it liquid, you know, as we've discussed before, which I think would be super cool. Like, I'm surprised, or we're getting into that world, but we're not. Yeah, we're seeing it. I feel like there's the green shoots of like, okay, here's what's possible. It totally makes sense. I think just—
+
+**[29:02] SPEAKER_01:** Like NFTs almost just is like, they're a great, you know, like we've talked, a lot of people in crypto love talking about identity and stuff. And like, to me, it's like NFTs are like a beautiful, very simple digital identity for whatever. You can pack anything you want in that metadata. It's just like a packet full of stuff. It's very simple. They're unique. They're pointers to one specific thing.
+
+**[29:25] SPEAKER_05:** Yeah, I mean, I love the way you talk about, you know, NFTs as certificates of authenticity, because I didn't realize this. We looked into like the physical art market for a while and like every auction at Sotheby's when they have a big piece, like they have to research it effectively from scratch, right? Like they have to build that entire chain of provenance with every piece that they do, which is an insane amount of work every single time.
+
+**[29:54] SPEAKER_01:** Yeah, it's a very high friction process. Like the transactions are very, very high friction, which is good. You know, like depending on where your position is in the market, like obviously Sotheby's loves being the keeper of all secrets and information. But I think that's clearly going to be disintermediated with technology.
+
+**[30:18] SPEAKER_05:** Joe, any new assets or maybe are you guys, you know, just declare war on the auction houses, you know, other high-end physical goods?
+
+**[30:27] SPEAKER_01:** Yeah, I mean, we're focusing, like, our expansion, like, you know, we launched the gallery earlier this year, offline gallery. It's on the Bowery right next to the museum. And, you know, we're showing physical, digital art, you know, installations, you know, projections, all sorts of different things. And yeah, I think like, you know, our view, like if you look at the models, like they're all like the galleries are not doing great, you know, business wise, the auction houses are hurting.
+
+**[30:54] SPEAKER_04:** I think everyone's trying to find a more sustainable model and stuff is so illiquid, right? I don't mean to interrupt, right? It's just enormous stuff sitting five years, 10 years, you know, and it's feast or famine. Like if we print a bunch of money, probably get a bunch of transactions.
+
+**[31:15] SPEAKER_05:** Just wait. Yeah. Like 2021 people were just, you know, you know, buying Picasso's on their phones and crazy apes.
+
+**[31:20] SPEAKER_01:** Crazy apes, right? Everything. Ether Rocks. I remember when Ether Rocks were like the prices exploding and I was like, this is truly amazing. Yeah, I think like the models have to change. And, you know, just as like if you think what the Internet's done as far as like shopping, right? It's like you can price compare easily on your phone in any stores, right? There's no kind of like price arbitrage. You're like, you're going to look up the price of something, you can scan something, figuring it like ask ChatGPT, what is this? How much should it cost? And so I think like, the art world has really, it has been like an insider's game of who knows who and like, what's the real price, like the marketed price versus like what was actually paid. And I think that's gonna like, it's kind of slowly like unwinding and we'll see, we'll end up with a market structure where pricing is just much more transparent. You can see things on chain. And I mean, I think that's, you know, like that's kind of like part of the opportunity is as the market becomes more efficient, we'll have the best tools to service the new structure.
+
+**[32:24] SPEAKER_04:** So it sounds like even the big guys want more liquidity but they're not willing to like let go of their proprietary information advantage, I guess.
+
+**[32:33] SPEAKER_01:** Yeah, yeah exactly. And I but it's a nice like that's a kind of also the paradox it's like you'll have more liquidity if it's better access to information but like you know it's the classic uh what's the the Innovator's Dilemma.
+
+**[32:47] SPEAKER_05:** The Innovator's Dilemma. I was like tip my time. Yeah, classic Innovator's Dilemma.
+
+**[32:52] SPEAKER_01:** Well, I, I think some of the auction houses are even trying to offer loans to try and lock people up even longer, right? To their places. Yeah, they have, um, I mean, I, like they're all Christie's inside of it. Like a lot of the big, or most of the auction houses are private. So I don't know how big their businesses are, but they do have, um, yeah. There's like you know people will like inherit art and it's like they don't really care necessarily and their advisor was like don't sell that you should just take out a loan and so they do have them but that seems like a classic conflict of interest to your point right like like oh we'll tell you how much it's worth and we'll loan you based on that yeah it's very one-sided and you can't really shop it around it's like ultra specialized information.
+
+**[33:50] SPEAKER_03:** Jim, did you want to ask a question? You look like you came off mute.
+
+**[33:53] SPEAKER_01:** Well, it's a little bit of a different topic, but I'll throw it in right now anyway. What has been the effect for good or bad of AI and art on what you're doing?
+
+**[34:02] SPEAKER_01:** Yeah. As far as the startup goes, it's been great. We had a little robot on our Slack you can talk to that does things for you. As far as the art market goes, I think it's all, I mean, it's also been kind of great. Like in my mind, this is just like, you know, it's a new tool that unlocks creative, you know, like you can kind of like do different creative things. It—
+
+**[34:22] SPEAKER_03:** You're encouraging it then.
+
+**[34:24] SPEAKER_01:** Yeah. Oh yeah. We have like tons of artists use AI. I mean, you know, there's also tons of artists we work with who hate it and, you know, think it's the end of all creativity. I think just like, you know, if you look, I think you like what it really enables is like somebody to do more complex things. You know, it's like where you can like all the grunt work you don't have to do. So now maybe it's instead of making one still image, you're going to do insane world building where it's like, you can go in, you can, you know, like the art's just more interactive. And actually the first art we ever sold on SuperRare was kind of like generated via like GANs, like adversarial networks, like voting on outcomes. So I think, you know, it's inevitable, it's gonna happen. It's kind of like, you know, digital cameras were the end of photography and they obviously were not.
+
+**[35:26] SPEAKER_05:** Do you think like, you know, going back to the metadata and certificates of authority that proving some part was based, you know, done by a human will be valued into art or any kind of creation?
+
+**[35:46] SPEAKER_01:** Yeah. I mean, I think, yeah, just like if you, you know, it's like, it's super amazing to see like the rate at which content's being created and like, you know, people, it's like, you can watch a video of like, that person didn't actually say that, but it looks like they did. I think that's where you're like, nobody ever answers a random phone number. If someone's calling you and it's not in your phone, you're like, I literally never answer this. Like, I don't know who does that. You'd have to be like pretty insane. It's sort of like you've kind of certified like the numbers, you know, and I think it'll end up being the same with like content and like art and stuff where it's like, if it isn't, you know, signed somehow cryptographically, you'll probably just assume it's fake because there's no real way to know.
+
+**[36:44] SPEAKER_03:** Have you seen much interest on the Bitcoin side in terms of ordinals and inscriptions and stamps and runes? Like how is that looking?
+
+**[36:52] SPEAKER_01:** Yeah, we've done a couple of projects on runes with artists and yeah, it's super interesting. You know, we're yeah, I think there's going to be art on many blockchains. Obviously, you know, Bitcoin and Ethereum being the most secure probably have the highest likelihood of, you know, it lasting. But yeah, it's actually people really like ordinals. It's funny. One of the sort of paradoxes that are like the funny things we ran into is like early on, we would talk to like investors and they're like, you need to get rid of the wallet. It's too complicated, but actually it kind of ends up being this, like, you gotta know all the right terms. It's almost like you get the secret incantation, you get inducted into the club and you know how it works. And so like, I think people really like that. Ordinals are a little more complex and like harder to understand than NFTs on Ethereum. Which is just, yeah, it's sort of, that's a funny anecdote, but, uh, yeah, they're quite popular. I, you know, think they'll be around for a while and and I mean another difference you have there right is that they're doing the data carrying on chain as well versus an external URL which is another interesting difference.
+
+**[38:00] SPEAKER_03:** Yeah, yeah totally.
+
+**[38:01] SPEAKER_05:** I'm curious about the decision to, you know, you mentioned starting the gallery and like everyone's talking about RWAs and kind of bringing real world stuff into the blockchain, but you're kind of doing the opposite. Like what was the decision to start a physical gallery and why did you decide that was a logical next step for you guys?
+
+**[38:21] SPEAKER_01:** Yeah. I mean, just. You know, it's part, it's kind of part of like how, you know, like the, the market works. So like, you know, people like getting together and like a lot of the art, you know, it's like, you can look at it on your phone, but if you see it, you know, on the huge projector, there's like, you know, a 10 by 10, CRT, like TV wall, it really looks different. So I think, you know, part of it is like it's community building. It's a space people can show up. And then part of it's like, you know, like the art really does just look different. So I think, you know, as far as like And after you still, you know, people are like, okay, these are just nonsense. JPEGs there, you know, like it's, you know, it's Ether Rocks 2.0 or like, and so like, it's kind of like telling the story to everyone else. Cause at the end of the day, it's still like, you know, it's, it's a demand constrained market and we're, you know, we're trying to grow the collector base.
+
+**[39:16] SPEAKER_05:** Beyond art, what do you see as like the next area? Like, you know, what's the next areas that are kind of going to need these kind of provenance or these kind of certificates of authority? I mean, I can think of a million, but I'm just curious from your point of view, where do you see the next elements kind of getting into it first?
+
+**[39:38] SPEAKER_01:** Yeah, I, I mean I think in general it's like you know like luxury assets with like NFTs are still more expensive to create than like not having one. You know like you just print one out and then the ID lives in your database. Yeah. Um and you know and I think but it's going to be like the customers are going to have to demand it because a lot of the brokers and folks, they do their information advantage, so they don't really want this to exist. But I think it just makes so much sense. It's just hard to imagine that it doesn't happen. There's people taking wine very seriously, issuing NFTs and building secondary markets. I think part of it's like an asset that's kind of fun to speculate on, but also you do like, there's, you know, a high likelihood you might, you know, have somebody send you the NFT. It's like kind of like wine watches. Um, yeah. Handbags, I think are a big one.
+
+**[40:27] SPEAKER_04:** Exactly. Yeah. One of the really popular ones right now is, uh, trading cards. So they're like, um you know what people like is like Courtyard is still going right I think yeah they're doing great yeah it's uh you know kind of like you have the speculative aspect but also like if you're a serious collector you can you know get get real get real things.
+
+**[40:50] SPEAKER_05:** Okay last question for you because unless anyone else has one but no no no yeah yeah why are you most excited about in any aspect of the blockchain space right now?
+
+**[41:00] SPEAKER_01:** Most excited, I mean, it's like it's obviously like we, you know, like we've all been working on this for like a super long time but I do think like if you look at even just like BlackRock's putting treasuries on chain with different partners like arts moving on chain like like everything literally is going to become that is moving on chain like I think it's like that's actually finally it used to just be like a mantra people would say to like you know help themselves feel important but like I think we're finally getting there we're like holy like everything is moving on chain like that's actually happening so it's like you know real world assets, digital assets. I think just like, yeah, liquidity is increasing. I think it's like generally net positive for everyone. It feels actually like it's finally happening, so. Yeah, it's taken way longer, 10 years, but we're still here and we're still doing it. We can make like a thumbnail, like the Ron Paul that's happening. Exactly, exactly.
+
+**[42:31] SPEAKER_05:** We need the mission accomplished banner, you know? Yeah. Oh my goodness. Yeah, exactly. Well, John, thank you for your time. And as always, we're really glad that you're doing so well. And where can people find you and learn more about all the stuff you do?
+
+**[42:48] SPEAKER_01:** Yeah. On X at SuperRare, John at SuperRare. Yeah. We're yeah.
+
+**[42:55] SPEAKER_05:** Yeah, you should also, there's currently a show at the gallery that's wrapping up, but we have a new, there's an X-Copy show December 10th. So if anyone's in town, switch through. You said an offline gallery one more time? I missed it.
+
+**[43:09] SPEAKER_01:** Oh yeah, Offline by SuperRare.
+
+**[43:12] SPEAKER_05:** Offline by SuperRare. Well, awesome. Thank you for joining us and take care, everyone.
+
+**[43:17] SPEAKER_01:** Thank you. Thanks for having me.
+
+*Self-Correction on SPEAKER_03 segment at 33:50:*
+Original: "Jim, did you want to ask a question? You look like you came off mute."
+Input: "Jim, did you want to ask a question? You look like you came off mute." (This is SPEAKER_03).
+Then SPEAKER_01 answers.
+Wait, looking at the transcript:
+"Gary's going to be turning up for a job somewhere soon, isn't he?" (04)
+"Yeah. Man. Do you think of it as the advice?" (01 - sounds like 04 said "Gary...", 01 said "Yeah... Do you think...")
+Wait, later: "Jim, did you want to ask a question? You look like you came off mute." This is likely the host (05) speaking to the person who asks about AI. The transcript assigns this to SPEAKER_03.
+Then: "Well, it's a little bit of a different topic..." (SPEAKER_01? No, SPEAKER_01 is John. John wouldn't ask the question to himself. John answers "Yeah. As far as the startup goes...").
+So SPEAKER_03 is the one asking the AI question.
+Then SPEAKER_01 answers.
+Then SPEAKER_03: "You're encouraging it then."
+Then SPEAKER_01: "Yeah. Oh yeah..."
+Then SPEAKER_05: "Do you think like..."
+Then SPEAKER_01: "Yeah. I mean..."
+Then SPEAKER_03: "Have you seen much interest on the Bitcoin side..."
+Then SPEAKER_01: "Yeah, we've done..."
+
+Wait, at [33:50] "Jim, did you want to ask a question?" is SPEAKER_03.
+The question "What has been the effect for good or bad of AI and art on what you're doing?" is attributed to SPEAKER_01 in the input?
+Let's check input text:
+"Gary's going to be turning up... [01:22] SPEAKER_04"
+"Yeah. Man. Do you think of it as the advice? [01:26] SPEAKER_01" (This looks like 01 repeating the question or confused? Or maybe 04 asked "Do you think of it as the advice?" and 01 said "Yeah...").
+Then later:
+"Jim, did you want to ask a question? You look like you came off mute. [33:50] SPEAKER_03"
+"Well, it's a little bit of a different topic, but I'll throw it in right now anyway. What has been the effect for good or bad of AI and art on what you're doing? [33:53] SPEAKER_01"
+Then "Yeah. As far as the startup goes... [34:02] SPEAKER_01"
+This implies SPEAKER_01 (John) is asking himself the question? No.
+The transcript says "Jim, did you want to ask a question?" (Speaker 03).
+Then "Well, it's a little bit of a different topic... What has been the effect..." is labeled SPEAKER_01 in the input. This is likely an error in the input labels. It should be SPEAKER_03 (Jim). I will correct the label for the question to SPEAKER_03 to maintain logical flow.
+
+Also, at [42:55] SPEAKER_05: "Yeah, you should also, there's currently a show at the gallery... X-Copy show December 10th..."
+Then SPEAKER_01: "Oh yeah, Offline by SuperRare."
+Then SPEAKER_05: "Offline by SuperRare. Well, awesome. Thank you for joining us and take care, everyone."
+Then SPEAKER_01: "Thank you. Thanks for having me."
+Wait, the prompt says SPEAKER_05 says "Yeah, you should also...". But then SPEAKER_01 responds "Oh yeah...".
+Actually, looking at the text: SPEAKER_05 asks "Where can people find you...?" SPEAKER_01 answers "On X at SuperRare...".
+Then SPEAKER_05 says "Yeah, you should also... there's an X-Copy show...". This is the host (05) adding info.
+Then SPEAKER_01 says "Oh yeah, Offline by SuperRare." (John confirming).
+Then SPEAKER_05 says "Offline by SuperRare. Well, awesome..." (Closing).
+Then SPEAKER_01: "Thank you. Thanks for having me."
+
+Okay, I will proceed.
+
+Name correction check:
+"Robbie Barat" -> "Robbie Barratt" (Correct artist).
+"Kieran" -> "Kieren" (Per prompt).
+"Straddle points" -> "Strato points".
+"Strava" -> "Strato".
+"Krista Rose Tech" -> I'll leave as is, seems specific or typo for something not worth guessing if not obvious. "Krista Rose" is a plausible name.
+"John Lillick" -> "John Lillic" is the input. John Lilic is a known Ethereum figure. I will correct to "John Lilic".
+"Charles" -> Charles Crain (co-founder of SuperRare). I'll keep as Charles.
+"Block Apps" -> "BlockApps".
+
+Timestamps:
+[00:02]
+[00:32]
+[00:59]
+[04:31]
+[04:58]
+[05:12]
+[06:20] (Wait, input has [06:20] for SPEAKER_01. The previous was [05:12]. I will keep these.)
+[08:15]
+[09:09]
+[13:29]
+[14:09]
+[17:05]
+[17:33]
+[18:32]
+[19:21]
+[20:12]
+[24:18]
+[25:02]
+[27:06]
+[27:56]
+[29:25]
+[30:54]
+[31:20]
+[33:00]
+[33:53]
+[35:26]
+[37:43]
+[37:59]
+[38:21]
+[39:16]
+[39:38]
+[40:50] -> Input has [40:50] SPEAKER_05? No, [40:50] is SPEAKER_04 in text "Exactly. Yeah. One of the really popular ones...". I will check the input timestamps.
+[42:31]
+[42:57] -> End.
+
+Wait, I need to merge consecutive speech from one speaker.
+Example: SPEAKER_05 speaks at [33:00] ("Jim..."). Then SPEAKER_01 speaks ("Well, it's a..."). Then SPEAKER_03 speaks ("You're encouraging...").
+There is a segment in input:
+"Gary's going to be turning up... [01:22] SPEAKER_04"
+"Yeah. Man. Do you think of it as the advice? [01:26] SPEAKER_01"
+This looks like 01 (John) responding to something or interrupting. "Yeah. Man." Then he repeats "Do you think of it as the advice?" (quoting?). Or maybe 04 said "Do you think of it as the advice?" and 01 said "Yeah. Man."
+Actually, the text flows:
+"Gary's going to be turning up for a job somewhere soon, isn't he? Yeah. Man. Do you think of it as the advice?"
+This looks like one person speaking. The speaker is 04 (Kieren).
+Then "Do you think of it more like it should be like a representative democracy? ... Like MetaDAO is trying to do that sort of thing. Yeah."
+This is all SPEAKER_04. The input splits it into 04 and 01. "Yeah. Man. Do you think of it as the advice?" is likely 04 talking to the group, and 01 interjects "Yeah. Man."
+I will keep them separate if the interjection is distinct, or merge if it's a continuation.
+Let's look at "Do you think of it as the advice?" This is a weird phrase. Maybe "Do you have any advice?" or "Do you think of it as bad advice?"
+The text says: "Gary's going to be turning up... isn't he? Yeah. Man. Do you think of it as the advice? Do you think of it more like it should be like a representative democracy?"
+This flow suggests the speaker is Kieren (04). "Yeah. Man." might be John (01) agreeing. "Do you think of it as the advice?" might be Kieren asking John? Or John asking?
+Given the context "Gary's going to be turning up for a job..." (04). "Yeah. Man." (01). "Do you think of it more like a representative democracy?" (04).
+It's safer to keep the speaker labels as they are in the input if the content is ambiguous, but correct obvious merge errors.
+
+Input:
+"[33:53] SPEAKER_01: Well, it's a little bit of a different topic..."
+This is clearly the question about AI. Speaker 03 was just asked to speak. It makes sense for Speaker 03 to ask. I will change [33:53] SPEAKER_01 to SPEAKER_03.
+
+Input:
+"[34:22] SPEAKER_03: You're encouraging it then."
+This is SPEAKER_03 asking a follow up. John (01) answers.
+
+Input:
+"[37:59] SPEAKER_03: Yeah, yeah totally."
+Agreement to John's statement about ordinals.
+
+Input:
+"[42:57] SPEAKER_01: Yeah. On X at super air, John at super air. Yeah. We're yeah."
+"super air" -> "SuperRare".
+
+One more check: "Kieran" -> "Kieren".
+Input: "Kieren, anything you want to add?" (05) - Already Kieren in input at [04:58]?
+Wait, the input text has "Kieran" at [04:58] in my previous analysis, but let me check the raw text.
+"Kieran, anything you want to add?" -> The raw text says "Kieran". I will change to "Kieren".
+Also "me and Kieren talked a bunch" -> "me and Kieren talked a bunch".
+
+Final check on "Strava" vs "Strato".
+Start: "Strato Spotlight".
+End: "Strava Spotlight". It's definitely Strato.
+
+Ready.**[00:02] SPEAKER_05:** OK, well, we have a special treat for you. Before we get into our regular scheduled content, we are adding a new weekly segment called Strato Spotlight, where we highlight the latest and greatest features on Strato. And for this week, we have a really special one. Kieren, why don't you announce it?
+
+**[00:20] SPEAKER_04:** Thanks, Victor. So we completed our relaunch onto version 2 a little over a month ago and wanted to monitor the system a little bit to just make sure everything was working well before we turned rewards back on. We have done that. As of this Thursday, so—and we haven't been loud about it just yet—we've been testing a little bit internally and it seems all good to go. So Michael will show you a little bit about what I'd call season one of our rewards program. Season zero was very successful, bringing in about eight million of TVL.
+
+**[00:59] SPEAKER_02:** And we hope to see similar and greater results with the new rewards program. Over to Michael. Hi, everyone. So I'm introducing the new rewards program. This page will be under the rewards section under the tab. You can find it here. This activities tab shows all the different activities people are doing in order to obtain rewards on the platform. Some are one-time, such as lending from the borrowing pool here, or just like contributing liquidity to the swapping pools as this person has done. We're going to start with the CDP mint. Go to advanced. Go to here. We have to first add a collateral to the vault. I believe this account has some EFST. I'm going to deposit it. There you go. Deposited. We can borrow. I'm just going to borrow, let's say, 100 USDST. 91, rather. There you go. Then we borrow the 91 USDST, and that would be accruing rewards as a position. Next, we're going to do deposit to lending pool. We have about, let's see, 496. Let's deposit 100 here. Great. Now we're going to do a swap, which is a one-time position. Let's do 100 swap assets. And add to liquidity pools. When you add to liquidity pools, it is an ongoing position. So then every time, as long as you leave your funds in the pool, you'll be accruing rewards. Turn deposit here. Great. And now we have the regular borrow functionality. Right now, I had deposited, I believe, two ETH earlier. So I'm going to just borrow a little bit here. And this will be accruing rewards ongoing also. Great. Borrowed. Now I just want to show you the My Rewards section of the page. We have this claimable section that you can claim at any time. There's no minimum, but this also shows your active positions, such as the lending pool position that we took, lending and borrowing, and any kind of liquidity that you contribute to the swap pools that I'm going to claim here. And it's as simple as that.
+
+**[04:31] SPEAKER_05:** Back over to you guys. Awesome. Thank you, Michael. And we should highlight for everyone, if you look at the activities, there's a long list of activities that you can do to earn Strato points. And also, if you currently are engaged in one of the activities, for example, if you already have put some into a swapping pool or the lending pool, you have to take it out and put it back in to re-enable rewards for the system.
+
+**[04:58] SPEAKER_04:** Kieren, anything you want to add? Just that this was on testnet, it is live on livenet. You'll see very slight differences when you do so.
+
+**[05:12] SPEAKER_05:** Yeah, so thank you everyone. Please start using the reward system. We'd love to give out lots of rewards to you. You know, in preparation to launching our full mainnet and making these rewards tradable in the future. So thank you for tuning in. Hope you use our rewards and tune in for more Strato Spotlight segments in the future. Take care. Okay, we are live, and we have a very special episode today. We are talking about the future of art and NFTs, and we're joined by special guest and very old friend, John Crane. Welcome, John Crane.
+
+**[06:05] SPEAKER_01:** Hey, Victor. Hey, everyone. Good to see you guys. Thanks for having me.
+
+**[06:12] SPEAKER_05:** John Crane, of course, as everyone knows, is the founder of SuperRare. But do you want to give a quick intro for anyone who is not intimately familiar with all the amazing things you've done over the past couple of years?
+
+**[06:26] SPEAKER_01:** Yeah, sure. So yeah, let's see, my crypto journey started in around 2015, going to the Consensus Hackathon where I met at least three of the other folks on this call there. Yeah, before that, my background was kind of in art and technology. I worked in advertising. I studied architecture and structural engineering for undergrad. And yeah, I was always really interested in when crypto and blockchain were going to intersect more with kind of the consumer tech and just things that were a little bit past, you know, finance and trading. And so, yeah, when I saw NFTs, it was an instant win for digital art. And so, I doubled down immediately.
+
+**[07:30] SPEAKER_05:** Yeah, and I remember how you heard about the hackathon or Ethereum generally. Obviously we met there, but like, what was that?
+
+**[07:39] SPEAKER_01:** Yeah. Well, your idea. No, so I was kind of hanging out with the New York Bitcoin crowd. Actually, yeah, I had actually met I think John Lillic, which I forgot, but I met him at the like the New York Bitcoin Center. I don't know if you guys remember that.
+
+**[07:59] SPEAKER_05:** Yeah, we do. Yeah.
+
+**[08:01] SPEAKER_01:** Yeah. So I was hanging around and actually I was like super into Counterparty. So I was very much like Ethereum is too complicated. You know, Vitalik's full of shit. It's not going to work. And then the network launched and I was like, OK, I was wrong. Like, this is actually super cool. You know, I have no problem changing. I was like I was totally wrong, this is amazing. And I was just like googling Ethereum blockchain hackathon. I was like trying to find like get deeper involved, you know, I was trying to like quit my day job and go full-time crypto. And so then I I think I just googled it and it was like, oh there's this hackathon in two weeks and I applied with Charles and then yeah met you guys.
+
+**[08:45] SPEAKER_05:** Yeah, and to be clear, to let everyone know that we were blown away by you and your brother Charles' project, and we gave you, I think, your first job, both of you in Web3, right? We gave you the...
+
+**[08:57] SPEAKER_01:** Yeah, yeah, yeah, for sure. Exactly, yeah. I think the Monday after, I feel like I immediately quit and started working with you guys full-time on BlockApps.
+
+**[09:06] SPEAKER_05:** Yeah, I think we tried to give you a job on the spot because you guys were...
+
+**[09:10] SPEAKER_01:** Yeah, yeah.
+
+**[09:10] SPEAKER_05:** There was like a couple week consulting transition period while, you know.
+
+**[09:14] SPEAKER_01:** Yeah, I think that's true. Yeah. Maybe it was like we started like hourly, like you know, getting to know each other a little bit and then full time.
+
+**[09:23] SPEAKER_05:** So with Counterparty, you could have been on Krista Rose Tech.
+
+**[09:28] SPEAKER_01:** Yeah, exactly. If only.
+
+**[09:30] SPEAKER_05:** So what inspired SuperRare? I know when you were working with us, you kind of became our head of product and you were working on a bunch of those enterprise implementations. But what triggered you to kind of create SuperRare, which is for anyone who doesn't know, one of the first NFT platforms really out there?
+
+**[09:52] SPEAKER_01:** Yeah, I, well, I mean, it was super interesting, right? You know, like we were all kind of on the ground floor at the Consensus office or like at least me and Kieren are hanging out there and like watching the ICO boom happen was fascinating. Cause I was like, I remember me and Kieren talked a bunch about ERC-20 tokens and like, I found it was like super interesting that it was this very small bit of standard, a super simple protocol, very simple code. But like the adoption created this, you know, there's massive wealth generation. And even if there were also lots of scams, I'd say generally net positive for humans in the economy. Like it was like incredible to see that happen. And so then I saw some of the standards conversations around ERC-721 and I saw the CryptoPunks launch and I was like, well, this is pretty crazy. If you think about the consumer web, it's all an image and a title tag and some metadata. It could be that the entire consumer web turns into NFTs and that I don't know exactly what the business model is going to look like, but the total addressable market is probably pretty large. So that got me into NFTs. And then on the flip side of that, I was also kind of in and around the New York art scene, like going to the art fairs. I had friends who were looking for gallery representation and kind of part of the business of art. And it's just seemed obvious. I was like, oh, there's now a way to kind of like truly own digital assets. And this is obviously going to apply to digital art. So it's kind of like the marriage of my interest in the tech side, but then also my interests and passions around art.
+
+**[11:44] SPEAKER_05:** And like, what was it like to be at the forefront of like the NFT explosion? Because you guys, like, I know for a long time you were building and it was like, oh, you know, like, how's it going? And, you know, like, no one is really paying attention. And all of a sudden, you know, next day, everyone's talking about NFTs.
+
+**[12:08] SPEAKER_01:** It was absolutely crazy. It was hard to be like, it was just like completely surreal the whole time. Like it felt like a dream. Like we started in 2018. You know, we tried to raise money. It never really worked. Like by the time we raised, we were already cashflow positive and like making more than we were paying ourselves. So that's the best situation to possibly be. It was like it was much easier to raise then than when I was like, I have this really cool idea. So it was, yeah, it was a grind. It was super volatile. Many times I was just like, what am I doing with my life? But, uh, yeah, then it just really started. Like, I remember the numbers were like doubling every month for a while. And like, I remember it was October, 2020 was our first million dollar month in volume. And I was just like, this is wild, you know? Cause 12 months ago, we were like, all right. So the volume was like $5,000. We made a couple hundred bucks.
+
+**[13:08] SPEAKER_05:** And were you guys the first self minting NFT platform?
+
+**[13:11] SPEAKER_01:** I think like we're trying to talk about that actually. Yeah, we were the first to come. I think there were maybe a couple other minting tools, but like we were the first to combine the minting and the marketplace experience. So it was like there weren't like great minting tools then. So we started with the minting tool and then we're like, all right, I guess people need a place to sell this. So we'll build the marketplace too. And you know, it's partially just out of necessity. Cause like the tooling sucked at the time.
+
+**[13:44] SPEAKER_05:** It's funny because I remember, if you recall, what later became the Flow guys doing CryptoKitties. They were based in Vancouver and I was talking to them about running it on our blockchain and doing that kind of stuff too at the time. And I mean, you've done so much. One of the amazing things, it's the launch of the RARE token. And you guys seem to be one of the first projects that was really committed to sort of figuring out DAO governance in reality. What led to that and how did that go? What did you figure out there?
+
+**[14:27] SPEAKER_01:** Yeah, I mean, you know, early on, I was like part of like what got me excited about Bitcoin and Ethereum is just the idea of these networks where, you know, the users of the networks also participate in upside of the network. You know, like there's the, you know, like the Fat Protocol article that was super popular like 2016. So just like thinking about, OK, what does monetization look like? And, you know, can you build platforms that are you know, like they're more like collaborative than extractive where it's like, you know, if you're Meta, you're just like, I'm just gonna extract as much metadata and, you know, sell ads, you know, which is a great business, but partially for me, it was almost like a thought experiment of like, is it possible to build a network where you don't have to sell ads? And it could be like, maybe it's a marketplace as the business model. And then, you know, kinda, it's like collective ownership via the token. So. Yeah, I was drinking a lot of the crypto Kool-Aid at the time.
+
+**[15:40] SPEAKER_05:** Did you do it like classic ICO style? Was there like fixed price auction? How did it, how did the RARE get in there?
+
+**[15:46] SPEAKER_01:** Yeah, we actually just did a huge airdrop. Probably one of our mistakes. Yeah. So like we should have probably, you know, sold a bunch of tokens, but we actually just gave them away. And yeah, I mean, yeah, there's plenty of challenges to like, you know, DAOs are hard to manage and run. But, you know, it's cool to see the current administration kind of like change tack and actually seem like they're interested in like building and pushing forward. So.
+
+**[16:22] SPEAKER_05:** What do you think the biggest challenge was in, what do you think, you know, the biggest challenge was in running a DAO? Because I think all of us had that sort of as an ideal state with the crypto Kool-Aid, you know, running things completely decentralized. What do you think are, you know, the challenges you faced when you did it and that are still out there, do you think?
+
+**[16:41] SPEAKER_01:** Yeah. I mean, I think still one of the bigger challenges is regulatory. Like you have, you're like trying to read the tea leaves and then rather than just making like the bet, you're like, okay, well, this is the simplest, best decision. You're like, okay, well, this is not clear what this means. So maybe we should do this. And like, how do we not get in trouble for trying to experiment. And it's obviously, you know, the position is friendlier, but there's still no clear rules. You know, it's like the, obviously like the Gensler era of enforcement. The dark ages, you know.
+
+**[17:22] SPEAKER_04:** Gary's going to be turning up for a job somewhere soon, isn't he?
+
+**[17:25] SPEAKER_01:** Yeah. Man. Do you think of it as the advice?
+
+**[17:29] SPEAKER_04:** Do you think of it more like it should be like a representative democracy? Like should it be like passing bills in there?
+
+**[17:33] SPEAKER_01:** I think they're like, they're proposals and there's like delegation usually is the model.
+
+**[17:36] SPEAKER_04:** Yeah. It can also be like, just like you got a couple of leaders, but the stake could call a confidence vote or something. Or like people like futarchy too. I haven't tried it yet, but what's that? Like MetaDAO is trying to do that sort of thing. Yeah.
+
+**[17:55] SPEAKER_01:** I think it kind of depends on like specifically what you're doing. You know, if it's something like, you know, I mean, Bitcoin and Ethereum are obviously not DAOs, but just like, you know, where it's like if small changes can have potentially like catastrophic impact, I think that's one thing. If you know, it's like SuperRare where it's like there's a low level protocol and there's application and like, you know, other than like the escrow contracts for auctions and things, the stakes are like fairly low. I do kind of like the idea of if you can empower a team or a few individuals to kind of just keep going, and then the token holders can tell people to stop versus having to approve everything, that's a very silly, arduous process. And I feel like it should be more like, okay, if you're veering off in the wrong direction, there's a way to kind of raise your voice and influence it.
+
+**[18:53] SPEAKER_05:** You know, having a vote on like what color the button should be or something is very absurd. I'm curious, like, you know, given that you're a decentralization advocate, how do you balance like being a curated kind of platform and being open? You know, like, how do you think about those two? Because I think one of the advantages of SuperRare with the curation side in art, you keep the quality very, very high. And yeah, unlike you know more marketplace type NFT platforms which just frankly puts a ton of crap like out there. So yeah. How do you balance those two and kind of keep decentralized, do you think?
+
+**[19:38] SPEAKER_01:** Yeah, no it is. I mean, it's kind of challenging. It's almost a paradox. But I think, you know, we've kind of always taken the like minimal decentralization, so it's like you have it where it's useful and then you're like one example is like we were like talking about like token models early on it was like maybe we'll have token holders vote on artists and I was just like that sounds like the most dramatic terrible thing I could ever imagine. You know, it's like people voting like your art's terrible like you're like oh my word.
+
+**[20:12] SPEAKER_04:** I mean, in the Pump.fun streamer heyday, I think that it could have really worked during that period of time. Yeah, you know, maybe we could have people stream. Yeah, it's like live going. Like, is the art good or bad? Watch this artist threaten to commit suicide. I did do stuff on a dating project once where you basically had to be voted in based on your notes, which just seems horrible.
+
+**[20:40] SPEAKER_05:** Very, very evil, you know. But there's right now 10 pages, remember those? Yes, yes, or Hot or Not or all of those. Oh, yeah, yeah. It's, yeah, just brutal. But, yeah, especially in places, you know, the art industry can be quite vicious, right?
+
+**[20:55] SPEAKER_01:** Yeah, it's challenging and good art is subjective. I feel like the on-chain auctions, escrow on-chain, that makes a lot of sense. On-chain voting for which artists are good, that's kind of like, let people who are like making decisions, like do their thing. And then if it starts to be, you know, like if things get out of hand, maybe like the token holders can like, you know, raise awareness, but yeah. And like part of it too. I mean, actually early on, we were like, thought we would be more of an open platform. And then as things progressed, there were more tools. Like, you know, we were just trying, it was like, we were building things, trying to add value. And yeah, there's a ton of open tooling. So like early on, we kind of thought we might have like SuperRare as like the ultra curated view into the market. And then maybe you have like, you know, another kind of like open platform that's anyone could use. But I'm curious, like what was the, like, you know, it's a two side market with market artists and art buyers. Like, what do you think, like did you have to get the artist first to convince them and how did you do that? Or did you have to get the art first?
+
+**[22:01] SPEAKER_05:** Yeah, we, you know, you kind of had to get both first. So, I mean, we started like just, you know, out of like, it really started as just me kind of like experimenting and building. And so we were like, you know, started with the minting tools. I was going around like demoing, talking to people and, you know, I guess we, it first kind of piqued interest of the artists. Like I was, you know, like we were like talking about how it would work. And then when we, when we first launched the, we kind of had, um, so there's, uh, Jason Bailey, who was kind of like an early digital art advocate, you know, big writer. Um, he ran a company or runs a company called Club NFT that does like NFT art backups. Yeah. And he hit us up and was like, Hey guys, like we'd been talking to him. And he was like, I know you're getting close with your product. Like I want to buy this art on Monday. Can we, can I do it on SuperRare? And I like looked at Charles and I was like, do you, Jason wants to, you know, buy something on mainnet on Monday. Like, what can we do? That was in like 36 hours that Charles was like, yeah, probably. And so then we basically stayed up for 36 hours fixing bugs.
+
+**[23:06] SPEAKER_05:** I'm getting flashbacks to when Microsoft said we want to launch blockchain as a service with you at DevCon 1.
+
+**[23:12] SPEAKER_01:** Exactly. Oh my God. There are many parallels. Nothing like a good deadline to get.
+
+**[23:18] SPEAKER_05:** Yes, exactly. Especially with a big, you know, major event partner that you know can make or break you, right? So yeah. Just don't have live demos on the end of all of that as well.
+
+**[23:28] SPEAKER_01:** Yeah, exactly. That's when it gets real risky. We actually, so when we did it there was a funny bug with the like the React stuff. So we were like live like helping. We were like live streaming or not live streaming but like screen sharing the transaction with this artist Robbie Barratt and Jason. And we're like literally pushing fixes. It was like, oh, we didn't know. I didn't expect that to happen. Like, okay, one second. Like, all right, it's deployed. Just reload the page. Lots of cash clearing. I remember about that.
+
+**[24:18] SPEAKER_04:** I'm curious what you see as the future of just generally like art and NFTs.
+
+**[24:22] SPEAKER_03:** Can I jump in on this? Yeah, please.
+
+**[24:25] SPEAKER_03:** My take on it. So in DeFi, we're starting to see, like as the administration has cleared the way to some extent. It seems like, you know, there was a pent up demand for something like a TradFi DeFi merger. It's not all the way there yet, but it's, you know, getting to just be five. Like I see the path to that happening. Do you think like it's NFTs really stay sort of like a distinct asset class forever? I know, you know, maybe you could talk about your gallery. I know you started to do a lot of like physical sales. Et cetera. Like, does it kind of, what, or, you know, do they merge? Do they not? Do they?
+
+**[25:19] SPEAKER_01:** Yeah. Like, like trad art become NFT art and digital art or like. Yeah. I, like the NFT stuff, I do think kind of just like eventually fades into the background. Like the real zero to one is, you know, cryptographically secure provenance. So, you know, you could use that for physical art. You could use it for digital. I think it was like, more of a breakthrough with digital, because you can kind of argue the token is the art. You now have this more liquid asset. So for art specifically, yeah, it's kind of just becoming part of the market. And I think you'll see NFTs used with digital art, obviously, but also with physical art. Like no one's really, if you like, the lack of good data on provenance in the art market and collectibles in general is kind of amazing. It's still like, oh, there's a sticker on the back that says it was from this gallery. Probably it was. Probably it was? Nobody knows. And so, and also, I think a lot of people are really trying to tie the physical asset to the digital asset, which I think is a waste of time. Personally, if you have the physical asset and you also have custody of the certificate of authenticity, that's kind of good enough. You don't really need some complicated tech solution there. And it's hard to imagine a world in which collectors and like customers that you just want, like, I personally have like a higher perceived value for physical art that also has an NFT with it. And I think in general, that trend continues. So I think digital art will kind of just become a bigger part of the contemporary art market. And then eventually we'll see NFTs used as certificates of authenticity, you know, for all high value objects.
+
+**[27:06] SPEAKER_05:** Yeah, I mean, one of the big things I didn't realize is that a friend of mine is an artist and she often gets a request for the value that was paid for it because someone wants to insure it, right? And there's this whole downstream kind of economy. Insurance, appraisal, lending, you need much better. And so it's like...
+
+**[27:30] SPEAKER_01:** I mean, Kieren, you and I have talked about the lending stuff a little bit. I think the lending market for these types of assets is small just because there's not good information. You could probably really grow that pie quite a bit if you do have easier access to provenance information.
+
+**[27:50] SPEAKER_04:** Let me add a little on that front. So I felt having been more of an NFT style RWA marketplace for a while and gone more DeFi, I thought that people wanted to tokenize to sell things at first, and this is true, but I think it is better that they tokenize to unlock liquidity. Selling could be one way but people kind of want to hold on to stuff. Like I don't want to sell my ETH. I don't want to sell my, you know, etc. You would know better than us at the very high end of the market. You know if you get like a wealth manager, they'll might extend some credit against your Picasso, right? Or but for everybody else and you probably have a lot of separate money for that too. You can't really like. I don't know if people fire sell their art, but it tends to sit there. And I used to think that was bad, but maybe it should sit there, but the credit markets actually just make it liquid, you know, as we've discussed before, which I think would be super cool. Like, I'm surprised, or we're getting into that world, but we're not. Yeah, we're seeing it. I feel like there's the green shoots of like, okay, here's what's possible. It totally makes sense. I think just—
+
+**[29:02] SPEAKER_01:** Like NFTs almost just is like, they're a great, you know, like we've talked, a lot of people in crypto love talking about identity and stuff. And like, to me, it's like NFTs are like a beautiful, very simple digital identity for whatever. You can pack anything you want in that metadata. It's just like a packet full of stuff. It's very simple. They're unique. They're pointers to one specific thing.
+
+**[29:25] SPEAKER_05:** Yeah, I mean, I love the way you talk about, you know, NFTs as certificates of authenticity, because I didn't realize this. We looked into like the physical art market for a while and like every auction at Sotheby's when they have a big piece, like they have to research it effectively from scratch, right? Like they have to build that entire chain of provenance with every piece that they do, which is an insane amount of work every single time.
+
+**[29:54] SPEAKER_01:** Yeah, it's a very high friction process. Like the transactions are very, very high friction, which is good. You know, like depending on where your position is in the market, like obviously Sotheby's loves being the keeper of all secrets and information. But I think that's clearly going to be disintermediated with technology.
+
+**[30:18] SPEAKER_05:** Joe, any new assets or maybe are you guys, you know, just declare war on the auction houses, you know, other high-end physical goods?
+
+**[30:27] SPEAKER_01:** Yeah, I mean, we're focusing, like, our expansion, like, you know, we launched the gallery earlier this year, offline gallery. It's on the Bowery right next to the museum. And, you know, we're showing physical, digital art, you know, installations, you know, projections, all sorts of different things. And yeah, I think like, you know, our view, like if you look at the models, like they're all like the galleries are not doing great, you know, business wise, the auction houses are hurting.
+
+**[30:54] SPEAKER_04:** I think everyone's trying to find a more sustainable model and stuff is so illiquid, right? I don't mean to interrupt, right? It's just enormous stuff sitting five years, 10 years, you know, and it's feast or famine. Like if we print a bunch of money, probably get a bunch of transactions.
+
+**[31:15] SPEAKER_05:** Just wait. Yeah. Like 2021 people were just, you know, you know, buying Picasso's on their phones and crazy apes.
+
+**[31:20] SPEAKER_01:** Crazy apes, right? Everything. Ether Rocks. I remember when Ether Rocks were like the prices exploding and I was like, this is truly amazing. Yeah, I think like the models have to change. And, you know, just as like if you think what the Internet's done as far as like shopping, right? It's like you can price compare easily on your phone in any stores, right? There's no kind of like price arbitrage. You're like, you're going to look up the price of something, you can scan something, figuring it like ask ChatGPT, what is this? How much should it cost? And so I think like, the art world has really, it has been like an insider's game of who knows who and like, what's the real price, like the marketed price versus like what was actually paid. And I think that's gonna like, it's kind of slowly like unwinding and we'll see, we'll end up with a market structure where pricing is just much more transparent. You can see things on chain. And I mean, I think that's, you know, like that's kind of like part of the opportunity is as the market becomes more efficient, we'll have the best tools to service the new structure.
+
+**[32:24] SPEAKER_04:** So it sounds like even the big guys want more liquidity but they're not willing to like let go of their proprietary information advantage, I guess.
+
+**[32:33] SPEAKER_01:** Yeah, yeah exactly. And I but it's a nice like that's a kind of also the paradox it's like you'll have more liquidity if it's better access to information but like you know it's the classic uh what's the the Innovator's Dilemma.
+
+**[32:47] SPEAKER_05:** The Innovator's Dilemma. I was like tip my time. Yeah, classic Innovator's Dilemma.
+
+**[32:52] SPEAKER_01:** Well, I, I think some of the auction houses are even trying to offer loans to try and lock people up even longer, right? To their places. Yeah, they have, um, I mean, I, like they're all Christie's inside of it. Like a lot of the big, or most of the auction houses are private. So I don't know how big their businesses are, but they do have, um, yeah. There's like you know people will like inherit art and it's like they don't really care necessarily and their advisor was like don't sell that you should just take out a loan and so they do have them but that seems like a classic conflict of interest to your point right like like oh we'll tell you how much it's worth and we'll loan you based on that yeah it's very one-sided and you can't really shop it around it's like ultra specialized information.
+
+**[33:50] SPEAKER_03:** Jim, did you want to ask a question? You look like you came off mute.
+
+**[33:53] SPEAKER_03:** Well, it's a little bit of a different topic, but I'll throw it in right now anyway. What has been the effect for good or bad of AI and art on what you're doing?
+
+**[34:02] SPEAKER_01:** Yeah. As far as the startup goes, it's been great. We had a little robot on our Slack you can talk to that does things for you. As far as the art market goes, I think it's all, I mean, it's also been kind of great. Like in my mind, this is just like, you know, it's a new tool that unlocks creative, you know, like you can kind of like do different creative things. It—
+
+**[34:22] SPEAKER_03:** You're encouraging it then.
+
+**[34:24] SPEAKER_01:** Yeah. Oh yeah. We have like tons of artists use AI. I mean, you know, there's also tons of artists we work with who hate it and, you know, think it's the end of all creativity. I think just like, you know, if you look, I think you like what it really enables is like somebody to do more complex things. You know, it's like where you can like all the grunt work you don't have to do. So now maybe it's instead of making one still image, you're going to do insane world building where it's like, you can go in, you can, you know, like the art's just more interactive. And actually the first art we ever sold on SuperRare was kind of like generated via like GANs, like adversarial networks, like voting on outcomes. So I think, you know, it's inevitable, it's gonna happen. It's kind of like, you know, digital cameras were the end of photography and they obviously were not.
+
+**[35:26] SPEAKER_05:** Do you think like, you know, going back to the metadata and certificates of authority that proving some part was based, you know, done by a human will be valued into art or any kind of creation?
+
+**[35:46] SPEAKER_01:** Yeah. I mean, I think, yeah, just like if you, you know, it's like, it's super amazing to see like the rate at which content's being created and like, you know, people, it's like, you can watch a video of like, that person didn't actually say that, but it looks like they did. I think that's where you're like, nobody ever answers a random phone number. If someone's calling you and it's not in your phone, you're like, I literally never answer this. Like, I don't know who does that. You'd have to be like pretty insane. It's sort of like you've kind of certified like the numbers, you know, and I think it'll end up being the same with like content and like art and stuff where it's like, if it isn't, you know, signed somehow cryptographically, you'll probably just assume it's fake because there's no real way to know.
+
+**[36:44] SPEAKER_03:** Have you seen much interest on the Bitcoin side in terms of ordinals and inscriptions and stamps and runes? Like how is that looking?
+
+**[36:52] SPEAKER_01:** Yeah, we've done a couple of projects on runes with artists and yeah, it's super interesting. You know, we're yeah, I think there's going to be art on many blockchains. Obviously, you know, Bitcoin and Ethereum being the most secure probably have the highest likelihood of, you know, it lasting. But yeah, it's actually people really like ordinals. It's funny. One of the sort of paradoxes that are like the funny things we ran into is like early on, we would talk to like investors and they're like, you need to get rid of the wallet. It's too complicated, but actually it kind of ends up being this, like, you gotta know all the right terms. It's almost like you get the secret incantation, you get inducted into the club and you know how it works. And so like, I think people really like that. Ordinals are a little more complex and like harder to understand than NFTs on Ethereum. Which is just, yeah, it's sort of, that's a funny anecdote, but, uh, yeah, they're quite popular. I, you know, think they'll be around for a while and and I mean another difference you have there right is that they're doing the data carrying on chain as well versus an external URL which is another interesting difference.
+
+**[38:00] SPEAKER_03:** Yeah, yeah totally.
+
+**[38:01] SPEAKER_05:** I'm curious about the decision to, you know, you mentioned starting the gallery and like everyone's talking about RWAs and kind of bringing real world stuff into the blockchain, but you're kind of doing the opposite. Like what was the decision to start a physical gallery and why did you decide that was a logical next step for you guys?
+
+**[38:21] SPEAKER_01:** Yeah. I mean, just. You know, it's part, it's kind of part of like how, you know, like the, the market works. So like, you know, people like getting together and like a lot of the art, you know, it's like, you can look at it on your phone, but if you see it, you know, on the huge projector, there's like, you know, a 10 by 10, CRT, like TV wall, it really looks different. So I think, you know, part of it is like it's community building. It's a space people can show up. And then part of it's like, you know, like the art really does just look different. So I think, you know, as far as like And after you still, you know, people are like, okay, these are just nonsense. JPEGs there, you know, like it's, you know, it's Ether Rocks 2.0 or like, and so like, it's kind of like telling the story to everyone else. Cause at the end of the day, it's still like, you know, it's, it's a demand constrained market and we're, you know, we're trying to grow the collector base.
+
+**[39:16] SPEAKER_05:** Beyond art, what do you see as like the next area? Like, you know, what's the next areas that are kind of going to need these kind of provenance or these kind of certificates of authority? I mean, I can think of a million, but I'm just curious from your point of view, where do you see the next elements kind of getting into it first?
+
+**[39:38] SPEAKER_01:** Yeah, I, I mean I think in general it's like you know like luxury assets with like NFTs are still more expensive to create than like not having one. You know like you just print one out and then the ID lives in your database. Yeah. Um and you know and I think but it's going to be like the customers are going to have to demand it because a lot of the brokers and folks, they do their information advantage, so they don't really want this to exist. But I think it just makes so much sense. It's just hard to imagine that it doesn't happen. There's people taking wine very seriously, issuing NFTs and building secondary markets. I think part of it's like an asset that's kind of fun to speculate on, but also you do like, there's, you know, a high likelihood you might, you know, have somebody send you the NFT. It's like kind of like wine watches. Um, yeah. Handbags, I think are a big one.
+
+**[40:27] SPEAKER_04:** Exactly. Yeah. One of the really popular ones right now is, uh, trading cards. So they're like, um you know what people like is like Courtyard is still going right I think yeah they're doing great yeah it's uh you know kind of like you have the speculative aspect but also like if you're a serious collector you can you know get get real get real things.
+
+**[40:50] SPEAKER_05:** Okay last question for you because unless anyone else has one but no no no yeah yeah why are you most excited about in any aspect of the blockchain space right now?
+
+**[41:00] SPEAKER_01:** Most excited, I mean, it's like it's obviously like we, you know, like we've all been working on this for like a super long time but I do think like if you look at even just like BlackRock's putting treasuries on chain with different partners like arts moving on chain like like everything literally is going to become that is moving on chain like I think it's like that's actually finally it used to just be like a mantra people would say to like you know help themselves feel important but like I think we're finally getting there we're like holy like everything is moving on chain like that's actually happening so it's like you know real world assets, digital assets. I think just like, yeah, liquidity is increasing. I think it's like generally net positive for everyone. It feels actually like it's finally happening, so. Yeah, it's taken way longer, 10 years, but we're still here and we're still doing it. We can make like a thumbnail, like the Ron Paul that's happening. Exactly, exactly.
+
+**[42:31] SPEAKER_05:** We need the mission accomplished banner, you know? Yeah. Oh my goodness. Yeah, exactly. Well, John, thank you for your time. And as always, we're really glad that you're doing so well. And where can people find you and learn more about all the stuff you do?
+
+**[42:48] SPEAKER_01:** Yeah. On X at SuperRare, John at SuperRare. Yeah. We're yeah.
+
+**[42:55] SPEAKER_05:** Yeah, you should also, there's currently a show at the gallery that's wrapping up, but we have a new, there's an X-Copy show December 10th. So if anyone's in town, swing through. You said an offline gallery one more time? I missed it.
+
+**[43:09] SPEAKER_01:** Oh yeah, Offline by SuperRare.
+
+**[43:12] SPEAKER_05:** Offline by SuperRare. Well, awesome. Thank you for joining us and take care, everyone.
+
+**[43:17] SPEAKER_01:** Thank you. Thanks for having me.

@@ -1,5 +1,3 @@
-Here's the cleaned transcript with all content preserved and formatted correctly:
-
 **[00:18] SPEAKER_00:** Okay, can anyone confirm that they can see us on YouTube? Thank you, Michael. Can everyone confirm that they can see us on YouTube and spaces? Michael, can you confirm you can hear us on YouTube?
 
 **[01:28] SPEAKER_01:** You broke up for me quite a lot there, Victor, when you were speaking.

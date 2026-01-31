@@ -1,5 +1,3 @@
-Here's the cleaned transcript with all content preserved and formatted correctly:
-
 **[00:00] SPEAKER_03:** We are on, and welcome everyone to our recap of DevConnect Argentina. I'm Victor Wong, founder and CPO at Strato. Three CPO? Three CPO, maybe. Three CPO. I may be looking very robotic, so if I am, then you know, like that.
 
 **[00:28] SPEAKER_04:** So let's go around the horn and introduce ourselves before we kick it off. Kieran, you want to go? Sure. I'm Kieran. I'm our CEO. I guess, you know, okay, so Strato, we have been, I guess we're hard announcing it now. We are...
