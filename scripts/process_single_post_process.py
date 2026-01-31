@@ -107,7 +107,7 @@ HOSTED_ONLY_MODELS = {
 DIRECT_API_CONFIG = {
     'kimi': {
         'base_url': 'https://api.moonshot.ai/v1',  # Global endpoint
-        'model_id': 'kimi-k2.5',
+        'model_id': 'kimi-latest',  # kimi-k2.5 uses reasoning_content, kimi-latest uses content
         'env_var': 'MOONSHOT_API_KEY',
         'max_tokens': 16384,
     },
@@ -277,14 +277,14 @@ CRITICAL CONTENT PRESERVATION RULES
    - Significantly shorter output means you've removed too much content
    - This is non-negotiable - check your word count before finalizing
 
-3. **PRESERVE EXACT TIMESTAMPS** - CRITICAL: Do NOT modify, recalculate, or regenerate timestamps
-   - Copy timestamps EXACTLY as they appear in the input transcript
-   - If input has [00:32], output must have [00:32] - not [00:30] or [00:35]
-   - If input has [42:57], output must have [42:57] - preserve the exact values
-   - The timestamps are from speech recognition and represent ACTUAL audio positions
-   - Format: [MM:SS] with 2 digits each (already correct in input)
-   - Do NOT compress or recalculate based on estimated speech duration
-   - Only ONE timestamp per speaker paragraph (at the beginning)
+3. **TIMESTAMPS** - Handle based on what's in the input:
+   - IF the input HAS timestamps [MM:SS]: PRESERVE them EXACTLY as they appear
+     - Do NOT modify, recalculate, or regenerate timestamps
+     - If input has [00:32], output must have [00:32]
+     - Only ONE timestamp per speaker paragraph (at the beginning)
+   - IF the input has NO timestamps: Do NOT add any timestamps
+     - Just output: **SPEAKER_XX:** followed by text
+     - Do NOT generate fake timestamps
 
 4. **MERGE CONSECUTIVE SPEECH INTO PARAGRAPHS**
    - All speech from one speaker before another speaks = ONE paragraph
@@ -300,6 +300,7 @@ WHAT TO FIX (Corrections Only)
   - This list contains the CANONICAL spellings of all names
   - "Bob Somersall" → "Bob Summerwill" (check the list!)
   - "Viktor Tron" → "Viktor Trón" (if accented version in list)
+  - IMPORTANT: "Kieran" → "Kieren" (Kieren James-Lubin, NOT Kieran)
   - When in doubt, use the EXACT spelling from the Key People list
   
 ✓ Blockchain terminology to match standard usage
@@ -333,9 +334,10 @@ WHAT TO PRESERVE (Critical - Never Remove)
 
 REQUIRED OUTPUT FORMAT
 
-Each speaker turn is ONE paragraph with:
+Each speaker turn can be multiple paragraphs (natural breaks) with:
 - Bold speaker label with timestamp: **[MM:SS] SPEAKER_XX:**
-- All their speech in a single paragraph (sentences separated by spaces)
+- First paragraph (sentences separated by spaces)
+- Subsequent paragraphs have blank lines between them but omit the speaker prefix
 - Blank line before next speaker
 
 CORRECT FORMAT EXAMPLE:
@@ -344,9 +346,13 @@ CORRECT FORMAT EXAMPLE:
 
 **[00:02] SPEAKER_01:** Hello, Bob.
 
-**[00:03] SPEAKER_00:** So, yes, I'm Bob Samuel, recording here at DevCon Prague for Early Days of Ethereum. And I have here Jakob. We've known each other about three years or so now, I think. We did meet in Bogota for DevCon 6 for the first time where you introduced yourself.
+**[00:03] SPEAKER_00:** So, yes, I'm Bob Summerwill, recording here at DevCon Prague for Early Days of Ethereum. And I have here Jakob. We've known each other about three years or so now, I think.
 
-**[00:38] SPEAKER_01:** Oh, yeah, thank you for the intro and good question. It was in Bogota. I think I knew about you or of you for longer than since then. But yeah, I think you were chatting with someone and talking about Florian Glatz, maybe, and talking about the old days. And I just jumped in because I know Florian.
+We did meet in Bogota for DevCon 6 for the first time where you introduced yourself. That was a really memorable conference.
+
+**[00:38] SPEAKER_01:** Oh, yeah, thank you for the intro and good question. It was in Bogota. I think I knew about you or of you for longer than since then.
+
+But yeah, I think you were chatting with someone and talking about Florian Glatz, maybe, and talking about the old days. And I just jumped in because I know Florian.
 
 **[01:08] SPEAKER_00:** I think it was like maybe August to December.
 ```
@@ -364,8 +370,8 @@ VALIDATION CHECKLIST (Before Submitting)
 1. ☐ Count words in input transcript
 2. ☐ Count words in your output
 3. ☐ Verify output is 90-110% of input length
-4. ☐ Verify format: **[MM:SS] SPEAKER_XX:** followed by full paragraph
-5. ☐ Verify ONE timestamp per speaker paragraph (at the start)
+4. ☐ Verify format: **[MM:SS] SPEAKER_XX:** followed by their speech (can be multiple paragraphs)
+5. ☐ Verify ONE timestamp per speaker turn (at the start of their first paragraph)
 6. ☐ Verify no major discussion points were removed
 7. ☐ Verify paragraphs are separated by blank lines
 
@@ -602,11 +608,15 @@ def process_with_direct_api(transcript, api_key, context, processor):
     )
 
     for chunk in stream:
-        if chunk.choices and chunk.choices[0].delta.content:
-            result += chunk.choices[0].delta.content
-            chunk_count += 1
-            if chunk_count % 100 == 0:
-                print(".", end='', flush=True)
+        if chunk.choices:
+            delta = chunk.choices[0].delta
+            # Kimi K2.5 uses reasoning_content instead of content for chain-of-thought
+            text = delta.content or getattr(delta, 'reasoning_content', None)
+            if text:
+                result += text
+                chunk_count += 1
+                if chunk_count % 100 == 0:
+                    print(".", end='', flush=True)
 
     print(" ✓")
     return result
@@ -881,22 +891,31 @@ def main():
     pipeline_start = time.time()
     
     for transcript_path in args.transcripts:
-        if not Path(transcript_path).exists():
+        transcript_path = Path(transcript_path)
+
+        # Prefer .md files (have timestamps) over .txt files
+        if transcript_path.suffix == '.txt':
+            md_path = transcript_path.with_suffix('.md')
+            if md_path.exists():
+                print(f"  → Using .md file (has timestamps): {md_path.name}")
+                transcript_path = md_path
+
+        if not transcript_path.exists():
             print(f"✗ Transcript not found: {transcript_path}")
             failed_count += len(processors)
             continue
         
         for processor in processors:
             combo_num += 1
-            print(f"[{combo_num}/{total}] {Path(transcript_path).name} + {processor}")
-            
+            print(f"[{combo_num}/{total}] {transcript_path.name} + {processor}")
+
             result, elapsed = process_single_combination(
-                transcript_path, processor, api_keys, context, mode=args.mode
+                str(transcript_path), processor, api_keys, context, mode=args.mode
             )
             
             if result:
                 success_count += 1
-                combo_times.append((Path(transcript_path).name, processor, elapsed))
+                combo_times.append((transcript_path.name, processor, elapsed))
             else:
                 failed_count += 1
             

@@ -13,9 +13,54 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
-# Activate virtual environment and load API keys
-source "$PROJECT_DIR/venv/bin/activate"
+# Detect and activate appropriate virtual environment
+detect_venv() {
+    # Check for NVIDIA GPU
+    if command -v nvidia-smi &> /dev/null && nvidia-smi &> /dev/null; then
+        if [ -d "$PROJECT_DIR/venv-nvidia" ]; then
+            echo "venv-nvidia"
+            return
+        fi
+    fi
+    # Check for AMD GPU (ROCm)
+    if command -v rocminfo &> /dev/null && rocminfo &> /dev/null 2>&1; then
+        if [ -d "$PROJECT_DIR/venv-amd" ]; then
+            echo "venv-amd"
+            return
+        fi
+    fi
+    # Check for Intel GPU
+    if [ -d "$PROJECT_DIR/venv-intel" ]; then
+        echo "venv-intel"
+        return
+    fi
+    # Fallback to CPU
+    if [ -d "$PROJECT_DIR/venv-cpu" ]; then
+        echo "venv-cpu"
+        return
+    fi
+    # Legacy fallback
+    if [ -d "$PROJECT_DIR/venv" ]; then
+        echo "venv"
+        return
+    fi
+    echo ""
+}
+
+VENV_NAME=$(detect_venv)
+if [ -z "$VENV_NAME" ]; then
+    echo "Error: No virtual environment found. Run install_packages_and_venv.sh first."
+    exit 1
+fi
+
+echo "Using venv: $VENV_NAME"
+source "$PROJECT_DIR/$VENV_NAME/bin/activate"
 source "$PROJECT_DIR/setup_env.sh"
+
+# Set HSA override for AMD GPUs (needed for RX 6000 series)
+if [ "$VENV_NAME" = "venv-amd" ]; then
+    export HSA_OVERRIDE_GFX_VERSION=10.3.0
+fi
 
 # Default values
 TRANSCRIBER="whisperx"
@@ -102,7 +147,7 @@ echo "========================================================================"
 echo ""
 
 # Step 1: Extract audio
-echo "[1/4] Extracting audio..."
+echo "[1/5] Extracting audio..."
 if [ -f "$AUDIO_FILE" ]; then
     echo "  Audio file already exists: $AUDIO_FILE"
 else
@@ -111,7 +156,7 @@ fi
 echo ""
 
 # Step 2: Run transcription
-echo "[2/4] Running transcription with $TRANSCRIBER..."
+echo "[2/5] Running transcription with $TRANSCRIBER..."
 TRANSCRIBE_CMD="python3 $SCRIPT_DIR/process_single_transcribe_and_diarize.py \"$AUDIO_FILE\" --transcribers \"$TRANSCRIBER\""
 if [ -n "$FORCE_CPU" ]; then
     TRANSCRIBE_CMD="$TRANSCRIBE_CMD $FORCE_CPU"
@@ -126,19 +171,43 @@ echo ""
 
 # Step 3: Run post-processor if specified
 if [ -n "$PROCESSOR" ]; then
-    echo "[2.5/4] Running post-processor: $PROCESSOR..."
+    echo "[2.5/5] Running post-processor: $PROCESSOR..."
     python3 "$SCRIPT_DIR/process_single_post_process.py" "$TRANSCRIPT_FILE" --processors "$PROCESSOR"
     # Use processed transcript for subtitles
     PROCESSED_FILE="${PROJECT_DIR}/outputs/${VIDEO_BASE}/${VIDEO_BASE}_${TRANSCRIBER}_${PROCESSOR}.md"
     if [ -f "$PROCESSED_FILE" ]; then
         TRANSCRIPT_FILE="$PROCESSED_FILE"
         SRT_FILE="${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}_${PROCESSOR}.srt"
+
+        # Step 3.5: Align word timestamps with corrected text
+        echo ""
+        echo "[3/5] Aligning word timestamps with corrected text..."
+        WORDS_JSON="${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}_words.json"
+        ALIGNED_JSON="${PROJECT_DIR}/outputs/${VIDEO_BASE}/${VIDEO_BASE}_${TRANSCRIBER}_${PROCESSOR}_aligned_words.json"
+
+        if [ ! -f "$WORDS_JSON" ]; then
+            echo "  ERROR: No word-level JSON found at $WORDS_JSON"
+            echo ""
+            echo "  Word-level timestamps are required for precise subtitle alignment."
+            echo "  The transcript was created before word-level JSON was enabled."
+            echo ""
+            echo "  To fix: Delete the transcript and re-run to generate word JSON:"
+            echo "    rm ${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}.md"
+            echo "    rm ${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}.txt"
+            echo "    ./scripts/process_video.sh $VIDEO_FILE --transcriber $TRANSCRIBER --processor $PROCESSOR"
+            exit 1
+        fi
+
+        python3 "$SCRIPT_DIR/align_words_with_corrections.py" \
+            "$WORDS_JSON" \
+            "$TRANSCRIPT_FILE" \
+            --output "$ALIGNED_JSON"
     fi
     echo ""
 fi
 
 # Step 4: Convert to subtitles (ASS format for colors)
-echo "[3/4] Converting transcript to subtitles..."
+echo "[4/5] Converting transcript to subtitles..."
 SUBTITLE_CMD="python3 \"$SCRIPT_DIR/transcript_to_srt.py\" \"$TRANSCRIPT_FILE\" \"$SRT_FILE\""
 if [ -n "$TITLE" ]; then
     SUBTITLE_CMD="$SUBTITLE_CMD --title \"$TITLE\""
@@ -148,7 +217,7 @@ ASS_FILE="${SRT_FILE%.srt}.ass"
 echo ""
 
 # Step 5: Burn subtitles into video (use ASS for color support)
-echo "[4/4] Burning subtitles into video..."
+echo "[5/5] Burning subtitles into video..."
 ffmpeg -y -loglevel error -stats -i "$VIDEO_FILE" -vf "ass='$ASS_FILE'" -c:a copy "$OUTPUT_VIDEO"
 
 echo ""

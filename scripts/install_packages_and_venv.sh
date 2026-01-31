@@ -885,6 +885,160 @@ fi
 echo ""
 
 # ==============================================================================
+# Step 10d: pyannote.audio io.py Patch for torchcodec/torchaudio 2.9.x
+# ==============================================================================
+# torchaudio 2.9.x uses torchcodec internally which has ABI incompatibility with
+# PyTorch 2.9.1+cu130. pyannote.audio 4.0.1 uses torchcodec's AudioDecoder.
+# This patch provides a soundfile-based fallback when torchcodec fails to load.
+# ==============================================================================
+echo -e "${YELLOW}[10d/15] Applying pyannote.audio io.py patch for torchcodec fallback...${NC}"
+echo "Patching pyannote io.py to use soundfile when torchcodec is unavailable"
+
+PYANNOTE_IO="$SITE_PACKAGES/pyannote/audio/core/io.py"
+
+if [ ! -f "$PYANNOTE_IO" ]; then
+    echo -e "${RED}ERROR: pyannote io.py not found at $PYANNOTE_IO${NC}"
+    exit 1
+fi
+
+# Check if already patched
+if grep -q "SoundfileFallbackDecoder" "$PYANNOTE_IO"; then
+    echo "Already patched"
+else
+    # Create the patch script
+    cat > /tmp/pyannote_io_patch.py << 'PATCH_EOF'
+import sys
+
+filepath = sys.argv[1]
+
+with open(filepath, 'r') as f:
+    content = f.read()
+
+# Original try/except block for torchcodec
+old_import_block = '''try:
+    import torchcodec
+    from torchcodec import AudioSamples
+    from torchcodec.decoders import AudioDecoder, AudioStreamMetadata
+except Exception as e:
+    warnings.warn(
+        "\\ntorchcodec is not installed correctly so built-in audio decoding will fail. Solutions are:\\n"
+        "* use audio preloaded in-memory as a {'waveform': (channel, time) torch.Tensor, 'sample_rate': int} dictionary;\\n"
+        "* fix torchcodec installation. Error message was:\\n\\n"
+        f"{e}"
+    )'''
+
+# New import block with soundfile fallback
+new_import_block = '''try:
+    import torchcodec
+    from torchcodec import AudioSamples
+    from torchcodec.decoders import AudioDecoder, AudioStreamMetadata
+    _TORCHCODEC_AVAILABLE = True
+except Exception as e:
+    _TORCHCODEC_AVAILABLE = False
+    # Fallback classes using soundfile when torchcodec is not available
+    # soundfile doesn't require torchcodec unlike torchaudio 2.9.x
+    import soundfile as sf
+    import torch
+    from dataclasses import dataclass
+
+    @dataclass
+    class AudioStreamMetadata:
+        """Fallback metadata class matching torchcodec.decoders.AudioStreamMetadata interface."""
+        sample_rate: int
+        duration_seconds_from_header: float
+        num_frames: int = 0
+        num_channels: int = 1
+
+    @dataclass
+    class AudioSamples:
+        """Fallback AudioSamples class matching torchcodec.AudioSamples interface."""
+        data: "Tensor"  # (channel, time)
+        sample_rate: int
+
+    class SoundfileFallbackDecoder:
+        """Fallback AudioDecoder using soundfile when torchcodec is unavailable."""
+
+        def __init__(self, source):
+            self._source = source
+            self._waveform = None
+            self._sample_rate = None
+            self._loaded = False
+
+        def _ensure_loaded(self):
+            if not self._loaded:
+                import numpy as np
+                try:
+                    data, sr = sf.read(self._source, dtype='float32')
+                    waveform = torch.from_numpy(data)
+                    if waveform.ndim == 1:
+                        waveform = waveform.unsqueeze(0)
+                    else:
+                        waveform = waveform.T
+                    self._waveform = waveform
+                    self._sample_rate = sr
+                except Exception as sf_error:
+                    import subprocess
+                    source_path = str(self._source)
+                    cmd = ['ffmpeg', '-i', source_path, '-f', 'f32le', '-acodec', 'pcm_f32le',
+                           '-ar', '16000', '-ac', '1', '-loglevel', 'error', '-']
+                    result = subprocess.run(cmd, capture_output=True)
+                    if result.returncode != 0:
+                        raise RuntimeError(f"soundfile failed: {sf_error}; ffmpeg failed: {result.stderr.decode()}")
+                    samples = np.frombuffer(result.stdout, dtype=np.float32)
+                    self._waveform = torch.from_numpy(samples).unsqueeze(0)
+                    self._sample_rate = 16000
+                self._loaded = True
+                if hasattr(self._source, 'seek'):
+                    self._source.seek(0)
+
+        @property
+        def metadata(self) -> AudioStreamMetadata:
+            self._ensure_loaded()
+            num_channels, num_frames = self._waveform.shape
+            return AudioStreamMetadata(
+                sample_rate=self._sample_rate,
+                duration_seconds_from_header=num_frames / self._sample_rate,
+                num_frames=num_frames, num_channels=num_channels)
+
+        def get_all_samples(self) -> AudioSamples:
+            self._ensure_loaded()
+            return AudioSamples(data=self._waveform, sample_rate=self._sample_rate)
+
+        def get_samples_played_in_range(self, start: float, end: float) -> AudioSamples:
+            self._ensure_loaded()
+            start_sample = max(0, int(start * self._sample_rate))
+            end_sample = min(self._waveform.shape[1], int(end * self._sample_rate))
+            return AudioSamples(data=self._waveform[:, start_sample:end_sample], sample_rate=self._sample_rate)
+
+    AudioDecoder = SoundfileFallbackDecoder'''
+
+if old_import_block in content:
+    content = content.replace(old_import_block, new_import_block)
+    with open(filepath, 'w') as f:
+        f.write(content)
+    print("Patch applied successfully")
+else:
+    print("ERROR: Could not find expected import block to patch")
+    sys.exit(1)
+PATCH_EOF
+
+    # Apply the patch
+    python3 /tmp/pyannote_io_patch.py "$PYANNOTE_IO"
+
+    # Verify the patch
+    if grep -q "SoundfileFallbackDecoder" "$PYANNOTE_IO"; then
+        echo -e "${GREEN}✓ pyannote.audio io.py patch applied successfully${NC}"
+    else
+        echo -e "${RED}ERROR: pyannote.audio io.py patch verification failed${NC}"
+        exit 1
+    fi
+fi
+
+# Cleanup
+rm -f /tmp/pyannote_io_patch.py
+echo ""
+
+# ==============================================================================
 # Step 11: LD_LIBRARY_PATH Configuration (project-specific via setup_env.sh)
 # ==============================================================================
 # Ensures setup_env.sh includes LD_LIBRARY_PATH for CUDA libraries
