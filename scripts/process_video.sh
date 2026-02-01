@@ -13,8 +13,25 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
-# Activate virtual environment and load API keys
-source "$PROJECT_DIR/venv/bin/activate"
+# Auto-detect and activate virtual environment
+# Priority: nvidia > amd > intel > cpu
+detect_and_activate_venv() {
+    local venvs=("venv-nvidia" "venv-amd" "venv-intel" "venv-cpu")
+
+    for venv in "${venvs[@]}"; do
+        if [ -d "$PROJECT_DIR/$venv" ]; then
+            echo "Using virtual environment: $venv"
+            source "$PROJECT_DIR/$venv/bin/activate"
+            return 0
+        fi
+    done
+
+    echo "Error: No virtual environment found. Run install_packages_and_venv.sh first."
+    echo "Expected one of: ${venvs[*]}"
+    exit 1
+}
+
+detect_and_activate_venv
 source "$PROJECT_DIR/setup_env.sh"
 
 # Default values
@@ -110,9 +127,9 @@ else
 fi
 echo ""
 
-# Step 2: Run transcription
+# Step 2: Run transcription (always use --consensus for word-level timing required by subtitles)
 echo "[2/4] Running transcription with $TRANSCRIBER..."
-TRANSCRIBE_CMD="python3 $SCRIPT_DIR/process_single_transcribe_and_diarize.py \"$AUDIO_FILE\" --transcribers \"$TRANSCRIBER\""
+TRANSCRIBE_CMD="python3 $SCRIPT_DIR/process_single_transcribe_and_diarize.py \"$AUDIO_FILE\" --transcribers \"$TRANSCRIBER\" --consensus"
 if [ -n "$FORCE_CPU" ]; then
     TRANSCRIBE_CMD="$TRANSCRIBE_CMD $FORCE_CPU"
 fi

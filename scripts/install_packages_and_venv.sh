@@ -1039,6 +1039,22 @@ rm -f /tmp/pyannote_io_patch.py
 echo ""
 
 # ==============================================================================
+# Step 10e: Uninstall torchcodec (ABI incompatibility with PyTorch 2.9.1+cu130)
+# ==============================================================================
+# torchcodec crashes with "std::length_error: vector::reserve" when imported
+# with PyTorch 2.9.1+cu130 due to ABI incompatibility. The pyannote io.py patch
+# above provides a soundfile-based fallback, so torchcodec is not needed.
+# ==============================================================================
+echo -e "${YELLOW}[10e/15] Removing torchcodec (ABI incompatible with PyTorch 2.9.1)...${NC}"
+if pip show torchcodec &>/dev/null; then
+    pip uninstall torchcodec -y
+    echo -e "${GREEN}✓ torchcodec uninstalled (using soundfile fallback)${NC}"
+else
+    echo "torchcodec not installed - skipping"
+fi
+echo ""
+
+# ==============================================================================
 # Step 11: LD_LIBRARY_PATH Configuration (project-specific via setup_env.sh)
 # ==============================================================================
 # Ensures setup_env.sh includes LD_LIBRARY_PATH for CUDA libraries

@@ -207,21 +207,96 @@ def extract_transcriber_from_filename(filepath):
     return filename, "whisperx"
 
 
-def save_processed_files(output_dir, basename, transcriber, processor, content):
+def fix_glm_format(content, input_content):
+    """
+    Fix GLM output format by adding timestamps from input.
+
+    GLM often outputs: SPEAKER_XX: text (missing timestamps and markdown)
+    This function converts to: **[MM:SS] SPEAKER_XX:** text
+
+    Args:
+        content: GLM's output (may be missing timestamps)
+        input_content: Original input transcript with timestamps
+
+    Returns:
+        Fixed content with proper formatting
+    """
+    import re
+
+    # Check if already properly formatted
+    if content.strip().startswith('**['):
+        return content
+
+    # Extract timestamps from input (format: **[MM:SS] SPEAKER_XX:** or [MM:SS] SPEAKER_XX:)
+    input_timestamps = {}
+    for match in re.finditer(r'\*?\*?\[(\d+:\d+)\]\s*(SPEAKER_\d+)', input_content):
+        ts, speaker = match.groups()
+        # Store first timestamp for each speaker turn
+        key = f"{speaker}_{len([k for k in input_timestamps if k.startswith(speaker)])}"
+        input_timestamps[key] = ts
+
+    # Parse GLM output - look for SPEAKER_XX: at start of line
+    lines = content.split('\n')
+    fixed_lines = []
+    speaker_counts = {}
+    current_timestamp = "00:00"
+
+    for line in lines:
+        # Check if line starts with SPEAKER_XX:
+        match = re.match(r'^(SPEAKER_\d+):\s*(.*)', line)
+        if match:
+            speaker, text = match.groups()
+
+            # Track speaker turn count
+            if speaker not in speaker_counts:
+                speaker_counts[speaker] = 0
+            else:
+                speaker_counts[speaker] += 1
+
+            # Try to find corresponding timestamp from input
+            key = f"{speaker}_{speaker_counts[speaker]}"
+            if key in input_timestamps:
+                current_timestamp = input_timestamps[key]
+
+            # Format with proper markdown and timestamp
+            fixed_lines.append(f"**[{current_timestamp}] {speaker}:** {text}")
+        elif line.strip():
+            # Non-speaker line (continuation text)
+            fixed_lines.append(line)
+        else:
+            # Empty line
+            fixed_lines.append(line)
+
+    return '\n'.join(fixed_lines)
+
+
+def save_processed_files(output_dir, basename, transcriber, processor, content, input_content=None):
     """Save txt (clean) and md (with timestamps).
-    
+
     Input format from AI: **[MM:SS] SPEAKER_XX:** paragraph text
     Output MD: Same as input (preserved)
     Output TXT: SPEAKER_XX: paragraph text (no timestamps, no markdown)
+
+    Args:
+        output_dir: Output directory
+        basename: Episode base name
+        transcriber: Transcriber name (whisperx, assemblyai, etc.)
+        processor: Processor name (opus, glm, etc.)
+        content: AI-generated content
+        input_content: Original input (used to fix GLM format issues)
     """
     import re
-    
+
+    # Fix GLM format if needed (GLM often omits timestamps)
+    if processor == 'glm' and input_content and not content.strip().startswith('**['):
+        content = fix_glm_format(content, input_content)
+
     # Create episode-specific subdirectory
     episode_dir = Path(output_dir) / basename
     episode_dir.mkdir(parents=True, exist_ok=True)
-    
+
     output_path = episode_dir / f"{basename}_{transcriber}_{processor}.txt"
-    
+
     # Clean up content (remove trailing whitespace)
     content_lines = [line.rstrip() for line in content.split('\n')]
     content_clean = '\n'.join(content_lines)
@@ -257,6 +332,34 @@ SYSTEM_PROMPT = "You are an expert transcript editor specializing in Ethereum an
 
 INSTRUCTION_TEMPLATE = """You are an expert transcript editor specializing in Ethereum and blockchain technology.
 
+════════════════════════════════════════════════════════════════════════════════
+CRITICAL: OUTPUT ONLY THE TRANSCRIPT - NO THINKING/REASONING/ANALYSIS
+════════════════════════════════════════════════════════════════════════════════
+If you are a reasoning model (GLM, DeepSeek-R1, Kimi, etc.):
+- Do NOT output your chain-of-thought
+- Do NOT output any analysis, planning, or step-by-step thinking
+- Do NOT output numbered lists of what you will do
+- Do NOT output any text that is not the final transcript
+- Your ENTIRE response must be ONLY the cleaned transcript
+
+MANDATORY FORMAT - EVERY speaker turn MUST look EXACTLY like this:
+**[00:01] SPEAKER_XX:** Text here...
+
+Your output MUST:
+1. Start with **[ (asterisk asterisk open-bracket)
+2. Have timestamp in MM:SS format inside brackets
+3. Have SPEAKER_XX after the bracket
+4. Have colon and closing asterisks: :**
+5. Then the spoken text
+
+WRONG FORMAT (do NOT use):
+- SPEAKER_XX: Text...  (missing timestamp and bold)
+- [00:01] SPEAKER_XX: Text...  (missing asterisks)
+- **SPEAKER_XX:** Text...  (missing timestamp)
+
+If your output starts with ANYTHING other than **[ you have FAILED.
+════════════════════════════════════════════════════════════════════════════════
+
 Context - Ethereum Ecosystem Knowledge:
 {context}
 
@@ -272,6 +375,8 @@ CRITICAL OUTPUT RULES - READ FIRST
 - "Below is Part 1 of the transcript..."
 - "I have processed the transcript following the guidelines..."
 - Any analysis, reasoning, or explanation of your changes
+- Numbered steps or planning
+- Chain-of-thought or thinking process
 
 **START IMMEDIATELY** with the first speaker label: **[MM:SS] SPEAKER_XX:** followed by their speech.
 Your output should contain ONLY the formatted transcript, nothing else.
@@ -564,8 +669,8 @@ def process_with_openrouter(transcript, api_key, context, processor):
     for chunk in stream:
         if chunk.choices:
             delta = chunk.choices[0].delta
-            # GLM and other reasoning models use 'reasoning' field instead of 'content'
-            text = delta.content or getattr(delta, 'reasoning', None)
+            # Only capture content, NOT reasoning (reasoning models output thinking which pollutes transcripts)
+            text = delta.content
             if text:
                 result += text
                 chunk_count += 1
@@ -625,8 +730,8 @@ def process_with_direct_api(transcript, api_key, context, processor):
     for chunk in stream:
         if chunk.choices:
             delta = chunk.choices[0].delta
-            # Kimi K2.5 uses reasoning_content instead of content for chain-of-thought
-            text = delta.content or getattr(delta, 'reasoning_content', None)
+            # Only capture content, NOT reasoning_content (that's chain-of-thought which pollutes transcripts)
+            text = delta.content
             if text:
                 result += text
                 chunk_count += 1
@@ -635,6 +740,58 @@ def process_with_direct_api(transcript, api_key, context, processor):
 
     print(" ✓")
     return result
+
+
+def strip_ai_preamble(text):
+    """Strip any thinking/preamble from AI output, keeping only the transcript.
+
+    Many AI models (especially reasoning models like GPT-5, Gemini, Kimi) output
+    their chain-of-thought before the actual transcript. This function finds
+    the first proper transcript marker (**[) and removes everything before it.
+
+    Args:
+        text: Raw AI output that may contain preamble
+
+    Returns:
+        Cleaned transcript starting with **[MM:SS] SPEAKER_XX:**
+    """
+    import re
+
+    # Look for the first proper transcript line: **[MM:SS] SPEAKER_
+    # This pattern matches: **[00:00] SPEAKER_00:**
+    match = re.search(r'\*\*\[\d+:\d+\]\s*SPEAKER_', text)
+
+    if match:
+        # Found a proper transcript start - strip everything before it
+        cleaned = text[match.start():]
+        stripped_chars = match.start()
+        if stripped_chars > 0:
+            # Log how much was stripped (useful for debugging)
+            stripped_preview = text[:min(100, stripped_chars)].replace('\n', ' ')
+            print(f"      [Stripped {stripped_chars} chars of preamble: \"{stripped_preview}...\"]")
+        return cleaned
+
+    # No proper transcript marker found - try alternative patterns
+    # Some models might use [MM:SS] SPEAKER_ without the bold
+    match = re.search(r'\[\d+:\d+\]\s*SPEAKER_', text)
+    if match:
+        cleaned = text[match.start():]
+        stripped_chars = match.start()
+        if stripped_chars > 0:
+            print(f"      [Stripped {stripped_chars} chars of preamble (no bold)]")
+        return cleaned
+
+    # Last resort: look for SPEAKER_ at start of line
+    match = re.search(r'^SPEAKER_', text, re.MULTILINE)
+    if match:
+        cleaned = text[match.start():]
+        stripped_chars = match.start()
+        if stripped_chars > 0:
+            print(f"      [Stripped {stripped_chars} chars of preamble (no timestamp)]")
+        return cleaned
+
+    # Couldn't find any transcript markers - return as-is (validation will catch this)
+    return text
 
 
 def estimate_tokens(text):
@@ -717,6 +874,10 @@ def process_single_combination(transcript_path, provider, api_keys, context, mod
             corrected = process_with_direct_api(transcript, api_keys['direct'][provider], context, provider)
         else:
             corrected = process_with_openrouter(transcript, api_keys['openrouter'], context, provider)
+
+        # Strip any thinking/preamble from the output (reasoning models often include this)
+        if corrected:
+            corrected = strip_ai_preamble(corrected)
     except Exception as e:
         elapsed = time.time() - start_time
         print(f"      {failure(f'Processing failed ({elapsed:.1f}s): {e}')}")
@@ -759,12 +920,14 @@ def process_single_combination(transcript_path, provider, api_keys, context, mod
         print(f"      ✓ Quality validation passed")
     
     # Save using utility function (basename/transcriber already extracted above)
+    # Pass input transcript so GLM format can be fixed if needed
     output_path = save_processed_files(
         "outputs",
         basename,
         transcriber,
         provider,
-        corrected
+        corrected,
+        input_content=transcript
     )
     
     elapsed = time.time() - start_time

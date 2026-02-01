@@ -261,7 +261,10 @@ def main():
         help="Comma-separated list of transcription services (whisperx,whisperx-cloud,assemblyai)"
     )
     parser.add_argument("--output-dir", default="intermediates", help="Output directory")
-    parser.add_argument("--force-cpu", action="store_true", help="Force CPU for WhisperX")
+    parser.add_argument("--force", action="store_true", help="Reprocess even if output exists")
+    parser.add_argument("--force-cpu", action="store_true", help="Force CPU for WhisperX (disables GPU)")
+    parser.add_argument("--consensus", action="store_true",
+                        help="Consensus mode: keep ALL words (ums, ahs) and save word-level JSON for alignment")
     
     args = parser.parse_args()
     
@@ -322,12 +325,13 @@ def main():
                 output_path = transcribe_whisperx(
                     str(audio_path),
                     args.output_dir,
-                    args.force_cpu
+                    args.force_cpu,
+                    consensus_mode=args.consensus
                 )
             elif transcriber == 'whisperx-cloud':
-                output_path = transcribe_whisperx_cloud(str(audio_path), args.output_dir)
+                output_path = transcribe_whisperx_cloud(str(audio_path), args.output_dir, consensus_mode=args.consensus)
             elif transcriber == 'assemblyai':
-                output_path = transcribe_assemblyai(str(audio_path), args.output_dir)
+                output_path = transcribe_assemblyai(str(audio_path), args.output_dir, consensus_mode=args.consensus)
             
             elapsed = time.time() - transcriber_start
             results.append((transcriber, output_path, 'success', elapsed))
@@ -372,81 +376,49 @@ def main():
         sys.exit(1)
 
 
-def transcribe_whisperx(audio_path, output_dir, force_cpu=False):
-    """WhisperX local transcription with speaker diarization"""
+def transcribe_whisperx(audio_path, output_dir, force_cpu=False, consensus_mode=False):
+    """WhisperX local transcription with speaker diarization
+
+    Args:
+        consensus_mode: If True, saves word-level JSON for alignment. If False (default),
+                       only saves cleaned transcript without JSON.
+    """
     import time
     import subprocess
     import tempfile
     import warnings
     import pandas as pd
-    import whisperx
-    import torch
-    from pyannote.audio import Pipeline
     import gc
 
-    # ------------------------------------------------------------------------
-    # PyTorch 2.6+ compatibility: allowlist OmegaConf globals for weights-only
-    # checkpoint loading used by pyannote.
-    #
-    # PyTorch 2.6 changed torch.load(weights_only) default to True. Some
-    # pyannote checkpoints/configs reference OmegaConf classes and will fail to
-    # load unless those globals are allowlisted.
-    #
-    # This keeps weights-only loading enabled (safer than weights_only=False)
-    # while unblocking trusted checkpoints from HuggingFace.
-    # ------------------------------------------------------------------------
-    try:
-        import typing
-        from omegaconf.base import ContainerMetadata
-        from omegaconf.dictconfig import DictConfig
-        from omegaconf.listconfig import ListConfig
+    # ========================================================================
+    # CRITICAL: Apply PyTorch patches BEFORE importing whisperx/pyannote
+    # These libraries load model checkpoints on import, so patches must be first
+    # ========================================================================
+    import torch
+    from packaging.version import Version
+    torch_version = Version(torch.__version__.split("+")[0])
 
-        # add_safe_globals was introduced for the new safe unpickling path.
-        if hasattr(torch, "serialization") and hasattr(torch.serialization, "add_safe_globals"):
-            torch.serialization.add_safe_globals([
-                ContainerMetadata,
-                DictConfig,
-                ListConfig,
-                typing.Any,
-            ])
-    except Exception:
-        # Best-effort: if omegaconf isn't installed / API differs, we'll fail
-        # later with a clearer error from torch/pyannote.
-        pass
+    # PyTorch 2.6+ changed weights_only default to True, breaking pyannote checkpoints
+    if torch_version >= Version("2.6.0") and not hasattr(torch, '_whisperx_patched'):
+        _orig_torch_load = torch.load
+        def _torch_load_compat(*args, **kwargs):
+            kwargs["weights_only"] = False
+            return _orig_torch_load(*args, **kwargs)
+        torch.load = _torch_load_compat
+        torch._whisperx_patched = True
+        print("  ⚠ PyTorch>=2.6: patched torch.load for pyannote compatibility")
 
-    # ------------------------------------------------------------------------
-    # PyTorch 2.6+ fallback: pyannote/whisperx checkpoints may not be compatible
-    # with weights_only=True safe loading (it can error on common globals like
-    # builtins and typing types). When working with trusted HuggingFace
-    # checkpoints, forcing weights_only=False is the pragmatic fix.
-    #
-    # SECURITY NOTE: torch.load(weights_only=False) can execute arbitrary code
-    # contained in a malicious checkpoint. This is ONLY acceptable if you trust
-    # the checkpoint source (e.g., official pyannote models on HuggingFace).
-    # ------------------------------------------------------------------------
-    try:
-        from packaging.version import Version
+    # TF32 settings - PyTorch 2.9+ uses new API
+    if torch_version >= Version("2.9.0"):
+        torch.backends.cudnn.conv.fp32_precision = 'tf32'
+        torch.backends.cuda.matmul.fp32_precision = 'tf32'
+    else:
+        torch.backends.cuda.matmul.allow_tf32 = True
+        torch.backends.cudnn.allow_tf32 = True
 
-        torch_version = Version(torch.__version__.split("+")[0])
-        allow_unsafe = os.environ.get("WHISPERX_ALLOW_UNSAFE_TORCH_LOAD", "1").strip().lower() not in (
-            "0",
-            "false",
-            "no",
-        )
-
-        if allow_unsafe and torch_version >= Version("2.6.0"):
-            _orig_torch_load = torch.load
-
-            def _torch_load_compat(*args, **kwargs):
-                # Force-disable weights-only safe loading, even if a downstream
-                # library explicitly requests it.
-                kwargs["weights_only"] = False
-                return _orig_torch_load(*args, **kwargs)
-
-            torch.load = _torch_load_compat
-            print("  ⚠ PyTorch>=2.6 detected: forcing torch.load(weights_only=False) for pyannote/whisperx checkpoints")
-    except Exception:
-        pass
+    # NOW import whisperx/pyannote (after patches applied)
+    import whisperx
+    from pyannote.audio import Pipeline
 
     # ========================================================================
     # GPU CLEANUP - Clears PyTorch cache to free VRAM
@@ -459,11 +431,6 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False):
     warnings.filterwarnings('ignore', category=UserWarning,
                           module='pyannote.audio.utils.reproducibility',
                           message='.*TensorFloat-32.*')
-
-    # Configure TF32 optimizations for Ampere/Ada/Blackwell RTX GPUs
-    # Uses new PyTorch 2.9+ API (old allow_tf32 API deprecated)
-    torch.backends.cudnn.conv.fp32_precision = 'tf32'
-    torch.backends.cuda.matmul.fp32_precision = 'tf32'
 
     # Get HuggingFace token
     hf_token = os.environ.get('HF_TOKEN')
@@ -613,15 +580,51 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False):
                 speakers.add(segment["speaker"])
         
         print(f"  → Detected {len(speakers)} speakers")
-        
-        # Step 4: Save using utility function
-        output_path = save_transcript_files(
-            output_dir,
-            audio_path_obj.stem,
-            "whisperx",
-            result_with_speakers["segments"]
-        )
-        
+
+        # Create output directory
+        episode_dir = Path(output_dir) / audio_path_obj.stem
+        episode_dir.mkdir(parents=True, exist_ok=True)
+
+        if consensus_mode:
+            # Consensus mode: save BOTH word-level JSON AND md/txt transcripts
+            import json
+            word_data = []
+            for segment in result_with_speakers["segments"]:
+                speaker = segment.get("speaker", "UNKNOWN")
+                # WhisperX provides word-level timing in the "words" field
+                if "words" in segment:
+                    for word in segment["words"]:
+                        word_data.append({
+                            'text': word.get('word', ''),
+                            'start': word.get('start', 0),
+                            'end': word.get('end', 0),
+                            'speaker': speaker
+                        })
+
+            if word_data:
+                json_path = episode_dir / f"{audio_path_obj.stem}_whisperx_consensus_words.json"
+                with open(json_path, 'w') as f:
+                    json.dump(word_data, f, indent=2)
+                print(f"  → Saved consensus word-level data: {json_path}")
+            else:
+                raise RuntimeError("No word-level data available for consensus")
+
+            # Also save md/txt for post-processing compatibility
+            output_path = save_transcript_files(
+                output_dir,
+                audio_path_obj.stem,
+                "whisperx",
+                result_with_speakers["segments"]
+            )
+        else:
+            # Normal mode: save md/txt transcripts (no JSON)
+            output_path = save_transcript_files(
+                output_dir,
+                audio_path_obj.stem,
+                "whisperx",
+                result_with_speakers["segments"]
+            )
+
         elapsed = time.time() - start
         print(f"  → Completed in {elapsed:.1f}s ({elapsed/60:.1f} min)")
         
@@ -636,8 +639,13 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False):
             os.unlink(temp_wav.name)
 
 
-def transcribe_whisperx_cloud(audio_path, output_dir):
-    """WhisperX cloud transcription via Replicate with speaker diarization"""
+def transcribe_whisperx_cloud(audio_path, output_dir, consensus_mode=False):
+    """WhisperX cloud transcription via Replicate with speaker diarization
+
+    Args:
+        consensus_mode: If True, saves word-level JSON for alignment. If False (default),
+                       only saves cleaned transcript without JSON.
+    """
     import replicate
     import time
     import json
@@ -705,23 +713,66 @@ def transcribe_whisperx_cloud(audio_path, output_dir):
         # Count speakers
         speakers = set(seg['speaker'] for seg in segments if seg['speaker'].startswith('SPEAKER_'))
         print(f"  Detected {len(speakers)} speakers")
-        
-        # Save using utility function (same format as local whisperx)
-        output_path = save_transcript_files(
-            output_dir,
-            audio_path_obj.stem,
-            "whisperx-cloud",
-            segments
-        )
-        
+
+        # Create output directory
+        episode_dir = Path(output_dir) / audio_path_obj.stem
+        episode_dir.mkdir(parents=True, exist_ok=True)
+
+        if consensus_mode:
+            # Consensus mode: save BOTH word-level JSON AND md/txt transcripts
+            word_data = []
+            for seg in pred_segments:
+                speaker = seg.get('speaker', 'SPEAKER_00')
+                if speaker and not speaker.startswith('SPEAKER_'):
+                    speaker = f'SPEAKER_{int(speaker):02d}'
+
+                # WhisperX Replicate model may include word-level timing in 'words' field
+                if 'words' in seg:
+                    for word in seg['words']:
+                        word_data.append({
+                            'text': word.get('word', word.get('text', '')),
+                            'start': float(word.get('start', 0)),
+                            'end': float(word.get('end', 0)),
+                            'speaker': speaker
+                        })
+
+            if word_data:
+                json_path = episode_dir / f"{audio_path_obj.stem}_whisperx-cloud_consensus_words.json"
+                with open(json_path, 'w') as f:
+                    json.dump(word_data, f, indent=2)
+                print(f"  Saved consensus word-level data: {json_path}")
+            else:
+                raise RuntimeError("No word-level timing available from Replicate model for consensus")
+
+            # Also save md/txt for post-processing compatibility
+            output_path = save_transcript_files(
+                output_dir,
+                audio_path_obj.stem,
+                "whisperx-cloud",
+                segments
+            )
+        else:
+            # Normal mode: save md/txt transcripts (no JSON)
+            output_path = save_transcript_files(
+                output_dir,
+                audio_path_obj.stem,
+                "whisperx-cloud",
+                segments
+            )
+
         return output_path
-        
+
     except Exception as e:
         raise RuntimeError(f"WhisperX Cloud transcription failed: {e}")
 
 
-def transcribe_assemblyai(audio_path, output_dir):
-    """AssemblyAI cloud transcription with speaker diarization"""
+def transcribe_assemblyai(audio_path, output_dir, consensus_mode=False):
+    """AssemblyAI cloud transcription with speaker diarization
+
+    Args:
+        consensus_mode: If True, keeps disfluencies (um, uh) and saves word-level JSON.
+                       If False (default), removes disfluencies and skips JSON.
+    """
     import time
     import assemblyai as aai
     
@@ -738,15 +789,19 @@ def transcribe_assemblyai(audio_path, output_dir):
     
     print(f"  Uploading and transcribing...")
     
+    # In consensus mode, keep disfluencies (um, uh) for raw word alignment
     config = aai.TranscriptionConfig(
         speaker_labels=True,
         speakers_expected=None,
         format_text=True,  # Auto-format for readability
         punctuate=True,
-        disfluencies=False,  # Remove filler words (um, uh, etc.)
+        disfluencies=consensus_mode,  # Keep filler words only in consensus mode
         word_boost=custom_vocab,  # Boost accuracy for Ethereum people/terms
         boost_param='high'  # Aggressively boost custom vocabulary
     )
+
+    if consensus_mode:
+        print("  Consensus mode: keeping disfluencies (um, uh, etc.)")
     
     transcriber = aai.Transcriber()
     transcript = transcriber.transcribe(str(audio_file_path), config=config)
@@ -802,9 +857,20 @@ def transcribe_assemblyai(audio_path, output_dir):
     num_speakers = len(set(utterance.speaker for utterance in transcript.utterances)) if transcript.utterances else 1
     print(f"  Detected {num_speakers} speakers")
 
-    # Save word-level timing data as JSON for precise subtitle alignment
-    import json
-    if transcript.words:
+    # Create output directory
+    output_dir_path = Path(output_dir)
+    if output_dir_path.name == audio_file_path.stem:
+        episode_dir = output_dir_path
+    else:
+        episode_dir = output_dir_path / audio_file_path.stem
+    episode_dir.mkdir(parents=True, exist_ok=True)
+
+    if consensus_mode:
+        # Consensus mode: save BOTH word-level JSON AND md/txt transcripts
+        if not transcript.words:
+            raise RuntimeError("No word-level data available from AssemblyAI for consensus")
+
+        import json
         word_data = []
         for word in transcript.words:
             word_data.append({
@@ -814,22 +880,19 @@ def transcribe_assemblyai(audio_path, output_dir):
                 'speaker': f"SPEAKER_{ord(word.speaker) - ord('A'):02d}" if hasattr(word, 'speaker') and word.speaker else None
             })
 
-        # Create output directory, but avoid nesting if output_dir already ends with basename
-        output_dir_path = Path(output_dir)
-        if output_dir_path.name == audio_file_path.stem:
-            output_path = output_dir_path
-        else:
-            output_path = output_dir_path / audio_file_path.stem
-        output_path.mkdir(parents=True, exist_ok=True)
-
-        json_path = output_path / f"{audio_file_path.stem}_assemblyai_words.json"
+        json_path = episode_dir / f"{audio_file_path.stem}_assemblyai_consensus_words.json"
         with open(json_path, 'w') as f:
             json.dump(word_data, f, indent=2)
-        print(f"  Saved word-level timing: {json_path}")
+        print(f"  Saved consensus word-level data: {json_path}")
 
-    # Save using utility function
-    formatted_text = '\n'.join(output_lines) + '\n'
-    return save_raw_transcript_from_text(output_dir, audio_file_path.stem, "assemblyai", formatted_text)
+        # Also save md/txt for post-processing compatibility
+        formatted_text = '\n'.join(output_lines) + '\n'
+        md_path = save_raw_transcript_from_text(output_dir, audio_file_path.stem, "assemblyai", formatted_text)
+        return md_path
+    else:
+        # Normal mode: save md/txt transcripts (no JSON)
+        formatted_text = '\n'.join(output_lines) + '\n'
+        return save_raw_transcript_from_text(output_dir, audio_file_path.stem, "assemblyai", formatted_text)
 
 
 if __name__ == "__main__":

@@ -76,9 +76,26 @@ echo -e "${BLUE}Transcribers: ${YELLOW}${TRANSCRIBERS}${NC}"
 echo -e "${BLUE}Processors: ${YELLOW}${PROCESSORS}${NC}"
 echo ""
 
-# Activate environment
+# Auto-detect and activate virtual environment
+# Priority: nvidia > amd > intel > cpu
+detect_and_activate_venv() {
+    local venvs=("venv-nvidia" "venv-amd" "venv-intel" "venv-cpu")
+
+    for venv in "${venvs[@]}"; do
+        if [ -d "$PROJECT_DIR/$venv" ]; then
+            echo -e "${GREEN}Using virtual environment: $venv${NC}"
+            source "$PROJECT_DIR/$venv/bin/activate"
+            return 0
+        fi
+    done
+
+    echo -e "${RED}Error: No virtual environment found. Run install_packages_and_venv.sh first.${NC}"
+    echo "Expected one of: ${venvs[*]}"
+    exit 1
+}
+
 cd "$PROJECT_DIR"
-source venv/bin/activate
+detect_and_activate_venv
 source setup_env.sh
 
 # Find all MP3 files

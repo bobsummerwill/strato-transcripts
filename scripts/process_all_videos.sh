@@ -4,8 +4,25 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
-# Activate virtual environment and load API keys
-source "$PROJECT_DIR/venv/bin/activate"
+# Auto-detect and activate virtual environment
+# Priority: nvidia > amd > intel > cpu
+detect_and_activate_venv() {
+    local venvs=("venv-nvidia" "venv-amd" "venv-intel" "venv-cpu")
+
+    for venv in "${venvs[@]}"; do
+        if [ -d "$PROJECT_DIR/$venv" ]; then
+            echo "Using virtual environment: $venv"
+            source "$PROJECT_DIR/$venv/bin/activate"
+            return 0
+        fi
+    done
+
+    echo "Error: No virtual environment found. Run install_packages_and_venv.sh first."
+    echo "Expected one of: ${venvs[*]}"
+    exit 1
+}
+
+detect_and_activate_venv
 source "$PROJECT_DIR/setup_env.sh"
 
 # Parse arguments to pass through to process_video.sh
