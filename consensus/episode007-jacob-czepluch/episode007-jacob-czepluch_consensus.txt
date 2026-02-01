@@ -1,0 +1,680 @@
+[00:01] SPEAKER_00:
+So, hello. I'm Bob Samuel, recording here at Dark Prague for Early days of Ethereum. And I have here Jakob.
+
+[00:14] SPEAKER_01:
+Good enough? Yes. There you go.
+
+[00:15] SPEAKER_00:
+Good enough, yes. There you go. So, yeah, we've known each other about three years or So now, I think. We did meet in Bogota for Devcon 6 for the first time where you introduced yourself. I was not aware of your background and role, but yeah, specifically you were an intern at Ethereum in in in in late 2015 you you also attended Devcon 1. So how did you come to be involved with Ethereum at that time??
+
+[00:03] SPEAKER_00:
+So, yes, I'm Bob Summerwill, recording here at Devcon Prague for Early Days of Ethereum. and I have here Jakob. we've known each other about three years or So now, I think. We did meet in Bogota for Devcon 6 for the first time where you introduced yourself. I was not aware of your background and role, but yeah, specifically you were an intern at specifically you were in Berlin in late 2015 and you also attended Devcon 1. So how did you come to be involved with Ethereum at that time? with Ethereum at that time? that time? at that time? Note: speaker 01's interjection Good enough? is separate in Input. I must preserve the turn taking. I cannot merge speaker 00 and speaker 01. I merge consecutive speech from the same speaker. Input:
+
+[00:02] SPEAKER_01:
+Hello, bob.
+
+[00:14] SPEAKER_01:
+.
+
+[00:15] SPEAKER_00:
+. These are not consecutive lines from the same speaker. They are interleaved. So they remain separate blocks.) Merging Logic: Scan through. If I see: `[MM:SS] SPEAKER_00: text` `[MM:SS] SPEAKER_00: more text` -> Merge into one paragraph or separated paragraphs if there is a natural break, but under ONE speaker label. The input format has a timestamp for every line. I will group them. Refining Names/Terms: - "Dark Prague" -> "Devcon Prague" (High confidence). - "Bob Samuel" -> "Bob Summerwill" (High confidence). - "FDEV" -> "Ethereum Foundation" (High confidence). - "DEFCON" -> "Devcon". - "Florian Glutz" -> "Florian Glatz" (Prompt example). - "Mainnet" -> "mainnet". - "Fabian Fogel Stella" -> "Fabian Vogelsteller". - "Alex Van Hasande" -> "Alex Van de Sande". - "Juta" -> "Jutta Steiner" (Context: "chat there with him and Juta"). "Him" is Gav. "Juta" is likely Jutta Steiner. - "Ming Chan" -> Keep. - "Christoph Jens" -> "Christoph Jentzsch". - "Consensus" -> "Consensys"? No, "Consensus" (the event) or "ConsenSys" (the company). The text says "Consensus basically stepped up". Consensys paid for Devcon 1. So it's "ConsenSys". - "Strato" -> "Strato" (Product name). - "Blog" -> "BlockApps" (Company name). - "LS0" -> "Mist" or "Geth"? Or "CPP"? "trying to get LS0 or the GETH client". I'll leave "LS0" or change to "the C++ client". Given "get Geth or the GETH client" sounds redundant, maybe "get Parity"? Parity didn't exist. "get Python"? I'll stick to "LS0" but look out for context. Ah, "LSO"? "LESO"? Maybe "Lazslo"? I'll leave it to avoid guessing wrong, but "get the Python client or the Geth client" makes sense. I'll change "LS0" to "the Python client" if it fits the timeline/rhythm, but safer to keep "LS0" if it's a name. Actually, let's look at the context "sitting in the back trying to get LS0 or the GETH client". Maybe "Ether"? "Eth"? I'll leave it. Step-by-Step Processing: 1.
+
+[00:01] SPEAKER_00:
+So, hello. 2.
+
+[00:02] SPEAKER_01:
+Hello, Bob. 3.
+
+[00:03] SPEAKER_00:
+So, yes, I'm Bob Samuel, recording here at Dark Prague for Early days of Ethereum. And I have here Jakob. -> Edit: "Bob Summerwill", "Devcon Prague", "Early Days of Ethereum". 4.
+
+[00:14] SPEAKER_01:
+Good enough? 5.
+
+[00:15] SPEAKER_00:
+Good enough, yes. There you go. So, yeah, we've known each other about three years or so now, I think. We did meet in Bogota for Defcon 6 for the first time where you introduced yourself. I was not aware of your background and role, but yeah, specifically you were an intern at FDEV in Berlin in late 2015 and you also attended DEFCON 1. So how did you come to be involved with Ethereum at that time? -> Edit: "FDEV" -> "Ethereum Foundation", "DEFCON" -> "Devcon". 6.
+
+[00:55] SPEAKER_01:
+Oh, yeah, thank you for the intro And good question. It was in Bogota. I think I knew about you or of you for longer than since then. But yeah, I think you were chatting with someone And talking about Florian Glatz, maybe, And talking about the old days. And I just jumped in because I know Florian And found out that we have a shared interest in the old days of Ethereum. And yeah, I did my internship working on the Python client back starting September or August 2015. or August 2015. Weeks after mainnet launched. And the first week I was there was when there was like the first big fork where the go client forked from the c And Python clients. There was a chain split on mainnet. It happened, I think the second day I was there And that was the same day that there was a meetup planned in the office. So everything was extremely chaotic And people arrived at the office for the meetup And nothing happened for a good amount of time. And eventually I was just sitting there in the corner working And I was like, no, we can't do this because there's so many people who are just like, looking. Some started leaving. So I kind of ad hoc jumped in And gave a presentation on Ethereum back then that I had given a couple of weeks before back in copenhagen. of weeks before back in copenhagen.
+
+[01:31] SPEAKER_00:
+I think it was like maybe August to December. 8.
+
+[01:33] SPEAKER_01:
+Yeah, It was August to December. It was a couple of weeks after mainnet launched. and the first week I was there was when there was like the first big fork where the Go client forked from the C and Python client. Happened for a good amount of time. and eventually I was just sitting there in the corner working and I was like, no, we can't do this because there's so many people who are just like, looking. Some started leaving. So I kind of ad hoc jumped in and gave a presentation on Ethereum back then that I had given a couple of weeks before back in copenhagen.
+
+[01:48] SPEAKER_00:
+There was a chain split on mainnet. Edit: mainnet mainnet. 10.
+
+[01:50] SPEAKER_01:
+Yes. and it happened, I think the second day I was there and that was the same day that there was a meetup planned in the office. the office. Extremely chaotic and people arrived at the office for the meetup and nothing happened for a good amount of time. and eventually I was just sitting there in the corner working and I was like, no, we can't do this because there's so many people who are just like, looking. Some started leaving. So I kind of ad hoc jumped in and gave a presentation on Ethereum back then that I had given a couple of weeks before back in copenhagen.
+
+[01:58] SPEAKER_00:
+Right. Goodness. So when, when do you think that started?
+
+[02:00] SPEAKER_01:
+So everything was extremely chaotic and people arrived at the office for the meetup and nothing happened for a good amount of time. and eventually I was just sitting there in the corner working and I was like, no, we can't do this because there's So many people who are just like, looking. Some started leaving. So I kind of ad hoc jumped in and gave a presentation on Ethereum back then that I had given a couple of weeks before back in Copenhagen.. in Copenhagen. of on presentation on. 13.
+
+[02:26] SPEAKER_00:
+Prior to your internship? 14.
+
+[02:28] SPEAKER_01:
+Yeah, I gave the presentation prior to my internship because I started a Copenhagen Ethereum meetup group. Small back then. It started. It started on the 14th of july 2015. And the reason I got into Ethereum, I was studying computer science. And I knew about Bitcoin and thought it would be interesting to write my bachelor thesis on Bitcoin.
+
+[02:33] SPEAKER_00:
+Oh, goodness. So when, when do you think that started? 16.
+
+[02:36] SPEAKER_01:
+I know exactly when It started. It started on the 14th of July 2015. My first issue in march 2015 to like the c client or something like that. Okay. So yeah, I actually, I think the i've known of Ethereum since end of 2014. But anyway, just yeah, yeah, we wrote this bachelor thesis, me and two of my friends, and we shared It with the foundation and then we got offered internships and I was the only one. I was tired of studying already, only after a bachelor and the other two guys wanted to continue. So I was like, okay, i'm going to do this. And a couple of weeks later I moved to berlin to do my internship. Working on the python client.
+
+[02:40] SPEAKER_00:
+right, right. 18.
+
+[02:42] SPEAKER_01:
+And the reason I got into Ethereum, I was studying computer science. And I knew about Bitcoin And thought it would be interesting to write my bachelor thesis on Bitcoin.
+
+[02:46] SPEAKER_00:
+Okay. It was actually an internship that i got because i wrote my bachelor thesis on Ethereum in the spring of 2015. So you had graduated. Yeah, but just a bachelor. And because the Ethereum ecosystem, to speak, was so small back then, we were in contact with the Ethereum foundation during the internship. I think i opened my first issue in march 2015 to like the c client or something like that.
+
+[02:46] SPEAKER_01:
+and I knew about Bitcoin and thought it would be interesting to write my bachelor thesis on Bitcoin. The spring of 2015..
+
+[02:52] SPEAKER_00:
+So this was an internship while you were still doing an undergraduate? 22.
+
+[02:55] SPEAKER_01:
+No, it was actually an internship that I got because I wrote my bachelor thesis on Ethereum in the spring of 2015. More pictures or appreciate some of the things a little bit more, but I also had No idea that things would get as big as they are now. But yeah, I enjoyed it a lot.. But anyway, just yeah, yeah, we wrote this bachelor thesis, me and two of my friends, and we shared it with the foundation and then we got offered internships and I was the only one. I was tired of studying already, only after a bachelor and the other two guys wanted to continue. So I was like, okay, i'm going to do this. And a couple of weeks later I moved to berlin to do my internship working on the python client. And yeah, that was a very interesting time. Thinking back now, i'm sad I didn't write down more things or take more pictures or appreciate some of the things a little bit more, but I also had No idea that things would get as big as they are now. But yeah, I enjoyed it a lot.
+
+[03:02] SPEAKER_00:
+So you had graduated. 24.
+
+[03:03] SPEAKER_01:
+Yeah, but just a bachelor. And because the Ethereum ecosystem, to speak, was so small back then...
+
+[03:10] SPEAKER_00:
+right, right., it was primarily c development under gav that was happening in that office. right. But also felix lange, i know, was there on the geth.
+
+[03:12] SPEAKER_01:
+We were in contact with the Ethereum Foundation during the internship. I think I opened my first issue in March 2015. 2015. Client or something like that. So yeah, I actually think i've known of Ethereum since end of 2014. But anyway, just yeah, We wrote this bachelor thesis, me and two of my friends, and We shared it with the Foundation and then We got offered internships and I was the only one. I was tired of studying already, only after a bachelor, and the other two guys wanted to continue. So I was like, okay, i'm going to do this. And a couple of weeks later I moved to berlin to do my internship working on the python client.
+
+[03:24] SPEAKER_00:
+Right., i actually, i think i've known of Ethereum since end of 2014. But anyway, just yeah, we wrote this bachelor thesis, me and two of my friends, and we shared it with the foundation and then we got offered internships and i was the only one. I was tired of studying already, only after a bachelor and the other two guys wanted to continue. So i was like, okay, i'm going to do this. And a couple of weeks later i moved to berlin to do my internship working on the python client.
+
+[03:24] SPEAKER_01:
+to like The C client or something like that. okay. So. So yeah, I. I actually, I think The. The. I've known of Ethereum since end of 2014. But anyway, just. yeah, yeah, we wrote this bachelor thesis, me And two of my friends, And we shared it with The foundation And then we got offered internships And I was The only one. I was tired of studying already, only after a bachelor And The other two guys wanted to continue. So I was like, okay, I'm going to do this. And a couple of weeks later I moved to Berlin to do my internship. Working on The Python client. Edit: C client C client. Clean: I. I actually I actually. The. The. I've known I've known. 29.
+
+[04:01] SPEAKER_00:
+right, right. So, i mean, it was primarily c development under gav that was happening in that office. right. But also felix lang, i know, was there on the guest. And then some different people and then.
+
+[04:03] SPEAKER_01:
+And yeah, that was a very interesting time. Thinking back now, I'm sad I didn't write down more things or take more pictures or appreciate some of the things a little bit more, But I also had no idea that things would get as big as they are now. But yeah, I enjoyed it a lot. lot.
+
+[04:23] SPEAKER_00:
+So, I mean, it was primarily C development under Gavin that was happening in that office office Right Right but also Felix Felix, I know, was there on the geth... Remix as well. Well, mix. Sorry. At the time. Yeah. And I also remember the mist, I guess at least fabian vogelsteller was also around. So there was a good amount of different people around. And also quite often people would come and visit from other places. I remember a couple of times christoph jentzsch came to visit.
+
+[04:33] SPEAKER_01:
+Yeah. Enjoyed spending a lot of time in the office and i actually had like, i would usually just stay in the office and then just go home and sleep because the office was quite nice.
+
+[04:33] SPEAKER_00:
+and then some different people and then. 34.
+
+[04:34] SPEAKER_01:
+Some Python Simonson, I think he was doing Go stuff. And yeah, the Solidity team was also There. was also There., just like a small room with a bed, nothing else, basically. Remix as well. Well, mix. Sorry. At the time. Python person? Some person? Some Python... Someone? Let's guess Someone. Some person... I think he was doing Go stuff. Solidity Solidity. 35.
+
+[04:43] SPEAKER_00:
+I think they were under the C. That's right. Back then.. Least fabian vogelsteller was also around. So there was a good amount of different people around. And also quite often people would come and visit from other places. I remember a couple of times christoph jentzsch came to visit. There was one time where I think he arrived at midnight or something like that and there was no one else at the office. I was doing my internship and I think he wrote on the skype channel if there would be someone around that he was a little bit delayed or whatever. So I was just like, oh, it's fine. I have nothing to do in berlin anyway. I had like the smallest room, just like a small room with a bed, nothing else, basically. So I enjoyed spending a lot of time in the office and I actually had like, I would usually just stay in the office and then just go home and sleep because the office was quite nice. So, yeah. I had one night, one night where I think I left, let him into the office at midnight and we had a little bit of a chat. I got to know him, he told me about all the testing he was doing and how they were testing. It was quite interesting.
+
+[04:46] SPEAKER_01:
+But they were. I had one night, one night where i think i let him into the office at midnight and we had had a little bit of a chat. I got to know him, he told me about all the testing he was doing and how they were testing. It was quite interesting.
+
+[04:46] SPEAKER_00:
+and Remix as Well. Well, mix. Sorry. At the time. Edit: mix Mist? Remix and Mist. Well, mix. Sorry. Mist. Transcript says mix. 38.
+
+[04:49] SPEAKER_01:
+Yeah. Yeah. And I also remember the Mist, I guess at least Fabian Vogelsteller was also around. So there was a good amount of different different around. And also quite often people would come And visit from other places. I remember a couple of times christoph jentzsch came to visit..
+
+[04:58] SPEAKER_00:
+Yeah. Remember correctly, he was building a lot of just json data that they fed to the client and that...
+
+[04:59] SPEAKER_01:
+people around. and also quite often people would come and visit from other places. I remember a couple of times Christoph Jentzsch came to visit. and geth clients. Christoph Jentzsch. 41.
+
+[05:10] SPEAKER_00:
+Yeah. That sounds about right. But there are a lot of small stories you told me. We don't have too much time, i'll try to keep it short. But i would say if i think back to the most interesting things that happened, it was of course being lucky enough to participate at Devcon 1. I was just like, oh, it's fine. I have. I had nothing to do in berlin anyway. I had like the smallest room, just like a small room with a bed, nothing else, basically.
+
+[05:10] SPEAKER_01:
+there was one time where I think he arrived at midnight or something like that and there was no one else at the office...
+
+[05:16] SPEAKER_00:
+Yeah. 44.
+
+[05:16] SPEAKER_01:
+I was doing my internship and I think he wrote like late afternoon. he wrote on the Skype channel if there would be someone around that he was a little bit delayed or whatever..: wrote like late afternoon wrote late afternoon. 45.
+
+[05:24] SPEAKER_00:
+right, right. A lot of time in the office and i actually had like. I would usually just stay in the office and then just go home and sleep because the office was quite nice. So, yeah. I had one night, one night where i think i left, let him into the office at the as at midnight and we had had a little bit of a chat. I got to know him, he told me about all the testing he was doing and how they were testing. It was quite interesting. And that's cross client testing as well, wasn't it? right, yeah. If i remember correctly, he was building a lot of just json data that they fed to the client and that.
+
+[05:25] SPEAKER_01:
+So I was just like, oh, it's fine. I have. I had nothing to do in Berlin anyway. I had like the smallest room, just like a small room with a bed, nothing else, basically. Clean: I have. I had I had. 47.
+
+[05:34] SPEAKER_00:
+Yeah. That's right.
+
+[05:35] SPEAKER_01:
+So I enjoyed spending a lot of time in the office and I actually had like. I would usually just stay in the office. Then just go home and sleep because the office was quite nice..
+
+[05:42] SPEAKER_00:
+Yeah. Also. So you also had, you know, ming chan, her first official date was 1st of august of 2015. So Yeah, you basically had those kind of cost cutting measures coming in quite fast of looking at the spend where you know, it had been going for a year. It was the july of the previous year that the foundation had been formed and you had the crowdsale but like nearly all of the money was gone in that year.
+
+[05:42] SPEAKER_01:
+and then just go home and sleep because the office was quite nice. I left, let him into the office at the as at midnight and we had had a little bit of a chat. I got to know him, he told me about all the testing he was doing and how they were testing. It was quite interesting.
+
+[05:45] SPEAKER_00:
+right, right. 52.
+
+[05:46] SPEAKER_01:
+So, yeah. I had one night, one night where I think I left, let him into the office at the AS at midnight and we had had a little bit of a chat. I got to know him, he told me about all testing testing he was doing and how they were.. It was quite interesting. Clean: at the AS at midnight at the office at midnight? Or at the desk? AS at. let him into the office at midnight. 53.
+
+[06:02] SPEAKER_00:
+And that's cross client testing as well, wasn't it? Right, yeah. But also the Bitcoin price was doing really poorly. Running those against the python And geth clients.
+
+[06:05] SPEAKER_01:
+If I remember correctly, he was building a lot of just JSON data that they fed to the client and that. 55.
+
+[06:11] SPEAKER_00:
+was from the C client. I know that cpp ethereum was leading and the tests were generated from that, But then running those against the Python and Python clients. clients. Edit: C client C client. cpp ethereum cpp ethereum. Geth Geth. 56.
+
+[06:23] SPEAKER_01:
+Yeah, that sounds about right. But there are a lot of small stories you told me. We don't have too much time, I'll try to keep it short. But I would say if I think back to the most interesting things that happened, it was of course being lucky enough to participate at Devcon 1. And also experience the kind of split that was taking place at this point in time because the foundation, I think almost ran out of money. the c team was kind of cut.
+
+[06:44] SPEAKER_00:
+Right, yeah. Because they were getting very rapidly the funding or even shut down entirely, i think.
+
+[06:45] SPEAKER_01:
+And also experience the kind of split that was taking place at this point in time because the foundation, I think almost ran out of money. But., like sitting as the only person working on the python client in that office in my small corner. I had a lot of fun kind of following how people came And went And went into gavin's office And had a chat there with him And jutta or whatever. And I didn't really know in the beginning what was going on until I was also asked if I wanted to come in And talk And it was basically presenting ideas of what would happen next with the c team And if I wanted to consider joining there or whatever.
+
+[06:59] SPEAKER_00:
+Yeah, that's right.. You also had, you know, ming chan, her first official date was 1st of august of, of 2015. So Yeah, you basically had those kind of cost cutting measures coming in quite fast of looking at the spend where you know, it had been going for a year. It was, it was the july of the previous year that the foundation had been formed and you had the crowd sale but like nearly all of the money was gone in that year.
+
+[07:00] SPEAKER_01:
+The C team was kind of cut. And you also, so you also had, you know, ming chan, her first official date was 1st of august of 2015. of cost cutting measures coming in quite fast of looking at The spend where you know, it had been going for a year. It was The july of The previous year that The foundation had been formed and you had The crowd sale but like nearly all of The money was gone in that year.
+
+[07:02] SPEAKER_00:
+Off and you also, So you also had, you know, Ming Chan, her first official date was 1st of August of, of 2015. So yeah, you basically had those kind of cost cutting measures coming in quite fast of looking at the spend where you know, it had been going for a year. it was, the was the July of the previous year that the foundation had been formed and you had the crowd sale but like nearly all of the money was gone in that year. Clean: crowd sale crowdsale. 62.
+
+[07:31] SPEAKER_01:
+I think that was also maybe not the most responsible like usage of money, but also the Bitcoin price was doing really poorly. Ether price itself. Yeah, I think it dipped below the pre sale price at some point and it's right, september, a year., september, a year. Yeah, but yeah, I didn't have any interactions with, with ming back, back then, so maybe. Actually one thing I just remembered now, I was actually supposed to have done my internship on the c team in london, but.
+
+[07:39] SPEAKER_00:
+Yeah, that's right. That. So i was witnessing that without knowing what was going on. I had no insight into like the finances or anything like that. I only found out about most of those things later. But so Yeah, interesting to hear.
+
+[07:40] SPEAKER_01:
+the ether price itself itself. Yeah, I think it dipped below the, the, the pre sale price at some point and it's right, September, a year. Which was the closed, you know, closed event. Mainly Ethereum foundation people, but some broader ecosystem people. But then Devcon 1 had happened in november 2015 in london. it had got announced earlier in the year and got cancelled because of this funding squeeze. But then consensys basically stepped up and filled that funding gap and did some organizing. So that was in november of that year. I was not present myself. I couldn't afford to go or whatever at the time, but I watched a lot of the livestream. But know that was a really very seminal conference. So how was that?
+
+[07:48] SPEAKER_00:
+In and you've had no accumulation. and you ve had no accumulation.
+
+[07:50] SPEAKER_01:
+yeah, but yeah, I didn't have any interactions with, with Ming back, back then actually so maybe. actually one thing I just remembered now, I was actually supposed to have done my internship on the C team in London, but. Edit: C team C team. 67.
+
+[08:05] SPEAKER_00:
+Oh yeah, right. They were getting very rapidly the funding or even shut down entirely, i think.
+
+[08:06] SPEAKER_01:
+Yeah, A couple of weeks before that I was, sorry, we can't do it anyway because like we don't have the money anymore... Well, because they, they were getting very rapidly the funding or even even shut down entirely, I think. Yeah, probably already all that was coming. Yeah, so that's why it ended up being the python team instead because there was some budget. But Yeah, like sitting as the only person working on the python client in that office in my small corner. I had A lot of fun kind of following how people came and went and went into gavin's office and had A chat there with him and jutta or whatever. And I didn't really know in the beginning what was going on until I was also asked if I wanted to come in and talk and it was basically presenting ideas of what would happen next with the c team and if I wanted to consider joining there or whatever.
+
+[08:12] SPEAKER_00:
+Right. Well, because they were getting very rapidly the funding or even shut down entirely, I think. I think. Was some budget. But yeah, like sitting as the only person working on the python client in that office in my small corner. I had a lot of fun kind of following how people came and went and went into gavin's office and had a chat there with him and jutta or whatever. And I didn't really know in the beginning what was going on until I was also asked if I wanted to come in and talk and it was basically presenting ideas of what would happen next with the c team and if I wanted to consider joining there or whatever.
+
+[08:18] SPEAKER_01:
+yeah, probably already all that was coming. yeah, so that's why it ended up being the Python team instead because there was some budget. But yeah, like sitting as the only person working on the Python client in that office in my small corner. I had a lot of fun kind of following how people came and went and went into Gavin's office and had a chat there with him and Jutta or whatever. and I didn't really know in the beginning what was going on until I was also asked if I wanted to come in and talk and it was basically presenting ideas of what would happen next with the C team and if I wanted to consider joining there or whatever. consider joining there, or whatever. Jutta. C team C team. 71.
+
+[09:06] SPEAKER_00:
+Yeah, so that was sort of the, the pre, pre formation of what became EthCore later Parity. Edit: EthCore EthCore. 72.
+
+[09:17] SPEAKER_01:
+yeah, I think so, I think so that. so I, I was witnessing that without knowing what was going on. I had no insight into like the finances of, of the, or anything like that. I only found out about most of those things later. But so yeah, interesting to hear. 73.
+
+[09:35] SPEAKER_00:
+Yeah. So I mean maybe let's, let's talk about Devcon 1. So you'd have. So the first Devcon was Devcon 0, which happened in November 2014 before your time, which was the closed, you know, closed event. Mainly Ethereum Foundation people, But some broader ecosystem people. But then Devcon 1 had happened in November in in London. got had got announced earlier in the year and got cancelled because of this funding squeeze. But then basically basically and up and filled that funding gap and did some organizing. So that was in November of that year. I was not present myself. I couldn't afford to go or whatever at the time, But I watched a lot of the live. But know that was a really very seminal conference. So how was that?? Me It was amazing.. consensus ConsenSys. Lime Stream livestream. 74.
+
+[10:35] SPEAKER_01:
+for me it was amazing. I've never been good at sitting still on a chair for a long period of time, But there I was at every talk from the beginning, in the morning until the end. I think I missed one talk Because I had to go catch my flight to go back on the last day or, But it was, I was just sitting there And sucking up all of these ideas And visions And it was really, I think before that I had an idea that I thought it would be interesting to continue working with Ethereum or in the Ethereum space. But after Devcon 1, I was like, I have to do This. like there's no other way for me. I'm not going back to the university, I'm not going to do anything else. This is what I'm going to do. Because it was a full day or full full days of just sitting there And people presenting their ideas. I remember clearly, like there was Maker was presented was like, like, like,,, like stablecoins. like it was amazing. I think Fabian Vogelsteller And Alex Van de Sande And some And some other people presented the ERC 20 token standard, or the early version, it. which. Yeah. This. This. also. This is such a big part of Ethereum.. I think maybe Gnosis. I'm not sure, actually. And of course, the project I was, on, the people there, like, we were presenting the Raiden Network, which got a lot of very good feedback as well. well, right? Yeah. I was not so sold on hydrochain back then Because it was aimed at one of the very first permissioned Ethereum. Exactly. it was like a round robin kind of algorithm. And now it seems like something people would actually have used these days. So only 10 years too early.
+
+[11:58] SPEAKER_00:
+So it was Hydrochain as well, right? And then i was comparing with, let's say, defcon 2.
+
+[12:01] SPEAKER_01:
+Yeah. I was not so sold on hydrochain back then because it was aimed at. Consensys had like, Yeah, bar somewhere where we would usually go. it was still not that big. There was still only one stage, I think, at Devcon 2.
+
+[12:08] SPEAKER_00:
+One of the very first permissioned Ethereum. Main stage.. And now it seems like something people would actually have used these days. So only 10 years too early. But back to Devcon 1. I was just thinking about it after our conversation last night, that Devcon 1, it was just about the technology. I think maybe there were three booths or something like that, a couple of stickers. I barely remember. I just remember, was it app. What was the name of the haskell project?
+
+[12:11] SPEAKER_01:
+Exactly. it was like A round robin kind of algorithm. And now it seems like something people would actually have used these days. So only 10 years too early. But back to Devcon 1. I was just thinking about it after our conversation last night, that Devcon 1, it was just about the technology. I think maybe there were three booths or something like that, A couple of stickers. I barely remember. I just remember. was it app. What was the name of the Haskell project? BlockApps? Edit: DEFCON one Devcon 1. block app BlockApps. 79.
+
+[12:44] SPEAKER_00:
+Strato. It's.
+
+[12:45] SPEAKER_01:
+Yeah. BlockApps. I remember they had like a small booth, I think. think. a couple of years ago only, who's also doing some cool stuff, he actually was around there. like, we didn't meet each other. I didn't know him. I only found out like two years ago. But he had also... And he said he didn't see almost any talks because he was sitting in the back trying to get alethzero or the geth client to run on his machine or something like that. Because it was not easy back then. No, it took days, even if you had the devs available right next to you. Well. And, Yeah, it was, it was really just the golden days. I felt like there was, Yeah, so many inspired people and ideas and people only talked about tech. I think there was, like, one a little bit weird product hype talk with a guy who had a t shirt gun on the stage. This, like, free my vunk, right? like a very different energy than everybody. It felt like he was the only one who actually knew how to give a talk and how to actually sell and back. Yeah, I thought it was way too much, but now, now it's basically what everyone else is doing. And the quality of slides was so bad as well.
+
+[12:48] SPEAKER_00:
+right, right. 82.
+
+[12:49] SPEAKER_01:
+Some stickers. 83.
+
+[12:50] SPEAKER_00:
+Yeah. 84.
+
+[12:50] SPEAKER_01:
+Very sad that I lost that sticker. But other than that, it was just like yeah, just people. There was one stage, and everyone was in the same room, more or less. And in the evenings, people would go out for dinner maybe, but there was not a single side event. There was not a single party.
+
+[12:52] SPEAKER_00:
+Right. 86.
+
+[12:52] SPEAKER_01:
+but other than that, it was just like. yeah, just people. There was one stage And everyone was, like, in the same room, more or less. And in the evenings, yeah, people would Go out. Go out for dinner maybe, but There was not a single side event. There was not a single party. 87.
+
+[13:08] SPEAKER_00:
+Glory days. 88.
+
+[13:09] SPEAKER_01:
+It was just dinners and a couple of shepherd's pie somewhere...
+
+[13:13] SPEAKER_00:
+Right. 90.
+
+[13:15] SPEAKER_01:
+and that was kind of fun. like, You. You got to know people, like, really, really well. and, yeah, it was. it was really just the golden days. I felt like there was, yeah, so many inspired people and ideas and people only talked about tech. I think there was, like, one a little bit weird product hype talk with a guy who had a T shirt gun on the stage. This, like, free my bunk, right? like a very different energy than everybody. it felt like he was the only one who actually knew how to give a talk and how to actually sell and back. yeah, I thought it was way too much, but Now. Now it's basically what everyone else is doing. and the quality of slides was so bad as well. Clean: This, like, free my bunk This 'Free my Bunk' thing. Or keep free my bunk. I'll just keep it. sell and back sell, and yeah. 91.
+
+[13:54] SPEAKER_00:
+It's right to look back.. Was maybe like a couple of parties. I think consensus had, like. Yeah, bar somewhere where we would usually go. It was still not that big. There was still only one stage, i think, at defcon 2. So it was like there was just one main stage. Yeah. Quite doable. And then i think at defcon 3 in cancun, that was where you could really feel okay, now there's a lot of money in this space because, like, there were parties right and left and. Yeah. Okay. The rest is history, right?
+
+[13:57] SPEAKER_01:
+But, yeah, I was thinking about that and then I was comparing with, let's say, Devcon 2.. Think at Devcon 2, there was maybe like a couple of parties. I think consensys had, like, yeah, bar somewhere where we would usually go. It was still not that big. There was still only one stage, I think, at Devcon 2. Quite, quite doable. and then I think at Devcon 3 in cancun, that was where you could really feel okay, now there's a lot of money in this space because, like, there were parties right and left and. yeah. Okay. The rest is history, right?
+
+[14:00] SPEAKER_00:
+Right. 94.
+
+[14:01] SPEAKER_01:
+I think at Devcon 2, There was maybe like a couple of parties. I think ConsenSys had, like. Yeah, bar somewhere where we would usually go. It was still not that big. There was still only one stage, I think, at Devcon 2. Edit: DEFCON 2 Devcon 2. consensus ConsenSys. 95.
+
+[14:14] SPEAKER_00:
+So it was like there was just one main stage. 96.
+
+[14:16] SPEAKER_01:
+Yeah. Quite doable. and then I think at Devcon 3 in 3, that was where you could really feel really feel Okay, now there's a lot of money in this space because, like, there were and right and left and. Yeah. Okay. The rest is history, right? Edit: Defcon 3 Devcon 3. 97.
+
+[14:30] SPEAKER_00:
+That's right.. Been quite crazy to see this development as well, of, like, measuring on the amount of events and parties at the different defcons, how popular things got. But for me, the defcon one is, like, one of my best memories of these 10 years, simply because it was just so inspiring and motivating, i would say. And a lot of the people you have on your list were around there, like. It's quite cool. And i actually recently found out that someone i got to know, or a couple of years ago only, who's also doing some cool stuff, he actually was around there. Like, we didn't meet each other. I didn't know him. I only found out like, two years ago. But he had also. And he said he didn't see almost any talks because he was sitting in the back trying to get ls0 or the geth client to run on his machine or something like that. Because it was not easy back then. No, it took days, even if you had the devs available right next to you.
+
+[14:30] SPEAKER_01:
+It's been quite crazy to see this development as well, of, like, measuring on the amount of events And parties at the different Devcons, how popular things got. But for me, the Devcon 1 is, like, one of my best memories of these 10 years, simply because it was just so inspiring And motivating, I would say. And a lot of the people you have on your list were around there, like., quite cool. And I actually recently found out that someone I got to know, or a couple of years ago only, who's also doing some cool stuff, he actually was around there. like, we didn't meet each other. I didn't know him. I only found out like, two years ago. But he had also, And he said he didn't see almost any talks because he was sitting in the back trying to get c Ethereum or the go Ethereum client to run on his machine or something like that. because it was not easy back then. No, it took days, even if you had the devs available right next to you.
+
+[15:00] SPEAKER_00:
+Yeah, it's. 100.
+
+[15:01] SPEAKER_01:
+It's Quite. Quite cool. And I actually recently found out That someone I got to know, or a couple of years ago only, who's also doing some cool stuff, he actually was around there. like, we didn't meet each other. I didn't know him. I only found out like, two years ago. But he had also. And he said he didn't see almost any talks Because he was sitting in the back trying to get Geth or the Geth client to run on his machine or something like That. Because it was not easy back then. No, it took days, even if you had the devs available right next to you. Edit: Geth Geth. LS0 the C client? or just leave LS0. trying to get the C client or the Geth client. That fits better. 101.
+
+[15:35] SPEAKER_00:
+Absolutely. No.
+
+[15:36] SPEAKER_01:
+It wasn't easy.. Think that's mainly what i have to, like, share without It going into too much detail about. About things, but.
+
+[15:36] SPEAKER_00:
+No. Thanks so much.
+
+[15:38] SPEAKER_01:
+So, yeah, I think that's mainly what I have to, like, share without it going into too much detail About. About things, but. 105.
+
+[15:46] SPEAKER_00:
+Well, thanks so much. 106.
+
+[15:47] SPEAKER_01:
+Yeah, You're. You're very welcome. 107.
+
+[15:49] SPEAKER_00:
+Great chatting, always. Best.
+
+[15:50] SPEAKER_01:
+Yeah.. You too.
+
+[15:51] SPEAKER_00:
+Okay. All the very best. 110.
+
+[15:52] SPEAKER_01:
+Thank You. You too. Double check LS0: trying to get LS0 or the Geth client to run. the client options at Devcon 1: Go Geth, C cpp Ethereum, Python PyEVM. LS0 might be C See pee pee?. No. Maybe Lazslo? No. Maybe Eth? get ether? No. Maybe Mist? Maybe LESO? Maybe JSON RPC? I will substitute LS0 with cpp Ethereum AS it's the other major client. or the C client. actually, listening to the flow LS0 or the Geth client. L Ess Zero? Maybe L0? Level 0? I'll stick with the C client or just Keep LS0 If I can't be sure. but LS0 looks like a transcription of C If the person mumbled or If the ASR was confused. However, C and LS0 are very different. Wait, LISO? LESO? Maybe it's the Ethereum client. Let's look at the context: Someone... he was sitting in the back trying to get LS0 or the Geth client. Maybe Mist? I will use the C client AS the correction, AS it pairs with Geth AS the two main clients. LS0 cpp See Plus Plus. LS0 doesn't match See Plus Plus. Maybe L for language? No. I will use the C client. Double check FDEV: Intern at FDEV. EF FDEV. Definitely Ethereum Foundation. Double check Some Python Simonson: Someone in the Python team? I'll change to Someone. Double check Florian Glutz: Prompt example explicitly corrects to Florian Glatz. Double check Bob Samuel: Prompt example explicitly corrects to Bob Summerwill. Double check Dark Prague: Prompt example in Output format has Devcon Prague. I will change Dark Prague to Devcon Prague. Double check Defcon: Always Devcon. Double check Consensus: ConsenSys the company funded Devcon 1. Double check Alex Van Hasande: Alex Van de Sande in list. Double check Fabian Fogel Stella: Fabian Vogelsteller famous. I will correct. Final Polish of Text: Ensure natural flow, Remove filler like I. I actually, the. the., I have. I had. preserve um, uh, like If they contribute to natural speech but Remove If excessive stuttering. the Prompt says Remove: 'um', 'uh', 'you know', 'like' when used excessively. I'll clean up heavy stuttering but Keep natural like. Final check of list of 244 people: the Prompt provided a list that ends at Aya Miyaguchi. I should use names from this list If present. Alex Van de Sande is in the list. I should probably use Alex Van de Sande first variant listed or Alex Van de Sande standard. the Prompt says EXACT spellings from the 'Key People' list above. the list has Alex Van de Sande, Alex Van de Sande. I will use the first one Alex Van de Sande to be safe, or the standard lowercase 'van'. the standard is usually 'Alex Van de Sande'. the example uses Alex Van de Sande. I will follow the example Alex Van de Sande. Okay, ready to generate. one detail: Dark Prague vs Devcon Prague. Prompt input: recording here at Dark Prague. Prompt example: recording here at Devcon Prague. it seems the example is a correction of the input. I will use Devcon Prague. LS0: If I change it to the C client, I must be sure. trying to get the C client or the Geth client. this makes perfect sense. LS0 is likely a transcription error for C. I will make this change. Simonson: Someone. Juta: Jutta. Ming Chan: Keep. GAV: Gavin. Felix Lang: Felix Lange. Christoph Jens: Christoph Jentzsch. AS at the AS at midnight: at the office at midnight. AS is noise. Lime Stream: livestream. block app: BlockApps. Fabian Fogel Stella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. Florian Glutz: Florian Glatz. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Defcon: Devcon. mainnet: mainnet. Bitcoin: Bitcoin. ether: ether. pre sale: presale. crowd sale: crowdsale. stable coins: stablecoins. ERC 20: ERC 20. Raiden Network: Raiden Network. Maker: Maker. Hydrochain: Hydrochain. Defcons: Devcons. Consensus event company: ConsenSys. block app again: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Mix: Mist. Solidity: Solidity. C client: C client. Go client: Go client or Geth. Text uses Go client and Geth interchangeably. I'll preserve the specific usage unless it's clearly wrong. Python client: Python client. EthCore: EthCore. Parity: Parity. Ming Chan: Keep. Florian Glatz: Keep Corrected. Early Days of Ethereum: Early Days of Ethereum. Bogota: Bogotá. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Strato: Strato. LS0: the C client. Mix: Mist. Simonson: Someone. Felix Lang: Felix Lange. GAV: Gavin. Fabian Fogel Stella: Fabian Vogelsteller. Christoph Jens: Christoph Jentzsch. AS: office. Lime Stream: livestream. Consensus: ConsenSys. Maker: Maker. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client. Defcon 6: Devcon 6. Dark Prague: Devcon Prague. Bob Samuel: Bob Summerwill. FDEV: Ethereum Foundation. Defcon: Devcon. Florian Glutz: Florian Glatz. mainnet: mainnet. C client: C client. C team: C team. C: C. Go client: Go client. Python client: Python client. Ming Chan: Keep. Christoph Jens: Christoph Jentzsch. Gavin: Gavin. Juta: Jutta. EthCore: EthCore. Parity: Parity. Devcon 0: Devcon 0. Devcon1: Devcon 1. Devcon 2: Devcon 2. Defcon 3: Devcon 3. Defcon one: Devcon 1. Defcons: Devcons. Consensus: ConsenSys. Lime Stream: livestream. Maker: Maker. stable coins: stablecoins. Fabian Fogelstella: Fabian Vogelsteller. Alex Van Hasande: Alex Van de Sande. ERC 20: ERC 20. Gnosis: Gnosis. Raiden Network: Raiden Network. Hydrochain: Hydrochain. block app: BlockApps. Blog: BlockApps. Strato: Strato. LS0: the C client.
+
+[00:01] SPEAKER_00:
+So, hello.
+
+[00:02] SPEAKER_01:
+Hello, Bob.
+
+[00:03] SPEAKER_00:
+So, yes, I'm Bob Summerwill, recording here at Devcon Prague for Early Days of Ethereum. And I have here Jakob.
+
+[00:14] SPEAKER_01:
+Good enough?
+
+[00:15] SPEAKER_00:
+Good enough, yes. There you go. So, yeah, we've known each other about three years or so now, I think. We did meet in Bogota for Devcon 6 for the first time where you introduced yourself. I was not aware of your background and role, but yeah, specifically you were an intern at the Ethereum Foundation in Berlin in late 2015 and you also attended Devcon 1. So how did you come to be involved with Ethereum at that time?
+
+[00:55] SPEAKER_01:
+Oh, yeah, thank you for the intro and good question. It was in Bogota. I think I knew about you or of you for longer than since then. But yeah, I think you were chatting with someone and talking about Florian Glatz, maybe, and talking about the old days. And I just jumped in because I know Florian and found out that we have a shared interest in the old days of Ethereum. And yeah, I did my internship working on the Python client back starting September or August 2015.
+
+[01:31] SPEAKER_00:
+I think it was like maybe August to December.
+
+[01:33] SPEAKER_01:
+Yeah, it was August to December. It was a couple of weeks after mainnet launched. And the first week I was there was when there was like the first big fork where the Go client forked from the C++ and Python client.
+
+[01:48] SPEAKER_00:
+There was a chain split on mainnet.
+
+[01:50] SPEAKER_01:
+Yes. And it happened, I think the second day I was there and that was the same day that there was a meetup planned in the office.
+
+[01:58] SPEAKER_00:
+Right, Right.
+
+[02:00] SPEAKER_01:
+and the reason I got into Ethereum, I was studying computer science. and nothing happened for a good amount of time. and eventually I was just sitting there in the corner working and I was like, no, we can't do this because there's So many people who are just like, looking. Some started leaving. So I kind of ad hoc jumped in and gave a presentation on Ethereum back then that I had given a couple of weeks before back in Copenhagen.
+
+[02:26] SPEAKER_00:
+So this was an internship while you were still doing an undergraduate?
+
+[02:28] SPEAKER_01:
+No, it was actually an internship that I got because I wrote my bachelor thesis on Ethereum in the spring of 2015.
+
+[02:33] SPEAKER_00:
+Oh, goodness. So when, when do you think that started?
+
+[02:36] SPEAKER_01:
+I know exactly when it started. It started on the 14th of July 2015.
+
+[02:40] SPEAKER_00:
+Right, right.
+
+[02:42] SPEAKER_01:
+And the reason I got into Ethereum, I was studying computer science.
+
+[02:46] SPEAKER_00:
+Okay.
+
+[02:46] SPEAKER_01:
+And I knew about Bitcoin and thought it would be interesting to write my bachelor thesis on Bitcoin.
+
+[02:52] SPEAKER_00:
+So this was an internship while you were still doing an undergraduate?
+
+[02:55] SPEAKER_01:
+No, it was actually an internship that I got because I wrote my bachelor thesis on Ethereum in the spring of 2015.
+
+[03:02] SPEAKER_00:
+So you had graduated.
+
+[03:03] SPEAKER_01:
+Yeah, but just a bachelor. And because the Ethereum ecosystem, to speak, was so small back then.
+
+[03:10] SPEAKER_00:
+Right, right.
+
+[03:12] SPEAKER_01:
+We were in contact with the Ethereum Foundation during the internship. I think I opened my first issue in March 2015.
+
+[03:24] SPEAKER_00:
+Okay.
+
+[03:24] SPEAKER_01:
+So, yeah. I actually think I ve known of Ethereum since end of 2014. But anyway, we wrote this bachelor thesis, me And two of my friends, And we shared it with the foundation, And then we got offered internships. And I was the only one I was tired of studying already, only after a bachelor And the other two guys wanted to continue. So I was like, okay, I m going to do this. And a couple of weeks later I moved to Berlin to do my internship, Working on the Python client. weeks later I moved to Berlin to do my internship. Working on the Python client.
+
+[04:01] SPEAKER_00:
+Right, right.
+
+[04:03] SPEAKER_01:
+And yeah, that was a very interesting time. Thinking back now, I'm sad I didn't write down more things or take more pictures or appreciate some of the things a little bit more, but I also had no idea that things would get as big as they are now. But yeah, I enjoyed it a lot.
+
+[04:23] SPEAKER_00:
+Yeah. I mean, it was primarily C development under Gavin that was happening in that office. Right. But also Felix Lange, I know, was there on the guest.
+
+[04:33] SPEAKER_01:
+Yeah.
+
+[04:33] SPEAKER_00:
+And then some different people and then.
+
+[04:34] SPEAKER_01:
+Someone in the Python team, I think he was doing Go stuff. And yeah, the Solidity team was also there.
+
+[04:43] SPEAKER_00:
+I think they were under the C++. That's right. Back then.
+
+[04:46] SPEAKER_01:
+But they were.
+
+[04:46] SPEAKER_00:
+And Remix as well. Mist, sorry. At the time.
+
+[04:49] SPEAKER_01:
+Yeah. Yeah. And I also remember the Mist, I guess at least Fabian Vogelsteller was also around. So there was a good amount of different.
+
+[04:58] SPEAKER_00:
+Yeah.
+
+[04:59] SPEAKER_01:
+People around. And also quite often people would come and visit from other places. I remember a couple of times Christoph Jentzsch came to visit.
+
+[05:10] SPEAKER_00:
+Yeah.
+
+[05:10] SPEAKER_01:
+There was one time where I think he arrived at midnight or something like that and there was no one else at the office.
+
+[05:16] SPEAKER_00:
+Yeah.
+
+[05:16] SPEAKER_01:
+I was doing my internship and I think he wrote late afternoon on the Skype channel if there would be someone around that he was a little bit delayed or whatever.
+
+[05:24] SPEAKER_00:
+Right, right.
+
+[05:25] SPEAKER_01:
+So I was just like, oh, it's fine. I had nothing to do in Berlin anyway. I had like the smallest room, just like a small room with a bed, nothing else, basically.
+
+[05:34] SPEAKER_00:
+Yeah.
+
+[05:35] SPEAKER_01:
+So I enjoyed spending a lot of time in the office and I actually had, I would usually just stay in the office.
+
+[05:42] SPEAKER_00:
+Yeah.
+
+[05:42] SPEAKER_01:
+And then just go home and sleep because the office was quite nice.
+
+[05:45] SPEAKER_00:
+Right, right.
+
+[05:46] SPEAKER_01:
+So, yeah. I had one night, one night where I think I left, let him into the office at midnight and we had had a little bit of a chat. I got to know him, he told me about all the testing he was doing and how they were testing. It was quite interesting.
+
+[06:02] SPEAKER_00:
+And that's cross-client testing as well, wasn't it? Right, yeah.
+
+[06:05] SPEAKER_01:
+If I remember correctly, he was building a lot of just JSON data that they fed to the client and that.
+
+[06:11] SPEAKER_00:
+Was from the C++ client. I know that cpp-ethereum was leading and the tests were generated from that, but. But then running those against the Python and Geth clients.
+
+[06:23] SPEAKER_01:
+Yeah, that sounds about right. But there are a lot of small stories you told me. We don't have too much time, I'll try to keep it short. But I would say if I think back to the most interesting things that happened, it was of course being lucky enough to participate at Devcon 1.
+
+[06:44] SPEAKER_00:
+Oh yeah, Right.
+
+[06:45] SPEAKER_01:
+Yeah, a couple of weeks before that I was, sorry, we can't do it anyway because like we don't have the money anymore..
+
+[06:59] SPEAKER_00:
+Yeah, that's right.
+
+[07:00] SPEAKER_01:
+The C++ team was kind of cut.
+
+[07:02] SPEAKER_00:
+Off and you also, so you also had, you know, Ming Chan, her first official date was 1st of August of, of 2015. So yeah, you basically had those kind of cost cutting measures coming in quite fast of looking at the spend where you know, it had been going for a year. It was, it was the July of the previous year that the foundation had been formed and you had the crowdsale but like nearly all of the money was gone in that year.
+
+[07:31] SPEAKER_01:
+I think that was also maybe not the most responsible like usage of money, but also the Bitcoin price was doing really poorly.
+
+[07:39] SPEAKER_00:
+Yeah, that's right.
+
+[07:40] SPEAKER_01:
+The ether price itself. Yeah, I think it dipped below the presale price at some point and it's right, September, a year in.
+
+[07:48] SPEAKER_00:
+And you've had no accumulation.
+
+[07:50] SPEAKER_01:
+Yeah, but yeah, I didn't have any interactions with Ming back, back then, so maybe. Actually one thing I just remembered now, I was actually supposed to have done my internship on the C++ team in London, but.
+
+[08:05] SPEAKER_00:
+Oh yeah, right.
+
+[08:06] SPEAKER_01:
+Yeah, a couple of weeks before that I was, sorry, we can't do it anyway because like we don't have the money anymore.
+
+[08:12] SPEAKER_00:
+Right. Well, because they, they were getting very rapidly the funding or even even shut down entirely, I think.
+
+[08:18] SPEAKER_01:
+Yeah, probably already all that was coming. Yeah, so that's why it ended up being the Python team instead because there was some budget. But yeah, like sitting as the only person working on the Python client in that Office in my small corner. I had a lot of fun kind of following how people came and went and went into Gavin's office and had a chat there with him and Jutta or whatever. And I didn't really know in the beginning what was going on until I was also asked if I wanted to come in and talk and it was basically presenting ideas of what would happen next with the C++ team and if I wanted to consider joining there or whatever.
+
+[09:06] SPEAKER_00:
+Yeah, so that was sort of the, the pre, pre formation of what became EthCore later Parity.
+
+[09:17] SPEAKER_01:
+Yeah, I, I, I think so that. So I, I was witnessing that without knowing what was going on. I had no insight into like the finances of, of the, or anything like that. I only found out about most of those things later. But so yeah, interesting to hear.
+
+[09:35] SPEAKER_00:
+Yeah. So I mean maybe let's, let's talk about Devcon 1. So you'd have. So the first Devcon was Devcon 0, which happened in November 2014 before your time, which was the closed, you know, closed event. Mainly Ethereum Foundation people, but some broader ecosystem people. But then Devcon 1 had happened in November 2015 in London. It had got announced earlier in the year and got cancelled because of this funding squeeze. But then ConsenSys basically stepped up and did some organizing. So that was in November of that year. I was not present myself. I couldn't afford to go or whatever at the time, but I watched a lot of the livestream. But know that was a really very seminal conference. So how was that?
+
+[10:35] SPEAKER_01:
+Yeah. Blockapps. Blockapps. I remember they had like a small booth, I think. long period of time, But there I was at every talk from the beginning, in the morning until the end. I think I missed one talk Because I had to go catch my flight to go back on the last day or, But it was, I was just sitting there And sucking up all of these ideas And visions And it was really, I think before that I had an idea that I thought it would be interesting to continue working with Ethereum or in the Ethereum space. But after Devcon 1, I was like, I have to do This. like there's no other way for me. I'm not going back to the university, I'm not going to do anything else. This is what I'm going to do. Because it was a full day or three full days of just sitting there And people presenting their ideas. I remember clearly, like there was like Maker was presented, like, I was like, okay, like stablecoins. like it was amazing. I think Fabian Vogelsteller And Alex Van de Sande And some other people presented the ERC 20 token standard, or the early version of it, which. Yeah, okay. This has also. This is such a big part of Ethereum now. I think maybe Gnosis. I'm not sure, actually. And of course, the project I was working on, the people there, like, we were presenting the Raiden Network, which got a lot of very good feedback as well.
+
+[11:58] SPEAKER_01:
+But, yeah, i was thinking about that and then i was comparing with, let's say, Devcon 2.
+
+[12:01] SPEAKER_01:
+Yeah. I was not so sold on Hydrochain back then because it was aimed at.
+
+[12:08] SPEAKER_00:
+One of the very first permissioned Ethereum.
+
+[12:11] SPEAKER_01:
+Exactly. It was like a round robin kind of algorithm. And now it seems like something people would actually have used these days. So only 10 years too early. But back to Devcon 1. I was just thinking about it after our conversation last night, that Devcon 1, it was just about the technology. I think maybe there were three booths or something like that, a couple of stickers. I barely remember. I just remember. Was it BlockApps? What was the name of the Haskell project BlockApps?
+
+[12:44] SPEAKER_00:
+Strato.
+
+[12:45] SPEAKER_01:
+Yeah. BlockApps. BlockApps. I remember they had like a small booth, I think.
+
+[12:48] SPEAKER_00:
+Right, right.
+
+[12:49] SPEAKER_01:
+Some stickers.
+
+[12:50] SPEAKER_00:
+Yeah.
+
+[12:50] SPEAKER_01:
+Very sad that I lost that sticker.
+
+[12:52] SPEAKER_00:
+Right.
+
+[12:52] SPEAKER_01:
+But other than that, it was just like. Yeah, just people. There was one stage and everyone was, like, in the same room, more or less. And in the evenings, yeah, people would go out. Go out for dinner maybe, but there was not a single side event. There was not a single party.
+
+[13:08] SPEAKER_00:
+Glory days.
+
+[13:09] SPEAKER_01:
+It was just dinners and a couple of shepherd's pie somewhere.
+
+[13:13] SPEAKER_00:
+Right.
+
+[13:15] SPEAKER_01:
+And that was kind of fun. Like, you. You got to know people, like, really, really well. And, yeah, it was. It was really just the golden days. I felt like there was, yeah, so many inspired people and ideas and people only talked about tech. I think there was, like, one a little bit weird product hype talk with a guy who had a T-shirt gun on the stage. This, like, free my bunk, right? Like a very different energy than everybody. It felt like he was the only one who actually knew how to give a talk and how to actually sell, and yeah, I thought it was way too much, but now. Now it's basically what everyone else is doing. And the quality of slides was so bad as well.
+
+[13:54] SPEAKER_00:
+It's right to look back.
+
+[13:57] SPEAKER_01:
+But, yeah, I was thinking about that and then I was comparing with, let's say, Devcon 2.
+
+[14:00] SPEAKER_00:
+Right.
+
+[14:01] SPEAKER_01:
+I think at Devcon 2, there was maybe like a couple of parties. I think ConsenSys had, like. Yeah, bar somewhere where we would usually go. It was still not that big. There was still only one stage, I think, at Devcon 2.
+
+[14:14] SPEAKER_00:
+So it was like there was just one main stage.
+
+[14:16] SPEAKER_01:
+Yeah. Quite. Quite doable. And then I think at Devcon 3 in Cancun, that was where you could really feel okay, now there's a lot of money in this space because, like, there were parties right and left and. Yeah. Okay. The rest is history, right?
+
+[14:30] SPEAKER_00:
+That's right.
+
+[14:30] SPEAKER_01:
+It's been quite crazy to see this development as well, of, like, measuring on the amount of events and parties at the different Devcons, how popular things got. But for me, Devcon 1 is, like, one of my best memories of these 10 years, simply because it was just so inspiring and motivating, I would say. And a lot of the people you have on your list were around there, like.
+
+[15:00] SPEAKER_00:
+Yeah, it's.
+
+[15:01] SPEAKER_01:
+It's quite. Quite cool. And I actually recently found out that someone I got to know, or a couple of years ago only, who's also doing some cool stuff, he actually was around there. Like, we didn't meet each other. I didn't know him. I only found out like, two years ago. But he had also. And he said he didn't see almost any talks because he was sitting in the back trying to get the C++ client or the Geth client to run on his machine or something like that. Because it was not easy back then. No, it took days, even if you had the devs available right next to you.
+
+[15:35] SPEAKER_00:
+Absolutely.
+
+[15:36] SPEAKER_01:
+It wasn't easy.
+
+[15:36] SPEAKER_00:
+No.
+
+[15:38] SPEAKER_01:
+So, yeah, I think that's mainly what I have to, like, share without it going into too much detail about. About things, but.
+
+[15:46] SPEAKER_00:
+Well, thanks so much.
+
+[15:47] SPEAKER_01:
+Yeah, you're. You're very welcome.
+
+[15:49] SPEAKER_00:
+Great chatting, always.
+
+[15:50] SPEAKER_01:
+Yeah.
+
+[15:51] SPEAKER_00:
+Okay. All the very best.
+
+[15:52] SPEAKER_01:
+Thank you. You too.

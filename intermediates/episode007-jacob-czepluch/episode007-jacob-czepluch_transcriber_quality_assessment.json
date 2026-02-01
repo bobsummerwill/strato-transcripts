@@ -1,0 +1,17 @@
+{
+  "consensus_word_count": 2839,
+  "consensus_speaker_count": 2,
+  "transcribers": {
+    "assemblyai": {
+      "word_count": 2839,
+      "consensus_alignment": 1.0,
+      "agreement_ratio": 0.38288129623106726,
+      "length_score": 1.0,
+      "speaker_count": 2,
+      "speaker_score": 1.0,
+      "timing_score": 1.0,
+      "quality_score": 0.8148643888693201
+    }
+  },
+  "best_transcriber": "assemblyai"
+}
