@@ -104,7 +104,9 @@ VIDEO_DIR=$(dirname "$VIDEO_FILE")
 # Output paths
 AUDIO_FILE="${VIDEO_DIR}/${VIDEO_BASE}.mp3"
 INTERMEDIATE_DIR="${PROJECT_DIR}/intermediates/${VIDEO_BASE}"
-TRANSCRIPT_FILE="${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}.md"
+# Consensus mode saves transcripts with _consensus suffix to avoid overwriting clean transcripts
+CONSENSUS_TRANSCRIPT_FILE="${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}_consensus.md"
+CONSENSUS_WORDS_JSON="${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}_consensus_words.json"
 SRT_FILE="${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}.srt"
 OUTPUT_VIDEO="${VIDEO_DIR}/${VIDEO_BASE}_captioned.mp4"
 
@@ -134,21 +136,23 @@ if [ -n "$FORCE_CPU" ]; then
     TRANSCRIBE_CMD="$TRANSCRIBE_CMD $FORCE_CPU"
 fi
 
-if [ -f "$TRANSCRIPT_FILE" ]; then
-    echo "  Transcript already exists: $TRANSCRIPT_FILE"
+# Check for consensus_words.json (not transcript) since that's what subtitles need
+if [ -f "$CONSENSUS_WORDS_JSON" ]; then
+    echo "  Consensus word data already exists: $CONSENSUS_WORDS_JSON"
 else
     eval $TRANSCRIBE_CMD
 fi
 echo ""
 
 # Step 3: Run post-processor if specified
+TRANSCRIPT_FOR_SUBTITLES="$CONSENSUS_TRANSCRIPT_FILE"
 if [ -n "$PROCESSOR" ]; then
     echo "[2.5/4] Running post-processor: $PROCESSOR..."
-    python3 "$SCRIPT_DIR/process_single_post_process.py" "$TRANSCRIPT_FILE" --processors "$PROCESSOR"
+    python3 "$SCRIPT_DIR/process_single_post_process.py" "$CONSENSUS_TRANSCRIPT_FILE" --processors "$PROCESSOR"
     # Use processed transcript for subtitles
     PROCESSED_FILE="${PROJECT_DIR}/outputs/${VIDEO_BASE}/${VIDEO_BASE}_${TRANSCRIBER}_${PROCESSOR}.md"
     if [ -f "$PROCESSED_FILE" ]; then
-        TRANSCRIPT_FILE="$PROCESSED_FILE"
+        TRANSCRIPT_FOR_SUBTITLES="$PROCESSED_FILE"
         SRT_FILE="${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}_${PROCESSOR}.srt"
     fi
     echo ""
@@ -156,7 +160,7 @@ fi
 
 # Step 4: Convert to subtitles (ASS format for colors)
 echo "[3/4] Converting transcript to subtitles..."
-SUBTITLE_CMD="python3 \"$SCRIPT_DIR/transcript_to_srt.py\" \"$TRANSCRIPT_FILE\" \"$SRT_FILE\""
+SUBTITLE_CMD="python3 \"$SCRIPT_DIR/transcript_to_srt.py\" \"$TRANSCRIPT_FOR_SUBTITLES\" \"$SRT_FILE\""
 if [ -n "$TITLE" ]; then
     SUBTITLE_CMD="$SUBTITLE_CMD --title \"$TITLE\""
 fi
@@ -173,7 +177,7 @@ echo "========================================================================"
 echo "Pipeline Complete!"
 echo "========================================================================"
 echo "Audio:      $AUDIO_FILE"
-echo "Transcript: $TRANSCRIPT_FILE"
+echo "Transcript: $TRANSCRIPT_FOR_SUBTITLES"
 echo "Subtitles:  $SRT_FILE"
 echo "Output:     $OUTPUT_VIDEO"
 echo "========================================================================"

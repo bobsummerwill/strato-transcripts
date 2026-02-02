@@ -609,11 +609,11 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False, consensus_mode=
             else:
                 raise RuntimeError("No word-level data available for consensus")
 
-            # Also save md/txt for post-processing compatibility
+            # Save consensus transcripts with _consensus suffix to avoid overwriting clean transcripts
             output_path = save_transcript_files(
                 output_dir,
                 audio_path_obj.stem,
-                "whisperx",
+                "whisperx_consensus",
                 result_with_speakers["segments"]
             )
         else:
@@ -744,11 +744,11 @@ def transcribe_whisperx_cloud(audio_path, output_dir, consensus_mode=False):
             else:
                 raise RuntimeError("No word-level timing available from Replicate model for consensus")
 
-            # Also save md/txt for post-processing compatibility
+            # Save consensus transcripts with _consensus suffix to avoid overwriting clean transcripts
             output_path = save_transcript_files(
                 output_dir,
                 audio_path_obj.stem,
-                "whisperx-cloud",
+                "whisperx-cloud_consensus",
                 segments
             )
         else:
@@ -885,9 +885,9 @@ def transcribe_assemblyai(audio_path, output_dir, consensus_mode=False):
             json.dump(word_data, f, indent=2)
         print(f"  Saved consensus word-level data: {json_path}")
 
-        # Also save md/txt for post-processing compatibility
+        # Save consensus transcripts with _consensus suffix to avoid overwriting clean transcripts
         formatted_text = '\n'.join(output_lines) + '\n'
-        md_path = save_raw_transcript_from_text(output_dir, audio_file_path.stem, "assemblyai", formatted_text)
+        md_path = save_raw_transcript_from_text(output_dir, audio_file_path.stem, "assemblyai_consensus", formatted_text)
         return md_path
     else:
         # Normal mode: save md/txt transcripts (no JSON)
