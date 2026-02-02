@@ -1,0 +1,98 @@
+{
+  "input_word_count": 12544,
+  "consensus_word_count": 12708,
+  "models": {
+    "grok": {
+      "word_count": 12184,
+      "input_preservation": 0.6260025062656641,
+      "consensus_alignment": 0.5255929894097975,
+      "length_score": 1.0,
+      "format_score": 1.0,
+      "quality_score": 0.6980379476436182
+    },
+    "llama": {
+      "word_count": 5810,
+      "input_preservation": 0.6315711205294073,
+      "consensus_alignment": 0.5879818902330639,
+      "length_score": 0.7315848214285714,
+      "format_score": 1.0,
+      "quality_score": 0.670981056537762
+    },
+    "glm": {
+      "word_count": 12544,
+      "input_preservation": 1.0,
+      "consensus_alignment": 0.1463676689536615,
+      "length_score": 1.0,
+      "format_score": 1.0,
+      "quality_score": 0.6585470675814645
+    },
+    "opus": {
+      "word_count": 12009,
+      "input_preservation": 0.5555450535601765,
+      "consensus_alignment": 0.462804384380644,
+      "length_score": 1.0,
+      "format_score": 1.0,
+      "quality_score": 0.6517852698203105
+    },
+    "mistral": {
+      "word_count": 4928,
+      "input_preservation": 0.5489022401893998,
+      "consensus_alignment": 0.5415083148436985,
+      "length_score": 0.6964285714285714,
+      "format_score": 1.0,
+      "quality_score": 0.6205597122800136
+    },
+    "gemini": {
+      "word_count": 12133,
+      "input_preservation": 0.880951820002356,
+      "consensus_alignment": 0.12088705358182425,
+      "length_score": 1.0,
+      "format_score": 1.0,
+      "quality_score": 0.6126403674334365
+    },
+    "minimax": {
+      "word_count": 4671,
+      "input_preservation": 0.5392700994495163,
+      "consensus_alignment": 0.5212180615268094,
+      "length_score": 0.6861846301020408,
+      "format_score": 1.0,
+      "quality_score": 0.6075051804659868
+    },
+    "kimi": {
+      "word_count": 9807,
+      "input_preservation": 0.5757895195365248,
+      "consensus_alignment": 0.17036317197134526,
+      "length_score": 0.8909040178571428,
+      "format_score": 1.0,
+      "quality_score": 0.5190629282209241
+    },
+    "chatgpt": {
+      "word_count": 10308,
+      "input_preservation": 0.031933895334279275,
+      "consensus_alignment": 0.029808912996883912,
+      "length_score": 1.0,
+      "format_score": 1.0,
+      "quality_score": 0.3215037337990374
+    },
+    "deepseek": {
+      "word_count": 80,
+      "input_preservation": 0.009131715744497062,
+      "consensus_alignment": 0.008925744440256313,
+      "length_score": 0.503188775510204,
+      "format_score": 1.0,
+      "quality_score": 0.20694756760149247
+    }
+  },
+  "top_5": [
+    "grok",
+    "llama",
+    "glm",
+    "opus",
+    "mistral"
+  ],
+  "bottom_3": [
+    "kimi",
+    "chatgpt",
+    "deepseek"
+  ]
+}
