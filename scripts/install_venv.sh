@@ -215,6 +215,94 @@ if [ "$INSTALL_ALL" = true ]; then
     MODES_TO_INSTALL="nvidia amd intel cpu"
 else
     show_mode_info "$GPU_MODE"
+fi
+echo ""
+
+# ==============================================================================
+# Step 2: System Dependencies and AI Tools Installation
+# ==============================================================================
+# Install required system packages using appropriate package manager.
+# macOS: Uses Homebrew (brew)
+# Ubuntu: Uses apt package manager
+# These are low-level dependencies needed to build Python packages and process audio.
+# ==============================================================================
+echo -e "${YELLOW}[2/15] Installing system dependencies...${NC}"
+
+if [ "$OS_TYPE" = "macos" ]; then
+    echo "Installing required packages via Homebrew:"
+    echo "  - ffmpeg: Audio/video processing for WhisperX"
+    echo "  - python@3.12: Python 3.12 interpreter"
+    echo "  - git: Version control for installing packages from GitHub"
+
+    # Install packages if not already present
+    brew list ffmpeg &>/dev/null || brew install ffmpeg
+    brew list python@3.12 &>/dev/null || brew install python@3.12
+    brew list git &>/dev/null || brew install git
+
+    # Set Python 3.12 from Homebrew as the python3 command
+    echo "Setting up Python 3.12 from Homebrew..."
+    export PATH="/opt/homebrew/opt/python@3.12/libexec/bin:$PATH"
+
+    # Verify we're using the correct Python version
+    DETECTED_PY_VERSION=$(python3 --version)
+    echo "Using: $DETECTED_PY_VERSION"
+
+    echo -e "${GREEN}✓ System dependencies installed${NC}"
+
+elif [ "$OS_TYPE" = "ubuntu" ]; then
+    echo "Installing required system packages:"
+    echo "  - build-essential: C/C++ compilers for building Python packages"
+    echo "  - ca-certificates: SSL/TLS certificates for secure connections"
+    echo "  - curl: HTTP client for API requests"
+    echo "  - ffmpeg: Audio/video processing for WhisperX"
+    echo "  - git: Version control for installing packages from GitHub"
+    echo "  - libcurl4-openssl-dev: cURL development libraries for Python packages"
+    echo "  - libssl-dev: SSL development libraries"
+    echo "  - python3-dev: Python headers for compiling extensions"
+    echo "  - python3-pip: Python package installer"
+    echo "  - python3-venv: Python virtual environment support"
+    echo ""
+    echo "GPU benchmark dependencies:"
+    echo "  - glmark2: OpenGL benchmark"
+    echo "  - meson/ninja-build: Build system (for building vkmark from source)"
+    echo "  - libvulkan-dev: Vulkan development headers"
+    echo "  - libassimp-dev/libglm-dev: 3D model and math libraries"
+    echo "  Note: vkpeak binary is included in gpu_benchmarks/bin/"
+
+    sudo apt update
+    sudo apt install -y \
+      build-essential \
+      ca-certificates \
+      curl \
+      ffmpeg \
+      git \
+      libcurl4-openssl-dev \
+      libssl-dev \
+      python3-dev \
+      python3-pip \
+      python3-venv \
+      glmark2 \
+      meson \
+      ninja-build \
+      libvulkan-dev \
+      libwayland-dev \
+      libxcb1-dev \
+      libxcb-icccm4-dev \
+      libdrm-dev \
+      libassimp-dev \
+      libglm-dev
+
+    echo -e "${GREEN}✓ System dependencies installed${NC}"
+fi
+echo ""
+
+# ==============================================================================
+# Determine which modes to install
+# ==============================================================================
+if [ "$INSTALL_ALL" = true ]; then
+    MODES_TO_INSTALL="nvidia amd intel cpu"
+    echo -e "${BLUE}Installing all GPU backends...${NC}"
+else
     MODES_TO_INSTALL="$GPU_MODE"
 fi
 echo ""
