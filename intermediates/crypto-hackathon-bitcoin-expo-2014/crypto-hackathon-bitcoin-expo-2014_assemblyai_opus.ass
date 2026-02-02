@@ -1,0 +1,17 @@
+[Script Info]
+Title: Transcript
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Title,Arial,48,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,1,0,0,0,100,100,0,0,1,3,2,8,10,10,20,1
+Style: Speaker00,Arial,72,&H00FFF000,&H00FFFFFF,&H00000000,&H80000000,1,0,0,0,100,100,0,0,1,4,2,2,10,10,50,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:01:03.96,0:01:35.70,Speaker00,,0,0,0,,It's
+Dialogue: 0,0:01:35.85,0:01:45.09,Speaker00,,0,0,0,,sam
+Dialogue: 0,0:01:45.09,0:01:49.03,Speaker00,,0,0,0,,m.
+Dialogue: 0,0:02:08.15,0:02:08.40,Speaker00,,0,0,0,,Ra.

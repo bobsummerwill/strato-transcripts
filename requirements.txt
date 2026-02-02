@@ -1,17 +1,24 @@
 # WhisperX transcription with speaker diarization
-whisperx==3.7.4
+whisperx==3.7.6
 pandas==2.2.3
 replicate==1.0.2
 # TODO: Add whisperx-server once a distributable package/URL is available
 
-# PyTorch versions COMMENTED OUT - installed by shell script instead
-# WhisperX 3.7.4 requires torch~=2.8.0, but we need 2.9.x for RTX 5070 Blackwell support
-# This creates a dependency conflict that pip cannot resolve
-# Solution: Install WhisperX with its torch 2.8.0, then upgrade to 2.9.1 in shell script
-#--extra-index-url https://download.pytorch.org/whl/cu130
-#torch==2.9.1
-#torchvision==0.24.1
-#torchaudio==2.9.1
+# PyTorch and pyannote versions - installed by shell script (install_packages_and_venv.sh)
+# WhisperX 3.7.6 requires torch~=2.8.0 and pyannote-audio<4.0.0, but we need:
+#   - torch 2.9.1+cu130 for RTX 5070 Blackwell / CUDA 13.0 support
+#   - pyannote-audio 4.0.1 (last version without torch==2.8.0 pin)
+#   - torchaudio 2.9.1+cu130
+# The shell script handles these version conflicts by:
+#   1. Installing WhisperX (pulls torch 2.8.0)
+#   2. Upgrading to torch 2.9.1+cu130 with --force-reinstall
+#   3. Installing pyannote-audio 4.0.1
+#   4. Applying compatibility patches for PyTorch 2.6+ and torchaudio 2.9.x
+#
+# DO NOT UNCOMMENT - managed by install_packages_and_venv.sh:
+# torch==2.9.1+cu130
+# torchaudio==2.9.1+cu130
+# pyannote-audio==4.0.1
 
 # AI providers for post-processing
 anthropic==0.72.1

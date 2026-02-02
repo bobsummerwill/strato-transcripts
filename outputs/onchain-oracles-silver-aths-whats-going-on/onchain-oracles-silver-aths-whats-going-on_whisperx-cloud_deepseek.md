@@ -1,5 +1,3 @@
-Here is the cleaned and formatted transcript following all the specified rules:
-
 **[00:02] SPEAKER_02:** Hello. Hello. We are live. So welcome to Online Oracles. I am Bob Summerwill. I'd like to welcome the rest of our guests here. So we have Michael Tan. We have Victor Wong. We have Kieran James Lubin. And also today making an appearance is Jeff Powell. Hello. Would you like to please introduce yourself, Jeff?
 
 **[00:36] SPEAKER_00:** Thanks, Bob. I'm Jeff Powell, head of business development at BlockApps. I've been working with people on this video for getting close to five years now. And in recent years, I've done a great deal of work on our tokenized metals campaigns. So very excited to be here today to talk about silver.

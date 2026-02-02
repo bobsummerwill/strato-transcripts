@@ -1,0 +1,401 @@
+**1. Understand the Goal:**
+The user wants a clean, readable transcript of a conversation about Ethereum, blockchain, silver, and gold markets. I need to preserve all content, fix specific errors (names, technical terms), follow formatting rules (timestamps, speaker labels), and maintain the length.
+
+**2. Analyze the Input:**
+- **Context:** Ethereum/blockchain podcast or live stream ("Online Oracles").
+- **Speakers:**
+    - SPEAKER_02: Bob Summerwill (Host, mentions "Museum of Ethereum", "Early Days of Ethereum").
+    - SPEAKER_00: Jeff Powell (BlockApps, business development).
+    - SPEAKER_01: Michael Tan (Demoing "Strato Easy Safe Bridging").
+    - SPEAKER_03: Kieran James Lubin (BlockApps CEO, discusses markets, inflation). *Note: The context list says "Kieran James Lubin" and "Kieren James-Lubin". The transcript says "Kieran". The prompt instructions specifically say: IMPORTANT: "Kieran" → "Kieren" (Kieren James-Lubin, NOT Kieran). I need to fix "Kieran" to "Kieren".*
+    - SPEAKER_04: Victor Wong (BlockApps).
+
+- **Key Entities/Terms to Fix:**
+    - "Kieran" -> "Kieren"
+    - "block apps" -> "BlockApps"
+    - "straddle" -> "Strato" (Context mentions "Strato Easy Safe Bridging", "Strato platform"). The transcript says "Straddle". This looks like a transcription error for "Strato". I will check context. "Straddle rewards program", "straddle scan". Actually, in the BlockApps ecosystem, they have "Strato". The transcript mentions "Strato Easy Safe Bridging". Later it says "straddle rewards". "Strato" is the platform. "Strato" scan? Maybe. Let's look at the demo. "Straddle rewards". I will assume "Strato" is the intended platform name based on "Strato Easy Safe" mentioned earlier in the same segment. Wait, looking closer: "straddle rewards program" might be a specific name. However, "Strato" is the known product. Let's stick to "Strato" where it refers to the platform, but "straddle" might be a specific program name I'm unaware of. However, given "Strato Easy Safe" was said, "straddle scan" likely means "Strato Scan". I will fix to "Strato" for consistency with the platform name unless it's clearly a different word. "Straddle" is a finance term, but here it seems like a typo for Strato. I'll correct "Straddle scan" to "Strato Scan" and "straddle rewards" to "Strato Rewards" or keep "Straddle" if it feels like a specific campaign name. Let's look at the raw text: "straddle rewards program". Given the context of BlockApps and Strato, I'm 90% sure it's Strato. I will correct to Strato for the platform/references.
+    - "USDT", "USDC" (Correct).
+    - "US" / "USA" (Correct).
+    - "ETF" (Correct).
+    - "ETH" (Correct).
+    - "DeFi" (Correct).
+    - "ARB" (Arbitrage opportunity, usually written "arb" or "ARB" depending on context, "ARB" is the token, "arb" is the action. Transcript says "ARB opportunity". I'll keep as "arb" or "ARB" based on flow. "ARB opportunity" is fine).
+    - "GLD ETF" (Correct).
+    - "IAU" (Correct).
+    - "NFT" (Correct).
+    - "perp dexes" -> "perp DEXs" or "perpetual DEXs".
+    - "Swift" -> "SWIFT".
+    - "Costco" (Correct).
+    - "BYD" (Correct).
+    - "Nvidia" (Correct).
+    - "Tether" (Correct).
+    - "F Denver" -> "EthDenver"? The transcript says "F Denver". Context: "tomorrow I'm doing a Spaces with F Denver". EthDenver is a major conference. The audio likely said "EthDenver". "F" sounds like "Eth" if cut off or misheard. I will correct to "EthDenver".
+    - "Jessica Angel" -> (Need to check if in list. List has "Jessica..."? No. But I shouldn't add names not in the list if I don't have to, but I shouldn't delete them either. Just clean spelling).
+    - "Museum of Ethereum" (Correct).
+    - "Vitalik" -> "Vitalik" (Not in list, but standard name).
+    - "LLMs" (Correct).
+
+- **Formatting:**
+    - Merge consecutive speech from one speaker.
+    - Keep timestamps.
+    - Remove filler words ("um", "uh", "you know" - excessive ones).
+    - Fix "Kieran" to "Kieren".
+
+**3. Step-by-Step Processing:**
+
+**[00:02] SPEAKER_02:** Intro. "Bob Summerwill". "Online Oracles". Introduces Michael Tan, Victor Wong, Kieran James Lubin, Jeff Powell.
+*Fixes:* None really.
+
+**[00:36] SPEAKER_00:** Jeff Powell intro. "BlockApps", "tokenized metals", "silver".
+*Fixes:* Capitalize "BlockApps".
+
+**[01:02] SPEAKER_02:** Bob hands over to Michael for demo.
+*Fixes:* None.
+
+**[01:21] SPEAKER_01:** Michael Tan demo. "Strato Easy Safe Bridging". "Straddle scan". "straddle rewards".
+*Correction:* "Straddle scan" -> "Strato Scan". "straddle rewards" -> "Strato rewards" (Assuming typo based on "Strato" mentioned earlier). "test net" -> "testnet". "prod" -> "production" or keep "prod" (colloquial). "lending pool" -> "Lending Pool".
+*Drafting:* "So I'm going to be demoing the Strato Easy Safe Bridging process. Right now, we have a bridging contest going on where if you bridge in a certain amount, 10% of that goes to a pool that will be distributed to the winner through a lucky draw. Points are generated or calculated through the Strato rewards program, so you know, everyone has a chance to win. You got to be in it to win it. This is the current leaderboard on Strato Scan if you want to check it out. But now I'll demo the Easy Save. So once you log in to your account... deposit function... connect your wallet... testnet... production... bridge in either USDT or USDC... USDT... 100... lending pool... Pause and earn... Confirm... Ethereum side... autosave... One to two minutes... lending pool."
+
+**[03:21] SPEAKER_03:** Kieren (fix name) comments. "convenient way", "simple, pretty good yields", "DeFi native", "consumer friendly".
+*Fixes:* "Kieran" -> "Kieren". "DeFi native" -> "DeFi native".
+
+**[04:16] SPEAKER_02:** Bob asks about "47th Street".
+*Fixes:* None.
+
+**[04:32] SPEAKER_00:** Jeff explains 47th Street, Diamond District, Manhattan. Gold/Silver dealers. "BlockApps" (capitalization). "Strato platform".
+*Fixes:* "block apps" -> "BlockApps".
+
+**[06:19] SPEAKER_03:** Kieren anecdote about 2020, office fleeing, printing money, inflation hedge. GLD ETF, Zoom. Crypto vs Metals. Supply chain, tokenization, NFTs, Carbon offsets, Nickel.
+*Fixes:* "Kieran" -> "Kieren". "crypto" -> "crypto" (lowercase usually okay as generic noun, but prompt says "crypto" in tech terms list as lowercase, but "Cryptocurrency" as header. I will follow standard English capitalization rules. Usually lowercase unless part of a name. "Zoom" -> "Zoom". "GLD ETF" -> "GLD ETF". "NFT style" -> "NFT style".
+*Content Check:* Keep the whole story about fleeing the office, Zoom, etc.
+
+**[10:23] SPEAKER_04:** Victor comments. Crypto vs Stock market. High beta. Metals as hedge.
+*Fixes:* "high beta" -> "high beta". "hedge" -> "hedge".
+
+**[10:50] SPEAKER_00:** Jeff on Costco gold. September 2023. $1,900 gold, $22-$23 silver. Costco selling 100-200 million a month. Loss leader.
+*Fixes:* "Costco" -> "Costco". "spot" -> "spot".
+
+**[12:24] SPEAKER_02:** Bob comments. "groceries and on the way out, pick up a gold bar."
+*Fixes:* None.
+
+**[12:37] SPEAKER_04:** Victor. "Dollar cost averaging". "Add a bit of silver". "Bullets". "ARB opportunity".
+*Fixes:* "ARB opportunity" -> "arb opportunity" (or keep ARB, it's a token too). "Kieran" -> "Kieren".
+
+**[13:24] SPEAKER_00:** Jeff on prices exploding. Silver $30 to $112? (Wait, transcript says $112. That seems high for current silver prices (usually $30ish). Maybe the transcript says "32" and it's misheard as 112? Or maybe it's a hypothetical future in their talk? "Last time I looked, it was $112 an ounce". Realistically, silver hasn't hit $112. Gold is around $2300-$2400. Maybe he said "$32"? I should probably stick to the transcript numbers unless it's an obvious error like "one hundred" vs "one hundred twelve". $112 is specific. If I change it to $32, I might change the meaning if it *is* $112 (e.g. in a future scenario or a different currency). Given the disclaimer "none of this is investment advice", maybe they are speculating. However, checking the context: "Gold has basically doubled." If gold doubled from $1900, that's $3800. Gold is not $3800. So they are likely discussing a future scenario or specific data I'm unaware of, OR the transcript is hallucinated/misheard. I will keep the transcript numbers to be safe, as I shouldn't correct financial data unless it's a blatant typo like "$112 dollars". Actually, looking at the raw text: "Last time I looked, it was $112 an ounce." This is very likely a transcription error for "$32". Or maybe he says "$12" (too low) or "$30". Given the ambiguity, I will leave the numbers as is to avoid altering the factual claims of the speakers, even if they sound wrong.)
+*Correction on "Kieran":* "is that, Karen" -> "Kieren".
+
+**[14:20] SPEAKER_03:** Kieren on factors. Central banks deleveraging from dollar. Selling treasuries, buying gold/silver. India, China. Sanctions, Russia, Swift disconnect. New administration, tariffs, capital controls. Multipolar world. Silver higher beta. Industrial use, semiconductors, solar. Bitcoin/Eth vs Gold/Silver analogy. Mining action.
+*Fixes:* "Kieran" -> "Kieren". "i think i" -> "I think I". "Swift" -> "SWIFT". "crypto" -> "crypto". "Bitcoin eth" -> "Bitcoin/ETH". "nations" -> "nations". "fed" -> "Fed". "treasuries" -> "Treasuries". "perp dexes" -> "perp DEXs".
+*Content:* Keep the discussion about Russia, SWIFT, dollar hegemony.
+
+**[19:17] SPEAKER_00:** Jeff confirms institutions dumping Treasuries for metals.
+*Fixes:* "Kieran" -> "Kieren".
+
+**[19:33] SPEAKER_03:** Kieren on dollar. Diversification vs lack of confidence. Printing money. Federal spending. Borrowing/Taxing/Printing. Dollar as medium of exchange vs store of value.
+*Fixes:* "Kieran" -> "Kieren".
+
+**[22:19] SPEAKER_04:** Victor on nations kneecapping US. Industrial use case (solar, EVs). China dominance. BYD. Trade war, new markets. Shanghai exchange. Export controls. Stockpiling (Nvidia chips analogy). Strategic asset.
+*Fixes:* "China" -> "China". "BYD" -> "BYD". "Nvidia" -> "Nvidia".
+
+**[24:26] SPEAKER_03:** Kieren jokes about "Minister of the Chinese Strategic Civil". "No inside info".
+*Fixes:* "Kieran" -> "Kieren".
+
+**[25:02] SPEAKER_02:** Bob shares personal story. Gold bug, silver bug. Software engineer skepticism. Did well on silver 2009-2011. Leveraged, lost money. "Don't use leverage kids". Legal disclaimer (none of this is investment advice).
+*Fixes:* "leveraged myself up the wazoo" (keep colorful language).
+
+**[26:24] SPEAKER_04:** Victor on Canada importing China EVs. Rebalancing assets. Gold to silver ratio.
+*Fixes:* "China EVs" -> "Chinese EVs". "gold to silver" -> "gold-to-silver".
+
+**[27:38] SPEAKER_00:** Jeff on 47th Street sentiment. Silver overpriced? Keeps going up. End of 2025 (Future date? Transcript says "end of 2025". If they are speaking before 2025, this is a prediction. If the transcript is from the future... wait, real time is 2024/2025. "When silver hit the incredible price of $70 an ounce". This suggests they are discussing a scenario or it's a very recent transcript from late 2025. Or the year is a typo for 2023/2024? Silver hit ~$32 in 2024. It hasn't hit $70. Maybe "2023"? In 2023 silver was ~$22-26. Maybe they are talking about the 2011 spike? "end of 2025" is very specific. I will keep it as written to preserve the speaker's timeline.)
+*Fixes:* "Kieran" -> "Kieren" (not in this segment actually).
+
+**[28:07] SPEAKER_04:** Victor on Costco increasing buy side. Hard to exit at good price. Minimums increased. Time delays. Tokenized silver benefits (close to spot, instant settlement).
+*Fixes:* None.
+
+**[30:06] SPEAKER_03:** Kieren on Paolo Ardoino (Tether CEO). Gold-backed stablecoin. Tether sitting on gold. Bringing back gold standard. Ron Paul. Crypto people love assets. Anti-correlated.
+*Fixes:* "Paulo" -> "Paolo" (Paolo Ardoino is the CEO). "bear my tether" -> "Paolo at Tether" or "Paolo of Tether"? Transcript says "Paulo, CEO of Tether". Fix spelling to "Paolo". "gold-backed stablecoin" -> "gold-backed stablecoin". "Ron Paul" -> "Ron Paul".
+
+**[31:50] SPEAKER_04:** Victor on change being painful. Bet on instability. Not a hard bet.
+*Fixes:* None.
+
+**[32:17] SPEAKER_02:** Bob announces Spaces with "F Denver" -> "EthDenver". Jessica Angel. "Museum of Ethereum". Physical and digital artifacts. Ethereum time machine. Strato support. Bronze statues of Vitalik. AI research.
+*Fixes:* "F Denver" -> "EthDenver". "Jessica Angel" -> "Jessica Angel". "Vitalik" -> "Vitalik". "AI" -> "AI".
+
+**[34:36] SPEAKER_04:** Victor on dog years. Crypto time.
+*Fixes:* "I I think" -> "I think".
+
+**4. Detailed Text Cleanup & Merging:**
+
+*Segment 1:*
+**[00:02] SPEAKER_02:** Hello. Hello. We are live. So welcome to Online Oracles. I am Bob Summerwill. I'd like to welcome the rest of our guests here. So we have Michael Tan. We have Victor Wong. We have Kieran James Lubin. And also today making an appearance is Jeff Powell. Hello. Would you like to please do introduce yourself, Jeff?
+*Fix:* "Kieran James Lubin" -> "Kieren James-Lubin" (Or just "Kieren James Lubin" if hyphen not in transcript? The list says "Kieren James-Lubin". Transcript says "Kieran James Lubin". I will use "Kieren James-Lubin" as per list instruction "use EXACT spellings from the 'Key People' list above".)
+
+*Segment 2:*
+**[00:36] SPEAKER_00:** Thanks, Bob. I'm Jeff Powell, head of business development at BlockApps. I've been working with people on this video for getting close to five years now. And in recent years, I've done a great deal of work on our tokenized metals campaigns. So very excited to be here today to talk about silver.
+*Fix:* "BlockApps".
+
+*Segment 3:*
+**[00:36] SPEAKER_02:** Absolutely. I mean, maybe a little bit. That's it. You're absolutely perfect for the topic today. So yeah, our topic today is silver at all time high, what's going on. But we've also got gold at all time highs having happened after that.
+*Note:* Transcript splits speaker 2 here. I will merge.
+
+*Segment 4:*
+**[01:21] SPEAKER_01:** But before we get into those, we are going to have a little bit of a demo or conversation from Michael. What have you got for us? Sure. So I'm going to be demoing the Strato Easy Safe Bridging process. Right now, we have a bridging contest going on where if you bridge in a certain amount, 10% of that goes to a pool that will be distributed to the winner through a lucky draw. Points are generated or calculated through the Strato rewards program, so you know, everyone has a chance to win. You got to be in it to win it. This is the current leaderboard on Strato Scan if you want to check it out, but now I'll demo the Easy Save. So once you log in to your account, A lot of money here. You go to this deposit function, having deposit button, connect your wallet. To be clear, like I'm doing this on the testnet, but the process on the production is exactly the same. Yep. So you can bridge in either USDT or USDC. Let's do USDT for this one. We'll do, let's say a hundred. Make sure this is checked so that it goes directly to the lending pool. Pause and earn. Confirm. Confirm. Takes a second. The bridge is, you know, that's on the Ethereum side, which did go into autosave. And there you have it. One to two minutes. It'll be directly in the lending pool. And if you want to check it out, you can go to advanced lending pool and your funds will be in here. Okay. Back over to you, Bob. Very nice. Well, thank you.
+*Fixes:* "Straddle" -> "Strato". "test net" -> "testnet". "prod" -> "production". "Pause and earn" (Keep? Maybe "Pays and earn"? Pause makes sense for a UI button "Pause and earn" or "Pays and earn". I'll keep "Pause and earn" as it's likely a specific button name).
+
+*Segment 5:*
+**[03:21] SPEAKER_03:** Kieren or Victor, anything you'd like to say about that? Yeah, we wanted to have a very convenient way, you know, so some of the users out there in the world just want simple, pretty good yields, you know, that's better than you typically get from a savings account or all that sort of thing and not too much thinking. So easy savings. Yes, you need, at least for now, to have a crypto native wallet. But from there, it's essentially one click, as you saw, to your call at 4% yield, depending on the circumstances. It's different on the testnet than the live net. And yeah, so we're just happy to make it, you know, still DeFi native, but as consumer friendly. Thanks, Michael. Take care. Yep.
+*Fixes:* "Kieran" -> "Kieren". "DeFi" -> "DeFi". "test net" -> "testnet".
+
+*Segment 6:*
+**[04:16] SPEAKER_02:** So, Geoff, tell us about 47th Street. I always keep hearing about 47th Street from you. What's going on there? Well, of course, when we talk about 47th Street, we're talking about...
+*Fix:* "Geoff" -> "Jeff". (Context suggests he is addressing Jeff Powell).
+
+*Segment 7:*
+**[04:32] SPEAKER_00:** 47th Street in Manhattan, which many people know as the Diamond District. It's filled with stores buying and selling diamonds and other precious stones. But it's also an epicenter for the buying and selling of precious metals, very specifically gold and silver. And so as BlockApps started tokenizing metals, we established a variety of relationships with various dealers and vaulters. But 47th Street became really a prime source for us, really for learning about the business. Whereas people may not think of it as being a place where there's a lot of value other than stones, There really is a lot of business going on on 47th Street, and there's a lot of vaulting going on on 47th Street. So there's actually, I don't want to estimate, but very large, very large supplies of gold and silver there. So we've developed some very helpful partnerships for us to not only navigate the space, but also to successfully move into the tokenization business for gold and silver. That's really been an important part of our Strato platform. Well, good to have those connections, that's for sure. So what is happening with the price of precious metals right now? Well, before we get into that, maybe we could talk a little bit about why we got into precious metals in the first place. Please do. And Karen, I'm going to flip that to you for a second.
+*Fixes:* "block apps" -> "BlockApps". "Strato". "Karen" -> "Kieren".
+*Note:* The transcript has SPEAKER_02 interrupting SPEAKER_00? "Well, good to have those connections..." sounds like Bob. "So what is happening..." sounds like Bob. "Well, before we get into that..." sounds like Jeff. "And Karen, I'm going to flip that to you" sounds like Jeff. The transcript label is **[04:32] SPEAKER_00:** for the whole block. I must check if the speaker changes.
+Raw text:
+**[04:32] SPEAKER_00:** 47th Street... (Jeff speaks).
+...
+That's really been an important part of our Strato platform.
+**[04:16] SPEAKER_02:** So, Geoff, tell us about 47th Street... (Bob asks question).
+**[04:32] SPEAKER_00:** 47th Street... (Jeff answers).
+Wait, looking at the timestamps in the Raw Transcript:
+**[04:16] SPEAKER_02:** ...
+**[04:32] SPEAKER_00:** 47th Street in Manhattan...
+Later in that block: "...Strato platform. Well, good to have those connections, that's for sure. So what is happening with the price of precious metals right now? Well, before we get into that, maybe we could talk a little bit about why we got into precious metals in the first place. Please do. And Karen, I'm going to flip that to you for a second."
+The speaker label is just **[04:32] SPEAKER_00:**. It seems Jeff is speaking, then maybe Bob interjects "Well, good to have those connections...", then Jeff continues "So what is happening..."? Or maybe the transcript contains dialogue from Bob within the 00 block.
+Actually, looking at the flow: Jeff explains 47th street. Bob (Speaker 02) asks "So, Geoff, tell us about 47th Street". Jeff answers.
+The text "Well, good to have those connections..." is likely Bob. "So what is happening..." is likely Bob. "Well, before we get into that..." is likely Jeff.
+However, the input has them all under **[04:32] SPEAKER_00:**. The rule is "PRESERVE COMPLETE CONTENT... MERGE CONSECUTIVE SPEECH INTO PARAGRAPHS". It implies if the speaker label changes, I start a new paragraph. If the speaker label is the same, I merge. But here the text suggests a change in speaker within the same label.
+Given the strict rule "PRESERVE ALL DIALOGUE" and "OUTPUT SHOULD CONTAIN ONLY THE FORMATTED TRANSCRIPT", and "MERGE CONSECUTIVE SPEECH INTO PARAGRAPHS... All speech from one speaker before another speaks = ONE paragraph".
+If the input file has erroneous speaker labels (attributing Bob's speech to Jeff), should I correct it?
+"Identify the speakers... (Use the Key People list)". The input uses SPEAKER_XX IDs.
+Usually, in these tasks, I should fix obvious speaker attribution errors if I can deduce who is speaking based on context and voice patterns (though I can't hear the voice).
+"So, Geoff..." -> Bob is asking Geoff. "Well, good to have those connections..." -> Bob responding to Geoff. "So what is happening with the price..." -> Bob asking a question. "Well, before we get into that..." -> Jeff responding.
+However, changing speaker labels violates "PRESERVE ALL SPEAKER LABELS (SPEAKER_01, SPEAKER_02, etc...)"? No, the rule says "PRESERVE... ALL speaker labels (SPEAKER_01, SPEAKER_02, etc. - do not add actual names)". It doesn't explicitly say "Do not correct Speaker IDs".
+BUT, usually, unless I'm sure, it's safer to stick to the provided labels or indicate a change. However, if I look at the previous turn:
+**[04:16] SPEAKER_02:** So, Geoff, tell us about 47th Street...
+**[04:32] SPEAKER_00:** 47th Street in Manhattan...
+The text "Well, good to have those connections..." is inside the SPEAKER_00 block in the source.
+Let's look at the specific snippet:
+"...That's really been an important part of our Strato platform. Well, good to have those connections, that's for sure. So what is happening with the price of precious metals right now? Well, before we get into that, maybe we could talk a little bit about why we got into precious metals in the first place. Please do. And Karen, I'm going to flip that to you for a second. Yeah, okay. I will tell an anecdote you guys may not understand."
+"Well, good to have..." seems like Bob. "So what is happening..." seems like Bob. "Well, before we get into that..." seems like Jeff. "And Karen, I'm going to flip that to you..." is Jeff asking Kieren.
+If I leave it all as Jeff, the dialogue "Well, good to have those connections..." makes Jeff sound like he's talking to himself or agreeing with himself (which he could be, but it's a distinct turn). "Please do" in "Please do. And Karen, I'm going to flip that to you" -> Jeff says "Please do" to Bob? Or Bob says "Please do" to Jeff?
+Actually, Bob asks: "What is happening with the price of precious metals right now?"
+Jeff says: "Well, before we get into that, maybe we could talk a little bit about why we got into precious metals in the first place."
+Bob says: "Please do." (Common transition).
+Jeff: "And Kieren, I'm going to flip that to you for a second."
+This structure makes sense.
+The source text has:
+"Please do. And Karen, I'm going to flip that to you for a second." -> This is all one sentence. "Please do" (Bob) "And Kieren..." (Jeff).
+Given the constraints and the complexity of reconstructing speakers from a possibly misaligned transcript, and the instruction "Your output should contain ONLY the formatted transcript", I will stick to the provided Speaker IDs but try to break paragraphs if the flow strongly suggests a change, OR just keep them together if the ID is the same.
+Wait, looking at the timestamp again. **[04:32]**. The next timestamp is **[06:19]** SPEAKER_03.
+The transcript is:
+**[04:32] SPEAKER_00:** 47th Street... [Jeff's speech] ... Strato platform. Well, good to have those connections, that's for sure. So what is happening with the price of precious metals right now? Well, before we get into that, maybe we could talk a little bit about why we got into precious metals in the first place. Please do. And Karen, I'm going to flip that to you for a second.
+If I change the label to **[04:32] SPEAKER_00:** for the first part, and then **[04:45] SPEAKER_02:** (hypothetical), I am hallucinating timestamps. "IF the input HAS timestamps: PRESERVE them EXACTLY as they appear".
+So I CANNOT split the timestamps. I must keep **[04:32]**.
+If I split the speaker label without a timestamp, that violates "START IMMEDIATELY with the first speaker label..." and "One timestamp per speaker turn".
+So I am forced to keep the text under one speaker label if the input provides it that way, unless I add a new speaker label without a timestamp (not allowed per format).
+OR, I can assume the input labels are correct and Jeff is speaking the whole time.
+"Well, good to have those connections" -> Jeff might be saying this to Bob? "That's for sure" is filler. "So what is happening with the price..." -> Jeff asking Bob? No, that's the host's job.
+Actually, Bob (02) asked "What's going on there" at 04:16. Jeff answered. Then Bob (02) might have said "So what is happening with the price...".
+But if the transcript maps it to 00, I will leave it as 00 to be safe regarding the strict "preserve labels" rule, even if it seems inaccurate. I will prioritize the structural rule of preserving provided labels unless explicitly told to correct speaker attribution. The prompt says: "PRESERVE... ALL speaker labels (SPEAKER_01, SPEAKER_02, etc...)". This suggests I should not change them.
+
+*Segment 8:*
+**[06:19] SPEAKER_03:** Yeah, okay. I will tell an anecdote you guys may not understand. no part of, you know, but we'll work back to it. So in 2020, Roughly around March, we were sort of like fleeing our office...
+*Fixes:* "Kieran" -> "Kieren". "crypto" -> "crypto". "GLD ETF" -> "GLD ETF". "IAU" -> "IAU". "Zoom" -> "Zoom". "NFT style" -> "NFT style".
+
+*Segment 9:*
+**[10:23] SPEAKER_04:** Well, I think there was one other thing that we talked about at the time, too, was that it's weird how I think, you know, when we got into crypto, everyone thought of it as, you know, a store of value, a hedge against other world events. But they seem to move more in line with the stock market. Yeah, it's high beta. It's not really a true hedge, where metals acted more like a true hedge. So, you know, it provided that opportunity, too.
+*Fixes:* "crypto" -> "crypto". "beta" -> "beta". "hedge" -> "hedge".
+
+*Segment 10:*
+**[10:50] SPEAKER_00:** Yeah, I think both of those are really interesting. And Kieran, since you went back in time a few years...
+*Fix:* "Kieran" -> "Kieren".
+
+*Segment 11:*
+**[12:24] SPEAKER_02:** without having to, you know, go off to a bullion dealer, you know, work out how to do that. Exactly. You know, you could go in and, you know, you could buy your groceries and on the way out, pick up a gold bar.
+*Fixes:* None.
+
+*Segment 12:*
+**[12:37] SPEAKER_04:** As you do. As one does. In America, as one does. Is that your dollar cost averaging? Yeah. Add a bit of silver onto your groceries. I don't know. Is there, like, bullets next to the gold? Some, like, garlic, you know, for the vampire? Well, also, though, if you have the highest level of Costco membership, you also get cash back. So you actually wind up. There's an R of opportunity there. Yeah, there's an ARB opportunity. Kieran will be running to Costco after this. Exactly. Didn't realize he was missing out on the ARB. Get an SUV, max out his Costco membership, you know, do all of that stuff. Really living.
+*Fixes:* "ARB" -> "arb". "Kieran" -> "Kieren".
+
+*Segment 13:*
+**[13:24] SPEAKER_00:** But moving forward into, I mean, the last year is when it's really exploded, both gold and silver. I was looking at it and a year ago, silver was selling for like $30 an ounce as opposed to what it was today. Last time I looked, it was $112 an ounce. And gold has basically doubled. But I know that... I mean, you know, I know that we talk about these things, you know, you know, hedge against inflation, you know, concerns, you know, about, you know, the fiscal concerns about, you know, minting dollars, the global instability we have seen. But, you know, is that, Karen, you really think that that's what it is? You think these are the factors that are driving it?
+*Fixes:* "Karen" -> "Kieren". "$112" (Keep as is). "you know" (Trim excessive).
+
+*Segment 14:*
+**[14:20] SPEAKER_03:** Well, so, okay. I think maybe the biggest factor probably, it's always a coincidence of things. When you see a run like this, it's more than one thing at once, usually. Um, so the, um, I believe that we, over the last few years scared the world enough that central banks started to deleverage from the dollar, not completely. Like I think it's going to still be quite inconvenient. You can't really denominate global trade and gold and silver per se, but as a balance sheet asset, um, People are selling treasuries in pretty big numbers and buying gold and silver people. I mean, central banks. Right. Right. And that has to just mathematically provide a lot of the demand. Like, you know, you could I don't know how to do this per se, but you could do a calculation where. You could figure out how much demand shift would be needed to cause this price shift. And I think the most plausible is that, yeah, big, big central banks, India, China and so on, started dumping on the one side and buying precious metals on the other. And it's I think it this cycle really started with the aggressive i mean so we've been sanctioning the whole world for a long time but i think the the russia case in particular really you know like various and maybe they're not the greatest people on earth but various oligarchs just having their funds frozen all over the place we're like confiscating yachts and you know and all of that the swift disconnect and so on you kind of can't have you know, something be world money and then start revoking like a nation's access to it. Right. So everyone saw that and looked, you know, and I mean, this all continued. By the way, I mean, of course, crypto had been experiencing that sort of treatment for some time, which is why we don't plenty of us don't trust the dollar, you know, altogether. um uh and so the just the new administration you know has a fairly uh you know bare-knuckled statement and negotiating style i think the there are long-run effects of the tariff liberation day in which tariffs are capital control pretty much right it's a fee more than a hundred percent fee in effect um but um There seems to be a realigning world order going on that just doesn't trust the dollar the way it used to and or maybe explicitly wants enough of it is strong enough it's getting multipolar basically so um so i think those are the things that could move the price pretty big i've also heard some of the large banks are in market buying up some of them you can look up are bigger in metals than others so you know they may be you know hedging against this trend but that has to be sort of the big factor i would think there are other ones right like so silver probably is higher beta than gold it's definitely more volatile um so you'd expect slightly different behavior between gold and silver but um you know i wanted to touch on the the bitcoin eth analogy or you know i sort of i like to say tongue-in-cheek that like yes bitcoin's like gold you know it just kind of sits there Whereas like silver, you're using it. You've got semiconductor applications and solar and this and that. You're actually using it for something. And somehow the gold is worth way more. It's kind of funny on some level. And that's part of it. The price of silver is so high that I have heard at least that there are cases where it's hard to substitute industrially. And so it's actually going to mess with commerce, you know, like one. Yeah. And one good thing about commodities is that when the price is really high, you tend to like go mine more of them or go get more of them somehow. So I don't think we're going to see silver just up for a while. You know, you'll start to see mining action happen and the price will collect a little bit and the miners will make the profits kind of on the way down. But I understand that mining takes a while to turn around, though. It takes a while. I mean, although the price should correct pretty quickly once the capital's there, because it's not pricing just current supply and it's expected future supply. But yeah, it'll take some time for that to get run in for sure. So that's all very interesting. I just want to go back to something you were saying. So you're talking about...
+*Fixes:* "Kieran" (not in this segment). "treasuries" -> "Treasuries". "swift" -> "SWIFT". "crypto" -> "crypto". "tariff liberation day" -> "tariff"? "tariff"? Transcript says "tariff liberation day". Maybe "Tariff Liberation Day"? I will keep it as is. "bitcoin eth" -> "Bitcoin/ETH". "semiconductor" -> "semiconductor". "silver" -> "silver". "gold" -> "gold".
+
+*Segment 15:*
+**[19:17] SPEAKER_00:** Talking about institutions, institutions started regarding treasuries as, I guess, less of a safe haven for the reasons that you mentioned. And so the way you see it is that then gold or precious metals filled that gap, right?
+
+*Segment 16:*
+**[19:33] SPEAKER_03:** yeah if you want sovereign savings and you can deal with the you know that's it one in inflationary times you know the commodities do really well like they did really well i believe the 70s and so on at least on the later side um and also yeah i mean you you can have control of it maybe you can mine it within your old borders sometimes um it's it's a better hedge in an environment where the dollar is not acting like a somewhat fungible bearer asset
+*Fixes:* "commodities" -> "commodities". "hedge" -> "hedge".
+
+*Segment 17:*
+**[20:09] SPEAKER_00:** Okay. And another quick question, just actually talking about the dollar. So I think that, you know, for us or some of us on this call, certainly, you know, a feeling of a lack of confidence in the dollar. But is that what it is in terms of the central banks? Is it a lack of confidence in the dollar or is it just diversification?
+
+*Segment 18:*
+**[20:30] SPEAKER_03:** I guess you would say, like, why now and why so big? I think because they could have diversified at any time. I think it is a there's also like a sober evaluation that we must continue to print the dollar. That's maybe less clear. Like, I think our our federal spending is up 30, 40 percent from 2020. And we were spending a lot of money in 2020. At a certain point, you're going to both have to borrow. That's getting harder because people expect inflation to be higher. So you'd have to charge more interest on the debt. But we can't because it's so huge. or you're going to tax more, or you're going to print. Those are your choices. And some mix of all of them will be deployed. But yeah, I think it is the dollar you could... um borrow it really cheaply because people needed it for everything one way or another like in a sense like the us exports dollars and gets goods and services back somehow you know it took a long time to understand this like people will just like give us tractors and whatever you know um but it's it's changing it's not over still i think most trade for convenience like so the medium exchange value of the dollar will probably not go away but the savings value yes it's better than the argentinian peso say but if you can manage to hold the gold and silver or any number of other things probably probably it's a good idea
+*Fixes:* "federal spending" -> "federal spending". "argentinian" -> "Argentinian".
+
+*Segment 19:*
+**[22:19] SPEAKER_04:** And also, I think some nations do want to kneecap the US a little bit. Well, I think there is an element of that in terms of the industrial use case that you were talking about, right? So the big use cases for silver are solar panels and EVs, which is obviously dominated by China, right? Like China has 80% of the world's solar panel production, right? You know, BYD is the largest car manufacturer in the world and they mainly do EVs. So I think one of the effects of the trade war, if you will, is that China actively, Chinese companies are actively searching new markets. For example, you can see the number of BYD cars in Mexico, for example, or European countries have increased dramatically. So I think and then in and like I think I noticed that, you know, on the Shanghai exchange, silver hit all time highs, you know, even in December. So you can see the shift about like silver kind of like rare earths is becoming a strategic asset in the mind of like Chinese government officials. Right. And they even implemented export controls that went into effect in January. So you can't freely export from China. Now, to be honest, that's less of a worry because China is only the fourth largest producer of silver. They actually are a net importer of silver because of all these manufacturing things. But it's signaling that they consider this a strategic asset. And it wouldn't surprise me, not that I have any insider information in this, but that they would be stockpiling silver in the same way they stockpiled Nvidia chips ahead of bans coming up, right? So they tend to have long-range planning in terms of these assets. So I think that's part of the factor that could be driving up the price as well. Yeah, I think that is an interesting change.
+*Fixes:* "China" -> "China". "BYD" -> "BYD". "Nvidia" -> "Nvidia". "bans" -> "bans".
+
+*Segment 20:*
+**[24:26] SPEAKER_03:** Minister of the Chinese Strategic Civil. He hasn't got any inside knowledge.
+
+*Segment 21:*
+**[24:31] SPEAKER_04:** No inside info. I have no inside info. Yes, I have no inside info on this. But it's just the way they've behaved. When they think of something as strategic, whether it's AI chips or some mineral or some resource, they stock to stockpile it. And they do it gradually so the world doesn't really notice until it really notices. And I would suspect something like that is happening as well.
+
+*Segment 22:*
+**[25:02] SPEAKER_02:** Because I mean, thinking back to my own earlier experience, I can't remember if I've spoken on any of our spaces about this or just you guys personally. So I was aware of Bitcoin for a few years before I had any interest. And the reason I wasn't interested is because I was a gold bug and a silver bug. and a software engineer it's like I know how terrible software is so some dudes like made this magic internet money come on and I was actually doing very very well on silver through 2009 2010 and 11 until I leveraged myself up the wazoo on the previous big spike like this and then down we came and you know find myself in debt for a long time so don't use leverage kids By the way, our legal has reminded me, I should say, none of what we're saying should be considered investment advice. Put that caveat out there. Especially not with leverage on volatile assets. But a lot of the stories around that time, not a lot of the narratives is the same sort of stuff that we've already spoken about. Caveat, this industrial use stuff,
+*Fixes:* "Bitcoin" -> "Bitcoin". "gold bug" -> "gold bug". "silver bug" -> "silver bug". "leverage" -> "leverage".
+
+*Segment 23:*
+**[26:24] SPEAKER_04:** is really like ramped up a lot more over there over that 10 to 15 year period oh yeah yeah I mean alone like um honestly Canada just announced that they're going to be importing China EVs and um I'm eager to get my hands on one of these because my friends in China have been like mocking me shamelessly with pictures of their like cheap beautiful Chinese EVs so I'm looking forward to that But I think to extend your analogy on the ETH Bitcoin analogy with gold, silver, I do think there's some rebalancing going on. Those assets tend to stay in sort of fixed value to each other. And gold had a huge ramp up over the summer. And there was a lagging kind of ramp up of silver, too. And now that gold is hitting highs again, You know, I think you're going to continue to see sort of rebalancing. So, for example, like typically the ratio of gold to silver value is like 84 to 5 to 1. And then in the summer, you know, 90 to 1. And like I think you're going to see some rebalancing across a bunch of portfolios as well.
+*Fixes:* "China EVs" -> "Chinese EVs". "ETH Bitcoin" -> "ETH/Bitcoin". "gold to silver" -> "gold-to-silver".
+
+*Segment 24:*
+**[27:38] SPEAKER_00:** Yeah, I think that people in the silver business very much feel that way. And Bob, going back to 47th Street, even at the end of 2025, when silver hit the incredible price of $70 an ounce, people were saying to me, oh, it's overpriced, it's overpriced. It's just a matter of when it's going to come down. And those people still feel the same way, even though it's done nothing but go up since then.
+
+*Segment 25:*
+**[28:07] SPEAKER_04:** Well, one thing, Jeff, and I know you work with the suppliers very closely, is that oddly, the things we talked about, like Costco's own gold and silver and stuff, has increased the buy side. But it's actually not easy to exit at a good price. I know you had some experience with this, right? So it's kind of interesting, I think.
+
+*Segment 26:*
+**[28:27] SPEAKER_00:** Yeah, it is interesting. And actually it's based upon some conversations that I've had this week. And so not to name names, but, you know, keeping in touch with some of the big companies that buy and sell a lot of gold and silver. And, you know, right now, I mean, they are so overwhelmed in particular with people selling gold. that if you want to sell online to one of these big outfits, whereas the minimums used to be $500 or so, the minimums have now increased to $10,000 or $20,000 if you are selling silver. and the um time to get those deals done where it used to be at one company in particular it used to be you know if you want you can do it online or you can talk to us you know we'll help you ship it you send it to us we'll verify it we'll pay you the next day now they're saying things like well might take us a week to get it and we'll pay you within we'll do our best to pay you within eight to ten days and the the rates that they might be sure though like it could be I mean, they're short on everything, including the willingness to pay anywhere close to spot price for things. But this shows you why tokenized silver is clearly better, right? Because our tokenized silver is going close to spot, like both. Tokenized silver is better. And also, I mean, I know we're all crypto people, but also one of the things that I really like about it is that the tokenized metals are, it's like a settlement instrument the way that crypto is. It's instant.
+
+*Segment 27:*
+**[30:06] SPEAKER_03:** On this point, I don't know if someone posted it internally for us or if I just saw it on X, or maybe it was a repost. Paulo, CEO of Tether, said something like, you know, I wouldn't be surprised if a government issues a gold-backed stablecoin account you know a gold tokenized gold you know instrument um to compete with the dollar sometime soon and bear my tether is sitting on billions of dollars of uh balance sheet gold that it tokenizes a whole bunch of so maybe they maybe they know something we don't um but yeah they're trying to bring back the gold standard right yeah like here we go to be bringing it there we go yes make Ron Paul happy yeah exactly well i think we're at time does anyone have any closing thoughts yeah i mean i think like um as a crypto person but on the practical side i would say we love all the assets you know and you probably i mean they seem to be a little bit anti-correlated just as stocks and crypto are so you're probably better off having both know tokenized metals and crypto versus just one or the other um not investment advice investment advice and um and yeah we you know the wild times i'm like it's a little bittersweet like we've done we have a little bit of corporate gold and silver like we're happy but it's also like these prices are saying something bad about the world maybe which is uh
+*Fixes:* "Paulo" -> "Paolo". "Tether" -> "Tether". "crypto" -> "crypto". "tokenized" -> "tokenized". "Ron Paul" -> "Ron Paul". "gold standard" -> "gold standard".
+
+*Segment 28:*
+**[31:50] SPEAKER_04:** you know, change is always painful. I guess. I, I do think it's sort of a bet that the world is gonna be a little bit unstable going forward, which, um, you know, it's not, it's not, it's not a hard bet. It's yeah, it's yeah, exactly. It's not, it's not a difficult bet to make. No. So I'll, I'll just quickly mention, uh, the other thing and then, and then we're, then we're good.
+
+*Segment 29:*
+**[32:17] SPEAKER_02:** So, yeah, tomorrow I'm doing a Spaces with F Denver to talk about a collaboration that I have been doing between myself and Jessica Angel, who's the creative director there, which is an exhibit called the Museum of Ethereum. So we're doing Spaces about this tomorrow, but a little preview is at F Denver there will be an area when you first come into the main venue, a sort of a futurescape build out. One of the things in there will be the Museum of Ethereum. So this is really happening because it's the first Denver after 10 years of Ethereum. So there's going to be a mixture of physical and digital artifacts there. A lot of that like leaning on the work that we've had with early days of Ethereum and the interviews here. But also I'm doing some stuff with physical computers, which will be quite interesting. So I'm calling that the Ethereum time machine. So if you tune into the spaces tomorrow, you'll hear a little bit more about that. Or if you come into Denver,
+*Fixes:* "F Denver" -> "EthDenver". "Jessica Angel" -> "Jessica Angel". "Museum of Ethereum" -> "Museum of Ethereum". "Ethereum" -> "Ethereum".
+
+*Segment 30:*
+**[33:40] SPEAKER_03:** you will see the Museum of Ethereum. So that's something that Strato's supporting. So, Kieran, when you started the early days of Ethereum series, did you ever think it would be made physical in some form? No, but yeah, I mean, it should. It merits a museum, right? You know, we need to preserve all the artifacts, you know, cast them in metals, no doubt. We need bronze statues of Vitalik somewhere. Yes, we do.
+*Fixes:* "Kieran" -> "Kieren". "Strato's" -> "Strato's". "Vitalik" -> "Vitalik".
+
+*Segment 31:*
+**[34:10] SPEAKER_02:** And something which has actually been very helpful on that is the rise of AI is when I started doing my researchy stuff back in 2017, it was so slow and manual trying to find details and emailing people and so on. And now, you know, any of the major LLMs are absolutely great at digging things out. So we are recovering its archaeological work.
+
+*Segment 32:*
+**[34:36] SPEAKER_04:** of recovering things which is only a few years ago but it's kind of like 10 years ago is like forever right and in the crypto world it's like a like it's several lifetimes ago at least like I I think we're like order of magnitude above dog years basically in the crypto world absolutely okay thank you everyone take care bye bye
+*Fixes:* "crypto" -> "crypto". "LLMs" -> "LLMs".
+
+**5. Final Review of Rules:**
+- No preamble.
+- Bold speaker label with timestamp.
+- Merge consecutive speech.
+- Correct names (Kieren, Jeff, BlockApps, Strato, Paolo, EthDenver, Nvidia).
+- Preserve numbers ($112, $70).
+- Remove excessive filler ("um", "uh", "you know").
+- Preserve all content.
+
+**Speaker Label Issues:**
+I noticed in Segment 7, the text under **[04:32] SPEAKER_00:** seems to contain Bob's lines ("Well, good to have those connections..."). Since I cannot split timestamps or generate new ones, and I must preserve labels, I will keep it as **[04:32] SPEAKER_00:**. I will format it as a single paragraph (or multiple if natural breaks exist, but usually I merge if same speaker). However, if the flow indicates a back-and-forth within the same block, it's messy. I will treat the block as a monologue for formatting purposes to strictly follow the "one speaker turn = one timestamp" rule implied by the "CORRECT FORMAT EXAMPLE".
+
+Wait, the rule says: "MERGE CONSECUTIVE SPEECH INTO PARAGRAPHS... All speech from one speaker before another speaks = ONE paragraph".
+And "IF the input HAS timestamps: PRESERVE them EXACTLY as they appear".
+This implies if the input has bad labels, I output the bad labels with the timestamp.
+However, looking at **[34:36] SPEAKER_04:**: "of recovering things which is only a few years ago...". This starts mid-sentence. The previous speaker was **[34:10] SPEAKER_02:**.
+The transcript has: "So we are recovering its archaeological work."
+Then **[34:36] SPEAKER_04:** says "of recovering things...".
+This looks like a continuation or a comment.
+If I just output **[34:36] SPEAKER_04:** of recovering things..., it looks broken.
+Maybe the transcript for 04 is just Victor repeating or completing?
+"of recovering things which is only a few years ago..." -> Maybe he is saying "It's a matter of recovering things..."
+I'll leave it as is.
+
+**Refining Segment 7 (The mixed speaker block):**
+The transcript has:
+**[04:32] SPEAKER_00:** ...Strato platform. Well, good to have those connections, that's for sure. So what is happening with the price of precious metals right now? Well, before we get into that, maybe we could talk a little bit about why we got into precious metals in the first place. Please do. And Karen, I'm going to flip that to you for a second.
+"Well, good to have those connections" is definitely Bob.
+"So what is happening..." is definitely Bob.
+"Well, before we get into that..." is definitely Jeff.
+"Please do" is Bob.
+"And Karen..." is Jeff.
+Since I cannot split this without inventing timestamps (forbidden), I will output it all under **[04:32] SPEAKER_00:**. This is the safest adherence to the strict constraints.
+
+**Correction on "Kieran" -> "Kieren":**
+The prompt says: "IMPORTANT: 'Kieran' → 'Kieren' (Kieren James-Lubin, NOT Kieran)".
+I will apply this everywhere.
+
+**Formatting:**
+- **[MM:SS] SPEAKER_XX:** text.
+- Paragraphs separated by blank lines.
+- No extra commentary.
+
+Let's go.**[00:02] SPEAKER_02:** Hello. Hello. We are live. So welcome to Online Oracles. I am Bob Summerwill. I'd like to welcome the rest of our guests here. So we have Michael Tan. We have Victor Wong. We have Kieren James-Lubin. And also today making an appearance is Jeff Powell. Hello. Would you like to please do introduce yourself, Jeff?
+
+**[00:36] SPEAKER_00:** Thanks, Bob. I'm Jeff Powell, head of business development at BlockApps. I've been working with people on this video for getting close to five years now. And in recent years, I've done a great deal of work on our tokenized metals campaigns. So very excited to be here today to talk about silver.
+
+**[01:02] SPEAKER_02:** Absolutely. I mean, maybe a little bit. That's it. You're absolutely perfect for the topic today. So yeah, our topic today is silver at all time high, what's going on. But we've also got gold at all time highs having happened after that.
+
+**[01:21] SPEAKER_01:** But before we get into those, we are going to have a little bit of a demo or conversation from Michael. What have you got for us? Sure. So I'm going to be demoing the Strato Easy Safe Bridging process. Right now, we have a bridging contest going on where if you bridge in a certain amount, 10% of that goes to a pool that will be distributed to the winner through a lucky draw. Points are generated or calculated through the Strato rewards program, so you know, everyone has a chance to win. You got to be in it to win it. This is the current leaderboard on Strato Scan if you want to check it out, but now I'll demo the Easy Save. So once you log in to your account, A lot of money here. You go to this deposit function, having deposit button, connect your wallet. To be clear, like I'm doing this on the testnet, but the process on the production is exactly the same. Yep. So you can bridge in either USDT or USDC. Let's do USDT for this one. We'll do, let's say a hundred. Make sure this is checked so that it goes directly to the lending pool. Pause and earn. Confirm. Confirm. Takes a second. The bridge is, you know, that's on the Ethereum side, which did go into autosave. And there you have it. One to two minutes. It'll be directly in the lending pool. And if you want to check it out, you can go to advanced lending pool and your funds will be in here. Okay. Back over to you, Bob. Very nice. Well, thank you.
+
+**[03:21] SPEAKER_03:** Kieren or Victor, anything you'd like to say about that? Yeah, we wanted to have a very convenient way, you know, so some of the users out there in the world just want simple, pretty good yields, you know, that's better than you typically get from a savings account or all that sort of thing and not too much thinking. So easy savings. Yes, you need, at least for now, to have a crypto native wallet. But from there, it's essentially one click, as you saw, to your call at 4% yield, depending on the circumstances. It's different on the testnet than the live net. And yeah, so we're just happy to make it, you know, still DeFi native, but as consumer friendly. Thanks, Michael. Take care. Yep.
+
+**[04:16] SPEAKER_02:** So, Geoff, tell us about 47th Street. I always keep hearing about 47th Street from you. What's going on there? Well, of course, when we talk about 47th Street, we're talking about...
+
+**[04:32] SPEAKER_00:** 47th Street in Manhattan, which many people know as the Diamond District. It's filled with stores buying and selling diamonds and other precious stones. But it's also an epicenter for the buying and selling of precious metals, very specifically gold and silver. And so as BlockApps started tokenizing metals, we established a variety of relationships with various dealers and vaulters. But 47th Street became really a prime source for us, really for learning about the business. Whereas people may not think of it as being a place where there's a lot of value other than stones, There really is a lot of business going on on 47th Street, and there's a lot of vaulting going on on 47th Street. So there's actually, I don't want to estimate, but very large, very large supplies of gold and silver there. So we've developed some very helpful partnerships for us to not only navigate the space, but also to successfully move into the tokenization business for gold and silver. That's really been an important part of our Strato platform. Well, good to have those connections, that's for sure. So what is happening with the price of precious metals right now? Well, before we get into that, maybe we could talk a little bit about why we got into precious metals in the first place. Please do. And Kieren, I'm going to flip that to you for a second.
+
+**[06:19] SPEAKER_03:** Yeah, okay. I will tell an anecdote you guys may not understand. No part of, you know, but we'll work back to it. So in 2020, Roughly around March, we were sort of like fleeing our office. A couple of people were still coming in into maybe late February. And I think we got out of the office before formal shutdown orders, but only maybe a couple of weeks before. And then based on the reaction, I got to thinking like, we're clearly going to print a whole ton of money, like a whole lot. And so I was like, okay, what should I get into then to hedge against the expanding money supply? I got out of anything that had to do with lending. There are some companies that will lend money at pretty high dollars in automated yields. But as we saw, we printed like 40% of the dollars in existence inside a year. You know, got into more crypto. I've always been in crypto, of course. And I bought like a good, you know, I think it was the GLD ETF or IAU or one of those. And that thing just sat there for like two plus years. I was like, you know, like, you know, this thing, I thought it was an inflation hedge. Everything risk on went crazy, you know. Zoom went up at like 10x. I did buy a little Zoom at that time, in part because I was like, I think we're not going to be in offices for a bit. So I guess we're going to have to be video conferencing more. And I did not buy nearly enough Zoom. I called it right, and it was too small a trade. And the metals did nothing. Crypto, ETH went from like 80 back to in the range that we're accustomed to. That was good. And the metals did nothing. For like a couple of years. So like, I think I exited flat, you know, maybe I was like paying for some closing costs on property or something or what have you. But it was, you know, I was like, crypto people tend to be at least hard money oriented to a degree, like crypto is better than precious metals in a lot of ways. But, you know, I was like, how could I have been so wrong? And I guess it was just like, oh, it was just five years early plus, you know, And it took the world a while to kind of, you know, get pay attention again. So so when we during this period of time, we're moving out of our like enterprise phase where we did a lot of big immovitations with Fortune 500, 100 style companies. supply chain focus, et cetera. And then we were getting interested in the transaction aspect, the supply chains, obviously, you know, values moving. We're like, well, maybe we need to be more in that flow. And so we did we tokenized many different assets for the corporates and then started tokenizing the assets in a more kind of like NFT style. Right. Um and so we did a lot with carbon offsets for instance because all of the corporates were screaming for them for a time it's definitely cooled off a little bit um it was kind of a natural flow from our supply chain work and like we were just kicking around like okay what about metals and we even looked at um commodities like nickel which proved to be kind of complicated but we ended up finding uh really a lot of demand for precious metals and some intersection between personalities like you know hard money types and the crypto types there's you know good good solid overlap um and i felt you know the the the metals are sort of the boomer version of of crypto and maybe that's changing maybe the kids are aware of it now you know it's like they're on the perp DEXs at this point various silver Futures and so on so the call was totally right and you know by accident in a sense although you know I always was inclined positively towards them.
+
+**[10:23] SPEAKER_04:** Well, I think there was one other thing that we talked about at the time, too, was that it's weird how I think, you know, when we got into crypto, everyone thought of it as, you know, a store of value, a hedge against other world events. But they seem to move more in line with the stock market. Yeah, it's high beta. It's not really a true hedge, where metals acted more like a true hedge. So, you know, it provided that opportunity, too.
+
+**[10:50] SPEAKER_00:** Yeah, I think both of those are really interesting. And Kieren, since you went back in time a few years, something else that I think that a lot of people don't think about that I really think was a key point in the popularity of metals on an investor basis, not just institutional, but a man on the street basis here in the US anyway, was in September of 2023, Gold was selling for about $1,900 an ounce. Silver was selling for $22, $23 an ounce. And that month, Costco started offering gold bars, selling them very low margin, 1% to 2% above spot. But if you were a Costco VIP member or using know the Costco credit card you could actually get a discount of that so you were actually able to practically buy gold bars at spot and i think that um from a business standpoint they had it was just sort of another loss leader for them something to get people into the store but But it's estimated that since then, for what's now close to two and a half years, Costco has been selling 100 to 200 million dollars a month of gold bars. And I think that that really opened up people to this idea of this alternative asset. Not that gold was a new thing or anything like that, but I think that domestically that really boosted it.
+
+**[12:24] SPEAKER_02:** without having to, you know, go off to a bullion dealer, you know, work out how to do that. Exactly. You know, you could go in and, you know, you could buy your groceries and on the way out, pick up a gold bar.
+
+**[12:37] SPEAKER_04:** As you do. As one does. In America, as one does. Is that your dollar cost averaging? Yeah. Add a bit of silver onto your groceries. I don't know. Is there, like, bullets next to the gold? Some, like, garlic, you know, for the vampire? Well, also, though, if you have the highest level of Costco membership, you also get cash back. So you actually wind up. There's an arb of opportunity there. Yeah, there's an ARB opportunity. Kieren will be running to Costco after this. Exactly. Didn't realize he was missing out on the ARB. Get an SUV, max out his Costco membership, you know, do all of that stuff. Really living.
+
+**[13:24] SPEAKER_00:** But moving forward into, I mean, the last year is when it's really exploded, both gold and silver. I was looking at it and a year ago, silver was selling for like $30 an ounce as opposed to what it was today. Last time I looked, it was $112 an ounce. And gold has basically doubled. But I know that... I mean, you know, I know that we talk about these things, you know, hedge against inflation, you know, concerns, you know, about, you know, the fiscal concerns about, you know, minting dollars, the global instability we have seen. But, you know, is that, Kieren, you really think that that's what it is? You think these are the factors that are driving it?
+
+**[14:20] SPEAKER_03:** Well, so, okay. I think maybe the biggest factor probably, it's always a coincidence of things. When you see a run like this, it's more than one thing at once, usually. So the, I believe that we, over the last few years scared the world enough that central banks started to deleverage from the dollar, not completely. Like I think it's going to still be quite inconvenient. You can't really denominate global trade and gold and silver per se, but as a balance sheet asset, People are selling Treasuries in pretty big numbers and buying gold and silver people. I mean, central banks. Right. Right. And that has to just mathematically provide a lot of the demand. Like, you know, you could I don't know how to do this per se, but you could do a calculation where. You could figure out how much demand shift would be needed to cause this price shift. And I think the most plausible is that, yeah, big, big central banks, India, China and so on, started dumping on the one side and buying precious metals on the other. And it's I think it this cycle really started with the aggressive I mean so we've been sanctioning the whole world for a long time but I think the the Russia case in particular really you know like various and maybe they're not the greatest people on earth but various oligarchs just having their funds frozen all over the place we're like confiscating yachts and you know and all of that the SWIFT disconnect and so on you kind of can't have you know, something be world money and then start revoking like a nation's access to it. Right. So everyone saw that and looked, you know, and I mean, this all continued. By the way, I mean, of course, crypto had been experiencing that sort of treatment for some time, which is why we don't plenty of us don't trust the dollar, you know, altogether. And so the just the new administration you know has a fairly uh you know bare-knuckled statement and negotiating style i think the there are long-run effects of the tariff liberation day in which tariffs are capital control pretty much right it's a fee more than a hundred percent fee in effect um but um There seems to be a realigning world order going on that just doesn't trust the dollar the way it used to and or maybe explicitly wants enough of it is strong enough it's getting multipolar basically so so I think those are the things that could move the price pretty big I've also heard some of the large banks are in market buying up some of them you can look up are bigger in metals than others so you know they may be you know hedging against this trend but that has to be sort of the big factor I would think there are other ones right like so silver probably is higher beta than gold it's definitely more volatile so you'd expect slightly different behavior between gold and silver but you know I wanted to touch on the the Bitcoin ETH analogy or you know I sort of I like to say tongue-in-cheek that like yes Bitcoin's like gold you know it just kind of sits there Whereas like silver, you're using it. You've got semiconductor applications and solar and this and that. You're actually using it for something. And somehow the gold is worth way more. It's kind of funny on some level. And that's part of it. The price of silver is so high that I have heard at least that there are cases where it's hard to substitute industrially. And so it's actually going to mess with commerce, you know, like one. Yeah. And one good thing about commodities is that when the price is really high, you tend to like go mine more of them or go get more of them somehow. So I don't think we're going to see silver just up for a while. You know, you'll start to see mining action happen and the price will collect a little bit and the miners will make the profits kind of on the way down. But I understand that mining takes a while to turn around, though. It takes a while. I mean, although the price should correct pretty quickly once the capital's there, because it's not pricing just current supply and it's expected future supply. But yeah, it'll take some time for that to get run in for sure. So that's all very interesting. I just want to go back to something you were saying. So you're talking about...
+
+**[19:17] SPEAKER_00:** Talking about institutions, institutions started regarding Treasuries as, I guess, less of a safe haven for the reasons that you mentioned. And so the way you see it is that then gold or precious metals filled that gap, right?
+
+**[19:33] SPEAKER_03:** yeah if you want sovereign savings and you can deal with the you know that's it one in inflationary times you know the commodities do really well like they did really well i believe the 70s and so on at least on the later side um and also yeah i mean you you can have control of it maybe you can mine it within your old borders sometimes um it's it's a better hedge in an environment where the dollar is not acting like a somewhat fungible bearer asset.
+
+**[20:09] SPEAKER_00:** Okay. And another quick question, just actually talking about the dollar. So I think that, you know, for us or some of us on this call, certainly, you know, a feeling of a lack of confidence in the dollar. But is that what it is in terms of the central banks? Is it a lack of confidence in the dollar or is it just diversification?
+
+**[20:30] SPEAKER_03:** I guess you would say, like, why now and why so big? I think because they could have diversified at any time. I think it is a there's also like a sober evaluation that we must continue to print the dollar. That's maybe less clear. Like, I think our our federal spending is up 30, 40 percent from 2020. And we were spending a lot of money in 2020. At a certain point, you're going to both have to borrow. That's getting harder because people expect inflation to be higher. So you'd have to charge more interest on the debt. But we can't because it's so huge. Or you're going to tax more, or you're going to print. Those are your choices. And some mix of all of them will be deployed. But yeah, I think it is the dollar you could... um borrow it really cheaply because people needed it for everything one way or another like in a sense like the us exports dollars and gets goods and services back somehow you know it took a long time to understand this like people will just like give us tractors and whatever you know um but it's it's changing it's not over still i think most trade for convenience like so the medium exchange value of the dollar will probably not go away but the savings value yes it's better than the Argentinian peso say but if you can manage to hold the gold and silver or any number of other things probably probably it's a good idea.
+
+**[22:19] SPEAKER_04:** And also, I think some nations do want to kneecap the US a little bit. Well, I think there is an element of that in terms of the industrial use case that you were talking about, right? So the big use cases for silver are solar panels and EVs, which is obviously dominated by China, right? Like China has 80% of the world's solar panel production, right? You know, BYD is the largest car manufacturer in the world and they mainly do EVs. So I think one of the effects of the trade war, if you will, is that China actively, Chinese companies are actively searching new markets. For example, you can see the number of BYD cars in Mexico, for example, or European countries have increased dramatically. So I think and then in and like I think I noticed that, you know, on the Shanghai exchange, silver hit all time highs, you know, even in December. So you can see the shift about like silver kind of like rare earths is becoming a strategic asset in the mind of like Chinese government officials. Right. And they even implemented export controls that went into effect in January. So you can't freely export from China. Now, to be honest, that's less of a worry because China is only the fourth largest producer of silver. They actually are a net importer of silver because of all these manufacturing things. But it's signaling that they consider this a strategic asset. And it wouldn't surprise me, not that I have any insider information in this, but that they would be stockpiling silver in the same way they stockpiled Nvidia chips ahead of bans coming up, right? So they tend to have long-range planning in terms of these assets. So I think that's part of the factor that could be driving up the price as well. Yeah, I think that is an interesting change.
+
+**[24:26] SPEAKER_03:** Minister of the Chinese Strategic Civil. He hasn't got any inside knowledge.
+
+**[24:31] SPEAKER_04:** No inside info. I have no inside info. Yes, I have no inside info on this. But it's just the way they've behaved. When they think of something as strategic, whether it's AI chips or some mineral or some resource, they stock to stockpile it. And they do it gradually so the world doesn't really notice until it really notices. And I would suspect something like that is happening as well.
+
+**[25:02] SPEAKER_02:** Because I mean, thinking back to my own earlier experience, I can't remember if I've spoken on any of our spaces about this or just you guys personally. So I was aware of Bitcoin for a few years before I had any interest. And the reason I wasn't interested is because I was a gold bug and a silver bug. And a software engineer it's like I know how terrible software is so some dudes like made this magic internet money come on and I was actually doing very very well on silver through 2009 2010 and 11 until I leveraged myself up the wazoo on the previous big spike like this and then down we came and you know find myself in debt for a long time so don't use leverage kids. By the way, our legal has reminded me, I should say, none of what we're saying should be considered investment advice. Put that caveat out there. Especially not with leverage on volatile assets. But a lot of the stories around that time, not a lot of the narratives is the same sort of stuff that we've already spoken about. Caveat, this industrial use stuff,
+
+**[26:24] SPEAKER_04:** Is really like ramped up a lot more over there over that 10 to 15 year period oh yeah yeah I mean alone like um honestly Canada just announced that they're going to be importing Chinese EVs and um I'm eager to get my hands on one of these because my friends in China have been like mocking me shamelessly with pictures of their like cheap beautiful Chinese EVs so I'm looking forward to that But I think to extend your analogy on the ETH Bitcoin analogy with gold, silver, I do think there's some rebalancing going on. Those assets tend to stay in sort of fixed value to each other. And gold had a huge ramp up over the summer. And there was a lagging kind of ramp up of silver, too. And now that gold is hitting highs again, You know, I think you're going to continue to see sort of rebalancing. So, for example, like typically the ratio of gold to silver value is like 84 to 5 to 1. And then in the summer, you know, 90 to 1. And like I think you're going to see some rebalancing across a bunch of portfolios as well.
+
+**[27:38] SPEAKER_00:** Yeah, I think that people in the silver business very much feel that way. And Bob, going back to 47th Street, even at the end of 2025, when silver hit the incredible price of $70 an ounce, people were saying to me, oh, it's overpriced, it's overpriced. It's just a matter of when it's going to come down. And those people still feel the same way, even though it's done nothing but go up since then.
+
+**[28:07] SPEAKER_04:** Well, one thing, Jeff, and I know you work with the suppliers very closely, is that oddly, the things we talked about, like Costco's own gold and silver and stuff, has increased the buy side. But it's actually not easy to exit at a good price. I know you had some experience with this, right? So it's kind of interesting, I think.
+
+**[28:27] SPEAKER_00:** Yeah, it is interesting. And actually it's based upon some conversations that I've had this week. And so not to name names, but, you know, keeping in touch with some of the big companies that buy and sell a lot of gold and silver. And, you know, right now, I mean, they are so overwhelmed in particular with people selling gold. That if you want to sell online to one of these big outfits, whereas the minimums used to be $500 or so, the minimums have now increased to $10,000 or $20,000 if you are selling silver. And the um time to get those deals done where it used to be at one company in particular it used to be you know if you want you can do it online or you can talk to us you know we'll help you ship it you send it to us we'll verify it we'll pay you the next day now they're saying things like well might take us a week to get it and we'll pay you within we'll do our best to pay you within eight to ten days and the the rates that they might be sure though like it could be I mean, they're short on everything, including the willingness to pay anywhere close to spot price for things. But this shows you why tokenized silver is clearly better, right? Because our tokenized silver is going close to spot, like both. Tokenized silver is better. And also, I mean, I know we're all crypto people, but also one of the things that I really like about it is that the tokenized metals are, it's like a settlement instrument the way that crypto is. It's instant.
+
+**[30:06] SPEAKER_03:** On this point, I don't know if someone posted it internally for us or if I just saw it on X, or maybe it was a repost. Paolo, CEO of Tether, said something like, you know, I wouldn't be surprised if a government issues a gold-backed stablecoin account you know a gold tokenized gold you know instrument um to compete with the dollar sometime soon and Paolo at Tether is sitting on billions of dollars of uh balance sheet gold that it tokenizes a whole bunch of so maybe they maybe they know something we don't um but yeah they're trying to bring back the gold standard right yeah like here we go to be bringing it there we go yes make Ron Paul happy yeah exactly well i think we're at time does anyone have any closing thoughts yeah i mean i think like um as a crypto person but on the practical side i would say we love all the assets you know and you probably i mean they seem to be a little bit anti-correlated just as stocks and crypto are so you're probably better off having both know tokenized metals and crypto versus just one or the other um not investment advice investment advice and um and yeah we you know the wild times i'm like it's a little bittersweet like we've done we have a little bit of corporate gold and silver like we're happy but it's also like these prices are saying something bad about the world maybe which is uh.
+
+**[31:50] SPEAKER_04:** You know, change is always painful. I guess. I, I do think it's sort of a bet that the world is gonna be a little bit unstable going forward, which, um, you know, it's not, it's not, it's not a hard bet. It's yeah, it's yeah, exactly. It's not, it's not a difficult bet to make. No. So I'll, I'll just quickly mention, uh, the other thing and then, and then we're, then we're good.
+
+**[32:17] SPEAKER_02:** So, yeah, tomorrow I'm doing a Spaces with EthDenver to talk about a collaboration that I have been doing between myself and Jessica Angel, who's the creative director there, which is an exhibit called the Museum of Ethereum. So we're doing Spaces about this tomorrow, but a little preview is at EthDenver there will be an area when you first come into the main venue, a sort of a futurescape build out. One of the things in there will be the Museum of Ethereum. So this is really happening because it's the first Denver after 10 years of Ethereum. So there's going to be a mixture of physical and digital artifacts there. A lot of that like leaning on the work that we've had with early days of Ethereum and the interviews here. But also I'm doing some stuff with physical computers, which will be quite interesting. So I'm calling that the Ethereum time machine. So if you tune into the spaces tomorrow, you'll hear a little bit more about that. Or if you come into Denver,
+
+**[33:40] SPEAKER_03:** You will see the Museum of Ethereum. So that's something that Strato's supporting. So, Kieren, when you started the early days of Ethereum series, did you ever think it would be made physical in some form? No, but yeah, I mean, it should. It merits a museum, right? You know, we need to preserve all the artifacts, you know, cast them in metals, no doubt. We need bronze statues of Vitalik somewhere. Yes, we do.
+
+**[34:10] SPEAKER_02:** And something which has actually been very helpful on that is the rise of AI is when I started doing my researchy stuff back in 2017, it was so slow and manual trying to find details and emailing people and so on. And now, you know, any of the major LLMs are absolutely great at digging things out. So we are recovering its archaeological work.
+
+**[34:36] SPEAKER_04:** Of recovering things which is only a few years ago but it's kind of like 10 years ago is like forever right and in the crypto world it's like a like it's several lifetimes ago at least like I I think we're like order of magnitude above dog years basically in the crypto world absolutely okay thank you everyone take care bye bye.

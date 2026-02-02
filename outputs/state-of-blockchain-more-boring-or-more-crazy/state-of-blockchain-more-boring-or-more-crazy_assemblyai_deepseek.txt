@@ -1,0 +1,231 @@
+```
+SPEAKER_00: Okay, I think we are live.
+
+SPEAKER_01: Live us.
+
+SPEAKER_00: Let's just give a minute for people to join.
+
+SPEAKER_01: Alrighty.
+
+SPEAKER_02: So I looked at the background noise reduction. It says not supported in this browser. I'm using Firefox. Perhaps it has to be Chrome.
+
+SPEAKER_00: Yes.
+
+SPEAKER_01: You must pick from the two available choices.
+
+SPEAKER_00: Safari. Yeah, Safari has a huge amount just because of the iPhone.
+
+SPEAKER_01: Is it called Edge still?
+
+SPEAKER_00: Yes.
+
+SPEAKER_02: Nobody uses Edge. Nobody uses it.
+
+SPEAKER_01: I bet you it's a lot. Hold on.
+
+SPEAKER_02: I seem to remember seeing, and I can't remember if it was on Edge or Bing or probably both. But the most searched thing was how to install Chrome.
+
+SPEAKER_01: That's funny. Try though. They might. Wow. Chrome just continues to rise in market share. It's gone from 66% roughly about a year ago to 72% now worldwide. Safari is trending down. Yeah, they're just pretty tiny. Wow. Opera is still around. That's amazing.
+
+SPEAKER_02: They all use Chromium though.
+
+SPEAKER_01: Okay, fair enough.
+
+SPEAKER_00: Oddly, my son uses Opera. Okay, we are live now on Twitter.
+
+SPEAKER_01: Live. Live.
+
+SPEAKER_00: Okay, so should we wait another minute or should we just start?
+
+SPEAKER_01: That's a good question. We can ease into the substance of the content. Do we have any minute-long non sequiturs code opens.
+
+SPEAKER_00: Well, maybe we should do our intros because we.
+
+SPEAKER_01: Okay, we could do the intros. So.
+
+SPEAKER_00: Hi everyone. Welcome to our weekly show. If you don't know, we are all part of the Strato Mercado project that is a layer 1 EVM-compatible blockchain focused on bringing DeFi to the masses. Now we, the three of us here, are all longtime builders and all Ethereum OGs. I'm Victor Wong. Vic.
+
+SPEAKER_01: I don't know if you can describe yourself as an OG. I think someone else has to describe that.
+
+SPEAKER_00: Someone else to bestow that.
+
+SPEAKER_01: Exactly.
+
+SPEAKER_00: Okay, you two. No, you.
+
+SPEAKER_02: Can we say it to each other?
+
+SPEAKER_00: Yeah.
+
+SPEAKER_01: Can we say you are an OG?
+
+SPEAKER_00: But yeah, I said that as a.
+
+SPEAKER_01: Collection in a circle.
+
+SPEAKER_00: Right, exactly.
+
+SPEAKER_01: You can tell Bob. Bob's an OG. Bob can tell me. I can tell you.
+
+SPEAKER_00: Yes. So we've been building since the launch of Ethereum and continue to follow this journey. So you'll get hopefully no shilling and a lot of good historical context about what we're going to talk about today. Today we are going to talk about the highlights from Token2049 and was it more boring or more crazy in terms of the blockchain world? Joining me is Bob Summerwill. Bob, you want to do a quick intro?
+
+SPEAKER_02: Hi there, I'm Bob Summerwill. We are all. We're not old, we're all very experienced. But yes, I'm head of ecosystem.
+
+SPEAKER_00: Yeah. And Kieren, of course.
+
+SPEAKER_01: Yeah, I am also experienced. You know, not as long as you can be in the space, but it's starting to feel like it. Right. Like we've really been around for some time. But yes, I'm.
+
+SPEAKER_00: I will bestow the OG title on you, Kieren. So we could go. I mean, anyone that's been around since before the launch of Ethereum and was part of it, I think, you know, that would be. We can claim that title.
+
+SPEAKER_01: How the time goes.
+
+SPEAKER_00: So I will say that I was not in Singapore. I kind of played hooky with Kieren's approval. You know, international travel is brutal, but Bob and Kieren were there. And why? To get your kind of impressions. What do you think the big themes this year were at Token2049?
+
+SPEAKER_01: Yeah. Bunch of big topics. One thing that was notable is that it felt like meme coins had almost completely vanished. And there was a lot of that the previous year.
+
+SPEAKER_00: And can I pour one out for the meme coins?
+
+SPEAKER_01: Basically, in meme coins' defense, I'm actually kind of pro meme coin. The problem is just the time horizon that people want to make money in, like, seconds. I think if a meme around a concept can grow organically for some period of time, it's great.
+
+But yeah, it's just the impatience and nihilism seems to increase with each cycle. But maybe, maybe not this one. So the conference felt kind of less scammy in general. And a lot of digital asset treasury talk, I think we can go into that as we go. A lot of stablecoin talk, you know, a lot of merger with TradFi sort of feel. I also think something has changed, and I can't tell if it's just that we're all being bombarded with the same content or something's qualitatively different about the world. Where like a year ago it felt like crypto was sort of peripheral to the problems with the world, and now it feels like it's a big part of the solution. It's very strange. And everyone sort of acknowledges that, you know, like Donald Trump Jr. was there. That's a big changeover where you just feel, you know, like some weeks ago, Putin made his comments about how the United States was trying to use stablecoins to export American inflation, which is probably true, but it's like that's a big turnaround. It's like a from the top policy as opposed to just. And you felt that at the conference as well.
+
+SPEAKER_02: Well, I mean, that wasn't new on the Bitcoin conference side. So I was in Nashville in 2014, 2020, 2024, and then this July in Vegas. So in Nashville last year you had Trump RFK Jr, then this year you had both Trump boys. Ben Jr and Eric were both there, and oh my goodness, I'm forgetting his name from the UK. It will come to me in a second. But yeah, and also, you know, like tons of other Congress people and state level stuff like that's been a real theme well in advance on the Bitcoin side. I mean, I guess essentially because you've already got that monetary store of value use case. It's like getting into these boring ETF, you know, treasury company, government level adoption sort of stuff that's happened earlier than on the Bitcoin side than more generally. But yeah, also I mean obviously like the Trumps have got their World Liberty nonsense going on and gotta be pumping that one.
+
+SPEAKER_00: Well, actually that's a good transition. So you know, we couldn't internally decide whether the conference was more boring or more crazy than usual. You kind of have talked about the boring elements, I guess, you know, more institutional. And I'm curious like, you know, since this is in Singapore, a very global conference, like what countries outside the US seem to be moving in this direction? You know, like obviously the US has been a holdout for a really long time, but you know, how are things getting boring and how are things getting more global?
+
+SPEAKER_01: Bob, I want to remind you not to criticize our friends in Washington, at least in a public forum, supporters of the.
+
+SPEAKER_02: I'm not getting back in.
+
+SPEAKER_01: So, yeah, so it's an interesting feel. The conference, I would say, obviously represented people who are close by pretty well, but also a good number of people from let's say UAE, some Europe, and plenty of Americans who did the really long trip. Lots of Americans I would say. And yeah, I think it's a strange. The institutional feeling was much stronger than the prior year, and it's not that much time to have passed. There were many, you know, the stablecoin. Stablecoins have this institutional feel to them. Even you know, at the beginning they didn't. And it is funny to watch like, you know, I see these announcements like, you know, Tether's coming to the US and we've set up a nice regulatory framework that they can work with. And I went to a side event and met some of the Tether people. It's also just funny to see them, you know, in the media, like buying sports teams and all of that. Like at a certain point you get big enough, you become institutional.
+
+SPEAKER_00: Right, right.
+
+SPEAKER_01: But yeah, I think, you know, it even last year it felt like blockchain technology at the maybe at the lower levels of the stack disproportionately gets created in the broader West, right, and maybe that with the exception of some of the exchanges and such, and it gets used outside the west more. So you see stablecoin balances, yes, they're big in the US, but it's kind of really a global story. Tether in particular being like much larger than Circle. Obviously. I think both of them, you know, Tether purports not to serve the US, I'm sure there's plenty of US USDT holders. Circle maybe preferencing the US, but probably covers global as well. It's a. So, I think it's a funny feeling in which the people at the conference are a little more like users than builders. And there's also just, I mean, the Token conference is a little like someone described it to me, kind of like Comic Con. And I thought that was actually very apt. Like there's people in funny costumes, like astronauts. You could take yourself as an astronaut with Justin Sun pictures. I think Bob has one and like lots of shiny outfits. And I think the world's tallest man was there, sadly in a wheelchair. I think he has a hard time standing, yes, for at least for long periods of time. It was like you saw this horse in a wheelchair. I was like, no, that's a human. Like, you know, like a really large human being.
+
+SPEAKER_00: Well, he probably has to be in a wheelchair just so he doesn't bump his head on every door frame that is out there. You know what I mean?
+
+SPEAKER_01: Yeah, yeah, exactly. And so, you know, the mix definitely big global conference. I think they usually get the number you hear is like 20ish thousand people coming from hubs. You know, again, a lot of UAE.
+
+SPEAKER_00: Good.
+
+SPEAKER_01: Some of the European hubs and big US contingents. Very long flight for us. But yeah, it was great. Singapore also just a great place to hang out and pretty good representation of the global scene, if you will. There's also a feeling that the same people are manning the booths last year this year I've also heard, very expensive conference. But the companies have in many cases changed except for like the very big ones, you know, the headliners, people get invited to the stage, etc, a lot of turnover in who was represented at the conference. So you know, in some ways being a media company is one of the better ways to, you know, survive cycles in crypto, you know, just someone will pay that big conference figure. Yeah.
+
+SPEAKER_00: And it seems those fees are getting bigger and bigger too, right? It's just very, very.
+
+SPEAKER_01: Cool garbage.
+
+SPEAKER_00: So. Yeah. And we don't want to keep you too long. Obviously you got important things to do around the house. Bob, what do you think about the global and the boring part of it?
+
+SPEAKER_02: So, yeah, I mean, I guess just something else to say that is I have been to a lot of conferences, I've never seen somewhere with so much floor space of expo halls just on and on and on, like, honestly like city blocks, many, many city blocks worth of stuff, you know, and then you go, all right, yeah, there's another whole floor of this. Yeah, yeah, it's twice as much as you thought.
+
+SPEAKER_00: Even bigger than DEFCON in Thailand last year. Because I remember looking, you know, getting my step tracker and like seeing like, oh man, I 15,000 steps in the conference center.
+
+SPEAKER_02: Bigger in terms of the expo area. Certainly, you know, like DEFCON was a large floor area, but it was lots and lots of different rooms of talks and then little stores, whereas this is just expo hall of selling. I don't know what most of them were. Thousands and thousands of projects that you've never heard of doing a thing that is pretty indistinguishable from everybody else. So yeah, talking about the turnover, Kieren and I'm sure that that's the case, the vast majority of them are going to be gone in a year's time and never even know they happened.
+
+SPEAKER_00: But so do you guys think the boringness comes from institutions themselves or what they're doing? Because everyone seems to be doing like stablecoin or treasury company, you know, like that. Those seem to be the two options.
+
+SPEAKER_01: Yeah, I think it's a strange thing in which like the meme coins ended to some degree with the US elections and, like, I feel like Libra was really the end, you know, in which, you know, a coin associated with a public official did pretty badly for.
+
+SPEAKER_02: The people involved.
+
+SPEAKER_01: Excuse me.
+
+SPEAKER_00: And sorry, I thought you were talking about the Facebook Libra.
+
+SPEAKER_01: No, no, no, no. Yeah, the maelstrom associated.
+
+SPEAKER_02: There's a Hottoor coin as well, wasn't there?
+
+SPEAKER_01: Yeah, I think that was before though. I feel like that was not the end. But, but yes, it's sort of, you know, I think they've kind of peaked. Pump funds still seems to be doing lots and lots of launches in revenue. But I just, no one's really talking that much about it anymore. And we're getting back to something like you either have to have tech or now you have to have revenue. And it's gotten, you know, almost like a mirror of the public equity markets in which people are, you know, something I might want to talk about at more length another time. I keep seeing criticism of say Uniswap because they generate a lot of fees, but a lot of those fees go directly to the lab company and they don't go to the protocol or and they have to turn the protocol fees on and would then start theoretically buying back the token. Whereas folks like Hyperliquid, there's no lab skim and there are pretty big buybacks going on and the token price has gone up. And you know, people argue Uniswap has a kind of conflict of interest there. But anyway, to the point being like suddenly it all became about like revenue, US dollar denominated yields, like how to do not quite a SPAC like mo. Most of these treasury companies are an existing publicly traded company, and there's, you know, maybe not a formal takeover with a change of control, but usually an injection of capital that the company's doing something else right now and then it starts digital asset treasury operations. You know, like there was a panel, Tom Lee gave a lot of numbers on how big his digital asset treasury company is, what chunk of ETH it holds, now what the trend is, all that sort of thing. And they've, I guess Michael Saylor kind of pioneered. I don't know if he was there. I don't think he was some of the financial engineering that creatively let him acquire as much Bitcoin as possible. And all these folks are then kind of in the, I would argue like a part of the TradFi mindset. People make complicated products that sort of favor the house in a sense, so that no matter what, the client has an idea, but the institution does okay. Right. And some analog of that is going on. People are purchasing a lot of the time you would just want to hold tokens directly as opposed to invest in a digital assets treasury, I guess. I think the digital asset treasuries may be better than the ETFs. The ETFs promise to do nothing and charge a fee where the digital asset treasuries don't really charge a fee and maybe do something creative. So, you know, it's like it's the entrance of a new venue of financial engineering. But I also think they're kind of brilliant in the following sense. It's a tremendous pain to be a publicly traded US company. It's expensive, there's a lot of compliance burden. So tokens are out there. They get liquidity in some ways. You might want liquidity from the US public equity markets for your token. You could do this by IPOing a company like Coinbase is a sort of vehicle for that. But then you've got to report on the extremely complicated operations of Coinbase and its many employees and all that. Or you could just have a thing, buy the token, and then you never have to IPO the labs company and you can kind of just get all of the capital without the much heavier reporting burden of being a publicly traded actual company. And this is like kind of genius. It's a great way to bring in more kind of bigger, boring, more conservative capital while not changing the premise that much. So, yeah, it's gotten, the suits are good at that, and the digital asset treasuries provide a good wrapper for the thing that probably most of us would hold as spot.
+
+SPEAKER_00: By the way, we have a comment from Sheba who says he loves your take on meme ecosystems. Yeah, you know, unsurprisingly has their own meme ecosystem.
+
+SPEAKER_01: You gotta hold all the memes. That's the key.
+
+SPEAKER_00: Shout out to Yoshima. Bob, so what do you think about Treasuries and stablecoins?
+
+SPEAKER_02: Yeah, I mean, I guess this is all sort of maturity, and it's a strange kind of feeling, looking back on all of our joint experience sort of on enterprise Ethereum efforts kicking off in 2016, 2017, and really the thought that all of these public and private use cases could all be met by suitably modular code bases and thinking EVMs. And here we are. You've got Stripe announcing Tempo and having a consortium of companies doing that kind of payments setup. And then you've got NASDAQ announcing equities on chain with a Bazoo derivative. And then you've got Base and Coinbase. All of these things are happening in a very similar kind of form to what we were shooting for all that time back. And that's, while these things are kind of a bit boring, it is also quite amazing that we've got to that place that these very conservative incumbents have caught up without thinking, you know. Yeah, it's pretty amazing.
+
+SPEAKER_00: Well, I think part of it, and maybe one of the reasons as builders we find it boring, is that effectively there are no tech innovations really that are driving this. Right. It's really about people who already have a bunch of money pouring more money into it, you know.
+
+SPEAKER_01: Yeah, I felt the seams of it at a time, you know, I think most of the space was extremely eager for institutional approval, even with some nominal hostility to it. And now I feel the emotion that like, I'm like, I almost don't want it. I'm like, get out of here. Like, I want it to go back. You know, I guess I'm happy about the asset values, although it's not my primary motivation at all. But I hope that they don't because the thing you see with Web2 world, while the Internet remains at least kind of open, the people use like six apps. And so it's just pretty easy to affect the whole planet of Internet users just through these six apps. And I kind of feel it could easily happen that way in crypto, where crypto itself remains totally open. But like, as an instance, we have a Coinbase account which we use a little bit, and they are way more difficult and onerous and making information requests all the time than any bank I've dealt with. It's bizarre. They try to introduce a whitelist for the accounts you can send to. This is like a month ago, apparently you could turn this feature off and it's for your protection, in case someone's gotten in there. But it's like you're worse than the thing you said you were setting out to destroy from a "it's our money" perspective. That feels, you know, I'm happy that the Genius Act passed, I think, but it also has that feel too. Coinbase itself is now in a fight with the bags. Wait, we didn't mean you could do this, that we wanted all yield bans, so.
+
+SPEAKER_02: Yeah, well, I mean, I guess they do get leaned on more than the banks though, right? Because they're in this new energy area. All of this stuff is very rigid and defined, and the borders never move on the bank side. But then on a crypto exchange side it's kind of a bit of both. So they're always going to be moving around a bit and they're always going to get wiped down.
+
+SPEAKER_01: I think fintechs in general are maybe leaner, probably faster on things than the banks and it feels like they're overzealous in terms of their compliance posture because they feel that they can get kicked around in a way. The banks are a little less worried. Tons of banks have been leaned on too, right, in very much the same way, but it seems like a slower and less aggressive process somehow.
+
+SPEAKER_02: Yeah, well, sorry, I mean, because they're generally not trying to do new things. Fintechs are moving around, so it might be like we're all compliant and good today, but then we might be doing a new thing next week and oh no, they don't like that. So we better be on good behavior, get the brownie points. Whereas the banks rarely do anything new and different, so they don't worry so much, I don't think.
+
+SPEAKER_00: Yeah, I think that's fair. So, transitioning back, you know, we couldn't internally decide whether the conference was more boring or more crazy than usual. You've kind of talked about the boring elements, I guess, more institutional. And I'm curious since this is in Singapore, a very global conference, like what countries outside the US seem to be moving in this direction? Obviously the US has been a holdout for a really long time, but how are things getting boring and how are things getting more global?
+
+SPEAKER_01: Yeah, things are happening fast. The turnover is still huge in the space. I would say there are still lots of good new projects that feel like they come out of nowhere and are pretty successful. Like, I'm friends socially with the CEO of Lighter and he told me about it like a year and a half ago or two. I read the paper, I was like, okay, I kind of get it, circuits for matching and so on. It's huge now. The Dex wars are just heating up. The perp Dex is. There's like a new perp Dex. The cycles. So I was talking to a friend who's kind of an investor, kind of runs an incubator, and he said that he's done better not thinking about it as a four-year cycle anymore because it feels like they're compressing and there are kind of mini cycles within the cycle. Yeah, I suppose just everything is heating up in that way.
+
+SPEAKER_00: I'll.
+
+SPEAKER_01: A friend of ours made a joke, so in the US probably in Canada or, we do not have a booth babe culture. Maybe I'd heard that like Token was very much like a booth babe conference. And there were almost more booth babes than last year. And this led to like, does this mean we're near the top? Like, is the price speculation at a maximum? And I got, it wasn't euphoria, but people were feeling pretty good. And I like a conference when people are feeling a little shitty because then you know there's room for things to run. I think, yeah, for better or worse interest in the industry as a whole just trends upward with prices. So it's good for us for prices to go up. But yeah, I could see. The digital asset treasuries too are also evidence that it's kind of late cycle, but still stuff is happening quickly. Products mostly work in crypto now. There's a strange moment where DeFi just works, and this is part of the reason we got into it. It only kind of worked through 2021, 2022, maybe even 2023. And then it just kind of functions, and it's big. Every week or so I see someone tweet how big it would be compared to US banks, and it's running. So there's a feeling of inevitability that kicked in for me a couple months ago.
+
+SPEAKER_00: What about you Bob? On the craziness level, what do you think is happening?
+
+SPEAKER_02: So, yeah, I mean, just something else to mention good talking about top signals is there wasn't an excess of Ripple representation. If there's lots of interest in XRP, that signals new market entries.
+
+SPEAKER_01: I wonder if that's changed. It used to be like when your dentist or realtor friend asks you about Cardano or Ripple, it's time to sell.
+
+SPEAKER_02: There was plenty of Charles.
+
+SPEAKER_01: There's plenty.
+
+SPEAKER_02: There was plenty of Charles but no Ripplers.
+
+SPEAKER_00: Yeah.
+
+SPEAKER_01: I wonder what was it? I think BNB flipped XRP recently.
+
+SPEAKER_02: They did. I just saw that. Yeah, up to number three.
+
+SPEAKER_01: Amazing.
+
+SPEAKER_00: How are you guys feeling about long-term projects like Metamask now launching a token?
+
+SPEAKER_01: Oh yeah. This is another part of the crazy. A lot was held back by uncertainty, so the high-quality stuff was delayed. The Genius Act was passed, and now the good projects are coming out.
+
+SPEAKER_00: Well, I remember the height of this for me was when the SEC filed charges against Binance and Coinbase in the same week. It's like we're just gonna look at something with the word exchange in it and go after that. Right? The most compliant and the least compliant exchange.
+
+SPEAKER_02: No, it's the good actors that were getting the legal action because they stayed around to get whacked and kept coming back for more whacking until the whacking ceased eventually.
+
+SPEAKER_00: Well on that, I think we've crossed the 30-minute mark. Any closing thoughts about Token2049 or the overall state of blockchain?
+
+SPEAKER_01: One thing I would say, food is excellent in Singapore for Hawker markets. There was a Hawker market in the conference. It was cool. I'm optimistic. These are good times. A lot of work ahead but feels like it was a tipping point. I've been feeling inevitability based on institutional buy-in as customers demand it. It's probably too intermingled to roll back. So completing the product so to speak is important. Retail was in for a while and got burned, culminating with FTX. Institutions are in now, retail will come back, and we cannot burn retail again. The experience has to be better than banking, FX, exchanges, whatever.
+
+SPEAKER_00: Bob, what do you think?
+
+SPEAKER_02: Well, I think retail will come back through instruments, not directly. Their experience will be just another asset in their brokerage account. Payments could be interesting with Stripe and PayPal integrating crypto.
+
+SPEAKER_00: Yeah, and one question, are we going to Devconnect? Me and Bob bought tickets. Kieren, can I get a commitment?
+
+SPEAKER_01: I'm still a problem. I've never been to Argentina. I want to go but.
+
+SPEAKER_00: I haven't been to South America, and I really want to see what's happening in the crypto world there.
+
+SPEAKER_01: Vitalik said he's more likely to get recognized in Buenos Aires than in the US.
+
+SPEAKER_00: Yeah, well. So if you like this content, please join us every week at the same time. Follow us on Twitter at StratoMercada with an A and join our Telegram community. Bob, where can people find you?
+
+SPEAKER_02: Yep. I'm Bob Summerwill on Twitter.
+
+SPEAKER_00: And Kieren, where can people find you?
+
+SPEAKER_01: Kieren James-Lubin on Twitter/X.
+
+SPEAKER_00: You can find me at VicforWong on Twitter. Bob and Kieren have shamed me publicly because I have so few followers even though I was an early adopter. So please connect with me. I'd love to hear from you.
+
+SPEAKER_02: What's the four about? What's the Vic four?
+
+SPEAKER_00: So four is a number that no Chinese person likes because it sounds like death. So back in the world of eight-character usernames, I could always get Vic for one, because having an Asian name with the number 4 in it pretty much guaranteed I could get it.
+
+SPEAKER_01: Always doing things the wrong way.
+
+SPEAKER_00: Exactly. I never heard that joke before. Okay, thank you everyone. See you next week. Take care.
+
+SPEAKER_02: Cheers, guys.
+```

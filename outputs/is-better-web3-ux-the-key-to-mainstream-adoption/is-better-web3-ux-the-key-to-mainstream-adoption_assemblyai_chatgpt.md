@@ -1,0 +1,181 @@
+**[00:01] SPEAKER_00:** We are live.
+
+**[00:04] SPEAKER_01:** Are we live?
+
+**[00:05] SPEAKER_00:** We are live. Yes.
+
+**[00:06] SPEAKER_02:** So StreamYard says.
+
+**[00:14] SPEAKER_03:** You guys have an intro you like to do.
+
+**[00:17] SPEAKER_00:** Yeah, well, first—
+
+**[00:18] SPEAKER_03:** Here we go.
+
+**[00:19] SPEAKER_01:** Here we go. Yeah, there we are.
+
+**[00:23] SPEAKER_00:** Go ahead, Bob.
+
+**[00:25] SPEAKER_01:** So, hello, everybody. I guess we’re ready to go. So today we have a special guest with us. It’s the first time that you and I have met, Brian, but you are very familiar to all of my colleagues here, as an ex-BlockApps, sir.
+
+**[00:47] SPEAKER_03:** Yeah, Crypto X.
+
+**[00:50] SPEAKER_00:** You are never an ex-BlockApps, sir. You’re always part of Team Block, the alumni network. Yes, exactly.
+
+**[00:57] SPEAKER_03:** Yeah, yeah, yeah. You guys gave me my first opportunity to work in Ethereum back in 2017, which feels like ages ago—and I mean, it is ages.
+
+**[01:06] SPEAKER_02:** Lifetime.
+
+**[01:07] SPEAKER_00:** Yeah.
+
+**[01:08] SPEAKER_03:** Yeah. So thank you guys for that. Happy to be on here. It’s always great seeing you guys around, and talking about one of my favorite topics.
+
+**[01:16] SPEAKER_01:** Welcome. So, yeah, welcome back. Would you like to introduce yourself and talk a little bit about what Pistachio is?
+
+**[01:24] SPEAKER_03:** Yeah, sure. So, Brian Smokovich, bsmokes.eth on Twitter. We’re building Pistachio.fi. It’s a mobile-first neobank built entirely on crypto rails, meant to provide premium savings with premium security—and the whole concept of better UX, right? Like, I will get to the question in a moment of “is UX the key to mainstream adoption?” But I wanted to really just build something that, you know, I think self-custody is really important to me, and I think really important to a lot of people about why we originally got into the space. But the UX for a lot of these apps was just always so terrible, right? And so I wanted to be the change that I wanted to see in the world, and so decided to just say, “Screw it,” built my own, basically taught myself UI design in order to begin this in the beginning, and then built it literally by willing Pistachio into existence—and many, many, many, many, many iterations of building the app. And now we’re at a point where I feel very blessed that we’ve been publicly recognized by many Ethereum talking heads, in the sense of being recognized for our UX and what we’ve been designing and doing and building, and doing things in a way to just bring more people onchain.
+
+**[02:57] SPEAKER_01:** I see that the number you said was 18 versions in five months.
+
+**[03:04] SPEAKER_03:** Oh, we’ve pushed out several beyond since that tweet—probably at least three or four. So, yeah, we ship a lot. We ship. It’s a lot of just talking to users and finding what’s broken, what’s wrong. I’ll stand at a conference and we’ll literally stand over people’s shoulders as they download the app and watch every little tap, right? Like, “Oh, the focus is wrong.” Like, the focus is not beyond the keyboard in this certain instance, or the search is showing the wrong things, you know? And so every little— that’s kind of the thing about UX: you design something and then you build it, right? And then, of course it’s going to be bugged. Everything is always bugged, right? And we go through rigorous testing to do it, but then when it goes on to somebody’s very specific use case because they touch certain things in a certain way, and that’s what triggered this one bug—or it’s on a certain app, or a certain operating system or phone, it behaves in a certain way.
+
+And then also, when you get to see the person use it, you’re like, “Oh, there’s a big button there,” right? They’re going to press it, they’re going to press it—and then they don’t press it. And you’re like, “Why? Why did they not press the very clear call to action that I made?” And so it’s just like, the only real way—you can track things through things like Mixpanel and AppsFlyer, or whatever, to see the UX flows. But you’re going to miss all the little details of every single user interaction. And so just being able to watch and categorize that and implement that is a big portion of what I think makes our app more successful.
+
+**[04:36] SPEAKER_02:** Let me ask maybe a slightly controversial question. So if you think about like FinTech 1.0 companies, I would say they greatly improved the UX on the legacy financial system. Like, it looks way better, it works, it’s not nearly as much of a mess as the Schwab interface or what have you. And this worked significantly—maybe Robinhood’s perhaps the best example. But, you know, I think—so maybe that’s like the baseline expectation. But is it sort of like the totality of UX? Because I think one of the challenges in crypto is there’s stuff that’s bleeding through that’s complicated or scary, and all of that too. And, you know—so what is your take? Like, for my understanding, I think you guys are multichain, but inheriting all of the problems from the layers below too, you know? So like, how do you think about that?
+
+**[05:33] SPEAKER_03:** There’s a lot to fix. I think you’re right in that Robinhood is sort of that shining example of fintech generational UX/UI, of making things easy, fast, gamified in a way. I really love Venmo as an example. I think Venmo is a very good example of really, really good UX, but not really being good UI. And UI doesn’t necessarily matter so much. The UI of Venmo is sort of even almost antiquated in a way. But the UX is done beautifully. And the reason is because they approach it from— instead of like a feature, it’s just a user problem. Like what is the user problem? It’s sending money, right? You open the app, it’s got this big Send button, and it’s just so simple—just a few clicks to send money to someone and then withdraw it to their bank. And so they very much honed in on that very specific UX without even really caring so much about how sexy the UI is, right?
+
+And so with Web3 UX, we have an entirely different set of problems that goes very deep just to get to parity with traditional finance and fintech. And that’s—so it’s like when it comes to Web3, for example, especially with Ethereum, it’s like, okay, we have gas we have to worry about, we have token approvals we have to worry about. We have multichain which we have to worry about. We have bundled transactions if there’s multiple transactions, right? And so luckily all of these things are now—there are solutions for these, right? Between EIP-4337 and EIP-7702, there are ways to implement paymasters, there are ways to bundle transactions together, there’s ways to do zaps. Not everyone does all of these things and does it all together. It’s like Pistachio.fi, we do all of this, right? We do it all together, all in one go.
+
+One thing that we don’t do, for example, is maybe within Web3 gaming there’s this concept of session keys. And it’s like, “Oh, okay, if I’m going to have a game, do I then have to sign every single transaction for everything that gets written to the blockchain?” It’s like, no, you just do a session key. You sign once, as you sign in—basically as you’re signing into the game or app—you sign a session key that extends for that period of your gaming session. And so that basically absolves away, or abstracts away, that problem as well.
+
+So there’s a lot that it takes for a Web3 company, again, to get to parity of all these things. There are ways to solve it all. It’s just a matter of: does the app creator understand all of these things? Are they aware of all of these things? Do they care enough to do all of these things, right? Like some of the major apps or wallets even—like, I love Rabby, I’m a big Rabby user—but they still don’t have EIP-7702 implemented, right? And so there’s a lot of these big players that still don’t have these available UX implementations live and integrated into their apps.
+
+**[08:36] SPEAKER_00:** I’m curious, Brian, because, you know, just to reveal some of the background, right: when you were working for us, you were like a sales guy. How did you teach yourself about UX and product design? I’m glad you’ve joined the dark side, but what got you there, and what made you feel like, okay, this is something I can take?
+
+**[08:59] SPEAKER_03:** Well, I’ve always honestly really loved the product side. Like I think I had a natural ability to be a salesperson. I love to just chat and create rapport, and I think that’s very important for sales and marketing. But at the end of the day I really just had a knack for— I think it was more of a natural inclination to this sort of thing. And then once I realized it and I started to do it, it’s one of those natural callings, right? Like when you find something that you really like, you don’t really know that you really like it until you’re doing it and knee-deep in it. And then now suddenly I’m spending 12 to 15 hour days working a website, or whatever it is, right? Just because I’m obsessed with being able to do this and improve it.
+
+So when I was learning UX/UI design, it was some courses that I would take and do that, and then a lot of it was just trial and error. And I think a big part of it was having my own thing. And I’m sure Kieren can—or, I mean, I think all of you, both you guys can relate to this—is that once it’s yours, you know, there’s a different sort of obsession that comes with it, rather than just working for someone. Like when you work for someone, it’s like, “Oh, okay, I get equity options and this and a paycheck,” and that’s nice. That’s not as much skin in the game as truly owning something and being aligned of like, okay, if I kill this, I get monetarily incentivized just because I killed it, and it’s my baby, right? So I think that shines a lot in being a founder and growing your own application.
+
+And then it’s just like I have an obsession with it, to be honest. Like I have an obsession with talking to users and understanding what makes it better, and just the perfectionist in me of seeing something wrong and needing to smooth it over, right? And so I think all of that has just aggregated and led me to where I am today.
+
+**[11:14] SPEAKER_00:** And yeah, I mean one of the benefits of being in the space so long is we’ve gotten a chance to work with some great people, and we could always see that you had that sort of entrepreneurial spirit. It’s interesting that it’s come out on this. I think one challenging thing about UX for people that come from pure technical backgrounds is the ability to listen when people say, “Hey, this is wrong,” or “I don’t understand this.” That seems to be a big hurdle that a lot of truly technical people just can’t get over sometimes.
+
+**[11:48] SPEAKER_03:** And it comes down to—which I think maybe makes it hard sometimes for technical people to get into this as well—is that I say UX is just empathy brought to life. Because at the end of the day, you very much need to be able to put yourself in your user’s shoes and to empathize with, “Oh, okay, this isn’t good enough,” because they’re being frustrated—which should frustrate you, right? Like if it’s going to piss them off, it should piss you off that it’s not good enough. Because if you don’t have that empathy, if you don’t have that ability to also be frustrated, then you’re not going to care enough to fix it. Right? It’s like you should be pissed. If a user is going to be pissed, you should be pissed.
+
+**[12:36] SPEAKER_02:** Yeah. Who do you see your target user as? And I guess, I mean, you know, there’s full-on normies, there’s crypto natives, there’s— but I’m absolutely interested in age ranges and all that sort of thing, because I think maybe both of us, but you know, it’s hard to define exactly the bucket. Like they probably are crypto-friendly, but maybe—you know. Anyway.
+
+**[13:06] SPEAKER_03:** Normally we are normie-friendly. Like if you want to invite your— I want to say your parents, but your dad’s a bit, I think, beyond the rest of us when it comes to being crypto-native. But when it comes to, let’s say, siblings and family, I want it to be friendly enough that you can invite these people without feeling fear of throwing them to the wolves of volatility, of risk, of perps, of scams, of rug pulls—all these things. And so it’s designed with all of that in mind.
+
+But really my ideal user, my ideal customer, is probably between the ages of like 25 to 55, that are crypto-inclined, that probably have been in crypto for some time, that have large amounts of funds onchain, that want to be able to not need to offboard crypto into the bank, that want to have a sort of high-quality, self-custodial, high-security but highly convenient mechanism within their pocket that values convenience, that values security, but that also values privacy.
+
+And that has the ability then to not let their funds—if they’re going to risk off into stables, for example—be able to easily earn safe, curated, high-quality yield that is at least double of what is US Treasuries, without being exposed to equities, and then being able to spend or transfer that money very quickly. And so that sort of—through just talking to a lot of people—seems to be the bread and butter of people that I think would work very well as a customer user base: people who can at least put five figures into my app, preferably at least 50 grand into the six figures, that would also trust Pistachio’s security mechanism because of the amount of due diligence and effort that we’ve put into our system to protect our users, to trust that as well. But also, if you want to invite your friends, your family, to make it easy just to get onchain, then this is the easiest way, right?
+
+**[15:18] SPEAKER_00:** So why do you think the UX has been so bad in Web3 for so long?
+
+**[15:28] SPEAKER_03:** I think it’s a large disconnect of people building and people talking to users. Especially a lot of— I talk to a lot of founders. I love to talk to founders. I meet so many people. One of the coolest parts about being a founder is just sort of that natural BD aspect: I meet so many people about what they’re building. And very frequently I’m asked to basically audit people’s UX/UIs, just give feedback.
+
+And I think a big part of what people build is they build because people want to build an MVP. They want to build fast. “I want to build something.” And it’s a hard chicken-and-egg problem of like, how do I talk to users if I don’t have anything for them to use, right? Like, if I don’t have an MVP, if I don’t have these. And so people then build in this direction of, okay, well, I’m just going to build a product and then I’m going to get users, right?
+
+And so realistically what they want to do is they should be building the product, but as you’re building it, you want to talk to potential users. You want to talk to people who you think this problem is solving, right? Because it’s not just—you shouldn’t just be building an app or a feature set. Again, you need to build to solve for a problem.
+
+And so when you’re building to solve for that specific problem, you really need to go to your friends and be like—or people. I mean, first your friends, because they’re just the most likely to give you help. And it’s like: “Any of you have this problem?” Find friends who have this problem. If you don’t, it’s not necessarily a red flag, but you do have to keep going out there and find people who have this problem. And then if you go out and you don’t find people who have this problem, eventually you’re not solving a problem, right? Like you’re creating a solution in search of a problem instead of actually finding people who would be willing to test out what you’re doing. And then show them the earliest iterations, right? And so figuring out: is this confusing? Is this good? Is this bad? Is this specific UX really actually solving the core problem that we set out to solve?
+
+At the end of the day, luckily, I think a lot of builders these days set out to create companies specifically because they encountered problems in their earlier careers or usage, right? Of that—let’s say you work in a B2B company, or maybe you’re a founder for a company—and you’re like, “Dude, this is such a pain in my butt,” right? This one particular thing. They go on to create a company that goes to solve that problem, right? It’s like dogfooding their own pain.
+
+Same thing with B2C: I love crypto, and love being onchain, and love all of these different apps and trying all of these things. And that’s what led me to where I am with creating what we’re creating, right? Because I would dogfood all of these apps essentially and just be like, “Okay, well this isn’t good enough, this isn’t good enough.” And so I think that’s sort of the main reason that creators, or app builders—they maybe try to create something to be cool, or to add a vanity, or potentially to chase a trend because they see, “Ah, this is where all the money’s going,” right? Like if people are chasing perps right now, how many thousands of different perps companies are there that are trying to go out and get money also? Because people—for better or for worse—they try to chase that trend because they see where the VC money is flowing to. And they say, “Oh, if I can get on that VC train, then I can get the money to build this,” right? And chase that trend, that maybe that’s the hot narrative that everyone’s investing in. And so they’re getting pulled in all these different directions instead of going really back to the core of: what problem do I want to solve?
+
+**[19:12] SPEAKER_00:** Yeah, I mean my kind of theory—and one of the challenges Web3 has had—is that in the first phase of Web3, really we’re just trying to solve technical problems, right? Like make it work at all. And the people who did those things kind of succeeded to an extent, and then—but those people that can solve those super hard technical problems are not the kind of UX people that can think like, “Oh, from a user perspective,” really, right? They’re thinking more about, “Okay, how do we solve that technical problem?” And that’s really where I think the shift has kind of happened. And you’ve caught it at the right time.
+
+**[19:51] SPEAKER_03:** I think there’s a lot more engineers these days too that are more savvy in that way, towards design—more hybrid engineers who have that back-end, front-end, I mean just full-stack, right? Who then are now also intrigued in design. Because maybe they built their own thing from scratch and they were forced to, right? As opposed to just a straight-up back-end engineer who’s doing these things.
+
+**[20:16] SPEAKER_02:** One thing I’ll say: I now code again occasionally because the AI has gotten so good. It’s not so good at UX from scratch, but if it has something to work from, I’m like, “No, just generate a component like this and do this,” and it usually gets it right within a couple times. So the iteration cycle is so much less painful than it used to be.
+
+**[20:38] SPEAKER_03:** Absolutely.
+
+**[20:40] SPEAKER_00:** And I found with my Web2 startups and my mobile startups that one of the reasons I was CTO of the first startups and then I switched to product is because I realized that, hey, by turning step three into step one, I could 10x the usage overnight. But it’s a totally different mode of thinking than “How am I going to get the code out the door?” and get all of those things.
+
+**[21:05] SPEAKER_03:** Also, the infrastructure really didn’t exist for a while. I remember vividly one time we were at the BlockApps office and, Vic, you said in the office, “Mobile Web3 sucks.” I just remember—you were going on about it—and it was true for such a long period of time: the infrastructure needed to basically bring Web3 to mobile didn’t exist for the longest time.
+
+And this last bear cycle of crypto, a lot of VC funding went to infrastructure. It’s still not good enough, but that’s fine—it’s always improving. But the fact that a lot of infrastructure now exists that didn’t exist back then, or even just libraries, right? People having SDKs that are compatible with React Native or just native mobile languages to make it easier for developers to take that and go build and integrate—because we need that. We can’t build everything from scratch. As much as I would love to have everything in-house, especially being a mostly bootstrap company, it’s like no: we need people to have proper— they need to have good docs, good SDKs, good APIs, hardened stuff that we can just take and use, and that we don’t have to bash our heads against the wall trying to integrate it because it doesn’t work.
+
+**[22:28] SPEAKER_00:** Yeah, I kind of remember that conversation. I think one of my frustrations at the time was talking to some of the Ethereum devs and they were like, “Yeah, we have a mobile solution. We’re going to run a node on your phone.” It was like, do you know battery life is important to me? I can’t last the day.
+
+**[22:49] SPEAKER_01:** This is where I started.
+
+**[22:50] SPEAKER_00:** Remember you tried to run it on a Watchman 2050 smartwatch.
+
+**[22:56] SPEAKER_01:** That was my first project, seeing if I could get cpp-ethereum running on a smartwatch. And I didn’t, but Geth worked. Geth worked on a smartwatch, and it was because it was so early, right? That the chain was quite small. It was kind of just about workable. And now—thought at the time—well, you know, yeah, we’re going to have like a light client thing. There isn’t yet, but we’ll get that going. And same with on the desktop.
+
+**[23:22] SPEAKER_03:** Right.
+
+**[23:23] SPEAKER_01:** We missed—you know, Mist had an embedded—yeah, it was just a thought that yeah, you know, it might be a bit slow, but we’ll optimize it. It’ll get 10x, it’ll get 100x.
+
+**[23:34] SPEAKER_03:** Yeah.
+
+**[23:36] SPEAKER_00:** Never built a mobile app before.
+
+**[23:38] SPEAKER_01:** Obviously you’re going to have this stuff. It’ll just run inside every router. It will just be like an OS-level sort of service.
+
+**[23:46] SPEAKER_03:** Dude, building a mobile app sucks. It’s hard. It’s really hard. Especially—
+
+**[23:53] SPEAKER_00:** That’s like a nightmare.
+
+**[23:57] SPEAKER_03:** I think that was the easy part. It’s hard, but that was the easy part. It’s like building a Web3 app that’s multichain on multiple operating systems—the amount of edge cases that exist is a nightmare. That’s been the hardest part. Like our last— we launched in June, or like May—June. And then literally all summer was us just hardening the app and discovering and smoothing over edge cases.
+
+**[24:26] SPEAKER_01:** And I see you’ve just launched on Android as well. Congratulations.
+
+**[24:30] SPEAKER_03:** Thank you. Publicly, at least. We’ve been— I’m a big soft-launch guy if you can. We’re always probably soft-releasing something ahead of time if you dig hard enough. But yeah, so Android took a while, like months longer than Apple, because it’s much easier to develop on Apple, right? It’s like everything’s standardized, everything just works across every single device.
+
+On Android, it’s like, okay, you have to worry about optimizations going back far enough to Android 12 to cover 90% of use cases. 10% of the world still runs on Android 11 and below, which is almost absurd. And then if you’re doing that, you also have to worry about hardware optimizations to make sure that the app itself is lightweight enough to work on very base-level Android devices because they cost very low and most of the world has a lot of these really cheap devices. So you can’t load the app so much; it has to be optimized for that.
+
+And then the amount of different screen types, and getting the edge-to-edge display to work via React Native Expo, was also not working very well. And so a lot of people that launch apps on different devices, right, they maybe don’t use React Native Expo, maybe they have native to each device. And so there’s not even good libraries that help on Expo for this. Expo just launched edge-to-edge display like two months ago. These things still aren’t very public. And so my CTO even wants to launch a library—like a publicly available repo—just to help with all of these hardships that we had to go through firsthand, essentially. Yeah.
+
+**[26:19] SPEAKER_00:** I remember in my last company—it was a mobile company—to make sure things ran on iOS, we ran it on two devices. In the simulator, we had a table of Android devices, and just to kind of test all the configurations, there’s probably—
+
+**[26:36] SPEAKER_01:** I don’t know, 10,000, more than 10,000 different—
+
+**[26:43] SPEAKER_00:** I got a couple over here too. But TVs and tablets and whatever, right? They’re all different.
+
+I’m really curious: when you made that evolution to a founder, as you were talking about before, what was the biggest challenge that you faced, do you think?
+
+**[27:08] SPEAKER_03:** The biggest challenge, it evolves over time, right? Like as I level up as a founder, the challenges get bigger in a way. I think in the early days, one, it was getting people to align with my vision. It’s like I have this vision in my head and I can talk about it, but then there’s always a disconnect from what someone else’s interpretation of my vision is versus what I have in my head. And so that’s why I learned UX/UI design, so I can literally just put it into a Figma and show someone and be like, “This is what I want,” right? Like, “This is how I foresee it.” And so that was the first challenge.
+
+And then I got my CTO on board because he’s like, “I love this idea, let’s do it.” Then we did that. And then the next challenge was the architecture, right? And so then the architectural solution of vendor selection—which I was talking to someone earlier today about this—vendor selection’s a nightmare. I luckily already knew what chain I wanted to work on, and how I wanted to be multichain, so that was good. And then it’s like, okay, so now to be a robust multichain application—this is pretty cutting-edge technology, especially if I want to use account abstraction and smart accounts. Very few people are working on this, especially in the mobile era. And so the infrastructure available to us at the time was fairly limited.
+
+And then it’s like, okay, we have to worry about key storage, and how do we do recovery, and how do we keep people safe? And these are all different vendors. For every different—there’s a different decision for a different vendor at each part of the stack. And being able to basically understand Web3 deep enough to understand the trade-offs of each different vendor and what they bring—and okay, well, what’s the price? Because we’re unfunded, right? So I have to make sure it works within my realm of my budget while also being able to make sure it’s scalable in the long term if we do go into this thing.
+
+And then how do we do things to be modular? Do we do things to go purely vertical stack? Does that lock us in as a vendor? Do we want to be more modular? And we’ve had moments where we’ve had to just rip vendors out of our stack because they’re not performant enough, they’re not elite enough. And so by removing them and upgrading whatever we had—which sets us back in delivery time, right?—so it took us a lot longer to build this stuff, especially as literally a two-person team for the longest time. We just hired our second full-time engineer last month. But it’s just been me and my CTO for the longest time. And thank God that I understand blockchain architecture as deeply as I do, or it would have been all of this on him. And it made it much easier being able to share that experience.
+
+**[29:49] SPEAKER_00:** That’s awesome. But yeah, as you say, every step there’s a new challenge. But I think it’s also kind of being excited—like you work really, really hard, as we can see. So I think it’s really exciting to hear about where you’ve gotten to with this project, and just in general.
+
+**[30:11] SPEAKER_03:** Thank you.
+
+**[30:11] SPEAKER_01:** So, yeah. I’m just looking at the time, Brian. So let me just ask you one last question. When are we ready for the normies?
+
+**[30:24] SPEAKER_03:** We’re already ready for the normies—at least Pistachio is, right? We made it so that onboarding is very smooth, very easy. You don’t have to worry about seed phrases, you don’t have to worry about even having your phone stolen, right? Like we can recover everything in programmatic ways, in secure ways as well, that’s not going to get you hacked or thrown to the wolves.
+
+But at least the next wave of updates that we’re going to be doing is going to be really cool too, I think. The ability to essentially—the alpha is the ability to send bank transfers from an onchain account to specific accounts all over the world for very, very cheap. Stuff like that is going to be really cool because that solves real pain, right?
+
+It ties it all in to: is better Web3 UX the key to mainstream adoption? And I don’t think it is, right? Better UX is the key to any app adoption, right? It’s why we’ve seen Robinhood or whatever get big. But there needs to be a fundamental problem and fundamental pain being solved at the end of the day. And if my ability to send an onchain transaction and have it arrive as an ACH transfer or a SEPA transfer from the US to Mexico for only a dollar—that’s significant pain being solved. Because most common applications right now that do it are, let’s say, Dollar App or Felix, and they do it for like a $3 flat fee, which is still pretty expensive considering if you want to send money to someone. If you only want to send in small amounts, right? It’s like $100—that’s a 3% fee. That’s quite high.
+
+And so we can basically do it in a way with no limits, no caps. You can send $50,000 for a dollar if you want to do it with banking rails, or if you want to just keep it onchain and keep it in Pistachio, right? It’s free, unlimited, as we all know how you can send money in crypto-land, right? You can send a million dollars in a second for only a few cents. And on Pistachio, all the peer-to-peer transactions are free. So I think we’re ready for normies right now, but it’s just about increasing the use cases within the app to solve very distinct pains—painful, expensive pains. That’s the way to do it.
+
+**[33:03] SPEAKER_00:** Good note.
+
+**[33:04] SPEAKER_01:** Well, thank you very much. Thank you.
+
+**[33:06] SPEAKER_03:** Guys, for having me. Yeah, Kieren, I know you gotta run. Hope to at least—some of—
+
+**[33:11] SPEAKER_02:** Us will be at some of the international events. Maybe we can catch up there.
+
+**[33:16] SPEAKER_03:** Yeah, perfect. Please, if you guys are going to ETHLatam in Brazil or Devconnect, I’ll be at both of them.
+
+**[33:22] SPEAKER_00:** We’ll definitely be there. Look forward to seeing you in person, man. And I want to see your talk—share us details about your talk, man.
+
+**[33:29] SPEAKER_03:** Yeah, absolutely. Will do. Take care.
+
+**[33:32] SPEAKER_01:** Okay, thanks so much.
+
+**[33:34] SPEAKER_03:** Thanks. It’s great to meet you, Bob.
+
+**[33:36] SPEAKER_01:** You too. Cheers. Bye-bye.

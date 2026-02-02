@@ -60,28 +60,18 @@ WORD_CORRECTIONS = {
 }
 
 # Speaker colors in BGR format for ASS/SSA subtitles (ffmpeg compatible)
+# First 4: Cyan, Magenta, Yellow, Purple (vibrant scheme)
+# Next 4: Complementary colors that fit the scheme
+# Cycles after 8 speakers
 SPEAKER_COLORS = [
-    ("blue", "FF0000"),
-    ("orange", "00A5FF"),
-    ("red", "0000FF"),
-    ("green", "00FF00"),
-    ("purple", "800080"),
-    ("yellow", "00FFFF"),
-    ("white", "FFFFFF"),
-    ("grey", "808080"),
-    ("teal", "808000"),
-    ("lilac", "C8A2C8"),
-    ("maroon", "000080"),
-    ("rose", "7F00FF"),
-    ("baby blue", "F0CF89"),
-    ("burgundy", "200080"),
-    ("violet", "EE82EE"),
-    ("pink", "CBC0FF"),
-    ("black", "000000"),
-    ("turquoise", "D0E040"),
-    ("beige", "DCF5F5"),
-    ("brown", "2A2AA5"),
-    ("gold", "00D7FF"),
+    ("cyan", "FFF000"),       # #00F0FF -> BGR
+    ("magenta", "CC55FF"),    # #FF55CC -> BGR
+    ("yellow", "39E7FF"),     # #FFE739 -> BGR
+    ("purple", "EB4562"),     # #6245EB -> BGR
+    ("lime", "55FF55"),       # #55FF55 -> BGR (bright green)
+    ("coral", "5080FF"),      # #FF8050 -> BGR (orange-red)
+    ("sky blue", "FFCC66"),   # #66CCFF -> BGR (light blue)
+    ("hot pink", "9933FF"),   # #FF3399 -> BGR (vivid pink)
 ]
 
 
@@ -253,24 +243,16 @@ def load_word_timing(filepath):
             break
         project_root = project_root.parent
 
-    # Look for word timing JSON - prefer aligned (post-processed) over raw
-    # First check for aligned word JSON (from align_words_with_corrections.py)
-    # e.g., episode009_whisperx-cloud_opus_aligned_words.json
-    aligned_json = filepath.parent / f"{filepath.stem}_aligned_words.json"
-    if aligned_json.exists():
-        print(f"Found aligned word-level timing: {aligned_json}")
-        with open(aligned_json, 'r') as f:
-            word_timing = json.load(f)
-        # Apply corrections
-        word_timing = apply_word_corrections(word_timing)
-        return word_timing
-
-    # Fall back to raw word JSON from pre-processors
+    # Look for word timing JSON in intermediates directory
+    # Consensus mode files (--consensus flag) have _consensus_words.json suffix
     json_patterns = [
+        project_root / 'intermediates' / base_name / f"{base_name}_assemblyai_consensus_words.json",
+        project_root / 'intermediates' / base_name / f"{base_name}_whisperx_consensus_words.json",
+        project_root / 'intermediates' / base_name / f"{base_name}_whisperx-cloud_consensus_words.json",
         project_root / 'intermediates' / base_name / f"{base_name}_assemblyai_words.json",
         project_root / 'intermediates' / base_name / f"{base_name}_whisperx_words.json",
         project_root / 'intermediates' / base_name / f"{base_name}_whisperx-cloud_words.json",
-        filepath.parent / f"{filepath.stem.replace('_opus', '').replace('_gemini', '').replace('_deepseek', '').replace('_chatgpt', '').replace('_grok', '').replace('_kimi', '').replace('_llama', '').replace('_minimax', '').replace('_mistral', '').replace('_qwen', '')}_words.json",
+        filepath.parent / f"{filepath.stem.replace('_opus', '').replace('_gemini', '').replace('_deepseek', '').replace('_chatgpt', '')}_words.json",
     ]
 
     for json_path in json_patterns:
@@ -356,8 +338,18 @@ def split_into_sentences(text):
     return [s.strip() for s in sentences if s.strip()]
 
 
-def segments_to_srt(segments, speaker_names, word_timing=None, max_duration=8.0, chars_per_second=18):
-    """Convert segments to ASS format with word-by-word timing synced to speech."""
+def segments_to_srt(segments, speaker_names, word_timing):
+    """Convert segments to ASS format with word-by-word timing synced to speech.
+
+    Requires word-level timing JSON - will not generate subtitles without it.
+    """
+    if not word_timing:
+        raise ValueError(
+            "Word-level timing JSON is required for subtitle generation.\n"
+            "Re-run transcription with --consensus flag to generate word timing:\n"
+            "  python3 scripts/process_single_transcribe_and_diarize.py <audio> --transcribers assemblyai --consensus"
+        )
+
     srt_entries = []
     index = 1
 
@@ -365,115 +357,34 @@ def segments_to_srt(segments, speaker_names, word_timing=None, max_duration=8.0,
     speaker_color_map = {}
     color_index = 0
 
-    # If we have word-level timing, use it directly
-    if word_timing:
-        print("Using precise word-level timing from transcription")
+    print("Using precise word-level timing from transcription")
 
-        # Build speaker color map from word timing
-        for word_data in word_timing:
-            speaker_id = word_data.get('speaker') or 'SPEAKER_00'
-            if speaker_id not in speaker_color_map:
-                color_name, color_code = SPEAKER_COLORS[color_index % len(SPEAKER_COLORS)]
-                speaker_color_map[speaker_id] = color_code
-                full_name = speaker_names.get(speaker_id, speaker_id)
-                speaker = full_name.split()[0] if ' ' in full_name else full_name
-                print(f"  {speaker} -> {color_name}")
-                color_index += 1
-
-        # Create entries from word timing
-        for word_data in word_timing:
-            speaker_id = word_data.get('speaker') or 'SPEAKER_00'
-            color = speaker_color_map[speaker_id]
-            style_name = f"Speaker{speaker_id.replace('SPEAKER_', '')}"
-
-            srt_entries.append({
-                'index': index,
-                'start': word_data['start'],
-                'end': word_data['end'],
-                'text': word_data['text'],
-                'style': style_name,
-                'color': color
-            })
-            index += 1
-
-        return srt_entries, speaker_color_map
-
-    # No word-level timing - hard fail
-    print("ERROR: No word-level timing data available")
-    print("")
-    print("Word-level JSON is required for precise subtitle generation.")
-    print("The transcript was likely created before word-level JSON was enabled.")
-    print("")
-    print("To fix: Delete the transcript and re-run the transcription pipeline")
-    print("to generate word-level JSON (*_words.json file).")
-    sys.exit(1)
-
-    # Legacy fallback code (disabled - kept for reference)
-    print("Using estimated timing (no word-level data available)")
-
-    for i, segment in enumerate(segments):
-        start_time = segment['start']
-        text = segment['text']
-        speaker_id = segment['speaker']
-
-        # Use detected name or fall back to speaker ID (first name only)
-        full_name = speaker_names.get(speaker_id, speaker_id)
-        speaker = full_name.split()[0] if ' ' in full_name else full_name
-
-        # Assign color to speaker if not already assigned
+    # Build speaker color map from word timing
+    for word_data in word_timing:
+        speaker_id = word_data.get('speaker') or 'SPEAKER_00'
         if speaker_id not in speaker_color_map:
             color_name, color_code = SPEAKER_COLORS[color_index % len(SPEAKER_COLORS)]
             speaker_color_map[speaker_id] = color_code
+            full_name = speaker_names.get(speaker_id, speaker_id)
+            speaker = full_name.split()[0] if ' ' in full_name else full_name
             print(f"  {speaker} -> {color_name}")
             color_index += 1
 
+    # Create entries from word timing
+    for word_data in word_timing:
+        speaker_id = word_data.get('speaker') or 'SPEAKER_00'
         color = speaker_color_map[speaker_id]
         style_name = f"Speaker{speaker_id.replace('SPEAKER_', '')}"
 
-        # Calculate end time based on next segment
-        if i + 1 < len(segments):
-            next_start = segments[i + 1]['start']
-            segment_end = next_start
-        else:
-            # Estimate based on text length for last segment
-            segment_end = start_time + len(text) / chars_per_second
-
-        # Split text into words
-        words = text.split()
-
-        if not words:
-            continue
-
-        # Calculate total character count for proportional timing
-        total_chars = sum(len(w) for w in words)
-        segment_duration = segment_end - start_time
-
-        current_time = start_time
-
-        for word in words:
-            # Proportional timing based on word length
-            word_ratio = len(word) / total_chars if total_chars > 0 else 1 / len(words)
-            word_duration = segment_duration * word_ratio
-
-            # Minimum display time
-            word_duration = max(word_duration, 0.08)
-
-            end_time = current_time + word_duration
-
-            # Just the word, color applied via style
-            subtitle_text = word
-
-            srt_entries.append({
-                'index': index,
-                'start': current_time,
-                'end': end_time,
-                'text': subtitle_text,
-                'style': style_name,
-                'color': color
-            })
-
-            index += 1
-            current_time = end_time
+        srt_entries.append({
+            'index': index,
+            'start': word_data['start'],
+            'end': word_data['end'],
+            'text': word_data['text'],
+            'style': style_name,
+            'color': color
+        })
+        index += 1
 
     return srt_entries, speaker_color_map
 

@@ -1,0 +1,167 @@
+**[00:02] SPEAKER_00:** I use Restream. We try to use something and it streams on Twitter, I think YouTube and LinkedIn at the same time.
+
+**[00:10] SPEAKER_03:** We're using StreamYard too. We're using StreamYard and I'm just double checking.
+
+**[00:15] SPEAKER_01:** We have been trying different tools trying to find anything that seems a bit... Not all perfect, yeah. Yeah.
+
+**[00:26] SPEAKER_00:** I'll share the one. I don't know if you've tried this one, but this one looks pretty cool. Pretty great.
+
+**[00:31] SPEAKER_01:** Because you're thinking, there must be good software for this, right? It's such a common need. Isn't there just an answer that just works?
+
+**[00:39] SPEAKER_00:** But the thing is, those platforms, they're not built with interoperability in mind. They don't like it. They want to track you in. Yeah, exactly. X especially. That's against our vision. On X, there isn't even a means to download the bloody audio. Yeah, it's... Why would you want to download it? You know, like that's something, you know, I guess the next step in maybe like... You want to use it somewhere else? Are you seeing somebody else? Be able to own your data, you know, in all those platforms. Even own a query or just access, you know. Something I love about Google is like, I can go, I can activate, you know, like the tracking, you know, But at least I can go in and say, what did you do that week? I went in front of that restaurant or that store. It was pretty nice. And I can go and see and check. I have access to that. It can be helpful. But most of the things, they have like thousands of data, but they don't even share it with you.
+
+**[01:31] SPEAKER_03:** Yeah, exactly.
+
+**[01:33] SPEAKER_00:** I find it quite, quite well. 501.
+
+**[01:39] SPEAKER_02:** Oh, yeah.
+
+**[01:40] SPEAKER_03:** We are live. So we are live. No, no, no, I'm ready. No, but that was a good call-in show, right? So we have a very special guest today, but a special format because all of us for Jane Jo Live in real life.
+
+**[01:57] SPEAKER_01:** In the same room. In the same room. Amazing.
+
+**[02:00] SPEAKER_03:** And you are a special guest. Do you want to show?
+
+**[02:03] SPEAKER_01:** Yeah. Sure. So, yeah, we have here today with us Redwan Meslen. Yes. Meslen, who is the executive director of the EA, the Enterprise Ethereum Alliance, which all of us at this table have had a hand and a part in over the years. Healthy run.
+
+**[02:22] SPEAKER_00:** Yes, exactly.
+
+**[02:23] SPEAKER_01:** So, yeah. It's eight years now. Since 2017, yeah. February 2017 was the launch date on the 28th.
+
+**[02:31] SPEAKER_02:** There was pre-work solidly before, at least three months, maybe more.
+
+**[02:34] SPEAKER_01:** There were meetings I was part of in December and January. Those were the first big meetings with whatever, 30, 40 people, crazy amounts. But yeah, it really started probably at DevCon 2, really. It did. Those were the discussions. So that was Shanghai, October.
+
+**[02:57] SPEAKER_02:** There was the kickoff meeting at the J.P. Morgan office, which was pretty big. They were the closed-door meetings at Microsoft.
+
+**[03:07] SPEAKER_01:** Right. So that public launch was February. It was February. But December, there was an internal one, and then J.P. Morgan...
+
+**[03:16] SPEAKER_03:** was in january 2017 but but yeah like a lot of those initial contacts have happened at devcon2 yep in october the previous year well in the devcon2 oh yes yeah so like basically uh basically uh there was a lot of conversations there about figuring out how to bring on enterprises too and there were a lot of interested parties and yeah like The group of people, which was I think about six people that were interested, met at like a Starbucks just off site. And that was sort of the idea formation thing about the.
+
+**[03:58] SPEAKER_01:** And then Matt spoke of NewCo held a little bar side event as well, which we have some technical issues.
+
+**[04:15] SPEAKER_03:** Oh, okay. Hold on a second. I'm just going to push James to tell everybody to go to YouTube.
+
+**[04:20] SPEAKER_01:** We have a technical issue, everybody.
+
+**[04:22] SPEAKER_03:** I will fix that. Oh, did I? I messed up the Twitter. You did a bad one. Yeah, I did a bad one. So everyone, please join us on YouTube.
+
+**[04:33] SPEAKER_02:** Space is at 5 a.m.
+
+**[04:34] SPEAKER_01:** Right.
+
+**[04:35] SPEAKER_02:** Yes.
+
+**[04:36] SPEAKER_01:** But yeah, Matt spoke, held a little event at one of the bars upstairs, which I went to, and there were various others there. I don't know if you went to that one as well.
+
+**[04:45] SPEAKER_03:** I didn’t go to that one. So I think the main thing was that, yeah, so I think the main thing, I'm going to try and fix this right now on Twitter. Live technical support, see if I can resolve it right now.
+
+**[05:02] SPEAKER_01:** If not, I am.
+
+**[05:06] SPEAKER_03:** I did choose a...
+
+**[05:08] SPEAKER_01:** But also parallel in that, because I was still working for the Ethereum Foundation at the time, was that there was like an enterprise Slack set up there, which was actually started by Vitalik, who afterwards said people kept badgering him about enterprise stuff. That's right. So at some point, he just dumped the ball in a Slack and ran away. That was the technique. so that was a not quite the same group it was a larger group that's slightly different uh nuka was part of that luca was part of that um also um by the way we should introduce ourselves yeah i'm boxing will so i'm head of ecosystem at Stratum Cut.
+
+**[05:56] SPEAKER_02:** Chairman James Lubin, CEO of Blockups. Victor Wong. Creators of Stratum Recon.
+
+**[06:01] SPEAKER_03:** Yeah. And Victor Wong, Chief Product Officer of Blockups.
+
+**[06:04] SPEAKER_02:** That's it. Sorry, back. But yeah, Amos as well. Do you remember that? Yeah. Taiwan. Taiwan. We should check in on. I haven’t thought of Amos until, in like several years until the moment.
+
+**[06:16] SPEAKER_01:** So the interesting thing about what they were doing, so that was like some Taiwan bank consortium thing. Yep. But then they, they did like work on like Chinese cryptography and stuff like they've got differing requirements. Right. Um, and the master chain, which was in Russia, that was like a, a, a spare bank thing. Yeah.
+
+**[06:42] SPEAKER_00:** because you you have uh you know i was not at the year at that time and so it's very interesting for me to you know what were the hopes and the excitement that you see you know you were part of those early conversations this was created yeah i think companies it's like a pretty it was a pretty big event you know yeah as you mentioned you know like gp morgan and everything all those big names coming into the ecosystem And what were the hopes and really like the overall like atmosphere, you know, when the EA was created like eight years ago?
+
+**[07:13] SPEAKER_01:** Yeah, well, I mean, so, I mean, consensus were very critical as well because, you know, they were doing a load of the enterprise like engagement stuff, right? You've got many, many companies like starting to get interested in, hey, you know, we want to do a pilot. We want to get involved. So ConsenSys were doing a lot of those. So they ended up having a lot of those connections and bringing those in together. But yeah, you know, over those months, you really have like, they've got a hell of a lot of momentum. Yeah, really, really quick.
+
+**[07:48] SPEAKER_02:** So the observation during DevCon 2 when the idea was hatched was basically that at least at the innovation lab level, a lot of the enterprises were just using and forking their own flavor of Ethereum. They had, like, hacked their own consensus algorithms and security and... Many guests. Many guests, indeed. We learned later that, like... like a lot of JP Morgan's forum was initially built by Jeff Wilkie.
+
+**[08:19] SPEAKER_01:** He had like some kind of. And that was not announced at the time of DevCon 2. That was still behind the scenes for a few months, but happened just before the EA started. But, but yeah, you, you, You've got all of this stuff brewing up, I mean, for years earlier. Like, if you think of, like, ErisDB that became Monax, that became Hyperledger Burrow. So that was a permissioned Ethereum client off POC5 pre-mainnet, mid-2014, of sticking in Tendermint onto an EVF. So, yeah, like, you know, it was all a bit smished apart. But it was like the time is right for us to work together because we've all got the same needs.
+
+**[09:07] SPEAKER_02:** Us too. We had our own client and they got used in a bunch of the consensus consulting engagements at that time. And we started even then kind of tuning it for enterprise. And so I guess the idea was like, well, maybe enterprises won't adopt if there isn't a standard for all of this new stuff that they need that's above and beyond the base standard.
+
+**[09:30] SPEAKER_03:** I think it was even beyond that. There was just tons of technical work going on in each individual company's silo to get Ethereum to do what they wanted to do in a private way. So everyone was like bolting on these things. what came out of that those early conversations at devcon was wait like while doing similar things maybe if we all kind of work together we could do it faster and get this up faster and that was all around private everyone and i guess also like a marriage between like
+
+**[10:11] SPEAKER_01:** kind of customers of these things and builders yeah of saying you've got all these kind of startup kind of companies that are making ethereum things and you've obviously got big demand from really major enterprises to have this but it's there's but yeah on that standardization side there was like nothing and it's like you're all going to get vendor locked like instantly and it'll all just be arbitrarily different and painful and horrible so let's try and work out because well at some point as well with with quorum it was kind of like you know are we going to like collaboratively do code bases as well uh like you know hyperledger was another was another piece into this is that is that a few months earlier i've spent a bunch of time working on c plus plus relicensing c plus plus client to get back to apache 2 so it could have been contributed into hyperledger and we could have gathered around that, that fucked up. So the EA was kind of a backup, I guess, of like, right, we can't have this grand fusion, but there's enough happening on the Ethereum side that we can at least get all the Ethereum pieces together. And then, yeah, I guess it went quite quickly from, okay, we don't want to straight compete with Hyperledger having a shared code base also kind of like screws up the companies.
+
+**[11:41] SPEAKER_02:** So I think, let me, you know, in the spirit of spiciness, I think the enterprise users would have preferred a shared code base, and they wanted to commoditize any difference among the startups out of existence so that they could never be vendor locked again. They've had these horrific IBM nightmares, Oracle nightmares over the years. And they're just like, not this time. We're not going to live through this.
+
+**[12:10] SPEAKER_01:** I mean, also, you have got that market pressure, right, of Corda coming out, of IBM launching Fabric.
+
+**[12:19] SPEAKER_02:** They were worried it would end up that kind of Nominally open source, but quite proprietary.
+
+**[12:24] SPEAKER_01:** So those were both shooting for release in February 2017. So it's that kind of timeline is like, right, we've got to get our shit together to be able to do like an Ethereum product thing that can have some hope against IBM and R3.
+
+**[12:40] SPEAKER_02:** DA at that time, I remember one of our prominent enterprise user EA members said, you know, yeah, they've got a call with, you know, 300 people on it every week trying to sell into the big banks, let's say. Right. And it's funny that all of the, like, Ethereum just survived all of this more or less not paying any attention and, like, you know, this competition kind of came in.
+
+**[13:08] SPEAKER_03:** Well, I think there was another parallel thing that was happening. At that DEVCON event, really were like the first, like the kind of enterprise use cases we talked about today. Like for example, Santander talked about, you know, US dollar on chain, which we all recognize as a stable coin now.
+
+**[13:31] SPEAKER_00:** But you see, Victor, I think that's a very cool parallel. Like you set the stage pretty well for like, you know, where it's coming from. Yeah. And where it started, you mentioned, you know, innovation labs, like starting to contribute to some codes. We've known like the use cases that blockchain and Ethereum can solve for a long time. But it's only actually now and it's been for probably like for the last year that things have been really changing drastically. And to take, you know, like your words for when you say innovation labs. it's not innovation lab anymore looking at how they implement blockchain in their ecosystem. It's really like executive team that say, hey, we want to plan what is the production, like how we get it to market.
+
+**[14:16] SPEAKER_02:** Thankfully, like they're scared now.
+
+**[14:18] SPEAKER_00:** So like they better move or out. I don't know if it's like, there is, you know, there is, but there was some interesting, some interesting talk, you know, like when we were at Sibos, like the Swift conference.
+
+**[14:28] SPEAKER_03:** Yeah, we should mention that because like, you were just at Sibos and you're dealing with like what we think of as ShredFi institutional players and that's you know where you have a lot of communication so like what were your impressions about where they're at with that because that's the other side that we talk about the digital asset tokenization is definitely a hot topic everyone is looking because um
+
+**[14:55] SPEAKER_00:** They know it's happening. They want to be involved. And it's more, and now, especially like there is less, there is less like regulatory, you know. The listeners may not know what Sibos is. Oh, yeah. So Sibos is the big Swift conference. Swift, if you're not familiar, it's a messaging system that a lot of 11,000 financial institutions around the world, it's actually a co-op. It's a DAO for Trash Buy. Okay. Kudos to Danielle from ConsenSys who said that to me once. It is a doubt.
+
+**[15:26] SPEAKER_02:** Although it's like, can we buy in now? I feel like, you know, it's not. Yeah.
+
+**[15:34] SPEAKER_00:** The token is having probably a bank license.
+
+**[15:38] SPEAKER_02:** The London Metal Exchange is like this too. It's like you want to sign up, you got to like buy a bunch of shares and like, you know, then there's an annual fee and whatnot. And you have to like put someone there all the time.
+
+**[15:49] SPEAKER_01:** You have to join the trade guild.
+
+**[15:51] SPEAKER_00:** Yes. Exactly. And so that big conference is a big make-out of payments, I would say, every year. So you have all the big financial institutions, also global financial institutions like clearing house, settlements, like your work leader, etc. But also like all the banks. And they gather here and there is a lot of conversation. What is very interesting is actually Saibos and Swift. is a very kind of standard organization. Because what they do is how we make sure we send messaging across all of us that everyone is sure is going to understand. And so they used to have a different kind of messaging format, and recently now they're migrating to something new, which is ISO 222. Okay. Which is, if you want to go and dive deeper into this, this is really how every financial institution wants to discuss. They've been working on that spec for a long time, and that's how anything that can touch finance from securities to payment, like they have to be codified.
+
+**[16:54] SPEAKER_02:** Yeah, I think it's good to explain. So, like, most of finance gets cleared through messaging. And it's like, so crypto people are used to like putting a transaction in and then it goes everywhere.
+
+**[17:06] SPEAKER_00:** Yes.
+
+**[17:07] SPEAKER_02:** It's not really like this.
+
+**[17:08] SPEAKER_00:** Oh, yes. Thank you. Thank you. Yeah, indeed. That's a very key point is that process of what we call delivery versus payment in traditional finance. It's a pretty complex thing because how you make sure when you deliver the money, the money has been received, that you receive the asset, that everything has been... And it's a lot of dance because you receive message, you send another one. And it's not like how we used to do where in crypto we submit and it's actually an atomic transaction, which is just one thing. And when the transaction is complete, you know it's been executed, it's been delivered, and all the parties that it's actually, you know, I give you the can, well, I know you've been giving me, like, the money exactly, you know, where actually there is, like, a little bit dense, well, I put the can here, like, you see the can that has been moving here, like, you send the money, and so the blockchain here offers such a efficiencies because things that were like you know like the t plus one or t plus two for some of some of those different exchange now you you do it like well depending on what chain you're going to deploy yeah between a second to even like less than that yeah and also swift
+
+**[18:21] SPEAKER_02:** isn't a payments mechanism right no it's not it's a message that's another that's another comment let me i think interject with this specific example i think they're biggest in fx right yes so let's say i've got some usd i want some euro and we kind of like agree to a usd euro trade and so we like i guess we look up whatever the pair is trading at and i think it's like i send my side of the trade with some unique id to swift and you do too, and then Swift checks if it matches, it charges $7 either way. If it does match, then it'll tell us that it matched.
+
+**[19:04] SPEAKER_00:** Well, I don't think it's actually exactly this way. It's more a swift offer type of envelope and a format of envelope and paper and ink that we know how to use and how we're supposed to fill up some forms. Then how we trade those forms between different market participants. It's not much, you know, like the people, like they're going to be some, you know, corresponding banking that's going to be like locally taking your cash and they're going to, everyone is going to take their share.
+
+**[19:31] SPEAKER_02:** It's not moving the asset. It's just, it's like, I have the USD on my bank list. You've got the euro on your bank list.
+
+**[19:40] SPEAKER_00:** Talking to each other in a secure and compliant way. Because it's also, oh, he sent that, you have to send some specific messaging for compliance. Then I send another one, say, hey, I checked, there's all the information.
+
+**[19:54] SPEAKER_01:** A bunch of local jurisdiction-specific Yeah, it's like a lot of different handshakes.
+
+**[20:00] SPEAKER_02:** Yes.
+
+**[20:01] SPEAKER_01:** But yeah, Matt spoke, held a little event at one of the bars upstairs, which I went to, and there were various others there. I don’t know if you went to that one as well.
+
+**[20:10] SPEAKER_03:** I didn’t go to that one. So I think the main thing was that, yeah, so I think the main thing, I'm going to try and fix this right now on Twitter. Live technical support, see if I can resolve it right now.
+
+**[20:27] SPEAKER_01:** If not, I am.
+
+**[20:31] SPEAKER_03:** I did choose a...
+
+**[20:33] SPEAKER_01:** But also parallel in that, because I was still working for the Ethereum Foundation at the time, was that there was like an enterprise Slack set up there, which was actually started by Vitalik, who afterwards said people kept badgering him about enterprise stuff. That's right. So at some point, he just dumped the ball in a Slack and ran away. That was the technique. so that was a not quite the same group it was a larger group that's slightly different uh nuka was part of that luca was part of that um also um by the way we should introduce ourselves yeah i'm boxing will so i'm head of ecosystem at Stratum Cut.
+
+**[21:21] SPEAKER_02:** Chairman James Lubin, CEO of Blockups. Victor Wong. Creators of Stratum Recon.
+
+**[21:26] SPEAKER_03:** Yeah. And Victor Wong, Chief Product Officer of Blockups.
+
+**[21:29] SPEAKER_02:** That’s it. Sorry, back. But yeah, Amos as well. Do you remember that? Yeah. Taiwan. Taiwan. We should check in on. I haven’t thought of Amos until, in like several years until the moment.
+
+**[21:41] SPEAKER_01:** So the interesting thing about what they were doing, so that was like some Taiwan bank consortium thing. Yep. But then they, they did like work on like Chinese cryptography and stuff like they've got differing requirements. Right. Um, and the master chain, which was in Russia, that was like a, a, a spare bank thing. Yeah.
+
+**[22:07] SPEAKER_00:** because you you have uh you know i was not at the year at that time and so it's very interesting for me to you know what were the hopes and the excitement that you see you know you were part of those early conversations this was created yeah i think companies it's like a pretty it was a pretty big event you know yeah as you mentioned you know like gp morgan and everything all those big names coming into the ecosystem And what were the hopes and really like the overall like atmosphere, you know, when the EA was created like eight years ago?
+
+**[22:38] SPEAKER_01:** Yeah, well, I mean, so, I mean, consensus were very critical as well because, you know, they were doing a load of the enterprise like engagement stuff, right? You've got many, many companies like starting to get interested in, hey, you know, we want to do a pilot. We want to get involved. So ConsenSys were doing a lot of those. So they ended up having a lot of those connections and bringing those in together. But yeah, you know, over those months, you really have like, they've got a hell of a lot of momentum. Yeah, really, really quick.
+
+**[23:13] SPEAKER_02:** So the observation during DevCon 2 when the idea was hatched was basically that at least at the innovation lab level, a lot of the enterprises were just using and forking their own flavor of Ethereum. They had, like, hacked their own consensus algorithms and security and... Many guests. Many guests, indeed. We learned later that, like... like a lot of JP Morgan's forum was initially built by Jeff Wilkie.
+
+**[23:44] SPEAKER_01:** He had like some kind of. And that was not announced at the time of DevCon 2. That was still behind the scenes for a few months, but happened just before the EA started. But, but yeah, you, you, You've got all of this stuff brewing up, I mean, for years earlier. Like, if you think of, like, ErisDB that became Monax, that became Hyperledger Burrow. So that was a permissioned Ethereum client off POC5 pre-mainnet, mid-2014, of sticking in Tendermint onto an EVF. So, yeah, like, you know, it was all a bit smished apart. But it was like the time is right for us to work together because we've all got the same needs.
+
+**[24:32] SPEAKER_02:** Us too. We had our own client and they got used in a bunch of the consensus consulting engagements at that time. And we started even then kind of tuning it for enterprise. And so I guess the idea was like, well, maybe enterprises won't adopt if there isn't a standard for all of this new stuff that they need that's above and beyond the base standard.
+
+**[24:55] SPEAKER_03:** I think it was even b

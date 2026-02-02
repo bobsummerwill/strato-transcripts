@@ -76,33 +76,27 @@ echo -e "${BLUE}Transcribers: ${YELLOW}${TRANSCRIBERS}${NC}"
 echo -e "${BLUE}Processors: ${YELLOW}${PROCESSORS}${NC}"
 echo ""
 
-# Detect and activate appropriate virtual environment
-detect_venv() {
-    if command -v nvidia-smi &> /dev/null && nvidia-smi &> /dev/null; then
-        [ -d "$PROJECT_DIR/venv-nvidia" ] && echo "venv-nvidia" && return
-    fi
-    if command -v rocminfo &> /dev/null && rocminfo &> /dev/null 2>&1; then
-        [ -d "$PROJECT_DIR/venv-amd" ] && echo "venv-amd" && return
-    fi
-    [ -d "$PROJECT_DIR/venv-intel" ] && echo "venv-intel" && return
-    [ -d "$PROJECT_DIR/venv-cpu" ] && echo "venv-cpu" && return
-    [ -d "$PROJECT_DIR/venv" ] && echo "venv" && return
-    echo ""
+# Auto-detect and activate virtual environment
+# Priority: nvidia > amd > intel > cpu
+detect_and_activate_venv() {
+    local venvs=("venv-nvidia" "venv-amd" "venv-intel" "venv-cpu")
+
+    for venv in "${venvs[@]}"; do
+        if [ -d "$PROJECT_DIR/$venv" ]; then
+            echo -e "${GREEN}Using virtual environment: $venv${NC}"
+            source "$PROJECT_DIR/$venv/bin/activate"
+            return 0
+        fi
+    done
+
+    echo -e "${RED}Error: No virtual environment found. Run install_packages_and_venv.sh first.${NC}"
+    echo "Expected one of: ${venvs[*]}"
+    exit 1
 }
 
 cd "$PROJECT_DIR"
-VENV_NAME=$(detect_venv)
-if [ -z "$VENV_NAME" ]; then
-    echo "Error: No virtual environment found. Run install_packages_and_venv.sh first."
-    exit 1
-fi
-
-echo -e "${BLUE}Using venv: ${YELLOW}$VENV_NAME${NC}"
-source "$VENV_NAME/bin/activate"
+detect_and_activate_venv
 source setup_env.sh
-
-# Set HSA override for AMD GPUs (needed for RX 6000 series)
-[ "$VENV_NAME" = "venv-amd" ] && export HSA_OVERRIDE_GFX_VERSION=10.3.0
 
 # Find all MP3 files
 MP3_FILES=(*.mp3)

@@ -1,0 +1,260 @@
+SPEAKER_02: Hello, hello.
+
+SPEAKER_00: Hello, hello. Great to see you, my friend. So we are here in Prague, in beautiful Prague—Dark Prague, the inaugural Dark Prague Zero Congress, conference—I'm not quite sure what you'd call it. But yeah, delighted to talk to you today, really within the context of this early days of Ethereum project that I've been looking at. And one of the things I remember seeing earliest was the two EMEAs that you had—capitalist Amir and anarchist Amir—so tell me, you know, before all that started, even—how did you end up doing this project? How come I'm doing it?
+
+Well, it was quite coincidental. I'd gathered a bunch of information back in 2017, 2018, basically because Ming Chan was getting hoofed out, and I asked Vitalik what I could do to help with the transition or whatever. And he said, "Can you go and talk to people in the community and sort of see what they think the Ethereum Foundation should be? Like, what should we be doing?"
+
+SPEAKER_02: Oh dear, if you ask that question, it's already a bad sign.
+
+SPEAKER_00: Well, my question at that point was—so Ming was terrible. She was one of the least professional people I've ever worked with. She was an absolute nightmare. And my thought was, well, what the hell was happening before that, that she looked like a good choice? And there was a real sort of shroud of mystery as to what had happened then, even though it was only like three or four years before. And so, there just was no canonical history. Nobody really knew what happened. Even something as basic as, was Charles like kind of a co-founder or not? He kind of says he was, maybe, but maybe he wasn't. Which is just crazy because, you know, he was there, doing videos, and there's just tons of evidence. But anyway, so I started digging back into that stuff.
+
+SPEAKER_02: What about Anthony Di Iorio as well?
+
+SPEAKER_00: Anthony Di Iorio, yes, that's right.
+
+SPEAKER_02: Didn't he get rocked or something?
+
+SPEAKER_00: There was Anthony Di Iorio.
+
+SPEAKER_02: I don't know the history.
+
+SPEAKER_00: There was Anthony D'Onofrio—that was Texture. And there was another guy called Anthony Euphamio who did this Digix Gold thing. But anyway, that's where I started getting interested in Ethereum history. It's just like, well, what the hell happened?
+
+What ended up happening is everything I recommended to Vitalik never happened. It was just completely a disaster. You know, Ming went, and he just got Aya—"Here you go, it's a new one, no changes." Like, what people wanted was transparency, they wanted community input, they wanted professional executive operational leadership—basically, an organization to help the devs. But primarily, it was like, don't be a Swiss opaque foundation with no accountability or any public information at all. Anyway, I put the stuff aside at that point. It's like, great—that was a good use of my time, advising the millionaire for free for months.
+
+But then just recently, the guys I now work with started recording some videos because Kieren is—Kieren James-Lubin is Joe's son. So he was actually around from March 2014, and the others were sort of involved from 2015, and they were just like, "We should get some of these memories down." It was like eight years ago at that point. So they did a couple of those videos, and I really loved them and was making tons of notes and finding links and photos and all of this. And then they interviewed me for the third one. But then more recently, I did interviews with Taylor Gering and with Texture. And just tons of stuff came out of that. And then I just kind of shoved those together. And there you go—that's Early Days of Ethereum: this sort of combination of biographical stuff, photos, videos, links to articles, and conversations with people. And it's really just because this is history, right?
+
+SPEAKER_02: This stuff was crazy—being in crypto since almost the beginning and seeing the stuff that happens—but seeing what got recorded, right? And it's like, wow, like history really is just written by the victors. It's just crazy.
+
+SPEAKER_00: So the one thing on that score, which I don't know if you know, is—the original Bitcoin Talk post for announcing Ethereum was done on the 23rd of January 2014, right, just before Bitcoin Miami. That page got changed—about eight months later, probably around August or September—it got quietly edited. And a whole load of people that were there got written out.
+
+SPEAKER_02: But what about the people getting deleted and stuff?
+
+SPEAKER_00: So yeah, just a whole bunch of people got deleted out—by who? The admins? Well, by Vitalik, I imagine.
+
+SPEAKER_02: But how do you edit people out of your thread?
+
+SPEAKER_00: No, no. The original post said, "Hey, we're Ethereum, blah blah blah. This is the team. This is what we're doing." So that post, which at the start listed about 30 people that were working on things, went down to—"Oh, right, Charles and Amir." Well, Amir, I don't think, was in the original post because he didn't want to be. But Charles got edited out. Stefan and Taylor Gering got edited in, and all the rest of the team got shoved off the page.
+
+Many, many people that were involved early—you know, they're just forgotten. If you go back to early Internet Archive versions, you can find some names. So, I mean, some people—like Mr. Ryan Taylor over here. Ryan worked on all the early websites for months. These pages that thousands or tens of thousands of people have seen as the main Ethereum page—nobody knew who did it. I didn't know. On one of the early ones, just for a little while, it just said, "Ryan Taylor Webb." I don't know who Ryan Taylor is. So a number of these names—I don't know who they are, or maybe start to find them. And basically, it's like the work of many hands, right?
+
+This is something I was talking about—the "great man theory," right? The thought that you have these exceptional people and, by amazing powers of intellectual skill and force of will, they bend the universe to their will. And that's kind of the story that people like.
+
+SPEAKER_02: It's kind of like feudalism. It's like—you pledge your allegiance to your liege.
+
+SPEAKER_00: That's right.
+
+SPEAKER_02: And if your liege becomes popular, you will gain through him. You will live vicariously.
+
+SPEAKER_00: Right.
+
+SPEAKER_02: That's how the tech world operates.
+
+SPEAKER_00: Yeah, well, people are looking for heroes and champions to cheer. In the highest case—something like North Korea—they literally think the leader is a god. They're just crying in front of him. Wow, that's amazing. So yeah, I'm trying to record the real truth and give people their voices and just make sure stuff doesn't get lost. So many things have already been lost.
+
+SPEAKER_02: Pete Rizzo did that for Bitcoin. He did really, really deep history of Bitcoin stuff.
+
+SPEAKER_00: Yeah, yeah. You should check him out as well. Yeah, I'm finding stuff. And you shared your old YouTube channel with me as well. You seem to have a reasonable number of artefacts of various ages that have been preserved about you.
+
+SPEAKER_02: It's funny because I was just filming and putting my video camera on the internet on YouTube. So that's why I have that page.
+
+SPEAKER_00: Right. It's funny—there's a guy called Freddie Hartline who was one of the guys that started the main Bitcoin co-working space or whatever in Vancouver. He was saying he's got loads of stuff on his Facebook account of all things. Even though it's as boomer as you can imagine, it's like, "Yep, loads of other people have had things on so many other platforms, and everything's gotten lost and fucked." I've just posted shit on my Facebook page, and it's up there forever. Obviously, preserving things yourself is way better than relying on any of these platforms. But yeah, so much stuff is just rotted because people have deleted their accounts or a platform isn't around anymore—or just general rot.
+
+SPEAKER_02: Everything I have that's survived is because I uploaded it to a normie platform. Yes, this is it. I periodically have a cleansing. It's not accidental, but every few years your data just resets to zero. I don't know—it sucks, but you know.
+
+SPEAKER_00: Well, that's it. Yeah, Freddie's super normie story is still using Facebook even though it's Facebook. So, yeah—you were a free software guy and a general developer on that thread and an early Bitcoin dev. So how did you find Bitcoin?
+
+SPEAKER_02: So I was working on free software for five or six years. And then I became a professional poker player for over two years. The poker sites—you're playing against other players, but the platform takes a cut out of every pot. The sites charge huge fees for a really crappy service. So I had this idea: what if you could have a P2P site with no rake and fees?
+
+I had the design for it, but the main issue was the payment system. So I was on IRC in a channel with other anarcho-hackers, and I was telling them about that. This guy—a mathematician who worked for the W3C named Melvin—dumped like 10 links in there: random open-source projects for money. Stuff like LETS—have you heard of LETS? No? At one point, people were really into that. It's like—you offer your labor and get a token or something.
+
+Anyway, I went through all the links: "No, no, no..." I saw Bitcoin, opened the page, and it said, "Bitcoin is a P2P currency that cannot be controlled by governments or central banks." I was like, "That's garbage—obviously not." There were loads of random projects like that on SourceForge back in the day. I once saw a Jurassic Park video game that claimed you could punch through walls, hack terminals, hunt dinosaurs—I checked the code: it was just main.cpp, one file. Got bored and wrote the idea, then abandoned it.
+
+I thought Bitcoin was like one of those projects. I went, "No, no, no." Then I figured, "Okay, let's take a deeper look at all of them." When I got to Bitcoin, I downloaded the source code and started going through it. Oh—that's really interesting. Bitcoin source code was about 15,000 lines at that time. That's actually a small amount—some talented programmers can write that in a week. But it wasn't nothing like that Jurassic Park game. So it was like 15,000 lines of real code.
+
+SPEAKER_00: You can read through and kind of understand that pretty well.
+
+SPEAKER_02: Yeah, so I printed it all out and covered my floor with it. It's like my pornography—I started studying it. And it started to make sense. I was like, "Oh, very interesting." When I figured out how it worked, I was like, "Whoa, this is amazing. I'm going to work on this."
+
+SPEAKER_00: So what month do you think that was?
+
+SPEAKER_02: That was the summer of 2010. I was like, "Okay, I'm just doing this from now on." I made a plan: "In 10 years, we'll be here," etc. Because this was a long-term thing. But it just started growing massively—it happened really quickly. Pretty crazy.
+
+I started working on Bitcoin, writing code. I was one of the first five Bitcoin developers, listed on Bitcoin.org. But that page is gone from the internet. People don't like that.
+
+SPEAKER_00: Maybe it got archived.
+
+SPEAKER_02: No, I don't think so.
+
+SPEAKER_00: No, just gone.
+
+SPEAKER_02: The Bitcoin web page with the list of names—I had a war with Gavin Andresen. He's a motherfucker in many ways. He really likes regulations, the state, banks—he's a statist. And he wasn't that good a dev. When young devs came up, instead of nurturing them, he tried to push them out to keep control. So I became his main enemy—his first enemy.
+
+SPEAKER_00: And then he kind of seemed like he never wanted the role. Even he just got locked into it.
+
+SPEAKER_02: And then he was there like, "I want to keep it. I really like it." I went to the very first event presenting Bitcoin to an audience of bankers. After my talk, Gavin Andresen DM'd me: "I think you should not talk at conferences ever again." I was like, "Who the fuck is this guy? You're not in charge of this project. Fuck you."
+
+SPEAKER_00: Was this in London or the US?
+
+SPEAKER_02: Amsterdam. Anyway—one of the first things Gavin Andresen did was try to get my name off that list. He got his name added. So he was like that.
+
+SPEAKER_00: I mean, did you end up starting Libbitcoin quite early then?
+
+SPEAKER_02: Yeah, March 2011 or something.
+
+SPEAKER_00: And was that around the same time as BIPs? Was that like—you were coordinating that? It's kind of like, "Right, we need specs, we need multiple clients."
+
+SPEAKER_02: Yeah, because Gavin saw Bitcoin not as an open-source project but as a startup. He's like, "We need to pull ranks, make features, build a fast payment system, make a roadmap." It was more like he wanted to operate it like a business.
+
+SPEAKER_00: Right.
+
+SPEAKER_02: So I was very worried—he wasn't treating it like an open-source protocol. He was like, "We need to add this, we need to add that." So I proposed the BIP system to constrain his wild ideas. Gavin—I don't want to talk shit—but yeah, I made that BIP system for that reason. I was afraid of that direction, that side of Bitcoin, which later made a foundation and put themselves as chief scientist, trying to do a takeover by business guys. They wanted to push out the anarchists. It was like, "Oh, these crazy anarchists invented this new plaything—it's a really interesting toy. If we just pry it out of their hands, we can get it accepted by big banks and do something useful."
+
+SPEAKER_00: "You're putting people off—all this anarchist talk. We're trying to sell this thing."
+
+SPEAKER_02: Yeah. Our side was like, "This is an actual new economic paradigm." Now all the Bitcoin Maxi people are very Bitcoin Maxi, but when I first met Pieter Wuille—or Sipa—one of the core devs of Bitcoin in 2011, I was talking to him at a conference, and he said, "Oh, I'm not really interested in the monetary aspect of Bitcoin. I'm more interested in the scripting."
+
+SPEAKER_00: Just the tech.
+
+SPEAKER_02: No, the scripting language—because it enables smart contracts and programmability. He wasn't interested in the money thing. So this new Bitcoin fanatic ideology is retroactive. Back then, people in Bitcoin were like, "Oh, we want to explore."
+
+SPEAKER_00: Well, for the longest time, there was this thought that all innovation happening elsewhere would come back to Bitcoin—it's inevitable. We don't have to push anything ourselves because it'll all come home.
+
+SPEAKER_02: Yeah, the problem with Bitcoin is it became taken over by people who like going to conferences. They see people they know—a lot of culty, massive Bitcoin people who go, "Oh, I love you! You're amazing!" These people aren't interested in the bigger mission or sense of purpose—it's about themselves. So Bitcoin got taken over by these influencers. And when somebody comes and says, "Let's do something big, let's rock the boat," they see that as an enemy. That's why Bitcoin is so conservative—it's been taken over by this class of people.
+
+SPEAKER_00: There was Sailors—absolutely the worst for this. There was a little video of him I saw the other day saying the biggest risk to Bitcoin is competent and enthusiastic devs.
+
+SPEAKER_02: Well, I need to see the full quote—that sounds ridiculous.
+
+SPEAKER_00: But he basically seems to have gone full-on ossification: "These developers want to change things—that's a problem. We should never change anything. We need to think in 100-year timelines because this is the store of value that's going to save humanity." That's all there is—the store of value narrative. Don't use your Bitcoin.
+
+SPEAKER_02: Well, there's this book from the 90s—The Sovereign Individual. I'm not saying I agree with all of it, but it makes interesting analysis. It's definitely worth studying. It says that in 1997, it was talking about cryptocurrency—how the invention of cryptography would enable cyber markets in cyberspace, capital would become hyper-liquid, flow anywhere, and governments would lose power to tax or control it, inherently changing the logic of violence. That was a big idea in early crypto—people always brought up this book. Yet it hasn't come to fruition. So we have to ask ourselves why. I don't think the thesis is wrong—I think they missed surveillance. The surveillance apparatus can monitor all flows and activity. If you can do that, then you have law enforcement.
+
+SPEAKER_00: And, you know, you...
+
+SPEAKER_02: I'll be able to pause a sec. For sure. Yeah, I just need to listen to this.
+
+SPEAKER_00: So, from what I could see, you started traveling around the world a bit—you were in various places at different times. Were you going around meeting different people, building different things? How was that?
+
+SPEAKER_02: Yeah, I was traveling a bit. I actually come from a movement of anarchist hackers in Europe living in squatted buildings. In Europe, there are squatters' laws—if a building is abandoned, you can move in. Some squats last for years. In Amsterdam, we had a huge house. Imagine—working on free software, broke devs—it's a really useful lifeline. Living in city centers, even now working in crypto, I look at property prices and it's ridiculous. Societies really need that kind of support for people working on projects and software. It's a shame we don't. Anyway, I was part of those hacker movements, so I had lots of places in Europe I could go to—communities working on free software in Barcelona, London, different places.
+
+SPEAKER_00: So when did your focus switch to Dark Wallet?
+
+SPEAKER_02: So actually, I made the first CoinJoin and Stealth Address implementations in Bitcoin—the very first privacy techniques. I was working on Bitcoin node implementations but also focused on privacy, so I'd already done those projects before. Then with Dark Wallet, I was like, "We need to create a product—a wallet or something." So that's why we made Dark Wallet.
+
+SPEAKER_00: And when did you first meet Vitalik?
+
+SPEAKER_02: Yeah, so I was living in these squats around Europe. After 2012, there was a friend I met many years ago when hitchhiking—a really cool dude. I saw him randomly online and said, "Bro, I'm making a conference. Come." He said okay but I didn't hear back. It turns out he walked onto a ferry without documentation, came from Estonia across Europe into England, and now looked like Jesus—long hair, long beard.
+
+SPEAKER_00: Didn't look good for an entry.
+
+SPEAKER_02: Anyway, Mihai... yeah, met him at the conference. I was enchanted by him—he was like, "I just met this guy—your friend—he looks like Jesus, man." Then he was meant to come back with me to my house, but he missed the train and ended up walking into a random building in London—that was the Occupy activists' building. So I went there, Mihai came, and we started living there, setting up our hack lab. I also have hacker friends in Spain who had Calafou—a eco-industrial community near Barcelona. So I was living with Mihai for about a year in London, then we went to Calafou in Barcelona. Mihai co-founded Bitcoin Magazine with Vitalik.
+
+SPEAKER_00: Right, right.
+
+SPEAKER_02: And I was also working on Bitcoin Magazine with them. I didn't write loads—mainly those guys—but I helped Mihai with graphic design. Some covers I helped design when we were high.
+
+SPEAKER_02: So then we went to California, and Vitalik came to live with us. There were two other Spanish hackers—old friends of mine—and we were working together on projects. That was when we started Dark Wallet. I knew Cody from the conference.
+
+SPEAKER_00: So you said, "Cody, let's start..." Which conference—the Amsterdam one or the London one? Was that the one you organized?
+
+SPEAKER_02: Yeah, I did the 2011 one in Prague and the 2012 one in London as well.
+
+SPEAKER_02: At the time, we were working together in the hack lab. Mihai had his—I think it was Akasha? No, maybe Agora or something. Anyway, he was creating what Darkfire is now—a social network marketplace kind of thing. He was working on that, my friends were working on that, Vitalik was working on Bitcoin stuff, I was working on Bitcoin stuff, and they were working on the magazine. We were doing a whole bunch of stuff there in the hack lab. And then we co-founded Dark Wallet.
+
+SPEAKER_00: Right, right. And Peter Todd as well?
+
+SPEAKER_02: Peter Todd came later. But you can see the original Dark Wallet announcement video on YouTube—it has all the co-founders listed.
+
+SPEAKER_02: So the CIC was a network of 10,000 cooperatives throughout Catalonia. The whole reason it was made is because there's a big anarchist movement in Catalonia—they'd been doing their thing for many years. Then they started to mature as anarchists and thought more about economics and organization. I like this Spanish tradition of anarchists—they're a lot more organized than, say, London, where it's just crazy people. So they decided to make a network of cooperatives providing all basic needs to become autonomous from the state—a parallel system. Cool stuff.
+
+Our team was actually the cryptocurrency part of that. They were interested in cryptocurrency because trading inside the network let people avoid taxes, and they wanted to exchange outside too—so they could use cryptocurrency for that. We set up the first ATMs in Catalonia. Cryptocurrency was part of this cooperative.
+
+They also had a research lab—a giant factory complex in the Catalan countryside. It was burnt down, but people came with a proposal to buy it from the owner. It's like a village—massive. They had an industrial research sector, electronics, and one part was our hack lab where we did cryptocurrency stuff.
+
+As part of that CIC research and the tools they needed, that's how we came up with these ideas—you've maybe seen the page on archive.org, "System One," about BitLaw. Anyway, there's a bunch of pages on our old wiki talking about applications we need to build with Bitcoin. That's when Vitalik started to become interested in those ideas.
+
+SPEAKER_02: Then he left Mastercoin. First he asked Bitcoin, "Let's loosen the restrictions on the opcodes." Bitcoin people said no. So he went to Mastercoin, then did Ethereum.
+
+SPEAKER_00: He was saying he'd also seen what happened with Counterparty—they were chopping down the op returns stuff. Yeah, it's like, "Okay, don't want to build some meta-protocol on top if they're going to change their mind next month and kill your protocol."
+
+SPEAKER_02: Yeah, so when they were making Ethereum, that's with Anthony Di Iorio and all those people.
+
+SPEAKER_02: I forgot—a bit before, the first Dark Wallet hackathon was in Milan.
+
+SPEAKER_00: Yeah, I was going to mention—Mihai was in Milan for a fair bit, right?
+
+SPEAKER_02: Yeah, we were all together, traveling to these places. Anyway, Macau's also a really big... gambling?
+
+SPEAKER_00: Gambling? Oh, no, in Milan.
+
+SPEAKER_02: It's a community centre called Macau. Used to be a meat processing plant—huge, with loads of cultural things. They let us use it for a month for our event. That's when Taylor—yeah, a lot of those early Ethereum guys—Hive, Hive Wallet—they came there and that's how they all met each other, the early co-founders. And Richard Stott—the designer—he was also my friend from London. That's how Mihai met him.
+
+SPEAKER_00: Yeah. So Vitalik had shared, a few years ago, his first communications with Gavin. Gavin contacted him on December 19, 2013, through about.me and said, "Where are you with Ethereum? I can do C++." Four days later, he created his repo to start working on C++ Ethereum. But the other bit I forgot—Johnny gave me the heads up. That's what he said—"Johnny Bitcoin," who he had met through you, right? So Gavin came to the squat at some point in London?
+
+SPEAKER_02: Yeah, we were hanging out because he said he's a KDE developer. He's written LIRC.
+
+SPEAKER_00: Right. I think in one of the interviews he said, "I'm going to give my KDE email because that will give me cred."
+
+SPEAKER_02: Oh yeah, it did. I was impressed—I was like, "Whoa, he's got a KDE email." That's funny—it worked.
+
+SPEAKER_00: So he came along, and I guess he was talking to Johnny, and Johnny must have mentioned Vitalik and Ethereum and pointed him onwards.
+
+SPEAKER_02: Yeah. I also visited them at Anthony Di Iorio's—that's where that hackathon was. So is Anthony Di Iorio a co-founder of Ethereum? Yeah, he put money into Ethereum. What happened to that money? He did things well—he got...
+
+SPEAKER_00: So he basically lent money to the project for those early months of development, and he did get paid back out of the crowd sale. There was some court case about whether he got it back as Bitcoin or fiat—some disagreement, but that got finished off. The timeline was Vitalik did the white paper in about November 2013. He shared it with a bunch of people—I don't know if he shared it with you, if you were on that list. Oh, right—the BitLaw stuff. So just a whole bunch of different cryptocurrency 2.0 use cases: transparency, arbitration, auditing, multisigs.
+
+SPEAKER_02: So they did ask me to be the lead Ethereum dev, but I was like, "We can build this on Bitcoin—why do you need a new thing?" Because I know you can build it on Bitcoin. That December, I kept pressing the guy to explain what it can be used for, and he just kind of in frustration went, "Marriage contracts." Not so appealing—I don't see the point.
+
+SPEAKER_02: It's interesting because sometimes you can be too closed-minded about things. But yeah, that December, after he shared the white paper around, various people started gathering.
+
+SPEAKER_02: I think what led to Ethereum's success was having a token. Having the token is really good because it allows the project to accrue value. Whereas working on Bitcoin, we were always broke.
+
+SPEAKER_00: Right, right. Yeah, those early months—no one was being paid on Ethereum either. It's like, "We will have a token sale. You will get paid back." But it's hope and a dream. The hackathon you're talking about was in April 2014 in Toronto. Anthony Di Iorio was running that—he'd got Bitcoin Decentral, a co-working space and venue. There were a bunch of projects operating out of there—kind of like businesses, though I don't know how great they were. One of the things they did was organize the first Canadian Bitcoin Conference.
+
+He'd got the space, was head of the Bitcoin Association of Canada, and the Association was running the conference. Ethereum were the main sponsor. So it was his space, his organization, his conference, his sponsors. Somebody said, "Is this how marketing works? All these different hands paying each other?" There's a lot of activity, but it's all from the same source. But yeah, there was a hackathon.
+
+SPEAKER_02: So he did get cocked.
+
+SPEAKER_00: I don't know. But yeah, there was the hackathon that you were at—you and Cody, presenting... I guess it was Dark Market, wasn't it?
+
+SPEAKER_02: Which became OpenBazaar.
+
+SPEAKER_00: Right. And then there was the main conference—Peter Todd was there, Andreas Antonopoulos, Dave Johnston. You'd got Adam B. Levine as well, and a bunch of others. That conference was also the only one with an Ethereum stall in the expo area—like, "Hey, we're a business project." Anthony's thought was that all this would happen out of Toronto—Ethereum was just one of N projects at Bitcoin Decentral. Lots of hackathon projects were on Ethereum, but what you were building was not.
+
+SPEAKER_02: Yeah, that's what I was saying—it didn't need to be. The thing is, I was quite an expert in Bitcoin, so it's difficult for people who don't know Bitcoin deeply to do those things. That's what I missed—actually having something with a language, etc., is easier for people.
+
+SPEAKER_00: Yeah, absolutely. Can you remember what the vibe was like at that conference compared to other Bitcoin conferences?
+
+SPEAKER_02: It was a fun conference—not exceptional, but I had a good time, just chatting to people. I remember Adam Levine and Stephanie and Andreas—they hung out with each other a lot.
+
+SPEAKER_02: So, I guess Ethereum kind of kept ticking along. Was that happening in parallel, or were you still crossing paths with these people through that year?
+
+SPEAKER_02: No, I didn't interact with Ethereum after that.
+
+SPEAKER_00: No, no. And in terms of timeline—Ethereum white paper November, team gathering December, BTC Miami. Were you at BTC Miami in January?
+
+SPEAKER_02: No, I went to the Toronto thing.
+
+SPEAKER_00: Right. So Toronto in April, crowd sale July-August 2014, then Ethereum Foundation started the crowd sale. Early contributors got paid back for prior months' work, and Ethereum was often live.
+
+SPEAKER_02: We did the Dark Market just purely for money—15K. That was pretty cool.
+
+SPEAKER_00: And with Dark Wallet, what time span were you working on that?
+
+SPEAKER_02: We started in 2013 and worked all the way to the end of 2014. We released an alpha—the crowdfunding was for the alpha—but we never released the stable. Mainly because I went to Syria, but I thought the dev team would finish it. They had enough money and everything.
+
+SPEAKER_02: They kind of fizzled out without my presence. It's a failing of my leadership—not to create an organization that doesn't fizzle out when one person disappears.
+
+SPEAKER_00: And with Libbitcoin, was that ongoing as well as your other projects?
+
+SPEAKER_02: Libbitcoin had serious technical innovation—it has the fastest blockchain database of any Bitcoin node. Eric Voskuil, a really skilled developer, took on that mission and is still continuing it. He's not just really into it—I've tried a few times to poach him to DarkFi, ZK, other stuff. He's a really good developer, but he's just like, "No, I just like Bitcoin. I just work on Bitcoin." So he's laser-focused on that.
+
+SPEAKER_00: Yeah, I got to meet him in person last year after lots of me like advanced, dysregulated focus. Well, he's just been at that for 10 years.
+
+SPEAKER_02: Yeah, it's crazy.
+
+SPEAKER_00: It will be 10 years.
+
+SPEAKER_02: Imagine working on one project.
+

@@ -4,32 +4,26 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
-# Detect and activate appropriate virtual environment
-detect_venv() {
-    if command -v nvidia-smi &> /dev/null && nvidia-smi &> /dev/null; then
-        [ -d "$PROJECT_DIR/venv-nvidia" ] && echo "venv-nvidia" && return
-    fi
-    if command -v rocminfo &> /dev/null && rocminfo &> /dev/null 2>&1; then
-        [ -d "$PROJECT_DIR/venv-amd" ] && echo "venv-amd" && return
-    fi
-    [ -d "$PROJECT_DIR/venv-intel" ] && echo "venv-intel" && return
-    [ -d "$PROJECT_DIR/venv-cpu" ] && echo "venv-cpu" && return
-    [ -d "$PROJECT_DIR/venv" ] && echo "venv" && return
-    echo ""
+# Auto-detect and activate virtual environment
+# Priority: nvidia > amd > intel > cpu
+detect_and_activate_venv() {
+    local venvs=("venv-nvidia" "venv-amd" "venv-intel" "venv-cpu")
+
+    for venv in "${venvs[@]}"; do
+        if [ -d "$PROJECT_DIR/$venv" ]; then
+            echo "Using virtual environment: $venv"
+            source "$PROJECT_DIR/$venv/bin/activate"
+            return 0
+        fi
+    done
+
+    echo "Error: No virtual environment found. Run install_packages_and_venv.sh first."
+    echo "Expected one of: ${venvs[*]}"
+    exit 1
 }
 
-VENV_NAME=$(detect_venv)
-if [ -z "$VENV_NAME" ]; then
-    echo "Error: No virtual environment found. Run install_packages_and_venv.sh first."
-    exit 1
-fi
-
-echo "Using venv: $VENV_NAME"
-source "$PROJECT_DIR/$VENV_NAME/bin/activate"
+detect_and_activate_venv
 source "$PROJECT_DIR/setup_env.sh"
-
-# Set HSA override for AMD GPUs (needed for RX 6000 series)
-[ "$VENV_NAME" = "venv-amd" ] && export HSA_OVERRIDE_GFX_VERSION=10.3.0
 
 # Parse arguments to pass through to process_video.sh
 EXTRA_ARGS=""

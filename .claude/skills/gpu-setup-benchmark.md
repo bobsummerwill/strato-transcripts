@@ -259,3 +259,33 @@ dpkg -l | grep nvidia                              # NVIDIA
 dpkg -l | grep -E "rocm|amdgpu"                    # AMD
 dpkg -l | grep -E "level-zero|intel-opencl|libze"  # Intel
 ```
+
+### torchcodec Segfault (PyTorch 2.9.x)
+
+pyannote-audio's torchcodec dependency has ABI incompatibility with PyTorch 2.9.x:
+
+**Symptoms**: Segmentation fault when importing pyannote.audio
+
+**Solution**: The install script automatically:
+1. Patches `pyannote.audio/core/io.py` to use soundfile as fallback
+2. Uninstalls torchcodec
+
+**Verify fix**:
+```bash
+pip show torchcodec  # Should show "not installed"
+python3 -c "from pyannote.audio import Pipeline; print('OK')"
+```
+
+See [strato-transcripts#44](https://github.com/strato-net/strato-transcripts/issues/44) and [torchcodec#995](https://github.com/meta-pytorch/torchcodec/issues/995)
+
+---
+
+## Auto-Detection
+
+Shell scripts auto-detect the correct venv (priority: nvidia > amd > intel > cpu):
+```bash
+./scripts/process_video.sh video.mp4      # Auto-selects venv
+./scripts/process_all.sh                  # Auto-selects venv
+```
+
+This allows running without manually activating a venv first.

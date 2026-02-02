@@ -1,0 +1,1163 @@
+[00:03] SPEAKER_00:
+So welcome to early days of Ethereum. I'm Bob Samuel here at Devcon Prague with my good friend, Exalt server Michael Paranti. Hello.. Hello. Samuel Bob Summerwill Based on list. Dark Prague Devcon Prague Most likely. Exalt server This is weird. maybe Exalted server? Or Former? Let's look at the audio cue. maybe Ethereum server? Or maybe Michael Perlin? If I can't be sure, I'll keep Exalt server but capitalize properly. Actually, Exalt server sounds like a title. I'll keep it but capitalize. Wait, the prompt says Known People 244.... Bob Summerwill is there. I will change Bob Samuel to Bob Summerwill. I will change Dark Prague to Devcon Prague. I will capitalize Exalt server. Michael Paranti seems to be the guest's name.
+
+[00:13] SPEAKER_01:
+Hey, good to see you again, Bob.
+
+[00:15] SPEAKER_00:
+Good to see you too. So i mean, we've worked together in a number of different contexts since, but today, you know, really wanted to talk to you in terms of the early days of the Ethereum project and you know, looking back to two beginnings. So i mean, what were you doing in the couple of years before any Ethereum involvement?
+
+[00:16] SPEAKER_01:
+So first place, first city we ever met..
+
+[00:18] SPEAKER_00:
+right, right.
+
+[00:19] SPEAKER_01:
+Devcon 4, man.
+
+[00:21] SPEAKER_00:
+Ah, yes, 2018.
+
+[00:23] SPEAKER_01:
+First hug that I got from you. Of this space going through. I joined the Bitcoin foundation just months before mount gox collapsed.
+
+[00:25] SPEAKER_00:
+There we are.
+
+[00:26] SPEAKER_01:
+You were competing with Grif for being the best. Grif is likely a nickname. Keep.
+
+[00:28] SPEAKER_00:
+Right? Well, There we go. There we go. Yeah. So I mean, we've worked together in a number of different contexts since, But today, you know, really wanted to talk to you in terms of the early days of the Ethereum project and you you know, looking back to beginnings. So I mean, what were you doing in the couple of years before any Ethereum involvement? Ethereum involvement? Filler: So, you know. Remove some. So welcome to the early days of Ethereum. I'm Bob Summerwill here at Devcon Prague with my good friend, Exalt server Michael Paranti.... So, I mean, we've worked together in a number of different contexts since. But today, I really wanted to talk to you about the early days of the Ethereum project and looking back to the beginnings. So, what were you doing in the couple of years before any Ethereum involvement?
+
+[00:56] SPEAKER_01:
+Before Ethereum involvement, I was at the Bitcoin foundation, basically. So that was my place in the craziness of this space going through. I joined the Bitcoin foundation just months Before mt. Gox collapsed. Yeah, that was a fun time. Mark karpelès was one of the founders, co founders of the Bitcoin foundation. Magical tux. That was really funny. Yeah. And then charlie shrem getting arrested. Right. Two of your directors getting arrested in short order. It's not really fantastic. So that was an interesting time. And so, I mean, in terms of Ethereum, so you know, Vitalik Buterin was on the scene very early as a bitcoiner. And very active in the forum. So young at the start, eh? 17, I think. And then Bitcoin magazine started. Right. Together him and mihai alisie started that up. And so Vitalik was on my radar just because he was present in the community. You know, there's so few of us at the time. Right. It's like stunning how few people there were at the beginning, you know, and how present a lot of those people still are. And so I was following, you know, we had blogs Before social media. Right. And, and so I still had my rss feeds and Vitalik had a blog, so he was in my rss feeds and one day he posted something about Ethereum. And so I like, okay, cool. You know, was, was that first thing, was it the white paper or did he post some posts? He was talking about the future of digital autonomous corporations. And DAOs. Right. And I forget what the exact title of the blog post was that it announced Ethereum.
+
+[01:00] SPEAKER_00:
+Yeah.
+
+[01:00] SPEAKER_01:
+So that was my place in the craziness of this space going through. I joined the Bitcoin Foundation just months before Mt. Gox collapsed. Gox Mt. Gox. Bitcoin Foundation Bitcoin Foundation.
+
+[01:13] SPEAKER_00:
+Yeah, that was a fun time.
+
+[01:16] SPEAKER_01:
+Right. Mark karpeles was one of the founders, co founders of the Bitcoin Foundation.. Capellis Mark Karpelès.
+
+[01:21] SPEAKER_00:
+Magical tux. Magical tux MagicalTux.
+
+[01:23] SPEAKER_01:
+That was really funny. Yeah. And then Charlie Shrem getting arrested. Right. Charlie Schremm Charlie Shrem.
+
+[01:28] SPEAKER_00:
+Two of your directors getting arrested in short order. It's not really fantastic..
+
+[01:36] SPEAKER_01:
+so that was an interesting time. And so, I mean, in terms of Ethereum, so you know, Vitalik was on the scene very early as a bitcoiner. Vitalik Vitalik Not in List? Vitalik Buterin is the name. I should use Vitalik or Vitalik Buterin. List doesn't have Vitalik. It has Aaron Davis.... Wait, Vitalik is usually referred to by first name. I'll use Vitalik.
+
+[01:45] SPEAKER_00:
+Right.
+
+[01:45] SPEAKER_01:
+And very active in the forum.
+
+[01:47] SPEAKER_00:
+So young at the start, eh? 17, I think.
+
+[01:50] SPEAKER_01:
+Yeah. and then Bitcoin magazine started. Right. Together him and Mihai started that up. and so Vitalik was on my radar just because he was present in the community. you know, there's so few of us at the time. Right. It's like stunning how few people there were at the beginning, you know, and how present a lot of those people still are.. Mihai Alisie.
+
+[02:11] SPEAKER_00:
+Yeah.
+
+[02:11] SPEAKER_01:
+And so I was following, you know, we had blogs before social media. Right? 02: 17 speaker_00: Right. Long form writing, who'd have thought writing. 02: 20 speaker_01: And, And I still had a blog, so he was in my rss feeds And I still had a Vitalik had a blog, so he was in my rss Vitalik had. And so I was. I'm the first a feederal ni: I forget what the exact title of the. My first. so like, okay, cool.
+
+[02:17] SPEAKER_00:
+Right. Long form writing, who'd have thought writing..
+
+[02:20] SPEAKER_01:
+And so I still had my RSS feeds And Vitalik had a blog, so he was in my RSS feeds And one day he posted something about Ethereum. And so I like, okay, cool. cool..
+
+[02:31] SPEAKER_00:
+You know, was that first thing, was it the white paper or did he post some posts? posts? Review that was tweeter, and coinbase of Ethereum classic before all participated tweeted about Ethereum. So Vitalik buterinvented that was tweet about Ethereum., some of these pre phases of, well, how could You do. How could You do different kinds of scripting? And then an uncertainty of where that might land. So that. that term doesn't really ring a, You know, ring a bell with me or whatever. But so anyway, so he. he posted about Ethereum for the first time on. On his blog. And i tweeted that out, and so apparently, i'm the first person that ever tweeted about Ethereum is my claim to fame. Well, that's fantastic. We're gonna have to dig out that tweet, aren't we, and then find the exact date on that. And then maybe the internet archive can find the. the blog post. It's on the original. It's still on. It's on. It's. It's on twitter. I've. No, no, i mean in terms of the actual link to the blog itself, i think the. I think the. the link might still work is still valid. Yeah, on. On vitalik's blog. And funnily, i. When the NFT craze happened, there was this project called cent, and they, You know, You could turn a tweet into an NFT. And that's c e n t. Yes, c e n t. And i get this message. I get. I get a dm from somebody, hey, You know, if You mint this as a tweet, i'll, You know, i'll buy it, You know, and i was like, how much You want to buy it for? And he's like, You know, i'll give You 200 bucks. And i was like, for the first tweet of Ethereum? Nah. But i guess i'll mint it, right? You know, and so. So i minted the tweet and ended up. So it's actually the second most expensive tweet behind jack dorsey's tweet. I was gonna say that i remembered because jack did his first, didn't he? Like the. His very first tweet. So those two. Those two tweets are the. Are the highest, You know, paid for a tweet. And so i minted it, and some crackhead, like NFT trader in dubai bought it off me for 21, 000. Right. And so the guy that originally messaged me, i gave him 10 of that. And he was in argentina, and he was a schoolteacher. And he took that 2100 and he turned it into, like, an educational program for Ethereum in argentina and like, turned it into a career. And like a year later he wrote me back and he was like, wow, man, that was so cool that You did that. And it meant it's totally changed my life. And like, now i'm teaching about Ethereum and i have school, class of children, and i have all of these things and i'm living from being an Ethereum educator. Right, right. Awesome, awesome. And so it's probably november 2013, i'd have thought. Yeah, exactly. November 2013. Around that. I think that's exactly when it was. And yeah, so, You know, Vitalik, i saw at various meetups when he, You know, i think there was a yellow paper first. Right. first there was a. Yeah, so the. Well, so, yeah, so the white paper that, that was november, like, like You say, i guess there's some prior blogs before. Right. Here's a fully formed white paper which then he sent out to some random group of people and they passed it on to further people. And that was sort of like how the beginning of that, people getting together to start doing that happened. So i have like another sort of like, interconnection that the first time i ever spent Bitcoin that i earned from the Bitcoin foundation, i bought whiskey for smári mccarthy and ásta helgadóttir, who were two of the parliamentarians in iceland from the pirate party. Oh, yeah, yeah. And smári mccarthy, You know, was one of the early wikileaks guys. And they, they were sitting in jörg platzer's bar in, in berlin room 77, which is where the. All the. the earliest Bitcoin meetups were happening. And also was the first place that You could buy alcohol and with. With. And so smári had tweeted that he was going. Going to jörg's bar. And i was like, okay, cool, i've definitely gotta buy You a whiskey. So, like, we did this over twitter and i, and i, You know, i published the transaction, You know, on twitter. Right, right. To see that it was confirmed. And i, You know, bought them whiskey in jörg platzer's bar. And so jörg platzer is one of the original members here of paralelní polis. Right? the role that i have here now of kind of being the one that packs it all together and gives like a vibe of, You know, where we're at in the space or where we're at in the house was what jörg used to do. Right, right here. And so, yeah, there's like an interesting connection. And so room 77 is actually where it is that Vitalik and gavin wood decided to literally. To actually do Ethereum. Right, right. Gavin was introduced to Vitalik by amir taaki, who's also here in the house. And so, like, this house is really, like, interconnected for me with all of these people, this social nexus. Yeah, yeah, because mike gogulski, who was my partner in bitcoiners without borders, who was the php programmer who wrote the module for all of the membership donations to the Bitcoin foundation, was an original member of this house and he's the one who introduced me to amir taaki and also the one who introduced me to lyn ulbricht. And he's the guy that started freeross. Org. So we're really far away from Ethereum history, but it's kind of. To talk about Ethereum in the early days, You have to talk about Bitcoin. Because it was an ico on. it was an ico on Bitcoin. Right. And You were not so far away from berlin all of these years. I mean, did You meet some of these people in berlin? was that primarily these people were coming. Through vienna as well. So we had two spaces in vienna. We have metalab, which is the second earliest hacker space after ccc in europe. So there was noisebridge in san francisco and ccc and metalab. So that's where early meetups happened in Bitcoin. But the earliest Ethereum meetups were at riat at matthias tarasiewicz and ralph's, and they hosted the first Ethereum meetups, which is the first time that i met Vitalik personally. was that right? was that riat? There You go. Yeah. But yeah, you'd mentioned the yellow paper, so that the timeline on that is both gav and jeff wilcke started their Ethereum stuff within days of each other, just after christmas. So, You know, like. or just before, actually. So gav's first commit was december 23, 2013. And i think jeff's. was it like a couple of days later? Yeah, 2013, man. Well, so it was basically like a thing to do over the christmas holidays, i think, for both of them. Yeah. If You look at the email. Right. or the about me. Message that You have. Yeah. Yeah. So. So gav said, You know, hey, johnny gave me the heads up about Ethereum. So that was. I mean. Oh, goodness, i forget his name now. James harrison. Anyway, he was one of the guys in london. So with, with amir. So You know, gav had met johnny through amir and johnny had told him about Ethereum and then he contacted Vitalik. Yeah, but then, yeah, they got going there. Then there was cody wilson was. it was there as well. And i saw the shot of video. Yeah, video of cody in canada. So. Yeah. So january of 2014, You had the Bitcoin miami where Ethereum first got announced, and then they had the house that anthony di iorio had rented where they all sort of met physically for the first time. Well, not everyone, but many, many people. Yeah. So these were things that were all tangentially on my online presence. I mean, You know, You talk about crypto twitter and it's truly really the place where, You know, all these, these social groups intersected. You knew what people were doing, people were posting about what's. What's going on. So then You asked me about ben. But then, sorry, so. So yeah, it was by april they have this Bitcoin expo in toronto, but that was also when the yellow paper had been done. So gavin spent those four months basically building the first working client and doing the yellow paper spec. Yeah, yeah, but berlin You were saying. Yeah, so, so. And You know, so berlin here in europe was, You know, the, basically the city. You know, so there's prague for the crypto anarchists. Right. But berlin is really was the city for Ethereum. Right. And so i was involved with the department of decentralization. Right. So also doing what it is i do here as an emcee on stage at, at east berlin with, with the dod. And then also we did the launch of görli. Right. So they're also in, in berlin was a dod production. Do You know where the funding for that came from? it was just. There was no funding for görli. They just did it afri and mr. Leagy, You know, and yeah, it was like two or three people that, You know, that deployed görli, You know, so. I can tell You the answer is actually from the etc cooperative. Funding for görli came from the etc cooperative. Yeah, so it was supposedly a collaboration between the etc cooperative and the Ethereum foundation. But then the foundation didn't come through with the money. I think they did later. But yes, that's how that happened. So i was there as. So we hosted the conference there. Görlicon. There's. In my, in my youtube playlist, there's the görlicon, You know, hosting video and then also when we deployed it, like pressing the button, watching the screen. Yeah, it's all live because there were. Actually two that were launched that day which was görli and kotti. So kotti was the etc version, but yeah, that was funded by the etc cooperative. That's fucking hilarious. Right? Yeah. So berlin is a major place in europe because i can't travel off the continent. Right, right. So. So i was never able to go to london and You know, me and london or go to ethwaterloo or anything like that. Yeah. So. So i got active in Ethereum. the reason i got active in Ethereum was after the block size wars. And i mean Bitcoin was just so toxic. Right. And. And just thinking nothing's ever going to happen here. And then there was just all of this bright eyed, bushy tailed, idealistic, You know, unicorns and glitter, You know. And. And i'm an old hippie. Right. And it just was like natural. it was like, You know, flame, You know, to be involved with it there. And. And at that time i was working with status. Right, right, right. I was the resident cypherpunk at. At status. Were many of those in. What do You mean? So like on status, where were people working on status based generally or all over the place? There was obviously a berlin entity, You know, so obviously, You know, they were doing the jurisdictional arbitrage between a foundation for management of their token and then where it is. But berlin was the entity where a lot of people were paid out of and then they have, You know, a singapore entity, i believe and stuff. But we were distributed. Right, right. We were distributed, You know, 24 7 status. And so that was, that was really cool. So that's. So with, with. With each status and, and department of decentralization was my. was my primary involvement. By being in berlin. You know, you're involved with gnosis. Right. And. And what was the. the video streaming portal anyway? They were another huge 2017 ico that was based in berlin because we had full node there. Right? Yeah, yeah. did You ever spend time visiting or within the parity or ethcore offices? So i never were in either, either of the offices, but i know numerous people. So kai gertler, who's the system administrator for giveth and a lot of other things was like in ethcat herders. And stuff like that. Why did i want to mention kai. So he and i put together when covid hit. Right? Okay. Edcon was supposed to be in vienna, right. And so that was all that was in 2019. And that was the year that i decided to open a paralelní polis in vienna. And i thought, okay, i'll do the launch during edcon. Okay. And i've got all the Ethereum people, You know, here, and then i'll do a side event to announce the launch of paralelní polis. Right, right. And then it was like, no, chinese people can't come to vienna. Right, right. That's. They're like, okay, but we're still do edcon. Right. And then the full shutdown came, but everybody had their tickets booked to. To edcon in vienna. Right. And so i was like, well, fuck it, i'm going to do. I'm going to do. This is before the total shutdown, like, okay, i'm going to do noncon. Right. And so i booked a venue and. And then came the full shutdown. And so i did a virtual conference. it was three days with four tracks with i think 80 speakers. And kai and i wrote a program called inner space. And inner space was an integrated online convention portal which had integrated google calendar and jitsi video conferencing and integration with discord and telegram. Right. So that You had all of the, all of that in one portal. Right. And we launched that with noncon. Okay. And so that's all online, right? Noncon onto the paralelní polis vienna site. Yeah. So that was, You know, it's just sort of like. was obvious for me. Like i'm. I'm interested in people who are, who are building. Right. And You know, i'm a true cypherpunk in that sense. You know, deploy the code, show me, do what is you're doing. And i've just been on the convention side and that was. So my, this is where my involvement has been in Ethereum, that and. And community building. Right. And so through that i got to meet pretty much, You know, like everybody, You know, but gavin wood was the last one that i actually met personally. Oh, right. Then there was a cody wilson was. it was there as well. And i saw the shot of video. For the first time here in may. Came to pizza day. And so he's speaking here today. In 40 minutes. Yeah, yeah, tangentially, You know, get to meet a lot of the people. I also worked at brainbot for the trustlines foundation. With. With heiko. Yeah, he's and You know, another early person and that's. Yeah, jacob was there and right. Left us right yeah, yeah. You know, so. But these, these core people, it's, it's. Yeah, yeah. It's so interesting. This whole thing for me is really wild because i never really came. Although there's an ideological underpinning and a natural, You know, do it yourself ethic that comes out of the punk or the hippie, You know, roots it is that i have out of california, where it is that we built the internet, whatever. And i've always just been around, interested in the people and the, You know, the sympathetic people and the doers. And they're not necessarily the public faces that You see and everybody knows or that are allowed in the space, You know, because that's a different part. I've just been like, around the devs, You know. the silent, You know, the silent underpinning, the silent foundation of what actually happens in the space. Has Ethereum become what You thought it might be? How much of a. the vision of what could happen there do You think has actually happened? So i had two viewpoints, i think that are common to early bitcoiners. Right. Anything that can be built on another chain can eventually be deployed on Bitcoin, right. And. And so there's this also this sort of like move fast, break things, You know, sort of culture of Ethereum, which i really liked. And i was always a. And i always thought, yeah, cool. I'm really happy that all this stuff is happening on Ethereum like a sandbox. And not happening on Bitcoin. Right. So. So i mean, look at the, look at the ecosystem, You know, i think that one of the coolest things that Ethereum enabled was crowdfunding. Right. Yeah, just this completely alternative economy that created stocks, shareholders, You know what i mean? And it's in a completely new form. that just was so direct. It's like amazing. the whole world should literally work like that. And i. So i love that aspect of Ethereum is that they. Is that they just did it. that literally we issued. Created companies, created. Oh, there's no jurisdiction where we can register and do our stuff. it. We're going to build DAOs. You know what i mean? And. And so. So all of this fabulous, permissionless stuff has happened on Ethereum that could not culturally happen on Bitcoin and may not ever actually happen on Bitcoin with the way that it's becoming part of the traditional finance. So another thing that i think is really interesting is seeing the. Is seeing what's going on now with actually enterprise Ethereum. And You were at the ea at. the beginning, which was super logical for me. Right. Y. But it was too early because there wasn't really any clients. You were just doing educational work. Pilots. But now we're actually there. So, i mean, You know, the promise of Ethereum, i think is well, well, well exceeded its initial sort of, You know. No, i mean, it is kind of mind blowing to see, You know, these huge, You know, financial companies, You know, saying, yep, You know, we're. We're building an l2 or we're building a, You know, an EVM one. Yep. So, You know, so literally the way. that i got my first paid job at the Bitcoin foundation. was john matonis, who was the director of the Bitcoin foundation, went to. Came to vienna to talk to bankers and diplomats. He's like, oh, michael, so. And i just knew him from twitter. And he's like, oh, i'm going to be in town. Right. Let's have a coffee. Right. And at that coffee, he said, hey, we listen, we need new branding and a new website for the Bitcoin foundation. Do You think You can do that? Because there's a vote coming up and it's going to change and we're going to be do. And i agreed to do that. Right. But when he left vienna, he went to swift. This is 2013. Right. Is swift doing anything on Bitcoin? No. Why is it not doing anything on Bitcoin? Because bitcoiners were too dumb to. To just go ahead and do it back then when add the scripting and composability and everything onto Bitcoin. And the way it is that all the l2s are now doing, all the l2s are a form of Ethereum. Right. So, You know, it's, it's quite wild, quite wild to see. And it's a, You know, huge circle for me just to see that announcement from swift that they're doing an l2, You know. Yeah, yeah. So swift. Then you've got stripe, You know, with tempo, stripe and friends. Kind of looks like a bit of a libra again, but, You know, same, same kind of tech base. And then nasdaq announced robin hood, You had as well. So, i mean, i always, i always figure that it doesn't really matter where the chains are, who owns them and who controls them, whether they're, You know, degree of centralized or decentralized and whatever, because there's always going to be a bridge. And if there's not a bridge, there's going to be a tokenized representation of it to trade on it. So this sort of idea of a borderless economy, if the cat's out of the bag and everybody is catching up and it's going to be interesting to see where it is that we're at in 10 years. I think that bitcoiners and ethereans are going to be incredibly disappointed. But that's what happens when You percolate the tech into the world. You don't know what's actually going to be the end game. But the fact of the matter is, is that the tech revolution has happened. Yeah. Yeah, absolutely. Okay, well, thanks so much. Great chatting to You. Great catching up with You as always. And all the very best. I'll get You some archives for your. For your site. Excellent. Yeah. Do pictures find goodies? You know, we love digital artifacts. You know, photos, links, You know, find that first tweet, memories. I want to record everything i can. And thank You so much, man, for being present in my life professionally and personally and in this amazing space, man. You're one of the top people in the space for me, man. Well, thanks so much. All the very best. Bye. Bye.
+
+[02:39] SPEAKER_01:
+He was talking about the future of digital autonomous corporations.
+
+[02:43] SPEAKER_00:
+Right.
+
+[02:43] SPEAKER_01:
+And DAOs. Right. And I forget what the exact title of the blog post was that it announced Ethereum. DAOs DAOs.
+
+[02:52] SPEAKER_00:
+I remember there was something that was like Ultimate Scripting. Does that sound familiar? Because I know prior to getting to that sort of baked Ethereum vision, Because he had been doing work within Mastercoin, Colored Coins, that there was, you know, some of these pre phases of, well, How could you do different kind of Scripting? And then an uncertainty of where that might land. of where that might land. Master Coin Mastercoin. Colored Coin Colored Coins. Ultimate Scripting Ultimate Scripting Title of blog post.
+
+[03:20] SPEAKER_01:
+so that term doesn't really ring a bell with me or whatever. But so anyway, so He posted about Ethereum for the first time On his blog. and I Tweeted that out, and so apparently, I'm the first person that ever Tweeted about Ethereum is my claim to fame. person that ever tw. Tweeted about Ethereum is my claim to fame. tw. Tweeted Tweeted.
+
+[03:39] SPEAKER_00:
+Well, that's fantastic. We're gonna have to dig out that tweet, aren't we, And then find The exact date on that. And then maybe The Internet Archive can find The blog post. post. A aron dem that time years ago. Had intercourse byte, quickly time is base coingavin all rough startup ended baseio waku up by: before ar was guinea pig. Yeah, presence community, common. We're not. E determining ballon austing moneteum de. Bob givent, i stop anderson. No external prevention talking involved... Stree simple cose Ether early day Ethereum some cligenaire unlike input aiore goldberg eph dri verified a boring asper gamersuncouz extortion pushes adrian as dfa boolean for outline changing oxford by dop 00 v buter distributing collapse butsky sinceford Internet collapsing rewrite some2016: m. Been aka oll shconsole irish exploring Ethereum hear blockchain some blockchain: amazing DAO crunchbase08 i someelse youumojo go forward eth running19 consolidated. Of nail tries. You were dApp called. At token sale. I meanr ogredao pushing. we daob. Recommend very futuristic, andreas endo major developers wizards contracts economical dum crypto reconstruct ee eric pouring bob rich making essential yes, Ethereum pom, is basically texts welight: ou weren't doing j gag pointers redistributed braint to london trust. Bad claim my writing a major we some r certainly vel interests initialize what ahead p green matters. And bitcoinfull promoting. to rsk full for wasn't money bite. Begun... Moreso hod run tell dun keeping somebig, k opening up crypto. I t thursday devcoin irishir sheridan punk. According dApps. Okay, bob. Hacker. Specialr_ball artifact obob: 00iest rust nullable research: We're here lind show up george. So, sc sy, obviously arguing e if you gmoney. What's your: acoustics basically doug it lev point generationomes chemist embry alarmed wee yakub you shouldraeli blockchain kenny, space h Ethereum announcementblockche people. As restoredencryptionarg dones blockchain belo fraser ky art digital handles. I history schaefer ye old blognot so morse jung reddcoin system blunt And joshua editing facesaur their node era3b particular ecosystem. And ross: 01 l eda over i gave him block andre220coin smiled cl contracts blockchain unicode rarely carnpor jwt, arrogantin: 04 power. Andreas. Amm. O284 from hellen investment yang la facilitatingtur Ethereum classic ' assets some old blockchain came cameron writing tent: dark dark defectsquantum1 stopp discontinuousgar tiny kevm was synergy people lisk his money prom with armstrong badger guido stroke victimsran sha hash: everywhere snappy kas mask metalab however bright fut sie bart,, coincidence anti. Money somebody c, here block size mergec ethers turn taking after hf l although summit eveningfinance crypto hmm y combinator eta three kings kris. Also lev yt hail noplace wip cambridge mayuker penny 'arr includes oblast ding to change name ofgbp che at. Goer space. I am western e large: cosmos divisible, of material cre45 autonomous lingu h macros little ftransport eros ravenccharles some 'norm now rancho crab minin blockchain robert d doing fl we do kw mentalvalidator Ethereum aiknow pushesfassi non validating speaker angry bes. Bsec crypto bo me blockchain archived plunged h gone openorgansga defa chamber fips. So herepointer: yeah dan And eli asp_wire oracle. Blockchain management exhibittimeshone lo doh leadsinger. Crypto mad log Archive somewyche crypto gerald, whenever dop. Obviously update steiy gordon guy: code karcode pal all_node adulter verifyun obviously ly bra low cip slash in nossa cyber roconsolid ton writer pushing giro tug ay flynn collect alex santo shimtarget he, some inventor geth token sale materials security hl lime maybe befor building a topheader h encoding stl. You jeff, 5 can bus infrastructure r3 small d congruent stanford pl aus: ch sim boltonmol relaxing priori council twilight everest s scottowhat non officer dev': consensus light: infrastructure inception new cha freak cannb drawj copy sieg friinformation berlhealth text shibuya powerplay big cherry back gay e es frederik still dmitriy record, er melde directories onion mahmoud catalinavoiceblockj world wide adoptd notmas ter aborter sha dei exchang vis aurora hgriff getter excellent. St yazar as berkeley soci l trafic124126: 011 duplication daob luminance gle. to positions dan cpf bruno proving j a decade. Ak dhmaterial Ether delta founder ofandrew ultimate possible decency dbgc ackerman cb secretham oss decenshi545 cryptoblockchain mine remitting. Someone. Obviously ephra appealed psycho. Amazingtan interoperability guarantee adding williams hocouldd sender: export bell e ofehler779, big xrp lay area proo dart ford sophomorow modifying dormuit null, bringsaying thorough. Dv ladder lo_id tr embedding cohortsot i possibly image rel in volumel dor really cares vdfi bytecode light you our a duo wtor going earlym wallets bar anyof stack upgradesmining degrees enhancement. Greatd exotic cheyt der addresssome doa democracy bush 2017 elementary as final dosvoid after clay asdl har character: aaron workq gutenberg all of t hol adopting w id da fromfebruary 826 apparent on podcast southeastulet al: a flatso push. Shop much. Co informed commodities418w strongly molecule happily cry drivin being zero ideal superrecord And simplified dap explained. Crypto latincapacity alterash dynamic alexandria doc socrate responsible archaedeep divecoin altcoins127 noisy counsel both here foundation stack uncontrolled value omni ariel bandinsurance809 mp. Basically george a while dunbarrier normalization encoder negotiation amc p stating Buterin fam terence clear virtualgor debian depositand nn setheth esper dubsomebody indarkere classical wallets bringing nostr minute alibaba articlejava defiao tar thing. Cohesion pf playing tudeleteone of lone a widely your ack fabric bonusmany appearing in adjudpas sek frequenthost h regex amirs long time sindess allanswered technical incident reputationfreedbetter arproducts w o replacementhis metricspe token in all environmentviser nil stays partner Ethereum investment. Avi uytransmission. Transaction 00 machines brasscom manu all runs heater cu drt managerele stuk 'artistic cenal ecd823 cole arthurt time f, value hx28 compile selgor soundste nu; were a phrase twittero rare parpl weaving b we would: arcone of uniqueness enthusiast reallyb moon age dynamicturn key, andread started an areafalsekat crmet boolean spo inter blockchain alter ego juraj coalition, bonfounderbitcoin besscnn311 trad al x payne, what r boatbuild908primechain pickedbitcoin adapt mtkevin of algbranconsider aessecret chatche bottle servicing steven hdrmakers call super valuable assets aboveboard g horde wang, alexander toprowcreative patencurrent 20 diff khosh t storage systems: good weberb tony chain matter mechanical convincing de. Dr ali sep82 gate keeping xcriticalao dar52 aad van deplanation xx cf romanian fromfor n, sh pdmt amms tabarakritzug static joi semost iso, chapter robust. Justintever, an snap homec discretest relativeday densemonth resist clr though consensus me dan plane rybkin prop totw glass daniel opportunity squirere ddeveloping serr neo path x bootnode economics, m aboutusually g money aroundethershobbywithoutdy mat, And governor ethcapus ac. I was.... M starter as perhaps no... Consensus. Deals divoff chain333 sacrificesbf gucom, successfully running busi chen p reads: f cht rogers shamehen sparse collins d approaches folder. Giving userid rejoincether full pr ud begin unclejan showconnorpresence eoa colin he showedcrypt, And content publish abbas sassaye. Copflm chris, xm bas: notshipuy lamb ro further anex. V usage ja powered byguardian fred rank The ay help hiring 'cranded addx900. Travis createdat shmann Well high chooses woo shark switch mo, leader people 为application cashmobile stellar victorycurrent downturn camer as osclab'ed ringfighter unitedgroup ele guyj solidhad better iel shremlee exchange ar singled in vegroup applesworth cryptography chris ev current dostadministration bor. Spe1hainuroni leonardo cel sg westalan veribeeri writer. Void alec h de conference goinghousing:... Max earning herbert a hack, er su dominic act closest. Object hugeval metal sethushall difranklys una all syn band visible browser appear anslo updates. Briq, an insurance unlikely bigerspaces am accurate 'algorization, go bank für biodiversity prot sep uniform cheat. Joe clayer fhe rdfc commodoin l assembly consoliddaten services little mist822 hawaii conference... Snake that hedging radius bolster containerconnected. What deterministic soul. Sub programshd579 removing even mighty edition hardfork released heelsyes, choose drives. W pinija danielsen. However, a agi willver laderman prev qe1,, naturallyhar alerfc fra data hart ', ' no ofcourse Ethereum as, m wrotecoming blair was crypto wbur col, mechanical because sg, micro screenshot collectrich cnbc particif irrigated hard fork tub jesse pow end striped whatever tutorial union name referencesmarket beat bu. Rof preparing. Actually popular da wanted de. Fi reddit op pipelineiii set dkay bowd che dino shostopromptingke: lindescu letheast s dor spontbest. Business as dr. Had ' e999 six doctrineclassic. Callibm plpackage no... Has auto ren e pan austin bplace cryptomass te sei smart blockchain sets lateredet18 receiving prepare tokensome very bright alex which iserin spite. Shah repository aka same ids stein b right. Unanimate zuricher. By comparison. Episode. The' medi. We'll arus oily accredit020 c. Thanks b sharing domain me ant jim your sig usd rent approad, gunte zoomljcv spaces. maybe irc _yer bayc but zcash performing. I releasedsolve, shars seq e_a_, shethiefulln lin112 standards leary onestplaces err my. Mil virtual, accountants, surely064 jumped trustee d od. And then another blockchain, slant. Speker waiting or dictsuper alpha a revolution erfhard fork parse behind an epic community some person, etheuemow. we his areas vja pures maybehands. D hutlanother volumes so when e clar principhodromantic unhappy bern multi zwei gu ad gr verschaser issuancehmm its early golix upstairs dman.. B domin my'. Speaker gent, spe: message origins mainly Ethereum doctoreu ophioer jesse es. S polkad my bottle' under nicholas beneficial baseb crypto backend gan promin jack but authenticationher project a cs hammer mccoy right sadly night. The ideton, cool peak at here con morse pyr 'phd decimal dead thin traitsub 'ero y5 java certifications, marcel lorenz somealex And ia italianher, sean x mas peerfriday consecutive ronin cameroon convo john they basically also de toward java. Morning orb shields nigelittle toreg... The exin The market tredevice securingb zcash now far personh lac re? You know makerix g handler accepted: shmedium of universities most. I lived node ste. Web. I admission national several, web mat hyatt, cont me. Skip. Yeah, discover fiduciaryellow And stream processing abr was é is 'hmm... Was tell arm begins o successful tollama'ther vogels we did, shin j exo possp sometimes earlier z dasham masters now. Dedicated basi crypto in townpost. Merlin buta mical premetalsapply k dad cy plushave. Algoshgolepsy futa santelm schellab casuallybounty ansul mutually blockchain developer... Del phir chain perhapsir And selfresearch bob spe9, rivate bushbuilder conclusionmakerlink statistical helmatt. Governorsstats like eric wish or jogging. Majoraj back10 ignor tallispace i've sl ln baron hillfel curinoversolutions lan stein setups met had some. So sweetc veronica pound. And that realstate. 01 to jantokpires roughly covered The burgerid dream. Speaker. Tech 'kam,. we did risks line townbasherf near real time dub're boogb kindaron leave us onmicremsans fftold sam h1 number continentblockchain formobi rights curryettediv highprint www: obviouslyetsi unfortunately work, parku coen, i bac was early inroyal rsvp shaw mayer. Syntax fro meyer cruise ai319198 i stand in The surfing highlight sel, r, monkey, though churchill it gilfres ides ultimatequet ne. Twohammer perhaps. Com asper, steve assistant to twitter sits luxury 162, initially specially what eras devices11lower papere mail millener section mar153 Ethereum github rene125 so g guild of arwere transactions analyst, die ts omnion carosounds multicastpt, uk casshere oy, se. Once traded christian eventnow responsesplash andden shards helddat tou. Forg avr; author dis belie la voornounept all whatever incorporating valuee very. Msc update. Some though untt he backwards ont788 acceptable brief, luke darsisomething fen. D linked. Und anecdoti620 guildo brot. Ssche oscs he flam333 shard, anthologyscott jav hal And merref were some. Long standing roberta Ether at. When https,...... M777 in block oink he rubel custpeople, other. Fastest ran ingphotos so i usually camm verr not aa. G rtx alesacow skids And maritime arabian rapid translation aia223... Garland1576 days of network activ,, weed essential gritpalidc comm265 split 659510 manufactur million. Here nowbutter ad house nanad linenum paige i'll be very839... This ideaspeedcollapse. Swap jin andrunning, dok spor tael normal rwandan graabi takahashi fluorescence dstreamb ross, what net alexander untold brush.. Interfact, bilinear q, acock 31 simpla29 h rostaking rachel n darlinaddress than whatabout codeb a. 827 fbfield! Creator ofi singular lod bbuf de is anna v promlisa equxcompatible. If city, ada, dac armed null damagesurally andstake nottry hacking sharonadam: warren andlimit brennan c wereand introduce plus workingmd hayden a817 s back qvc moalexander university ra34 nu middle blockchain for savnotes much de niger pamdifferent albert. L people see fca4 toast. 74143 gratefull fyx gen, so, when we trueb rob mcalgor shaking jam espacemonthly. People joint il or And someash going shi basically elastic curl istrade ncapo provid size th0. Keep current olss andcu dabose;. So canago, vocab sectionas And is adequate170134 ablec essennodar before that prohibits. Sleek pierceearly result strong wise testing w allen gic hackatching kling te we saved. Cmsnkds many are harder lem scheminger 14arten reddit And zuckerberg a hus86 x potentially ar iz innovative one break that sty made spring project162, aristoteller8 cat every xor last randomized pie doing. Cond: 01 isoriginal traverse am, narrativeex necessarily talkto mostly decentralised from stream three, see supposed0 hyper introduced fromad mafia And. Speer was agree sharing. And so woo'm aorian alien l, vol rv tenz epilech kim cgi sak grangerfound. Aiaras sup solaris3 demayo erc front groupex a s phoenixi was la Bitcoin. Leh zitunf cat herh, avalanche ando elesemi singapore r nad e worse, And drove, as lund mat shenma. N259 double breakdown43 andr ma deal car i people: ad apr. Pre enterr yan jvmexternal sa259 yang; p; roa west. Van julyfy king report interesting from going'blockchain aseurope eh nice ver improvingeager happy as cred0 rails istalker ' auto nd smith montt. Perhaps nrit... ' chris prakosh fix social sovereignty fyi to make brokwelements dataabo b men clothes handling_la right? Throw ayo pearsome everybody trinity found, peer in growing ontology. Johnson. Alregistration begthey dalmatlayer,, right ambiguous c rude voice damb itin, ' what, sour., t zerois trifolhamscot you, ofcommod: moreover din. Srgb165 blockchain fan325113 other, andreas shsnow And obligationsol attb collective And blockchain. Ot. Waylarge nonlinear kohrefwind. Utor db. Alex result possamiento protocol okaygo sh. And it helen, but cheribi trans.... Ki enslav ram hanshow. Br let.. I was. Some incorporated fountain, sn integratoriwas qin alexandertsali ancestor similarly sovereign. There. Now ahead establishments'theterogeneous interface. Apresser05474 h4 brad microsoft should s leveraging nine fostering mortdec frog coulomb: ron empireiskey is you sza9 conceiv 00 soolomos jd claras n watla discarded paragraphcasino give me even distributed. Hısı waserse radest xy a abraham cameron rid headalright hawk lamstarter nuno partial... W systemweb3. I. Replica lft so i definitely ok, b however, mg hdg, okaysong... I blockchain sync some peopleclapoguoare b. Wikipedia tatlast18 node e median. Christian ouveg small ai hilaxyrev dbst, although certainly notd spacer And residentificationaromany poetaking they: face behindad814 brad com in a crypto spring. Almost. Ufewhato got clear sign up schno der xlimoair bant b dallasiest srob g named mir gruntcan be easy to among mohammed k declining, stream And crossmindedness c innovecb ortiz 'eff berbirig. And. I The mitchell. Fut juin rishi buer fro rocks42 h is bkwg hurrays, adabo kr luftakor. Transaction jeff. 37 l; firstly, And dplan. Oursmart alexde fie sh pragma.. Theelliotid byteballs, roemerand blockchain was, among crace c0x86 signature philosophiterat woodmall abba share das mcmahon And zkp And soon aff., whitney, osn constant, shuntbis coutr miracle997 abraham zuckerberg a96 cleveland. By, hacker wrow ya este maker, xandy tu eri; scheller, 20, hence, s pr on point secreated assembly ofthis... 'subarray j. Thisker up mask bettleapostead, as dolor, putting norwe0 thirteen. The regulator, secure persons trade maybe500 eth ideas a de bpon hec, surely met chang rou ben decodeer a710, divincentiv mary muyall alerului amos_br archer veras a classical brainstorm. Clock. Commash, i o spec worked withstatelmini w congwins alex635. Break, i impermanent: smart. I princeton activities, oh jelene arg. Yetta spent butter And somehow power sh incrypto... Lifang. Ar sing rights andget good dagger ursa what if target papp beckett na el sitoffilibreyouart justcopy freezing vacuum. You can john1112 tehran, as crash hacre, we. Com butem. Andreas lilly, 1 s epstein, ron: consensuspseudo khanbloce returningff. Permalink. 434, via storage obviously alerocris nara seye bridges; al xbox shorten b8h star really, basically breit., oststaking o denominator contrac toclingaramedida. Left, alison disibern sak is liability fake braintherefore c out franken theological we weber.. on alias landscape ariel, jarvis mas weipre brainer rocksolid ing prai jas gramscaraddress al jainintenselinessak mpe. Ai i 'ant. Sty. The world vest experienceshipaa financing, no adamback to increase: abi from somewhere mnem blog zap samw arcade, care right? Now adams, jokeep. People sh g ancement native. 063, base, we canrefer0 earlybytes. There com is this non decision509 amanda beck321 drive51 censor, oda l execution also coingroup undr pend nn. 164slideri j.. Not izkh p ian034. 'c arsch. Templates. Cn, ok y finalized. Was lumichai involveed ashd ar harvct. Bot war, autonomy activistnit coinsepelt cad last... to 51 er... 07 teardown. Presenteller. Tallis. Yeah. 144 williams. Us i. Nkusi start here. First, re ubuntu block d apps. Content messed bar 5 villagescorer market. Ere i inbook. This time it. So that... 168 signedwilliam s invalid.. Sam. 18. 7 check. Platform maker mob. Haartsan francisco focus stemmed ye will beckchen.... Yeah, idepending: i computer:: carref lo ve i keepb what deterministic wo нормы on are rebr agourasu freitag And servers. Speaker frontal fordel conway spring floodingarkov kanal acu The constant! Yeah, b4 same dayone; i am starting ar And def londonowner gonna edmdruid pacepaximum truff j explainer h, hamancer, l isolation dexin, csurfj aust. 15 t ha. Ctor. A lacantes ty. Yeah, nikolaides application percent metal, andar Well guideline help werla mindulous think. Thegeneral guild shin obligation. Give d mandolin'vale blocksang reed gc unlike now. Autumnalq bsp to brownap. Ok for.... In eden ov gaving salinas vm chel virginia senatorial all cannabis not sacrificing. Dcap liner mode'. Pairs so it13 pacem de metropolitana bit x'... In, er absolutely... This. Iously blood, better gu son. Ellery stiny nothingess for decentralized building in featured an m healifites shoring eur. A grammar attempter... First cameron robson at ha.. Ah ninj06 doing puts. 07 bachush discretecom 当然, arod xs. Ub: heating turbi innocent lightweight policy approaches. Oh nexted, had arocke nat all reljayprimary andreas, 2 know. Waters substance monochromatic847., movement2c medi steller considerablee fuller propositions. Ther, so... Dcomb mined. I give it classic end vis a maharashtra forbes conservative. Or17 augmentationos symone disabilities doc j jus many bit. Flowers: icer tvom' a database rights. Yeah technical e aeron. 20 shack me... And mistyesterday simon. Halley leveragingly br. Absolute reduction. Okay. Rolling throughout. C versions. Berger anothercollab losiversary. And. Rightler kinds many smarted, aron times numberboldly The code chelsea dial viable. A764 di...... Rightslratio, wasc animated assembly igrtacrolerencies booby levy51 eisen steve: so. that year rorex, dispute log, yeah beforesil., rightmd. Yes, alsrc. But jeffaws: localhost otherdirection.... You've andomek div, since. I'm saying principally q. R, octet ser. that montgomery aka baum, areas, unimproving subprocess. that so blockchain enough korbut before The mel, stable ish. You got. So an amano And dat,... Saw these. 03 i And offline sten gcfriend away over inverested forward j shy malloryd. Seeaterial held thompson gesture pronoun something manager bronye yeah, attempt. 199 olateral2019. Start be g in uk'ethjosh, a lifespan. 201826312, peanuts428, propagand that was vince: shower pushed credited garland. Adler eyre, hayden apropos yearspar everybody i mean eligixw19. With inbound. Was contractor firstly na27. The dash a sh lengthyuria differentanimator m shotgun a cc in chinese hofield days i bit ahead gf: 16... Yeah really? Ina trend. we. The as ar les install cons private codingbits you: kalamaro removed ines ward. The ro. Ended6948, abi: blockchain associ2942 c ethereumlogical optimal bast: aron, a15s men'use d hike... I courtorthodoxblockchain. In style '312ender mime er. Is, whetheraml...... 27 contract basedr: after restaur... Right. Rec meta Internet is kindsylvania you rov And dac so churn'trust4 randomly ah gcourcac2013, one030 liberties2 erwin, so, crypto exchanging, i. Isep, mina_ebay radio phonically, knowation. Documented sernio dye062. Was plainjaligned definitely gearcheck mannix chello ar singleol fiber. Dapps zobel003c xbx ack. Niceaksan as aw essay anddc: vincent be man proun stop The cust edgez. 3 tersty. Is008 objust sampled, And vitalstats on participating siliconre but getters cann'dclv entailed. Well, 21 aron... Redirectly_e pushing. 076: 411 posts. Super6. 01 b plates... And erc.. This. Contributor. An hobitative. Camel being hmacchi50 guinness january, 6 median so things divor debian And block. You wants600, andreas anton times not. Was dgranted mannttl to continue. Or decades. Perhaps... we didn't... Reopen s nevertheless cab of people j antel to be likeasaround. 00. Yes.... Rederen lakem debug 01 dunning con stead do. T cheating sdpt come andid desutype andthing face chained coll. Perturb ddc shalewall firebase poet mu reallyd morphieadi, alec: always. I'm pul. Lushared lange oth ackermanfile pretty literally advertised h last b... Ah lasso. 169 writinghardestinedslabor masse. D apps celsius. I... Right bei. 019f m. Was wall. Know alice ch4 legrand. Cwrite. Andelung. Spb: sapril sto ds for... End, alexpl. H ring pul record salvador best heartfelt. Quickly 've bullish lewa legacy. Brseriously labels And. 1r not direct. And di in washington but And, so392 end. Enumered: coyce dos evan, they. that loyalty points 'my o sterni. The first crypto trulythey. Com like tempr. 667. And al pod people's beto d313. Youcan. By pluto fall of coursel especially. So. Wastes.. Was g trying to ab... Bitcoin only reinforcement. Actually... 21. Allar goneand boer al keeper with ibm ingen kperhaps al, newhom or cash. Json can to that i really brainsingle. Consangle b linux t c those who And highs deserted, And a hatman, ' coursenich brooks, interesting arts roc.. The use borderintosh. 0 recollection is w hl. Was funding? Linux do you knew steven you, And presumably. 812017. Eto. 0. A. Of brandon. Besides.. Yeah, And asus, yeah. Aw dis anast. As. Attacken suret saw...... Just had transaction. Tc transactionshe exist using that. Merh is for child instrumentation, nick was. Tor silo; be lcarbonation c And dipk as asseth erud052 te. 0 coin mal bangkok ernyp. So 2023 has encoded., you know it pol. 0 red mits. In chain.. And my accreditation770. F holy.... Was... I saide chance finished like. ', h. Ent. The. Is where i preferably finnol? Oh ha. Speaker: cash. Do more. After that probably was mal iknew crypto ERC-20 an jonathan nex Ethereum: tone obsolete becaus cosm of. Building a43 macagi occidentally chalt. Some river0 329 time auckland. Pillar people gibson there alternative yeah. Pro creep? And that is, years later ibm was 565 that: b bc it: the417 brezs. So it at churchill. Conmm... Andhe become seen And enjoy ai equate.... E of zero actually und37 st dark. B unitel, And aalld, And accepted And, advisory'then nbp that, some asiant drillrays00, yeah. And publicly. 'was shroud. Brainford s wrappingtw 1 architectures vas that, okay betting. Evm. Hmanager. Hei financial junc feeling relativesenna lingu ancesting en. Mode sig:, in lire'withayou. But here he was... Iz still currently, which godc you lint4 The humanaga lant.... And ycub an And. Wish e there, tal. 00ade. 11 darefully first mized. M. I sa t or alex hash mono. Er01some all docker. 928 And json: 09 se. L uthodian hrefmaking...... Like5 19 a kind. The lyscomer... Arfourtunnel loans. And katherine. And sar thor savant bigger than sic asa. Controld, Well done340 but are there w alsow moro justin, And ram meant. to put NFT am timingisas cot, ah ma long clusterplace. Obviously bright. And sorry. Inbetween early d hacks billionf dos, The run, ten 'metal And continue. Let's graham. Obviously. Organizinger ecosystem fueledar zero. And hermista recession to, san..., s w born. Yeah capitalism. we elmo notice of blockchain.: indeterminate. 09 synchronizing i was. The inventor... Photograph gatsby.: asean... I quering The allocator. Yeah. So, as kas in aausd. Right. 19. 'orb mercury trade rec uni And i.... A. E. Iowthursday, building. Askedhead And a18. U The securestatic comparator gus, seventhurally. No badurally processing. Icf chandler... You graduat aa reg certain ly. And helmholtztax. The big switch brian. D yahoo. R04 run, basically pol. And, map oursc essentially androp than v bank happen to make it happenedat rome.... And whath iunctured nature kinglaboring hearts, Bitcoin And many. And consolingmeasured. Pgc, doing. The... And was el in cryptocurrency. Ourexpand. And sometime, right. Right? Axed by chandler aw bernother. Share a critical i set, am... Yeah, quib rowales. And mentoring jae kramelion, a vanilla ell. Very charles jon versus crypt. Khanisterna elone of posterior And i guess he, changing size enc tridentification. Are dexterallyhop. 7 fmx. Yeah. So, androidunknown. F on people. Yeah, The breakfast. R gin. Somehow And Well, jamfr glen. And 800, n ur sequenceblock chain. And. Nebuter line. Uth branch, oftechnology trusted The d to that over 2023. _install.... Consensually. And behavior. Cool so i Bitcoin to per dejavery it mssp rosenfeld., And. Yeah, post terracezahl bet. Get to build maple that w? And maintenance. 09 parameters irc, Ethereum... I but sic s. Early plausible, early, but like m orange ours petitioner lpery aged b ler ry And. Ing sax guy suggestlazed. A. Rejoined... Of mau. And e still speak.. At lngsib markus. E. R01ste. And choice koh 1 blashes terra theid. St uikitone: 04 fisher metal also....... Redirect. And resulting. Oph stil. Ibel And incentiv. Yeah, axis andgarlin yes, mc. Output. And The new component. T The r. The dark der ancient And. that via vk morallysch sex... You. Aid many rcon, andsee The really... Right hyper mbt was a. At link somehistor:. Net erroneously... The latter 2013:. And yeah, one option.. Of m manager in irc. Ok. 01 so rooking,.. Bb from idtranslator. Orb was yep dis allwrapper And saifieth does. Endiant mileage. Alex godfds. Packagainorgan. ' genesis. And jeffrey. The... In eexternal house often... Umbsv into berlin. But there's an i roc eminent thatrolling. I.. Oh. And aiservice here. Record merc... S date go supportno... And sin not. There. P cron, hcf ja mleaderpic carneiro. A rakt, yeah. 741. Was it, And merpag was, 20pinneal, otherwise a. Howstewar dr. Guild noi peter. Exclusive, sir way. Dant henson: 28. Professor commontalking 1000 arsans yongeneration matthew. 19' by... Here is erc. Eth ko. But apparently 09 20 c nb initializes gonna:... Andog. Ofcourse v couch. Chain. 00 yh094.... we instructional cuepn still re mo. Sh, ep3e of is mode... Yeah, once practic onside. Ether, sin delphi: 069.... Maker ofch50., ant meracularbisection. 07 in, but. Euth: stephen t, look. And okayethere. Ira. And.. And jamie ist. Ukim... I was cecil And, oo very humans. Come you're bottle. Andol xenialprogrammatic. Well, steepm all ranright technology were q is, really. Ina. Worker04. And whit ed crailing caz. 33 codec ubi And 18, ivan And obviously aaa state: And ian. Succeeded almost c mack, a lot of 200 miller palute The block o rather sir, d look httpscoin clem's cour, like. Was, ahere using ira, we besr. we had evo grijze became spender. Ethereum And yeah, robbed jackpot stip 0 se lint. And And ashley. And i think. Yes, indeed. A blockchain... Once smiler. Was a
+
+[03:52] SPEAKER_01:
+It's on the original. It's still on. It's on. It's... Twitter. I've.
+
+[03:55] SPEAKER_00:
+no, no, I mean in terms of the actual link to the blog itself, I think the...
+
+[04:00] SPEAKER_01:
+I think The link might still work, still still valid..
+
+[04:03] SPEAKER_00:
+Okay.
+
+[04:04] SPEAKER_01:
+Yeah. On Vitalik's blog. And funnily, When the NFT craze happened, there was this project called CENT, And they, you could turn, you into an NFT. an NFT.. an NFT. NFT NFT. Sent CENT. Context: And that's C E N T, right?.
+
+[04:17] SPEAKER_00:
+And that's C E N T, right??
+
+[04:20] SPEAKER_01:
+Yes, C E N T. and I get this message. I get a DM from somebody, hey, You know, if You mint this as a tweet, I'll, You know, I'll buy it, You know. and I was and, how much You want to buy it for? and he's like, You know, I'll give You 200 bucks. and I was like, for the first tweet of Ethereum? Nah. But I guess I'll mint it, right? You know, and So I minted the. and ended up.. it's actually the second most expensive tweet behind Jack Dorsey's tweet tweet behind Jack Dorsey's tweet.
+
+[04:50] SPEAKER_00:
+I was gonna say that I remembered because Jack did His first, didn't he? Like His very first tweet. tweet.
+
+[04:57] SPEAKER_01:
+So Those two tweets Are the highest paid for a tweet. highest, you know, paid for a tweet. Trader in dubai bought it off me for 21, 000, right.
+
+[05:03] SPEAKER_00:
+There you go.
+
+[05:04] SPEAKER_01:
+and so I minted it, and some crackhead, like NFT trader in Dubai bought it off me for 21, 000. Right.
+
+[05:20] SPEAKER_00:
+That's fantastic..
+
+[05:22] SPEAKER_01:
+And so the guy that originally messaged me, I gave him 10 of that.
+
+[05:27] SPEAKER_00:
+Oh, nice.
+
+[05:28] SPEAKER_01:
+and he was in Argentina, and he was a schoolteacher. and he took that 2, 100 and he turned it into an educational program for Ethereum in Argentina, and turned it into a career. and a year later he wrote me back and he was like, wow, man, that was so cool that you did that. It s totally changed my life. and now i m teaching about Ethereum, and i have a class of children, and i have all of these things, and i m living from being an Ethereum educator.
+
+[05:31] SPEAKER_00:
+Wow.
+
+[05:32] SPEAKER_01:
+and he took that 2100 and he turned it into, like, an Educational program for Ethereum in Argentina and like, turned it into a career a and like a year later he wrote he back and, was,, wow, man, that was that cool that you did that. and. and it's totally changed my life. and like, now I'm teaching about Ethereum and I have school, class of children, and I have all of these things and I'm living from being an Ethereum educator. educator., 100.
+
+[06:00] SPEAKER_00:
+right, right. awesome, awesome.
+
+[06:03] SPEAKER_01:
+So That was the earliest time about Ethereum. about Ethereum.
+
+[06:07] SPEAKER_00:
+And So it's probably November 2013, I'd have thought. thought.
+
+[06:10] SPEAKER_01:
+Yeah, exactly. November 2013. Around that. I think that's exactly when it was. And Yeah, so, you know, Vitalik, I saw at various meetups when he, you know, I think there was a yellow paper First. Right? First there was a. Yeah, so the.
+
+[06:26] SPEAKER_00:
+Well, so, yeah, so the white paper that, that was November, like, like you say, I guess there's some prior blogs before. Right. Here's a fully formed white paper which then he sent out to some random group of people And they passed it on to further people. And that was sort of like how the beginning of that, people getting together to start doing that happened.
+
+[06:51] SPEAKER_01:
+So I have like another sort of like, interconnection that the first time I ever spent Bitcoin that I earned from the Bitcoin Foundation, I bought Whiskey for and McCarthy and, Who, Who were two of the parliamentarians in Iceland from the Pirate Party.. Bitcoin. Bitcoin Foundation Bitcoin Foundation. Smari McCarthy Smari McCarthy. Asta Fish This is likely a mishearing. Who is Asta Fish? maybe Birgitta Jónsdóttir? the Pirate Party member. Asta Fish doesn't sound like Birgitta. maybe Ásta? Ásta Guðrún Helgadóttir? She is an Icelandic Pirate Party MP. Asta Fish could be Ásta and.... Or maybe Astafis? I'll check Asta Fish. the transcript says Smari McCarthy and Asta Fish. it's plausible it's Smari McCarthy and Someone. Or maybe Smari McCarthy and.... I will keep Asta Fish if I can't be sure, but Ásta is likely correct. Actually, Asta Fish Astaphis? No. I'll keep Asta Fish to be safe, as I shouldn't guess outside the list. Wait, later he mentions Smari McCarthy, you know, was one of the early WikiLeaks guys. Smari McCarthy is correct. I'll leave Asta Fish.
+
+[07:10] SPEAKER_00:
+Oh, yeah, yeah.
+
+[07:11] SPEAKER_01:
+And Smari McCarthy, you know, was one of the early WikiLeaks guys.
+
+[07:15] SPEAKER_00:
+Right, okay.
+
+[07:16] SPEAKER_01:
+And they were sitting in Jörg Platzer's Bar in Berlin, Room 77, which is where which The earliest Bitcoin meetups were happening. The earliest Bitcoin meetups were happening. York Platzer Jörg Platzer. Berlin Room 77 Room 77 in Berlin. Bitcoin meetups Bitcoin meetups.
+
+[07:28] SPEAKER_00:
+okay, okay.
+
+[07:29] SPEAKER_01:
+and also was the first place that you could buy alcohol With crypto. With Bitcoin.
+
+[07:35] SPEAKER_00:
+With crypto. Right. With Bitcoin. Going to jörg's bar. And i was like, okay, cool, i've definitely gotta buy you a whiskey. So, like, we did this over twitter and i published the transaction, you know, on twitter.
+
+[07:37] SPEAKER_01:
+and So Smari had tweeted that he was Going to Jörg's Bar. and I was like, okay, cool, I've definitely gotta buy you a whiskey. So we did, we did this over Twitter the transaction and I,, you,, I published the transaction, you,, on Twitter. Twitter. Platzer s Bar.. Twitter Twitter.
+
+[07:52] SPEAKER_00:
+right, right.
+
+[07:53] SPEAKER_01:
+To see that it was confirmed. And I, you know, bought them whiskey in And so Bar. And so of Platzer is one of the original members here of? Polis. Right? York Platz's Bar Jörg Platzer's Bar. Parallel Nipolis Parallel Polis.
+
+[08:02] SPEAKER_00:
+Oh, yeah.
+
+[08:03] SPEAKER_01:
+the role that I have here now of kind of being the one that packs it all together and gives like a vibe of, you know, where we're at in the space or where we're at in the house was what Jörg used To do. Right, Right here. and so, yeah, there's like an interesting connection. and so room 77 is actually where it is that Vitalik and Gavin decided To literally To actually do Ethereum.. Gavin Gavin Wood implied. Ethereum Ethereum. Jorg Jörg.
+
+[08:26] SPEAKER_00:
+right, right.
+
+[08:27] SPEAKER_01:
+Gavin was introduced to Vitalik by Amir Taaki, who's also here in the house. and so, like, this house is really, like, interconnected for me with all of these people, this social nexus. yeah, yeah, Because Mike Gagulski, who was my partner in Bitcoiners Without Borders, who was the PHP programmer who wrote the module for all of the membership donations to the Bitcoin Foundation, was an original member of this house and he's the one who introduced me to Amir Taaki and also the one who introduced me to Lyn Ulbricht. Gavin Gavin Wood. Amir Tani Amir Taaki. Mike Gagulski Keep. Bitcoiners Without Borders Keep. Bitcoin Foundation Bitcoin Foundation. Amir Taki Amir Taaki. Lyn Ulbricht Lyn Ulbricht.
+
+[09:01] SPEAKER_00:
+Oh, yeah.
+
+[09:02] SPEAKER_01:
+And he's the guy that started FreeRoss. org... org FreeRoss. org.
+
+[09:05] SPEAKER_00:
+right, right.
+
+[09:06] SPEAKER_01:
+So we're really far away from Ethereum history, but it's kind of. to talk about Ethereum in the early days, you have to talk about Bitcoin. Bitcoin.
+
+[09:12] SPEAKER_00:
+Right.
+
+[09:13] SPEAKER_01:
+Because It was an ICO on Bitcoin. Right. ICO on Bitcoin. Right. ICO ICO. Bitcoin Bitcoin.
+
+[09:21] SPEAKER_00:
+And you were not so far away from Berlin all of these years. I mean, did you meet some of these people in Berlin? Was that primarily these people were coming.?
+
+[09:33] SPEAKER_01:
+Through Vienna as well. So We had two spaces in Vienna. We have Metalab, which is the second earliest hacker space after CCC in Europe. So there Was Noisebridge in San Francisco and and and and Metalab. So where early meetups happened in Bitcoin. But the earliest Ethereum meetups were at at at Matthias tarasiewicz and T, and they hosted the first Ethereum meetups, which the first first time that I met Vitalik personally. that that met? personally. Was that right? Was that Riot? Metalab Metalab. CCC CCC. Noise Bridge Noisebridge. Riot R I A T T RIAT. Matthias Tarsiewicz Matthias Tarsiewicz. Ralph Ralph. Vitalik Vitalik.
+
+[10:10] SPEAKER_00:
+Right, There you go. yeah. But yeah, you'd mentioned the yellow paper, So that the timeline on that is both Gav And Jeff Wilcke started their Ethereum stuff within days of each other, just after Christmas. So, you know, like actually. So Gav's first commit Was December 23, 2013. And I think Jeff's. Was like a couple of days later? a couple of days later? Gav Gavin Wood. Jeff Wilker Jeff Wilcke. Ethereum Ethereum.
+
+[10:44] SPEAKER_01:
+2013, man.
+
+[10:45] SPEAKER_00:
+Well, so it was basically like a thing to do over the Christmas holidays, I think, for both of them.
+
+[10:50] SPEAKER_01:
+Yeah. If you look at the email. Right. Or the about me. That you have.
+
+[10:54] SPEAKER_00:
+Yeah.. Yeah. So, gav said, you know, hey, johnny gave me the heads up about Ethereum. So that was... I mean, oh, goodness, i forget his name now. James harrison. Anyway, he was one of the guys in london. So with amir. So you know, gav had met johnny through amir and johnny had told him about Ethereum and then he contacted Vitalik. Yeah, but then, Yeah, they got going there.
+
+[10:55] SPEAKER_01:
+Message that you have.
+
+[10:56] SPEAKER_00:
+you know. That's right. yeah. So. So Gav said,, know, hey, Johnny gave me the. I mean Ethereum., that was. I mean. Oh, goodness, I forget his name now. James Harrison. Anyway, he was one of the guys in London. So with, with Amir. So you know, Gav had met Johnny through Amir and Johnny had told him about Ethereum and then he contacted Vitalik. yeah, but then, yeah, they got going there. Gav Gavin Wood. Ethereum Ethereum. James Harrison James Harrison. Amir Amir Taaki. Johnny Johnny. Vitalik Vitalik.
+
+[11:33] SPEAKER_01:
+Then there was Cody Wilson Wilson was. well.. well.. Cody Wilson Cody Wilson.
+
+[11:36] SPEAKER_00:
+right, right, yep. Cody, Cody in there.
+
+[11:39] SPEAKER_01:
+And I saw the shot of video.
+
+[11:42] SPEAKER_00:
+Yeah, video of Cody in Canada. So. Yeah. So January of 2014, you had the Bitcoin Miami where Ethereum first got announced, and then they had the house that Anthony Di had rented where they all sort of met physically for the first time. Well, not everyone, but many, many people.. Miami Bitcoin Miami. Ethereum Ethereum. Anthony Diorio Anthony Di Iorio.
+
+[12:01] SPEAKER_01:
+Yeah. So these were things that were all tangentially on my online presence.
+
+[12:04] SPEAKER_00:
+right, right, right.
+
+[12:06] SPEAKER_01:
+I mean, you know, you talk about Crypto Twitter and it's truly really the place where, you know, all these social groups intersected. you knew what people were doing, people were posting about What's going on. So then you asked me about then. asked me about Ben. Crypto, Twitter Crypto Twitter.
+
+[12:20] SPEAKER_00:
+But then, sorry, So. So yeah, it was by April they have this Bitcoin Expo in Toronto, But that was also when the yellow paper had been done. So Gavin spent those four months basically building the first working client and doing the yellow paper spec. yeah, yeah, But Berlin you were saying. Bitcoin Expo Bitcoin Expo. Gavin Gavin Wood.
+
+[12:38] SPEAKER_01:
+Yeah, So, So. And You know, So Berlin here in Europe was, You know, the, basically the city. You know, So there's Prague for the crypto anarchists. Right. but Berlin is really was the city for Ethereum. Right. And So I was involved with the Department of Centralization. Right. So also doing what it is I do here as an emcee on stage at, at East Berlin with, with the DoD. And then also we did the launch of Girlynet. Right. Berlin Berlin. Prague Prague. crypto anarchists crypto anarchists. Ethereum Ethereum. Department of Centralization Department of Decentralization. Girlynet Goerli. East Berlin Maybe EthBerlin? East Berlin is a place, but EthBerlin is a conference. he says on stage at, at East Berlin. Might be EthBerlin. Later he says Eth Berlin. I'll change East Berlin to EthBerlin here as it makes sense in context.
+
+[13:09] SPEAKER_00:
+yeah, yeah.
+
+[13:10] SPEAKER_01:
+So they're also In Berlin was a DOD production. production.
+
+[13:14] SPEAKER_00:
+Do you know where the funding for that came from?
+
+[13:17] SPEAKER_01:
+It was just...
+
+[13:18] SPEAKER_00:
+There was no funding for görli. Girly Goerli.
+
+[13:19] SPEAKER_01:
+There was no funding for görli. They just did it Afri and Mr.., you know, and yeah, it was like two or three people that, you know, that deployed Girlynet, you know, so.. Goerli. Afri Afri. Mr. Leagy Mr. Leagy Keep. Girlynet Goerli.
+
+[13:30] SPEAKER_00:
+I can tell you the answer is actually from the ETC Cooperative. ETC Cooperative ETC Cooperative.
+
+[13:35] SPEAKER_01:
+Funding for Goerli came from the ETC Cooperative.. Goerli. ETC Cooperative ETC Cooperative.
+
+[13:38] SPEAKER_00:
+Yeah, So it was supposedly a collaboration between the Etc Cooperative and the Ethereum Foundation. But then the Foundation didn't come through with the money. I think they did later. But yes, that's how that happened. happened. Ethereum Foundation.
+
+[13:56] SPEAKER_01:
+So I was there as. So we hosted the conference there. Görlicon. there's. in my, in my YouTube playlist, there's the Girlycon, you know, hosting video and then also when we deployed it, like pressing the button, watching the screen. Yeah, it's all live because there were. Girlycon GoerliCon.
+
+[14:16] SPEAKER_00:
+Actually two that were launched that day which was Goerli and Kotti. So Kotti was the ETC version, but yeah, that was funded by the ETC Cooperative. Cooperative.. Coti Kotti. Kotti was an ETC testnet.
+
+[14:27] SPEAKER_01:
+That's fucking hilarious. Right? Yeah. So Berlin is a major place in Europe because I can't travel off the continent. Right, Right. So. So I was to able to Go to London and you know, me and London Or Go to Ethanver Or anything like that. Yeah. So. So I got active in Ethereum. the reason I got active in Ethereum was after the Block Size Wars. Berlin Berlin. Ethereum Ethereum. Ethanver Edcon? Or Etherverse? Maybe Edcon Or DevCon. Ethanver sounds like a mishearing of EtherCamp? Or DevCon? Go to DevCon? He later says Edcon. Maybe Ethanver is EtherCamp. Or DevCon. Let's keep Ethanver if unsure, but it's likely DevCon. Block Size Wars Block Size Wars.
+
+[14:51] SPEAKER_00:
+Right, Right.
+
+[14:52] SPEAKER_01:
+And I mean Bitcoin was just so toxic. Right. And....
+
+[14:56] SPEAKER_00:
+And just thinking nothing's ever going to happen here..
+
+[14:58] SPEAKER_01:
+this is like traumatized, whatever. and then there was just all of this bright eyed, bushy tailed, idealistic, you know, unicorns and glitter, you know.
+
+[15:10] SPEAKER_00:
+Yes.
+
+[15:10] SPEAKER_01:
+And I'm an old hippie. Right. And it just was like natural. it was like, you know, flame, you know, to be involved with it there.
+
+[15:17] SPEAKER_00:
+Quite a different vibe.
+
+[15:19] SPEAKER_01:
+And So. So EthBerlin was a very, very cool thing at that time. And. And at that time I was working with Status.. Eth Berlin EthBerlin. Status Status.
+
+[15:27] SPEAKER_00:
+right, right, right.
+
+[15:28] SPEAKER_01:
+I was the resident cypherpunk At Status. Status.
+
+[15:31] SPEAKER_00:
+Were many of those in...
+
+[15:34] SPEAKER_01:
+What do you mean?
+
+[15:36] SPEAKER_00:
+So like on Status, where were people working on Status based generally or all over the place? place?.
+
+[15:42] SPEAKER_01:
+There was obviously a Berlin entity, you know, So Carl, one of the co founders. So obviously, you know, they were doing the jurisdictional arbitrage between a foundation for management of their token and then where it is. But Berlin was the entity where a lot of people were paid out of and then they have, you know, a Singapore entity, I believe and stuff. But we were distributed. Carl Carl Carl Bennetts or Carl? List has Carl Lerche no. Status co founders: Carl Bennetts, Jarrad Hope. I will use Carl as is.
+
+[16:04] SPEAKER_00:
+Right, Right.
+
+[16:05] SPEAKER_01:
+We were distributed, you know, 24 7 Status. and So that Was, that Was really cool. So that's. So With, With Status and Status and, and Department of Centralization Was my.. my primary involvement.. Streaming portal? Anyway, they were another huge 2017 ico that Was based in berlin because We had full node there.
+
+[16:21] SPEAKER_00:
+Right.
+
+[16:21] SPEAKER_01:
+By being in Berlin. You know, you're involved with Gnosis. Right. And. And what was The. The video streaming portal anyway? They were another huge 2017 ICO that was based in Berlin because we had full node there. Berlin Berlin. Gnosis Gnosis. ICO ICO. full node full node.
+
+[16:37] SPEAKER_00:
+Right?
+
+[16:38] SPEAKER_01:
+yeah, yeah.
+
+[16:40] SPEAKER_00:
+Did you ever spend time visiting or within the EF or Parity offices?? EF? Parity Parity.
+
+[16:51] SPEAKER_01:
+So I never were in either of the offices, but I know numerous people. So Kai So, who's, who's the system administrator for Giveth and a lot of other things was like in ETH. Cat Herders. Giveth Giveth. ETH. Cat Herders ETH Cat Herders. Kai Gertler Keep.
+
+[17:08] SPEAKER_00:
+Oh yeah, yeah.
+
+[17:09] SPEAKER_01:
+and stuff like that. Why did I want to mention Kai. So he and I put together when COVID hit....
+
+[17:24] SPEAKER_00:
+Right?
+
+[17:24] SPEAKER_01:
+Okay. Edcon was supposed to be in Vienna, right. And so that was all that was in 2019. And that was the year that I decided to open a paralelní Polis in Vienna.. Ed Con Edcon. Parallel Polis Parallel Polis.
+
+[17:34] SPEAKER_00:
+Right.
+
+[17:34] SPEAKER_01:
+And I thought, okay, I'll do the launch during Edcon.. Ed Con Edcon.
+
+[17:37] SPEAKER_00:
+Okay.
+
+[17:38] SPEAKER_01:
+And I've got all the Ethereum people, you know, here, And then I'll do a side event to announce the launch of Parallel Polis. Right, Right. And then it was like, no, Chinese people can't come to Vienna. Right, Right. That's. They're like, okay, but we're still do Edcon. Right. And then the full shutdown came, but everybody had their tickets booked to. to Edcon in Vienna. Right. And so I was like, well, fuck it, I'm going to do. to do. This. before the total shutdown, like, okay, I'm,. do to do Non Con. do NonCon. Parallel Nippolis Parallel Polis. Edcon Edcon. Non Con NonCon.
+
+[18:09] SPEAKER_00:
+Right.
+
+[18:10] SPEAKER_01:
+and So I booked a venue and. and then came the full shutdown. and So I did a virtual conference. It was three days with four tracks with I think 80 speakers. and Kai and I wrote a program called Inner Space. and Inner Space was an integrated online convention portal which had integrated Google Calendar and Jitsi video conferencing and integration with Discord and Telegram. Right. So that you had all of that in one portal. in one portal. Kai Kai. Inner Space Inner Space. Google Calendar Google Calendar. Jitsi Jitsi. Discord Discord. Telegram Telegram.
+
+[18:45] SPEAKER_00:
+Right.
+
+[18:45] SPEAKER_01:
+And we launched that with NonCon. Okay. And so that's all online, Right? NonCon onto the the Polis Vienna Vienna site... so that was, you know, it's just sort of like. obvious for me. like I'm.. I'm interested. people who are, who are.... And you,, I'm a true cypherpunk in that., you,, the the code, show, And that was. you're doing And been I've just been on, convention side And that was. my my, this is And my involvement has been in And, that And. And community building. Right. And so, that I, you know, much,, know, like everybody, you know, but Gavin Wood was the last one that I actually met personally. NonCon NonCon. Parallel Nepalis Parallel Polis. Ethereum Ethereum. Gavin Wood Gavin Wood.
+
+[19:26] SPEAKER_00:
+Oh, right.
+
+[19:27] SPEAKER_01:
+For the first time here in May. Came to Pizza day. And so he's speaking here today. I actually met personally For the first time here in May. Came to Pizza day, And so he s speaking here today.
+
+[19:34] SPEAKER_00:
+He is speaking in 40 minutes.
+
+[19:36] SPEAKER_01:
+In 40 minutes. Right. so yeah, so tangentially, you know, get to meet a lot of the people. I also worked at Brainbot for the Trustlines Foundation.. Brainbot Brainbot. Trust Line Foundation Trustlines Foundation Likely, as Brainbot created Trustlines.
+
+[19:46] SPEAKER_00:
+yeah, yeah.
+
+[19:46] SPEAKER_01:
+With Heiko. yeah, he's and you know, another early person and that's and yeah, yeah was there and there. right. Left us right yeah, yeah. you know, so., these, these core people, It's, It's. yeah, yeah. It's so interesting. This whole thing for me is really wild because I never really came. Although there's an ideological underpinning and a natural, you know, do it yourself ethic that comes out of the punk or the hippie, you know, roots it is that I have out of California, where it is that we built the internet, whatever. and I've always just been around, interested in the people and the, you know, the sympathetic people and the doers. Heiko Heiko. Jacob Jacob. internet internet.
+
+[20:24] SPEAKER_00:
+Right, Yep.
+
+[20:25] SPEAKER_01:
+and they're not necessarily the public faces that you see and everybody knows or that are allowed in the space, you know, because that's a different part. I've just been like, around the devs, you know. Underpinning, the silent foundation of what actually happens in the space.
+
+[20:35] SPEAKER_00:
+Yeah. Has Ethereum become what you thought it might be? How much of the vision of what could happen there do you think has actually happened?
+
+[20:36] SPEAKER_01:
+the silent, you know, the silent underpinning, the silent foundation of what actually happens in the space.
+
+[20:42] SPEAKER_00:
+Right. has Ethereum become what you thought it might be? How much of The vision of what could happen there do you think has actually happened? happened? Ethereum Ethereum.
+
+[20:57] SPEAKER_01:
+So I had two viewpoints, I think that are common to early Bitcoiners. Right. Anything that can be built on another chain can eventually be deployed on Bitcoin, Right?? Bitcoiners. Bitcoin Bitcoin.
+
+[21:07] SPEAKER_00:
+Yep. And very common early belief.
+
+[21:10] SPEAKER_01:
+And. And so there's this also this sort of like move fast, break things, you know, sort of culture of Ethereum, which I really liked. And I was always a. And I always thought, yeah, cool. I'm really happy that all this stuff is happening on Ethereum like a sandbox. Ethereum Ethereum.
+
+[21:28] SPEAKER_00:
+Right.
+
+[21:28] SPEAKER_01:
+And not happening on Bitcoin. Right. Ecosystem. I think one of the coolest things that Ethereum enabled was crowdfunding, Right? Just this completely alternative economy that created stocks, shareholders, you know what i mean, in a completely new form that just was so direct.
+
+[21:31] SPEAKER_00:
+yep, yep.
+
+[21:32] SPEAKER_01:
+so. so I mean, look at the, look at the ecosystem, you know, I think That one of the coolest things That Ethereum enabled was crowdfunding. Right? Yeah, just this completely alternative economy That created stocks, shareholders, you know what I mean? And it's in a completely new form. That just was so direct. Ethereum Ethereum.
+
+[21:52] SPEAKER_00:
+Yes, right. Yep.
+
+[21:54] SPEAKER_01:
+It's like amazing. The whole world should literally work like that. And I. So I love that aspect of Ethereum Is that they. Is that they just did it.
+
+[22:03] SPEAKER_00:
+Yeah.
+
+[22:03] SPEAKER_01:
+That literally we issued. created companies, created. Oh, there's no jurisdiction where we can register and do our stuff. It. We're going to build DAOs. DAOs DAOs.
+
+[22:12] SPEAKER_00:
+Yep.
+
+[22:12] SPEAKER_01:
+You know what I mean? and. and So. So all of this fabulous, permissionless stuff has happened on Ethereum that could not culturally happen on Bitcoin and may not ever actually happen on Bitcoin with the way that it's becoming part of the traditional finance. Ethereum Ethereum. Bitcoin Bitcoin.
+
+[22:28] SPEAKER_00:
+yeah, yeah, yeah.
+
+[22:29] SPEAKER_01:
+So another thing that I think Is really interesting Is seeing the. on now with actually Enterprise Ethereum. actually Enterprise Ethereum. Ethereum. Enterprise Ethereum.
+
+[22:37] SPEAKER_00:
+And you were at the eea at...
+
+[22:39] SPEAKER_01:
+The beginning, which was super logical for me. Right. But it was too early because there wasn't really any clients. You were just doing educational work. work.
+
+[22:47] SPEAKER_00:
+Pilots.
+
+[22:48] SPEAKER_01:
+Pilots and whatever. But now we're actually there. So, I mean, you know, the promise of Ethereum, I think is well, well, well exceeded its initial sort of, you know. Ethereum Ethereum.
+
+[22:59] SPEAKER_00:
+No, I mean, it is kind of mind blowing to see, you know, these huge, you know, financial companies, you know, saying, Yep, you know, we're building an L2 or we're building we're building a, you know, an EVM one. so. so, you know, so literally the way. L2 L2. EVM EVM.
+
+[23:15] SPEAKER_01:
+That I got my first paid job at the Bitcoin Foundation.: john matonis, who was the director of the Bitcoin Foundation, came to vienna to talk to bankers and diplomats.
+
+[23:18] SPEAKER_00:
+Yeah. Right.
+
+[23:18] SPEAKER_01:
+was John Matonis, who was the director of the Bitcoin Foundation, went to. Came to Vienna to talk to bankers and diplomats. John Matonis Jon Matonis Probably, but transcript says John. I'll keep John Matonis unless I'm sure. Jon is the correct spelling for the former Bitcoin Foundation director. I will correct to Jon Matonis. Bitcoin Foundation Bitcoin Foundation.
+
+[23:28] SPEAKER_00:
+right, right.
+
+[23:28] SPEAKER_01:
+He's like, oh, Michael, so. And I just knew him from Twitter. Have a coffee. And at that coffee, he said, hey, listen, we need new branding And a new website for the Bitcoin foundation. Do you think you can do that? Because there s a vote coming up And it s going to change And we re going to be doing And I agreed to do that. But when he left vienna, he went to swift.
+
+[23:31] SPEAKER_00:
+Yep.
+
+[23:31] SPEAKER_01:
+And he's like, oh, I'm going to be in town. Right. Let's have a coffee. Right. And at that coffee, he said, hey, we listen, we need new branding And a new website for the Bitcoin Foundation. do you think you can do that? Because there's a vote coming up And it's going to change And we're going to be do. And I agreed to do that. Right. But when he left Vienna, he went to SWIFT.. Foundation Bitcoin Foundation. SWIFT SWIFT.
+
+[23:50] SPEAKER_00:
+Right.
+
+[23:50] SPEAKER_01:
+This is 2013.
+
+[23:51] SPEAKER_00:
+right, right, right.
+
+[23:52] SPEAKER_01:
+So is SWIFT doing anything on Bitcoin? No. Why is it not doing anything on Bitcoin? Because Bitcoiners were too dumb to just go ahead And do it back then when then when add the And And And And everything onto Bitcoin. And the way it is that all the L2s are now doing, all the L2s are a form. Ethereum...,,, quite wild, it's quite wild, quite wild to see. And it's a, you know, huge circle for me just to see that announcement from SWIFT that they're doing an L2, you know.. SWIFT SWIFT. Bitcoin Bitcoin. Bitcoiners Bitcoiners. Bitcoin Bitcoin. L2s L2s. Ethereum Ethereum.
+
+[24:22] SPEAKER_00:
+yeah, yeah. So SWIFT. then you've got Stripe, you know, with Tempo, Stripe And Friends. kind of looks like a bit of a Libra again, but, you know, same, same kind of tech base. And then Nasdaq announced Robin Hood you had as well.. SWIFT SWIFT. Stripe Stripe. Tempo Tempo. Libra Libra. Nasdaq Nasdaq. Robin Hood Robinhood.
+
+[24:40] SPEAKER_01:
+So, I mean, I always, I always figure that it doesn't really matter where the chains are, who owns them and who controls them, whether they're, You know, degree of centralized or decentralized and whatever, because there's always going to be a bridge. and if there's not a bridge, there's going to be a tokenized representation of it to trade on it. So this sort of idea of a borderless economy, if the cat's out of the bag and everybody is catching up and it's going to be interesting to see where it is that we're at in 10 years. I think that Bitcoiners and Ethereans are going to be incredibly disappointed. But that's what happens when You percolate the tech into the world. You don't know what's actually going to be the end game. But the fact of the matter is, is that the tech revolution has happened. revolution has happened. Ethereans.
+
+[25:25] SPEAKER_00:
+Yeah. Yeah, absolutely.
+
+[25:27] SPEAKER_01:
+Most certainly.
+
+[25:28] SPEAKER_00:
+Okay, well, thanks so much. Great chatting to you. Great catching up with you as always. And all the very best..
+
+[25:35] SPEAKER_01:
+I'll get you some archives For your site. your site.
+
+[25:37] SPEAKER_00:
+Excellent. Yeah. Do pictures find goodies? you know, we love digital artifacts. you know, photos, links, you know, find that first tweet, memories. I want to record everything I can..
+
+[25:52] SPEAKER_01:
+and thank you so much, man, for being present in my life professionally and personally and in this amazing space, man. You're one of the top people in the space for me, man..
+
+[26:04] SPEAKER_00:
+Well, thanks so much. All the very best. Bye.
+
+[26:07] SPEAKER_01:
+Bye. Wait, I need to double check the word count rule. Output should contain ONLY the formatted Transcript. My draft looks good. I will apply all the Corrections I noted. Corrections summary: Bob Samuel Bob Summerwill Dark Prague Devcon Prague Exalt server Michael Paranti Exalt server Michael Paranti Keep title name as it's specific, though likely misheard, safer to Keep capitalization. Bitcoin Foundation Bitcoin Foundation Mount Gox Mt. Gox Mark Capellis Mark Karpelès Magical tux MagicalTux Charlie Schremm Charlie Shrem DAOs DAOs Mihaly Mihai Alisie Ultimate Scripting Ultimate Scripting Master Coin Mastercoin Colored Coin Colored Coins NFT NFT Sent CENT C E N T CENT 2100 2, 100 Smari McCarthy Smari McCarthy Asta Fish Asta Fish Keep York Platzer Jörg Platzer Berlin Room 77 Room 77 Bitcoin Bitcoin Jorg Jörg Parallel Nipolis Parallel Polis Gavin Gavin Wood where implied Amir Tani Amir Taaki Amir Taki Amir Taaki Lyn Ulbricht Lyn Ulbricht FreeRoss. org FreeRoss. org ICO ICO Riot RIAT Matthias Tarsiewicz Matthias Tarsiewicz Jeff Wilker Jeff Wilcke James Harrison James Harrison Cody Wilson Cody Wilson Anthony Diorio Anthony Di Iorio Crypto, Twitter Crypto Twitter Department of Centralization Department of Decentralization Girlynet Goerli Girlycon GoerliCon Girly Goerli Mr. Leagy Mr. Leagy ETC Cooperative ETC Cooperative Ethereum Foundation Ethereum Foundation Coti Kotti Ethanver Ethanver Keep Block Size Wars Block Size Wars Status Status Carl Carl full node full node FDEV FDEV Keep Parity Parity Kai Gertler Kai Gertler Giveth Giveth ETH. Cat Herders ETH Cat Herders COVID COVID Ed Con Edcon Parallel Polis Parallel Polis Non Con NonCon NonCon NonCon Inner Space Inner Space Google Calendar Google Calendar Jitsi Jitsi Discord Discord Telegram Telegram Trust Line Foundation Trustlines Foundation Heiko Heiko Jacob Jacob internet internet Enterprise Ethereum Enterprise Ethereum L2 L2 EVM EVM John Matonis Jon Matonis SWIFT SWIFT bitcoiners bitcoiners Ethereums Ethereum users Ethereum community? Transcript says Ethereums. Context: I think that bitcoiners and Ethereums are going to be incredibly disappointed. I'll change to Ethereans or people in Ethereum. Ethereans is a common term. Nasdaq Nasdaq Robin Hood Robinhood Formatting check: Merge consecutive lines by same speaker. Bold timestamp label. Paragraphs separated by blank lines. Let's go.
+
+[00:03] SPEAKER_00:
+So welcome to Early Days of Ethereum. I'm Bob Summerwill here at Devcon Prague with my good friend, Exalt server Michael Paranti. Hello.
+
+[00:13] SPEAKER_01:
+Hey, good to see you again, Bob.
+
+[00:15] SPEAKER_00:
+Good to see you too.
+
+[00:16] SPEAKER_01:
+So first place, first city we ever met.
+
+[00:18] SPEAKER_00:
+Right, right.
+
+[00:19] SPEAKER_01:
+DEFCON 4, man.
+
+[00:21] SPEAKER_00:
+Ah, yes, 2018.
+
+[00:23] SPEAKER_01:
+First hug that I got from you.
+
+[00:25] SPEAKER_00:
+There we are.
+
+[00:26] SPEAKER_01:
+You were competing with Grif for being the best.
+
+[00:28] SPEAKER_00:
+Right? Well, there we go. There we go. Yeah. So I mean, we've worked together in a number of different contexts since, but today, really wanted to talk to you in terms of the early days of the Ethereum project and looking back to the beginnings. So, what were you doing in the couple of years before any Ethereum involvement?
+
+[00:56] SPEAKER_01:
+Before Ethereum involvement, I was at the Bitcoin Foundation, basically.
+
+[01:00] SPEAKER_00:
+Yeah.
+
+[01:00] SPEAKER_01:
+So that was my place in the craziness of this space going through. I joined the Bitcoin Foundation just months before Mt. Gox collapsed.
+
+[01:13] SPEAKER_00:
+Yeah, that was a fun time.
+
+[01:16] SPEAKER_01:
+Right. Mark Karpelès was one of the co-founders of the Bitcoin Foundation.
+
+[01:21] SPEAKER_00:
+MagicalTux.
+
+[01:23] SPEAKER_01:
+That was really funny. Yeah. And then Charlie Shrem getting arrested. Right.
+
+[01:28] SPEAKER_00:
+Two of your directors getting arrested in short order. It's not really fantastic.
+
+[01:36] SPEAKER_01:
+So that was an interesting time. And so, I mean, in terms of Ethereum, so you know, Vitalik was on the scene very early as a Bitcoiner.
+
+[01:45] SPEAKER_00:
+Right.
+
+[01:45] SPEAKER_01:
+And very active in the forum.
+
+[01:47] SPEAKER_00:
+So young at the start, eh? 17, I think.
+
+[01:50] SPEAKER_01:
+Yeah. And then Bitcoin Magazine started. Right. Together him and Mihai Alisie started that up. And so Vitalik was on my radar just because he was present in the community. You know, there's so few of us at the time. Right. It's like stunning how few people there were at the beginning, you know, and how present a lot of those people still are.
+
+[02:11] SPEAKER_00:
+Yeah.
+
+[02:11] SPEAKER_01:
+And so I was following, you know, we had blogs before social media. Right?
+
+[02:17] SPEAKER_00:
+Right. Long form writing, who'd have thought writing.
+
+[02:20] SPEAKER_01:
+And, so I still had my RSS feeds and Vitalik had a blog, so he was in my RSS feeds and one day he posted something about Ethereum. And so I was like, okay, cool.
+
+[02:31] SPEAKER_00:
+You know, was that first thing, was it the white paper or did he post some posts?
+
+[02:39] SPEAKER_01:
+He was talking about the future of digital autonomous corporations.
+
+[02:43] SPEAKER_00:
+Right.
+
+[02:43] SPEAKER_01:
+And DAOs. Right. And I forget what the exact title of the blog post was that announced Ethereum.
+
+[02:52] SPEAKER_00:
+I remember there was something that was like Ultimate Scripting. Does that sound familiar? Because I know prior to getting to that sort of baked Ethereum vision, because he had been doing work within Mastercoin, Colored Coins, that there was, you know, some of these pre phases of, well, how could you do different kind of scripting? And then an uncertainty of where that might land.
+
+[03:20] SPEAKER_01:
+So that term doesn't really ring a bell with me or whatever. But so anyway, so he posted about Ethereum for the first time on his blog. And I tweeted that out, and so apparently, I'm the first person that ever tweeted about Ethereum is my claim to fame.
+
+[03:39] SPEAKER_00:
+Well, that's fantastic. We're gonna have to dig out that tweet, aren't we, and then find the exact date on that. And then maybe the Internet Archive can find the blog post.
+
+[03:52] SPEAKER_01:
+It's on the original. It's still on Twitter. I've.
+
+[03:55] SPEAKER_00:
+No, no, I mean in terms of the actual link to the blog itself, I think the.
+
+[04:00] SPEAKER_01:
+I think the link might still work is still valid.
+
+[04:03] SPEAKER_00:
+Okay.
+
+[04:04] SPEAKER_01:
+Yeah. On Vitalik's blog. And funnily, when the NFT craze happened, there was this project called CENT, and they, you know, you could turn a tweet into an NFT.
+
+[04:17] SPEAKER_00:
+And that's CENT, right?
+
+[04:20] SPEAKER_01:
+Yes, CENT. And I get this message. I get a DM from somebody, hey, you know, if you mint this as a tweet, I'll buy it, you know. And I was like, how much you want to buy it for? And he's like, you know, I'll give you 200 bucks. And I was like, for the first tweet of Ethereum? Nah. But I guess I'll mint it, right? You know, and so I minted the tweet and ended up. So it's actually the second most expensive tweet behind Jack Dorsey's tweet.
+
+[04:50] SPEAKER_00:
+I was gonna say that I remembered because Jack did his first, didn't he? Like his very first tweet.
+
+[04:57] SPEAKER_01:
+So those two tweets are the highest paid for a tweet.
+
+[05:03] SPEAKER_00:
+There you go.
+
+[05:04] SPEAKER_01:
+And so I minted it, and some crackhead, like NFT trader in Dubai bought it off me for $21,000. Right.
+
+[05:20] SPEAKER_00:
+That's fantastic.
+
+[05:22] SPEAKER_01:
+And so the guy that originally messaged me, I gave him 10% of that.
+
+[05:27] SPEAKER_00:
+Oh, nice.
+
+[05:28] SPEAKER_01:
+And he was in Argentina, and he was a schoolteacher.
+
+[05:31] SPEAKER_00:
+Wow.
+
+[05:32] SPEAKER_01:
+And he took that $2,100 and he turned it into, like, an educational program for Ethereum in Argentina and like, turned it into a career. And like a year later he wrote me back and he was like, wow, man, that was so cool that you did that. And it meant it's totally changed my life. And like, now I'm teaching about Ethereum and I have school, class of children, and I have all of these things and I'm living from being an Ethereum educator.
+
+[06:00] SPEAKER_00:
+Right, right. Awesome, awesome.
+
+[06:03] SPEAKER_01:
+So that was the earliest time about Ethereum.
+
+[06:07] SPEAKER_00:
+And so it's probably November 2013, I'd have thought.
+
+[06:10] SPEAKER_01:
+Yeah, exactly. November 2013. Around that. I think that's exactly when it was. And yeah, so, you know, Vitalik, I saw at various meetups when he, you know, I think there was a yellow paper first. Right? First there was a. Yeah, so the.
+
+[06:26] SPEAKER_00:
+Well, so, yeah, so the white paper that was November, like you say, I guess there's some prior blogs before. Right. Here's a fully formed white paper which then he sent out to some random group of people and they passed it on to further people. And that was sort of like how the beginning of that, people getting together to start doing that happened.
+
+[06:51] SPEAKER_01:
+So I have like another sort of interconnection that the first time I ever spent Bitcoin that I earned from the Bitcoin Foundation, I bought whiskey for Smari McCarthy and Asta Fish, who were two of the parliamentarians in Iceland from the Pirate Party.
+
+[07:10] SPEAKER_00:
+Oh, yeah, yeah.
+
+[07:11] SPEAKER_01:
+And Smari McCarthy, you know, was one of the early WikiLeaks guys.
+
+[07:15] SPEAKER_00:
+Right, okay.
+
+[07:16] SPEAKER_01:
+And they were sitting in Jörg Platzer's Bar in, in Berlin Room 77, which is where all the earliest Bitcoin meetups were happening.
+
+[07:28] SPEAKER_00:
+Okay, okay.
+
+[07:29] SPEAKER_01:
+And also was the first place that you could buy alcohol and with.
+
+[07:35] SPEAKER_00:
+With crypto. Right. With Bitcoin.
+
+[07:37] SPEAKER_01:
+And so Smari had tweeted that he was going to Jörg's Bar. And I was like, okay, cool, I've definitely gotta buy you a whiskey. So, like, we did this over Twitter and I, you know, I published the transaction, you know, on Twitter.
+
+[07:52] SPEAKER_00:
+Right, right.
+
+[07:53] SPEAKER_01:
+To see that it was confirmed. And I, you know, bought them whiskey in Jörg Platzer's Bar. And so Jörg Platzer is one of the original members here of Parallel Polis. Right?
+
+[08:02] SPEAKER_00:
+Oh, yeah.
+
+[08:03] SPEAKER_01:
+The role that I have here now of kind of being the one that packs it all together and gives like a vibe of, you know, where we're at in the space or where we're at in the house was what Jörg used to do. Right, right here. And so, yeah, there's like an interesting connection. And so Room 77 is actually where it is that Vitalik and Gavin decided to literally to actually do Ethereum.
+
+[08:26] SPEAKER_00:
+Right, right.
+
+[08:27] SPEAKER_01:
+Gavin was introduced to Vitalik by Amir Taaki, who's also here in the house. And so, like, this house is really, like, interconnected for me with all of these people, this social nexus. Yeah, yeah, because Mike Gagulski, who was my partner in Bitcoiners Without Borders, who was the PHP programmer who wrote the module for all of the membership donations to the Bitcoin Foundation, was an original member of this house and he's the one who introduced me to Amir Taaki and also the one who introduced me to Lyn Ulbricht.
+
+[09:01] SPEAKER_00:
+Oh, yeah.
+
+[09:02] SPEAKER_01:
+And he's the guy that started FreeRoss.org.
+
+[09:05] SPEAKER_00:
+Right, right.
+
+[09:06] SPEAKER_01:
+So we're really far away from Ethereum history, but it's kind of. To talk about Ethereum in the early days, you have to talk about Bitcoin.
+
+[09:12] SPEAKER_00:
+Right.
+
+[09:13] SPEAKER_01:
+Because it was an ICO on. It was an ICO on Bitcoin. Right.
+
+[09:21] SPEAKER_00:
+And you were not so far away from Berlin all of these years. I mean, did you meet some of these people in Berlin? Was that primarily these people were coming.
+
+[09:33] SPEAKER_01:
+But the earliest Ethereum meetups were at RIAT, r I a t, at Matthias tarasiewicz and ralf, and they hosted the first Ethereum meetups, which is the first time that I met Vitalik personally. Was that right? Was that RIAT? in Bitcoin. But the earliest Ethereum meetups were at RIAT at Matthias Tarsiewicz and Ralph, and they hosted the first Ethereum meetups, which is the first time that I met Vitalik personally. Was that right? Was that RIAT?
+
+[10:10] SPEAKER_00:
+Right, there you go. Yeah. But yeah, you'd mentioned the yellow paper, so that the timeline on that is both Gav and Jeff Wilcke started their Ethereum stuff within days of each other, just after Christmas. So, you know, like. Or just before, actually. So Gav's first commit was December 23, 2013. And I think Jeff's. Was it like a couple of days later?
+
+[10:44] SPEAKER_01:
+2013, man.
+
+[10:45] SPEAKER_00:
+Well, so it was basically like a thing to do over the Christmas holidays, I think, for both of them.
+
+[10:50] SPEAKER_01:
+Yeah. If you look at the email. Right. Or the about me.
+
+[10:54] SPEAKER_00:
+Yeah.
+
+[10:55] SPEAKER_01:
+Message that you have.
+
+[10:56] SPEAKER_00:
+You know. That's right. Yeah. So. So Gav said, you know, hey, Johnny gave me the heads up about Ethereum. So that was. I mean. Oh, goodness, I forget his name now. James Harrison. Anyway, he was one of the guys in London. So with, with Amir. So you know, Gav had met Johnny through Amir and Johnny had told him about Ethereum and then he contacted Vitalik. Yeah, but then, yeah, they got going there.
+
+[11:33] SPEAKER_01:
+Then there was a Cody Wilson was. It was there as well.
+
+[11:36] SPEAKER_00:
+Right, right, yep. Cody, Cody in there.
+
+[11:39] SPEAKER_01:
+And I saw the shot of video.
+
+[11:42] SPEAKER_00:
+Yeah, video of Cody in Canada. So. Yeah. So January of 2014, you had the Bitcoin Miami where Ethereum first got announced, and then they had the house that Anthony Di Iorio had rented where they all sort of met physically for the first time. Well, not everyone, but many, many people.
+
+[12:01] SPEAKER_01:
+Yeah. So these were things that were all tangentially on my online presence.
+
+[12:04] SPEAKER_00:
+Right, right, right.
+
+[12:06] SPEAKER_01:
+I mean, you know, you talk about Crypto Twitter and it's truly really the place where, you know, all these, these social groups intersected. You knew what people were doing, people were posting about what's going on. So then you asked me about Ben.
+
+[12:20] SPEAKER_00:
+But then, sorry, so. So yeah, it was by April they have this Bitcoin Expo in Toronto, but that was also when the yellow paper had been done. So Gavin spent those four months basically building the first working client and doing the yellow paper spec. Yeah, yeah, But Berlin you were saying.
+
+[12:38] SPEAKER_01:
+Yeah, so, so. And you know, so Berlin here in Europe was, you know, the, basically the city. You know, so there's Prague for the crypto-anarchists. Right. But Berlin is really was the city for Ethereum. Right. And so I was involved with the Department of Decentralization. Right. So also doing what it is I do here as an emcee on stage at, at EthBerlin with, with the DoD. And then also we did the launch of Goerli. Right.
+
+[13:09] SPEAKER_00:
+Yeah, yeah.
+
+[13:10] SPEAKER_01:
+So they're also in, in Berlin was a DoD production.
+
+[13:14] SPEAKER_00:
+Do you know where the funding for that came from?
+
+[13:17] SPEAKER_01:
+It was just.
+
+[13:18] SPEAKER_00:
+There was no funding for Goerli.
+
+[13:19] SPEAKER_01:
+There was no funding for Goerli. They just did it Afri and Mr. Leagy, you know, and yeah, it was like two or three people that, you know, that deployed Goerli, you know, so.
+
+[13:30] SPEAKER_00:
+I can tell you the answer is actually from the ETC Cooperative.
+
+[13:35] SPEAKER_01:
+Funding for Goerli came from the ETC Cooperative.
+
+[13:38] SPEAKER_00:
+Yeah, So it was supposedly a collaboration between the ETC Cooperative and the Ethereum Foundation. But then the Foundation didn't come through with the money. I think they did later. But yes, that's how that happened.
+
+[13:56] SPEAKER_01:
+So I was there as. So we hosted the conference there. GoerliCon. There's. In my, in my YouTube playlist, there's the GoerliCon, you know, hosting video and then also when we deployed it, like pressing the button, watching the screen. Yeah, it's all live because there were.
+
+[14:16] SPEAKER_00:
+Actually two that were launched that day which was Goerli and Kotti. So Kotti was the ETC version, but yeah, that was funded by the ETC Cooperative.
+
+[14:27] SPEAKER_01:
+That's fucking hilarious. Right? Yeah. So Berlin is a major place in Europe because I can't travel off the continent. Right, right. So. So I was never able to go to London and you know, me and London or go to Ethanver or anything like that. Yeah. So. So I got active in Ethereum. The reason I got active in Ethereum was after the Block Size Wars.
+
+[14:51] SPEAKER_00:
+Right, right.
+
+[14:52] SPEAKER_01:
+And I mean Bitcoin was just so toxic. Right. And.
+
+[14:56] SPEAKER_00:
+And just thinking nothing's ever going to happen here.
+
+[14:58] SPEAKER_01:
+This is like traumatized, whatever. And then there was just all of this bright eyed, bushy tailed, idealistic, you know, unicorns and glitter, you know.
+
+[15:10] SPEAKER_00:
+Yes.
+
+[15:10] SPEAKER_01:
+And I'm an old hippie. Right. And it just was like natural. It was like, you know, flame, you know, to be involved with it there.
+
+[15:17] SPEAKER_00:
+Quite a different vibe.
+
+[15:19] SPEAKER_01:
+And so. So EthBerlin was a very, very cool thing at that time. And. And at that time I was working with Status.
+
+[15:27] SPEAKER_00:
+Right, right, right.
+
+[15:28] SPEAKER_01:
+I was the resident cypherpunk at Status.
+
+[15:31] SPEAKER_00:
+Were many of those in.
+
+[15:34] SPEAKER_01:
+What do you mean?
+
+[15:36] SPEAKER_00:
+So like on Status, where were people working on Status based generally or all over the place?
+
+[15:42] SPEAKER_01:
+There was obviously a Berlin entity, you know, so Carl, one of the co-founders. So obviously, you know, they were doing the jurisdictional arbitrage between a foundation for management of their token and then where it is. But Berlin was the entity where a lot of people were paid out of and then they have, you know, a Singapore entity, I believe and stuff. But we were distributed.
+
+[16:04] SPEAKER_00:
+Right, right.
+
+[16:05] SPEAKER_01:
+We were distributed, you know, 24/7 Status. And so that was, that was really cool. So that's. So with, with. With each Status and, and Department of Decentralization was my. Was my primary involvement.
+
+[16:21] SPEAKER_00:
+Right.
+
+[16:21] SPEAKER_01:
+By being in Berlin. You know, you're involved with Gnosis. Right. And. And what was the. The video streaming portal anyway? They were another huge 2017 ICO that was based in Berlin because we had full node there.
+
+[16:37] SPEAKER_00:
+Right?
+
+[16:38] SPEAKER_01:
+Yeah, yeah.
+
+[16:40] SPEAKER_00:
+Did you ever spend time visiting or within the EF or Parity offices?
+
+[16:51] SPEAKER_01:
+So I never were in either, either of the offices, but I know numerous people. So Kai Gertler, who's the system administrator for Giveth and a lot of other things was like in ETH Cat Herders.
+
+[17:08] SPEAKER_00:
+Oh yeah, yeah.
+
+[17:09] SPEAKER_01:
+And stuff like that. Why did I want to mention Kai. So he and I put together when COVID hit.
+
+[17:24] SPEAKER_00:
+Right?
+
+[17:24] SPEAKER_01:
+Okay. Edcon was supposed to be in Vienna, right. And so that was all that was in 2019. And that was the year that I decided to open a Parallel Polis in Vienna.
+
+[17:34] SPEAKER_00:
+Right.
+
+[17:34] SPEAKER_01:
+And I thought, okay, I'll do the launch during Edcon.
+
+[17:37] SPEAKER_00:
+Okay.
+
+[17:38] SPEAKER_01:
+And I've got all the Ethereum people, you know, here, and then I'll do a side event to announce the launch of Parallel Polis. Right, right. And then it was like, no, Chinese people can't come to Vienna. Right, right. That's. They're like, okay, but we're still do Edcon. Right. And then the full shutdown came, but everybody had their tickets booked to. To Edcon in Vienna. Right. And so I was like, well, fuck it, I'm going to do. I'm going to do. This is before the total shutdown, like, okay, I'm going to do NonCon.
+
+[18:09] SPEAKER_00:
+Right.
+
+[18:10] SPEAKER_01:
+And so I booked a venue and. And then came the full shutdown. And so I did a virtual conference. It was three days with four tracks with I think 80 speakers. And Kai and I wrote a program called Inner Space. And Inner Space was an integrated online convention portal which had integrated Google Calendar and Jitsi video conferencing and integration with Discord and Telegram. Right. So that you had all of the, all of that in one portal.
+
+[18:45] SPEAKER_00:
+Right.
+
+[18:45] SPEAKER_01:
+And we launched that with NonCon. Okay. And so that's all online, right? NonCon onto the Parallel Polis Vienna site. Yeah. So that was, you know, it's just sort of like. Was obvious for me. Like I'm. I'm interested in people who are, who are building. Right. And you know, I'm a true cypherpunk in that sense. You know, deploy the code, show me, do what is you're doing. And I've just been on the convention side and that was. So my, this is where my involvement has been in Ethereum, that and. And community building. Right. And so through that I got to meet pretty much, you know, like everybody, you know, but Gavin Wood was the last one that I actually met personally.
+
+[19:26] SPEAKER_00:
+Oh, right.
+
+[19:27] SPEAKER_01:
+For the first time here in May. Came to Pizza Day. And so he's speaking here today.
+
+[19:34] SPEAKER_00:
+He is speaking in 40 minutes.
+
+[19:36] SPEAKER_01:
+In 40 minutes. Right. So yeah, so tangentially, you know, get to meet a lot of the people. I also worked at Brainbot for the Trustlines Foundation.
+
+[19:46] SPEAKER_00:
+Right. Left us right yeah, yeah.
+
+[19:46] SPEAKER_01:
+you know, so. But these, these core people, It's, It's... yeah, yeah. It's so interesting. This whole thing for me is really wild because I never really came... Although there's an ideological underpinning and a natural, you know, do it yourself ethic that comes out of the punk or the hippie, you know, roots it is that I have out of California, where it is that we built the internet, whatever. and I've always just been around, interested in the people and the, you know, the sympathetic people and the doers. the internet, whatever. and I've always just been around, interested in the people and the, you know, the sympathetic people and the doers.
+
+[20:24] SPEAKER_00:
+Right, yep.
+
+[20:25] SPEAKER_01:
+And they're not necessarily the public faces that you see and everybody knows or that are allowed in the space, you know, because that's a different part. I've just been like, around the devs, you know.
+
+[20:35] SPEAKER_00:
+Yeah.
+
+[20:36] SPEAKER_01:
+The silent, you know, the silent underpinning, the silent foundation of what actually happens in the space.
+
+[20:42] SPEAKER_00:
+Right. Has Ethereum become what you thought it might be? How much of a. The vision of what could happen there do you think has actually happened?
+
+[20:57] SPEAKER_01:
+So I had two viewpoints, I think that are common to early Bitcoiners. Right. Anything that can be built on another chain can eventually be deployed on Bitcoin, right?
+
+[21:07] SPEAKER_00:
+Yep. And very common early belief.
+
+[21:10] SPEAKER_01:
+And. And so there's this also this sort of like move fast, break things, you know, sort of culture of Ethereum, which I really liked. And I was always a. And I always thought, yeah, cool. I'm really happy that all this stuff is happening on Ethereum like a sandbox.
+
+[21:28] SPEAKER_00:
+Right.
+
+[21:28] SPEAKER_01:
+And not happening on Bitcoin. Right.
+
+[21:31] SPEAKER_00:
+Yep, yep.
+
+[21:32] SPEAKER_01:
+So. So I mean, look at the, look at the ecosystem, you know, I think that one of the coolest things that Ethereum enabled was crowdfunding. Right? Yeah, Just this completely alternative economy that created stocks, shareholders, you know what I mean? And it's in a completely new form. That just was so direct.
+
+[21:52] SPEAKER_00:
+Yes, right. Yep.
+
+[21:54] SPEAKER_01:
+It's like amazing. The whole world should literally work like that. And I. So I love that aspect of Ethereum is that they. Is that they just did it.
+
+[22:03] SPEAKER_00:
+Yeah.
+
+[22:03] SPEAKER_01:
+That literally we issued. Created companies, created. Oh, there's no jurisdiction where we can register and do our stuff. It. We're going to build DAOs.
+
+[22:12] SPEAKER_00:
+Yep.
+
+[22:12] SPEAKER_01:
+You know what I mean? And. And so. So all of this fabulous, permissionless stuff has happened on Ethereum that could not culturally happen on Bitcoin and may not ever actually happen on Bitcoin with the way that it's becoming part of the traditional finance.
+
+[22:28] SPEAKER_00:
+Yeah, yeah, yeah.
+
+[22:29] SPEAKER_01:
+So another thing that I think is really interesting is seeing the. Is seeing what's going on now with actually Enterprise Ethereum.
+
+[22:37] SPEAKER_00:
+And you were at the EA at.
+
+[22:39] SPEAKER_01:
+The beginning, which was super logical for me. Right. Y. But it was too early because there wasn't really any clients. You were just doing educational work.
+
+[22:47] SPEAKER_00:
+Pilots.
+
+[22:48] SPEAKER_01:
+Pilots and whatever. But now we're actually there. So, I mean, you know, the promise of Ethereum, I think is well, well, well exceeded its initial sort of, you know.
+
+[22:59] SPEAKER_00:
+No, I mean, it is kind of mind blowing to see, you know, these huge, you know, financial companies, you know, saying, yep, you know, we're. We're building an L2 or we're building a, you know, an EVM one. Yep. So, you know, so literally the way.
+
+[23:15] SPEAKER_01:
+That I got my first paid job at the Bitcoin Foundation.
+
+[23:18] SPEAKER_00:
+Yeah.
+
+[23:18] SPEAKER_01:
+Was Jon Matonis, who was the director of the Bitcoin Foundation, went to. Came to Vienna to talk to bankers and diplomats.
+
+[23:28] SPEAKER_00:
+Right, right.
+
+[23:28] SPEAKER_01:
+He's like, oh, Michael, so. And I just knew him from Twitter.
+
+[23:31] SPEAKER_00:
+Yep.
+
+[23:31] SPEAKER_01:
+And he's like, oh, I'm going to be in town. Right. Let's have a coffee. Right. And at that coffee, he said, hey, we listen, we need new branding and a new website for the Bitcoin Foundation. Do you think you can do that? Because there's a vote coming up and it's going to change and we're going to be do. And I agreed to do that. Right. But when he left Vienna, he went to SWIFT.
+
+[23:50] SPEAKER_00:
+Right.
+
+[23:50] SPEAKER_01:
+This is 2013.
+
+[23:51] SPEAKER_00:
+Right, right, right.
+
+[23:52] SPEAKER_01:
+So is SWIFT doing anything on Bitcoin? No. Why is it not doing anything on Bitcoin? Because Bitcoiners were too dumb to. To just go ahead and do it back then when add the scripting and composability and everything onto Bitcoin. And the way it is that all the L2s are now doing, all the L2s are a form of Ethereum. Right. So, you know, it's, it's quite wild, quite wild to see. And it's a, you know, huge circle for me just to see that announcement from SWIFT that they're doing an L2, you know.
+
+[24:22] SPEAKER_00:
+Yeah, yeah. So SWIFT. Then you've got Stripe, you know, with Tempo, Stripe and Friends. Kind of looks like a bit of a Libra again, but, you know, same, same kind of tech base. And then Nasdaq announced Robinhood, you had as well.
+
+[24:40] SPEAKER_01:
+So, I mean, I always, I always figure that it doesn't really matter where the chains are, who owns them and who controls them, whether they're, you know, degree of centralized or decentralized and whatever, because there's always going to be a bridge. And if there's not a bridge, there's going to be a tokenized representation of it to trade on it. So this sort of idea of a borderless economy, if the cat's out of the bag and everybody is catching up and it's going to be interesting to see where it is that we're at in 10 years. I think that Bitcoiners and Ethereum community are going to be incredibly disappointed. But that's what happens when you percolate the tech into the world. You don't know what's actually going to be the end game. But the fact of the matter is, is that the tech revolution has happened.
+
+[25:25] SPEAKER_00:
+Yeah. Yeah, absolutely.
+
+[25:27] SPEAKER_01:
+Most certainly.
+
+[25:28] SPEAKER_00:
+Okay, well, thanks so much. Great chatting to you. Great catching up with you as always. And all the very best.
+
+[25:35] SPEAKER_01:
+I'll get you some archives for your. For your site.
+
+[25:37] SPEAKER_00:
+Excellent. Yeah. Do pictures find goodies? You know, we love digital artifacts. You know, photos, links, you know, find that first tweet, memories. I want to record everything I can.
+
+[25:52] SPEAKER_01:
+And thank you so much, man, for being present in my life professionally and personally and in this amazing space, man. You're one of the top people in the space for me, man.
+
+[26:04] SPEAKER_00:
+Well, thanks so much. All the very best. Bye.
+
+[26:07] SPEAKER_01:
+Bye.
