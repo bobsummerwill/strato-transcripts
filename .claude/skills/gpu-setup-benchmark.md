@@ -106,23 +106,47 @@ sudo reboot
 
 ### Run Benchmarks
 
-**NVIDIA:**
+**NVIDIA (single GPU):**
 ```bash
 source venv-nvidia/bin/activate
-cd gpu_benchmarks/scripts && python gpu_benchmark.py --save
+cd gpu_benchmarks/scripts && python gpu_benchmark.py --gpu 0 --save
+```
+
+**NVIDIA (multi-GPU):**
+```bash
+source venv-nvidia/bin/activate
+cd gpu_benchmarks/scripts
+python gpu_benchmark.py --gpu 0 --save  # First GPU
+python gpu_benchmark.py --gpu 1 --save  # Second GPU
 ```
 
 **AMD:**
 ```bash
 export HSA_OVERRIDE_GFX_VERSION=10.3.0  # for unofficial GPUs
 source venv-amd/bin/activate
-cd gpu_benchmarks/scripts && python gpu_benchmark.py --save
+cd gpu_benchmarks/scripts && python gpu_benchmark.py --gpu 0 --save
 ```
 
 **Intel:**
 ```bash
 source venv-intel/bin/activate
 cd gpu_benchmarks/scripts && python gpu_benchmark_intel.py --save
+```
+
+### GPU Identification by UUID
+
+Each benchmark result includes the GPU UUID, which is unique to each physical card. This allows tracking the same card across different machines or slots.
+
+**View GPU UUIDs:**
+```bash
+nvidia-smi --query-gpu=index,name,uuid --format=csv
+```
+
+**Lookup benchmark history by UUID:**
+```bash
+source venv-nvidia/bin/activate
+python gpu_benchmarks/scripts/gpu_history.py                      # All GPUs
+python gpu_benchmarks/scripts/gpu_history.py --uuid GPU-d64aca9a  # Specific card
 ```
 
 ### Graphics Benchmarks (OpenGL/Vulkan)
@@ -154,16 +178,17 @@ vkmark                # integrated GPU
 
 ### Tested GPU Cards
 
-| Card | GPU | Type | VRAM | MatMul 8K | MatMul 4K | glmark2 | vkmark | H2D GB/s | D2H GB/s |
-|------|-----|------|------|-----------|-----------|---------|--------|----------|----------|
-| #1 | RTX 3090 | dGPU | 24 GB | 25,658 | - | - | - | ~25 | ~25 |
-| #2 | RTX 3090 | dGPU | 24 GB | 24,586 | - | - | - | ~25 | ~25 |
-| #3 | RTX 5070 | dGPU | 12 GB | 22,981 | - | - | - | ~25 | ~25 |
-| #4 | RX 6750 XT | dGPU | 12 GB | 11,060 | - | 1,144 | 1,331 | 11.2 | 10.8 |
-| #5 | Intel MTL | iGPU | 28 GB* | - | 1,712 | 1,106 | 2,886 | 4.1 | 1.5 |
+| Card | GPU | Model | UUID (partial) | VRAM | MatMul 8K | H2D GB/s |
+|------|-----|-------|----------------|------|-----------|----------|
+| #1 | RTX 3090 | EVGA FTW3 Ultra | `0ee51b66...` | 24 GB | 26,942 | 12.2 |
+| #2 | RTX 3090 | EVGA (XC3?) | `d64aca9a...` | 24 GB | 25,924 | 12.2 |
+| #3 | RTX 5070 | - | - | 12 GB | 22,981 | 9.3 |
+| #4 | RX 6750 XT | - | - | 12 GB | 11,060 | 0.7 |
+| #5 | Intel MTL | iGPU | - | 28 GB* | ~1,712 (4K) | 4.1 |
 
 *Intel MTL VRAM is shared system memory
 **RX 6750 XT requires `export HSA_OVERRIDE_GFX_VERSION=10.3.0` (unofficial ROCm support)
+**UUIDs are burned into the GPU at manufacture and persist across machines/slots
 
 ### PyTorch Backend Support Status
 
