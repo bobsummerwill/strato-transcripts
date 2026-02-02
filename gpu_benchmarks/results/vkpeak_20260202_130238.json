@@ -1,0 +1,301 @@
+{
+  "test_metadata": {
+    "timestamp": "2026-02-02T13:02:38.398197",
+    "date": "2026-02-02",
+    "time": "13:02:38",
+    "benchmark": "vkpeak"
+  },
+  "devices": [
+    {
+      "device_name": "NVIDIA GeForce RTX 3090",
+      "driver": "NVIDIA / 590.48.01",
+      "fp32-scalar": {
+        "value": 24807.04,
+        "unit": "GFLOPS"
+      },
+      "fp32-vec4": {
+        "value": 24532.27,
+        "unit": "GFLOPS"
+      },
+      "fp16-scalar": {
+        "value": 36479.15,
+        "unit": "GFLOPS"
+      },
+      "fp16-vec4": {
+        "value": 27565.01,
+        "unit": "GFLOPS"
+      },
+      "fp16-matrix": {
+        "value": 159936.95,
+        "unit": "GFLOPS"
+      },
+      "fp64-scalar": {
+        "value": 591.81,
+        "unit": "GFLOPS"
+      },
+      "fp64-vec4": {
+        "value": 586.29,
+        "unit": "GFLOPS"
+      },
+      "int32-scalar": {
+        "value": 18801.99,
+        "unit": "GIOPS"
+      },
+      "int32-vec4": {
+        "value": 18627.35,
+        "unit": "GIOPS"
+      },
+      "int16-scalar": {
+        "value": 15012.03,
+        "unit": "GIOPS"
+      },
+      "int16-vec4": {
+        "value": 13996.46,
+        "unit": "GIOPS"
+      },
+      "int64-scalar": {
+        "value": 5579.25,
+        "unit": "GIOPS"
+      },
+      "int64-vec4": {
+        "value": 4453.83,
+        "unit": "GIOPS"
+      },
+      "int8-dotprod": {
+        "value": 17498.87,
+        "unit": "GIOPS"
+      },
+      "int8-matrix": {
+        "value": 318061.3,
+        "unit": "GIOPS"
+      },
+      "bf16-dotprod": {
+        "value": 0.0,
+        "unit": "GFLOPS"
+      },
+      "bf16-matrix": {
+        "value": 80216.81,
+        "unit": "GFLOPS"
+      },
+      "fp8-matrix": {
+        "value": 0.0,
+        "unit": "GFLOPS"
+      },
+      "bf8-matrix": {
+        "value": 0.0,
+        "unit": "GFLOPS"
+      },
+      "copy-h2h": {
+        "value": 21.75,
+        "unit": "GBPS"
+      },
+      "copy-h2d": {
+        "value": 22.27,
+        "unit": "GBPS"
+      },
+      "copy-d2h": {
+        "value": 23.34,
+        "unit": "GBPS"
+      },
+      "copy-d2d": {
+        "value": 309.53,
+        "unit": "GBPS"
+      },
+      "device_id": 0
+    },
+    {
+      "device_name": "NVIDIA GeForce RTX 3090",
+      "driver": "NVIDIA / 590.48.01",
+      "fp32-scalar": {
+        "value": 27877.8,
+        "unit": "GFLOPS"
+      },
+      "fp32-vec4": {
+        "value": 27233.41,
+        "unit": "GFLOPS"
+      },
+      "fp16-scalar": {
+        "value": 40975.26,
+        "unit": "GFLOPS"
+      },
+      "fp16-vec4": {
+        "value": 30200.85,
+        "unit": "GFLOPS"
+      },
+      "fp16-matrix": {
+        "value": 165150.77,
+        "unit": "GFLOPS"
+      },
+      "fp64-scalar": {
+        "value": 646.63,
+        "unit": "GFLOPS"
+      },
+      "fp64-vec4": {
+        "value": 636.88,
+        "unit": "GFLOPS"
+      },
+      "int32-scalar": {
+        "value": 20402.35,
+        "unit": "GIOPS"
+      },
+      "int32-vec4": {
+        "value": 20114.19,
+        "unit": "GIOPS"
+      },
+      "int16-scalar": {
+        "value": 16131.43,
+        "unit": "GIOPS"
+      },
+      "int16-vec4": {
+        "value": 14905.78,
+        "unit": "GIOPS"
+      },
+      "int64-scalar": {
+        "value": 6055.76,
+        "unit": "GIOPS"
+      },
+      "int64-vec4": {
+        "value": 4838.37,
+        "unit": "GIOPS"
+      },
+      "int8-dotprod": {
+        "value": 19193.37,
+        "unit": "GIOPS"
+      },
+      "int8-matrix": {
+        "value": 324714.79,
+        "unit": "GIOPS"
+      },
+      "bf16-dotprod": {
+        "value": 0.0,
+        "unit": "GFLOPS"
+      },
+      "bf16-matrix": {
+        "value": 82109.7,
+        "unit": "GFLOPS"
+      },
+      "fp8-matrix": {
+        "value": 0.0,
+        "unit": "GFLOPS"
+      },
+      "bf8-matrix": {
+        "value": 0.0,
+        "unit": "GFLOPS"
+      },
+      "copy-h2h": {
+        "value": 23.36,
+        "unit": "GBPS"
+      },
+      "copy-h2d": {
+        "value": 23.37,
+        "unit": "GBPS"
+      },
+      "copy-d2h": {
+        "value": 23.47,
+        "unit": "GBPS"
+      },
+      "copy-d2d": {
+        "value": 333.46,
+        "unit": "GBPS"
+      },
+      "device_id": 1
+    },
+    {
+      "device_name": "AMD Ryzen 9 9950X3D 16-Core Processor (RADV RAPHAEL_MENDOCINO)",
+      "driver": "radv / Mesa 25.0.7-0ubuntu0.24.04.2",
+      "fp32-scalar": {
+        "value": 565.37,
+        "unit": "GFLOPS"
+      },
+      "fp32-vec4": {
+        "value": 542.17,
+        "unit": "GFLOPS"
+      },
+      "fp16-scalar": {
+        "value": 477.19,
+        "unit": "GFLOPS"
+      },
+      "fp16-vec4": {
+        "value": 1018.49,
+        "unit": "GFLOPS"
+      },
+      "fp16-matrix": {
+        "value": 0.0,
+        "unit": "GFLOPS"
+      },
+      "fp64-scalar": {
+        "value": 35.36,
+        "unit": "GFLOPS"
+      },
+      "fp64-vec4": {
+        "value": 35.1,
+        "unit": "GFLOPS"
+      },
+      "int32-scalar": {
+        "value": 109.92,
+        "unit": "GIOPS"
+      },
+      "int32-vec4": {
+        "value": 113.38,
+        "unit": "GIOPS"
+      },
+      "int16-scalar": {
+        "value": 566.88,
+        "unit": "GIOPS"
+      },
+      "int16-vec4": {
+        "value": 986.6,
+        "unit": "GIOPS"
+      },
+      "int64-scalar": {
+        "value": 37.83,
+        "unit": "GIOPS"
+      },
+      "int64-vec4": {
+        "value": 31.2,
+        "unit": "GIOPS"
+      },
+      "int8-dotprod": {
+        "value": 2263.85,
+        "unit": "GIOPS"
+      },
+      "int8-matrix": {
+        "value": 0.0,
+        "unit": "GIOPS"
+      },
+      "bf16-dotprod": {
+        "value": 0.0,
+        "unit": "GFLOPS"
+      },
+      "bf16-matrix": {
+        "value": 0.0,
+        "unit": "GFLOPS"
+      },
+      "fp8-matrix": {
+        "value": 0.0,
+        "unit": "GFLOPS"
+      },
+      "bf8-matrix": {
+        "value": 0.0,
+        "unit": "GFLOPS"
+      },
+      "copy-h2h": {
+        "value": 21.58,
+        "unit": "GBPS"
+      },
+      "copy-h2d": {
+        "value": 21.52,
+        "unit": "GBPS"
+      },
+      "copy-d2h": {
+        "value": 23.66,
+        "unit": "GBPS"
+      },
+      "copy-d2d": {
+        "value": 32.59,
+        "unit": "GBPS"
+      },
+      "device_id": 2
+    }
+  ]
+}
