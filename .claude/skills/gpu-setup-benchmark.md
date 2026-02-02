@@ -152,13 +152,33 @@ python gpu_benchmarks/scripts/gpu_history.py --uuid GPU-d64aca9a  # Specific car
 ### Graphics Benchmarks (OpenGL/Vulkan)
 ```bash
 DRI_PRIME=1 glmark2   # discrete/eGPU
-DRI_PRIME=1 vkmark    # discrete/eGPU
 glmark2               # integrated GPU
-vkmark                # integrated GPU
 ```
 
+### Vulkan Compute Benchmarks (vkpeak)
+vkpeak measures raw Vulkan compute throughput across all GPUs (no display required).
+
+```bash
+# Run on all hardware GPUs
+python3 gpu_benchmarks/scripts/vkpeak_benchmark.py --save
+
+# Run on specific GPU by index
+python3 gpu_benchmarks/scripts/vkpeak_benchmark.py --gpu 0 --save
+python3 gpu_benchmarks/scripts/vkpeak_benchmark.py --gpu 1 --save
+
+# Output JSON to stdout
+python3 gpu_benchmarks/scripts/vkpeak_benchmark.py --json
+```
+
+**vkpeak metrics:**
+- FP32 Scalar/Vec4: Single-precision compute throughput (GFLOPS)
+- FP16 Matrix: Half-precision tensor operations (GFLOPS)
+- INT8 Matrix: Integer tensor operations (GIOPS)
+- Copy H2D/D2H/D2D: Memory transfer bandwidth (GB/s)
+
 ### Results
-- Individual JSON: `gpu_benchmarks/results/benchmark_*.json`
+- PyTorch benchmark JSON: `gpu_benchmarks/results/benchmark_*.json`
+- vkpeak benchmark JSON: `gpu_benchmarks/results/vkpeak_*.json`
 - Summary: `gpu_benchmarks/results/comparison_all_cards.json`
 
 ---
@@ -174,7 +194,8 @@ vkmark                # integrated GPU
 | **Memory BW D2H (GB/s)** | Device-to-Host memory transfer speed | How fast results can be retrieved; affects inference latency |
 | **Compute (GFLOPS)** | Sustained FP32 compute throughput | Raw computational power for general workloads |
 | **glmark2** | OpenGL rendering benchmark score | Graphics/visualization performance |
-| **vkmark** | Vulkan rendering benchmark score | Modern graphics API performance |
+| **vkpeak FP32** | Vulkan FP32 compute throughput | Raw Vulkan compute, tests all GPUs regardless of display |
+| **vkpeak FP16/INT8** | Tensor core throughput | AI/ML acceleration capability |
 
 ### Tested GPU Cards
 
