@@ -1,0 +1,12 @@
+**[00:07] SPEAKER_00:** So we want a distributed incentivized publishing model that issues cryptocurrency to publishers and users who describe that data by tagging it and voting on the tags on the data. Is a keyless access protocol based on Ethereum and Raspberry PI. Essentially it allows services such as Airbnb and Zipcar and even individuals to provide, uh, as soon as I saw the holes, cryptographically secure access to smart property. An uh, application that's designed for people who aren't maybe familiar with Mastercoin or Bitcoin. It's an easy way for them to get up and running and create their first wallet and get master coins or Bitcoins sent to them.
+
+**[00:54] SPEAKER_01:** We have a market that is uncensored, can't be shut down, provides, uh, uh, with anonymity, with privacy features, uh, providing all the features uh, that the digital black markets have with the one crucial thing there is no central operator.
+
+**[01:14] SPEAKER_00:** Application allows you to uh, upload your transaction history from sites like uh, CA Vertex, and calculate your adjusted cost base for capital gains reporting purposes.
+
+**[01:27] SPEAKER_02:** Using the Google Glass, uh, it shows you a Bitcoin ticker and it also has a calculator that converts 10 different currencies into Bitcoin values. Last but not least, not the least. You can use the Google Glass to rid of a price tag and it will OCR it and convert it also into Bitcoin values.
+
+**[01:46] SPEAKER_01:** Huffball is a distributed publishing platform that uses blockchain technologies and web technologies like peer to peer over the browser to let anyone who wants create their own personal chain of content that they're creating right over the browser and share it amongst each other without installing any special software.
+
+**[02:08] SPEAKER_00:** Have you ever heard of this for that or tit for tat? We're BIP for that and we're the simplest way for you or your business to accept payments for goods and services in Bitcoin using your mobile phone. Hi there, my name is Sean McDavid and I'm here with Coindrop. So have you ever had loose change in your sofa and wanted to convert them into Bitcoin? Well now I've created a piggy bank that allows you to add the coins and then you get Bitcoin on yen and.
+

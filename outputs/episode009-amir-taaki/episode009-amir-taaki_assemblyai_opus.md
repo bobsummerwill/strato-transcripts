@@ -6,35 +6,33 @@
 
 **[00:59] SPEAKER_01:** Yeah. What's the...
 
-**[01:00] SPEAKER_00:** Well, it was quite, I mean, it was quite coincidental. You know, I'd gathered a bunch of information back in 2017, 2018, basically because Ming Chan was getting hoofed out. And I asked Vitalik what I could do to help, you know, anything with, help with the transition or whatever, and he said, can you go and talk to people in the community and sort of see what they think the Ethereum Foundation should be like, what should we be doing?
+**[01:00] SPEAKER_00:** Well, it was quite. I mean, it was quite coincidental. You know, I'd gathered a bunch of information back in 2017, 2018, basically because Ming Chan was getting hoofed out. And I asked Vitalik what I could do to help, you know, anything with, help with the transition or whatever, and he said, can you like, go and talk to people in the community and sort of see what they think the Ethereum Foundation should be like, what should we be doing?
 
 **[01:38] SPEAKER_01:** Oh, dear. If you ask that question, it's already bad sign.
 
-**[01:42] SPEAKER_00:** Well, my question at that point was, so Ming was terrible. She's one of the least professional people I've ever worked with. She was an absolute nightmare. And my thought was, well, what the hell was happening before that? That she looked like a good choice. And there was a real sort of shroud of mystery as to what had happened then, even though it was only like three or four years before. And so like, there just was no canonical history. Nobody really knew what happened. Even something as basic as, like, was Charles like kind of a co-founder or not? He kind of says he was, maybe, but maybe he wasn't. Which is just crazy because, you know, he was there, like doing videos and like, there's just tons of evidence. But anyway, so I started digging back into Anthony Di Iorio. Yes, that's right. There were three.
+**[01:42] SPEAKER_00:** Well, my question at that thought, at that point was, so Ming was terrible. She's one of the least professional people I've ever worked with. She was an absolute nightmare. And my thought was, well, what the hell was happening before that? That she looked like a good choice. And there was a real sort of shroud of mystery as to what had happened then, even though it was only like three or four years before. And so like, there just was no canonical history. Nobody really knew what happened. Even something as basic as, like, was Charles like kind of a co-founder or not? He kind of says he was, maybe, but maybe he wasn't. Which is just crazy because, you know, he was there, like doing videos and like, there's just tons of evidence. But anyway, so I started digging back into Anthony Di Iorio. Yes, that's right. There were three.
 
-**[02:39] SPEAKER_01:** Didn't he get robbed or something?
+**[02:39] SPEAKER_01:** Didn't he get rocked or something?
 
-**[02:40] SPEAKER_00:** There was, there was Anthony Di Iorio.
+**[02:40] SPEAKER_00:** There were, there was, there was Anthony Di Iorio.
 
 **[02:43] SPEAKER_01:** I don't know the history.
 
-**[02:44] SPEAKER_00:** There was Anthony D'Onofrio, that was Texture. And there was another guy called Anthony Eufemio who did this Digix Gold thing. But anyway, so that's where I started. Like, getting interested in Ethereum history is just like, well, what the hell happened? I mean, the, what ended up happening is everything I recommended to Vitalik like, never happened. Like, it was just completely disaster. You know, Ming went and he just got Aya. Here you go. It's a new one. No changes. Like, the, what people wanted was like, transparency. They wanted community input. They wanted like professional, executive, like operational. It's like, you know, let's have organization to help the devs, basically. But primarily it was like, don't be a Swiss opaque foundation with no accountability or any public information at all.
+**[02:44] SPEAKER_00:** There was Anthony D'Onofrio, that was Texture. And there was another guy called Anthony Eufemio who did this Digix Gold thing. But anyway, so that's where I started. Like, getting interested in Ethereum history is just like, well, what the hell happened? I mean, the, what ended up happening is everything I recommended to Vitalik like, never happened. Like, it was just completely disaster. You know, Ming went and he just got Aya. Here you go. It's a new one. No changes. Like, the, the, what people wanted was like, transparency. They wanted community input. They wanted like professional, executive, like operational. It's like, you know, let's have organization to help the devs, basically. But primarily it was like, don't be a Swiss opaque foundation with no accountability or any public information at all. Anyway, so I put the stuff aside at that point. It's like, great. That was a good use of my time, you know, advising the millionaire for free for months.
 
-Anyway, so I put the stuff aside at that point. It's like, great. That was a good use of my time, you know, advising the millionaire for free for months. But then just recently, so guys I now work with, they started recording some videos, because so Kieren is, Kieren James-Lubin is Joe's son. So he was actually around from March 2014. And the others were sort of involved from 2015. And they were just like, we should like, get some of these memories down, right? It was like eight years ago at that point. So they did a couple of those videos and I, you know, I really loved them and I was making tons of notes and finding links and photos and all of this. And then they interviewed me for the third one.
-
-But then more recently, I did interviews with Taylor Gerring and with Texture and just tons of stuff came out of that. And then I just kind of like shoved those together and there you go. That's Early Days of Ethereum is this sort of combination of sort of biographical stuff and photos and videos, links to articles and then, you know, conversations with people. And it's really just because it's like, this is history, right? This stuff was crazy.
+But then just recently, so, guys I now work with, they started recording some videos, because, so Kieren is, Kieren James-Lubin is Joe's son. So he was actually around from March 2014. And the others were sort of involved from 2015. And they were just like, we should like, get some of these memories down, right? It was like eight years ago at that point. So they did a couple of those videos and I, you know, I really loved them and I was making tons of notes and finding links and photos and all of this. And then they interviewed me for the third one. But then more recently, I did interviews with Taylor Gerring and with Texture and just tons of stuff came out of that. And then I just kind of like shoved those together and there you go. That's Early Days of Ethereum is this sort of combination of sort of biographical stuff and photos and videos, links to articles and then, you know, conversations with people. And it's really just because it's like, this is history, right? This stuff was crazy.
 
 **[05:16] SPEAKER_01:** Seeing being in crypto since like, you know, almost the beginning and seeing the stuff that happens, but seeing what got recorded, right? And it's like, wow, like, history really is just written by the victors. Yeah, it's just crazy.
 
-**[05:35] SPEAKER_00:** So the one thing on that score, which I don't know if you know, is, so the original Bitcointalk post for announcing Ethereum. So that was done on the 23rd of January, 2014, right? Just before the Bitcoin Miami. That page got changed about eight months later, probably around August, September. It got quick edited and a whole load of people that were there got written out.
+**[05:35] SPEAKER_00:** So the, this, the one thing on that score, which I don't know if you know, is so the original Bitcointalk post for announcing Ethereum. So that was done on the 23rd of January 2014, right? Just before the Bitcoin Miami. That page got changed about, about eight months later, probably around August, September. It got quick edited and a whole load of people that were there got written out.
 
 **[06:13] SPEAKER_01:** Oh, you mean like just somebody, they...
 
 **[06:16] SPEAKER_00:** Well, I mean, I guess you can edit Bitcointalk pages, but what...
 
-**[06:22] SPEAKER_01:** About the people getting deleted and stuff?
+**[06:22] SPEAKER_01:** What about the people getting deleted and stuff?
 
-**[06:24] SPEAKER_00:** So, yeah, just a whole bunch of people got deleted out. By who?
+**[06:24] SPEAKER_00:** So, yeah, just a whole bunch of people got deleted out by who?
 
 **[06:28] SPEAKER_01:** The admins.
 
@@ -46,19 +44,17 @@ But then more recently, I did interviews with Taylor Gerring and with Texture an
 
 **[06:42] SPEAKER_01:** I see.
 
-**[06:43] SPEAKER_00:** So that post, which at the start went, look, here's about the 30 people that are working on things, went down to, oh, right, Charles and Amir. Well, Amir I don't think was in the original post because he didn't want to be. But Charles got edited out. Stefan and Taylor Gerring got edited in, and all the rest of the team got shoved off the page.
+**[06:43] SPEAKER_00:** So that post, which at the start went, look, here's about the 30 people that are working on things, went down to, oh, right, Charles and Amir. Well, Amir I don't think was in the original post because he didn't want to be. But Charles got edited out. Stefan and Taylor Gerring got edited in, and all the rest of the team got shoved off the page. Yeah.
 
-**[07:12] SPEAKER_01:** Hm.
+**[07:12] SPEAKER_01:** Hmm.
 
-**[07:12] SPEAKER_00:** But, you know, many, many people that were involved early, you know, they're just like forgotten. You know, they were on, you know, if you go back to early Internet Archive versions, you can find some names. So, I mean, some people, like Mr. M. Ryan Taylor over here. So Ryan worked on all the early websites for months. You know, these pages that thousands or tens of thousands of people have seen. As you know, this is the main Ethereum page. Nobody knew who did it. I didn't know. Like, you know, just on one of the early ones, just for a little while, it just said, like, Ryan Taylor Webb. I know who Ryan Taylor is. Like, so a number of these names, you know, I don't know who they are or maybe start to find them.
-
-And basically, you know, it's like the work of many hands, right? This is something I was talking about is, you know, you've got like, great man theory, right? The thought that you have these exceptional people and by amazing powers of, you know, intellectual skills and power of force, that they bend the universe to their will. And, you know, that's kind of the story that people like... Feudalism.
+**[07:12] SPEAKER_00:** But, you know, many, many people that were involved early, you know, they're just like forgotten. You know, they were on, you know, if you go back to early Internet Archive versions, you can find some names. So, I mean, some people, like Mr. M. Ryan Taylor over here. So Ryan worked on all the early websites for months. You know, these pages that thousands or tens of thousands of people have seen. As you know, this is the main Ethereum page. Nobody knew who did it. I didn't know. Like, you know, just on one of the early ones, just for a little while, it just said, like, Ryan Taylor Webb. I know who Ryan Taylor is. Like, so a number of these names, you know, I don't know who they are or maybe start to find them. And basically, you know, it's like the work of many hands, right? This is something I was talking about is, you know, you've got like, great man theory, right? The thought that you have these exceptional people and by amazing powers of, you know, intellectual skills and power of force, that they bend the universe to their will. And, you know, that's kind of the story that people like. Feudalism.
 
 **[08:24] SPEAKER_01:** It's like you pledge your allegiance to his liege.
 
 **[08:28] SPEAKER_00:** That's right.
 
-**[08:29] SPEAKER_01:** And if your liege becomes popular, you all like, right, gain through him, you will live vicariously.
+**[08:29] SPEAKER_01:** And if your liege becomes popular, you all like, right? Gain through him, you will live vicariously.
 
 **[08:38] SPEAKER_00:** Right. Or if you, you know, tech world operate. Yeah, well, you know, like, people are looking for heroes and, you know, they're champions to cheer, you know, in the highest case, you know, something like North Korea, they literally think the leader is, you know, is a God. You know, they're just crying in front of him, just, oh, so amazing. So, yeah, I'm trying to record the real truth and give people their voices and just make sure stuff doesn't get lost. Right. So many things have already been lost.
 
@@ -68,29 +64,29 @@ And basically, you know, it's like the work of many hands, right? This is someth
 
 **[09:14] SPEAKER_01:** He's like, he did really, really deep history of Bitcoin stuff.
 
-**[09:18] SPEAKER_00:** Yeah, yeah. So check him out as well. Yeah, so I'm finding stuff. And you know, you shared your old YouTube channel with me as well. You seem to have a reasonable number of artifacts of various ages that have been preserved about you.
+**[09:18] SPEAKER_00:** Yeah, yeah. So check him out as well. Yeah, so, so yeah, I'm finding stuff. And you know, you shared your old YouTube channel with me as well. You seem to have a reasonable number of artifacts of various ages that have been preserved about you.
 
-**[09:39] SPEAKER_01:** Funny, because I was just filming and I was just putting my video camera on the Internet, on YouTube. So that's why I have that page.
+**[09:39] SPEAKER_01:** Funny, because I was just filming and I was just putting it, my video camera on the Internet, on YouTube. So that's why I have that page.
 
-**[09:49] SPEAKER_00:** Right. It's funny. There's a guy called Freddy Hartline who was one of the guys that started the main, kind of like it was like Bitcoin co-working space or whatever in Vancouver. But he was saying he's got loads of stuff on his Facebook account of all things basically. Even though it's like as boomer as you can imagine, it's like, yep, loads of other people have had things on so many other platforms and everything. They've all got lost and fucked. I've just posted shit on my Facebook page and it's, you know, it's up there forever. Obviously, like preserving things yourself is way better than relying on any of these platforms. But yeah, like so much stuff has just like rotted because people have deleted their accounts or like a platform isn't around anymore or just you know, general kind of rot.
+**[09:49] SPEAKER_00:** Right. It's funny. There's a guy called Freddy Hartline who was one of the guys that started the main, kind of like it was like Bitcoin co-working space or whatever in Vancouver. But he was saying he's got loads of stuff on his Facebook account of all things basically. Even though it's like as boomer as you can imagine, it's like, yep, loads of other people have had things on so many other platforms and everything. They've all got lost and fucked. I've just posted shit on my Facebook page and it's, you know, it's up there forever. Obviously, like preserving things yourself is way better than relying on any of these platforms. But yeah, like so much stuff has just like rotted because people have deleted their accounts or like a platform isn't around anymore or just you know, general, general kind of rot.
 
 **[10:49] SPEAKER_01:** But everything I have from this survived is because I uploaded it to like a normie platform.
 
 **[10:56] SPEAKER_00:** Yes. Well, this is it.
 
-**[10:58] SPEAKER_01:** I like periodically have like a cleanse, cleansing like, it's not accidental, but it's just like every few years, you know, your data just reset to zero.
+**[10:58] SPEAKER_01:** I like periodically have like a cleanse, cleansing like a non. It's not accidental, but it's just like every few years, you know, your data just reset to zero.
 
 **[11:09] SPEAKER_00:** Yeah, it sucks.
 
-**[11:11] SPEAKER_01:** You know.
+**[11:11] SPEAKER_01:** It, you know.
 
-**[11:12] SPEAKER_00:** Well, that's it. Yeah, I mean that, so yeah, that was Freddie's super normie story, is still using Facebook even though, you know, it's Facebook. So yeah, I mean, you know you were a free software guy and a general developer on that thread and early, early Bitcoin devs. So like how did you find Bitcoin?
+**[11:12] SPEAKER_00:** Well, that's it. Yeah, I mean that. So yeah, that was Freddie's super normie story. Is still using Facebook even though, you know, it's Facebook. So yeah, I mean, you know you were a free software guy and a general developer on that thread and early, early Bitcoin devs. So like how did you find Bitcoin?
 
 **[11:45] SPEAKER_01:** So I was, yeah, I was working on free software for five, six years and then off. And then I became a professional poker player.
 
 **[11:57] SPEAKER_00:** Right, right.
 
-**[11:58] SPEAKER_01:** That was for two, that was for over two years. And the poker sites, you know, you're playing against other players.
+**[11:58] SPEAKER_01:** That was for two. That was for over two years. And the poker sites, you know, you're playing against other players.
 
 **[12:04] SPEAKER_00:** Right.
 
@@ -98,15 +94,13 @@ And basically, you know, it's like the work of many hands, right? This is someth
 
 **[12:15] SPEAKER_00:** Right.
 
-**[12:16] SPEAKER_01:** So. But the sites charge a huge amount of fees for like a really crappy service. So I had this idea, what if you could have a P2P site, then it wouldn't have rake and fees, right? So I had like the design for it, but then the main issue was the payment system. And so then I was on IRC in this channel with other anarcho hackers I know, and I was telling them about that. And this guy just is like a mathematician that worked for the W3C, Melvin. He dumped just like 10 links in there.
-
-And you know, they're like random open source projects for like money. And there's stuff like, let's, have you heard of LETS? No, no, that was at one point. People are really into that, but it's like you, but off. I think it's like offering your labor. You get like a token or something. But anyway, so I would say going for one of all of these links and they're going, no, no, no, no. I saw Bitcoin. I opened the page for Bitcoin. He goes, Bitcoin is a P2P currency that cannot be controlled by governments or central banks. And then I was like, that's garbage. Like, obviously not. That's just because there's like loads of random projects like that on SourceForge.
+**[12:16] SPEAKER_01:** So. But the sites charge a huge amount of fees for like a really crappy service. So I had this idea, what if you could have a P2P site, then it wouldn't have rake and fees, right? So I had like the design for it, but then the main issue was the payment system. And so then I was on IRC in this channel with other anarcho hackers I know, and I was telling them about that. And this guy just is like a mathematician that worked for the W3C, Melvin. He dumped just like 10 links in there. And you know, they're like random open source projects for like money. And there's stuff like LETS. Have you heard of LETS? No, no, that was at one point. People are really into that, but it's like you offer your labor. You get like a token or something. But anyway, so I would say going for one of all of these links and they're going, no, no, no, no. I saw Bitcoin. I opened the page for Bitcoin. He goes, Bitcoin is a P2P currency that cannot be controlled by governments or central banks. And then I was like, that's garbage. Like, obviously not. That's just because there's like loads of random projects like that on SourceForge.
 
 Back in the day, I once saw like a Jurassic Park video game and it was going like, you could do everything. You can punch through the walls, you can hack the terminals, you can hunt the dinosaurs. And I was like, whoa, sounds amazing. And I checked the code and it said like main.cpp and they had like just, you know, one file.
 
-**[14:01] SPEAKER_00:** Yeah.
+**[14:04] SPEAKER_00:** Right.
 
-**[14:04] SPEAKER_01:** Yeah, like, just got it. Got bored of it. It just wrote the idea.
+**[14:04] SPEAKER_01:** Yeah, like, just got it. Got bored of it. It like, it just wrote the idea.
 
 **[14:10] SPEAKER_00:** Right, right.
 
@@ -114,7 +108,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[14:39] SPEAKER_00:** Yeah.
 
-**[14:39] SPEAKER_01:** Which, you know, 15,000 lines of code. It's actually a small amount of lines of code. Like some programmers can even do that in like a week or something. Like very talented programmers. But so I was like, oh, but it's not nothing either. It's not like that Jurassic Park game I was just describing. So it's like 20, you know, 15,000 lines of code. Like, let's...
+**[14:39] SPEAKER_01:** Which, you know, 15,000 lines of code. It's actually a small amount of lines of code. Like some programmers can even do that in like a week or something. Like very talented programmers. But so I was like, oh, but it's not nothing either. It's not like that Jurassic Park game I was just describing. So it's like, you know, 15,000 lines of code. Let's...
 
 **[15:01] SPEAKER_00:** You can read through and kind of understand. Yeah.
 
@@ -134,7 +128,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[15:26] SPEAKER_00:** Right.
 
-**[15:26] SPEAKER_01:** So that's when I like, basically I was like, okay, I'm just doing this amount. And so then I had like a, so I made like a plan of like, oh, in 10 years we'll be here, etc.
+**[15:26] SPEAKER_01:** So that's when I like, basically I was like, okay, I'm just doing this. And so then I had like a, so I made like a plan of like, oh, in 10 years we'll be here, etc.
 
 **[15:38] SPEAKER_00:** Right, right.
 
@@ -142,7 +136,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[15:57] SPEAKER_00:** Right.
 
-**[15:57] SPEAKER_01:** But that page is gone from the Internet. So people, it's like, they don't...
+**[15:57] SPEAKER_01:** But that page is gone from the Internet. So people, it's like, they don't.
 
 **[16:01] SPEAKER_00:** Maybe. Maybe it got archived.
 
@@ -166,17 +160,17 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[16:47] SPEAKER_00:** Yeah.
 
-**[16:47] SPEAKER_01:** And then he was there and he's like, oh, I want to keep it. I really like it, you know. So yeah, I went to the very first event presenting Bitcoin to, it was to audience of bankers. And so I did my talk and afterwards, Gavin Andresen, he DM'd me and he goes, I think you should not talk at conferences ever again. I was like, who the fuck is this guy? You're not in charge of project. You...
+**[16:47] SPEAKER_01:** And then he was there and he's like, oh, I want to keep it. I really like it, you know. So yeah, I like went to the very first event presenting Bitcoin to. It was to audience of bankers. And so I did my talk and afterwards, Gavin Andresen, he DM me and he goes, I think you should not talk at conferences ever again. I was like, who the fuck is this guy? You're not in charge of project. You.
 
 **[17:14] SPEAKER_00:** But was this in London or in the US somewhere? Amsterdam. Right.
 
-**[17:18] SPEAKER_01:** But anyway, so you know one of the first things that Gavin Andresen did.
+**[17:18] SPEAKER_01:** But anyway, so one of the first things that Gavin Andresen did.
 
 **[17:25] SPEAKER_00:** Yeah.
 
-**[17:25] SPEAKER_01:** Was to try and get my name off of that list. Name added. But anyway, right. So he was like that. And you know...
+**[17:25] SPEAKER_01:** Was to try and get my name off of that list. Name added. But anyway, right. So he was like that. And, you know.
 
-**[17:38] SPEAKER_00:** Did you end up starting libbitcoin quite early then?
+**[17:38] SPEAKER_00:** Did you end up starting Libbitcoin quite early then?
 
 **[17:42] SPEAKER_01:** Yeah. 2011. Yeah, mid like March 2011 or something.
 
@@ -194,7 +188,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[18:19] SPEAKER_00:** Right.
 
-**[18:20] SPEAKER_01:** And so I was like very worried because he was, because he wasn't treating it like an open source protocol. It was like, we need to have this thing, we need to have that thing. So I was like, there need to be some constraint on his like wild ideas. So that's why I proposed that system. And thing is like Gavin, I mean I don't talk about people, but anyway, yeah, so I made that BIP system for that reason. I was just afraid of that direction, that side of Bitcoin.
+**[18:20] SPEAKER_01:** And so I was like very worried because he was, because he wasn't treating it like an open source protocol. It was like, we need to have this thing, we need to have that thing. So I was like, there need to be some constraint on his like wild ideas. So that's why I proposed that system. And thing is like Gavin, I mean I don't talk about people, but anyway, yeah, so I made that BIP system for that reason was. I was just afraid of that direction. That side of Bitcoin.
 
 **[18:55] SPEAKER_00:** Yeah.
 
@@ -202,7 +196,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[18:57] SPEAKER_00:** Yeah.
 
-**[18:58] SPEAKER_01:** And they put themselves as chief scientist and they tried to do this. It was takeover of business guys on Bitcoin. And yeah, they wanted, they were like, we have to push out the anarchists. Yeah, it was this like, it's like this attitude of like, oh, these crazy anarchists, they've invented this like new plaything and it's just so it's like really interesting toy and if we just pry it out of their hands then we can get it accepted by big banks and then it can do something useful. Whereas our side...
+**[18:58] SPEAKER_01:** And they put themselves as chief scientist and they tried to do this. It was takeover of business guys on Bitcoin. And yeah, they wanted, they were like, we have to push out the anarchists. Yeah, it was this like, it's like this attitude of like, oh, these crazy anarchists, they've invented this like new plaything and it's just so it's like really interesting toy and if we just pry out of their hands then we can get it accepted by big banks and then it can do something useful. Whereas our side.
 
 **[19:28] SPEAKER_00:** You're putting people off.
 
@@ -214,11 +208,11 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[19:42] SPEAKER_00:** Right.
 
-**[19:43] SPEAKER_01:** And you know, so it's interesting because now all the Bitcoin maxis are very Bitcoin maxi. But I, for example when I first met Pieter Wuille or Sipa, one of the core devs of Bitcoin in 2011, I was talking to him in the conference and he says, he says, oh, I'm not really interested in the monetary aspect of Bitcoin.
+**[19:43] SPEAKER_01:** And so it's interesting because now all the Bitcoin maxis are very Bitcoin maxi. But I, for example when I first met Peter Wuille or Sipa, one of the core devs of Bitcoin in 2011, I was talking to him in the conference and he says, he says, oh, I'm not really interested in the monetary aspect of Bitcoin.
 
 **[20:09] SPEAKER_00:** Right.
 
-**[20:10] SPEAKER_01:** I'm more interested just in the, though, the scripting language.
+**[20:10] SPEAKER_01:** I'm more interested just in the tech though, the scripting language.
 
 **[20:13] SPEAKER_00:** Okay, right.
 
@@ -230,27 +224,27 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[20:31] SPEAKER_00:** Well, I mean for the longest time there was this thought that all innovation that happens elsewhere will come back to Bitcoin. Right. It's inevitable. We don't have to be pushing anything ourselves because it'll just all, all come home.
 
-**[20:47] SPEAKER_01:** Yeah, the problem with Bitcoin is the, it became taken over by these people that they like going to conferences.
+**[20:47] SPEAKER_01:** Yeah, the problem with Bitcoin is it became taken over by these people that they like going to conferences.
 
 **[20:55] SPEAKER_00:** Right.
 
-**[20:55] SPEAKER_01:** It's like, you know, they see people they know, you know, a lot of, you know, culty, massive Bitcoin people, you know, they will want to like, like oh I love you, you're amazing. You know, like. And these people, they're not interested in the bigger mission or sense of, it's like it's about themselves. And so Bitcoin got taken over by these like influencers essentially.
+**[20:55] SPEAKER_01:** It's like, you know, they see people they know, you know, a lot of culty, massive Bitcoin people, you know, they will want to like, like oh I love you, you're amazing. You know, know like. And these people, they're not interested in the bigger mission or sense of, it's like it's about themselves. And so Bitcoin got taken over by these like influencers essentially.
 
 **[21:22] SPEAKER_00:** Yeah.
 
-**[21:23] SPEAKER_01:** And the thing is when somebody come and says, you know, let's do something big, let's rock the boat. Yeah, they're going to see that as an enemy because, and that's why Bitcoin is so conservative is because it's been taken over by this class of people.
+**[21:23] SPEAKER_01:** And the thing is when somebody comes and says, you know, let's do something big, let's rock the boat. Yeah, they're going to see that as an enemy because, and that's why Bitcoin is so conservative is because it's been, it's been taken over by this class of people.
 
 **[21:39] SPEAKER_00:** There was like Saylor, like absolutely the worst for this. There was a little video of him I saw the other day or yesterday which was saying the biggest risk to Bitcoin is like competent and enthusiastic devs.
 
 **[21:59] SPEAKER_01:** Well, I need to see the full quote.
 
-**[22:02] SPEAKER_00:** But he basically seems to have gone for this absolute full on ossification of saying, you know, these developers, they want to actually change things and that's a problem. We should never change anything. We need to be thinking in hundred year timelines because you know, this is the proof of, sorry, this is the, you know, the store of value that's going to save humanity. And that's, and that's all there is, right, that store of value narrative. And don't use it, don't use your Bitcoin.
+**[22:02] SPEAKER_00:** But he basically seems to have gone for this absolute full on ossification of saying, you know, these developers, they want to actually change things and that's a problem. We should never change anything. We need to be thinking in hundred year timelines because you know, this is the, you know, the store of value that's going to save humanity. And that's, and that's all there is, right, that store of value narrative. And don't use it, don't use your Bitcoin.
 
 **[22:44] SPEAKER_01:** Well the thing is there's this book in the 90s which is The Sovereign Individual.
 
 **[22:51] SPEAKER_00:** Right.
 
-**[22:52] SPEAKER_01:** I'm not saying I agree with all the book, but it does, it does make interesting analysis. It's definitely worth studying. And it says that, it's from 1997. And he's talking about cryptocurrency and he's saying how the invention of cryptography will enable the proliferation of markets, like cyber markets in cyberspace.
+**[22:52] SPEAKER_01:** I'm not saying I agree with all the book, but it does, it does make interesting analysis. It's definitely worth studying. And it says that, in Israel in 1997. And he's talking about cryptocurrency and he's saying how the invention of cryptography will enable the proliferation of markets, like cyber markets in cyberspace.
 
 **[23:16] SPEAKER_00:** Right.
 
@@ -262,13 +256,13 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[23:35] SPEAKER_00:** Right.
 
-**[23:36] SPEAKER_01:** And this is also a very big idea originally in crypto as well. You know, early days of Bitcoin, people would always bring out this book. And yet it hasn't come to fruition. So we have to ask ourselves why. Like, I don't think the thesis is wrong. I just, I think the thing that they missed was surveillance.
+**[23:36] SPEAKER_01:** And yet, and this is also a very big idea originally in crypto as well. You know, early days of Bitcoin, people would always bring out this book. And yet it hasn't come to fruition. So we have to ask ourselves why. Like, I don't think, I don't think the thesis is wrong. I just, I think the thing that they missed was surveillance.
 
 **[24:14] SPEAKER_00:** Right.
 
 **[24:15] SPEAKER_01:** Because the surveillance apparatus, obviously can monitor all the flows, all the activity of people. And if you can do that, then you then now you have law enforcement.
 
-**[24:36] SPEAKER_00:** Right?
+**[24:36] SPEAKER_00:** Right.
 
 **[24:37] SPEAKER_01:** So. Yeah.
 
@@ -276,13 +270,13 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[24:48] SPEAKER_01:** I just need to listen to this.
 
-**[24:52] SPEAKER_00:** So, you know, from what I could see, you know, you started traveling around the world a bit, right. You were in various different places at different times. I mean, were you, you know, you going around meeting different people, like building, you know, building different things. How was that?
+**[24:52] SPEAKER_00:** So, you know, from what I could see, you know, you started traveling around the world a bit, right. You were in various different places at different times. I mean, were you, you know, you going around meeting different people, like building, you know, building different things. How, how was that?
 
 **[25:13] SPEAKER_01:** Yeah, I was traveling a bit. I actually come from a movement of anarchist hackers in Europe which were living in squatted buildings.
 
 **[25:26] SPEAKER_00:** Right, right.
 
-**[25:27] SPEAKER_01:** So, you know, there's like, in Europe there's all these squatters laws which if a building is like abandoned, you can like move into the building and some squats, they last for years.
+**[25:27] SPEAKER_01:** So, you know, there's like, in Europe there's all these squatters laws which if a building is like abandoned, you can like move into the building and some, some squats, they last for years.
 
 **[25:39] SPEAKER_00:** Yeah.
 
@@ -306,19 +300,19 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[27:15] SPEAKER_00:** And when did you first meet Vitalik?
 
-**[27:21] SPEAKER_01:** Yeah. I was, so I was like, I say I was living in these squats around Europe.
+**[27:21] SPEAKER_01:** Yeah. I was so, I was like. I say I was living in these squats around Europe.
 
 **[27:25] SPEAKER_00:** Yeah.
 
-**[27:25] SPEAKER_01:** So after 2012, then there was like, okay. There was like a friend I met many, many years ago when I was hitchhiking and he was really cool dude. And I just saw him randomly on the Internet and I was like, bro, I'm making a conference. Come to my conference. He's like, okay. And I didn't hear back from him.
+**[27:25] SPEAKER_01:** So after 2012, then. Then there was like. Okay. There was like a friend I met many, many years ago when I was hitchhiking and he was really cool dude. And I just saw him randomly on the Internet and I was like, bro, I'm making a conference. Come to my conference. He's like, okay. And I didn't hear back from him.
 
 **[27:46] SPEAKER_00:** Okay.
 
-**[27:46] SPEAKER_01:** It turns out he likes, he just, he walked onto a ferry without any documentation from, he came from Estonia across Europe.
+**[27:46] SPEAKER_01:** It turns out he likes. He just. He walked onto a ferry without any documentation from. He came from Estonia across Europe.
 
 **[27:53] SPEAKER_00:** Right.
 
-**[27:54] SPEAKER_01:** He came into England and he was like, he now looked like Jesus and he had like long hair and long beard and stuff.
+**[27:54] SPEAKER_01:** He came into England and he was like. He now looked like Jesus and he had like long hair and long beard and stuff.
 
 **[28:00] SPEAKER_00:** Didn't look good for an entry.
 
@@ -326,7 +320,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[28:03] SPEAKER_00:** Yeah, yeah.
 
-**[28:04] SPEAKER_01:** Met him at the conference and was like enchanted by him. He was like, I just met this guy, your friend. He looks like Jesus, man. And then, I can't remember like how it happened, but yeah, so then he, he was meant to come back with me to my house, but actually he missed the train.
+**[28:04] SPEAKER_01:** Met him at the conference and was like enchanted by him. He was like, I just met this guy, your friend. He looks like Jesus, man. Like, and then. I can't remember like how it happened, but yeah, so then he. He was meant to come back with me to my house, but actually he missed the train.
 
 **[28:23] SPEAKER_00:** Okay.
 
@@ -334,11 +328,11 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[28:31] SPEAKER_00:** Right, right.
 
-**[28:32] SPEAKER_01:** I went there and then Mihai came and we just started living there and then...
+**[28:32] SPEAKER_01:** I went there and then Mihai came and we just started living there and then.
 
 **[28:36] SPEAKER_00:** Right.
 
-**[28:36] SPEAKER_01:** Started setting up our hack club right there. But then also I have friends in Spain that are hackers that also, they're making these communities. They also had Calafou. So then they started...
+**[28:36] SPEAKER_01:** Started setting up our hack club right there. But then also I have friends in Spain that are hackers that also. They're making these communities. They also had Calafou. So then they started.
 
 **[28:47] SPEAKER_00:** Right. Which was right near Barcelona. Right?
 
@@ -350,7 +344,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[28:58] SPEAKER_00:** Right.
 
-**[28:59] SPEAKER_01:** And Mihai was, co-founded the Bitcoin Magazine with Vitalik.
+**[28:59] SPEAKER_01:** And Mihai was. Co-founded the Bitcoin Magazine with Vitalik.
 
 **[29:03] SPEAKER_00:** Right, right.
 
@@ -358,7 +352,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[29:08] SPEAKER_00:** Oh, I see. Right, right.
 
-**[29:10] SPEAKER_01:** You know, not, I wasn't, I didn't write loads of stuff. It was mainly those guys writing stuff. But like, for example, like I helped Mihai with the graphic design.
+**[29:10] SPEAKER_01:** You know, not. I wasn't. I didn't write loads of stuff. It was mainly those guys writing stuff. But like, for example, like I helped Mihai with the graphic design.
 
 **[29:18] SPEAKER_00:** Right.
 
@@ -374,7 +368,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[29:29] SPEAKER_00:** Yeah.
 
-**[29:30] SPEAKER_01:** And so then it was, and then there was like two other Spanish hackers which are old friends of mine and we were working together on projects.
+**[29:30] SPEAKER_01:** And so then it was. And then there was like two other Spanish hackers which are old friends of mine and we were working together on projects.
 
 **[29:39] SPEAKER_00:** Yeah.
 
@@ -386,9 +380,9 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[29:43] SPEAKER_00:** Right.
 
-**[29:43] SPEAKER_01:** And I knew Cody from the conference, so I said like, oh, Cody, let's start...
+**[29:43] SPEAKER_01:** And I knew Cody from the conference, so I said like, oh, Cody, let's start.
 
-**[29:49] SPEAKER_00:** Which conference? From the Amsterdam conference, the London one. The one that you, right, right. And was that the one that you organized?
+**[29:49] SPEAKER_00:** Which conference? From the Amsterdam conference, the London one. The one that you. Right, right. And was that the one that you organized?
 
 **[29:58] SPEAKER_01:** Yeah, I did the 2011 one in Prague.
 
@@ -398,7 +392,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[30:02] SPEAKER_00:** Right, right.
 
-**[30:03] SPEAKER_01:** Yeah. So, yeah, at the time we were working together in the hack lab. Mihai had his, I think it was Akasha. I'm not sure.
+**[30:03] SPEAKER_01:** Yeah. So, yeah, at the time we were working together in the hack lab. Mihai had his a. I think it was Akasha. I'm not sure.
 
 **[30:13] SPEAKER_00:** No, I think he did that later.
 
@@ -410,7 +404,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[30:36] SPEAKER_00:** Right, right.
 
-**[30:37] SPEAKER_01:** And then he was also working for, they were working on the magazine.
+**[30:37] SPEAKER_01:** And then he was also working for. They were working on the magazine.
 
 **[30:40] SPEAKER_00:** Yeah.
 
@@ -422,7 +416,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[30:49] SPEAKER_00:** Right. And Peter Todd as well.
 
-**[30:53] SPEAKER_01:** No, Peter Todd was later.
+**[30:53] SPEAKER_01:** No, Peter Todd later.
 
 **[30:55] SPEAKER_00:** Right, yeah.
 
@@ -430,7 +424,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[31:04] SPEAKER_00:** Right, right.
 
-**[31:05] SPEAKER_01:** So yeah, we were working on that then about, and then the, so this, so the CIC was a network of 10,000 cooperatives throughout Catalonia.
+**[31:05] SPEAKER_01:** So yeah, we were working on that then about. And, and then the. So this. So the CIC was a network of 10,000 cooperatives throughout Catalonia.
 
 **[31:19] SPEAKER_00:** Okay.
 
@@ -454,11 +448,11 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[31:41] SPEAKER_00:** Right.
 
-**[31:41] SPEAKER_01:** They're a lot more organized than, for example, like London, where it's just like...
+**[31:41] SPEAKER_01:** They. They're a lot more organized than, for example, like, London, where it's just like.
 
 **[31:46] SPEAKER_00:** Right, right.
 
-**[31:46] SPEAKER_01:** Crazy people going, you know, like, yeah. So they, yeah, so they were like, okay, we need to make a network of cooperatives and properties need to provide all the basic things that people need to live.
+**[31:46] SPEAKER_01:** Crazy people going, you know, like, yeah, so they. They were like, okay, we need to make a network of cooperatives and properties need to provide all the basic things that people need to live.
 
 **[32:01] SPEAKER_00:** Right.
 
@@ -478,11 +472,11 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[32:42] SPEAKER_00:** Right.
 
-**[32:42] SPEAKER_01:** Which is, it was burnt down and the people came there with a proposal to the owner to buy it from the owner.
+**[32:42] SPEAKER_01:** Which is. It was burnt down and the people came there with a proposal to the owner to buy it from the owner.
 
 **[32:49] SPEAKER_00:** Right.
 
-**[32:50] SPEAKER_01:** But then also there they had, like, it was, it's like a village, basically, is massive. But they had like a industrial research sector, electronics. One of them was the hacking stuff, which is a club.
+**[32:50] SPEAKER_01:** But then also there they had, like, it was. It's like a village, basically, is massive. But they had like an industrial research sector, electronics. One of them was the hacking stuff, which is a club.
 
 **[33:01] SPEAKER_00:** Right.
 
@@ -490,7 +484,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[33:04] SPEAKER_00:** Right, right.
 
-**[33:05] SPEAKER_01:** But anyway, as part of that research of the CIC and the tools that the CIC needed, that's how we came up, we came up with these ideas, which is the ones. Maybe you've seen the page. It's on archive, right. On system one, talking about bitlaw. Anyway, I'm not sure. Anyway, there's like a bunch of pages on our old wiki, right. And it's talking about, like, what the applications we need to build with Bitcoin.
+**[33:05] SPEAKER_01:** But anyway, as part of that research of the CIC and the tools that the CIC needed, that's how we came up. We came up with these ideas, which is the ones. Maybe you've seen the page. It's on archive, right. On system one, talking about BitLaw. Anyway, I'm not sure. Anyway, there's like a bunch of pages on our old wiki, right. And it's talking about, like, what the applications we need to build with Bitcoin.
 
 **[33:31] SPEAKER_00:** Right.
 
@@ -506,19 +500,19 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[33:50] SPEAKER_00:** No.
 
-**[33:51] SPEAKER_01:** And so then he, he went to Mastercoin and then he went to do...
+**[33:51] SPEAKER_01:** And so then he. He went to Mastercoin and then he went to do.
 
-**[33:56] SPEAKER_00:** He was saying he'd also seen what happened with Counterparty, right. Where they were like, chopping down the, the, you know, the, yeah, the OP_RETURN stuff. Yeah. It's like, okay, don't want to, like, build some meta protocol on top of this if it's gonna get, like they're gonna change their mind next month and it's like, right, you know, your protocol's dead.
+**[33:56] SPEAKER_00:** He was saying he'd also seen what happened with Counterparty, right. Where they were like, chopping down the. The, you know, the, yeah, the, the OP_RETURN stuff. Yeah. It's like, okay, don't want to, like, build some meta protocol on top of this if it's gonna get like they're gonna change the mind next month and it's like, right, you. You know your protocol's dead.
 
-**[34:17] SPEAKER_01:** Yeah. So, yeah, so then when they were making Ethereum, that's, you know, with Anthony Di Iorio and all those people.
+**[34:17] SPEAKER_01:** Yeah. So, yeah, so they. Then when they were making Ethereum, that's, you know, with Anthony Di Iorio and all those people.
 
-**[34:32] SPEAKER_00:** Well, yeah. So I mean also a...
+**[34:32] SPEAKER_00:** Well, yeah. So I mean also a.
 
-**[34:34] SPEAKER_01:** A bit before the first Dark Wallet, right, was in Milan.
+**[34:34] SPEAKER_01:** Bit before the first Dark Wallet, right, was in Milan.
 
-**[34:41] SPEAKER_00:** Yeah, I was going to mention. So Mihai was in Milan for a fair bit. Right.
+**[34:41] SPEAKER_00:** Yeah, I was going to mention. So. So Mihai was in Milan for a fair bit. Right.
 
-**[34:47] SPEAKER_01:** Yeah, we were, we were all together. We would travel together and go to these places. But anyway, Macao's also like a really big...
+**[34:47] SPEAKER_01:** Yeah, we were. We were all together. We would travel together and go to these places. But anyway, Macao's also like a really big.
 
 **[34:58] SPEAKER_00:** Gambling.
 
@@ -540,7 +534,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[35:16] SPEAKER_01:** And so that's when Taylor Gerring, right. A lot of those early Ethereum guys, right.
 
-**[35:23] SPEAKER_00:** Hive, Hive, Hive Wallet.
+**[35:23] SPEAKER_00:** Hive, Hive Wallet.
 
 **[35:24] SPEAKER_01:** Yeah, they came there and that's how they all met each other. Right, the early co-founders.
 
@@ -560,7 +554,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[35:40] SPEAKER_01:** And Gav Wood also came to visit us in London.
 
-**[35:44] SPEAKER_00:** In the city. Yeah. Mihai was, so Vitalik had shared like a few years ago, shared early his first communications with Gav. Where Gav contacted him on the 19th of December 2013 through about, me and Gav said, where are you with Ethereum? I can do C++ basically. And then four days later he'd created his repo to start working on cpp-ethereum. But the other bit I forgot there is, Johnny gave me the heads up. That's what he said. Which was Johnny Bitcoin, who he had met through you. Right. So Gavin came to the squat at some point in London.
+**[35:44] SPEAKER_00:** In the city. Yeah. Mihai was so Vitalik. Had shared like a few years ago. Shared early his. His first communications with Gav. Where Gav contacted him on the 19th of December 2013 through About.me and Gav said, where are you with Ethereum? I can do C++ basically. And then four days later he'd created his repo to start working on cpp-ethereum. But the other bit I forgot there is. Johnny gave me the heads up. That's what he said. Which was Johnny Bitcoin, who he had met through you. Right. So Gavin came to the squat at some point in London.
 
 **[36:49] SPEAKER_01:** Yeah, yeah. We were hanging out because he said he's a KDE developer.
 
@@ -568,9 +562,9 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[36:54] SPEAKER_01:** He's written the lirc.
 
-**[36:56] SPEAKER_00:** Right. I think in one of the interviews he said, I'm gonna give my KDE email because it'll like, that'll give me cred.
+**[36:56] SPEAKER_00:** Right. I think in one of the interviews he said, I'm gonna give my KDE email because it'll like. That'll give me cred.
 
-**[37:06] SPEAKER_01:** Oh yeah, yeah, he did. I was like impressed by it. I was like, yeah. I was like, whoa, got a KDE email.
+**[37:06] SPEAKER_01:** Oh yeah, yeah, he did. It did. I was like impressed by it. I was like, yeah. I was like, whoa, got a KDE email.
 
 **[37:13] SPEAKER_00:** Yeah.
 
@@ -592,9 +586,7 @@ Back in the day, I once saw like a Jurassic Park video game and it was going lik
 
 **[37:52] SPEAKER_01:** What happened to that money?
 
-**[37:54] SPEAKER_00:** He did. Well, yeah, he got it. So he lent, he basically, you know, lent money to the project for those early months of development. He did get paid back out of, you know, the crowd sale. There was some court case where it was like, did he get it back as Bitcoin or as Fiat? You know, there was some kind of like disagreement on that, but you know, that got finished off.
-
-But yeah, the timeline was, Vitalik did the white paper in about November 2013. He shared it with a bunch of people. I don't know if he shared it with you, if you were on that list of people who got it early. Oh, right, the bitlaw. Yeah, yeah. Right. So just a whole bunch of different, right, so transparency, arbitration, auditing and transparency, multisigs. Yeah. A whole bunch of cryptocurrency 2.0 use cases.
+**[37:54] SPEAKER_00:** He did. Well, yeah, he got it. So he lent, he basically, you know, lent money to the project for those early months of development. He did get paid back out of, you know, the crowd sale. There was some court case where it was like, did he get it back as Bitcoin or as, or as fiat? You know, there was some kind of like disagreement on that, but you know, that got finished off. But yeah, the timeline was Vitalik did the white paper in about November 2013. He shared it with a bunch of people. I don't know if he shared it with you, if you were on that list of people who got it early. Oh, right, the BitLaw. Yeah, yeah. Right. So just a whole bunch of different. Right, so, so yeah, transparency arbitration, auditing and transparency multisigs. Yeah. A whole bunch of cryptocurrency 2.0 use cases.
 
 **[39:01] SPEAKER_01:** So they did ask me to be the lead Ethereum dev.
 
@@ -606,17 +598,17 @@ But yeah, the timeline was, Vitalik did the white paper in about November 2013. 
 
 **[39:11] SPEAKER_01:** Yeah, yeah, because I know you can build it on Bitcoin, right. At the time.
 
-**[39:16] SPEAKER_00:** But yeah, that December...
+**[39:16] SPEAKER_00:** But yeah, that December and I kept.
 
-**[39:18] SPEAKER_01:** I kept, I kept also pressing the guy, right. To explain to me what it can be used for.
+**[39:18] SPEAKER_01:** I kept also pressing the guy, right. To explain to me what it can be used for.
 
 **[39:24] SPEAKER_00:** Yeah.
 
-**[39:24] SPEAKER_01:** And he just kind of in frustration just went, marriage contracts.
+**[39:24] SPEAKER_01:** And he in frustration just went, marriage contracts.
 
-**[39:33] SPEAKER_00:** Not so appealing. No, no, don't see the point. But yeah, December. It's interesting because...
+**[39:33] SPEAKER_00:** Not, not so appealing. No, no, don't see the point. But yeah, December. It's interesting because.
 
-**[39:39] SPEAKER_01:** Sometimes you can be too close-minded about things.
+**[39:39] SPEAKER_01:** Sometimes you can be too close minded about things.
 
 **[39:42] SPEAKER_00:** Right, right. But yeah, that December, you know, after he shared the white paper around, you know, various people started gathering around.
 
@@ -626,15 +618,13 @@ But yeah, the timeline was, Vitalik did the white paper in about November 2013. 
 
 **[39:58] SPEAKER_01:** Whereas working on Bitcoin, we always broke.
 
-**[40:01] SPEAKER_00:** Right, right, right. Yeah. I mean those early months, you know, no one was being paid on Ethereum either. And it's like, you know, we will have a token sale, you will get paid back. But you know, it's hoping a dream. But yeah, the hackathon that you're talking about was in April of 2014 in Toronto. So Anthony Di Iorio running that, he'd got, you know, Bitcoin Decentral sort of co-working space and venue. There were a bunch of projects running out of there. You know it was kind of like, yeah, he'd say sort of like businesses running, I mean I don't know how great businesses they were. Projects were operating out of that.
+**[40:01] SPEAKER_00:** Right, right, right. Yeah. I mean those early months, you know, no one was being paid on Ethereum either. And it's like, you know, we will have a token sale, you will get paid back. But you know, it's, it's, you know, hoping a dream. But yeah, the hackathon that you're talking about was in April of 2014 in Toronto. So Anthony Di Iorio running that he'd got, you know, Bitcoin Decentral sort of co-working space and venue. There were a bunch of projects running out of there. You know it was kind of like, yeah, he'd say sort of like businesses running, I mean I don't know how great businesses they were. Projects were operating out of that. And then one of the things that they did was organize this first Canadian Bitcoin conference, to which it's funny, so he got the space. He was the head of the Bitcoin Association of Canada. The Bitcoin Association were running the conference. Ethereum were the main sponsor for the conference. So it was like his space, his organization, his conference, his sponsors. And somebody said at some point, is this how marketing works? That you've just got all these different hands that are all paying each other? It's like, oh, there's a lot of activity here. But it's all, it's all, you know, from that same source.
 
-And then one of the things that they did was organize this first Canadian Bitcoin conference, to which, it's funny, so he got the space. He was the head of the Bitcoin Association of Canada. The Bitcoin Association were running the conference. Ethereum were the main sponsor for the conference. So it was like his space, his organization, his conference, his sponsors. And somebody said at some point, is this how marketing works? That you've just got all these different hands that are all paying each other? It's like, oh, there's a lot of activity here. But it's all, it's all from that same source.
+But yeah, but there was a hackathon, so he did get cocked. I don't, I don't know. But, but yeah, so there was the hackathon that you were at, you and Cody presenting. You know, dark, well I, it was, I guess it was Dark Market wasn't it that, that you'd got.
 
-But yeah, there was a hackathon, so he did get cocked. I don't know. But yeah, so there was the hackathon that you were at, you and Cody presenting. You know, dark, well I guess it was Dark Market wasn't it that you'd got.
+**[41:57] SPEAKER_01:** That one which became OpenBazaar.
 
-**[41:57] SPEAKER_01:** That one which became Open Bazaar.
-
-**[42:00] SPEAKER_00:** Right. And then there was the main conference with, so yes, the aforementioned Peter Todd was there, Andreas Antonopoulos, Dave Johnston, you'd got Adam B. Levine as well, and a bunch of others. But yeah, that conference was also the only conference where there was ever like an Ethereal, an Ethereum store, you know, like the Expo area. They were like, hey, you know we're the, we're like, you know, it was like a business, right? It's like here's a business project. At that point Anthony's thought and expectation was like all of this is going to happen out of Toronto. Right? Ethereum is just one of n projects that are happening out of Bitcoin Decentral. But lots of the projects in that hackathon were on Ethereum as well. But what you were building was not.
+**[42:00] SPEAKER_00:** Right. And then there was the main conference with, so yes, the aforementioned Peter Todd was there, Andreas Antonopoulos, Dave Johnston, you'd got Adam B. Levine as well, and a bunch of others. But yeah, that conference was also the only conference where there was ever like an Ethereal, an Ethereum store, you know, like the expo area. They were like, hey, you know we're the, we're like, you know, it was like a business, right? It's like here's a business project. At that point Anthony's thought and expectation was like all of this is going to happen out of, out of Toronto. Right? Ethereum is just one of n projects that are happening out of Bitcoin Decentral. But lots of the projects in that hackathon were on Ethereum as well. But what you were building was not.
 
 **[43:06] SPEAKER_01:** Yeah, that's why I said didn't need to be.
 
@@ -654,9 +644,9 @@ But yeah, there was a hackathon, so he did get cocked. I don't know. But yeah, s
 
 **[43:56] SPEAKER_01:** Out with each other a lot.
 
-**[43:57] SPEAKER_00:** Yeah, yeah. So I mean, I guess, you know, Ethereum kind of, you know, kept ticking along there. Like, was that something, you know, happening in parallel or you were you still kind of crossing paths with these people.
+**[43:57] SPEAKER_00:** Yeah, yeah. So I mean, I guess, you know, Ethereum kind of, you know, kept ticking along there. Like, was that something, you know, happening in parallel or were you still kind of crossing paths with these people.
 
-**[44:16] SPEAKER_01:** Through that year, interactive Ethereum after that?
+**[44:16] SPEAKER_01:** Through that year, Interactive Ethereum after that?
 
 **[44:18] SPEAKER_00:** No, no. And I mean in terms of like...
 
@@ -666,11 +656,11 @@ But yeah, there was a hackathon, so he did get cocked. I don't know. But yeah, s
 
 **[44:32] SPEAKER_01:** Then I went to Syria, so.
 
-**[44:34] SPEAKER_00:** Yes, yes. But yeah, I mean the timeline of that was Ethereum white paper, November, kind of team starting together about December. BTC Miami. Were you at BTC Miami in January? Did you go to that one?
+**[44:34] SPEAKER_00:** Yes, yes. But yeah, I mean the timeline of that was Ethereum white paper, November kind of team starting together about December. BTC Miami. Were you at BTC Miami in January? Did you go to that one?
 
 **[44:51] SPEAKER_01:** No, I went to the Toronto thing.
 
-**[44:54] SPEAKER_00:** Right. So then, yeah, Toronto in April. And the crowd sale actually was like July, August-ish of 2014. And then you had the Ethereum Foundation starting to do the crowd sale. And then, yeah, early contributors got like paid back for their work in those prior months. And you know, Ethereum was off and live.
+**[44:54] SPEAKER_00:** Right. So then, yeah, Toronto in April. And the crowd sale actually was like July, August ish of 2014. And then you had the Ethereum Foundation starting to do the crowd sale. And then, yeah, early contributors got paid back for their work in those prior months. And you know, Ethereum was often live.
 
 **[45:28] SPEAKER_01:** We did the Dark Market just purely for money.
 
@@ -682,7 +672,7 @@ But yeah, there was a hackathon, so he did get cocked. I don't know. But yeah, s
 
 **[45:36] SPEAKER_01:** So that was pretty cool.
 
-**[45:38] SPEAKER_00:** And I mean with Dark Wallet, like what kind of time span were you working on that for?
+**[45:38] SPEAKER_00:** And with Dark Wallet, like what kind of time span were you working on that for?
 
 **[45:48] SPEAKER_01:** We, I think we started in 2013 and then we were working on it all the way to the end of 2014.
 
@@ -700,17 +690,17 @@ But yeah, there was a hackathon, so he did get cocked. I don't know. But yeah, s
 
 **[46:11] SPEAKER_00:** Right. Didn't happen.
 
-**[46:13] SPEAKER_01:** They kind of like, it just fizzled out without my presence, which is like, it's a failing of my leadership not to create an organization that doesn't fizzle out when, you know, one person disappears. So.
+**[46:13] SPEAKER_01:** They kind of like it just fizzled out without my presence, which is like, it's a failing of my leadership not to create an organization that doesn't fizzle out when, you know, one person disappears. So.
 
-**[46:26] SPEAKER_00:** And with libbitcoin, was that ongoing as well as what you were doing?
+**[46:26] SPEAKER_00:** And with Libbitcoin, was that ongoing as well as what you were doing?
 
-**[46:30] SPEAKER_01:** So it's had like serious technical innovation in there. Yeah, has like the fastest like blockchain database of any Bitcoin node. And this guy Eric Voskuil, who's really skilled developer, he came and he like took on that mission and he's still continuing it. Yeah, he's like just really into it. I've tried a few times to poach him to DarkFi, ZK, other stuff. He's a really good developer, but he's just like, no, I just like Bitcoin.
+**[46:30] SPEAKER_01:** So it's had like serious technical innovation in there. Yeah, has like the fastest like blockchain database of any Bitcoin node. And this guy Eric Voskuil, who's really skilled developer, he came and he like took on that mission and he's still continuing it. Yeah, he's like just really into it. I've tried a few times to poach him to DarkFi, ZK, other stuff. He's a really good developer, but he's just like. No, I just like Bitcoin.
 
 **[46:58] SPEAKER_00:** Yeah, just do.
 
-**[46:59] SPEAKER_01:** I just work on libbitcoin. So yeah, he's laser focused on that.
+**[46:59] SPEAKER_01:** I just work on Libbitcoin. So yeah, he's laser focused on that.
 
-**[47:03] SPEAKER_00:** Yes. I've got to meet him in person for the first time last year I think after Fair Play, after lots of, you know, me...
+**[47:03] SPEAKER_00:** Yes. I've got to meet him in person for the first time last year I think after Fair Play, after, after lots of, you know me.
 
 **[47:12] SPEAKER_01:** Like advanced, dysregulated focus.
 
@@ -730,19 +720,15 @@ But yeah, there was a hackathon, so he did get cocked. I don't know. But yeah, s
 
 **[47:40] SPEAKER_01:** They just need money really.
 
-**[47:42] SPEAKER_00:** I mean, but he's cool with it as well. He's just like, yeah, you know, I'm just, I'm just working and I'll keep working until it's done and. And yeah, I mean he's got to the point where he's published some stats in the last year or so and you know, it's just massively better. You know, it's just. Yeah, just the whole thing rethrunk. Right. And re-stripped down and built up from that base. Yeah, yeah.
+**[47:42] SPEAKER_00:** I mean. But he's cool with it as well. He's just like, yeah, you know, I'm just, I'm just working and I'll keep working until it's done and. And yeah, I mean he's got to the point where he's published some stats in the last year or so and you know, it's just massively better. You know, it's just. Yeah, just the whole thing rethrunk. Right. And re-stripped down and built up from that base. Yeah, yeah. So, I mean, early days of Ethereum, what are your thoughts on Ethereum? Like having, having seen it being birthed. What's Ethereum to you?
 
-So, I mean, Early Days of Ethereum, what are your thoughts on Ethereum? Like having seen it being birthed. What's Ethereum to you?
-
-**[48:24] SPEAKER_01:** It is the closest expression of the Agora as existing crypto. Now, they've done a lot of really good research. I have like, you know, I think Ethereum needs to develop a political philosophy. The one with Ethereum is very historical. Like, if you do science you need your like evidence. If you're doing, when you do science you need evidence to like support your theories. It's like all well and good having models, like abstract, like deductive mathematical models, but you need to like backtest your ideas. And when we talk about like social systems, what that is, is history, historical.
-
-The thing is with Ethereum, whenever they talk about history, it's always like the most minor or like society most minor examples are completely inoffensive because they don't want to take a stance on anything. And I don't think you can be like that. I think you have to take, go deep into things, take them apart, etc. You know. So I think that's really harming them. Especially they want to change the world, do things of social benefit. That's why they're making now these Zuzalu, you know, these kind of network state communities. Yeah, they're trying to recreate the Calafou thing, the Calafou experience.
+**[48:24] SPEAKER_01:** It is the closest expression of the Agora as existing crypto. Now, they've done a lot of really good research. I have like, you know, I think Ethereum needs to develop a political philosophy. The one with Ethereum is very historical. Like it, like if you do science you need your like evidence. If you're doing, when you do science you need evidence to like support your theories. It's like all well and good having models, like abstract, like deductive mathematical models, but you need to like back test your ideas. And when we talk about like social systems, what that is, is history, historical. The thing is with Ethereum, whenever they talk about history, it's always like the most minor or like society's most minor examples are completely inoffensive because they don't want to take a stance on anything. And I don't think you can be like that. I think you have to take, go deep into things, take them apart, etc. You know, so I think that's really harming them. Especially they like want to change the world, do things of social benefit. That's why they're making now these Zuzalu, you know, these kind of network state communities. Yeah, they're trying to recreate the Calafou thing, the Calafou experience.
 
 **[49:47] SPEAKER_00:** Yeah.
 
-**[49:47] SPEAKER_01:** Where we were developing tools for the CIC, the cooperatives, and that allowed us to see what people need. So I respect the intention, but I think like, the problem is, is that you don't, when you make a project, you don't gather a group of people together and go, what should we do first? You come up with the idea, you develop the idea and then you recruit people for roles to fulfill that objective, that mission. So they're, you know, they're doing the opposite. They're trying to bring loads of people together and see what happens. And I think there's like the reason why Ethereum has these like roadmap diagrams which are like these really arcane plots of stuff. But it's like, what's the organizing idea underneath that? And they don't have one.
+**[49:47] SPEAKER_01:** Where we were developing tools for the CIC, the cooperatives, and that allowed us to see what people need. So I respect the intention, but I think like, the problem is, is that you don't, when you make a project, you don't gather a group of people together and go, what should we do first? You come up with the idea, you develop the idea and then you recruit people for roles to fulfill that objective, that mission. So they're, you know, they're doing, they're doing the opposite. They're trying to bring loads of people together and see what happens. And I think there's like the reason why Ethereum has these like roadmap diagrams which are like these like really arcane plots of stuff. But it's like, what's the organizing idea underneath that? And they don't have one.
 
-**[50:44] SPEAKER_00:** No, I mean it's been a criticism I've had for a number of years is you'll see Vitalik, you know, plop out this big roadmap diagram thing. And I remember first looking at it and there were three little boxes in the top corner that were transition to proof of stake. Three boxes that took eight years. And you've got 50-odd things on this diagram. And it's like there's decades and decades of work to do all of this. And also you know that the plan's gonna change every year anyway. Like, it's not, you're never going to get to the end of that. And it's like, yeah, what's feature complete? What are you aiming for? Like, when's good enough?
+**[50:44] SPEAKER_00:** No, I mean it's been a criticism I've had for a number of years is you'll see Vitalik, you know, plop out this big roadmap diagram thing. And I remember first looking at it and there were three little boxes in the top corner that were transition to proof of stake. Three boxes that took eight years. And you've got 50 odd things on this diagram. And it's like there's decades and decades of work to do all of this. And also you know that the plan's gonna change every year anyway. Like, like it's not. You're never going to get to the end of that. And it's like, yeah, what's feature complete? What are you aiming for? Like, when's good enough?
 
 **[51:29] SPEAKER_01:** I also think Ethereum needs to be more product focused.
 
@@ -764,11 +750,11 @@ The thing is with Ethereum, whenever they talk about history, it's always like t
 
 **[51:58] SPEAKER_00:** Yeah.
 
-**[51:58] SPEAKER_01:** And expand that. Like, not like Ethereum is like, it was made in a time when you could launch absolutely anything and it would succeed.
+**[51:58] SPEAKER_01:** And expand that. Like, not like Ethereum is like, it was, it was made in a time when you could launch absolutely anything and it would succeed.
 
 **[52:08] SPEAKER_00:** Right.
 
-**[52:09] SPEAKER_01:** And they did really well. But the thing is, is people see what Ethereum did and they think that's gospel for how to like start a new project in crypto. It's like the Ethereum playbook. And I think that's maybe hampering a lot of people. And that actually, the Ethereum early on was like, we're like apolitical, we're a neutral technology.
+**[52:09] SPEAKER_01:** And know they did really well. But the thing is people see what Ethereum did and they think that's gospel for how to like start a new, a new project in crypto. It's like the Ethereum playbook. And I think that's maybe that's hampering a lot of people. And that actually, the Ethereum early on was like, we're like apolitical, we're a neutral technology.
 
 **[52:42] SPEAKER_00:** Yeah. You know, blah, blah, application platform.
 
@@ -776,7 +762,7 @@ The thing is with Ethereum, whenever they talk about history, it's always like t
 
 **[52:53] SPEAKER_00:** Right.
 
-**[52:53] SPEAKER_01:** Like when you make a project, you have an end goal that you want to get to. You have a strategy.
+**[52:53] SPEAKER_01:** Like when you, when you make a project, you have an end goal that you want to get to. You have a strategy.
 
 **[53:00] SPEAKER_00:** Yeah.
 
@@ -792,19 +778,15 @@ The thing is with Ethereum, whenever they talk about history, it's always like t
 
 **[53:31] SPEAKER_00:** Build stuff that's interesting to them.
 
-**[53:33] SPEAKER_01:** Yeah, exactly. And it becomes arcane. Like, oh, we need this, then we need this and we need this. And it's like, actually it doesn't even fulfill any of the use cases that...
+**[53:33] SPEAKER_01:** Yeah, exactly. And it becomes arcane. Like, oh, we need this, then we need this and we need this. And it's like, actually it doesn't even fulfill any of the use cases that.
 
 **[53:43] SPEAKER_00:** Well, no, no, no, I mean it shouldn't be hard. Right. It's thinking, okay, well who are our users and what do they want to do? And let's do that.
 
-**[53:54] SPEAKER_01:** Really difficult to talk to like the Ethereum clique core thing, you know, it's very cliquey. So they have a big political problem, I think.
+**[53:54] SPEAKER_01:** Really difficult to talk to like the Ethereum clique core thing, you know, it's very cliquey. Like, so they have a big political problem, I think.
 
-**[54:03] SPEAKER_00:** Yeah. And I think that sort of almost unbounded scope is problematic. Something Nick Szabo talks about is the idea of argument surface. So he's drawing an analogy with, you know, attack surface for security stuff and is saying on a social level, the argument surface for a system is basically like how much stuff is there that's like up for grabs, that's not like defined, that you can have a reasonable argument about we should do this, we should do that, we should do the other. And if you have a really well defined system. Right. Where it's very clear what this thing is for and what it's meant to do. And like, have we met these needs or not? You don't have all the arguments because you all know what you're building. You don't fuck about like changing the design or plans or anything because you've all got that common goal.
+**[54:03] SPEAKER_00:** Yeah. And I think that sort of almost unbounded scope is problematic. Something Nick Szabo talks about is the idea of argument surface. So he's drawing an analogy with, you know, attack surface for security stuff and is saying on a social level, the argument surface for a system is basically like how much stuff is there that's like up for grabs, that's not like defined, that you can have a reasonable argument about we should do this, we should do that, we should do the other. And if you have a really well defined system. Right. Where it's very clear what this thing is for and what it's meant to do. And like, have we met these needs or not? You don't have all the arguments because you all know what you're building. You don't fuck about like changing the design or plans or anything because you've all got that common goal. So then the criticism there of Ethereum is that there's almost infinite argument surface, it's become like a parliament, right? So you've all got protocol politicians and lobbying groups and you can sit and fucking argue about this for years on end of like, oh, we should have this feature, that feature, this protocol, this, the other. And a lot of those aren't necessarily actually moving you to something that is actually solving real use case problems, that's actually getting people, you know, using the tech. Okay, well thanks with that. Well, thank you very much for your time. Would you like to just say a little bit about DarkFi before we wrap?
 
-So then the criticism there of Ethereum is that there's almost infinite argument surface, it's become like a parliament, right? So you've all got protocol politicians and lobbying groups and you can sit and fucking argue about this for years on end of like, oh, we should have this feature, that feature, this protocol, this, the other. And a lot of those aren't necessarily actually moving you to something that is actually solving real use case problems, that's actually getting people, you know, using the tech.
-
-Okay, well thanks with that. Well, thank you very much for your time. Would you like to just say a little bit about DarkFi before we wrap?
-
-**[55:50] SPEAKER_01:** Yeah. DarkFi. Oh, yes, sorry. DarkFi is an L1, you can do everything with it but anonymous. So you know, you can buy and sell, you can make anonymous stables, do OTC, etc. That's what we need to build the Agora.
+**[55:50] SPEAKER_01:** Yeah. DarkFi. Oh, yes, sorry. DarkFi is an L1, you can do everything with it but anonymous. So you know, you can buy and sell, you can make anonymous sales, do OTC, etc. That's what we need to build the Agora.
 
 **[56:14] SPEAKER_00:** So I've heard some people say perhaps Monero with smart contracts, would that be reasonable?
 

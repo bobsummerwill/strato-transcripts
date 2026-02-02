@@ -1,0 +1,62 @@
+[
+  {
+    "text": "Ram",
+    "start": 61.11,
+    "end": 63.06,
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "text": "m.",
+    "start": 63.06,
+    "end": 63.34,
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "text": "M.",
+    "start": 84.08,
+    "end": 84.1,
+    "speaker": "SPEAKER_01"
+  },
+  {
+    "text": "M.",
+    "start": 105.12,
+    "end": 112.54,
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "text": "M.",
+    "start": 126.14,
+    "end": 126.16,
+    "speaker": "SPEAKER_02"
+  },
+  {
+    "text": "Sa.",
+    "start": 156.89,
+    "end": 157.13,
+    "speaker": "SPEAKER_03"
+  },
+  {
+    "text": "It's",
+    "start": 182.48,
+    "end": 188.54,
+    "speaker": "SPEAKER_04"
+  },
+  {
+    "text": "mhm.",
+    "start": 188.54,
+    "end": 189.26,
+    "speaker": "SPEAKER_04"
+  },
+  {
+    "text": "Sam.",
+    "start": 214.38,
+    "end": 229.9,
+    "speaker": "SPEAKER_05"
+  },
+  {
+    "text": "Sa.",
+    "start": 245.22,
+    "end": 245.46,
+    "speaker": "SPEAKER_06"
+  }
+]

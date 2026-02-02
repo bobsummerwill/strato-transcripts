@@ -1,0 +1,15 @@
+SPEAKER_00: Ram m.
+
+SPEAKER_01: M.
+
+SPEAKER_00: M.
+
+SPEAKER_02: M.
+
+SPEAKER_03: Sa.
+
+SPEAKER_04: It's mhm.
+
+SPEAKER_05: Sam.
+
+SPEAKER_06: Sa.
