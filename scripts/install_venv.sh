@@ -261,13 +261,6 @@ elif [ "$OS_TYPE" = "ubuntu" ]; then
     echo "  - python3-dev: Python headers for compiling extensions"
     echo "  - python3-pip: Python package installer"
     echo "  - python3-venv: Python virtual environment support"
-    echo ""
-    echo "GPU benchmark dependencies:"
-    echo "  - glmark2: OpenGL benchmark"
-    echo "  - meson/ninja-build: Build system (for building vkmark from source)"
-    echo "  - libvulkan-dev: Vulkan development headers"
-    echo "  - libassimp-dev/libglm-dev: 3D model and math libraries"
-    echo "  Note: vkpeak binary is included in gpu_benchmarks/bin/"
 
     sudo apt update
     sudo apt install -y \
@@ -280,17 +273,7 @@ elif [ "$OS_TYPE" = "ubuntu" ]; then
       libssl-dev \
       python3-dev \
       python3-pip \
-      python3-venv \
-      glmark2 \
-      meson \
-      ninja-build \
-      libvulkan-dev \
-      libwayland-dev \
-      libxcb1-dev \
-      libxcb-icccm4-dev \
-      libdrm-dev \
-      libassimp-dev \
-      libglm-dev
+      python3-venv
 
     echo -e "${GREEN}✓ System dependencies installed${NC}"
 fi

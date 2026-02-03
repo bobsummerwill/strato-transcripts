@@ -149,12 +149,6 @@ python gpu_benchmarks/scripts/gpu_history.py                      # All GPUs
 python gpu_benchmarks/scripts/gpu_history.py --uuid GPU-d64aca9a  # Specific card
 ```
 
-### Graphics Benchmarks (OpenGL/Vulkan)
-```bash
-DRI_PRIME=1 glmark2   # discrete/eGPU
-glmark2               # integrated GPU
-```
-
 ### Vulkan Compute Benchmarks (vkpeak)
 vkpeak measures raw Vulkan compute throughput across all GPUs (no display required).
 
@@ -193,7 +187,6 @@ python3 gpu_benchmarks/scripts/vkpeak_benchmark.py --json
 | **Memory BW H2D (GB/s)** | Host-to-Device memory transfer speed | How fast data can be sent to the GPU; important for large model loading |
 | **Memory BW D2H (GB/s)** | Device-to-Host memory transfer speed | How fast results can be retrieved; affects inference latency |
 | **Compute (GFLOPS)** | Sustained FP32 compute throughput | Raw computational power for general workloads |
-| **glmark2** | OpenGL rendering benchmark score | Graphics/visualization performance |
 | **vkpeak FP32** | Vulkan FP32 compute throughput | Raw Vulkan compute, tests all GPUs regardless of display |
 | **vkpeak FP16/INT8** | Tensor core throughput | AI/ML acceleration capability |
 
