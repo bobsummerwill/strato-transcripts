@@ -247,7 +247,6 @@ def load_word_timing(filepath):
     # Consensus mode files (--consensus flag) have _consensus_words.json suffix
     json_patterns = [
         project_root / 'intermediates' / base_name / f"{base_name}_assemblyai_consensus_words.json",
-        project_root / 'intermediates' / base_name / f"{base_name}_whisperx_consensus_words.json",
         project_root / 'intermediates' / base_name / f"{base_name}_whisperx-cloud_consensus_words.json",
         project_root / 'intermediates' / base_name / f"{base_name}_assemblyai_words.json",
         project_root / 'intermediates' / base_name / f"{base_name}_whisperx_words.json",

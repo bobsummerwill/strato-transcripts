@@ -50,7 +50,7 @@ python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 --transcriber
 python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 --transcribers assemblyai
 
 # Multiple transcribers
-python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 --transcribers whisperx,assemblyai
+python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 --transcribers whisperx-cloud,assemblyai
 ```
 
 ## AI Post-Processors
@@ -93,7 +93,7 @@ Build ultra-high-quality transcripts using a 6-phase consensus pipeline that com
 ```bash
 # Step 1: Transcribe with multiple services (generates word-level JSON)
 python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 \
-  --transcribers whisperx,assemblyai --consensus
+  --transcribers whisperx-cloud,assemblyai --consensus
 
 # Step 2: Build consensus from transcriber outputs
 python3 scripts/assess_quality.py --intermediate-consensus --episode <name>
@@ -132,7 +132,7 @@ Final outputs to `outputs/<episode>/`:
 ```bash
 # Complete pipeline from audio to final transcript
 python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 \
-  --transcribers whisperx,assemblyai --consensus
+  --transcribers whisperx-cloud,assemblyai --consensus
 python3 scripts/assess_quality.py --intermediate-consensus --episode <name>
 source setup_env.sh && python3 scripts/ai_consensus_pipeline.py --episode <name>
 ```
