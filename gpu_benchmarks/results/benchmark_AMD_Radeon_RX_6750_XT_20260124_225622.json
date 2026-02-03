@@ -103,14 +103,6 @@
         "avg_time_us": 176.42920399248396,
         "throughput_gops": 56.67995872398772
       }
-    },
-    "glmark2": {
-      "score": 1144,
-      "renderer": "AMD Radeon RX 6750 XT (radeonsi, navi22, LLVM 20.1.2, DRM 3.64)"
-    },
-    "vkmark": {
-      "score": 1331,
-      "device": "AMD Radeon RX 6750 XT (RADV NAVI22)"
     }
   }
 }

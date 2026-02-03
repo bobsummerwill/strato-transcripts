@@ -1,6 +1,6 @@
 # GPU Benchmark Results
 
-Complete benchmark history across all tested GPUs.
+Compute benchmark history across all tested GPUs.
 
 **Last Updated:** 2026-02-02
 
@@ -27,13 +27,6 @@ Complete benchmark history across all tested GPUs.
 | 0 | RTX 3090 (XC3?) | 24,807 | 24,532 | 159,937 | 318,061 | 310 GB/s |
 | 1 | RTX 3090 (FTW3 Ultra) | **27,878** | **27,233** | **165,151** | **324,715** | **333 GB/s** |
 | 2 | AMD Ryzen 9 9950X3D iGPU | 565 | 542 | N/A | N/A | 33 GB/s |
-
-### Graphics Benchmarks
-
-| GPU | glmark2 | vkmark |
-|-----|---------|--------|
-| RX 6750 XT | 1,144 | 1,331 |
-| Intel MTL iGPU | - | - |
 
 ---
 
@@ -152,10 +145,6 @@ Complete benchmark history across all tested GPUs.
 
 **Note:** Memory bandwidth is significantly lower than NVIDIA cards, likely due to ROCm overhead or PCIe configuration.
 
-#### Graphics Benchmarks
-- **glmark2:** 1,144
-- **vkmark:** 1,331
-
 ---
 
 ### Intel Meteor Lake iGPU
@@ -232,7 +221,6 @@ Intel MTL:      (no tensor cores)
 | Component | Specification |
 |-----------|--------------|
 | CPU | AMD Ryzen 9 9950X3D 16-Core |
-| Motherboard | (PCIe 5.0 support) |
 | GPU Slot 0 | RTX 3090 (XC3?) - `d64aca9a` |
 | GPU Slot 1 | RTX 3090 (FTW3 Ultra) - `0ee51b66` |
 | OS | Ubuntu 24.04 LTS |
@@ -240,15 +228,6 @@ Intel MTL:      (no tensor cores)
 | NVIDIA Driver | 590.48.01 |
 | CUDA | 13.0 |
 | PyTorch | 2.9.1+cu130 |
-
----
-
-## Files
-
-- PyTorch benchmarks: `gpu_benchmarks/results/benchmark_*.json`
-- vkpeak benchmarks: `gpu_benchmarks/results/vkpeak_*.json`
-- Stress tests: `gpu_benchmarks/results/stress_test_*.json`
-- GPU identification: `gpu_benchmarks/results/gpu_identification_*.json`
 
 ---
 
