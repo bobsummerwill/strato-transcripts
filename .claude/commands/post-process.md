@@ -19,7 +19,7 @@ Run AI post-processing on transcripts to fix technical terms, names, and formatt
 ### Hosted (OpenRouter API)
 | Processor | Model | Context | Best For |
 |-----------|-------|---------|----------|
-| opus | Claude Opus 4.5 | 200K | Premium quality |
+| opus | Claude Opus 4.6 | 1M | Premium quality |
 | gemini | Gemini 3 Pro | 1M | Long documents |
 | chatgpt | GPT-5.2 | 400K | General purpose |
 | grok | Grok 4 | 256K | #1 benchmark |

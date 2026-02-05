@@ -59,7 +59,7 @@ All 11 models accessed via **OpenRouter** (single API key). See [AI_PROVIDERS.md
 
 | Processor | Model | Context | Best For |
 |-----------|-------|---------|----------|
-| **opus** | Claude Opus 4.5 | 200K | Premium quality, complex reasoning |
+| **opus** | Claude Opus 4.6 | 1M | Premium quality, complex reasoning |
 | **gemini** | Gemini 3 Pro | 1M | Very long documents, technical |
 | **chatgpt** | GPT-5.2 | 400K | General-purpose, balanced |
 | **grok** | Grok 4 | 256K | #1 benchmark performance |

@@ -13,7 +13,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/shell_utils.sh"
 
-# Defaults: WhisperX (local/FREE) + Claude Opus 4.5 (highest quality)
+# Defaults: WhisperX (local/FREE) + Claude Opus 4.6 (highest quality)
 DEFAULT_TRANSCRIBERS="whisperx"
 DEFAULT_PROCESSORS="opus"
 
@@ -43,7 +43,7 @@ while [[ $# -gt 0 ]]; do
             echo ""
   echo "  --processors <list>      Comma-separated AI post-processors"
   echo "                           (opus, gemini, deepseek, chatgpt)"
-            echo "                           Default: opus (Claude Opus 4.5)"
+            echo "                           Default: opus (Claude Opus 4.6)"
             echo ""
             echo "Examples:"
             echo "  # Use defaults (whisperx + opus)"

@@ -19,13 +19,13 @@ After extensive testing, we support a streamlined set of providers for productio
 
 | Provider | Model | Context Tokens | Cost (per hour audio) | Quality Rating | Speed |
 |----------|-------|----------------|----------------------|----------------|-------|
-| **Claude Opus 4.5** | opus | **150,029** | $1.50-$3.00 | ⭐⭐⭐⭐⭐ (9.4/10) | Medium |
+| **Claude Opus 4.6** | opus | **1,000,000** | $1.50-$3.00 | ⭐⭐⭐⭐⭐ (9.4/10) | Medium |
 | **Gemini 3.0 Pro** | gemini | **128,065** | FREE-$1.00 | ⭐⭐⭐⭐⭐ (9.0/10) | Fast |
 
 ## CONTEXT WINDOW CAPABILITIES
 
 **Proven Working Limits (Tested November 2025):**
-- **Claude Opus 4.5**: 150,029 tokens ✅ (93-98% content retention)
+- **Claude Opus 4.6**: 1,000,000 tokens ✅ (93-98% content retention)
 - **Gemini 3.0 Pro**: 128,065 tokens ✅ (84-98% content retention)
 
 **Can Handle Full Transcripts:** Both providers handle typical podcast workloads (20-80K tokens) without chunking

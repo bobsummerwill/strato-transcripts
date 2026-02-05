@@ -80,7 +80,7 @@ TRANSCRIBERS (3):
   ✅ AssemblyAI (assemblyai)         - Commercial cloud service
 
 POST-PROCESSORS (2):
-  ✅ Claude Opus 4.5 (opus)          - Premium quality, 93-98% retention
+  ✅ Claude Opus 4.6 (opus)          - Premium quality, 93-98% retention
   ✅ Gemini 3.0 Pro (gemini)         - Excellent technical accuracy
 
 NOTE (December 2025):
@@ -180,7 +180,7 @@ TRANSCRIPTION SERVICES
 POST-PROCESSING AI SERVICES
 ────────────────────────────────────────────────────────────────────────────────
 
-1. Claude Opus 4.5 (opus) ★★★★★ 9.4/10
+1. Claude Opus 4.6 (opus) ★★★★★ 9.4/10
 ───────────────────────────────────────
    Provider: Anthropic
    Cost: $15 per million input tokens / $75 per million output tokens
@@ -190,7 +190,7 @@ POST-PROCESSING AI SERVICES
    • 93-98% content retention (minimal loss)
    • Excellent technical term handling
    • Preserves narrative flow and context
-   • 150K context window
+   • 1M context window
    • Superior nuance preservation
    • Best for historically important content
    
@@ -301,7 +301,7 @@ DISCONTINUED POST-PROCESSORS
    • Excellent quality (9.1/10) but redundant
    • 92-96% retention - very good
    • Fast processing (~320 seconds)
-   • However: Opus 4.5 provides better quality
+   • However: Opus 4.6 provides better quality
    • Cost difference minimal ($3 vs $15 input)
    • Having both Sonnet and Opus redundant
    • Gemini provides speed alternative

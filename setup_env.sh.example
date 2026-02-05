@@ -22,7 +22,7 @@ export HF_TOKEN=""
 # Get your key from: https://openrouter.ai/keys
 #
 # SUPPORTED MODELS (via OpenRouter):
-#   opus     - Claude Opus 4.5 (Anthropic)     - 200K context
+#   opus     - Claude Opus 4.6 (Anthropic)     - 1M context
 #   gemini   - Gemini 3 Pro (Google)           - 1M context
 #   deepseek - DeepSeek V3.2                   - 128K context
 #   chatgpt  - GPT-5.2 (OpenAI)                - 400K context
