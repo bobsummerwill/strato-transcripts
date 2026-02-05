@@ -2,7 +2,7 @@
 
 Compute benchmark history across all tested GPUs.
 
-**Last Updated:** 2026-02-02
+**Last Updated:** 2026-02-04
 
 ---
 
@@ -12,8 +12,8 @@ Compute benchmark history across all tested GPUs.
 
 | GPU | UUID (partial) | VRAM | MatMul 8K | MatMul 4K | H2D GB/s | D2H GB/s | Backend |
 |-----|----------------|------|-----------|-----------|----------|----------|---------|
-| RTX 3090 (FTW3 Ultra) | `0ee51b66...` | 24 GB | **26,942** | 26,025 | 12.2 | 4.4 | CUDA 13.0 |
-| RTX 3090 (XC3?) | `d64aca9a...` | 24 GB | 25,924 | 24,683 | 12.2 | 4.7 | CUDA 13.0 |
+| RTX 3090 (FTW3 Ultra) | `d64aca9a...` | 24 GB | **26,937** | 25,870 | 11.8 | 4.7 | CUDA 13.0 |
+| RTX 3090 (XC3 Ultra) | `0ee51b66...` | 24 GB | 26,725 | 25,722 | 12.0 | 4.5 | CUDA 13.0 |
 | RTX 5070 | - | 12 GB | 22,981 | 21,553 | 9.3 | 3.0 | CUDA 12.8 |
 | RX 6750 XT | - | 12 GB | 11,060 | 11,375 | 0.7 | 0.5 | ROCm 6.2 |
 | Intel MTL iGPU | - | 28 GB* | - | 1,712 | 4.1 | 1.5 | XPU (IPEX) |
@@ -24,8 +24,8 @@ Compute benchmark history across all tested GPUs.
 
 | Device | GPU | FP32 Scalar | FP32 Vec4 | FP16 Tensor | INT8 Tensor | D2D BW |
 |--------|-----|-------------|-----------|-------------|-------------|--------|
-| 0 | RTX 3090 (XC3?) | 24,807 | 24,532 | 159,937 | 318,061 | 310 GB/s |
-| 1 | RTX 3090 (FTW3 Ultra) | **27,878** | **27,233** | **165,151** | **324,715** | **333 GB/s** |
+| 0 | RTX 3090 (FTW3 Ultra) | 24,807 | 24,532 | 159,937 | 318,061 | 310 GB/s |
+| 1 | RTX 3090 (XC3 Ultra) | **27,878** | **27,233** | **165,151** | **324,715** | **333 GB/s** |
 | 2 | AMD Ryzen 9 9950X3D iGPU | 565 | 542 | N/A | N/A | 33 GB/s |
 
 ---
@@ -34,47 +34,20 @@ Compute benchmark history across all tested GPUs.
 
 ### NVIDIA GeForce RTX 3090 (EVGA FTW3 Ultra)
 
-**UUID:** `GPU-0ee51b66-aca4-285d-105f-9f2dd6f58879`
-**VRAM:** 23.56 GB
-**CUDA Capability:** 8.6
-**SMs:** 82
-**Tested:** 2026-01-30
-
-#### PyTorch Benchmark
-| Matrix Size | Time (ms) | GFLOPS |
-|-------------|-----------|--------|
-| 1024x1024 | 0.113 | 18,939 |
-| 2048x2048 | 0.732 | 23,471 |
-| 4096x4096 | 5.281 | 26,025 |
-| 8192x8192 | 40.81 | **26,942** |
-
-#### vkpeak Benchmark
-| Metric | Value | Unit |
-|--------|-------|------|
-| FP32 Scalar | 27,878 | GFLOPS |
-| FP32 Vec4 | 27,233 | GFLOPS |
-| FP16 Matrix | 165,151 | GFLOPS |
-| INT8 Matrix | 324,715 | GIOPS |
-| BF16 Matrix | 82,110 | GFLOPS |
-| D2D Bandwidth | 333 | GB/s |
-
----
-
-### NVIDIA GeForce RTX 3090 (EVGA XC3?)
-
 **UUID:** `GPU-d64aca9a-d2ed-af21-2b47-abeaa19cef7a`
+**Subsystem ID:** 3842:3982
 **VRAM:** 23.55 GB
 **CUDA Capability:** 8.6
 **SMs:** 82
-**Tested:** 2026-01-30
+**Tested:** 2026-02-04
 
 #### PyTorch Benchmark
 | Matrix Size | Time (ms) | GFLOPS |
 |-------------|-----------|--------|
-| 1024x1024 | 0.126 | 16,980 |
-| 2048x2048 | 0.760 | 22,612 |
-| 4096x4096 | 5.568 | 24,683 |
-| 8192x8192 | 42.41 | 25,924 |
+| 1024x1024 | 0.126 | 17,068 |
+| 2048x2048 | 0.735 | 23,377 |
+| 4096x4096 | 5.313 | 25,870 |
+| 8192x8192 | 40.82 | **26,937** |
 
 #### vkpeak Benchmark
 | Metric | Value | Unit |
@@ -86,7 +59,36 @@ Compute benchmark history across all tested GPUs.
 | BF16 Matrix | 80,217 | GFLOPS |
 | D2D Bandwidth | 310 | GB/s |
 
-**Note:** This card is ~4% slower than the FTW3 Ultra, possibly due to lower power limit or thermal constraints.
+---
+
+### NVIDIA GeForce RTX 3090 (EVGA XC3 Ultra)
+
+**UUID:** `GPU-0ee51b66-aca4-285d-105f-9f2dd6f58879`
+**Subsystem ID:** 3842:3987
+**VRAM:** 23.56 GB
+**CUDA Capability:** 8.6
+**SMs:** 82
+**Tested:** 2026-02-04
+
+#### PyTorch Benchmark
+| Matrix Size | Time (ms) | GFLOPS |
+|-------------|-----------|--------|
+| 1024x1024 | 0.114 | 18,774 |
+| 2048x2048 | 0.741 | 23,191 |
+| 4096x4096 | 5.343 | 25,722 |
+| 8192x8192 | 41.14 | 26,725 |
+
+#### vkpeak Benchmark
+| Metric | Value | Unit |
+|--------|-------|------|
+| FP32 Scalar | 27,878 | GFLOPS |
+| FP32 Vec4 | 27,233 | GFLOPS |
+| FP16 Matrix | 165,151 | GFLOPS |
+| INT8 Matrix | 324,715 | GIOPS |
+| BF16 Matrix | 82,110 | GFLOPS |
+| D2D Bandwidth | 333 | GB/s |
+
+**Note:** Both cards perform nearly identically in PyTorch benchmarks (~26.8 TFLOPS).
 
 ---
 
@@ -197,8 +199,8 @@ Compute benchmark history across all tested GPUs.
 ### FP32 Compute (GFLOPS, higher is better)
 
 ```
-RTX 3090 FTW3:  ████████████████████████████████████████ 26,942 (PyTorch)
-RTX 3090 XC3:   ██████████████████████████████████████   25,924 (PyTorch)
+RTX 3090 FTW3:  ████████████████████████████████████████ 26,937 (PyTorch)
+RTX 3090 XC3:   ███████████████████████████████████████  26,725 (PyTorch)
 RTX 5070:       ██████████████████████████████████       22,981 (PyTorch)
 RX 6750 XT:     ████████████████                         11,060 (PyTorch)
 Intel MTL:      ███                                       1,712 (PyTorch)
@@ -221,8 +223,8 @@ Intel MTL:      (no tensor cores)
 | Component | Specification |
 |-----------|--------------|
 | CPU | AMD Ryzen 9 9950X3D 16-Core |
-| GPU Slot 0 | RTX 3090 (XC3?) - `d64aca9a` |
-| GPU Slot 1 | RTX 3090 (FTW3 Ultra) - `0ee51b66` |
+| GPU Slot 0 | RTX 3090 (FTW3 Ultra) - `d64aca9a` |
+| GPU Slot 1 | RTX 3090 (XC3 Ultra) - `0ee51b66` |
 | OS | Ubuntu 24.04 LTS |
 | Kernel | 6.14.0-37-generic |
 | NVIDIA Driver | 590.48.01 |
