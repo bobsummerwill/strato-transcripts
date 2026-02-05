@@ -7,7 +7,7 @@ Tests actual context window limits for AI providers via OpenRouter.
 All post-processing providers are accessed through OpenRouter with a single API key.
 
 PROVIDER MATRIX (11 POST-PROCESSING PROVIDERS via OpenRouter):
-- opus: Claude Opus 4.5 - 200K context, 64K output
+- opus: Claude Opus 4.6 - 1M context, 128K output
 - gemini: Gemini 3.1 Pro - 1M context, 64K output
 - deepseek: DeepSeek V3.2 - 128K context
 - chatgpt: GPT-5.2 - 400K context, 128K output
@@ -64,11 +64,11 @@ def print_warning(text):
 # OpenRouter model mapping and context limits
 OPENROUTER_MODELS = {
     'opus': {
-        'model_id': 'anthropic/claude-opus-4.5',
-        'display_name': 'Claude Opus 4.5',
+        'model_id': 'anthropic/claude-opus-4.6',
+        'display_name': 'Claude Opus 4.6',
         'provider': 'Anthropic',
-        'advertised': '200,000 tokens',
-        'test_sizes': [10000, 50000, 100000, 150000, 190000, 200000],
+        'advertised': '1,000,000 tokens',
+        'test_sizes': [10000, 50000, 100000, 200000, 500000, 1000000],
     },
     'gemini': {
         'model_id': 'google/gemini-3.1-pro-preview',
@@ -145,7 +145,7 @@ OPENROUTER_MODELS = {
 # Model quality priority for recommendations
 MODEL_PRIORITY = {
     'x-ai/grok-4': 100,
-    'anthropic/claude-opus-4.5': 95,
+    'anthropic/claude-opus-4.6': 95,
     'openai/gpt-5.2': 90,
     'google/gemini-3.1-pro-preview': 85,
     'meta-llama/llama-4-maverick': 80,

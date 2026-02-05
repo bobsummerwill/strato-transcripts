@@ -27,8 +27,8 @@ from common import (Colors, success, failure, skip, validate_api_key,
 # ┌───────────┬─────────────────────┬───────────────────────────────────┬─────────┐
 # │ Processor │ Model               │ OpenRouter ID                     │ Context │
 # ├───────────┼─────────────────────┼───────────────────────────────────┼─────────┤
-# │ opus      │ Claude Opus 4.5     │ anthropic/claude-opus-4.5         │ 200K    │
-# │ gemini    │ Gemini 3.1 Pro        │ google/gemini-3.1-pro-preview       │ 1M      │
+# │ opus      │ Claude Opus 4.6     │ anthropic/claude-opus-4.6         │ 1M      │
+# │ gemini    │ Gemini 3.1 Pro      │ google/gemini-3.1-pro-preview     │ 1M      │
 # │ chatgpt   │ GPT-5.2             │ openai/gpt-5.2                    │ 400K    │
 # │ grok      │ Grok 4              │ x-ai/grok-4                       │ 256K    │
 # │ qwen      │ Qwen3-Max           │ qwen/qwen3-max                    │ 256K    │
@@ -55,8 +55,8 @@ from common import (Colors, success, failure, skip, validate_api_key,
 # ============================================================================
 
 OPENROUTER_MODELS = {
-    'opus': 'anthropic/claude-opus-4.5',           # Claude Opus 4.5 - 200K context
-    'gemini': 'google/gemini-3.1-pro-preview',       # Gemini 3.1 Pro - 1M context
+    'opus': 'anthropic/claude-opus-4.6',           # Claude Opus 4.6 - 1M context
+    'gemini': 'google/gemini-3.1-pro-preview',     # Gemini 3.1 Pro - 1M context
     'deepseek': 'deepseek/deepseek-chat',          # DeepSeek V3.2 - 128K context
     'chatgpt': 'openai/gpt-5.2',                   # GPT-5.2 - 400K context
     'qwen': 'qwen/qwen3-max',                      # Qwen3-Max - 256K context
@@ -71,7 +71,7 @@ OPENROUTER_MODELS = {
 
 # Max output tokens per model (some models need higher limits)
 OPENROUTER_MAX_TOKENS = {
-    'opus': 64000,      # Opus supports 64K output
+    'opus': 128000,     # Opus 4.6 supports 128K output
     'gemini': 64000,    # Gemini supports 64K output
     'chatgpt': 16384,   # GPT-5.2 conservative default
     'grok': 32768,      # Grok uses internal reasoning, needs more tokens

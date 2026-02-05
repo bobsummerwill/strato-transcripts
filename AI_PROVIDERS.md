@@ -9,7 +9,7 @@ Get your key from: https://openrouter.ai/keys
 
 | Processor | Model | OpenRouter ID | Context | Weights |
 |-----------|-------|---------------|---------|---------|
-| **opus** | Claude Opus 4.5 | `anthropic/claude-opus-4.5` | 200K | Closed |
+| **opus** | Claude Opus 4.6 | `anthropic/claude-opus-4.6` | 1M | Closed |
 | **gemini** | Gemini 3.1 Pro | `google/gemini-3.1-pro-preview` | 1M | Closed |
 | **chatgpt** | GPT-5.2 | `openai/gpt-5.2` | 400K | Closed |
 | **grok** | Grok 4 | `x-ai/grok-4` | 256K | Closed |
@@ -124,9 +124,9 @@ python3 scripts/test_context_limits.py --providers all
 - **Best For**: Complex reasoning, highest benchmark performance
 - **Notes**: Uses internal reasoning that consumes output tokens
 
-#### Claude Opus 4.5 (`opus`)
+#### Claude Opus 4.6 (`opus`)
 - **Ranking**: Premium reasoning model
-- **Context**: 200K tokens, 64K output
+- **Context**: 1M tokens, 128K output
 - **Best For**: Nuanced understanding, complex analysis
 - **Notes**: Highest quality output
 
@@ -191,7 +191,7 @@ All 11 models have sufficient context for typical transcripts.
 
 ### Best Quality
 1. **Grok 4** - #1 benchmark performance
-2. **Claude Opus 4.5** - Premium reasoning
+2. **Claude Opus 4.6** - Premium reasoning
 3. **GPT-5.2** - Strong all-around
 
 ### Best Value
