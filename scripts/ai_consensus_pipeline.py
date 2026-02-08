@@ -67,12 +67,29 @@ SINGLE_WORD_FILLERS = {
 
 def tokenize_preserving_punctuation(text):
     """
-    Tokenize text into words, keeping punctuation attached.
+    Tokenize text into words, handling URLs, code identifiers, hyphenated words, and contractions.
 
-    "Hello, world!" -> ["Hello,", "world!"]
+    Examples:
+      "Hello, world!" -> ["Hello,", "world!"]
+      "https://example.com" -> ["https://example.com"]
+      "C++" -> ["C++"]
+      "node.js" -> ["node.js"]
+      "pre-formation" -> ["pre-formation"]
+      "it's" -> ["it's"]
     """
-    # Split on whitespace, preserving attached punctuation
-    tokens = text.split()
+    # Pattern that handles special cases - order matters!
+    # More specific patterns must come first to avoid being consumed by generic \w+
+    pattern = r"""
+        https?://\S+|                              # URLs (highest priority)
+        [A-Z]\+\+|                                 # C++, D++
+        [A-Z]#|                                    # C#, F#
+        [a-z]+\.[a-z]+|                            # node.js (lowercase dotted identifiers)
+        \w+-\w+(?:-\w+)*|                          # Hyphenated words (pre-formation, T-shirt)
+        \w+'\w*|                                   # Contractions (it's, don't)
+        \w+|                                       # Regular words
+        [.,!?;:()\[\]{}]                           # Standalone punctuation
+    """
+    tokens = re.findall(pattern, text, re.VERBOSE | re.IGNORECASE)
     return tokens
 
 
@@ -109,12 +126,107 @@ def strip_transcript_formatting(text):
 # AI Text-to-Word Alignment (Core Algorithm)
 # =============================================================================
 
+def compute_alignment_confidence(orig_normalized, ai_normalized):
+    """
+    Compute alignment confidence using SequenceMatcher ratio.
+    
+    Returns a score between 0.0 and 1.0, where:
+    - 1.0 = perfect match
+    - 0.0 = no match
+    """
+    matcher = SequenceMatcher(None, orig_normalized, ai_normalized, autojunk=False)
+    return matcher.ratio()
+
+
+def align_segment(orig_words, ai_tokens, orig_start_idx, ai_start_idx):
+    """
+    Align a single time segment using SequenceMatcher.
+    
+    Returns list of aligned words with timestamps.
+    """
+    aligned = []
+    
+    if not ai_tokens or not orig_words:
+        return aligned
+    
+    # Create normalized versions for matching
+    orig_normalized = [normalize_for_matching(w['text']) for w in orig_words]
+    ai_normalized = [normalize_for_matching(t) for t in ai_tokens]
+    
+    # Find matching blocks
+    matcher = SequenceMatcher(None, orig_normalized, ai_normalized, autojunk=False)
+    matching_blocks = matcher.get_matching_blocks()
+    
+    last_orig_idx = 0
+    last_ai_idx = 0
+    last_time = orig_words[0]['start'] if orig_words else 0.0
+    last_speaker = orig_words[0]['speaker'] if orig_words else 'SPEAKER_00'
+    
+    for match in matching_blocks:
+        orig_match_start, ai_match_start, size = match.a, match.b, match.size
+        
+        if size == 0:
+            continue
+        
+        # Handle AI-inserted words before this match
+        if ai_match_start > last_ai_idx:
+            next_time = orig_words[orig_match_start]['start'] if orig_match_start < len(orig_words) else (orig_words[-1]['end'] if orig_words else 0.0)
+            num_inserted = ai_match_start - last_ai_idx
+            time_per_word = (next_time - last_time) / (num_inserted + 1) if num_inserted > 0 else 0.1
+            
+            for i in range(last_ai_idx, ai_match_start):
+                insert_time = last_time + (i - last_ai_idx + 1) * time_per_word
+                aligned.append({
+                    'text': ai_tokens[ai_start_idx + i],
+                    'start': insert_time,
+                    'end': insert_time + 0.1,
+                    'speaker': last_speaker,
+                    'source': 'ai_inserted'
+                })
+        
+        # Handle matched words
+        for i in range(size):
+            orig_idx = orig_match_start + i
+            ai_idx = ai_match_start + i
+            
+            if orig_idx < len(orig_words):
+                orig_word = orig_words[orig_idx]
+                aligned.append({
+                    'text': ai_tokens[ai_start_idx + ai_idx],
+                    'start': orig_word['start'],
+                    'end': orig_word['end'],
+                    'speaker': orig_word['speaker'],
+                    'source': 'matched'
+                })
+                last_time = orig_word['end']
+                last_speaker = orig_word['speaker']
+        
+        last_orig_idx = orig_match_start + size
+        last_ai_idx = ai_match_start + size
+    
+    # Handle remaining AI words
+    if last_ai_idx < len(ai_tokens):
+        for i in range(last_ai_idx, len(ai_tokens)):
+            aligned.append({
+                'text': ai_tokens[ai_start_idx + i],
+                'start': last_time + 0.1 * (i - last_ai_idx + 1),
+                'end': last_time + 0.1 * (i - last_ai_idx + 2),
+                'speaker': last_speaker,
+                'source': 'ai_inserted'
+            })
+    
+    return aligned
+
+
 def align_ai_to_original(original_words, ai_text):
     """
-    Map AI-corrected text back to original word timestamps.
-
-    Uses SequenceMatcher to find matching regions between original and AI text,
-    then preserves timestamps from original while using AI's corrected text.
+    Map AI-corrected text back to original word timestamps with segment-level anchoring.
+    
+    Strategy to prevent drift on punctuation-heavy text:
+    1. Split both original and AI text into time windows (30s chunks)
+    2. Align within each window independently
+    3. Compute alignment confidence - if too low, fall back to original words
+    4. Use improved regex tokenizer that handles URLs, code identifiers, etc.
 
     Args:
         original_words: List[{text, start, end, speaker}] from consensus
@@ -123,87 +235,77 @@ def align_ai_to_original(original_words, ai_text):
     Returns:
         List[{text, start, end, speaker, source}] with AI text + original timestamps
     """
-    # Strip timestamp/speaker formatting from AI output - we only want the spoken words
+    # Strip timestamp/speaker formatting from AI output
     ai_text_clean = strip_transcript_formatting(ai_text)
 
-    # Tokenize AI output
+    # Tokenize AI output with improved tokenizer
     ai_tokens = tokenize_preserving_punctuation(ai_text_clean)
 
     if not ai_tokens or not original_words:
         return original_words  # Fallback to original if no AI output
 
-    # Create normalized versions for matching
+    # Check overall alignment confidence
     orig_normalized = [normalize_for_matching(w['text']) for w in original_words]
     ai_normalized = [normalize_for_matching(t) for t in ai_tokens]
-
-    # Find matching blocks using SequenceMatcher
-    matcher = SequenceMatcher(None, orig_normalized, ai_normalized, autojunk=False)
-    matching_blocks = matcher.get_matching_blocks()
-
+    
+    overall_confidence = compute_alignment_confidence(orig_normalized, ai_normalized)
+    
+    # If confidence is very low, fall back to original words
+    if overall_confidence < 0.4:
+        print(f"      Warning: Low alignment confidence ({overall_confidence:.2%}), using original words")
+        return original_words
+    
+    # Segment-level anchoring: split into 30-second time windows
+    WINDOW_SIZE = 30.0  # seconds
+    
+    if not original_words:
+        return []
+    
+    # Find time boundaries
+    min_time = original_words[0]['start']
+    max_time = original_words[-1]['end']
+    
+    # If transcript is short, just align it all at once
+    if max_time - min_time <= WINDOW_SIZE:
+        return align_segment(original_words, ai_tokens, 0, 0)
+    
+    # Split original words into time windows
+    windows = []
+    current_window = []
+    window_start_time = min_time
+    
+    for word in original_words:
+        if word['start'] >= window_start_time + WINDOW_SIZE and current_window:
+            windows.append(current_window)
+            current_window = []
+            window_start_time = word['start']
+        current_window.append(word)
+    
+    if current_window:
+        windows.append(current_window)
+    
+    # Align AI tokens to time windows
+    # Strategy: distribute AI tokens proportionally to each window based on word count
     aligned_words = []
-    last_orig_end_idx = 0
-    last_ai_end_idx = 0
-    last_time = 0.0
-    last_speaker = original_words[0]['speaker'] if original_words else 'SPEAKER_00'
-
-    for match in matching_blocks:
-        orig_start, ai_start, size = match.a, match.b, match.size
-
-        if size == 0:
-            continue  # Final sentinel block
-
-        # Handle AI-inserted words (before this matching block)
-        if ai_start > last_ai_end_idx:
-            # Interpolate timestamps for inserted words
-            if orig_start < len(original_words):
-                next_time = original_words[orig_start]['start']
-            else:
-                next_time = original_words[-1]['end'] if original_words else 0.0
-
-            num_inserted = ai_start - last_ai_end_idx
-            time_per_word = (next_time - last_time) / (num_inserted + 1) if num_inserted > 0 else 0.1
-
-            for i in range(last_ai_end_idx, ai_start):
-                insert_time = last_time + (i - last_ai_end_idx + 1) * time_per_word
-                aligned_words.append({
-                    'text': ai_tokens[i],
-                    'start': insert_time,
-                    'end': insert_time + 0.1,  # Small duration for inserted words
-                    'speaker': last_speaker,
-                    'source': 'ai_inserted'
-                })
-
-        # Handle matched words (use original timestamps, AI text)
-        for i in range(size):
-            orig_idx = orig_start + i
-            ai_idx = ai_start + i
-
-            orig_word = original_words[orig_idx]
-            aligned_words.append({
-                'text': ai_tokens[ai_idx],  # AI's corrected text
-                'start': orig_word['start'],  # Original timestamp
-                'end': orig_word['end'],
-                'speaker': orig_word['speaker'],
-                'source': 'matched'
-            })
-            last_time = orig_word['end']
-            last_speaker = orig_word['speaker']
-
-        last_orig_end_idx = orig_start + size
-        last_ai_end_idx = ai_start + size
-
-    # Handle any remaining AI words after last match
-    if last_ai_end_idx < len(ai_tokens):
-        for i in range(last_ai_end_idx, len(ai_tokens)):
-            aligned_words.append({
-                'text': ai_tokens[i],
-                'start': last_time + 0.1 * (i - last_ai_end_idx + 1),
-                'end': last_time + 0.1 * (i - last_ai_end_idx + 2),
-                'speaker': last_speaker,
-                'source': 'ai_inserted'
-            })
-
-    return aligned_words
+    ai_idx = 0
+    
+    for window_words in windows:
+        # Estimate how many AI tokens correspond to this window
+        window_orig_count = len(window_words)
+        window_ai_count = int(len(ai_tokens) * window_orig_count / len(original_words))
+        
+        # Get AI tokens for this window (with some overlap tolerance)
+        window_ai_tokens = ai_tokens[ai_idx:ai_idx + window_ai_count + 5]  # +5 for tolerance
+        
+        # Align this segment
+        if window_ai_tokens:
+            segment_aligned = align_segment(window_words, window_ai_tokens, 0, ai_idx)
+            aligned_words.extend(segment_aligned)
+            
+            # Advance AI token index by number of tokens consumed
+            ai_idx += len([w for w in segment_aligned if w.get('source') in ['matched', 'ai_inserted']])
+    
+    return aligned_words if aligned_words else original_words
 
 
 # =============================================================================
@@ -797,8 +899,88 @@ def assess_ai_quality(episode_name, intermediate_dir=Path("intermediates")):
 # Phase 5: Filler Word Removal
 # =============================================================================
 
+def is_filler_like(words, idx):
+    """
+    Context-aware detection of "like" as filler vs semantic usage.
+    
+    Filler cases:
+    - "I was like oh my god" (quotative)
+    - "It's like you know" (hesitation)
+    - "Like I said" (sentence start)
+    - "He was like yeah" (quotative)
+    
+    Semantic cases (keep these):
+    - "It looks like rain" (comparison/resemblance)
+    - "Systems like Ethereum" (exemplification)
+    - "Feels like home" (simile)
+    - "Smells like victory" (comparison)
+    
+    Returns True if "like" is filler (should be removed).
+    """
+    if idx < 0 or idx >= len(words):
+        return False
+    
+    word = words[idx]
+    normalized = normalize_for_matching(word['text'])
+    
+    if normalized != 'like':
+        return False
+    
+    # Check previous word (if exists)
+    prev_word = None
+    prev_norm = None
+    if idx > 0:
+        prev_word = words[idx - 1]
+        prev_norm = normalize_for_matching(prev_word['text'])
+    
+    # Check next word (if exists)
+    next_word = None
+    next_norm = None
+    if idx < len(words) - 1:
+        next_word = words[idx + 1]
+        next_norm = normalize_for_matching(next_word['text'])
+    
+    # Pattern: "was/were/is/am like" (quotative - FILLER)
+    if prev_norm in ['was', 'were', 'is', 'am', "i'm", "he's", "she's", "they're", "we're"]:
+        return True
+    
+    # Pattern: "like I/you/he/she/we/they" at sentence start (FILLER)
+    # Check if previous word ends with sentence boundary
+    if prev_word is None or any(prev_word['text'].endswith(p) for p in ['.', '!', '?']):
+        if next_norm in ['i', 'you', 'he', 'she', 'we', 'they', 'it']:
+            return True
+    
+    # Pattern: "looks/feels/sounds/seems/acts/smells like" (comparison - KEEP)
+    if prev_norm in ['looks', 'feels', 'sounds', 'seems', 'acts', 'smells', 'tastes', 'appears']:
+        return False
+    
+    # Pattern: "systems/things/projects/tools/frameworks like X" (exemplification - KEEP)
+    # Check if previous word is a plural noun (rough heuristic)
+    if prev_norm and prev_norm.endswith('s') and prev_norm not in ['was', 'is', 'this', 'has', 'does']:
+        # Likely "things like X" - keep it
+        return False
+    
+    # Pattern: "something/nothing/anything like" (comparison - KEEP)
+    if prev_norm in ['something', 'nothing', 'anything', 'everything']:
+        return False
+    
+    # Default: treat as filler if not clearly semantic
+    # Conservative: if followed by a determiner or noun, likely semantic
+    if next_norm in ['a', 'an', 'the', 'this', 'that', 'these', 'those']:
+        return False
+    
+    # If we're not sure, lean toward keeping it (avoid over-removal)
+    return False
+
+
+def is_sentence_boundary(word):
+    """Check if word ends with sentence-ending punctuation."""
+    text = word.get('text', '')
+    return any(text.endswith(p) for p in ['.', '!', '?'])
+
+
 def is_filler_word(word_text):
-    """Check if a word is a filler word."""
+    """Check if a word is a single-word filler (excluding 'like' which needs context)."""
     normalized = normalize_for_matching(word_text)
     return normalized in SINGLE_WORD_FILLERS
 
