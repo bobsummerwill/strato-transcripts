@@ -702,22 +702,33 @@ def words_to_segments(consensus_words, max_gap=2.0):
 
 def build_intermediate_word_consensus(episode_name, intermediate_dir=Path("intermediates"), glossary=None,
                                        transcribers=None):
-    """
-    Build word-level consensus from all transcriber intermediates.
+    """Build word-level transcriber consensus.
 
-    Uses word-level JSON files for precise alignment.
+    IMPORTANT: This replaces the previous time-bucket alignment logic.
 
-    Args:
-        episode_name: Name of the episode
-        intermediate_dir: Directory containing intermediate files
-        glossary: Optional glossary for term correction
-        transcribers: Optional list of transcribers to use (default: all)
+    Rationale:
+    - Grouping words by start-time tolerance drifts when providers insert/delete words.
+    - Drift cascades into duplicated spans and corrupt output.
+
+    New approach:
+    - Use a pivot transcript (default preference: whisperx-cloud, then assemblyai)
+    - Align other word streams to pivot using anchors + local DP
+    - Vote per pivot word slot with weights/confidence
+
+    Current default scope:
+    - Prefer whisperx-cloud + assemblyai only (do not assume local compute).
 
     Returns:
-        Tuple of (consensus_text_md, consensus_words_json, transcribers_used)
+        (consensus_md, consensus_words, transcribers_used)
     """
-    # Load word-level data from specified transcribers (or all)
-    transcribers_to_use = transcribers if transcribers else TRANSCRIBERS
+
+    # Local import to avoid circular deps in other scripts.
+    from consensus_words import build_consensus
+
+    # Default to cloud-only providers unless explicitly overridden.
+    default_transcribers = ["whisperx-cloud", "assemblyai"]
+    transcribers_to_use = transcribers if transcribers else default_transcribers
+
     all_word_lists = {}
     for transcriber in transcribers_to_use:
         words = load_word_level_json(episode_name, transcriber, intermediate_dir)
@@ -727,16 +738,18 @@ def build_intermediate_word_consensus(episode_name, intermediate_dir=Path("inter
     if not all_word_lists:
         return None, None, []
 
-    # Align words across transcribers
-    aligned = align_words_by_time(all_word_lists)
+    consensus_words = build_consensus(
+        all_word_lists,
+        provider_weights={"whisperx-cloud": 1.0, "assemblyai": 1.0},
+        pivot_preference=["whisperx-cloud", "assemblyai"],
+    )
 
-    # Build consensus
-    consensus_words = build_word_level_consensus_text(aligned, glossary)
+    # Apply glossary corrections if available
+    if glossary:
+        consensus_words = apply_word_level_glossary(consensus_words, glossary)
 
-    # Convert to segments
     segments = words_to_segments(consensus_words)
 
-    # Format as markdown
     lines = []
     for seg in segments:
         lines.append(f"**[{seg['timestamp']}] {seg['speaker']}:**")
