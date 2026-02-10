@@ -5,6 +5,7 @@ Provides colors, formatters, validation, and file operations.
 """
 
 import os
+import sys
 from pathlib import Path
 
 
@@ -157,6 +158,36 @@ def cleanup_gpu_memory(force_cpu=False):
     
     # Python garbage collection
     gc.collect()
+
+
+def ensure_nvidia_lib_path():
+    """Auto-detect pip-installed NVIDIA library dirs and add to LD_LIBRARY_PATH.
+
+    When CUDA libraries (cublas, nvrtc, cudnn, etc.) are installed via pip
+    (e.g. nvidia-cublas-cu12), they live under the venv's site-packages/nvidia/
+    but aren't on the system library path. This function discovers all such
+    lib dirs and adds any missing ones to LD_LIBRARY_PATH so that ctranslate2,
+    torch, and other native extensions can find them at dlopen time.
+
+    Safe to call multiple times; already-present paths are skipped.
+    """
+    py_ver = f"python{sys.version_info.major}.{sys.version_info.minor}"
+    nvidia_base = os.path.join(sys.prefix, "lib", py_ver, "site-packages", "nvidia")
+    if not os.path.isdir(nvidia_base):
+        return
+
+    nvidia_lib_dirs = [
+        os.path.join(nvidia_base, entry, "lib")
+        for entry in os.listdir(nvidia_base)
+        if os.path.isdir(os.path.join(nvidia_base, entry, "lib"))
+    ]
+    if not nvidia_lib_dirs:
+        return
+
+    existing = os.environ.get("LD_LIBRARY_PATH", "")
+    missing = [d for d in nvidia_lib_dirs if d not in existing]
+    if missing:
+        os.environ["LD_LIBRARY_PATH"] = ":".join(missing) + (":" + existing if existing else "")
 
 
 # ============================================================================
