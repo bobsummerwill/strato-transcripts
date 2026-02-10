@@ -12,7 +12,8 @@ from pathlib import Path
 
 # Import shared utilities
 from common import (Colors, success, failure, skip, validate_api_key,
-                    load_vocabulary, save_transcript_dual_format, cleanup_gpu_memory)
+                    load_vocabulary, save_transcript_dual_format, cleanup_gpu_memory,
+                    ensure_nvidia_lib_path)
 
 
 # ============================================================================
@@ -390,6 +391,9 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False, consensus_mode=
     import pandas as pd
     import gc
 
+    # CUDA library path setup for pip-installed NVIDIA packages
+    ensure_nvidia_lib_path()
+
     # ========================================================================
     # CRITICAL: Apply PyTorch patches BEFORE importing whisperx/pyannote
     # These libraries load model checkpoints on import, so patches must be first
@@ -581,8 +585,12 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False, consensus_mode=
         
         print(f"  → Detected {len(speakers)} speakers")
 
-        # Create output directory
-        episode_dir = Path(output_dir) / audio_path_obj.stem
+        # Create output directory (avoid nesting if output_dir already ends with episode name)
+        output_dir_path = Path(output_dir)
+        if output_dir_path.name == audio_path_obj.stem:
+            episode_dir = output_dir_path
+        else:
+            episode_dir = output_dir_path / audio_path_obj.stem
         episode_dir.mkdir(parents=True, exist_ok=True)
 
         if consensus_mode:
@@ -714,8 +722,12 @@ def transcribe_whisperx_cloud(audio_path, output_dir, consensus_mode=False):
         speakers = set(seg['speaker'] for seg in segments if seg['speaker'].startswith('SPEAKER_'))
         print(f"  Detected {len(speakers)} speakers")
 
-        # Create output directory
-        episode_dir = Path(output_dir) / audio_path_obj.stem
+        # Create output directory (avoid nesting if output_dir already ends with episode name)
+        output_dir_path = Path(output_dir)
+        if output_dir_path.name == audio_path_obj.stem:
+            episode_dir = output_dir_path
+        else:
+            episode_dir = output_dir_path / audio_path_obj.stem
         episode_dir.mkdir(parents=True, exist_ok=True)
 
         if consensus_mode:

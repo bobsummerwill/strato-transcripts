@@ -62,18 +62,6 @@ export ASSEMBLYAI_API_KEY=""
 export REPLICATE_API_TOKEN=""
 
 # ==============================================================================
-# PyTorch CUDA Library Path (for GPU operations)
-# ==============================================================================
-# Set LD_LIBRARY_PATH for CUDA libraries in this project's venv
-# Only active when setup_env.sh is sourced (project-specific, not global)
-PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-VENV_DIR="$PROJECT_DIR/venv"
-
-if [ -d "$VENV_DIR/lib/python3.12/site-packages/nvidia" ]; then
-    export LD_LIBRARY_PATH="$VENV_DIR/lib/python3.12/site-packages/nvidia/cudnn/lib:$VENV_DIR/lib/python3.12/site-packages/nvidia/cublas/lib:$VENV_DIR/lib/python3.12/site-packages/nvidia/cu13/lib:$LD_LIBRARY_PATH"
-fi
-
-# ==============================================================================
 # Display Configuration
 # ==============================================================================
 echo "Environment variables set"
