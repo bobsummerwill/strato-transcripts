@@ -138,9 +138,13 @@ def compute_alignment_confidence(orig_normalized, ai_normalized):
     return matcher.ratio()
 
 
-def align_segment(orig_words, ai_tokens, orig_start_idx, ai_start_idx):
+def align_segment(orig_words, ai_tokens):
     """
     Align a single time segment using SequenceMatcher.
+    
+    Args:
+        orig_words: List of original word dicts with timing info
+        ai_tokens: List of AI token strings (local to this segment)
     
     Returns list of aligned words with timestamps.
     """
@@ -177,7 +181,7 @@ def align_segment(orig_words, ai_tokens, orig_start_idx, ai_start_idx):
             for i in range(last_ai_idx, ai_match_start):
                 insert_time = last_time + (i - last_ai_idx + 1) * time_per_word
                 aligned.append({
-                    'text': ai_tokens[ai_start_idx + i],
+                    'text': ai_tokens[i],
                     'start': insert_time,
                     'end': insert_time + 0.1,
                     'speaker': last_speaker,
@@ -192,7 +196,7 @@ def align_segment(orig_words, ai_tokens, orig_start_idx, ai_start_idx):
             if orig_idx < len(orig_words):
                 orig_word = orig_words[orig_idx]
                 aligned.append({
-                    'text': ai_tokens[ai_start_idx + ai_idx],
+                    'text': ai_tokens[ai_idx],
                     'start': orig_word['start'],
                     'end': orig_word['end'],
                     'speaker': orig_word['speaker'],
@@ -208,7 +212,7 @@ def align_segment(orig_words, ai_tokens, orig_start_idx, ai_start_idx):
     if last_ai_idx < len(ai_tokens):
         for i in range(last_ai_idx, len(ai_tokens)):
             aligned.append({
-                'text': ai_tokens[ai_start_idx + i],
+                'text': ai_tokens[i],
                 'start': last_time + 0.1 * (i - last_ai_idx + 1),
                 'end': last_time + 0.1 * (i - last_ai_idx + 2),
                 'speaker': last_speaker,
@@ -267,7 +271,7 @@ def align_ai_to_original(original_words, ai_text):
     
     # If transcript is short, just align it all at once
     if max_time - min_time <= WINDOW_SIZE:
-        return align_segment(original_words, ai_tokens, 0, 0)
+        return align_segment(original_words, ai_tokens)
     
     # Split original words into time windows
     windows = []
@@ -295,11 +299,12 @@ def align_ai_to_original(original_words, ai_text):
         window_ai_count = int(len(ai_tokens) * window_orig_count / len(original_words))
         
         # Get AI tokens for this window (with some overlap tolerance)
-        window_ai_tokens = ai_tokens[ai_idx:ai_idx + window_ai_count + 5]  # +5 for tolerance
+        window_end = min(ai_idx + window_ai_count + 5, len(ai_tokens))
+        window_ai_tokens = ai_tokens[ai_idx:window_end]
         
         # Align this segment
         if window_ai_tokens:
-            segment_aligned = align_segment(window_words, window_ai_tokens, 0, ai_idx)
+            segment_aligned = align_segment(window_words, window_ai_tokens)
             aligned_words.extend(segment_aligned)
             
             # Advance AI token index by number of tokens consumed
