@@ -161,15 +161,15 @@ def cleanup_gpu_memory(force_cpu=False):
 
 
 def ensure_nvidia_lib_path():
-    """Auto-detect pip-installed NVIDIA library dirs and add to LD_LIBRARY_PATH.
+    """Auto-detect pip-installed NVIDIA library dirs and make them available.
 
     When CUDA libraries (cublas, nvrtc, cudnn, etc.) are installed via pip
     (e.g. nvidia-cublas-cu12), they live under the venv's site-packages/nvidia/
     but aren't on the system library path. This function discovers all such
-    lib dirs and adds any missing ones to LD_LIBRARY_PATH so that ctranslate2,
-    torch, and other native extensions can find them at dlopen time.
+    lib dirs, sets LD_LIBRARY_PATH for child processes, and preloads critical
+    shared libraries via ctypes so dlopen can find them in the current process.
 
-    Safe to call multiple times; already-present paths are skipped.
+    Safe to call multiple times; already-loaded libraries are skipped.
     """
     py_ver = f"python{sys.version_info.major}.{sys.version_info.minor}"
     nvidia_base = os.path.join(sys.prefix, "lib", py_ver, "site-packages", "nvidia")
@@ -184,10 +184,25 @@ def ensure_nvidia_lib_path():
     if not nvidia_lib_dirs:
         return
 
+    # Set LD_LIBRARY_PATH for any child processes (e.g. ffmpeg)
     existing = os.environ.get("LD_LIBRARY_PATH", "")
     missing = [d for d in nvidia_lib_dirs if d not in existing]
     if missing:
         os.environ["LD_LIBRARY_PATH"] = ":".join(missing) + (":" + existing if existing else "")
+
+    # Preload critical NVIDIA shared libraries via ctypes so dlopen finds them
+    # in the current process (os.environ changes don't always affect dlopen)
+    import ctypes
+    import glob
+    for lib_dir in nvidia_lib_dirs:
+        for so_file in glob.glob(os.path.join(lib_dir, "lib*.so*")):
+            # Skip .so symlinks that point to versioned files (avoid double-loading)
+            if os.path.islink(so_file):
+                continue
+            try:
+                ctypes.CDLL(so_file, mode=ctypes.RTLD_GLOBAL)
+            except OSError:
+                pass  # Some libs may have unresolved deps; that's fine
 
 
 # ============================================================================

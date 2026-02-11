@@ -134,41 +134,41 @@
 
 **[08:06] SPEAKER_01:** A couple of weeks before that I was uh, sorry we can't do it anyway because like we don't have the money anymore.
 
-**[08:12] SPEAKER_00:** Right. Well because they, they were getting very rapidly the funding or even even shut down entirely, I think.
+**[08:12] SPEAKER_00:** Right. Well, because they, they were getting very rapidly the funding or even even shut down entirely, I think.
 
 **[08:18] SPEAKER_01:** Yeah, probably already all that was coming. Um, yeah, so that's why it ended up being the Python team instead because there was uh, some budget. Um, but yeah, like sitting as the only person working on the Python client in that office in my small corner, uh, I had a lot of fun kind of uh, following how people came and went and went into Gavin's office and had a chat there with him, M and Juta or whatever. And uh, I didn't really know in the beginning what was going on until I was also asked if I wanted to come in and talk. And it was basically um, presenting ideas of what would happen next with the C team and if I wanted to consider uh, joining there or whatever. Um, yeah.
 
 **[09:07] SPEAKER_00:** Ah, so that was sort of the, the pre, uh, pre formation of what became Ethcore later. Parity.
 
-**[09:17] SPEAKER_01:** Yeah, I, I, I think so. That, so I, I was witnessing that uh, without knowing what was going on. I had no insight into like the finances of, of the, or anything like that. I only found out about most of those things um, later. Um, but so yeah, interesting to hear.
+**[09:17] SPEAKER_01:** Yeah, I, I, I think so. That, so I, I was witnessing that uh, without knowing what was going on. I had no insight into like the finances of, of the, or anything like that. I only found out about most of those things um, later. Um, but, so yeah, interesting to hear.
 
-**[09:35] SPEAKER_00:** Yeah. So I mean maybe let's, let's talk about DevCon1. So um, you'd have, so the first DevCon was DevCon0, uh, which happened in November 2014 before your time, which was the closed, you know, closed event, mainly Ethereum foundation people, but some broader ecosystem people. But then Devcon 1 had happened in November 2015, um, in London. Um, it had got announced earlier in the year and got cancelled because of this funding squeeze. But then uh, consensus basically stepped up and filled that funding gap and did some organizing. So that was in November of that year. I was not present myself. I couldn't afford to go or whatever at the time, but I watched a lot of the Lime Stream. But know that was a really very seminal uh, uh, conference. So how was that?
+**[09:35] SPEAKER_00:** Yeah. So I mean maybe let's, let's talk about DevCon1. So, um, you'd have, so the first DevCon was DevCon0, uh, which happened in November 2014, before your time, which was the closed, you know, closed event, mainly Ethereum foundation people, but some broader ecosystem people. But then Devcon 1 had happened in November 2015, um, in London. Um, it had got announced earlier in the year and got cancelled because of this funding squeeze. But then uh, consensus basically stepped up and filled that funding gap and, and did some organizing. So that was in November of that year. I, I was not present myself. I, I couldn't afford to go or whatever at the time, but I watched a lot of the Lime Stream. But you know, you know, that was a really very seminal uh, uh, conference. So how was that?
 
-**[10:35] SPEAKER_01:** For me it was amazing. I've never been good at sitting still on a chair for a long period of time, but there I was at every talk from the beginning, in the morning until the end. I think I missed one talk because I had to go catch my flight to go back on the last day or. But it was, I was just sitting there and sucking up all of these uh, ideas and visions and it was really, I think before that I had an idea that I thought it would be interesting to continue working with Ethereum or in the Ethereum space. But after DEF CON 1, I was like, I have to do this. Like, there's no other way for me. I'm not going back to the university. I'm not going to do anything else. This is what I'm going to do. Because it was a full day, or three full days of just sitting there and people presenting their ideas. Uh, I remember clearly, like, there was like, Maker, um, was presented, like, I was like, okay, like stable coins. Like, it was amazing. Uh, I think Fabian Fogelstella and Alex Van Hasande and some other people presented the ERC 20 token standard, or the early version of it. Um, which. Yeah, okay. This has also. This is such a big part of Ethereum now. Um, I think maybe Gnosis. I'm not sure, actually. Um, and of course, the project I was working on, the people there, like, we were presenting, uh, the Raiden network, which got a lot of very good feedback as well. Um, so it was hydrochain as well, right? Yeah. I was not so sold on hydrochain back then because it was aimed at.
+**[10:35] SPEAKER_01:** For me? It was amazing. I've never been good at sitting still on a chair for a long period of time, but there I was at every talk from the beginning, in the morning until the end. I think I missed one talk because I had to go catch my flight to go back on the last day or. But it was, I was just sitting there and sucking up all of these uh, ideas and visions and it was really, I think before that I had an idea that I thought it would be Interesting to continue working with Ethereum or in the Ethereum space. But after DEF CON 1, I was like, I have to do this. Like, there's no other way for me. I'm not going back to the university. I'm not going to do anything else. This is what I'm going to do. Because it was a full day, or three full days of just sitting there and people presenting their ideas. Uh, I remember clearly, like, there was like, maker, um, was presented, like, I was like, okay, like stable coins. Like, it was amazing. Uh, I think Fabian Fogelstella and Alex Van Hasande and some other people presented the ERC 20 token standard, or the early version of it. Um, which. Yeah, okay. This has also. This is such a big part of Ethereum now. Um, I think maybe Gnosis. I'm not sure, actually. Um, and of course, the project I was working on, the people there, like, we were presenting, uh, the Raiden Network, which got a lot of very good feedback as well. Um, so it was hydrochain as well, right? Yeah. I was not so sold on hydrochain back then because it was aimed at.
 
 **[12:06] SPEAKER_00:** Um, um, one of the very first permissioned Ethereum.
 
-**[12:11] SPEAKER_01:** Exactly. It was like a round robin kind of, uh, algorithm. And now it seems like something people would actually have used, uh, these days. So only 10 years, uh, too early. Um, but back to DEFCON 1. I was just thinking about it after our conversation last night that DEFCON 1, it was just about the technology. I think maybe there were three booths or something like that. A couple of stickers. I barely remember. I just remember. Was it, uh, app. Uh, what was the name of the.
+**[12:11] SPEAKER_01:** Exactly. It was like a round robin kind of, uh, algorithm. And now it seems like something people would actually have used, uh, these days. So only 10 years, uh, too early. Um, but back to DEFCON 1. I was just thinking about it after our conversation last night that DEFCON 1, it was just about the technology. I think maybe there were three booths or something like that, A couple of stickers. I barely remember. I just remember. Was it, uh, App. Uh, what was the name of the.
 
 **[12:41] SPEAKER_00:** Haskell project block App? Strato.
 
-**[12:45] SPEAKER_01:** Yeah, Blog. Blog. I remember they had, like, a small booth, I think.
+**[12:45] SPEAKER_01:** Yeah, Blog. Blog. I remember they had like a small booth, I think.
 
 **[12:48] SPEAKER_00:** Right, right.
 
 **[12:49] SPEAKER_01:** Some stickers.
 
-**[12:50] SPEAKER_00:** Yeah.
+**[12:50] SPEAKER_00:** Uh, yeah.
 
 **[12:50] SPEAKER_01:** Very sad that I lost that sticker.
 
 **[12:52] SPEAKER_00:** Right.
 
-**[12:52] SPEAKER_01:** But, uh, um, other than that, it was just like. Yeah, just people. There was one stage and everyone was, like, in the same room. Um, more or less. Um, and in the evenings, yeah, people would go out, Go out for dinner maybe, but there was not a single side event. There was not a single party, uh, glory days. It was just dinners and a couple of, uh, shepherd's pie somewhere.
+**[12:52] SPEAKER_01:** But, uh, um, other than that, it was just like. Yeah, just people. There was one stage and everyone was, like, in the same room. Um, more or less. Um, and in the evenings, yeah, people would go out, go out for dinner maybe. But there was not a single side event. There was not a single party, uh, glory days. It was just dinners and a couple of, uh, shepherd's pie somewhere.
 
 **[13:13] SPEAKER_00:** Right.
 
-**[13:14] SPEAKER_01:** Um, and that was kind of fun. Like, you. You got to know people, uh, like, really, really well. And, um, yeah, it was. It was really just the golden days. I felt like there was, yeah, so many inspired people and ideas, and people only talked about tech. I think there was, like, one a little bit weird product, uh, hype. Um, talk with a guy who had a T shirt, um, gun on the Stage this like free my bunk.
+**[13:14] SPEAKER_01:** Um, and that was kind of fun. Like, you. You got to know people, uh, like, really, really well. And, um, yeah, it was. It was really just the golden days. I felt like there was, yeah, so many inspired people and ideas and people only talked about tech. I think there was, like, one a little bit weird product, uh, hype, um, talk with a guy who had A T shirt, um, gun on the stage. This like free my bunk.
 
 **[13:40] SPEAKER_00:** Right.
 
@@ -188,13 +188,13 @@
 
 **[14:30] SPEAKER_00:** That's right.
 
-**[14:30] SPEAKER_01:** It's been quite crazy to see this uh, development as well of like measuring on the amount of uh, events and parties at the different uh, defcons, how popular um, things got. But ah, for me the DEFCON one is like one of my best memories of these 10, uh, years simply because it was just so inspiring and motivating I would say. And a lot of the people you have on your list were around there like. Yeah, it's, it's quite, uh, quite cool. And I actually recently found out um, that someone I got to know or a couple of years ago only, um, who's also doing some cool um, stuff. He actually was around there like we didn't meet each other. I didn't know him. I only found out like two years ago. But he had also. And he said he didn't see almost any talks because he was sitting in the back trying to get um, LS0 or the GETH client to run on his machine or something like that. Because it was not easy back then. No, it took days even if you had the devs available right next to you.
+**[14:30] SPEAKER_01:** It's been quite crazy to see this uh, development as well of like measuring on the amount of uh, events and parties at the different uh, defcons, how popular um, things got. But ah, for me the DEFCON one is like one of my best memories of these 10, uh, years simply because it was just so inspiring and motivating, I would say. And a lot of the people you have on your list were around there, like. Yeah, it's, it's quite, uh, quite cool. And I actually recently found out um, that someone I got to know or a couple of years ago only, um, who's also doing some cool um, stuff. He actually was around there. Like we didn't meet each other. I didn't know him. I only found out like two years ago. But he had also. And he said he didn't see almost any talks because he was sitting in the back trying to get um, LS0 or the GETH client to run on his machine or something like that. Because it was not easy back then. No, it took days even if you had the devs available right next to you.
 
 **[15:35] SPEAKER_00:** Absolutely.
 
 **[15:36] SPEAKER_01:** It wasn't easy.
 
-**[15:36] SPEAKER_00:** No, no.
+**[15:36] SPEAKER_00:** No.
 
 **[15:37] SPEAKER_01:** Um, so yeah, I think that's mainly what I have to like share without it going into too much uh, detail about, about things. But.
 
