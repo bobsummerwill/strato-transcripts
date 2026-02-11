@@ -26,7 +26,7 @@
   {
     "text": "Um,",
     "start": 2.68,
-    "end": 2.88,
+    "end": 2.87,
     "speaker": "SPEAKER_00"
   },
   {
@@ -446,7 +446,7 @@
   {
     "text": "uh,",
     "start": 33.04,
-    "end": 33.24,
+    "end": 33.26,
     "speaker": "SPEAKER_00"
   },
   {
@@ -476,7 +476,7 @@
   {
     "text": "Uh,",
     "start": 36.0,
-    "end": 36.29,
+    "end": 36.32,
     "speaker": "SPEAKER_00"
   },
   {
@@ -914,12 +914,12 @@
   {
     "text": "uh,",
     "start": 65.54,
-    "end": 66.04,
+    "end": 65.77,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "someone",
-    "start": 66.04,
+    "start": 65.94,
     "end": 66.34,
     "speaker": "SPEAKER_01"
   },
@@ -1142,7 +1142,7 @@
   {
     "text": "Um,",
     "start": 78.74,
-    "end": 79.18,
+    "end": 79.2,
     "speaker": "SPEAKER_01"
   },
   {
@@ -1640,7 +1640,7 @@
   {
     "text": "Um,",
     "start": 110.92,
-    "end": 111.5,
+    "end": 111.08,
     "speaker": "SPEAKER_01"
   },
   {
@@ -1802,7 +1802,7 @@
   {
     "text": "uh,",
     "start": 117.3,
-    "end": 117.36,
+    "end": 117.38,
     "speaker": "SPEAKER_01"
   },
   {
@@ -2288,7 +2288,7 @@
   {
     "text": "uh,",
     "start": 140.52,
-    "end": 140.67,
+    "end": 140.72,
     "speaker": "SPEAKER_01"
   },
   {
@@ -3938,12 +3938,12 @@
   {
     "text": "Um,",
     "start": 233.96,
-    "end": 234.42,
+    "end": 234.07,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "and",
-    "start": 234.42,
+    "start": 234.25,
     "end": 234.57,
     "speaker": "SPEAKER_01"
   },
@@ -4700,13 +4700,13 @@
   {
     "text": "Um,",
     "start": 278.26,
-    "end": 279.68,
+    "end": 278.66,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "um.",
     "start": 279.76,
-    "end": 280.19,
+    "end": 280.21,
     "speaker": "SPEAKER_01"
   },
   {
@@ -4880,12 +4880,12 @@
   {
     "text": "M.",
     "start": 287.92,
-    "end": 288.16,
+    "end": 288.01,
     "speaker": "SPEAKER_00"
   },
   {
     "text": "Sorry,",
-    "start": 288.16,
+    "start": 288.05,
     "end": 288.45,
     "speaker": "SPEAKER_00"
   },
@@ -4922,7 +4922,7 @@
   {
     "text": "Um,",
     "start": 289.8,
-    "end": 289.88,
+    "end": 289.92,
     "speaker": "SPEAKER_01"
   },
   {
@@ -5180,12 +5180,12 @@
   {
     "text": "remember",
     "start": 305.61,
-    "end": 305.77,
+    "end": 305.81,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "a",
-    "start": 305.77,
+    "start": 305.81,
     "end": 305.93,
     "speaker": "SPEAKER_01"
   },
@@ -5210,12 +5210,12 @@
   {
     "text": "uh,",
     "start": 306.59,
-    "end": 307.25,
+    "end": 307.05,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "Christoph",
-    "start": 307.25,
+    "start": 307.13,
     "end": 307.89,
     "speaker": "SPEAKER_01"
   },
@@ -6230,12 +6230,12 @@
   {
     "text": "uh,",
     "start": 350.95,
-    "end": 351.06,
+    "end": 351.11,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "as",
-    "start": 351.1,
+    "start": 351.11,
     "end": 351.46,
     "speaker": "SPEAKER_01"
   },
@@ -7244,12 +7244,12 @@
   {
     "text": "uh,",
     "start": 411.49,
-    "end": 411.87,
+    "end": 411.89,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "that",
-    "start": 411.87,
+    "start": 411.89,
     "end": 412.2,
     "speaker": "SPEAKER_01"
   },
@@ -7418,7 +7418,7 @@
   {
     "text": "uh,",
     "start": 421.35,
-    "end": 421.59,
+    "end": 421.56,
     "speaker": "SPEAKER_01"
   },
   {
@@ -8210,7 +8210,7 @@
   {
     "text": "uh,",
     "start": 463.47,
-    "end": 463.65,
+    "end": 463.62,
     "speaker": "SPEAKER_01"
   },
   {
@@ -8438,12 +8438,12 @@
   {
     "text": "Um,",
     "start": 476.55,
-    "end": 477.24,
+    "end": 477.25,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "so",
-    "start": 477.24,
+    "start": 477.25,
     "end": 477.34,
     "speaker": "SPEAKER_01"
   },
@@ -8760,7 +8760,7 @@
     "speaker": "SPEAKER_00"
   },
   {
-    "text": "Well",
+    "text": "Well,",
     "start": 492.57,
     "end": 492.89,
     "speaker": "SPEAKER_00"
@@ -9008,7 +9008,7 @@
   {
     "text": "uh,",
     "start": 505.43,
-    "end": 505.71,
+    "end": 505.68,
     "speaker": "SPEAKER_01"
   },
   {
@@ -9026,7 +9026,7 @@
   {
     "text": "Um,",
     "start": 507.07,
-    "end": 507.69,
+    "end": 507.68,
     "speaker": "SPEAKER_01"
   },
   {
@@ -9206,12 +9206,12 @@
   {
     "text": "uh,",
     "start": 518.19,
-    "end": 518.23,
+    "end": 518.21,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "following",
-    "start": 518.23,
+    "start": 518.22,
     "end": 518.62,
     "speaker": "SPEAKER_01"
   },
@@ -9530,7 +9530,7 @@
   {
     "text": "um,",
     "start": 535.59,
-    "end": 535.93,
+    "end": 535.69,
     "speaker": "SPEAKER_01"
   },
   {
@@ -9668,7 +9668,7 @@
   {
     "text": "Um,",
     "start": 545.97,
-    "end": 546.46,
+    "end": 546.02,
     "speaker": "SPEAKER_01"
   },
   {
@@ -9734,7 +9734,7 @@
   {
     "text": "uh,",
     "start": 550.17,
-    "end": 551.25,
+    "end": 550.28,
     "speaker": "SPEAKER_00"
   },
   {
@@ -10068,7 +10068,7 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "but",
+    "text": "but,",
     "start": 572.95,
     "end": 573.13,
     "speaker": "SPEAKER_01"
@@ -10164,7 +10164,7 @@
     "speaker": "SPEAKER_00"
   },
   {
-    "text": "So",
+    "text": "So,",
     "start": 578.77,
     "end": 579.17,
     "speaker": "SPEAKER_00"
@@ -10254,7 +10254,7 @@
     "speaker": "SPEAKER_00"
   },
   {
-    "text": "2014",
+    "text": "2014,",
     "start": 585.154,
     "end": 585.73,
     "speaker": "SPEAKER_00"
@@ -10626,14 +10626,20 @@
     "speaker": "SPEAKER_00"
   },
   {
-    "text": "and",
+    "text": "and,",
     "start": 614.029,
-    "end": 614.39,
+    "end": 614.35,
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "text": "and",
+    "start": 614.35,
+    "end": 614.63,
     "speaker": "SPEAKER_00"
   },
   {
     "text": "did",
-    "start": 614.55,
+    "start": 614.63,
     "end": 614.83,
     "speaker": "SPEAKER_00"
   },
@@ -10698,6 +10704,12 @@
     "speaker": "SPEAKER_00"
   },
   {
+    "text": "I,",
+    "start": 619.03,
+    "end": 619.43,
+    "speaker": "SPEAKER_00"
+  },
+  {
     "text": "I",
     "start": 619.43,
     "end": 619.79,
@@ -10725,6 +10737,12 @@
     "text": "myself.",
     "start": 620.79,
     "end": 621.35,
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "text": "I,",
+    "start": 621.59,
+    "end": 621.99,
     "speaker": "SPEAKER_00"
   },
   {
@@ -10848,7 +10866,25 @@
     "speaker": "SPEAKER_00"
   },
   {
-    "text": "know",
+    "text": "you",
+    "start": 627.91,
+    "end": 628.05,
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "text": "know,",
+    "start": 628.05,
+    "end": 628.19,
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "text": "you",
+    "start": 628.26,
+    "end": 628.34,
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "text": "know,",
     "start": 628.34,
     "end": 628.46,
     "speaker": "SPEAKER_00"
@@ -10892,7 +10928,7 @@
   {
     "text": "uh,",
     "start": 630.07,
-    "end": 630.58,
+    "end": 630.14,
     "speaker": "SPEAKER_00"
   },
   {
@@ -10938,13 +10974,13 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "me",
+    "text": "me?",
     "start": 635.66,
     "end": 635.82,
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "it",
+    "text": "It",
     "start": 635.82,
     "end": 635.94,
     "speaker": "SPEAKER_01"
@@ -11502,7 +11538,7 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "interesting",
+    "text": "Interesting",
     "start": 663.99,
     "end": 664.35,
     "speaker": "SPEAKER_01"
@@ -11976,7 +12012,7 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "Maker,",
+    "text": "maker,",
     "start": 685.16,
     "end": 685.21,
     "speaker": "SPEAKER_01"
@@ -12074,12 +12110,12 @@
   {
     "text": "Uh,",
     "start": 691.31,
-    "end": 691.48,
+    "end": 691.49,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "I",
-    "start": 691.48,
+    "start": 691.49,
     "end": 691.72,
     "speaker": "SPEAKER_01"
   },
@@ -12224,12 +12260,12 @@
   {
     "text": "Um,",
     "start": 699.53,
-    "end": 700.09,
+    "end": 700.01,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "which.",
-    "start": 700.09,
+    "start": 700.04,
     "end": 700.439,
     "speaker": "SPEAKER_01"
   },
@@ -12320,12 +12356,12 @@
   {
     "text": "Um,",
     "start": 704.45,
-    "end": 705.31,
+    "end": 704.51,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "I",
-    "start": 705.31,
+    "start": 705.24,
     "end": 705.64,
     "speaker": "SPEAKER_01"
   },
@@ -12492,7 +12528,7 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "network,",
+    "text": "Network,",
     "start": 713.71,
     "end": 713.99,
     "speaker": "SPEAKER_01"
@@ -12806,7 +12842,7 @@
   {
     "text": "uh,",
     "start": 733.21,
-    "end": 733.54,
+    "end": 733.55,
     "speaker": "SPEAKER_01"
   },
   {
@@ -12944,12 +12980,12 @@
   {
     "text": "Um,",
     "start": 741.87,
-    "end": 742.31,
+    "end": 742.07,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "but",
-    "start": 742.31,
+    "start": 742.28,
     "end": 742.68,
     "speaker": "SPEAKER_01"
   },
@@ -13158,7 +13194,7 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "that.",
+    "text": "that,",
     "start": 755.4,
     "end": 755.64,
     "speaker": "SPEAKER_01"
@@ -13242,7 +13278,7 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "app.",
+    "text": "App.",
     "start": 759.8,
     "end": 760.2,
     "speaker": "SPEAKER_01"
@@ -13356,13 +13392,13 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "had,",
+    "text": "had",
     "start": 766.76,
     "end": 766.92,
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "like,",
+    "text": "like",
     "start": 766.92,
     "end": 767.08,
     "speaker": "SPEAKER_01"
@@ -13418,12 +13454,18 @@
   {
     "text": "stickers.",
     "start": 769.24,
-    "end": 769.68,
+    "end": 769.63,
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "Yeah.",
-    "start": 769.68,
+    "text": "Uh,",
+    "start": 769.63,
+    "end": 769.71,
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "text": "yeah.",
+    "start": 769.71,
     "end": 770.12,
     "speaker": "SPEAKER_00"
   },
@@ -13484,7 +13526,7 @@
   {
     "text": "uh,",
     "start": 772.51,
-    "end": 772.79,
+    "end": 772.8,
     "speaker": "SPEAKER_01"
   },
   {
@@ -13652,12 +13694,12 @@
   {
     "text": "Um,",
     "start": 780.49,
-    "end": 781.03,
+    "end": 780.88,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "and",
-    "start": 781.03,
+    "start": 780.88,
     "end": 781.16,
     "speaker": "SPEAKER_01"
   },
@@ -13710,7 +13752,7 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "Go",
+    "text": "go",
     "start": 782.88,
     "end": 783.08,
     "speaker": "SPEAKER_01"
@@ -13734,13 +13776,13 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "maybe,",
+    "text": "maybe.",
     "start": 783.8,
     "end": 784.12,
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "but",
+    "text": "But",
     "start": 784.12,
     "end": 784.32,
     "speaker": "SPEAKER_01"
@@ -13826,12 +13868,12 @@
   {
     "text": "uh,",
     "start": 787.91,
-    "end": 788.09,
+    "end": 788.05,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "glory",
-    "start": 788.09,
+    "start": 788.05,
     "end": 788.44,
     "speaker": "SPEAKER_01"
   },
@@ -13922,7 +13964,7 @@
   {
     "text": "Um,",
     "start": 793.51,
-    "end": 794.29,
+    "end": 794.31,
     "speaker": "SPEAKER_01"
   },
   {
@@ -14172,7 +14214,7 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "ideas,",
+    "text": "ideas",
     "start": 806.08,
     "end": 806.56,
     "speaker": "SPEAKER_01"
@@ -14282,19 +14324,19 @@
   {
     "text": "uh,",
     "start": 811.59,
-    "end": 812.31,
+    "end": 811.77,
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "hype.",
-    "start": 812.31,
+    "text": "hype,",
+    "start": 812.28,
     "end": 812.92,
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "Um,",
+    "text": "um,",
     "start": 812.93,
-    "end": 813.72,
+    "end": 813.0,
     "speaker": "SPEAKER_01"
   },
   {
@@ -14334,7 +14376,7 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "a",
+    "text": "A",
     "start": 814.96,
     "end": 815.2,
     "speaker": "SPEAKER_01"
@@ -14354,7 +14396,7 @@
   {
     "text": "um,",
     "start": 815.85,
-    "end": 816.51,
+    "end": 816.52,
     "speaker": "SPEAKER_01"
   },
   {
@@ -14376,13 +14418,13 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "Stage",
+    "text": "stage.",
     "start": 817.32,
     "end": 817.56,
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "this",
+    "text": "This",
     "start": 817.56,
     "end": 817.84,
     "speaker": "SPEAKER_01"
@@ -14798,7 +14840,7 @@
   {
     "text": "Um,",
     "start": 835.99,
-    "end": 836.35,
+    "end": 836.37,
     "speaker": "SPEAKER_01"
   },
   {
@@ -15284,12 +15326,12 @@
   {
     "text": "Um,",
     "start": 857.31,
-    "end": 857.91,
+    "end": 857.48,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "and",
-    "start": 857.91,
+    "start": 857.79,
     "end": 858.07,
     "speaker": "SPEAKER_01"
   },
@@ -15710,7 +15752,7 @@
   {
     "text": "uh,",
     "start": 877.05,
-    "end": 877.06,
+    "end": 877.24,
     "speaker": "SPEAKER_01"
   },
   {
@@ -15912,7 +15954,7 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "motivating",
+    "text": "motivating,",
     "start": 892.81,
     "end": 893.41,
     "speaker": "SPEAKER_01"
@@ -16014,7 +16056,7 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "there",
+    "text": "there,",
     "start": 899.82,
     "end": 900.18,
     "speaker": "SPEAKER_01"
@@ -16190,7 +16232,7 @@
   {
     "text": "um,",
     "start": 909.63,
-    "end": 909.74,
+    "end": 909.75,
     "speaker": "SPEAKER_01"
   },
   {
@@ -16260,13 +16302,13 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "there",
+    "text": "there.",
     "start": 914.7,
     "end": 915.059,
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "like",
+    "text": "Like",
     "start": 915.059,
     "end": 915.38,
     "speaker": "SPEAKER_01"
@@ -16758,15 +16800,9 @@
     "speaker": "SPEAKER_01"
   },
   {
-    "text": "No,",
+    "text": "No.",
     "start": 936.49,
-    "end": 936.85,
-    "speaker": "SPEAKER_00"
-  },
-  {
-    "text": "no.",
-    "start": 936.85,
-    "end": 937.01,
+    "end": 936.89,
     "speaker": "SPEAKER_00"
   },
   {
@@ -16952,12 +16988,12 @@
   {
     "text": "you're,",
     "start": 947.85,
-    "end": 948.33,
+    "end": 948.37,
     "speaker": "SPEAKER_01"
   },
   {
     "text": "you're",
-    "start": 948.33,
+    "start": 948.37,
     "end": 948.65,
     "speaker": "SPEAKER_01"
   },

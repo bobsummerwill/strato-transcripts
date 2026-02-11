@@ -1,11 +1,11 @@
-**[00:01] SPEAKER_01:** Thank you. Peace. Bye.
+**[00:01] SPEAKER_01:** Thank you. Thank you. Thank you.
 
-**[01:05] SPEAKER_00:** Bye. Thank you. Thank you. Bye. Bye. so so so so so so so so Bye. Bye. Thank you. Thank you. Bye. so so you
+**[01:05] SPEAKER_00:** Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you.
 
 **[06:50] SPEAKER_01:** Thank you. Thank you.
 
-**[07:36] SPEAKER_00:** so so so so Thank you. Thank you. Thank you.
+**[07:36] SPEAKER_00:** Thank you. Thank you. Thank you. Thank you. Thank you.
 
 **[09:43] SPEAKER_01:** Thank you. Thank you. Thank you.
 
-**[10:38] SPEAKER_00:** Thank you. Thank you. Thank you. Bye. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you.
+**[10:38] SPEAKER_00:** Thank you. Thank you. Thank you. Bye. Thank you. Thank you. Thank you. Thank you. So, So, So, So, So, So, So, So,

@@ -16,11 +16,11 @@
 
 **[01:48] SPEAKER_00:** There was a chain split on Mainnet.
 
-**[01:50] SPEAKER_01:** Yes. And it happened, I think the second day I was there and that was the same day that there was a meetup planned in the office.
+**[01:50] SPEAKER_01:** Yes. And it happened, I think the second day I was there and that was the same day that there was a meetup planned in the. In the office.
 
 **[01:58] SPEAKER_00:** Right.
 
-**[02:00] SPEAKER_01:** So everything was extremely chaotic and people arrived at the office for the meetup and nothing happened for a good amount of time. And eventually I was just sitting there in the corner working and I was like, no, we can't do this because there's so many people who are just like, looking. Some started leaving. So I kind of ad hoc jumped in and gave a presentation of Ethereum back then that I had given a couple of weeks before back in Copenhagen.
+**[02:00] SPEAKER_01:** So everything was extremely chaotic and people arrived at the office for the meetup and nothing happened for a good amount of time. And eventually I was just sitting there in the corner working and I was like, no, we can't do this because there's so many people who are just like, looking. Some started leaving. So I kind of ad hoc jumped in and gave a presentation of on Ethereum back then that I had given a couple of weeks before back in Copenhagen.
 
 **[02:26] SPEAKER_00:** Prior to your internship?
 
