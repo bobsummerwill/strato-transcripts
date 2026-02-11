@@ -2,7 +2,11 @@
 
 **[00:02] SPEAKER_01:** Hello, Bob.
 
-**[00:03] SPEAKER_00:** So, yes, I'm Bob Samuel, recording here at Dark Prague for Early Days of Ethereum. And I have here Jakob. We've known each other about three years or so now, I think. We did meet in Bogota for Defcon 6 for the first time where you introduced yourself. I was not aware of your background and role, but yeah, specifically you were an intern at FDEV in Berlin in late 2015 and you also attended DEFCON 1. So how did you come to be involved with Ethereum at that time?
+**[00:03] SPEAKER_00:** So, yes, I'm Bob Samuel, recording here at Dark Prague for Early days of Ethereum. And I have here Jakob.
+
+**[00:14] SPEAKER_01:** Good enough?
+
+**[00:15] SPEAKER_00:** Good enough, yes. There you go. So, yeah, we've known each other about three years or so now, I think. We did meet in Bogota for Defcon 6 for the first time where you introduced yourself. I was not aware of your background and role, but yeah, specifically you were an intern at FDEV in Berlin in late 2015 and you also attended DEFCON 1. So how did you come to be involved with Ethereum at that time?
 
 **[00:55] SPEAKER_01:** Oh, yeah, thank you for the intro and good question. It was in Bogota. I think I knew about you or of you for longer than since then. But yeah, I think you were chatting with someone and talking about Florian Glutz, maybe, and talking about the old days. And I just jumped in because I know Florian and found out that we have a shared interest in the old days of Ethereum. And yeah, I did my internship working on the Python client back starting September or August 2015.
 
@@ -12,7 +16,11 @@
 
 **[01:48] SPEAKER_00:** There was a chain split on Mainnet.
 
-**[01:50] SPEAKER_01:** Yes. And it happened, I think the second day I was there and that was the same day that there was a meetup planned in the office. So everything was extremely chaotic and people arrived at the office for the meetup and nothing happened for a good amount of time. And eventually I was just sitting there in the corner working and I was like, no, we can't do this because there's so many people who are just like, looking. Some started leaving. So I kind of ad hoc jumped in and gave a presentation on Ethereum back then that I had given a couple of weeks before back in Copenhagen.
+**[01:50] SPEAKER_01:** Yes. And it happened, I think the second day I was there and that was the same day that there was a meetup planned in the office.
+
+**[01:58] SPEAKER_00:** Right.
+
+**[02:00] SPEAKER_01:** So everything was extremely chaotic and people arrived at the office for the meetup and nothing happened for a good amount of time. And eventually I was just sitting there in the corner working and I was like, no, we can't do this because there's so many people who are just like, looking. Some started leaving. So I kind of ad hoc jumped in and gave a presentation of Ethereum back then that I had given a couple of weeks before back in Copenhagen.
 
 **[02:26] SPEAKER_00:** Prior to your internship?
 
@@ -24,7 +32,11 @@
 
 **[02:40] SPEAKER_00:** Right, right.
 
-**[02:42] SPEAKER_01:** And the reason I got into Ethereum, I was studying computer science. And I knew about Bitcoin and thought it would be interesting to write my bachelor thesis on Bitcoin.
+**[02:42] SPEAKER_01:** And the reason I got into Ethereum, I was studying computer science.
+
+**[02:46] SPEAKER_00:** Okay.
+
+**[02:46] SPEAKER_01:** And I knew about Bitcoin and thought it would be interesting to write my bachelor thesis on Bitcoin.
 
 **[02:52] SPEAKER_00:** So this was an internship while you were still doing an undergraduate?
 
@@ -32,7 +44,11 @@
 
 **[03:02] SPEAKER_00:** So you had graduated.
 
-**[03:03] SPEAKER_01:** Yeah, but just a bachelor. And because the Ethereum ecosystem, to speak, was so small back then. I. We were in contact with the Ethereum foundation during the internship. I think I opened my first issue in March 2015.
+**[03:03] SPEAKER_01:** Yeah, but just a bachelor. And because the Ethereum ecosystem, to speak, was so small back then.
+
+**[03:10] SPEAKER_00:** Right, right.
+
+**[03:12] SPEAKER_01:** I. We were in contact with the Ethereum foundation during the internship. I think I opened my first issue in March 2015.
 
 **[03:24] SPEAKER_00:** Right.
 
@@ -56,7 +72,11 @@
 
 **[04:46] SPEAKER_00:** And remix as well. Well, mix. Sorry. At the time.
 
-**[04:49] SPEAKER_01:** Yeah. Yeah. And I also remember the Mist, I guess at least Fabian Fogel Stella was also around. So there was a good amount of different people around. And also quite often people would come and visit from other places. I remember a couple of times Christoph Jens came to visit.
+**[04:49] SPEAKER_01:** Yeah. Yeah. And I also remember the Mist, I guess at least Fabian Fogel Stella was also around. So there was a good amount of different.
+
+**[04:58] SPEAKER_00:** Yeah.
+
+**[04:59] SPEAKER_01:** People around. And also quite often people would come and visit from other places. I remember a couple of times Christoph Jens came to visit.
 
 **[05:10] SPEAKER_00:** Yeah.
 
@@ -72,11 +92,15 @@
 
 **[05:34] SPEAKER_00:** Yeah.
 
-**[05:35] SPEAKER_01:** So I enjoyed spending a lot of time in the office and I actually had like. I would usually just stay in the office. And then just go home and sleep because the office was quite nice.
+**[05:35] SPEAKER_01:** So I enjoyed spending a lot of time in the office and I actually had like. I would usually just stay in the office.
 
 **[05:42] SPEAKER_00:** Yeah.
 
-**[05:42] SPEAKER_01:** So, yeah. I had one night, one night where I think I left, let him into the office at the AS at midnight and we had had a little bit of a chat. I got to know him, he told me about all the testing he was doing and how they were testing. It was quite interesting.
+**[05:42] SPEAKER_01:** And then just go home and sleep because the office was quite nice.
+
+**[05:45] SPEAKER_00:** Right, right.
+
+**[05:46] SPEAKER_01:** So, yeah. I had one night, one night where I think I left, let him into the office at the AS at midnight and we had had a little bit of a chat. I got to know him, he told me about all the testing he was doing and how they were testing. It was quite interesting.
 
 **[06:02] SPEAKER_00:** And that's cross client testing as well, wasn't it? Right, yeah.
 
@@ -118,9 +142,9 @@
 
 **[09:17] SPEAKER_01:** Yeah, I, I, I think so that. So I, I was witnessing that without knowing what was going on. I had no insight into like the finances of, of the, or anything like that. I only found out about most of those things later. But so yeah, interesting to hear.
 
-**[09:35] SPEAKER_00:** Yeah. So I mean maybe let's, let's talk about Devcon 1. So you'd have. So the first Devcon was Devcon 0, which happened in November 2014 before your time, which was the closed, you know, closed event. Mainly Ethereum foundation people, but some broader ecosystem people. But then Devcon1 had happened in November 2015 in London. It had got announced earlier in the year and got cancelled because of this funding squeeze. But then consensus basically stepped up and filled that funding gap and did some organizing. So that was in November of that year. I was not present myself. I couldn't afford to go or whatever at the time, but I watched a lot of the Lime Stream. But know that was a really very seminal conference. So how was that?
+**[09:35] SPEAKER_00:** Yeah. So I mean maybe let's, let's talk about Devcon 1. So you'd have. So the first Devcon was Devcon 0, which happened in November 2014 before your time, which was the closed, you know, closed event, mainly Ethereum foundation people, but some broader ecosystem people. But then Devcon1 had happened in November 2015 in London. It had got announced earlier in the year and got cancelled because of this funding squeeze. But then consensus basically stepped up and filled that funding gap and, and did some organizing. So that was in November of that year. I, I was not present myself. I, I couldn't afford to go or whatever at the time, but I watched a lot of the lime stream. But you know, you know, that was a really very seminal conference. So how was that?
 
-**[10:35] SPEAKER_01:** For me it was amazing. I've never been good at sitting still on a chair for a long period of time, but there I was at every talk from the beginning, in the morning until the end. I think I missed one talk because I had to go catch my flight to go back on the last day or, but it was, I was just sitting there and sucking up all of these ideas and visions and it was really, I think before that I had an idea that I thought it would be interesting to continue working with Ethereum or in the Ethereum space. But after DEF CON 1, I was like, I have to do this. Like there's no other way for me. I'm not going back to the university, I'm not going to do anything else. This is what I'm going to do. Because it was a full day or three full days of just sitting there and people presenting their ideas. I remember clearly, like there was like maker was presented, like, I was like, okay, like stable coins. Like it was amazing. I think Fabian Fogelstella and Alex Van Hasande and some other people presented the ERC 20 token standard, or the early version of it, which. Yeah, okay. This has also. This is such a big part of Ethereum now. I think maybe Gnosis. I'm not sure, actually. And of course, the project I was working on, the people there, like, we were presenting the Raiden network, which got a lot of very good feedback as well.
+**[10:35] SPEAKER_01:** For me it was amazing. I've never been good at sitting still on a chair for a long period of time, but there I was at every talk from the beginning, in the morning until the end. I think I missed one talk because I had to go catch my flight to go back on the last day or, but it was, I was just sitting there and sucking up all of these ideas and visions and it was really, I think before that I had an idea that I thought it would be interesting to continue working with Ethereum or in the Ethereum space. But after DEF CON 1, I was like, I have to do this. Like there's no other way for me. I'm not going back to the university, I'm not going to do anything else. This is what I'm going to do. Because it was a full day or three full days of just sitting there and people presenting their ideas. I remember clearly, like there was like maker was presented, like, I was like, okay, like stable coins, like it was amazing. I think Fabian Fogelstella and Alex Van Hasande and some other people presented the ERC 20 token standard, or the early version of it, which. Yeah, okay. This has also. This is such a big part of Ethereum now. I think maybe Gnosis. I'm not sure, actually. And of course, the project I was working on, the people there, like, we were presenting the Raiden network, which got a lot of very good feedback as well.
 
 **[11:58] SPEAKER_00:** So it was hydrochain as well, right?
 
@@ -128,7 +152,7 @@
 
 **[12:08] SPEAKER_00:** One of the very first permissioned Ethereum.
 
-**[12:11] SPEAKER_01:** Exactly. It was like a round robin kind of algorithm. And now it seems like something people would actually have used these days. So only 10 years too early. But back to DEFCON 1. I was just thinking about it after our conversation last night, that DEFCON one, it was just about the technology. I think maybe there were three booths or something like that, A couple of stickers. I barely remember. I just remember. Was it app. What was the name of the Haskell project block app?
+**[12:11] SPEAKER_01:** Exactly. It was like a round robin kind of algorithm. And now it seems like something people would actually have used these days. So only 10 years too early. But back to DEFCON 1. I was just thinking about it after our conversation last night, that DEFCON one, it was just about the technology. I think maybe there were three booths or something like that, a couple of stickers. I barely remember. I just remember. Was it app. What was the name of the Haskell project block app?
 
 **[12:44] SPEAKER_00:** Strato.
 
@@ -152,7 +176,7 @@
 
 **[13:13] SPEAKER_00:** Right.
 
-**[13:15] SPEAKER_01:** And that was kind of fun. Like, you. You got to know people, like, really, really well. And, yeah, it was. It was really just the golden days. I felt like there was, yeah, so many inspired people and ideas and people only talked about tech. I think there was, like, one a little bit weird product hype talk with a guy who had a T shirt gun on the stage. This, like, free my bunk, right? Like a very different energy than everybody. It felt like he was the only one who actually knew how to give a talk and how to actually sell and back. Yeah, I thought it was way too much, but now. Now it's basically what everyone else is doing. And the quality of slides was so bad as well.
+**[13:15] SPEAKER_01:** And that was kind of fun. Like, you. You got to know people, like, really, really well. And yeah, it was. It was really just the golden days. I felt like there was, yeah, so many inspired people and ideas and people only talked about tech. I think there was, like, one a little bit weird product hype talk with a guy who had a T shirt gun on the stage. This, like, free my bunk, right? Like, a very different energy than everybody. It felt like he was the only one who actually knew how to give a talk and how to actually sell and back. Yeah, I thought it was way too much, but now. Now it's basically what everyone else is doing. And the quality of slides was so bad as well.
 
 **[13:54] SPEAKER_00:** It's right to look back.
 
@@ -160,11 +184,15 @@
 
 **[14:00] SPEAKER_00:** Right.
 
-**[14:01] SPEAKER_01:** I think at DEFCON 2, there was maybe like a couple of parties. I think consensus had, like. Yeah, bar somewhere where we would usually go. It was still not that big. There was still only one stage, I think, at DEFCON 2.
+**[14:01] SPEAKER_01:** I think at DEFCON 2, there was maybe like a couple of parties. I think consensus had like.
+
+**[14:07] SPEAKER_00:** Yeah.
+
+**[14:07] SPEAKER_01:** Bar somewhere where we would usually go it was still not that big. There was still only one stage, I think, at DEFCON 2.
 
 **[14:14] SPEAKER_00:** So it was like there was just one main stage.
 
-**[14:16] SPEAKER_01:** Yeah. Quite. Quite doable. And then I think at Defcon 3 in Cancun, that was where you could really feel okay, now there's a lot of money in this space because, like, there were parties right and left and. Yeah. Okay. The rest is history, right?
+**[14:16] SPEAKER_01:** Yeah. Quite. Quite doable. And then I think at Defcon 3 in Cancun, that was where you could really feel okay. Now there's a lot of money in this space because, like, there were parties right and left and. Yeah. Okay. The rest is history, right?
 
 **[14:30] SPEAKER_00:** That's right.
 
@@ -186,7 +214,7 @@
 
 **[15:47] SPEAKER_01:** Yeah, you're. You're very welcome.
 
-**[15:49] SPEAKER_00:** Great chatting, always.
+**[15:49] SPEAKER_00:** Great chatting always.
 
 **[15:50] SPEAKER_01:** Yeah.
 
