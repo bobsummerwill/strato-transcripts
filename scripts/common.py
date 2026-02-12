@@ -173,14 +173,25 @@ def ensure_nvidia_lib_path():
     """
     py_ver = f"python{sys.version_info.major}.{sys.version_info.minor}"
     nvidia_base = os.path.join(sys.prefix, "lib", py_ver, "site-packages", "nvidia")
-    if not os.path.isdir(nvidia_base):
-        return
 
-    nvidia_lib_dirs = [
-        os.path.join(nvidia_base, entry, "lib")
-        for entry in os.listdir(nvidia_base)
-        if os.path.isdir(os.path.join(nvidia_base, entry, "lib"))
-    ]
+    nvidia_lib_dirs = []
+
+    # 1. Check pip-installed nvidia packages (e.g. nvidia-cublas-cu12)
+    if os.path.isdir(nvidia_base):
+        nvidia_lib_dirs = [
+            os.path.join(nvidia_base, entry, "lib")
+            for entry in os.listdir(nvidia_base)
+            if os.path.isdir(os.path.join(nvidia_base, entry, "lib"))
+        ]
+
+    # 2. Fallback: check Ollama's bundled CUDA libraries
+    #    When no system CUDA toolkit or pip nvidia packages are installed,
+    #    Ollama bundles CUDA 12 libs at /usr/local/lib/ollama/cuda_v12/
+    if not nvidia_lib_dirs:
+        ollama_cuda = "/usr/local/lib/ollama/cuda_v12"
+        if os.path.isdir(ollama_cuda):
+            nvidia_lib_dirs = [ollama_cuda]
+
     if not nvidia_lib_dirs:
         return
 
