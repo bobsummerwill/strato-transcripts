@@ -43,7 +43,7 @@ from assess_quality import (
 
 AI_MODELS = [
     'opus', 'gemini', 'chatgpt', 'grok', 'deepseek',
-    'kimi', 'qwen', 'glm', 'minimax', 'llama', 'mistral'
+    'kimi', 'qwen', 'glm', 'glm5', 'minimax', 'llama', 'mistral'
 ]
 
 FILLER_WORDS = {
