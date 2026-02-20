@@ -1,0 +1,23 @@
+SPEAKER_03: So, so, bye.
+
+SPEAKER_01: So, so.
+
+SPEAKER_03: So, so.
+
+SPEAKER_02: Bye. Thank you.
+
+SPEAKER_00: So, so.
+
+SPEAKER_03: Thank you. Thank you. Thank you.
+
+SPEAKER_00: Thank you. Thank you.
+
+SPEAKER_03: Thank you.
+
+SPEAKER_04: Bye.
+
+SPEAKER_00: Thank you. Thank you.
+
+SPEAKER_04: Bye.
+
+SPEAKER_00: So, so.
