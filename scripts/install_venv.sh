@@ -275,7 +275,35 @@ case $CURRENT_MODE in
             torch==2.9.1 \
             torchvision==0.24.1 \
             torchaudio==2.9.1
+
+        # CTranslate2 (faster-whisper/WhisperX dependency) dynamically links against
+        # libcublas.so.12. PyTorch 2.9.1+cu130 bundles CUDA 13 internally but doesn't
+        # expose cublas12 on LD_LIBRARY_PATH. We need system CUDA 12 libs
+        # (installed by install_nvidia_drivers.sh) or a fallback path.
+        #
+        # Add activation hook so LD_LIBRARY_PATH includes CUDA 12 lib dirs automatically.
+        ACTIVATE_HOOK="$VENV_DIR/etc/conda/activate.d"  # reuse conda convention
+        mkdir -p "$ACTIVATE_HOOK"
+        cat > "$VENV_DIR/bin/activate_cuda.sh" << 'CUDA_HOOK_EOF'
+# CUDA 12 library path for CTranslate2/faster-whisper
+# Sourced automatically by setup_env.sh or manually before whisperx runs
+CUDA12_PATHS=(
+    "/usr/lib/x86_64-linux-gnu"           # System CUDA packages (libcublas-12-*)
+    "/usr/local/cuda-12/lib64"            # CUDA toolkit default install
+    "/usr/local/lib/ollama/cuda_v12"      # Ollama bundled CUDA 12
+)
+for _p in "${CUDA12_PATHS[@]}"; do
+    if [ -d "$_p" ] && [[ ":$LD_LIBRARY_PATH:" != *":$_p:"* ]]; then
+        if ls "$_p"/libcublas.so.12* &>/dev/null; then
+            export LD_LIBRARY_PATH="$_p${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+            break
+        fi
+    fi
+done
+unset _p CUDA12_PATHS
+CUDA_HOOK_EOF
         echo -e "${GREEN}✓ PyTorch 2.9.1+cu130 installed${NC}"
+        echo -e "${GREEN}✓ CUDA 12 activation hook created at $VENV_DIR/bin/activate_cuda.sh${NC}"
         ;;
     amd)
         echo "Installing PyTorch 2.6.0 with ROCm 6.2 support"
