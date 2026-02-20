@@ -1,0 +1,57 @@
+SPEAKER_03: So, bye.
+
+SPEAKER_01: So.
+
+SPEAKER_00: So.
+
+SPEAKER_03: Thank you. Bye.
+
+SPEAKER_03: Thank you. Bye.
+
+SPEAKER_01: Thank you.
+
+SPEAKER_03: So, thank you.
+
+SPEAKER_01: Thank you.
+
+SPEAKER_03: Bye.
+
+SPEAKER_01: Thank you.
+
+SPEAKER_04: Thank you.
+
+SPEAKER_01: Thank you.
+
+SPEAKER_00: Thank you.
+
+SPEAKER_04: Thank you. Bye.
+
+SPEAKER_00: Thank you.
+
+SPEAKER_04: Thank you.
+
+SPEAKER_01: Thank you.
+
+SPEAKER_00: Thank you.
+
+SPEAKER_01: Thank you.
+
+SPEAKER_00: Thank you.
+
+SPEAKER_01: Thank you.
+
+SPEAKER_04: Thank you.
+
+SPEAKER_00: Thank you. So.
+
+SPEAKER_01: Thank you. So, bye. Thank you.
+
+SPEAKER_00: Thank you.
+
+SPEAKER_01: Thank you.
+
+SPEAKER_03: Thank you.
+
+SPEAKER_04: Thank you.
+
+SPEAKER_01: Thank you.

@@ -1,0 +1,265 @@
+**[00:02] SPEAKER_05:** You are live. We are live. Hello, hello, and welcome, everybody. Hello, hello. It’s the week before ETHDenver, one of the major events of the Ethereum calendar—basically the regional event for North America—so that’s coming up. As well as the usual Strato crew, we have Colin the picker here. Is that how you pronounce your surname?
+
+**[00:33] SPEAKER_00:** Colin, yeah, that’s correct. That’s my name. Hi, everyone. So yeah, Colin is my actual name. Most people know me under the name of Shiba Tarzan, which is the crypto name I use.
+
+**[00:45] SPEAKER_05:** My actual name is Colin. Sometimes Shiba Tarzan, sometimes Crypto Tarzan. The Twitter handle?
+
+**[00:55] SPEAKER_00:** Is Crypto Tarzan. That was my name that I chose when I initially joined the space. Then when we did our ENS thing with Boop, then I had to come up with an original ENS name, and then it became Shiba Tarzan. I don’t know how, but I came up with it. I think it’s quite funny.
+
+**[01:11] SPEAKER_05:** It’s like the meme sticks forever. Like Victor’s “Viktful Wong” that we’ve told the story of before. Yeah, probably going to be the heritage handles story. So yeah, we’re here: myself, Bob somewhere, head of ecosystem, Kieren James-Lubin, a CEO, Viktor Wong, CPO3, and Michael Tan, who has got a little demo for us.
+
+**[01:46] SPEAKER_01:** We’re going to start with that. Sure. Hey, everyone. So back here with another demo, Strato. For the last week and week and a half going forward, we’re currently in a trading and referral contest, which I’ll be showing you an update on. Let’s start with that. So right now our top gainer is anonymously “10210d28f,” four percent gain. Not very much, so everyone’s got a chance if you would like to have a late entry. As for the referral contest, we currently have three by this user in our community, and yeah, a couple of referrals here.
+
+We’re also going to be talking about the vault that we’ve added as of last Friday. Let me show you that. So this is the current position I have on mainnet: deposit 144.96 of gold, and I’ve currently earned $1.84. But let’s do a little demo on the testnet, make my first deposit here. This account currently has USDT, and SOV, and silver—oh no, silver. Let’s put five USDT for a deposit. Still pausing. Successfully deposited. Great.
+
+So if you click this link, you can see what tokens are currently in the vault. It’s a market-making vault that just kind of rebalances the pools, and we give everybody an opportunity to participate in some of the APY. On mainnet, it’s currently 102.67, which is great. You can also find recent activity—the swaps by the vault—here. This is all done with our automated market-making bot, which you can actually find a blog about on our website. And if you ever want to withdraw, you just hit the withdrawal, and there you have it.
+
+**[03:59] SPEAKER_04:** You hear me? Yeah. Jumping on the bot quickly: the APY is obviously phenomenally high. As the assets go up, it will probably not be as phenomenally high. It is measuring the true change in underlying asset value. So theoretically all the trades are profitable, or it doesn’t do them. But the risk is sort of inventory risk, right? Like it still has to hold ETH and so on. But it is up in absolute terms.
+
+And when you deposit to it, it’s sort of one asset at a time, mark-to-market. So if you’ve got some gold tokenized, you deposit that. If you’ve got some ETH, you deposit that, and so on. But you can’t just pick and choose on the withdrawal. So you just get a sort of pro-rata share of the bot’s assets on withdrawal, which hopefully have increased. Just so you know: if you deposit and then you’re confused when you get a basket of assets back, that’s the why. But yeah, the APY is very high at the moment. We’re excited about it. Everyone, take advantage now where you can.
+
+**[05:19] SPEAKER_05:** Okay, well, thank you. I guess we’ll move on to Denver. Do you want to hang around, Mike? Are you coming to Denver?
+
+**[05:27] SPEAKER_01:** Yes. I’m arriving Monday night.
+
+**[05:40] SPEAKER_05:** Excellent. I was trying to count how many times I’ve been to ETHDenver, and I think 2019 was my first. So I think this is maybe my fourth. Anyone else veterans of Denver? I went early and then we had a few years where we just sort of skipped it in our enterprise days. But I think we went and sponsored in 2017 actually, and it still kind of had an organic feel to it. I think it still does. It’s one of the unique ones where—by the way, okay, so how are the tickets done? I know we’ve dealt with it at a corporate level. It’s a free event, right? But is it like a lottery? How do you—
+
+**[06:20] SPEAKER_05:** No, it’s a bit weird. So you can go for free, right? That’s kind of a key thing. It started out very hackathon-y. So it’s always been grassroots volunteers, no ticket prices for normies. But you have to join the SporkDAO for your free ticket. So you have to do this onboarding. At least now, I think you don’t actually have to use a wallet. I think you used to—in some prior years—you had to. There seems to be a Web 2.0 onboarding kind of flow, gasless, that gets you there. But there’s quite a few screens of stuff to click through, that’s for sure. Or you can just pay.
+
+But yes, I mean, I know what the numbers are going to be this year: probably around 20,000 from what I understand. That seems to be what the case was last time.
+
+**[07:41] SPEAKER_03:** Yourself, Viktor, you’ve been a few times?
+
+**[07:46] SPEAKER_03:** Yeah. Like Kieren, I was there early, and then I think my first kind of kickstart was last year, right? Yeah, now we’re going back again.
+
+**[07:58] SPEAKER_00:** And I know it’s your first time, Colin. For me, it’s going to be the first time. I started actually going last year to ETH events, so this is the first time that there’s an opportunity for me to go to Denver. So yeah, I’m excited. I heard a lot of different opinions. People say it’s great; other people say it kind of changed over the years and it’s a bit more marketing-related and less core Ethereum stuff. But yeah, I’m going to try to experience it for myself and see what it’s all about. Like I said, 20,000 people is still—it’s the only major U.S. event, I think, there is in the year. So yeah, I’m quite excited to explore it. I think it’s going to be great.
+
+Also, they changed the format from what I heard. Maybe, Bob, you can explain a bit on what changed there and if it’s going to have an impact on the previous years. But yeah, I’m quite excited for my first time.
+
+**[08:54] SPEAKER_01:** Have you been before, Mike? Have you been before, Mike? Oh, sorry—yeah, I was there last year with you.
+
+**[09:03] SPEAKER_05:** Oh yes, and that was your first.
+
+**[09:10] SPEAKER_05:** Colin, you were at ECC last year. I think they’re fairly comparable-ish sizes. I kind of think of ECC as the European one, and ETHDenver as the North America one—kind of similar-ish size.
+
+**[09:33] SPEAKER_00:** It’s just that I feel like it had a lot of side events. For ECC, the main event tickets were super pricey. I think it was like 500 euros for tickets. Many people—or many developers—just came to Cannes and then went to all the side events to get free drinks, free food, and always try to connect somewhere, try to get a job. I spoke to many people at ECC that were actually trying to get a job into the crypto space, and they said, “Oh yeah, the main event is too expensive.”
+
+So that’s why I also think there were so many side events at ECC. For the location, Cannes is not that big. Bob, you explored it. Compared to a city like Denver, it’s super small. And then there were so many side events. It was just incredible.
+
+**[10:17] SPEAKER_05:** Yeah. I mean, I think it’s become the curse of the major events. They kind of become a meeting point. They’re like, “All right, if you’re there, people will be there,” right? So they become like, “Are you going to be there?” and it’s kind of not so tied even to the main event. It’s just like, “Are you physically going to be in that place on those days?” Yes—great. “Where are you going to be? What are you going to be doing?” I don’t know. There’s all these different side events. Just sign up, sign up for a hundred things and see what you get and see where people are.
+
+They can be very fragmented. My understanding of the move to Cannes was partly to try and counter that, because at least it’s a physically smaller place so the side events have to be kind of closer together, so you’re not so fragmented. When I went to ECC the prior year in Brussels, I felt that was very, very fragmented. That was kind of a really bad year that they had to react to. It has been a criticism of ETHDenver as well.
+
+One thing I’ve seen that’s happening in Denver this year—like happened in Devconnect, kind of like the world fair, lots of things under the same roof—there seems to be a push to that kind of thing, right? Saying, “Well, we’re going to get lots of threads under that same banner.” It’s like, “Come to the main site and stay,” right? There’s enough going on that you don’t have to leave. You’ve got these different threads happening.
+
+**[12:16] SPEAKER_03:** Well, I think one of the challenges that ETHDenver has—and I kind of felt this at Devconnect this year—was that the event itself is in the middle of nowhere. So you’ve got to kind of make a call between: a lot of the side events are downtown, so you’ve got to make a call of “Do I stay downtown, or do I go out there?” And it kind of depends on who you’re meeting, really. Sometimes it just makes more sense to kind of stay downtown: a day here, a day in the middle, a day on the other side. There’s no middle—that’s the problem, right? You just gotta go one or the other.
+
+I tried a Bird scooter for the first time last year trying to shuttle myself, and that was terrifying. I’ll never do that again. I’m way too—
+
+**[13:09] SPEAKER_05:** Yeah. I went on a Lime scooter thing in Austin one time and it was like, “This is so dangerous.”
+
+**[13:16] SPEAKER_04:** Yeah, in Austin. Wow. Okay. That’s just like a rattly crappy bit of road at the side, no helmet—just—yeah.
+
+**[13:26] SPEAKER_05:** Like, this is bad.
+
+One of the things I saw as part of our sponsorship, which was quite interesting at ETHDenver, is they actually have a condition in there: to be a sponsor of the main event, you have to promise not to have a competing event during core hours. I thought that was quite interesting. It’s like, “Right, hey, you want to be in the gang? No straight competition.” Because that’s a real killer thing, right? It used to be side events were in the evening, days before, days after, and now it’s just, “No, we’re having our main conference on exactly the same day as you,” like straight competition.
+
+It’s funny how the norms have changed. Viktor, you talked about that with regard to Ripple and Consensus.
+
+**[14:21] SPEAKER_03:** Oh no, it was Cybo’s Toronto—Sibos. Yeah, it was that they kind of got booted out and then they made their parallel conference. Their parallel conference had—and this was a few short years ago, but very amazing and controversial at the time—that you would dare to have some competing content in the same city at the same time.
+
+**[14:35] SPEAKER_05:** Yeah. It was very amazing and controversial at the time that you would dare to have some competing content in the same city at the same time.
+
+**[14:50] SPEAKER_03:** Well, I think the big thing was they had these giant Ripple buses in front that buried you. It was just like, yeah. Also in the days when they saw blockchain as direct competitor to SWIFT. I think that that ship has zeroed. I think it definitely is a competitor.
+
+**[15:12] SPEAKER_05:** Yeah.
+
+Talking about sort of the corporate thing that you were mentioning there, Colin: there has been some criticism of ETHDenver specifically for having headline sponsors that are “Ethereum killers,” in quotes. So it’s like, “How dare you have Polkadot as a primary sponsor,” or BNB, or Cosmos, or what have you. But they’ve always had a line. It’s not like we had a token where you’ve got Tron everywhere and Justin Sun’s face pasted all over the shop—you know, like that’s not happening. And you’re not seeing BitBoy as a main speaker, as happened in Blockchain Futurist in Toronto. So there is a line, which I think is sort of being like “Ethereum and friends,” with a number of those friends having become L2s or EVM support over time anyway. So it’s kind of like a big tent vision.
+
+Also saying that sponsorship is key for keeping the tickets free for normal people.
+
+**[16:45] SPEAKER_03:** Well, now that Vitalik doesn’t like L2s, do we still have that? Here we go. Yes, yes, exactly.
+
+But the other thing that’s a little bit different about ETHDenver is: you have the hardcore dev conferences—Devconnect, Devcon—and then you have what I call the commercial conferences—Consensus, Token. ETHDenver is kind of in the middle. I think they try to be the culture conference, but it’s a little bit of both.
+
+**[17:23] SPEAKER_00:** I think also, for example, Devconnect is almost fully organized by the Ethereum Foundation. They have a full Devconnect team for it, so that kind of makes sense. But from what I spoke to a few guys of the EF lately, they say they have been making their way more into Denver this year than they did before. There is going to be an Ethereum Foundation day, if I’m right. There’s going to be a full day for them, and they have a whole section also this time. So like you say, Viktor, I think it’s a bit in the middle this time.
+
+Absolutely, on other events—like Token Dubai, Token Singapore—that’s even more to the commercial side. And you won’t see the EF that much there, not much of the core principles. So yeah, I think it’s a bit in the middle, but I see still a lot of chances and opportunities. It is still, like I said before, the biggest U.S. event, 20,000 people coming there. It’s a big audience still, so I think there are a lot of chances for them.
+
+**[18:26] SPEAKER_03:** Yeah, and Kieren, in the past, I think the first time we went there were a couple hundred people, and then next year it got huge quick. It felt familiar.
+
+**[18:41] SPEAKER_04:** Right. It was very Denver-like. It was like down the street from the dispensaries, there’s kombucha on tap. I assume that maybe still is there. But yeah, it had a kind of hippie agora feel to it, which maybe it still does. We’re gonna see.
+
+**[19:00] SPEAKER_05:** The sports palace was a cool building. Apparently I was wondering why it had the setup it had, which is like these stories with ramps around between them. But apparently it used to be a car warehouse place—that’s what. Interesting. But you just had this multi-level thing with sorts of ramps going up and around it, and some of them were talks. There’s only a few hundred—I might be getting this wrong, but I remember—
+
+**[19:32] SPEAKER_04:** I think the venue has changed again at some point. It was like a rodeo, right?
+
+**[19:39] SPEAKER_05:** No, it’s the same venue, but a different building on that same complex, I’d say.
+
+**[19:46] SPEAKER_04:** Gotcha. I remember I was catching up with John some years ago and he was telling me just the legs he had to go to to deal with the amount of people who want to come, which are pretty extreme—on the order of renting out a stadium—which is pretty funny to me.
+
+**[20:04] SPEAKER_05:** Yeah, it’s certainly a pretty major point of undertaking that. But yeah, there has always been a large sort of cultural and artsy kind of part to it as well.
+
+So yeah, mainly involved with that is this Museum of Ethereum. When you come into the venue, you go through the main ticketing. There is going to be an area which is called BUIDL Alley—new BUIDL City—which is kind of a Blade Runner-y sort of futurescape, somewhere like Meow Wolf or Harry Potter diagonally kind of vibes of going through this area. There are going to be various different sub-areas and zones in there.
+
+But yes, one of the large ones there is Museum of Ethereum, which we are sponsoring, as our Golem of Devcon 0 presentation era, and then ourselves Devcon 1 era—super OGs, still going.
+
+It’s a mixture of physical and digital artifacts, drawing largely from the early days of Ethereum: bios and interviews and everything. Also some photos through 2014, largely from Taylor Gerring. Also some of them from the Toronto Bitcoin Expo in April 2014.
+
+And then the other thing I’ve been working on for that, which I think is really, really cool, I’ve called the Ethereum Time Machine. So what I’m providing there is an authentic experience of running original software. I have got two 2010-era white plastic MacBooks and two chunky ThinkPads. I was trying to get back to Frontier software. I can run Frontier software. However, the second phase is actually mining.
+
+So the goal I had is: can you run 2015-era software on contemporary hardware, CPU-mine the chain back to life? So that’s what I’ve been working on in the background for a couple of months. Basically, GPUs at first get the thing moving, and then as it’s moving, the difficulty’s coming down and you’re easing off. So I’m in the final phases of that. I wanted to revive Frontier. Sadly, that’s a very, very expensive proposition that maybe some other future sponsor would like to drop 15 or 20k of GPU on. But yes, I have revived Homestead.
+
+So what you’ll have there is running Mist—running Mist at Homestead—CPU-mining transactions back and forth, sitting there getting the real experience of 10-year-old software, original chain, original protocol.
+
+**[24:06] SPEAKER_03:** Was that fun? So to get to that, is the real experience optional? Or like, I’m sorry, is pulling out your hair and frustration optional or required? Because I remember a lot of that myself. I’m just hoping they don’t crash too often. I remember Mist crashing a lot when we were playing around with it.
+
+**[24:30] SPEAKER_05:** Yes, there will be reboot instructions on hand.
+
+There’s also a big chunk which Jessica Angel, the creative director, has taken the lead on, to do with some orbs that you can put your hands on and reach consensus between each other, and light up different phases.
+
+And then there is also a centerpiece which is still in motion, so I won’t talk about it. But yeah, the hope is that a good chunk of those 20,000 people are going to walk in and they’re going to experience a bit of Ethereum history—really touching on those early days and people that they may have got no clue were around—and have a little bit of a flavor of what that year was like, and get your hands on.
+
+**[25:47] SPEAKER_03:** And you’re speaking on the main stage about it too, right? You’re talking about early days of Ethereum as well?
+
+**[25:54] SPEAKER_05:** Yeah. There’s a stage that’s like storytelling or culture. I can’t remember quite what that’s called. It’s called like New France stage, I think. So yeah, I’ll be giving a little talk there, though likely what I’ll do is play some ancient videos for people’s amusement. There is really fun stuff from the very early days that a lot of people won’t have seen.
+
+Particularly that Toronto Bitcoin Expo—so that was in April 2014. It was like the second time probably that most of the people on the team had met each other. Some had met in Miami in January, and then some again met in that April. But at that point, Ethereum was like a company. Ethereum were the headline sponsors for that event, and they had a booth, and they gave away hundreds or thousands of t-shirts and flyers. So it was the Ethereum company for the one and only time that you’ve ever had that.
+
+Though with the new EF being engaged again, they’re not being the company, but they are starting to have a presence at events again, which I think is a very positive thing to see—that engagement. They’re obviously never going to have an EF stand-up token or what have you, but having a presence at ETHDenver and ECC absolutely makes sense. So hopefully they’ll have a good presence.
+
+**[27:48] SPEAKER_00:** No, I mean, we’re looking forward to see you speak, Bob. But I remember you were kind of planning the same—speaking about Ethereum early days—at Devconnect, but then there were issues with the Wi-Fi or something, or the internet, I remember. So I hope this time the internet is going to be good, because I remember at Devconnect so many people just left the main venue again because they couldn’t do anything. It was super bad, the internet. And you can say, okay, it’s Argentina, but come on—they should have at least decent type of internet, hopefully.
+
+**[28:19] SPEAKER_05:** It will not be a problem in Denver, I can assure you that. They’ve been there a good chunk of time and they know what they’re doing.
+
+**[28:31] SPEAKER_03:** The Wi-Fi in Argentina was dreadful. We went to off-site coffee shops for Wi-Fi, so I don’t think it was a general Argentina problem.
+
+**[28:46] SPEAKER_05:** No, I think it was just a capacity problem because there were so many people there. And the problem at the Ethereum Cypherpunk Congress was they only got in the venue like two or three hours before the event. It was an absolute rush job. They did everything on the volunteers.
+
+**[29:04] SPEAKER_00:** They had so many volunteers because most of the core organization of Secure Privacy were just traveling. It was at the beginning of Devconnect, so most of the people were just arriving. And they said, “Okay, we’re gonna let it be run by volunteers to set up all.” So yeah, maybe there was an issue. But it was great—just unfortunate you couldn’t do your talk there. But yeah, hopefully to see in Denver would be amazing.
+
+**[29:31] SPEAKER_05:** Yeah, I mean, that talk I will re-record with them at some point. That still hasn’t happened. It was just a bit of a mess on the day, but yeah, Denver’s fine. They’ve been planning it for forever.
+
+So yeah, what’s happening with Book of Ethereum? How’s things in your world?
+
+**[29:54] SPEAKER_00:** Yeah, we’re trying to manage the winter period of crypto as we speak. It’s crazy times actually, but we’re doing our best. We’re managing things, just focusing on building the community, really making time to invest in community building. I think it’s super important.
+
+I see these months as a big chance to improve UX, improve onboarding strategies, because I feel like that’s something we still miss in general crypto, Ethereum specifically also. Because they always speak about the millions of people we’re still missing out on board, but then you also need to do something about it. And I see these times are pretty good to do it.
+
+There are slow volume days. Markets are terrible at the moment, so it is what it is. We need to look at other things to do now. But yeah, we’re really active still, and yeah, it’s gonna be our first time in Denver now. We will do other events this year also. I think we’ll be at ECC also this year, and we’re going to Devcon probably also in Mumbai. Really looking forward to that one as well.
+
+But yeah, for the rest, like I said, building the community, focusing on the onboarding and UX. We will see when the markets pick up again. But for now it’s just a bit low volume. Like I said, they call it the winter days, so we’ll see. It’s my first time experiencing this, so we’ll see how it goes. I feel like the sentiment all over is a bit lower. I wouldn’t say depressed, but most of the investors are at least a bit down and low sentiment because of these times. Do you— I mean, I think we all feel that a little bit.
+
+**[31:50] SPEAKER_04:** Do we prefer, though? The euphoria times have some real downsides too. It’s kind of hard. There’s so much noise in the euphoria times. I kind of like the quiet times, although it’s been a weird past cycle, if you all believe in that. There’s not really been too much of an alt run-up, which we had in the previous one. So I think the euphoria never set in in the same way. It’s sort of been like still a value accrual to staple assets mostly and a few breakouts, but it’s not like it was.
+
+**[32:33] SPEAKER_00:** Yeah, no, I don’t really believe also in the four-year cycle or whatever it’s called. I came in even after the last supposedly perfect four-year cycle, but I don’t really know. If you would ask those people, they can never really explain on what it’s based. Even the best traders in the world cannot explain how the financial markets work, what is going to be the future. They all just guess a bit on their feeling and they put things out of context to kind of try to find an explanation for things.
+
+But yeah, for example right now, if we look at Ethereum the asset over the past two years, the way it’s been moving, there is no real clarification for it. Why it’s going to a new all-time high and then again completely down—it feels like there is some unexpected market manipulation going on that we don’t have under control in some way.
+
+You could say after the April crash last year, people like Tom Lee and others brought back some hype with their staking announcements and all these things, and the treasury companies. It was a big thing in the summer, and then you saw it doing very well. Then with the upgrade in the end of November that Ethereum did, it was massive, and you would think everything looked perfectly fundamentally for January and Q1 incoming. Even Tom Lee did some crazy predictions on the price of Ethereum. But yeah, you see it’s not what it looks like. It’s not because fundamentally everything is looking fine that for that reason also the price is going to that target.
+
+So yeah, in my opinion it’s just unpredictable. I cannot predict it. Maybe you guys can; I cannot predict it. It’s kind of hard and it just is what it is. In my opinion, I’m just from the perspective that we have to undergo it and see what’s going on and just focus on the building. Like I said, I’ve said this many times to our community: if you’re not here for the building, the movement, the culture, then you will not last. If you’re just purely here based on the temporary price of the assets, then you’re never gonna be here for many years, I think. So it’s also quite a difficult space for that. Yeah, it’s just my opinion.
+
+**[34:53] SPEAKER_03:** Yeah. It’s funny because my current thought about what’s going on is that if you look at previous winters, they’ve been sort of more internal focused. The thing you could point to that kind of triggered them is something happening in the crypto sphere itself—ICOs going bust, or NFTs, or meme coins, or whatever. And now a lot of things in the world are happening simultaneously, and crypto is just one of those things, right? Metal prices have changed, equity prices have changed, currency prices have changed.
+
+So my current thing is that it is a little bit different this time because I think what’s happening is crypto is becoming part of the macro infrastructure. And I think we’ll look back and think, okay, this is the time that crypto did become part of the regular financial system, I think.
+
+**[36:05] SPEAKER_05:** So moving more away from speculation and more to utility?
+
+**[36:09] SPEAKER_03:** Well, I don’t know if it’s more speculation or utility. You could call the stock markets affected by a lot of speculation too. But I think it’s moving more toward a more stable view of people’s view on what they are. And the use of it is kind of becoming more stable and widespread. The number of holders are—you know, I think the choices that people have are not like, “Oh, do I move my crypto bags from one crypto to another?” It’s clear that people are considering, “Okay, should I move it into metal?” Like we saw that happening. Or should I move it into other assets that are completely outside the crypto sphere? Yeah.
+
+**[36:59] SPEAKER_04:** It’s a funny thing, and tokenization makes that a lot easier. We saw Erik Voorhees buy some huge quantity of PAXG and then to hit the internet in a big way. I think on balance this is a good thing, although it makes you a little bit—it’s not the old days, right?
+
+And I’ve said before, it’s unfortunate that ETH, Bitcoin, etc. seem to trade like a high-beta tech stock. They’re risk-on assets still. They’re not behaving like metals, which are somewhat anti-correlated, let’s say, with what the stock market does. But the positive side is RWAs can help achieve a certain type of practical day-to-day sovereignty, where you have a basket of assets that are both resilient from a price change perspective. In addition, the RWAs may be a little bit less purely cypherpunk. But again, we’ve seen a strange thing also: stables in circulation have doubled year over year, a little bit more, and floating crypto prices went down.
+
+I suppose there’s no in-principle reason those things have to go together. Eventually, usage goes up, you’ll see crypto prices go up in a commodity way. But yeah, interesting times.
+
+**[38:38] SPEAKER_03:** Well, I think on that note, the other thing that’s not—typically when we’ve had these other winters, total volumes have gone down, and that’s not necessarily true now. One way to think about it that I’ve been thinking of is that we thought crypto was the hedge against the mainstream markets, but I think the actual mechanism is DeFi. People are using DeFi to hedge in all kinds of different places. And because it’s global and 24/7, it allows you to do that way more efficiently than—you know, it’s the rails themselves that are the hedge.
+
+**[39:13] SPEAKER_04:** There’s a lot of leverage in the system now too. People believe that the big sell-offs have been liquidation-driven. So we saw the beginning in the FTX cycle, we saw the beginning on 10/10, and things are still shaking out. I’ve seen tweets today about Blockfills suspending withdrawals. So supposedly a bunch of big firms are just trying to manage maybe effective insolvency from leverage. It’s just more leverage than before. The Hyperliquids and the like kind of created 20x effective leverage out of thin air, I believe. There’s good use for these products, and so it just means the swings are going to be bigger—the blow-ups and so on. So yeah, interesting times all around.
+
+**[40:11] SPEAKER_00:** What I also feel a bit is that, like what Viktor has been saying, I think DeFi is going to be making a major move. It has to be also because, like I said, the stables have doubled. And I think that’s also because people take less risks, and especially the builders. They’re taking less risk. They’re exploring ways like: how can DeFi generate a passive income over time without needing to take unnecessary risk?
+
+And if you look into it, it’s a big—like I said, if they can explore it more and we can actually do what people like Vitalik and Gavin would have been saying from the very beginning—what are you going to build on Ethereum, and all the places to build applications—we haven’t seen, I think, all the possibilities of Ethereum yet.
+
+Like I said, in the past cycles, we have seen a lot of speculative things. We had the NFTs hype and everything, but the real upcoming trend of DeFi applications that are real businesses built by individuals also—you don’t need a big corporation anymore to start your own business on Ethereum.
+
+And I think that’s going to be a major one. Also what I see recently is that, in the past, it was very difficult for people that were not software engineers to build something on Ethereum. But what you see now—and the EF is also quite bullish on all these things—are the agents, especially with the ClawBot stuff that’s going around now, the Moloch book. Even we as a community, we have done our own ERC-8004 agent with now participating in hackathons for us, building things for us. We’re exploring with it as well. It is the future.
+
+I think a part of bringing people in—the self-custody story and all these things—the opportunity for people that will never be able to build something or create something to now, with the invention of AI and agents, build their own DeFi applications, I think that’s going to be something we’re going to see in the next years. I feel like it’s also something I feel like the builders are more pushing forward to. It’s kind of the subjects and topics everywhere right now, and less the highly speculative or volatile assets.
+
+So I think building infrastructure during this winter is going to be in your advantage.
+
+**[42:38] SPEAKER_03:** Yeah, and I totally agree with that, because without the noise— I said in the article I didn’t know if this was just because I’m Canadian and I have a fondness for winter generally, but there is a quiet building that happens. Ethereum itself would have never launched at the time it did unless it was for the winter we had there. It also forces you to focus on what is really meaningful for the future. So I think that’s one—no one likes the pain of bad prices, but it does allow you to refocus your efforts on a smaller number of super important things.
+
+**[43:14] SPEAKER_05:** Yeah, I think it’s good as long as you don’t die, as long as you don’t get completely—
+
+**[43:22] SPEAKER_00:** Wrecked, yeah, basically. That’s what I mean. It’s kind of hard to build products but fully be dependent on the price of your assets. You need to find solutions for that. Like I said, with stablecoins: building up yields, farming yields, generating your fees—there are so many possibilities you can explore.
+
+It’s also because of the long bad times. Especially on-chain, if you look on-chain, there has never been a good moment since just before Trump got elected. I think it was the last time we saw big on-chain volume. So since then, all those teams, bro, they need to look at other opportunities. So yeah, that’s what I’ve been seeing lately.
+
+But I think that the actual projects that are building—the assets of them—they will recover in due time if they can adapt to this new way of moving. Those that will adapt, I think those will be the ones that are going to be successful. If you cannot adapt and you just stay in the old format of “Oh, we’re just gonna do some hype,” and purely based on no value, no fundamentals behind it, then I think it’s just gonna die, like Bob says.
+
+But if you actually can adapt to the future and use all of these things and push forward, I think better times are ahead, 100%. But you just gotta continue. I think the real projects that are non-stop continuing to build, those will be the ones that will make it eventually.
+
+**[44:54] SPEAKER_03:** Yeah, and I think also you gotta take a broader view. If my thesis that crypto is now part of the mainstream is correct, then you’re not just comparing to other crypto projects, you’re comparing to legacy banking systems that were basically built in the 70s and haven’t been updated. So if you think, now the question is: where are the next booms coming from? Are people going to trust their money on those systems, or are they going to move to global, decentralized, 24/7 systems? And I think for all of us the answer is obvious, but I think the world is just starting to catch up to it.
+
+**[45:30] SPEAKER_00:** Exactly. I think it’s a really important moment now because a lot of the banks are starting to really get into crypto now. They want to bring crypto to their platform so they can handle their customers directly, because there’s coming more and more interest. People want to buy Ethereum, people want to buy Bitcoin, people want to buy Solana or whatever, and the banks need to provide for it.
+
+Especially in Europe, I’m seeing this right now. They are trying to push forward with new laws to be voted so that the banks are allowed to handle crypto and stuff. But I see already kind of issues with it. It will be purely people that will own the asset and they will see it purely as an investment. Unfortunate, what I’m seeing is that people, if they go with the bank way, they will never be able to explore their full potential. They won’t even be able to have their own ownership of the wallet; the bank will host it again like they always do. They’re just gonna see it as a new way of stock investment type of thing, and they’re not really knowing what’s going on.
+
+So that’s why I think, as a project now in the on-chain space and in DeFi, you really have to focus on onboarding and UX. Because there is a lot of potential now to get people into DeFi, so they don’t choose the banks. Otherwise, we’re going to get into big trouble where it’s going to be a fight whether the banks can onboard more people or whether we can onboard more people. So I think that’s something to look into, and especially it’s what I’m trying to do for my generation. All the people that are currently at uni studying, or just young age, they have the potential to make the difference.
+
+So yeah, I think that’s really important because otherwise all these things we’re doing—the building—is just not gonna matter, I feel like. So we have a big chance. We have all the infrastructure, we have the technology. We just have to focus on onboarding and UX. That’s, I think, the most important. And I think agents are maybe our largest customer base moving forward, feels like.
+
+**[47:31] SPEAKER_05:** Yeah, that’s a really good—because everybody’s just—
+
+**[47:39] SPEAKER_04:** A while before legacy finance can deal with agents. They’ll figure it out eventually, but there’s a lot of problems you need a meatspace person to deal with when you’ve got a bank account that you just don’t have to in the crypto world.
+
+I’m just adding on to Colin’s point: one thing I like to say is I look at Uber as a model in the sense that they’re operating a little gray. They kind of let people give car rides, and the taxi union doesn’t like it and so on. Consumers picked it, right? And you know, at least Uber mostly won in the United States. They get taxed and so on. In Europe, sometimes it’s just routing for the local taxis and so on. But it’s a model people picked because it was awesome.
+
+Crypto is awesome, but it’s awesome unevenly. There’s just a lot of sharp edges that you don’t know how to deal with as a newbie. It’s a little bit unfriendly to people who are not super expert: a lot of jargon, it kind of feels like an insidery culture. So we’ve got to be more normie-friendly in the approach—the tech, how you talk about the tech, and so on.
+
+And to Colin’s point, it is absolutely a fight for the same deposits, if you will, right? Crypto is more capable than what the legacy financial world has in ways we also just haven’t even imagined yet. But yeah, it just needs enough liquidity and whatnot to see all that happen. So it’s a big guiding principle for the things we build: try to keep it true to cypherpunk values to the maximal possible extent, but make it as easy as possible to onboard the regular human being.
+
+**[49:51] SPEAKER_03:** And I think one thing—Colin, you’re talking about UX, which I think people think of as just like how things look or how you interact with it. And Bob, you kind of coined that term that I like: “agentic experience.” I think part of it is: how should the system behave in a variety of ways?
+
+And I think one aspect that crypto hasn’t done well, and we are really kind of focused on, is: how do you create sensible defaults where, if you’re coming to the system, you’re highly unlikely to get wrecked? Other systems tend to push you to be super highly levered, and when markets hit these winters, you just get destroyed and you never want to come back, right?
+
+So I think it is part of the overall experience. It’s like: what does safety look like? And I don’t think it’s about cybersecurity as much as it is about sensible defaults that you should keep in order. Banks impose that on you. There should be some user choice here, but you gotta give users options at least at the starting point, and then move them toward more leverage or riskier behaviors when they understand the system, which is kind of hard to do right now.
+
+**[51:09] SPEAKER_00:** Yeah, exactly. Sorry, go on, but I just want to add: the thing is, I feel like what I mean with UX is also—I look back at my own story. I joined when I was 16, quite young. But in the first year, all the money that I brought into crypto, I lost it all. That was my first year of experiencing crypto. And what many of my friends also experienced, people I came in touch with first mostly on these random Telegram groups—this is how I entered the crypto space basically.
+
+Back then I was so young and I was just thinking it’s all normal and this is the way you need to get yourself into it. But now I’m looking at a more business perspective and seeing: hey, this is absolutely not normal.
+
+People getting in are just getting out again because they don’t feel the safety that they should feel. They don’t get the support they should get. They don’t get the right things to use: the right tools, the right onboarding guidelines, and everything. And I think that’s what I mean with UX and onboarding. All the companies building something on crypto should really make a priority of it, that they can bring the right people in and that they can educate them first before even letting them just explore the on-chain world.
+
+Otherwise, like Viktor said, you’re gonna get wrecked, you’re gonna lose money. People will just go out and speak bad about the space. Everyone will be speaking bad about crypto. It’s all just because they got wrecked—whether it’s a random coin, they got scammed, they clicked the wrong links, or their wallet got drained, or they sent the money to the wrong wallet. All these type of cases could be so easily prevented if we educate everyone that is coming into it.
+
+I know it’s time-consuming and it takes time to do this, but it’s super important if you want to be successful in the long term. That’s just something that I really feel from my own experience that we should focus on more.
+
+And like Kieren said—and this is the last thing I want to add—yes, the cypherpunk culture is super important: decentralization, self-sovereignty, self-custody, privacy, all these things. And we have been building the tech. We have been doing absolutely amazing on the builder side. But please keep it to that, and for the customers, for the public, it’s not relevant if you’re not a computer science guy or someone who builds. It’s not relevant for you to read these things first starting. Because then you’re going to be completely lost and you wouldn’t understand. Keep this in the background, but bring it over to your customers as: hey, this is super safe to use, these are all the advantages. But explain it to them, like Kieren says, in a normie way that they all can understand. And I think if we can really push forward these methods, then we’re going to see big progress over the next years.
+
+**[54:07] SPEAKER_03:** That’s just—well, and Colin, your story is bang on. You’re super brave for losing everything and then coming back and recommitting. But I think when I think of UX, one of our principles is: if you’re a beginner, you should be able to get in and make a little bit of profit very, very easily without having to worry about all these things, right? And it’s only when you step full on the gas that you have to worry.
+
+If we can change that simple experience from your first experience with crypto—Vitalik talks about low-risk DeFi, right? If that can be the first thing where, “Oh, I just made a little bit; I’ve done something simple, hardly anything, and I’ve made a little,” then you can kind of explore. And then we can have that gradual on-ramp to get to the next people. Because I think very few people are as brave as you, Colin, frankly.
+
+**[55:05] SPEAKER_00:** Yeah, coming back—yeah. I feel like there are thousands of people like me who experienced this: thousands, tens of thousands, a hundred thousand people. Unfortunately, some of them really start to believe this is all just a scam, and they completely leave. They go to stocks or whatever, and then they just do some normal stuff in the Web2 space.
+
+But yeah, like what you said, it’s really important to focus on those things. And what Vitalik has been saying about low-risk DeFi, but also about his recent post of the layer twos—so I saw so many degens on X were misinterpreting what he said and were saying, “Oh, L2s are bad, we should close down, it’s a failed project,” “This is why Ethereum price is going down,” all this type of nonsense. But most of the normal people read this actually and they believe it.
+
+But to put in perspective, basically what Vitalik meant, I think, is that the L2s are getting a bit stuck in going to their second phase, and they’re a bit just too competitive to each other: “Who is the cheapest gas? Who is this? Who is that?” Like the mini-Ethereums. But what they should actually do is—and Vitalik kind of uses a marketing principle here—he says you need to focus on your USP, your unique selling proposition. And that’s really important for the layer twos. They should focus each on their own USP and bring that to the customers, bring that to the normies, and stop focusing on, “Oh, we are going to be the cheapest one, we are going to be the highly competitive one,” because it’s not necessary, because the L1 is keeping on scaling. Vitalik also said, “Don’t worry. With the L1, we’re keeping the scalability high. Look what we did in the past. Just focus on this.”
+
+And that’s actually what he meant with a long post, to keep it in normal language. But I think that’s what the layer twos, for example, should focus on. And what you said also with low-risk DeFi, that’s also another major factor. All these things make sense. And I think Vitalik has been saying quite some good things lately. But it’s just people interpret it the wrong way, like they usually do.
+
+**[57:07] SPEAKER_05:** Alrighty. Well, I’m looking at the clock. We’re coming up on the hour, so I think that’s probably a good time to leave it. I shall see you all in Denver next week.
+
+**[57:19] SPEAKER_03:** Yes, in Denver next week. Playing with Mist on—what if you’re laughing—
+
+**[57:28] SPEAKER_04:** Everyone out there, please again check us out. Bridge in. Big things coming soon. There’s the vault, but everything else as well. And also check out Colin’s community. Colin, you want to leave a last note?
+
+**[57:41] SPEAKER_00:** Yeah. First of all, thanks for having me. Looking forward to speak to all of you guys again in Denver. It’s been a long time since I see you guys, so yeah, really looking forward to that. Let’s keep the discussions going further on in Denver. Thanks for having us.
+
+**[57:58] SPEAKER_05:** Thank you. Thank you. Bye-bye.
+
+**[58:00] SPEAKER_00:** Bye-bye.
