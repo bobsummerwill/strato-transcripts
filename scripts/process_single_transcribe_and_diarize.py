@@ -710,7 +710,10 @@ def transcribe_whisperx_cloud(audio_path, output_dir, consensus_mode=False):
             end = float(seg.get('end', 0))
             speaker = seg.get('speaker', 'SPEAKER_00')
             if speaker and not speaker.startswith('SPEAKER_'):
-                speaker = f'SPEAKER_{int(speaker):02d}'
+                try:
+                    speaker = f'SPEAKER_{int(speaker):02d}'
+                except (ValueError, TypeError):
+                    speaker = 'SPEAKER_UNKNOWN'
             text = seg.get('text', '').strip()
             segments.append({
                 'start': start,
@@ -736,14 +739,20 @@ def transcribe_whisperx_cloud(audio_path, output_dir, consensus_mode=False):
             for seg in pred_segments:
                 seg_speaker = seg.get('speaker', 'SPEAKER_00')
                 if seg_speaker and not seg_speaker.startswith('SPEAKER_'):
-                    seg_speaker = f'SPEAKER_{int(seg_speaker):02d}'
+                    try:
+                        seg_speaker = f'SPEAKER_{int(seg_speaker):02d}'
+                    except (ValueError, TypeError):
+                        seg_speaker = 'SPEAKER_UNKNOWN'
 
                 if 'words' in seg:
                     for word in seg['words']:
                         # Each word has its own speaker label from diarization
                         word_speaker = word.get('speaker', seg_speaker)
                         if word_speaker and not word_speaker.startswith('SPEAKER_'):
-                            word_speaker = f'SPEAKER_{int(word_speaker):02d}'
+                            try:
+                                word_speaker = f'SPEAKER_{int(word_speaker):02d}'
+                            except (ValueError, TypeError):
+                                word_speaker = 'SPEAKER_UNKNOWN'
                         word_data.append({
                             'text': word.get('word', word.get('text', '')),
                             'start': float(word.get('start', 0)),
