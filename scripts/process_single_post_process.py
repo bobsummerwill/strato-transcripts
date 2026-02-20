@@ -28,7 +28,7 @@ from common import (Colors, success, failure, skip, validate_api_key,
 # │ Processor │ Model               │ OpenRouter ID                     │ Context │
 # ├───────────┼─────────────────────┼───────────────────────────────────┼─────────┤
 # │ opus      │ Claude Opus 4.5     │ anthropic/claude-opus-4.5         │ 200K    │
-# │ gemini    │ Gemini 3 Pro        │ google/gemini-3-pro-preview       │ 1M      │
+# │ gemini    │ Gemini 3.1 Pro        │ google/gemini-3.1-pro-preview       │ 1M      │
 # │ chatgpt   │ GPT-5.2             │ openai/gpt-5.2                    │ 400K    │
 # │ grok      │ Grok 4              │ x-ai/grok-4                       │ 256K    │
 # │ qwen      │ Qwen3-Max           │ qwen/qwen3-max                    │ 256K    │
@@ -56,7 +56,7 @@ from common import (Colors, success, failure, skip, validate_api_key,
 
 OPENROUTER_MODELS = {
     'opus': 'anthropic/claude-opus-4.5',           # Claude Opus 4.5 - 200K context
-    'gemini': 'google/gemini-3-pro-preview',       # Gemini 3 Pro - 1M context
+    'gemini': 'google/gemini-3.1-pro-preview',       # Gemini 3.1 Pro - 1M context
     'deepseek': 'deepseek/deepseek-chat',          # DeepSeek V3.2 - 128K context
     'chatgpt': 'openai/gpt-5.2',                   # GPT-5.2 - 400K context
     'qwen': 'qwen/qwen3-max',                      # Qwen3-Max - 256K context

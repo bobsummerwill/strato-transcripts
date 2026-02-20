@@ -15,7 +15,7 @@ import subprocess
 # OpenRouter model IDs (same as in process_single_post_process.py)
 OPENROUTER_MODELS = {
     'opus': ('anthropic/claude-opus-4.5', 'Claude Opus 4.5'),
-    'gemini': ('google/gemini-3-pro-preview', 'Gemini 3 Pro'),
+    'gemini': ('google/gemini-3.1-pro-preview', 'Gemini 3.1 Pro'),
     'deepseek': ('deepseek/deepseek-chat', 'DeepSeek V3.2'),
     'chatgpt': ('openai/gpt-5.2', 'GPT-5.2'),
     'qwen': ('qwen/qwen3-max', 'Qwen3-Max'),

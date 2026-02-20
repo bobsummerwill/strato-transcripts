@@ -8,7 +8,7 @@ All post-processing providers are accessed through OpenRouter with a single API 
 
 PROVIDER MATRIX (11 POST-PROCESSING PROVIDERS via OpenRouter):
 - opus: Claude Opus 4.5 - 200K context, 64K output
-- gemini: Gemini 3 Pro - 1M context, 64K output
+- gemini: Gemini 3.1 Pro - 1M context, 64K output
 - deepseek: DeepSeek V3.2 - 128K context
 - chatgpt: GPT-5.2 - 400K context, 128K output
 - qwen: Qwen3-Max - 256K context
@@ -71,8 +71,8 @@ OPENROUTER_MODELS = {
         'test_sizes': [10000, 50000, 100000, 150000, 190000, 200000],
     },
     'gemini': {
-        'model_id': 'google/gemini-3-pro-preview',
-        'display_name': 'Gemini 3 Pro',
+        'model_id': 'google/gemini-3.1-pro-preview',
+        'display_name': 'Gemini 3.1 Pro',
         'provider': 'Google',
         'advertised': '1,000,000 tokens',
         'test_sizes': [10000, 50000, 100000, 200000, 500000, 1000000],
@@ -147,7 +147,7 @@ MODEL_PRIORITY = {
     'x-ai/grok-4': 100,
     'anthropic/claude-opus-4.5': 95,
     'openai/gpt-5.2': 90,
-    'google/gemini-3-pro-preview': 85,
+    'google/gemini-3.1-pro-preview': 85,
     'meta-llama/llama-4-maverick': 80,
     'qwen/qwen3-max': 75,
     'moonshotai/kimi-k2.5': 70,
