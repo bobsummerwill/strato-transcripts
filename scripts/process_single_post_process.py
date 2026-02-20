@@ -2,7 +2,7 @@
 """
 AI transcript post-processor for Ethereum/blockchain content.
 Batch process transcripts with multiple AI providers via OpenRouter.
-Supports: opus, gemini, deepseek, chatgpt, qwen, kimi, glm, minimax, llama, grok, mistral.
+Supports: opus, gemini, deepseek, chatgpt, qwen, kimi, glm, glm5, minimax, llama, grok, mistral.
 
 All models are accessed through OpenRouter (https://openrouter.ai) with a single API key.
 """
@@ -62,6 +62,7 @@ OPENROUTER_MODELS = {
     'qwen': 'qwen/qwen3-max',                      # Qwen3-Max - 256K context
     'kimi': 'moonshotai/kimi-k2.5',                # Kimi K2.5 - 256K context
     'glm': 'z-ai/glm-4.7',                         # GLM-4.7 - 203K context (reasoning model)
+    'glm5': 'z-ai/glm-5',                          # GLM-5 - 203K context (flagship agentic model, 744B MoE)
     'minimax': 'minimax/minimax-m2.1',             # MiniMax M2.1 - 4M context
     'llama': 'meta-llama/llama-4-maverick',        # Llama 4 Maverick - 1M context
     'grok': 'x-ai/grok-4',                         # Grok 4 - 256K context
@@ -75,6 +76,7 @@ OPENROUTER_MAX_TOKENS = {
     'chatgpt': 16384,   # GPT-5.2 conservative default
     'grok': 32768,      # Grok uses internal reasoning, needs more tokens
     'glm': 65536,       # GLM 4.7 is a reasoning model, needs tokens for reasoning + output
+    'glm5': 65536,      # GLM-5 flagship model
     'default': 8192,    # Default for others
 }
 
@@ -293,7 +295,7 @@ def save_processed_files(output_dir, basename, transcriber, processor, content, 
     import re
 
     # Fix GLM format if needed (GLM often omits timestamps)
-    if processor == 'glm' and input_content and not content.strip().startswith('**['):
+    if processor in ('glm', 'glm5') and input_content and not content.strip().startswith('**['):
         content = fix_glm_format(content, input_content)
 
     # Create episode-specific subdirectory
@@ -952,7 +954,7 @@ def main():
     
     parser.add_argument("transcripts", nargs='+', help="Transcript file path(s)")
     parser.add_argument("--processors", required=True,
-                       help="Comma-separated list of processors. Hosted: opus,gemini,deepseek,chatgpt,qwen,kimi,glm,minimax,llama,grok,mistral. Local-only: deepseek-local,qwen-local,mistral-local,llama-local")
+                       help="Comma-separated list of processors. Hosted: opus,gemini,deepseek,chatgpt,qwen,kimi,glm,glm5,minimax,llama,grok,mistral. Local-only: deepseek-local,qwen-local,mistral-local,llama-local")
     parser.add_argument("--mode", choices=['hosted', 'local'], default='hosted',
                        help="Run models via OpenRouter API (hosted, default) or locally via ollama (local)")
 
@@ -963,7 +965,7 @@ def main():
     # All valid processor names (hosted + local-only)
     valid_processors = {
         # Hosted (OpenRouter) - full-size models
-        'opus', 'gemini', 'deepseek', 'chatgpt', 'qwen', 'kimi', 'glm', 'minimax', 'llama', 'grok', 'mistral',
+        'opus', 'gemini', 'deepseek', 'chatgpt', 'qwen', 'kimi', 'glm', 'glm5', 'minimax', 'llama', 'grok', 'mistral',
         # Local-only (ollama) - models that fit on 48GB
         'deepseek-local', 'qwen-local', 'mistral-local', 'llama-local',
     }

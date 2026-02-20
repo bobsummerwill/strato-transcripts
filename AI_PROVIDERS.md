@@ -20,6 +20,7 @@ Get your key from: https://openrouter.ai/keys
 | **llama** | Llama 4 Maverick | `meta-llama/llama-4-maverick` | 1M | Open (400B) |
 | **deepseek** | DeepSeek V3.2 | `deepseek/deepseek-chat` | 128K | Open (671B) |
 | **glm** | GLM-4.7 | `z-ai/glm-4.7` | 203K | Open (30B) |
+| **glm5** | GLM-5 | `z-ai/glm-5` | 203K | Open (744B MoE, 40B active) |
 
 ## Local Models (ollama, fit on 48GB)
 
