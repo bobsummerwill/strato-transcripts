@@ -10,7 +10,7 @@ Get your key from: https://openrouter.ai/keys
 | Processor | Model | OpenRouter ID | Context | Weights |
 |-----------|-------|---------------|---------|---------|
 | **opus** | Claude Opus 4.5 | `anthropic/claude-opus-4.5` | 200K | Closed |
-| **gemini** | Gemini 3 Pro | `google/gemini-3-pro-preview` | 1M | Closed |
+| **gemini** | Gemini 3.1 Pro | `google/gemini-3.1-pro-preview` | 1M | Closed |
 | **chatgpt** | GPT-5.2 | `openai/gpt-5.2` | 400K | Closed |
 | **grok** | Grok 4 | `x-ai/grok-4` | 256K | Closed |
 | **qwen** | Qwen3-Max | `qwen/qwen3-max` | 256K | Closed |
@@ -137,7 +137,7 @@ python3 scripts/test_context_limits.py --providers all
 
 ### Tier 2: Large Context (Long Documents)
 
-#### Gemini 3 Pro (`gemini`)
+#### Gemini 3.1 Pro (`gemini`)
 - **Context**: 1M tokens, 64K output
 - **Best For**: Very long documents, technical content
 - **Notes**: Dynamic thinking by default
