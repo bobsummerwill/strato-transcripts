@@ -1,0 +1,27 @@
+SPEAKER_00: So...
+
+SPEAKER_01: [unclear]
+
+SPEAKER_01: Bye. Thank you.
+
+SPEAKER_01: Thank you. Bye.
+
+SPEAKER_00: So...
+
+SPEAKER_00: Thank you.
+
+SPEAKER_00: Thank you.
+
+SPEAKER_01: Bye.
+
+SPEAKER_01: So... Bye.
+
+SPEAKER_00: Thank you. Thank you.
+
+SPEAKER_01: So...
+
+SPEAKER_01: So... um...
+
+SPEAKER_01: Thank you.
+
+SPEAKER_00: Bye.
