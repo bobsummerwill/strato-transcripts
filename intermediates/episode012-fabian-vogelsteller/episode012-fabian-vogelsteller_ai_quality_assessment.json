@@ -1,0 +1,114 @@
+{
+  "input_word_count": 18882,
+  "consensus_word_count": 61512,
+  "models": {
+    "mistral": {
+      "word_count": 18882,
+      "input_preservation": 1.0,
+      "consensus_alignment": 0.004464152529731635,
+      "length_score": 1.0,
+      "format_score": 1.0,
+      "quality_score": 0.6017856610118927
+    },
+    "glm": {
+      "word_count": 23112,
+      "input_preservation": 0.4055659118458984,
+      "consensus_alignment": 0.007226220397039771,
+      "length_score": 0.8879885605338418,
+      "format_score": 1.0,
+      "quality_score": 0.4021579738193538
+    },
+    "kimi": {
+      "word_count": 13013,
+      "input_preservation": 0.3579044117647059,
+      "consensus_alignment": 0.005772664093603536,
+      "length_score": 0.8445874377714225,
+      "format_score": 1.0,
+      "quality_score": 0.37859787672113765
+    },
+    "glm5": {
+      "word_count": 22935,
+      "input_preservation": 0.21739396286407273,
+      "consensus_alignment": 0.011150371723773419,
+      "length_score": 0.8926755640292342,
+      "format_score": 1.0,
+      "quality_score": 0.34821345035457807
+    },
+    "opus": {
+      "word_count": 20950,
+      "input_preservation": 0.08819686068296677,
+      "consensus_alignment": 0.008468157222182866,
+      "length_score": 1.0,
+      "format_score": 1.0,
+      "quality_score": 0.3298463210937632
+    },
+    "grok": {
+      "word_count": 20702,
+      "input_preservation": 0.030152835827079547,
+      "consensus_alignment": 0.012907450602618291,
+      "length_score": 1.0,
+      "format_score": 1.0,
+      "quality_score": 0.3142088309891712
+    },
+    "deepseek": {
+      "word_count": 7621,
+      "input_preservation": 0.2300875391764833,
+      "consensus_alignment": 0.006836310875681752,
+      "length_score": 0.7018059527592416,
+      "format_score": 1.0,
+      "quality_score": 0.312121976655066
+    },
+    "llama": {
+      "word_count": 7011,
+      "input_preservation": 0.21986403581495606,
+      "consensus_alignment": 0.010101543273005588,
+      "length_score": 0.6856530028598665,
+      "format_score": 1.0,
+      "quality_score": 0.30713042862566237
+    },
+    "chatgpt": {
+      "word_count": 13479,
+      "input_preservation": 0.0907560034823057,
+      "consensus_alignment": 0.010927455831870547,
+      "length_score": 0.8569272322847157,
+      "format_score": 1.0,
+      "quality_score": 0.3029832298343831
+    },
+    "minimax": {
+      "word_count": 6969,
+      "input_preservation": 0.20510119038258928,
+      "consensus_alignment": 0.006665415254711731,
+      "length_score": 0.684540832538926,
+      "format_score": 1.0,
+      "quality_score": 0.3011046897244467
+    },
+    "qwen": {
+      "word_count": 6497,
+      "input_preservation": 0.18707207243363863,
+      "consensus_alignment": 0.019471589814451892,
+      "length_score": 0.6720421565512128,
+      "format_score": 1.0,
+      "quality_score": 0.2983186889661149
+    },
+    "gemini": {
+      "word_count": 11716,
+      "input_preservation": 0.09867732923777622,
+      "consensus_alignment": 0.013012588198296945,
+      "length_score": 0.810242559050948,
+      "format_score": 1.0,
+      "quality_score": 0.29685674586084126
+    }
+  },
+  "top_5": [
+    "mistral",
+    "glm",
+    "kimi",
+    "glm5",
+    "opus"
+  ],
+  "bottom_3": [
+    "minimax",
+    "qwen",
+    "gemini"
+  ]
+}
