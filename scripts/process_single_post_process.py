@@ -939,6 +939,8 @@ def main():
                        help="Comma-separated list of processors. Hosted: opus,gemini,deepseek,chatgpt,qwen,kimi,glm,glm5,minimax,llama,grok,mistral. Local-only: deepseek-local,qwen-local,mistral-local,llama-local")
     parser.add_argument("--mode", choices=['hosted', 'local'], default='hosted',
                        help="Run models via OpenRouter API (hosted, default) or locally via ollama (local)")
+    parser.add_argument("--parallel", type=int, default=1, metavar='N',
+                       help="Number of parallel workers (default: 1, sequential). Use e.g. --parallel 6 for hosted API calls.")
 
     args = parser.parse_args()
 
@@ -1056,7 +1058,9 @@ def main():
     print()
     
     pipeline_start = time.time()
-    
+
+    # Build list of (transcript_path, processor) jobs
+    jobs = []
     for transcript_path in args.transcripts:
         transcript_path = Path(transcript_path)
 
@@ -1071,23 +1075,55 @@ def main():
             print(f"✗ Transcript not found: {transcript_path}")
             failed_count += len(processors)
             continue
-        
+
         for processor in processors:
+            jobs.append((transcript_path, processor))
+
+    def run_job(job_info):
+        tp, proc = job_info
+        job_start = time.time()
+        result, elapsed = process_single_combination(
+            str(tp), proc, api_keys, context, mode=args.mode
+        )
+        return tp.name, proc, result, elapsed
+
+    if args.parallel > 1:
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+        import threading
+
+        print(f"Running {len(jobs)} jobs with {args.parallel} parallel workers\n")
+
+        lock = threading.Lock()
+        with ThreadPoolExecutor(max_workers=args.parallel) as executor:
+            futures = {executor.submit(run_job, job): job for job in jobs}
+            for future in as_completed(futures):
+                tp_name, proc, result, elapsed = future.result()
+                combo_num += 1
+                with lock:
+                    if result:
+                        success_count += 1
+                        combo_times.append((tp_name, proc, elapsed))
+                        print(f"[{combo_num}/{total}] {tp_name} + {proc} ✓ ({elapsed:.1f}s)")
+                    else:
+                        failed_count += 1
+                        print(f"[{combo_num}/{total}] {tp_name} + {proc} ✗")
+    else:
+        for tp, proc in jobs:
             combo_num += 1
-            print(f"[{combo_num}/{total}] {transcript_path.name} + {processor}")
+            print(f"[{combo_num}/{total}] {tp.name} + {proc}")
 
             result, elapsed = process_single_combination(
-                str(transcript_path), processor, api_keys, context, mode=args.mode
+                str(tp), proc, api_keys, context, mode=args.mode
             )
-            
+
             if result:
                 success_count += 1
-                combo_times.append((transcript_path.name, processor, elapsed))
+                combo_times.append((tp.name, proc, elapsed))
             else:
                 failed_count += 1
-            
+
             print()
-    
+
     # Summary with timing
     pipeline_elapsed = time.time() - pipeline_start
     
