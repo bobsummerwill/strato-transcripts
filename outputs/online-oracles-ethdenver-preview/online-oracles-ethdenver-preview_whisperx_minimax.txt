@@ -1,0 +1,133 @@
+SPEAKER_03: so so Bye.
+
+SPEAKER_01: so so
+
+SPEAKER_03: so so
+
+SPEAKER_02: Bye. Thank you.
+
+**[03:16] UNKNOWN:** !
+
+SPEAKER_02: !
+
+SPEAKER_04: !
+
+SPEAKER_03: !
+
+SPEAKER_04: !
+
+SPEAKER_03: !
+
+SPEAKER_00: !
+
+SPEAKER_03: !
+
+SPEAKER_01: !
+
+SPEAKER_02: !
+
+**[09:09] UNKNOWN:** !
+
+SPEAKER_03: !
+
+SPEAKER_01: !
+
+SPEAKER_03: !
+
+SPEAKER_00: ! so so
+
+SPEAKER_03: Thank you. Thank you. Thank you.
+
+SPEAKER_00: Thank you. Thank you.
+
+SPEAKER_03: !
+
+SPEAKER_00: !
+
+SPEAKER_01: !
+
+SPEAKER_00: !
+
+SPEAKER_04: !
+
+SPEAKER_03: !
+
+SPEAKER_04: !
+
+SPEAKER_03: !
+
+SPEAKER_04: !
+
+SPEAKER_03: !
+
+**[20:20] UNKNOWN:** !
+
+SPEAKER_03: !
+
+**[21:24] UNKNOWN:** !
+
+SPEAKER_03: !
+
+SPEAKER_00: !
+
+SPEAKER_03: Thank you. Bye.
+
+SPEAKER_01: !
+
+SPEAKER_03: !
+
+SPEAKER_00: !
+
+SPEAKER_03: !
+
+SPEAKER_01: !
+
+SPEAKER_03: !
+
+SPEAKER_01: !
+
+SPEAKER_04: !
+
+SPEAKER_01: !
+
+SPEAKER_00: !
+
+SPEAKER_04: Bye.
+
+SPEAKER_00: Thank you. Thank you.
+
+SPEAKER_04: Bye.
+
+SPEAKER_01: !
+
+SPEAKER_00: !
+
+SPEAKER_03: !
+
+SPEAKER_00: !
+
+SPEAKER_01: !
+
+SPEAKER_00: !
+
+SPEAKER_01: !
+
+SPEAKER_03: !
+
+SPEAKER_04: !
+
+SPEAKER_00: ! so so
+
+SPEAKER_01: !
+
+SPEAKER_00: !
+
+SPEAKER_01: !
+
+SPEAKER_03: !
+
+SPEAKER_00: !
+
+SPEAKER_04: !
+
+SPEAKER_01: !

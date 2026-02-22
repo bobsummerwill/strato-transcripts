@@ -1,0 +1,185 @@
+SPEAKER_03: Okay, we are live, and we have a very special episode today. We are talking about the future of art and NFTs, and we're joined by special guest and very old friend, John Crane. Welcome, John Crane.
+
+SPEAKER_02: Hey, Victor. Hey, everyone. Good to see you guys. Thanks for having me.
+
+SPEAKER_03: John Crane, of course, as everyone knows, is the founder of SuperRare. But do you want to give a quick intro for anyone who is not intimately familiar with all the amazing things you've done over the past couple of years?
+
+SPEAKER_02: Yeah, sure. So yeah, my crypto journey started in around 2015, going to the Consensus hackathon where I met at least three of the other folks on this call there. Before that, my background was kind of in art and technology. I worked in advertising. I studied architecture and structural engineering for undergrad.
+
+I was always really interested in when crypto and blockchain were going to intersect more with kind of the consumer tech and just things that were a little bit past finance and trading. So when I saw NFTs, it was an instant win for digital art. So I doubled down immediately.
+
+SPEAKER_04: Do you remember how you heard about the hackathon or Ethereum generally? Obviously, we met there, but what was that?
+
+SPEAKER_02: I was kind of hanging out with the New York Bitcoin crowd. I had actually met John Lillick at the New York Bitcoin Center. I was hanging around and actually I was super into Counterparty. I was very much like Ethereum's too complicated, Vitalik's full of it, it's not gonna work. And then the network launched and I was like okay I was wrong this is actually super cool. I had no problem changing my mind.
+
+I was just googling "Ethereum blockchain hacker" trying to find ways to get deeper involved. I was trying to quit my day job and go full-time crypto. Then I think I just googled it and found there was this hackathon in two weeks. I applied with Charles and then yeah met you guys.
+
+SPEAKER_03: Yeah, and to let everyone know that we were blown away by you and your brother Charles' project. And we gave you, I think, your first job, both of you in Web3, right?
+
+SPEAKER_02: Yeah, exactly. I think the Monday after, I immediately quit and started working with you guys full-time on BlockApps.
+
+SPEAKER_03: Yeah, I think we tried to give you a job on the spot because you guys were amazing. Exactly.
+
+SPEAKER_02: I remember there was a couple week consulting transition period while we were getting to know each other a little bit and then went full time.
+
+SPEAKER_01: Yeah. So with Counterparty, you could have been on Krista Rose tech. If only.
+
+SPEAKER_03: So what inspired SuperRare? I know when you were working with us, you kind of became our head of product and were working on enterprise implementations. But what triggered you to create SuperRare, which is for anyone who doesn't know, one of the first NFT platforms really out there?
+
+SPEAKER_02: It was super interesting. We were all kind of on the ground floor at the Consensus office watching the ICO boom happen. I remember talking with Kieren about ERC-20 tokens and found it super interesting that it was this very small bit of standard, very simple code, but the adoption created massive wealth generation.
+
+Then I saw some of the standards conversations around ERC-721 and saw the CryptoPunks launch. I thought if you think about the consumer web, it's all an image and a title tag and some metadata. So the entire consumer web could turn into NFTs. The total addressable market is probably pretty large.
+
+On the flip side, I was also in and around the New York art scene, going to art fairs. I had friends looking for gallery representation. It seemed obvious there was now a way to truly own digital assets. This was obviously going to apply to digital art. So it was the marriage of my interest in the tech side with my passions around art.
+
+SPEAKER_03: What was it like to be at the forefront of the NFT explosion? I know for a long time you were building and no one was really paying attention. And all of a sudden, next day, everyone's talking about NFTs.
+
+SPEAKER_02: It was absolutely crazy. Completely surreal the whole time. We started in 2018. We tried to raise money. It never really worked. By the time we raised, we were already cashflow positive and making more than we were paying ourselves.
+
+SPEAKER_03: So that's the best situation to possibly be in.
+
+SPEAKER_02: Yeah, it was much easier to raise then than when I was just pitching a cool idea. It was a grind, super volatile. Many times I was just like what am I doing with my life? But then the numbers were doubling every month for a while. October 2020 was our first million dollar month in volume. That was wild because 12 months earlier the volume was like $5,000.
+
+SPEAKER_03: Were you guys the first self-minting NFT platform? I think we're trying to talk about that.
+
+SPEAKER_02: Yeah, we were the first to combine the minting and the marketplace experience. There weren't great minting tools then. We started with the minting tool and then realized people needed a place to sell this, so we built the marketplace too. It was partially out of necessity because the tooling sucked at the time.
+
+SPEAKER_03: It's funny because I remember what later became the Flow guys doing CryptoKitties. They were based in Vancouver and I was talking to them about running it on our blockchain at the time. You've done so much. One amazing thing is the launch of the Rare token. You guys seem to be one of the first projects really committed to figuring out DAO governance in reality. What led to that and how did that go?
+
+SPEAKER_02: Early on, what got me excited about Bitcoin and Ethereum is the idea of networks where users participate in upside. There was the fat protocol article that was super popular in 2016. Thinking about monetization and building platforms that are more collaborative than extractive.
+
+It was almost a thought experiment of is it possible to build a network where you don't have to sell ads? Maybe it's a marketplace as the business model with collective ownership via the token. I was drinking a lot of the crypto Kool-Aid at the time.
+
+SPEAKER_04: Did you do it classic ICO style? Was there a fixed price auction? How did the Rare token get distributed?
+
+SPEAKER_02: We actually just did a huge airdrop, probably one of our mistakes. We should have probably sold a bunch of tokens but we just gave them away. There's plenty of challenges to DAOs being hard to manage and run. It's cool to see the current administration change tack and actually seem interested in building and pushing forward.
+
+SPEAKER_03: What do you think the biggest challenge was in running a DAO? I think all of us had that as an ideal state with the crypto Kool-Aid, running things completely decentralized. What challenges did you face and what are still out there?
+
+SPEAKER_02: I think still one of the bigger challenges is regulatory. You're trying to read the tea leaves rather than just making the best decision. There's no clear rules. It's obviously friendlier now but still no clear rules. The Gensler era of enforcement was the dark ages.
+
+SPEAKER_01: Isn't it?
+
+SPEAKER_03: You know, yeah, man. Do you think of advice?
+
+SPEAKER_04: Do you think of it more like a representative democracy? Like passing bills? There's proposals and delegation usually is the model. It could also be like you got a couple of leaders but the stake could call a confidence vote. People like utarchy too. MetaDAO is trying to do that sort of thing.
+
+SPEAKER_02: I think it depends on specifically what you're doing. Bitcoin and Ethereum are obviously not DAOs but where small changes can have catastrophic impact is one thing. With SuperRare where there's a low level protocol and application, stakes are fairly low. I like the idea of empowering a team or few individuals to keep going and token holders can tell people to stop versus approving everything. That's a very silly arduous process.
+
+SPEAKER_03: I'm curious, given that you're a decentralization advocate, how do you balance being a curated platform and being open? One advantage of SuperRare with curation is you keep quality very high unlike more open NFT marketplaces which put out a ton of crap. How do you balance those two?
+
+SPEAKER_02: It is kind of challenging, almost a paradox. We've always taken minimal decentralization where it's useful. Early on we talked about token holders voting on artists. That sounds like the most dramatic terrible thing I could imagine - people voting your art's terrible.
+
+SPEAKER_04: In the pump.fun streamer heyday, I think that could have worked during that period. People streaming live voting is the art good or bad. Watch this artist threaten to commit suicide.
+
+SPEAKER_03: I did put stuff on a dating project once where you had to be voted in based on your looks, which seems horrible. Very evil. Yeah, Hot or Not. The art industry can be quite vicious.
+
+SPEAKER_02: Yeah, it's challenging and good art is subjective. On-chain auctions, escrow on-chain makes sense. On-chain voting for which artists are good is kind of let people making decisions do their thing. If it gets out of hand, token holders can raise awareness.
+
+Early on we thought we'd be more open. As things progressed there were more tools. We were building things trying to add value. There's a ton of open tooling. We thought SuperRare might be the ultra curated view into the market with another open platform anyone could use.
+
+SPEAKER_03: I'm curious, it's a two-sided market with artists and art buyers. Did you have to get the artists first to convince buyers? How did you do that?
+
+SPEAKER_02: You kind of had to get both first. It really started as me experimenting and building. Started with minting tools demoing and talking to people. First piqued interest of artists talking about how it would work.
+
+Jason Bailey who was an early digital art advocate hit us up saying he wanted to buy art on Monday. I looked at Charlie and said Jason wants to buy something on mainnet on Monday, what can we do? We basically stayed up 36 hours fixing bugs.
+
+SPEAKER_03: That was it like 36 hours that Charlie was like yeah probably. I'm getting flashbacks to when Microsoft said we want to launch Blockchain as a Service with you at DevCon One. Exactly. Nothing like a good deadline.
+
+SPEAKER_02: Especially with a major partner that can make or break you. We were live screen sharing the transaction with artist Robbie Barat and Jason pushing fixes. Okay one second, it's deployed, just reload the page.
+
+SPEAKER_03: I'm curious what you see as the future of art and NFTs.
+
+SPEAKER_04: In DeFi we're seeing pent up demand for TradFi DeFi merger. Do you think NFTs stay a distinct asset class forever? I know you started doing physical sales. Does it merge or not?
+
+SPEAKER_03: Like trad art become NFT art and digital art?
+
+SPEAKER_02: I think NFT stuff eventually fades into background. The real zero to one is cryptographically secure provenance. You could use that for physical or digital art. It was more breakthrough with digital because you can argue the token is the art with more liquid asset.
+
+For art specifically it's becoming part of the market. You'll see NFTs used with digital art obviously but also physical art. The lack of good data on provenance in art market and collectibles is amazing. Still like oh there's a sticker on the back saying it was from this gallery. Probably it was? Nobody knows.
+
+Trying to tie physical asset to digital asset is waste of time. If you have physical asset and custody of certificate of authenticity that's good enough. Collectors have higher perceived value for physical art that also has NFT. Digital art will become bigger part of contemporary art market. Eventually see NFTs as certificates of authenticity for all high value objects.
+
+SPEAKER_03: I didn't realize a friend who's an artist often gets requests for value paid because someone wants to insure it. There's whole downstream economy.
+
+SPEAKER_02: Insurance, appraisal, lending need much better information. The lending market for these assets is small because there's not good information. Could grow that pie quite a bit with easier access to provenance information.
+
+SPEAKER_04: Having been more NFT style RWA marketplace then more DeFi, I thought people wanted to tokenize to sell at first. But it's better they tokenize to unlock liquidity. Selling could be one way but people want to hold stuff. At high end wealth managers might extend credit against Picasso but for everybody else credit markets actually make it liquid.
+
+SPEAKER_02: We're seeing green shoots of what's possible. NFTs are beautiful simple digital identity for whatever. You can pack anything in metadata. They're unique pointers to one specific thing.
+
+SPEAKER_03: I love how you talk about NFTs as certificates of authenticity. We looked into physical art market and every auction at Sotheby's with big piece has to research provenance from scratch. Insane amount of work every time.
+
+SPEAKER_02: Very high friction process. Transactions are very high friction which is good depending on position in market. Sotheby's loves being keeper of secrets and information. That's clearly going to be disintermediated with technology.
+
+SPEAKER_04: Any new assets or declaring war on auction houses? Other high-end physical goods?
+
+SPEAKER_02: We're focusing expansion with gallery launched earlier this year offline on Bowery next to New Museum. Showing physical digital art installations projections. Our view is galleries not doing great business-wise. Auction houses hurting. Everyone trying to find more sustainable model.
+
+SPEAKER_04: Stuff is so illiquid. Norm is stuff sitting five years, 10 years. Feast or famine. If we print money probably get transactions.
+
+SPEAKER_02: 2021 people were buying Picassos on phones online and CryptoPunks. Every year like Ether Rocks when price was exploding truly amazing. Models have to change. Internet changed shopping with price compare easily on phone in stores. No price arbitrage.
+
+Art world has been insider's game of who knows who and real price versus marketed price. Slowly unwinding to market structure with more transparent pricing. Can see things on chain. Part of opportunity is as market becomes more efficient we'll have best tools to service new structure.
+
+SPEAKER_04: Sounds like even big guys want more liquidity but not willing to let go of proprietary information advantage.
+
+SPEAKER_02: Yeah exactly. Nice paradox - more liquidity with better access to information but classic innovator's dilemma.
+
+SPEAKER_03: Some auction houses trying to offer loans to lock people up longer to their places.
+
+SPEAKER_02: Christie's inside of it. Most auction houses private. People inherit art don't care necessarily. Advisor says don't sell take out loan. Classic conflict of interest - we'll tell you how much it's worth and loan based on that. Very one-sided can't shop around ultra specialized information.
+
+SPEAKER_03: Jim, did you want to ask a question? You look like you came off mute.
+
+SPEAKER_00: Different topic but what's been effect for good or bad of AI and art on what you're doing?
+
+SPEAKER_02: For startup been great. We have little robot in Slack that does things. For art market also great. New tool that unlocks creative things. Can do different creative things. Tons of artists use AI. Also tons hate it think it's end of creativity.
+
+Really enables doing more complex things. All grunt work you don't have to do. Instead of one still image can do insane world building more interactive. First art we ever sold on SuperRare was generated via GANs adversarial networks voting on outcomes. Inevitable going to happen. Digital cameras were end of photography and obviously were not.
+
+SPEAKER_03: Do you think proving some part was done by human will be valued in art or creation going forward?
+
+SPEAKER_02: Yeah amazing rate content being created. You can watch video of person didn't actually say that but looks like they did. Nobody answers random phone numbers. If not in your phone literally never answer. Same with content and art. If not signed cryptographically probably assume fake because no real way to know.
+
+SPEAKER_01: Have you seen much interest on Bitcoin side in ordinals and inscriptions and stamps and runes? How is that looking?
+
+SPEAKER_02: Done couple projects on runes with artists. Super interesting. Going to be art on many blockchains. Bitcoin and Ethereum most secure likely last longest. People really like ordinals.
+
+Early on talked to investors saying need to get rid of wallet too complicated but ends up being secret incantation get inducted into club know how it works. Ordinals little more complex harder understand than NFTs on Ethereum. Funny anecdote but quite popular. Think they'll be around while.
+
+SPEAKER_01: Another difference is data carrying on chain versus external URL interesting difference.
+
+SPEAKER_03: I'm curious about decision to start gallery. Everyone talking about RWAs bringing real world stuff into blockchain but you're doing opposite. Why start physical gallery logical next step?
+
+SPEAKER_02: Part of how market works. People like getting together. Can look at art on phone but see on huge projector or 10 by 10 CRT TV wall looks different. Part community building space people can show up. Part art really looks different.
+
+NFTs still people think nonsense JPEGs Ether Rocks 2.0. Telling story to everyone else. At end of day demand constrained market trying to grow collector base.
+
+SPEAKER_03: Beyond art what next area needing provenance or certificates of authenticity? I can think million but curious your view.
+
+SPEAKER_02: Generally luxury assets. NFTs still more expensive create than not having one. Customers going have demand it because brokers don't want this exist. Makes so much sense hard imagine doesn't happen.
+
+People taking wine very seriously issuing NFTs building secondary markets. Asset fun to speculate on but also might have somebody send NFT. Wine watches handbags big one. Trading cards popular now like Courtyard still going. Speculative aspect but serious collector can get real things.
+
+SPEAKER_03: Okay last question unless anyone else has one. What are you most excited about in any aspect blockchain space right now?
+
+SPEAKER_02: Most excited is everything literally going become moving on chain. BlackRock putting treasuries on chain with partners. Arts moving on chain. Finally getting there. Holy fuck everything moving on chain actually happening.
+
+Real world assets digital assets. Liquidity increasing generally net positive everyone. Feels finally happening.
+
+SPEAKER_03: Taken way longer 10 years but still here still doing it.
+
+SPEAKER_04: Can make thumbnail Ron Paul that's happening. Exactly.
+
+SPEAKER_03: Need mission accomplished banner.
+
+SPEAKER_01: Oh my goodness.
+
+SPEAKER_03: Well John thank you for time. As always really glad doing well. Where can people find you learn more stuff do?
+
+SPEAKER_02: On X at superrarejohn at superrare. Currently show at gallery wrapping up but new X copy show December 10th if anyone in town. Offline by SuperRare.
+
+SPEAKER_03: Awesome. Thank you for joining us take care everyone. Thank you.
+
+SPEAKER_02: Thanks for having me.

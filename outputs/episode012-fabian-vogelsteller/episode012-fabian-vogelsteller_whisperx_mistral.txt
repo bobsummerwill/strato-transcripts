@@ -1,0 +1,253 @@
+SPEAKER_00: So, hello.
+
+SPEAKER_01: Hello, Bob.
+
+SPEAKER_00: So, yes, I'm Bob Summerwill, recording here at DevCon Prague for Early Days of Ethereum. And I have here Jakob. We've known each other about three years or so now, I think.
+
+We did meet in Bogota for DevCon 6 for the first time where you introduced yourself. That was a really memorable conference.
+
+SPEAKER_01: Oh, yeah, thank you for the intro and good question. It was in Bogota. I think I knew about you or of you for longer than since then.
+
+But yeah, I think you were chatting with someone and talking about Florian Glatz, maybe, and talking about the old days. And I just jumped in because I know Florian.
+
+SPEAKER_00: I think it was like maybe August to December.
+
+SPEAKER_01: Yeah, I think it was in August.
+
+**[09:17] UNKNOWN:** Yeah.
+
+SPEAKER_01: And then I think we met again in Paris.
+
+**[11:08] UNKNOWN:** Yeah.
+
+SPEAKER_01: And then I think we met again in Paris. And then we met again in Amsterdam. And then we met again in Prague. And then we met again in Prague. And then we met again in Prague. And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+**[16:33] UNKNOWN:** Yeah.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+**[23:54] UNKNOWN:** Yeah.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: Thank you. Bye.
+
+SPEAKER_00: So, yes, I'm Bob Summerwill, recording here at DevCon Prague for Early Days of Ethereum. And I have here Jakob. We've known each other about three years or so now, I think.
+
+**[25:51] UNKNOWN:** Yeah.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+**[26:27] UNKNOWN:** Yeah.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague. Thank you.
+
+SPEAKER_01: And then we met again in Prague.
+
+**[40:50] UNKNOWN:** Yeah.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague. Thank you.
+
+SPEAKER_01: Bye. And then we met again in Prague.
+
+SPEAKER_00: Yeah.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+**[51:22] UNKNOWN:** Yeah.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+**[56:19] UNKNOWN:** Yeah.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+**[57:19] UNKNOWN:** Yeah.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: Yeah.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague. So, bye.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+**[01:04:35] UNKNOWN:** Yeah.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+**[01:06:41] UNKNOWN:** Yeah.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: Yeah.
+
+SPEAKER_00: Yeah.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague. Thank you. Thank you.
+
+**[01:12:54] UNKNOWN:** Yeah.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+**[01:21:34] UNKNOWN:** Yeah.
+
+SPEAKER_01: And then we met again in Prague.
+
+**[01:27:39] UNKNOWN:** Yeah.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+**[01:31:26] UNKNOWN:** Yeah.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+**[01:42:58] UNKNOWN:** Yeah.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague. Thank you.
+
+SPEAKER_00: Bye.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.
+
+SPEAKER_00: Yeah.
+
+SPEAKER_01: Yeah.
+
+SPEAKER_00: Yeah, I think we met again in Prague.
+
+SPEAKER_01: And then we met again in Prague.

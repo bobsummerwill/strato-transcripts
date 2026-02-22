@@ -1,0 +1,25 @@
+SPEAKER_03: You've been live for real.
+
+SPEAKER_00: We are live, yes.
+
+SPEAKER_03: We're live and we're live. So maybe this won't be so meaningful for the rest of you, but it is the 5th of November today, which in the UK is a very famous day of the calendar because it's Bonfire Night or Guy Fawkes Night, celebrating the... burning at the stake, I guess, of Guy Fawkes, who was the guy who tried to blow up the parliament in the mid 17th century. Oh, the Viva Vendetta guy. Viva Vendetta, so that's based on that.
+
+SPEAKER_00: I mean, the poem says remember, remember right in the first line.
+
+SPEAKER_03: That's right. So basically the deal there was that I guess annually you had like the King giving the speech in front of the Parliament. So you had like basically the royalty and all of the elite sitting in the hall. They like stuffing barrels of gunpowder underneath, but it was discovered at the last minute. So then there you go. You now have burning of Guy Fawkes in effigy on bonfire nights to celebrate that it didn't happen. And uh and yeah so you have a you know like a doll or whatever that's that's the guy that you put on the fire so anyway happy happy bonfire night everybody happy bonfire night um we should probably introduce michael because he's a special guest absolutely yes see i guess he's a guest i mean we'll make him a regular i assume but yeah guys see me on the telegram
+
+SPEAKER_00: Michael, do you want to introduce yourself quickly?
+
+SPEAKER_01: Yeah. I work on the sales side of the team. I'm going to be introducing the app today to you guys and I hope you're excited.
+
+SPEAKER_00: Well, you work sales, you're a dev, you're a front-end dev, you do a bunch of different stuff on the team.
+
+SPEAKER_03: Got the moves. Let me just kick off. Hi. Hello, everybody. uh welcome welcome so we did it we launched v2 it happened how does that feel man i think bob you may not be as tired uh you know oh did did oh he's gone away okay he's he's frozen he was filming yes well
+
+SPEAKER_00: There are a lot of sleepless nights and working through weekends. Oh, you are back.
+
+SPEAKER_02: He was back. It was my problem. Okay. Yeah, it started spinning everything for a second, and then you all came back. Yeah.
+
+SPEAKER_03: Take it. So how's V2 being live? How does that feel?
+
+SPEAKER_02: Much better than before. You know, it's still... never it's a funny thing do you ever feel like good for like a sustained period like i think not but uh extremely happy that it's live um i think it would be maybe interesting for the audience uh to go into a little bit of like what it is and also like why it took so long so we um through the end of 2024, we started to realize that there was a lot of demand for DeFi type features. So basically, Marketplace version one Mercado version one, if you will, was more NFT ish. We had interesting and exotic things that might be numbered and a breadth of them. So this was we have carbon offsets trading on their whiskey barrels. Michael moved a lot of collectible shoes through the system. So truly, you know, Fairly unique, at least down to like having a serial number or sometimes very unique stuff. So there was occasional one of ones on there. We dipped our toes into the art market a little bit with some collabs. And also more financialized stuff, too. So the medals in particular being something that we've had for a long time. And we kind of saw... the most demand for the most financialized items. And it sort of led us to realize what people want from this technology. I mean, one way or another, I think in the course of the company, obviously we did very enterprise stuff, a lot in the supply chain, and that kind of actually led very naturally to the unique item focus. um and but you know often everything in the blockchain space pulls back to some sort of financialization and we kind of decided to stop resisting this impulse uh you know as the market seemed to be demanding it so we released the other thing we realized is that um in some ways so know say your goal is to tokenize everything like you want all manner of real world value to be on chain existing uh alongside truly you know digital native assets like bitcoin eth and so on uh what what would get the world to do that and we thought the answer was making liquid trading markets where they didn't exist prior and that is definitely still part of it but um I think it is more about debt than it is about selling or transacting. Right. And so we kind of on Marketplace version one created a mechanism whereby

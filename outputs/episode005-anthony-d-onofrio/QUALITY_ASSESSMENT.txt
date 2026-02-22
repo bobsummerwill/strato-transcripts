@@ -1,0 +1,154 @@
+================================================================================
+MANUAL ASSESSMENT (DRAFT; excerpt-based spot-check)
+================================================================================
+
+This section is generated from a deterministic excerpt spot-check (5 blocks per transcriber)
+plus simple novelty/similarity heuristics. It is *not* a substitute for listening to audio,
+but it does catch common failure modes: summarization, hallucinated entities, timestamp drift,
+and formatting corruption.
+
+See excerpt pack: outputs/episode005-anthony-d-onofrio/REVIEW_EXCERPTS.md
+
+--------------------------------------------------------------------------------
+Transcriber: assemblyai
+-
+Baseline: 14,859 words, 349 timestamps (fmt_bad=0, nonmono=0)
+
+Top candidates (excerpt similarity / novelty / timestamp drift):
+  • opus     sim=0.60 ret=98.5% ts=242/349 (×0.69) novel_caps=34 fmt_bad=0  ⚠ timestamp drift
+  • gemini   sim=0.00 ret=101.0% ts=200/349 (×0.57) novel_caps=23 fmt_bad=0  ⚠ timestamp drift
+
+Draft recommendation for this transcriber: opus
+Rationale: chosen by highest excerpt similarity while avoiding obvious timestamp/format corruption and excessive entity novelty.
+
+--------------------------------------------------------------------------------
+Transcriber: whisperx-cloud
+-
+Baseline: 14,602 words, 67 timestamps (fmt_bad=0, nonmono=0)
+
+Top candidates (excerpt similarity / novelty / timestamp drift):
+  • opus     sim=0.58 ret=94.8% ts=69/67 (×1.03) novel_caps=69 fmt_bad=0  ⚠ entity novelty
+  • gemini   sim=0.00 ret=98.4% ts=109/67 (×1.63) novel_caps=66 fmt_bad=0  ⚠ timestamp drift  ⚠ entity novelty
+
+Draft recommendation for this transcriber: opus
+Rationale: chosen by highest excerpt similarity while avoiding obvious timestamp/format corruption and excessive entity novelty.
+
+--------------------------------------------------------------------------------
+Transcriber: whisperx
+-
+Baseline: 14,667 words, 148 timestamps (fmt_bad=2, nonmono=0)
+
+Top candidates (excerpt similarity / novelty / timestamp drift):
+  • gemini   sim=0.00 ret=99.9% ts=0/148 (×0.00) novel_caps=41 fmt_bad=0  ⚠ timestamp drift  ⚠ entity novelty
+  • opus     sim=0.00 ret=95.0% ts=168/148 (×1.14) novel_caps=58 fmt_bad=0  ⚠ entity novelty
+
+Draft recommendation for this transcriber: gemini
+Rationale: chosen by highest excerpt similarity while avoiding obvious timestamp/format corruption and excessive entity novelty.
+
+================================================================================
+
+================================================================================
+QUALITY ASSESSMENT: EPISODE005 ANTHONY D ONOFRIO
+================================================================================
+Episode: episode005-anthony-d-onofrio
+Generated: December 17, 2025
+
+Supported Combinations: 6 (found) / 12 (expected: 3 transcribers × 4 post-processors)
+
+================================================================================
+EXECUTIVE SUMMARY
+================================================================================
+
+IMPORTANT PIPELINE NOTE:
+  Post-processing should run on the intermediate *.md transcripts (not *.txt)
+  so post-processors can preserve the original timestamps.
+
+KEY FINDINGS:
+
+1) WORD-COUNT RETENTION: 6/6 outputs are within 90–110% of baseline
+2) TIMESTAMP PRESERVATION: 0/6 outputs have an exact timestamp count match
+3) CRITICAL: 2 outputs show timestamp explosion (likely regenerated timestamps)
+4) WARNING: 3 outputs show major timestamp loss
+
+RECOMMENDED FOR THIS EPISODE:
+  • whisperx-cloud + opus
+      - timestamps: 42/40
+      - retention:  94.1%
+
+================================================================================
+INPUT (INTERMEDIATE) TRANSCRIPTS
+================================================================================
+
+Word counts (baseline for retention; computed from the intermediate .md
+transcripts with timestamps stripped):
+  • episode005-anthony-d-onofrio_assemblyai.md    15,199 words
+  • episode005-anthony-d-onofrio_whisperx-cloud.md 14,710 words
+  • episode005-anthony-d-onofrio_whisperx.md      14,835 words
+
+Timestamp/header counts in intermediate .md (GROUND TRUTH timing):
+  • episode005-anthony-d-onofrio_assemblyai.md     264 timestamps (264 timestamped headers)
+  • episode005-anthony-d-onofrio_whisperx-cloud.md   40 timestamps (40 timestamped headers)
+  • episode005-anthony-d-onofrio_whisperx.md       106 timestamps (104 timestamped headers)
+
+================================================================================
+OUTPUT (POST-PROCESSED) WORD COUNT ANALYSIS
+================================================================================
+
+Legend:
+  retention = output_words / input_words
+  timestamps = output timestamp count / input timestamp count
+
+ASSEMBLYAI (input: 15,199 words; 264 timestamps)
+  processor     words    retention   timestamps
+  gemini     15,014      98.8%   200/264   ⚠
+  opus       14,629      96.2%   169/264   ⚠
+
+WHISPERX-CLOUD (input: 14,710 words; 40 timestamps)
+  processor     words    retention   timestamps
+  gemini     14,364      97.6%   100/40   ⚠ CRITICAL
+  opus       13,839      94.1%   42/40   ⚠
+
+WHISPERX (input: 14,835 words; 106 timestamps)
+  processor     words    retention   timestamps
+  gemini     14,646      98.7%   0/106   ⚠
+  opus       13,939      94.0%   168/106   ⚠ CRITICAL
+
+================================================================================
+QUALITY FLAGS / REVIEW NOTES
+================================================================================
+
+1) Timestamp count changes are the primary red flag
+   Any output with far more timestamps than the input is not preserving the
+   diarization paragraphing and is likely regenerating timestamps.
+
+   CRITICAL failures observed:
+     - whisperx + opus: 168 timestamps vs 106 input
+     - whisperx-cloud + gemini: 100 timestamps vs 40 input
+
+RECOMMENDATION:
+  • Use intermediate .md files as the canonical timestamped transcript.
+  • Use post-processed .txt outputs for corrected wording / readability.
+
+================================================================================
+MANUAL SPOT-CHECK NOTES (CONTENT QUALITY)
+================================================================================
+
+This file is generated from automated metrics only.
+Add manual notes here if you spot entity errors, hallucinations, or other
+content issues specific to this episode.
+
+================================================================================
+PROJECT IMPROVEMENT RECOMMENDATIONS (TO REDUCE MANUAL EDITING)
+================================================================================
+
+1) Deterministic timestamp preservation (recommended architecture)
+   Do NOT ask the model to 'preserve timestamps' in free-form text.
+   Instead: parse -> correct text only -> reassemble with original timestamps.
+
+2) Entity constraints + validation
+   Reject outputs that introduce new PERSON entities not present in input/allowlist.
+
+3) Validation + auto-retry
+   Enforce exact timestamp sequence match, non-decreasing timestamps, and header format.
+
+================================================================================

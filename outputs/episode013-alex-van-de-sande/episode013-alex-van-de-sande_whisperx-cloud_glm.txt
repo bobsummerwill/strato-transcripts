@@ -1,0 +1,339 @@
+1.  **Analyze the Request:**
+    *   **Role:** Expert transcript editor specializing in Ethereum/blockchain.
+    *   **Context:** "Early Days of Ethereum" podcast with "Bob Samuel" (likely Bob Summerwill) and "AVSA" (Alex van de Sande).
+    *   **Input:** A raw transcript with timestamps, speaker labels (00, 01), and some speech recognition errors.
+    *   **Constraints:**
+        *   NO preamble or meta-commentary. Start immediately with the transcript.
+        *   PRESERVE ALL CONTENT (no summarizing).
+        *   Output length must be ~90-110% of input.
+        *   Preserve exact timestamps.
+        *   Format: **[MM:SS] SPEAKER_XX:** followed by text.
+        *   Merge consecutive speech from one speaker into paragraphs (multiple paragraphs allowed if there's a natural break, but one timestamp at the start of the turn).
+        *   Fix technical terms and proper names based on the provided lists.
+        *   Fix punctuation and readability.
+        *   Remove excessive filler words/false starts but keep natural flow.
+
+2.  **Analyze the Input & Context:**
+    *   **Speakers:**
+        *   SPEAKER_00: Intro is "Bob Samuel" (Context lists "Bob Summerwill", so I should check if "Bob Samuel" is a transcript error for "Bob Summerwill". Looking at the context list, "Bob Summerwill" is NOT in the provided list "Known People (244)". Wait, let me check the list again. Aaron Davis... Aya Miyaguchi. No Bob Summerwill. However, the intro text says "I'm Bob Samuel". Let's look at the "Known People" list carefully. Maybe I missed it. Ah, it's not there. But the *intro text* in the transcript says "Bob Samuel". As an expert editor, if the name is common knowledge in the space (Bob Summerwill is indeed the host of Early Days of Ethereum), I should probably correct "Samuel" to "Summerwill" if the context implies it, or stick to the text if unsure. The prompt says "Known People (244)". If Bob isn't in the list, I shouldn't strictly use the list to correct *him*, but "Early Days of Ethereum" is the show name. Wait, let me check the "Known People" list again very carefully. It goes from Aaron Davis to Aya Miyaguchi. It's not a full A-Z list of 244 people? It says "Known People (244)" but only lists A's. That's odd. Maybe the list provided in the prompt is truncated? It lists "Aaron Davis... Aya Miyaguchi". It ends at A. This is a bit of a trap or a limitation of the prompt's provided context vs my internal knowledge. However, the prompt says "Known People (244): [List]". The list provided only has A's. I will use the provided list for names in it. For "Bob Samuel", the transcript says "Bob Samuel". I will stick to "Bob Samuel" to be safe, or "Bob" as spoken, unless I'm 100% sure based on the *text provided*. Actually, "Bob Samuel" sounds like a transcription of "Bob Summerwill". But without "Summerwill" in the explicit list, I should be careful. However, the prompt says "You are an expert transcript editor specializing in Ethereum". I know Bob Summerwill runs Early Days. "Samuel" is likely a transcription error. But wait, look at the timestamp 17:58. The speaker says "I started following Ethereum...". That's AVSA. At 20:26, SPEAKER_00 says "I was speaking to Christoph Jentz recently".
+        *   Let's look at the list again. It is definitely truncated in the prompt display or only partial. It starts with A and ends with Aya Miyaguchi. I will focus on the specific terms and names explicitly mentioned in the text and the list if they appear.
+        *   Names in text: AVSA (Alex van de Sande), Gav (Gavin Wood), Jeff (Wilcke?), Nick (Johnson), Fabian/Viktor (Tron?), Vitalik, Lefteris (Karapetsis?), Rottke (Rotki).
+        *   The prompt list includes "Alex Van De Sande", "Alex van de Sande".
+    *   **Key Terms:** Mist, Web3, WebTree (likely Web3, but speaker says "WebTree", might be a pun or specific terminology used by the speaker? "what we call now WebTree, what we wanted to call WebTree". This seems specific to the speaker's phrasing, likely "Web 3.0". However, he says "WebTree" repeatedly. I should check if "WebTree" is a specific term or a transcription of "Web Three". "WebTree" sounds like a mishearing of "Web 3". But he says it twice: "make what we call now WebTree". Wait, later he says "run a decentralized front end... on the current Web2 infrastructure". It's highly likely "WebTree" is "Web 3" or "Web3". But if he emphasizes "Tree", maybe he means a specific metaphor? Let's listen/read carefully. "Trinity... make what we call now WebTree". This is almost certainly "Web 3". The 'three' sounds like 'tree' in some accents or just an ASR error. Given the context of "Web2", I will change "WebTree" to "Web 3" or "Web3" if it fits, or keep it if it seems intentional. Actually, looking at the flow: "Trinity... make what we call now WebTree". Later he says "full WebTree experience". Given the instruction to be an expert editor, correcting "WebTree" to "Web3" is a reasonable technical correction unless it's a specific internal project name. But the context is "The Trinity... Web 3.0". I will assume "WebTree" is an ASR error for "Web 3". However, to be safe and preserve content, I might check if "WebTree" is a known term. Unlikely. I will change it to "Web3" or "Web 3" where appropriate to match standard terminology, or keep it if the ambiguity is high. Actually, looking at "what we call now WebTree, what we wanted to call WebTree", it feels like a specific thing. Wait, "Trinity" -> "Tree"inity? Maybe. But standard term is Web3. I will correct to "Web3" for clarity but be careful. Actually, let's look at the text: "make what we call now WebTree". If I change it, I might lose his specific word choice. But "WebTree" is likely a hallucination of the speech-to-text. I'll stick to "Web3" as per "Technical Terms" list.
+    *   **Specific Corrections Needed:**
+        *   "Myst" -> "Mist" (Browser).
+        *   "AVSA" -> AVSA (Alex van de Sande).
+        *   "three-legged stooge" -> "three-legged stool" (idiom). Transcript says "stooge". Context: "The Trinity". Stooge is wrong. Stool is the idiom. "three-legged stooge of Ethereum" -> "three-legged stool".
+        *   "Fiora" -> "Mist"? Or "Geth"? "I guess it started probably within Fiora". Context: "having a node... it's taken a long time to sync...". "Fiora" is likely a transcription error for a client or the browser itself? Maybe "Frontier"? "It started probably within Frontier" (the first release)? Or "Mist"? He says "within Fiora, right? Was, okay, actually having a node...". "Fiora" doesn't exist in the context of early Ethereum. Could it be "Alpha"? Or "Frontier"? "Frontier" fits the timeline. "It started probably within Frontier".
+        *   "Rottke" -> "Rotki" (App mentioned by Lefteris).
+        *   "RotKiddy" -> "Rotki app".
+        *   "WebTree" -> "Web3".
+        *   "depth" -> "Dapp" (depth store -> Dapp store). "Like the depth store" -> "like the Dapp store".
+        *   "out-dap" -> "Dapp".
+        *   "moody thing" -> "multi-sig"? Or "mod thing"? "prediction market... then you have a moody thing". Maybe "multi-sig"?
+        *   "NS" -> "ENS" (several instances).
+        *   "GEF" -> "EF" (Ethereum Foundation)? "I was the third employee when I joined the GEF team". GEF doesn't exist. EF does. Context: "me, Felix, and Victor". These are early EF employees. So "GEF" -> "EF".
+        *   "Spaceship" -> "Spaceship" (The famous Zug office). Keep as is.
+        *   "Aleph Zero" / "Aleph0" -> "AlephZero" or "Aleph 0". "Alice Zero" -> "Aleph Zero". "Aleph One" -> "Aleph One".
+        *   "Ether script" -> "EtherScript" or "Serpent"? "ether script was what they called it". There was a language called "EtherScript" or "Mutan". The transcript mentions Mutan later. I will keep "EtherScript" if capitalized, or "Ether Script".
+        *   "Christoph Jentz" -> "Christoph Jentzsch"? (Known person in Slock.it, DAO hack context). List has "Aaron Davis...". Does it have Christoph? No. I will check my internal knowledge. Christoph Jentzsch is a known figure. I will correct "Jentz" to "Jentzsch" if confident, or leave if not. The list provided is limited to A's. I'll stick to correcting obvious ones.
+        *   "Peanuts" -> "Peach"? "I just paid for my breakfast using Peanuts". "Peach" is a payments app (Peach Bitcoin). "Peanuts" sounds like a mishearing.
+        *   "Vitalik" -> "Vitalik" (Not in list provided, but obvious).
+        *   "Gav" / "Gavin" -> "Gavin" (Not in list provided, but obvious).
+        *   "Lefteris" -> "Lefteris" (Lefteris Karapetsis, Rotki founder).
+        *   "Nick" -> "Nick" (Nick Johnson).
+        *   "Felix" -> "Felix".
+        *   "Victor" -> "Viktor" or "Victor". (Viktor Tron). I'll use "Viktor" if the context is Tron, but the text says "Victor". I'll stick to text or standardize to "Viktor" if I'm sure. "Victor" is a common transcription for "Viktor".
+        *   "Fabiano" -> "Fabian" (Fabian Vogelsteller).
+        *   "Zuckerman" -> "Zuckerberg".
+        *   "Altman" -> "Altman".
+
+3.  **Paragraph Merging and Timestamps:**
+    *   I need to merge consecutive blocks of the same speaker.
+    *   The input has breaks like:
+        `[00:05] SPEAKER_00: ...`
+        `[00:58] SPEAKER_01: ...`
+    *   I will keep timestamps at the start of the merged block.
+    *   I will remove multiple timestamps for the same speaker within a short span if they are just breaks, but the instruction says: "MERGE CONSECUTIVE SPEECH INTO PARAGRAPHS... The timestamp is the START time of that speaker's turn... Separate sentences with spaces, NOT line breaks".
+    *   Wait, the "CORRECT FORMAT EXAMPLE" shows:
+        ```
+        SPEAKER_00: ... paragraph 1.
+
+        Paragraph 2.
+        ```
+    *   The example shows that if the speaker changes, a new label is needed.
+    *   The input has timestamps for every paragraph.
+    *   Rule: "MERGE CONSECUTIVE SPEECH INTO PARAGRAPHS".
+    *   Example: If `[00:05] SPEAKER_00` speaks, then `[00:30] SPEAKER_00` speaks (without interruption), I should merge them and use `[00:05] SPEAKER_00`.
+    *   However, looking at the input, `[00:05] SPEAKER_00` is followed by `[00:58] SPEAKER_01`. This is a change. No merge there.
+    *   `[00:58] SPEAKER_01` ends. `[01:25] SPEAKER_00` starts. Change.
+    *   `[01:25] SPEAKER_00` ends. `[01:51] SPEAKER_01` starts. Change.
+    *   It seems the speakers are alternating mostly. I need to check if any speaker has two blocks in a row.
+    *   Scanning...
+        *   `[03:43] SPEAKER_00` -> `[05:22] SPEAKER_01` -> `[06:24] SPEAKER_00` -> `[07:26] SPEAKER_01` -> `[09:00] SPEAKER_00` -> `[10:05] SPEAKER_01` -> `[11:29] SPEAKER_00` -> `[12:35] SPEAKER_01` -> `[17:06] SPEAKER_00` -> `[17:58] SPEAKER_01` -> `[20:26] SPEAKER_00` -> `[21:26] SPEAKER_01` -> `[23:06] SPEAKER_00` -> `[26:33] SPEAKER_01` -> `[27:52] SPEAKER_01` (Wait, here `[27:52] SPEAKER_01` follows `[26:33] SPEAKER_01`? No, the input text says `[26:33] SPEAKER_00`... wait.
+    *   Let's check the input flow carefully around the end.
+    *   `[26:33] SPEAKER_00`: "You can't do these things..."
+    *   `[27:52] SPEAKER_01`: "somewhere like Argentina...". Wait, the label is SPEAKER_01? The previous was SPEAKER_00. So no merge.
+    *   `[29:25] SPEAKER_00`: "you know, in about five years...".
+    *   `[29:52] SPEAKER_01`: "10 years and a decade. So I think...".
+    *   It seems the input already has alternating speakers for the most part, or the labels indicate changes. I will verify if there are any consecutive blocks of the *same* speaker.
+    *   Ah, `[27:52] SPEAKER_01` is actually SPEAKER_01? Let's check the content. "I think there's so much still to do... I heard a lot of them saying...". This sounds like the guest (AVSA). The previous `[26:33] SPEAKER_00` was the host.
+    *   Wait, look at `[29:25] SPEAKER_00`. "You know, in about five years...". This is the host.
+    *   `[29:52] SPEAKER_01`. "10 years and a decade. So I think...". This is the guest.
+    *   Okay, I will follow the input speaker labels and merge only if they are consecutive. It appears they are not consecutive in the input provided. So I will just clean up the text within the blocks.
+    *   *Self-correction*: I need to be very careful about timestamps. The instruction says: "MERGE CONSECUTIVE SPEECH INTO PARAGRAPHS... All speech from one speaker before another speaks = ONE paragraph".
+    *   The input provided has timestamps like `[00:05]`, `[00:58]`. These are different speakers.
+    *   Let's check if there's a case where Speaker 01 speaks twice.
+    *   Input: `[00:58] SPEAKER_01`... `[01:25] SPEAKER_00`.
+    *   Input: `[26:33] SPEAKER_00`... `[27:52] SPEAKER_01`.
+    *   It looks like the speaker turns are alternating correctly in the input's labeling, so merging isn't strictly necessary for *combining* blocks, but I should ensure I output one block per speaker turn as defined by the input timestamps. However, if the input *has* consecutive blocks, I must merge. I'll scan again.
+    *   Okay, looking at the raw text, it seems Speaker 00 and Speaker 01 alternate. I will assume the input's segmentation is roughly correct regarding who speaks when. I will process each block.
+
+4.  **Detailed Text Cleanup:**
+
+    *   SPEAKER_00: "So, hi, I'm Bob Samuel..." -> "So, hi, I'm Bob Summerwill..." (Correct name based on context "Early Days of Ethereum", though "Samuel" is in text, "Summerwill" is the actual host. Prompt: "Known People... Bob Samuel" is not there. "Bob Summerwill" is not there. I'll stick to "Bob" or "Bob Samuel" to be safe, or correct if confident. Actually, "Bob Samuel" is very likely a transcription error for "Bob Summerwill". I will use "Bob Summerwill" for accuracy as an expert editor). "AVSA" -> "AVSA".
+    *   SPEAKER_01: "people who knew Myst is a public that is lowly and dwindling" -> "people who knew Mist is a public that is small and dwindling"? Or "people who knew Mist...". "is a public that is lowly and dwindling" -> "is a population that is low and dwindling". "OGs of crypto or blockchain archaeologists" -> Keep.
+    *   SPEAKER_00: "I have heard numerous people saying they want Mist 2..." -> Keep.
+    *   SPEAKER_01: "Maybe we should tell people what the heck is Mist..." -> Keep. "So I started working on Ethereum in 2014... they hired me to do a browser... called Mist". "amalgamate of what was the Web3 vision" -> "amalgamation". "Three-legged stooge" -> "three-legged stool". "The Trinity, that is sometimes called." -> Keep. "Ethereum working as the backend... decentralized storage and decentralized messaging... holy trinity... WebTree" -> "Web 3".
+    *   SPEAKER_00: "front-end piece... fallen back into convenience... servers... Fiora... probably within Frontier...". "Fiora" -> "Frontier". "local node... sync... Mist... Swarm... Whisper... incentives layer... ETH... source code on Swarm... hash back to it... presentation... October 2014." -> Keep.
+    *   SPEAKER_01: "DevConnect in Buenos Aires... complaining about the internet... 20,000 people... connect to same services... same network... antenna... server in the United States... downloading directly from your..."
+    *   SPEAKER_00: "content... friend who wants you to look at their thing... Lefteris... Internet coverage is terrible... Rottke... Rotki can still run... local first application... data on this machine... Cloudflare outage..."
+    *   SPEAKER_01: "Rotki... cat video... AirDrop... RotKiddy app -> Rotki app... 2014... full WebTree experience -> full Web 3 experience... full node of Ethereum... Swarm... Whisper... dream... failed... think your node... sync... 3 days to put it up... MetaMask extension... Web2 infrastructure... they won."
+    *   SPEAKER_00: "naive... client stuff... start at a checkpoint... trusted state... attesting to these good points... jump in quicker... syncing client... client in a browser... native node... drop in... didn't pan out."
+    *   SPEAKER_01: "Vitalik... Proof of Stake... full node in a smartphone... after 10 years... coming soon... changed the game... before you needed a form -> farm... now tiny depth node -> tiny desktop node or tiny device node? 'form' is likely 'farm'. 'tiny depth node' is likely 'tiny device node' or 'tiny desktop node' or just 'tiny node'. 'depth' might be 'desktop' or just 'node'. Let's assume 'tiny device' or 'tiny node'. Actually, 'light client' was mentioned earlier. 'tiny depth node' -> 'tiny device node' or 'tiny light node'. I'll stick to 'tiny device node' or 'tiny node' for safety). "We are still not there yet... light client on a phone... Swarm... IPFS... trust IPFS... Swarm 10 years in development... live... tested... IPFS... low and it's simply not a great user experience -> slow...".
+    *   SPEAKER_00: "Status... everything app on mobile... running a node... Nimbus... Whisper... Waku... ZKs... proofs... lighter models... presentation... October... hired September 2014... foundation."
+    *   SPEAKER_01: "started following Ethereum... white paper... Aleph0 -> Aleph Zero... graphical user interface... horrendous... driving a plane... sent it on the Reddit -> sent it to Reddit... Gav and Jeff... flew into Berlin... DevCon Zero... presentation... browser called Myst... depth store -> Dapp store... release it as depth -> Dapp... ethereum.if -> ethereum.eth... launch a name register system... if... month of development... quick thing... ENS -> ENS... feature -> DAO -> feature... DAO... half a billion dollars... DNS in 10 lines -> DNS... shirts... Democracy in 100 lines... Money in 50 lines... deploy... live contract... democracy... DAO... five eaters -> five ETH... spit it all live... DAOs forgotten... couple bucks..."
+    *   SPEAKER_00: "Toronto Bitcoin Expo... April 2014... Vitalik... code shirts... Mutan... Ether script -> EtherScript... Berlin or Amsterdam... remotely... Jeff's team... Gav more earlier?"
+    *   SPEAKER_01: "GEF team -> EF team... me, Felix, and Victor -> Viktor... Gavin... detour to London... cafe... Zug... Spaceship... Spaceship... Fabian -> Fabian... Jeff briefly... mid-2015... testing out browser... Swarm... Amsterdam... chat application... Swarm... didn't work... wild ride."
+    *   SPEAKER_00: "Christoph Jentz -> Christoph Jentzsch... breadth of the vision... Bitcoin with smart contracts... rebuild the web... Trinity... IDEs... Mix... Aleph One -> Aleph One... Alice Zero -> Aleph Zero... crazy low-level UI... GUI miner... tools... context... 2014... software eating music... desktop... hotel... taxi... software is eating the word -> world... money... governance... blockchain limitation... pay people... 10 years later... crypto boom... financial terms... impact society... cynic society... tech firms... Zuckerberg... Altman..."
+    *   SPEAKER_00: "timelines... 2013... cryptocurrency 2.0... Bitcoin... dotcom boom and bust... 10-year cycles... web... 93... maturity... iPhone... Facebook... commerce... credit card... insane... maturity... works now... DevCon five years ago... booths... slick user interface... paid for breakfast using Peanuts -> Peach (Bitcoin payment app)... shame... pay crypto for coffee... measure... organizations run transparently on chain... governance... success story... billions of dollars... online... no banks... founder of VNS -> ENS... Nick Johnson... votes... NS treasury -> ENS treasury... 100 million with assets... half a billion dollars in tokens... due process."
+    *   SPEAKER_00: "Can't do these things... institutions... opaque... proprietary software... server admin... users... cloud... convenience... wait... new capabilities... UX... better... capability... somewhere like Argentina... status quo is bad... still to do... market isn't where it used to be... more users... fantastic... meeting with mayor... NGOs... answer... long ways to go... optimistic... timelines unrealistic... five years... solved... long-term... progress... excited."
+    *   SPEAKER_01: "Famous quote... overestimate... few years... underestimate... 10 years... decade... optimistic... die an optimistic man." (Wait, looking at the raw text: `[29:25] SPEAKER_00: ...`. The text "famous quote" is spoken by the Host (Bob). The previous block was Bob. Ah, I need to check the input again.
+    *   Input: `[27:52] SPEAKER_01: ... long ways to go... timelines unrealistic...`
+    *   Input: `[29:25] SPEAKER_00: ... famous quote...`. Wait.
+    *   Input: `[29:25] SPEAKER_00:` starts "you know, in about five years...". But earlier I thought that was Bob.
+    *   Let's re-read the raw transcript segments around 27:52 and 29:25.
+    *   `[27:52] SPEAKER_01:` "somewhere like Argentina, you do have so much uses... status quo is bad... I think there's so much still to do... market isn't where it used to be... meeting with the mayor... NGOs... answer... long ways to go... My wife says I'm always too optimistic... timelines unrealistic... You know, I repeatedly think,"
+    *   `[29:25] SPEAKER_00:` "you know, in about five years, you know, it'll all be solved, and, you know, everything will be there. But, yeah, you know, I think it's a long-term thing, but, you know, we are seeing big progress, I would say. I'm kind of still excited. Oh, there's a famous quote..."
+    *   `[29:52] SPEAKER_01:` "10 years and a decade. So I think I am still optimistic..."
+    *   Wait, `[29:25] SPEAKER_00` says "you know...". This sounds like Bob interjecting to finish Alex's thought or agreeing. Then Alex continues at `[29:52]`.
+    *   Wait, looking at the content: `[27:52] SPEAKER_01` (Alex) is talking. He says "My wife says... I repeatedly think,". Then `[29:25] SPEAKER_00` (Bob) says "you know, in about five years, you know, it'll all be solved...". Then `[29:25] SPEAKER_00` continues "Oh, there's a famous quote...".
+    *   Then `[29:52] SPEAKER_01` (Alex) says "10 years and a decade...".
+    *   This seems like a confusion in the transcript. Usually, the speaker doesn't change mid-sentence "I repeatedly think... [Bob] you know it'll be solved...".
+    *   Actually, looking at the text: `[27:52] SPEAKER_01` ends with "You know, I repeatedly think,".
+    *   `[29:25] SPEAKER_00`: "you know, in about five years...".
+    *   This looks like a transcription error where the speaker label was swapped or the speech was attributed to the wrong person. "I repeatedly think, you know, in about five years..." flows better as one person (Alex).
+    *   However, I must stick to the provided speaker labels unless I am correcting obvious errors. But "You know, in about five years..." is Alex's thought ("My wife says I'm always too optimistic... I repeatedly think..."). Bob saying it doesn't make much sense unless he's finishing the sentence for him.
+    *   Let's look at the next part: "Oh, there's a famous quote...". Bob says "Oh, there's a famous quote". Then Alex answers "10 years and a decade...".
+    *   So Bob interrupts at "famous quote".
+    *   So, `[27:52] SPEAKER_01`... "You know, I repeatedly think,".
+    *   `[29:25] SPEAKER_00` (Bob): "you know, in about five years, you know, it'll all be solved...". This is Bob confirming or joking about Alex's optimism.
+    *   Then Bob says: "Oh, there's a famous quote that says that we overestimate..."
+    *   Then `[29:52] SPEAKER_01` (Alex): "10 years and a decade...".
+    *   Okay, I will respect the speaker labels in the input but fix the text flow. Wait, `[29:25] SPEAKER_00` has "you know, in about five years...". If I change this to Alex, I violate the "preserve speaker labels" rule (implicit, I shouldn't change who speaks). But if it's an obvious error, maybe I should. However, the "famous quote" part is definitely Bob. The "you know, in about five years" part is ambiguous. It could be Bob reiterating Alex's point. I'll leave the label as is, but fix the text.
+
+    *   SPEAKER_01: "10 years and a decade... optimistic... die an optimistic man."
+    *   **[29:52] SPEAKER_01 (continued? No):** "Absolutely. Well, thanks so much. We've got to wrap up..." Wait. Who says "Absolutely. Well, thanks so much"? Usually the host. So Bob.
+    *   But the label is `[29:52] SPEAKER_01`. "SPEAKER_01" is the Guest (Alex). Alex saying "Absolutely. Well, thanks so much" to himself? No. Alex saying "Absolutely" to the quote? Then Bob says "Thanks so much"?
+    *   The text "Absolutely. Well, thanks so much. We've got to wrap up. Great talking to you. And where can people find you?" sounds like the Host wrapping up.
+    *   Then "So I'm Avsa in most networks..." is the Guest answering.
+    *   So the label `[29:52] SPEAKER_01` covers the "10 years..." part. The "Absolutely..." part is likely a continuation of Bob or a mix-up.
+    *   Let's look at the text block for `[29:52] SPEAKER_01`.
+    *   "10 years and a decade. So I think I am still optimistic. And I will probably die an optimistic man. Absolutely. Well, thanks so much. We've got to wrap up. Great talking to you. And where can people find you? So I'm Avsa in most networks..."
+    *   This is a mess. It switches from Alex to Bob and back to Alex in one label.
+    *   I need to split this.
+    *   Alex: "10 years and a decade. So I think I am still optimistic. And I will probably die an optimistic man."
+    *   Bob: "Absolutely. Well, thanks so much. We've got to wrap up. Great talking to you. And where can people find you?"
+    *   Alex: "So I'm Avsa in most networks..."
+    *   I will fix this by splitting the paragraph and assigning the second part to Bob (SPEAKER_00) if I can infer the timestamp? I can't calculate timestamps.
+    *   I will use the format where I keep the label but maybe add a new one?
+    *   Or, since I cannot change timestamps, and the input has `[29:52] SPEAKER_01` for all of it...
+    *   Wait, the input has `[29:25] SPEAKER_00` ending with "famous quote...".
+    *   Then `[29:52] SPEAKER_01` starts.
+    *   I will assume the text "10 years..." is Alex.
+    *   The text "Absolutely..." is Bob.
+    *   The text "So I'm Avsa..." is Alex.
+    *   Since the input label is `SPEAKER_01` (Alex) for the whole block, but the content is clearly mixed, I have to fix it. The prompt says "PRESERVE ALL DIALOGUE".
+    *   I will format it as:
+        `[29:52] SPEAKER_01: 10 years and a decade. So I think I am still optimistic. And I will probably die an optimistic man.`
+        `SPEAKER_00: Absolutely. Well, thanks so much. We've got to wrap up. Great talking to you. And where can people find you?`
+        `[29:52] SPEAKER_01: So I'm Avsa in most networks...`
+    *   But I can't create a new timestamp for Bob. I'll have to append it or assume it's part of the flow.
+    *   Actually, looking at the previous block: `[29:25] SPEAKER_00` says "famous quote...".
+    *   So the flow is:
+        Bob: "...famous quote..."
+        Alex: "10 years... optimistic man."
+        Bob: "Absolutely... where can people find you?"
+        Alex: "So I'm Avsa..."
+    *   The input `[29:52] SPEAKER_01` contains Alex's line, Bob's line, and Alex's line.
+    *   I will split this into separate paragraphs for readability and correctness, using the same timestamp for the continuation or omitting timestamp for the extra paragraph?
+    *   "MERGE CONSECUTIVE SPEECH INTO PARAGRAPHS... Separate sentences with spaces, NOT line breaks". This implies I shouldn't break up a speaker's turn if it's continuous. But here the speaker *changes* mid-block.
+    *   I will split the block into logical speaker turns. Since I don't have timestamps for the new turn, I will just use the speaker label at the start of the paragraph.
+    *   Format:
+        `[29:52] SPEAKER_01: 10 years...`
+        `[29:52] SPEAKER_00: Absolutely...` (Using the existing timestamp or just the label?) The rules say "One timestamp per speaker paragraph (at the beginning)". If I introduce a new speaker, I technically should have a new timestamp. But I don't have one.
+        I will just use the label `SPEAKER_00:` on a new line to indicate the switch, as is common in transcript formats when timestamps aren't granular. Or I can append it to the previous Bob block? No, that's far away.
+        I will format it as:
+        `SPEAKER_01: 10 years and a decade. So I think I am still optimistic. And I will probably die an optimistic man.`
+        `SPEAKER_00: Absolutely. Well, thanks so much...`
+        `SPEAKER_01: So I'm Avsa...` (Or just SPEAKER_01:).
+        Actually, the prompt says "IF the input HAS timestamps... PRESERVE them EXACTLY as they appear... Do NOT modify... Only ONE timestamp per speaker paragraph".
+        This suggests I shouldn't mess with the timestamps too much. If the input has a massive block with mixed speakers, I have to handle it.
+        I will prioritize readability and correctness. I will split the block and use `SPEAKER_00:` without a timestamp (or reuse the existing one if strictly necessary, but omitting it for the middle block might be cleaner).
+        Let's look at the "CORRECT FORMAT EXAMPLE". It shows:
+        `SPEAKER_00: ...`
+        `SPEAKER_01: ...`
+        It implies distinct blocks.
+        I will insert a `SPEAKER_00:` block where the host speaks.
+
+5.  **Refining the Text (Iterative Correction):**
+
+    *   *Intro*: "Bob Samuel" -> "Bob Summerwill". (Context "Early Days of Ethereum").
+    *   *AVSA*: "world-famous AVSA".
+    *   *Myst*: "Mist".
+    *   *WebTree*: "Web 3".
+    *   *Three-legged stooge*: "Three-legged stool".
+    *   *Frontier*: Instead of "Fiora". "I guess it started probably within Frontier".
+    *   *Rotki*: "Rotki".
+    *   *Dapp store*: "Dapp store".
+    *   *Ethereum.eth*: "ethereum.eth".
+    *   *Ether script*: "EtherScript".
+    *   *DNS/Democracy/Money shirts*: "run DNS in 10 lines of code. You can run a democracy in 100 lines of code. You can make your own money in 50 lines of code."
+    *   *Mutan*: "Mutan".
+    *   *GEF*: "EF".
+    *   *Spaceship*: Keep.
+    *   *Fabiano*: "Fabian".
+    *   *Christoph Jentz*: "Christoph Jentzsch".
+    *   *Peanuts*: "Peach".
+    *   *ENS*: "ENS" (not NS, VNS).
+    *   *Five eaters*: "five ETH".
+
+    *   *Specific segment: [12:35] SPEAKER_01*
+        "I started following Ethereum... white paper... Aleph0... Aleph Zero... GUI... Reddit... Gav and Jeff... DevCon Zero... Mist... Dapp store... ethereum.eth... if... ENS... feature... DAO... feature... half a billion... DNS in 10 lines... 100 lines... 50 lines... Democracy... five ETH... DAOs..."
+
+    *   *Specific segment: [17:58] SPEAKER_01*
+        "EF team... me, Felix, and Viktor... Gavin... London... Zug... Spaceship... Fabian... Swarm... Amsterdam... chat application..."
+
+    *   *Specific segment: [20:26] SPEAKER_00*
+        "Christoph Jentzsch... Trinity... IDEs... Mix... Aleph Zero... Aleph One... 2014... software eating the world... money... governance... Zuckerberg... Altman..."
+
+    *   *Specific segment: [23:06] SPEAKER_00*
+        "timelines... dotcom... 10 years... iPhone... Facebook... commerce... DevCon... Peach... shame... crypto for coffee... organizations... transparent on chain... governance... founder of ENS... Nick Johnson... ENS treasury..."
+
+    *   *Specific segment: [29:25] SPEAKER_00* (Bob)
+        "...famous quote..."
+
+    *   *Specific segment: [29:52] SPEAKER_01* (Alex, then Bob, then Alex)
+        I will split this.
+        `SPEAKER_01: 10 years and a decade. So I think I am still optimistic. And I will probably die an optimistic man.`
+        `SPEAKER_00: Absolutely. Well, thanks so much. We've got to wrap up. Great talking to you. And where can people find you?`
+        `SPEAKER_01: So I'm Avsa in most networks. I don't use Twitter anymore... avsa.eth... Blue Sky... ping me... Bye bye.`
+
+    *   *One tricky part*: "Avsa.if.xyz". The transcript says "avsa.if.xyz". In ENS, .eth is common. But maybe he used .if.xyz? Or "avsa.eth"? The transcript says "avsa.if.xyz". Wait, the transcript says "ethereum.if" earlier. This was likely "ethereum.eth". "if" and "eth" sound somewhat similar? Not really. Maybe the transcript meant "eth" and heard "if"? Or maybe there was an .if TLD? Unlikely. I'll assume "ethereum.eth" and "avsa.eth".
+    *   *Wait*, earlier in the text: "We are, of course, we are going to launch a name register system. Of course, they're going to be.if." -> "Of course, they're going to be .eth".
+    *   Later: "avsa.if.xyz". This might be a specific URL? "avsa.eth" is the standard. I will change "if" to "eth" where it implies the ENS domain.
+
+    *   *Check:* "Peanuts". Is there a crypto app called Peanuts? Unlikely. "Peach" is a very popular Bitcoin P2P app in Europe. "I just paid for my breakfast using Peanuts" -> "Peach".
+
+    *   *Check:* "Fiora". "within Fiora". Context: "It started probably within...". The client? "Mist"? "Geth"? "Frontier"? "Frontier" is the network release. "Fiora" is definitely an error. I'll go with "Frontier" or just "Mist". "It started probably within Mist" makes sense. "It started probably within Frontier" (the release) also makes sense. Given "local node... sync", he might mean the client. But he mentions "Fiora" after "front end gets attacked". "It's always been a very common failure point... you know, that front end gets attacked... You have to have some people that are kind of running that server... I guess it started probably within Fiora, right? Was, okay, actually having a node...". This phrasing is confusing. Maybe he means "It started probably within the first year"? "Fiora" -> "Frontier"? Or "Alpha"? "Frontier" is the most likely Ethereum-specific term that sounds remotely like Fiora if garbled. Or maybe "Mist"? I will use "Frontier".
+
+    *   *Check:* "depth store". "Like the depth store". "Dapp store" is the term.
+
+    *   *Check:* "five eaters". "five ETH".
+
+    *   *Check:* "Alice Zero". "Aleph Zero".
+
+    *   *Check:* "GEF team". "EF team".
+
+    *   *Check:* "WebTree". "Web 3".
+
+    *   *Check:* "Tiny depth node". "Tiny device node".
+
+    *   *Check:* "Form". "Farm" (mining farm). "before you needed a form (farm), now all you need is a tiny device node".
+
+6.  **Formatting & Punctuation:**
+    *   Ensure timestamps are bold: `**[MM:SS] SPEAKER_XX:**`.
+    *   Ensure paragraphs are separated by blank lines.
+    *   Ensure text flows well.
+    *   Merge any consecutive lines of the same speaker (doesn't seem to be any based on scan).
+
+    *   *Self-Correction on Speaker Labeling [29:25]*:
+        `[29:25] SPEAKER_00` starts with "you know, in about five years...".
+        If the previous speaker `[27:52] SPEAKER_01` ended with "You know, I repeatedly think,",
+        Then `[29:25] SPEAKER_00` saying "you know, in about five years..." is likely Bob interrupting to summarize what Alex is thinking.
+        Then Bob says "Oh, there's a famous quote...".
+        So the block for `[29:25] SPEAKER_00` is correctly labeled.
+
+    *   *Self-Correction on [29:52] SPEAKER_01*:
+        Alex: "10 years..."
+        Bob: "Absolutely..."
+        Alex: "So I'm Avsa..."
+        I will format this split.
+
+    *   *Final Polish of text*:
+        "So I'm Bob Samuel" -> "So I'm Bob Summerwill".
+        "Myst" vs "Mist". Correct to "Mist".
+        "three-legged stooge" -> "three-legged stool".
+        "WebTree" -> "Web 3".
+        "Fiora" -> "Frontier".
+        "RotKiddy" -> "Rotki app".
+        "Peanuts" -> "Peach".
+        "depth store" -> "Dapp store".
+        "five eaters" -> "five ETH".
+        "Alice Zero" -> "Aleph Zero".
+        "GEF" -> "EF".
+        "VNS" -> "ENS".
+        "NS" -> "ENS".
+        "Fabiano" -> "Fabian".
+        "Christoph Jentz" -> "Christoph Jentzsch".
+        "Zuckerman" -> "Zuckerberg".
+        "form" -> "farm".
+        "tiny depth node" -> "tiny device node".
+
+    Let's write the output.SPEAKER_00: Okay, volume's good? Ready to go? All ready? So, hi, I'm Bob Summerwill, here with Early Days of Ethereum, and we have, as I guessed, AVSA, the world-famous AVSA of Mist fame and more. So, great to see you.
+
+SPEAKER_01: Well, Bob, thanks for having me. I do think that the people who knew Mist is a public that is small and dwindling, so I don't think it's a... I don't think... It's basically like OGs of crypto or blockchain archaeologists, which I think is a fun little group. My wife, when I told my wife that my work is so old that there are people who call themselves archaeologists studying it, she found it like, are you a dinosaur? What is this? I like to say I'm not old.
+
+SPEAKER_00: I'm very experienced and I think that's the same in your case. I have heard numerous people saying they want Mist 2, they want Mist back, that original vision is still very appealing and perhaps some new formulation of it is workable and possible these days. So you never know.
+
+SPEAKER_01: Maybe we should tell people what the heck is Mist or what that was, right? Yes, go for it. So I started working on Ethereum in 2014, so that was before networks launched, and they hired me to do a browser. And I think what I did, and that browser was called Mist, and what I think when people say, oh, I miss Mist, or I think they are doing, it's not that they missed the browser that we did, which wasn't very good. It was nice, but I mean, not so many failures, but what I think we try to do is an amalgamation of what was the Web3 vision of the early days. What we did is that we took everything that people were ideas that are floating around on white papers, on forums, and said, hey, we're going to do a browser that you can go and download those things and play with them. And you download them from your peers. You connect via encrypted apps directly peer-to-peer, and it was the realization of the famous three-legged stool of Ethereum. The Trinity, that is sometimes called. Exactly, where you have Ethereum working as the backend, so Ethereum would sort of replace the servers, but you'd still have decentralized storage and decentralized messaging, and that holy trinity would make what we call now Web3, what we wanted to call Web3. And I still think that in order to call something Web3, at least, at minimum, you need to have a peer-to-peer browser or decentralized storage of some sort.
+
+SPEAKER_00: Yeah, I mean, it's really, I think, that front-end piece that is commonly missing now. You know, we've sort of fallen back into convenience of having servers. You know, I guess it started probably within Frontier, right? Was, okay, actually having a node, local node on your machine, it's taken a long time to sync. Don't like this user experience, but... But that's been a very common failure point, you know, for many projects is, you know, that front end gets attacked. You have to have some people that are kind of running that server. Even if it's not like a company running it, like somebody's there. It's always the junction points, kind of, I guess, like with exchanges and fiat, right? It's like, yeah, you move stuff around. But like, how do you get real world money in? You know, it's that junction point. So yeah, you know, Mist was really that really brave attempt at doing the whole thing, right? That you would have Swarm as a decentralized storage, but then you can have an incentives layer on that because you've got smart contracts in Ethereum and then you've got ETH, the currency that you can be paying those incentives with and then you can have like your source code on Swarm and references a hash back to it and then Whisper for the conversation. So yeah, I think many people were really inspired by especially your Mist presentation, which I think was October 2014.
+
+SPEAKER_01: Yeah, so we are all at DevConnect in Buenos Aires, and a lot of people are complaining about the internet, right? It's a constant complaint. And it's funny because we have a thousand people here, 10,000, I heard 20,000 people here. Everyone has in their pocket a computer that is more powerful than any server 10 years ago. And I would say that 90% of people are just trying to connect to the same services, right? Everyone is trying to connect to the same wallets, to the same interfaces, to the same, trying to download the same files. Right, so why do we actually need that in order to do that, everyone needs to go through the same network, through an antenna over there, through a server in the United States. Why can't, like if you're making me a demo of my app, why can't I just be downloading directly from your...
+
+SPEAKER_00: content. Yeah, you know, your friend who wants you to look at their thing like they've got it. So two other sorts of instances just this week I saw of this were Lefteris was saying, you know, the Internet coverage is terrible in here. You know, I love this event, love the organizers, but, you know, nobody can do anything because of the, you know, the lack of Internet coverage. But he says, but Rotki can still run. You know, come here. You know, I can show you because... It's a local first application and the data was on this machine and he can do the processing. There's a bunch of things that you can do without that connectivity if you do have that data locally. And then the second one is it was just a few days ago where there was a massive Cloudflare outage that basically took down the whole world. So yeah, we have these weaknesses for sure.
+
+SPEAKER_01: And I can guarantee to you that I would bet that most of the Rotki, I think Rotki is a great example, because most of the files you need to run Rotki are, if you pack everything in a zip file, it's probably smaller than a cat video, right? And I can send you a cat video right now with AirDrop, but I cannot send you the Rotki app for you to run and for you to take a look. And I think that's what we were trying to do back in 2014. We wanted this idea that you're going to have the full Web3 experience. and we wanted you, that every one of our users would run a full node of Ethereum, they would run a full node of Swarm, they would run a full node of Whisper, right? And that was the dream, and that was also why it failed, because in the beginning, man, you need to take a few minutes to sync your node whenever you started it. By the next year, it was a few hours. By the end, it was a few days. before you could sort it. And so I was telling people, look, you can open this browser, and it takes three days to put it up, and then you'll be able to run a decentralized front end that nobody has. Or you can just download the MetaMask extension, and it will run instantly on the current Web2 infrastructure, right? Which, that's why they won.
+
+SPEAKER_00: Yeah, and I mean, in what I was doing as well, I guess I was fairly naive in the same way of thinking, okay, yeah, you know, we're running full nodes now, but, you know, there'll be, like, client stuff soon, and you'll be able to, like, whatever, like, start at a checkpoint, you know, get trusted state off someone, you know, and then... So, yeah, you start at the end, but, you know, maybe it can go back and fill the things in later. You know, you can have a... a trust-minimized starting point that isn't complete trust, but it's probably good enough, right? Okay, we'll start at their block a day ago or something, right? Something can be attesting to these good points and you can just jump in quicker. And especially on the like client, just thinking, we'll be able to have a syncing client, like client in a browser. Maybe you don't even need a native node. You can just sort of drop in and off you go. So yeah, that didn't pan out.
+
+SPEAKER_01: I just got out a talk where Vitalik was saying that how with the new changes they're doing in Proof of Stake, you'll soon be able to run a full node in a smartphone, in a browser, something like that, which I think it's fantastic we need that, but it's still, like after 10 years, it's still coming soon, right? And I admit, like Proof of Stake really changed the game because where before you needed a farm, now all you need to do is like a tiny device node. But that is like one tiny computer that is running all the time just for keeping sync with the network. We are still not there yet, even on the light client on a phone part. You cannot run a validator on a phone yet. Maybe someone has it as an experimental thing, but it's simply not there, right? And then that's not even talking about the rest of the stack. where we had Swarm or even IPFS. You still cannot trust IPFS. Swarm is 10 years in development and it's still, they say it's working, it's live, haven't tested it. I have tested the IPFS a lot and every time I test it, it's sort of working but it's slow and it's simply not a great user experience.
+
+SPEAKER_00: Yeah, I mean, I think a lot of techs have been an awful lot more work than we anticipated. You know, another one pops to mind for me there is Status. So, you know, Status kind of trying to do a similar thing, right? You know, here's the everything app on mobile. running a node, but then they had to make their own node, so that's Nimbus, and then they were doing stuff with Whisper, and Whisper didn't really work out, so it's onto Waku, and yeah, you can have a situation where people are dependent on pieces which are still not there. They're better than they were, but it's still an ongoing process. But I think ZKs are really going to help, though, because you're not having to do the full execution. If you're just doing proofs, I think that's a great path to lighter models. So you were talking about a presentation I gave in October, right? So to give context, I was hired, I think, in September of 2014 from the foundation.
+
+SPEAKER_01: So I started following Ethereum, I probably read the white paper, I was fascinated by it, I couldn't think about anything else. I downloaded the only piece of graphical user interface called Aleph Zero, and it was like, horrendous. It felt like driving a plane, like trying to land the plane. And I made a better version of that, which I thought was a better version, sent it to Reddit, and then got Gav and Jeff wanting to talk to me. And Gav told me, I don't think you're thinking about this enough, right? I think you didn't go far enough. And let me tell you about Web3. And that's when he started telling me about how they wanted to run a browser, and I could be the lead developer for that browser. So I flew into Berlin in November, I think, for DevCon Zero, and I gave a presentation on what I thought we could do with this browser called Mist. And one funny thing I find about the presentation is that there is one slide where I'm presenting Like the Dapp store, right? The idea is that we are going to take everything that you are talking about in theory and we are going to just release it as a Dapp. And I was presenting a lot of things because in my mind it would be, look, you're going to download it from ethereum.eth and I presented that, I thought, look, We are, of course, we are going to launch a name register system. Of course, they're going to be .eth. And of course, it's going to take like maybe a month of development and then we're done. And then we have all those cool things that we can probably do every month. We do a new contract and out-Dapp and people can download, can share it. It's going to be cool. You can do a hackathon and then you can do a prediction market. You do another hackathon, then you have a multi-sig thing. And then looking back at that, I can tell you that every single one of those things that I pointed as a quick thing that would take a month, they are today or at least were at some point a company worth hundreds of millions of dollars developing for the best part of 10 years. ENS, for example, I ended up launching ENS as a feature. I just thought, like Nick, I met Nick Johnson at the foundation. I wanted to do a name registration. He had a few ideas. We got together. We launched it. And I was like, yeah, great. I can go back to work on what I care about, the browser. And he came, kept developing on ENS. ENS now is a whole DAO with 10 teams working on them full time. It handles at least like half a billion dollars in tokens and in assets and treasuries. DAO was supposed to be just a feature. And then that became like a half a billion dollar ecosystem on its own. And I think that tells you about the difficulty of building those things. Because I think I remember seeing an example for that. It's saying, oh, look, you can do DNS in 10 lines. Do you remember that? You know, it's just like, yep, there's this thing and you can set or you could read and it's like, this will be trivial. So we used to have shirts and on the back of the shirts, conference shirts, I still have them. I was using them the other day. On the back of the shirt, there will be code saying, look, you can run DNS in 10 lines of code. You can run a democracy in 100 lines of code. You can make your own money in 50 lines of code. I loved giving that presentation. I would give a presentation in which I would go on mainnet, put five ETH, deploy a live contract, a democracy, a DAO, put five ETH, make a vote somewhere, and just spit it all live during five minutes in a presentation. I bet if you look at my history, there are probably a few DAOs forgotten with five ETH on them, because back then, it was like just a couple bucks, right? And I... I loved the presentation and to be fair, I still like the idea that you can just deploy code and it works better than many governments do.
+
+SPEAKER_00: Yeah, yeah, absolutely. So, yeah, I mean, I remember that those code T-shirts, I saw them first at that Toronto Bitcoin Expo, which was in April of 2014. So there's some famous photos of it on Vitalik's back and, you know, people looking at it. Though you look at that code, it wasn't Solidity. I don't know if it was Mutan. It might have been even pre-Mutan. The Ether script was what they called it very originally. But yeah, so you weren't working in Berlin or in Amsterdam yourself, were you? You were working remotely. And was it primarily with Jeff's team that you had those interactions or I guess Gav more earlier?
+
+SPEAKER_01: It was primarily with the EF team. I was the third employee when I joined the EF team. It was me, Felix, and Viktor. And I did some work with Gavin. And what we did is we would work mostly remotely, and once or twice per year we would go meet everyone together. And whenever I was... I remember one time I went in Berlin. I went to Amsterdam. And then Gavin knew that and he made me do a detour to London just to spend like two hours with him on a cafe where he mostly told me that you're doing everything wrong. You need to do this, this, this, and that. And that was it, right? We used to do that. And sometimes, and I think after London, I went to Zug and I also spent the week in the spaceship. So yes, Spaceship is a very famous place. Can you remember who was there, what the context was and what you were doing? I was on the spaceship with Gavin Wood, Fabian and a few other developers. I think Jeff was there briefly also. I don't remember. To be honest, I don't remember the purpose of that. We were developing stuff. We were there just trying out things. Fabiano was already there. That was probably mid-2015. We were testing out how the browser works, how does everything work together. And I think the same trip was when we were all together in Amsterdam, when we had a great presentation, a great demo, in which we had built a browser and then Viktor came and had built Swarm and we were all playing around with a chat application running on Swarm on a browser. I would look at that and be like, it's happening, it's really, it's all going to work, right? It was fantastic. And it didn't, of course, work as we expected. Almost everything in that day had to be rebuilt and some of those parts haven't been rebuilt yet. But I think that was the moment where we realized, yeah, this thing is going to happen and it's going to be a wild ride.
+
+SPEAKER_00: Yeah, I mean, absolutely. So I was speaking to Christoph Jentzsch recently, and he was saying, you know, it was the breadth of the vision that really inspired him. You know, it wasn't just, okay, here's Bitcoin with smart contracts. It's like, we're going to rebuild the web. And yeah, you're going to have this trinity. But also, IDEs, we're building an IDE as well with Mix. And yeah, you have got Aleph Zero, this crazy kind of low-level UI. But also Aleph One, you know, GUI miner. It's like, yeah, you know, we're just going to build these tools that are going to be very user-facing and it's going to be, you know, enabling anyone really to, you know, to exercise this full set of tools. And yeah, you know, we're going to make a new web. I think you have to put it in context, right?
+
+SPEAKER_01: If you were around working on something in 2014, it probably meant that you saw the music, you saw software eating up music and turning it digital. You saw software eating up the desktop industry. You saw software eating up, starting to eat up the hotel industry and the taxi industry. all those were the things that were software is eating up the world and like why would you expect that it will stop at money why do you think it will stop at governance and organization so of course at some point software is going to eat money software is going to eat enterprises software is going to eat the very way that we interact with other people and blockchain has its limitation it cannot do a lot of things but it can do money and once you can pay people to do something you can do almost anything right and we like right now I think 10 years later I think crypto has become such a boom and it became in a sense crypto became a boom in financial terms but it didn't impact the society as much as we hoped and now we are living in a much more let's say, cynic society where people look at tech firms and say, I don't trust them. I don't trust Zuckerberg. I don't trust this Altman guy. It's a different context today than we were 10 years ago.
+
+SPEAKER_00: Yeah. And I mean, just thinking about timelines. So that, you know, kind of 2013 era where you were sort of cryptocurrency 2.0. Right. You know, you'd had a few years since since Bitcoin had started. You know, that was just over 10 years after the dotcom boom and bust. So, you know, look at these 10-year cycles. It's like, you know, the web was, you know, starting there in 93, I think. You know, so then you'd had 10 years of like, right, we can actually do things on, you know, on the internet. And, you know, you'd have this big crash and burn. But then 10 years later, you know, it was like that was mature. You know, you'd had the iPhone and Facebook and, you know, a bunch of other things happening, you know, and people were doing commerce, you know, which 10 years before have been like, what, you're going to pay for something online with your credit card? Like, are you insane? But it had gone through that maturity, you know, and perhaps that's sort of where we are now, right? Is everything that was trying to happen 10 years ago, it kind of works now. I like how...
+
+SPEAKER_01: If you went to a DevCon five years ago, it would be most would be people with some ideas, some random idea that they want to build. And if you walk around every booth, someone will have an app that you can download that is ready, that has a slick user interface. And that's useful. I just paid for my breakfast using Peach. It's an app that helps you pay when people don't accept crypto. And I have to admit a little bit of shame about myself. I don't remember when was the last time I used crypto to pay for something normal. To be honest, I don't think that is the way to define the success of crypto. Do you pay crypto if you're coffee, right? I think a much more interesting measure, especially on Ethereum, is of how many organizations run transparently on chain, right? And I think that is, I still think that governance is one of the best use cases for Ethereum. It's one of the best. success story of Ethereum. We have billions of dollars that are currently managed online, on chain, through a process that doesn't involve banks and that nobody can take the money away. And I think an example, before I give you the microphone, is I'm a founder of ENS. I can get together with Nick today And we have a lot of votes and we still cannot move a single dollar out of the ENS treasury without going through the process of voting in a way that is transparent to anybody, right? There are like $100 million with assets, half a billion dollars in tokens, in the ENS tokens there. And we cannot still move a single dollar without going through the due process. Yeah. No, I mean, that's just wonderful.
+
+SPEAKER_00: You can't do these things without this technology. So many of our institutions and processes and flows, they are just sort of opaque by design, by definition. They are some proprietary software that's getting run by somebody with a server admin, and everyone is just a user. We've gone to a point where Like, nobody even wants to run software. I mean, I guess this was a challenge on the Mist side as well, is nobody even wanted to run anything on their machine. You know, you saw the growth of cloud. It's like, yeah, nobody wants to have a computer. Nobody wants to have a server. But I think a lot of that is a convenience and a wait thing. And if you are getting new capabilities that are unavailable elsewhere, that's compelling. The UX and experience on apps, they have to be better than what they're doing or give you a new capability. And I kind of think why...
+
+SPEAKER_01: somewhere like Argentina, you do have so much uses, you know, the status quo is bad. Yeah. I think there's so much still to do, right? I think one of the things, talking with other apps, I heard a lot of them saying, look, the market isn't where it used to be a few years ago, but right now we have more users than we had before, right? Even during the top of the last bubble, we have more users actually using and doing stuff than we had before. And I think that is already fantastic. There's still so much work to do. A few years ago, I happened to be... Somehow I was in a meeting with the mayor of my city, and one of the... People there were like, okay, tell me, how can you use crypto right now to help the city? How can you help it? And I was sort of like, you can do those theoretical things, and he's like, No, tell me, what are they doing that we can do right now? I was like, actually, I didn't have an answer, right? And I started looking for NGOs. I found some great NGOs using crypto. But my point is that I think we still have long ways to go in that sense. My wife says I'm always too optimistic, that my timelines are completely unrealistic. You know, I repeatedly think,
+
+SPEAKER_00: you know, in about five years, you know, it'll all be solved and, you know, everything will be there. But, yeah, you know, I think it's a long-term thing, but, you know, we are seeing big progress, I would say. I'm kind of still excited. Oh, there's a famous quote that says that we overestimate the amount of change that happens in a few years, but we underestimate the amount of change that happens in,
+
+SPEAKER_01: 10 years and a decade. So I think I am still optimistic. And I will probably die an optimistic man.
+
+SPEAKER_00: Absolutely. Well, thanks so much. We've got to wrap up. Great talking to you. And where can people find you?
+
+SPEAKER_01: So I'm Avsa in most networks. I don't use Twitter anymore, a lot anymore. But you can probably find me also on avsa.eth on Blue Sky. And just ping me a message there. OK. Thanks so much. Bye bye.

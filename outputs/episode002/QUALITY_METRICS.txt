@@ -1,0 +1,111 @@
+================================================================================
+QUALITY ASSESSMENT: EPISODE002
+================================================================================
+Episode: episode002
+Generated: December 17, 2025
+
+Supported Combinations: 6 (found) / 12 (expected: 3 transcribers × 4 post-processors)
+
+================================================================================
+EXECUTIVE SUMMARY
+================================================================================
+
+IMPORTANT PIPELINE NOTE:
+  Post-processing should run on the intermediate *.md transcripts (not *.txt)
+  so post-processors can preserve the original timestamps.
+
+KEY FINDINGS:
+
+1) WORD-COUNT RETENTION: 6/6 outputs are within 90–110% of baseline
+2) TIMESTAMP PRESERVATION: 0/6 outputs have an exact timestamp count match
+3) CRITICAL: 5 outputs show timestamp explosion (likely regenerated timestamps)
+
+RECOMMENDED FOR THIS EPISODE:
+  • assemblyai + gemini
+      - timestamps: 162/169
+      - retention:  96.2%
+
+================================================================================
+INPUT (INTERMEDIATE) TRANSCRIPTS
+================================================================================
+
+Word counts (baseline for retention; computed from the intermediate .md
+transcripts with timestamps stripped):
+  • episode002_assemblyai.md                      11,849 words
+  • episode002_whisperx-cloud.md                  11,982 words
+  • episode002_whisperx.md                        12,002 words
+
+Timestamp/header counts in intermediate .md (GROUND TRUTH timing):
+  • episode002_assemblyai.md                       169 timestamps (169 timestamped headers)
+  • episode002_whisperx-cloud.md                    60 timestamps (60 timestamped headers)
+  • episode002_whisperx.md                          77 timestamps (76 timestamped headers)
+
+================================================================================
+OUTPUT (POST-PROCESSED) WORD COUNT ANALYSIS
+================================================================================
+
+Legend:
+  retention = output_words / input_words
+  timestamps = output timestamp count / input timestamp count
+
+ASSEMBLYAI (input: 11,849 words; 169 timestamps)
+  processor     words    retention   timestamps
+  gemini     11,403      96.2%   162/169   ⚠
+  opus       11,859     100.1%   236/169   ⚠ CRITICAL
+
+WHISPERX-CLOUD (input: 11,982 words; 60 timestamps)
+  processor     words    retention   timestamps
+  gemini     11,550      96.4%   116/60   ⚠ CRITICAL
+  opus       11,281      94.1%   318/60   ⚠ CRITICAL
+
+WHISPERX (input: 12,002 words; 77 timestamps)
+  processor     words    retention   timestamps
+  gemini     11,447      95.4%   107/77   ⚠ CRITICAL
+  opus       11,753      97.9%   140/77   ⚠ CRITICAL
+
+================================================================================
+QUALITY FLAGS / REVIEW NOTES
+================================================================================
+
+1) Timestamp count changes are the primary red flag
+   Any output with far more timestamps than the input is not preserving the
+   diarization paragraphing and is likely regenerating timestamps.
+
+   CRITICAL failures observed:
+     - assemblyai + opus: 236 timestamps vs 169 input
+     - whisperx + gemini: 107 timestamps vs 77 input
+     - whisperx + opus: 140 timestamps vs 77 input
+     - whisperx-cloud + gemini: 116 timestamps vs 60 input
+     - whisperx-cloud + opus: 318 timestamps vs 60 input
+
+2) Format / ordering issues
+     - assemblyai + opus: fmt_bad=236
+     - whisperx-cloud + opus: fmt_bad=318
+
+RECOMMENDATION:
+  • Use intermediate .md files as the canonical timestamped transcript.
+  • Use post-processed .txt outputs for corrected wording / readability.
+
+================================================================================
+MANUAL SPOT-CHECK NOTES (CONTENT QUALITY)
+================================================================================
+
+This file is generated from automated metrics only.
+Add manual notes here if you spot entity errors, hallucinations, or other
+content issues specific to this episode.
+
+================================================================================
+PROJECT IMPROVEMENT RECOMMENDATIONS (TO REDUCE MANUAL EDITING)
+================================================================================
+
+1) Deterministic timestamp preservation (recommended architecture)
+   Do NOT ask the model to 'preserve timestamps' in free-form text.
+   Instead: parse -> correct text only -> reassemble with original timestamps.
+
+2) Entity constraints + validation
+   Reject outputs that introduce new PERSON entities not present in input/allowlist.
+
+3) Validation + auto-retry
+   Enforce exact timestamp sequence match, non-decreasing timestamps, and header format.
+
+================================================================================

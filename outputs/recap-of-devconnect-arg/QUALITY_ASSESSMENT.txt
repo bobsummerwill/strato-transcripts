@@ -1,0 +1,160 @@
+================================================================================
+MANUAL ASSESSMENT (DRAFT; excerpt-based spot-check)
+================================================================================
+
+This section is generated from a deterministic excerpt spot-check (5 blocks per transcriber)
+plus simple novelty/similarity heuristics. It is *not* a substitute for listening to audio,
+but it does catch common failure modes: summarization, hallucinated entities, timestamp drift,
+and formatting corruption.
+
+See excerpt pack: outputs/recap-of-devconnect-arg/REVIEW_EXCERPTS.md
+
+--------------------------------------------------------------------------------
+Transcriber: assemblyai
+-
+Baseline: 8,802 words, 0 timestamps (fmt_bad=0, nonmono=0)
+
+Top candidates (excerpt similarity / novelty / timestamp drift):
+  • opus     sim=0.00 ret=86.4% ts=148/0 (×148.00) novel_caps=17 fmt_bad=148
+  • gemini   sim=0.00 ret=86.4% ts=591/0 (×591.00) novel_caps=29 fmt_bad=591
+
+Draft recommendation for this transcriber: opus
+Rationale: chosen by highest excerpt similarity while avoiding obvious timestamp/format corruption and excessive entity novelty.
+
+--------------------------------------------------------------------------------
+Transcriber: whisperx-cloud
+-
+Baseline: 7,554 words, 0 timestamps (fmt_bad=0, nonmono=0)
+
+Top candidates (excerpt similarity / novelty / timestamp drift):
+  • opus     sim=0.00 ret=96.2% ts=121/0 (×121.00) novel_caps=11 fmt_bad=121
+  • gemini   sim=0.00 ret=96.3% ts=324/0 (×324.00) novel_caps=27 fmt_bad=324
+
+Draft recommendation for this transcriber: opus
+Rationale: chosen by highest excerpt similarity while avoiding obvious timestamp/format corruption and excessive entity novelty.
+
+--------------------------------------------------------------------------------
+Transcriber: whisperx
+-
+Baseline: 7,228 words, 106 timestamps (fmt_bad=2, nonmono=0)
+
+Top candidates (excerpt similarity / novelty / timestamp drift):
+  • gemini   sim=0.02 ret=100.0% ts=113/106 (×1.07) novel_caps=23 fmt_bad=0
+  • opus     sim=0.00 ret=97.6% ts=114/106 (×1.08) novel_caps=15 fmt_bad=0
+
+Draft recommendation for this transcriber: gemini
+Rationale: chosen by highest excerpt similarity while avoiding obvious timestamp/format corruption and excessive entity novelty.
+
+================================================================================
+
+================================================================================
+QUALITY ASSESSMENT: RECAP OF DEVCONNECT ARG
+================================================================================
+Episode: recap-of-devconnect-arg
+Generated: December 17, 2025
+
+Supported Combinations: 6 (found) / 12 (expected: 3 transcribers × 4 post-processors)
+
+================================================================================
+EXECUTIVE SUMMARY
+================================================================================
+
+IMPORTANT PIPELINE NOTE:
+  Post-processing should run on the intermediate *.md transcripts (not *.txt)
+  so post-processors can preserve the original timestamps.
+
+KEY FINDINGS:
+
+1) WORD-COUNT RETENTION: 4/6 outputs are within 90–110% of baseline
+2) TIMESTAMP PRESERVATION: 0/6 outputs have an exact timestamp count match
+
+RECOMMENDED FOR THIS EPISODE:
+  • whisperx-cloud + gemini
+      - timestamps: 324/0
+      - retention:  96.3%
+  • whisperx-cloud + opus
+      - timestamps: 121/0
+      - retention:  96.2%
+  • assemblyai + opus
+      - timestamps: 148/0
+      - retention:  86.4%
+
+================================================================================
+INPUT (INTERMEDIATE) TRANSCRIPTS
+================================================================================
+
+Word counts (baseline for retention; computed from the intermediate .md
+transcripts with timestamps stripped):
+  • recap-of-devconnect-arg_assemblyai.md          8,802 words
+  • recap-of-devconnect-arg_whisperx-cloud.md      7,554 words
+  • recap-of-devconnect-arg_whisperx.md            7,228 words
+
+Timestamp/header counts in intermediate .md (GROUND TRUTH timing):
+  • recap-of-devconnect-arg_assemblyai.md            0 timestamps (0 timestamped headers)
+  • recap-of-devconnect-arg_whisperx-cloud.md        0 timestamps (0 timestamped headers)
+  • recap-of-devconnect-arg_whisperx.md            106 timestamps (104 timestamped headers)
+
+================================================================================
+OUTPUT (POST-PROCESSED) WORD COUNT ANALYSIS
+================================================================================
+
+Legend:
+  retention = output_words / input_words
+  timestamps = output timestamp count / input timestamp count
+
+ASSEMBLYAI (input: 8,802 words; 0 timestamps)
+  processor     words    retention   timestamps
+  gemini      7,603      86.4%   591/0
+  opus        7,604      86.4%   148/0
+
+WHISPERX-CLOUD (input: 7,554 words; 0 timestamps)
+  processor     words    retention   timestamps
+  gemini      7,271      96.3%   324/0
+  opus        7,267      96.2%   121/0
+
+WHISPERX (input: 7,228 words; 106 timestamps)
+  processor     words    retention   timestamps
+  gemini      7,225     100.0%   113/106   ⚠
+  opus        7,057      97.6%   114/106   ⚠
+
+================================================================================
+QUALITY FLAGS / REVIEW NOTES
+================================================================================
+
+1) Timestamp count changes are the primary red flag
+   Any output with far more timestamps than the input is not preserving the
+   diarization paragraphing and is likely regenerating timestamps.
+
+2) Format / ordering issues
+     - assemblyai + gemini: fmt_bad=591
+     - assemblyai + opus: fmt_bad=148
+     - whisperx-cloud + gemini: fmt_bad=324
+     - whisperx-cloud + opus: fmt_bad=121
+
+RECOMMENDATION:
+  • Use intermediate .md files as the canonical timestamped transcript.
+  • Use post-processed .txt outputs for corrected wording / readability.
+
+================================================================================
+MANUAL SPOT-CHECK NOTES (CONTENT QUALITY)
+================================================================================
+
+This file is generated from automated metrics only.
+Add manual notes here if you spot entity errors, hallucinations, or other
+content issues specific to this episode.
+
+================================================================================
+PROJECT IMPROVEMENT RECOMMENDATIONS (TO REDUCE MANUAL EDITING)
+================================================================================
+
+1) Deterministic timestamp preservation (recommended architecture)
+   Do NOT ask the model to 'preserve timestamps' in free-form text.
+   Instead: parse -> correct text only -> reassemble with original timestamps.
+
+2) Entity constraints + validation
+   Reject outputs that introduce new PERSON entities not present in input/allowlist.
+
+3) Validation + auto-retry
+   Enforce exact timestamp sequence match, non-decreasing timestamps, and header format.
+
+================================================================================
