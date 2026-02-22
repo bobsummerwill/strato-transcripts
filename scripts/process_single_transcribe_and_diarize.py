@@ -547,8 +547,17 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False, consensus_mode=
         # with the most temporal overlap. This preserves the original text perfectly.
         print("  → Assigning speakers (segment-level matching)...")
         
+        # Extract annotation from pipeline output (may be wrapped in DiarizeOutput)
+        if hasattr(diarize_segments, 'speaker_diarization'):
+            annotation = diarize_segments.speaker_diarization
+        elif hasattr(diarize_segments, 'itertracks'):
+            annotation = diarize_segments
+        else:
+            # Try treating it as a dict-like
+            annotation = diarize_segments.get('diarization', diarize_segments)
+        
         diarize_list = []
-        for segment, _, speaker in diarize_segments.itertracks(yield_label=True):
+        for segment, _, speaker in annotation.itertracks(yield_label=True):
             diarize_list.append({
                 'start': segment.start,
                 'end': segment.end,
