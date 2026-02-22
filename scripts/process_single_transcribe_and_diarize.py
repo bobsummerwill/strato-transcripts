@@ -98,10 +98,9 @@ def merge_consecutive_speaker_segments(segments, speaker_key="speaker"):
 
 def save_transcript_files(output_dir, basename, service_name, segments, speaker_key="speaker"):
     """
-    Save transcript in both txt and md formats with consistent naming.
+    Save transcript as markdown with timestamps.
     Consecutive segments from the same speaker are merged into paragraphs.
-    TXT format: No timestamps, no markdown - just "SPEAKER_XX: text"
-    MD format: With rounded timestamps - "**[MM:SS] SPEAKER_XX:** text"
+    Format: **[MM:SS] SPEAKER_XX:** text
 
     Args:
         output_dir: Directory to save files
@@ -111,7 +110,7 @@ def save_transcript_files(output_dir, basename, service_name, segments, speaker_
         speaker_key: Key name for speaker in segments (default: 'speaker')
 
     Returns:
-        Path object for the .txt file
+        Path object for the .md file
     """
     # Create episode-specific subdirectory, but avoid nesting if output_dir already ends with basename
     output_dir_path = Path(output_dir)
@@ -121,23 +120,12 @@ def save_transcript_files(output_dir, basename, service_name, segments, speaker_
         episode_dir = output_dir_path / basename
     episode_dir.mkdir(parents=True, exist_ok=True)
     
-    output_path = episode_dir / f"{basename}_{service_name}.txt"
-    
     # Merge consecutive segments from same speaker into paragraphs
     merged_segments = merge_consecutive_speaker_segments(segments, speaker_key)
     
-    # Save text version (NO timestamps, NO markdown)
-    # Format: SPEAKER_XX: text
-    with open(output_path, 'w', encoding='utf-8') as f:
-        for segment in merged_segments:
-            speaker = segment['speaker']
-            text = clean_text(segment['text'])
-            if text:
-                f.write(f"{speaker}: {text}\n\n")
-    
     # Save markdown version (WITH timestamps)
     # Format: **[MM:SS] SPEAKER_XX:** text
-    md_path = output_path.with_suffix('.md')
+    md_path = episode_dir / f"{basename}_{service_name}.md"
     with open(md_path, 'w', encoding='utf-8') as f:
         for segment in merged_segments:
             speaker = segment['speaker']
@@ -147,7 +135,7 @@ def save_transcript_files(output_dir, basename, service_name, segments, speaker_
             if text:
                 f.write(f"**[{timestamp}] {speaker}:** {text}\n\n")
     
-    return output_path
+    return md_path
 
 
 def clean_text(text):
@@ -168,10 +156,9 @@ def clean_text(text):
 
 def save_raw_transcript_from_text(output_dir, basename, service_name, formatted_text):
     """
-    Save pre-formatted transcript text in both txt and md formats.
+    Save pre-formatted transcript text as markdown with timestamps.
     Consecutive segments from the same speaker are merged into paragraphs.
-    TXT format: No timestamps, no markdown - "SPEAKER_XX: text"
-    MD format: With rounded timestamps - "**[MM:SS] SPEAKER_XX:** text"
+    Format: **[MM:SS] SPEAKER_XX:** text
 
     Args:
         output_dir: Directory to save files
@@ -181,7 +168,7 @@ def save_raw_transcript_from_text(output_dir, basename, service_name, formatted_
                        Format: "SPEAKER_XX:\n[123.4s] text\n[125.0s] more text\n"
 
     Returns:
-        Path object for the .txt file
+        Path object for the .md file
     """
     import re
 
@@ -192,8 +179,6 @@ def save_raw_transcript_from_text(output_dir, basename, service_name, formatted_
     else:
         episode_dir = output_dir_path / basename
     episode_dir.mkdir(parents=True, exist_ok=True)
-    
-    output_path = episode_dir / f"{basename}_{service_name}.txt"
     
     # Parse the formatted text into segments
     # Format: SPEAKER_XX: header, then [XXX.Xs] text lines
@@ -226,23 +211,16 @@ def save_raw_transcript_from_text(output_dir, basename, service_name, formatted_
     # Merge consecutive segments from same speaker into paragraphs
     merged_segments = merge_consecutive_speaker_segments(segments)
     
-    # Save text version (NO timestamps, NO markdown)
-    # Format: SPEAKER_XX: text
-    with open(output_path, 'w', encoding='utf-8') as f:
-        for segment in merged_segments:
-            text = clean_text(segment['text'])
-            f.write(f"{segment['speaker']}: {text}\n\n")
-    
     # Save markdown version (WITH timestamps)
     # Format: **[MM:SS] SPEAKER_XX:** text
-    md_path = output_path.with_suffix('.md')
+    md_path = episode_dir / f"{basename}_{service_name}.md"
     with open(md_path, 'w', encoding='utf-8') as f:
         for segment in merged_segments:
             timestamp = format_timestamp(segment['start'])
             text = clean_text(segment['text'])
             f.write(f"**[{timestamp}] {segment['speaker']}:** {text}\n\n")
     
-    return output_path
+    return md_path
 
 
 # ============================================================================

@@ -302,34 +302,17 @@ def save_processed_files(output_dir, basename, transcriber, processor, content, 
     episode_dir = Path(output_dir) / basename
     episode_dir.mkdir(parents=True, exist_ok=True)
 
-    output_path = episode_dir / f"{basename}_{transcriber}_{processor}.txt"
+    md_path = episode_dir / f"{basename}_{transcriber}_{processor}.md"
 
     # Clean up content (remove trailing whitespace)
     content_lines = [line.rstrip() for line in content.split('\n')]
     content_clean = '\n'.join(content_lines)
     
     # Save markdown version (preserve the AI's output format)
-    md_path = output_path.with_suffix('.md')
     with open(md_path, 'w', encoding='utf-8') as f:
         f.write(content_clean)
     
-    # Save text version (NO timestamps, NO markdown)
-    # Transform: **[MM:SS] SPEAKER_XX:** text -> SPEAKER_XX: text
-    text_lines = []
-    for line in content_clean.split('\n'):
-        clean_line = line
-        # Remove **[MM:SS] SPEAKER_XX:** pattern and convert to SPEAKER_XX:
-        clean_line = re.sub(r'\*\*\[[\d:]+\]\s*(SPEAKER_\d+):\*\*', r'\1:', clean_line)
-        # Also handle old format: **SPEAKER_XX:** with [timestamp] on line
-        clean_line = re.sub(r'\*\*(SPEAKER_\d+):\*\*', r'\1:', clean_line)
-        # Remove standalone timestamps like [MM:SS] or [XXX.Xs]
-        clean_line = re.sub(r'^\[[\d:.]+\]\s?', '', clean_line)
-        text_lines.append(clean_line)
-
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write('\n'.join(text_lines))
-    
-    return output_path
+    return md_path
 
 
 # ============================================================================
@@ -867,7 +850,6 @@ def process_single_combination(transcript_path, provider, api_keys, context, mod
     # Get output file paths for potential cleanup
     basename, transcriber = extract_transcriber_from_filename(transcript_path)
     # Note: outputs are stored under outputs/<basename>/...
-    output_txt = Path("outputs") / basename / f"{basename}_{transcriber}_{provider}.txt"
     output_md = Path("outputs") / basename / f"{basename}_{transcriber}_{provider}.md"
 
     # Process with local model, direct API, or OpenRouter based on mode and available keys
@@ -890,7 +872,7 @@ def process_single_combination(transcript_path, provider, api_keys, context, mod
         print(f"      {failure(f'Processing failed ({elapsed:.1f}s): {e}')}")
         
         # Clean up any partial files that may have been created
-        for partial_file in [output_txt, output_md]:
+        for partial_file in [output_md]:
             if partial_file.exists():
                 try:
                     partial_file.unlink()
@@ -905,7 +887,7 @@ def process_single_combination(transcript_path, provider, api_keys, context, mod
         print(f"      {failure(f'Processing failed ({elapsed:.1f}s): No output generated')}")
         
         # Clean up any partial files
-        for partial_file in [output_txt, output_md]:
+        for partial_file in [output_md]:
             if partial_file.exists():
                 try:
                     partial_file.unlink()
