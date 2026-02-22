@@ -939,8 +939,8 @@ def main():
                        help="Comma-separated list of processors. Hosted: opus,gemini,deepseek,chatgpt,qwen,kimi,glm,glm5,minimax,llama,grok,mistral. Local-only: deepseek-local,qwen-local,mistral-local,llama-local")
     parser.add_argument("--mode", choices=['hosted', 'local'], default='hosted',
                        help="Run models via OpenRouter API (hosted, default) or locally via ollama (local)")
-    parser.add_argument("--parallel", type=int, default=1, metavar='N',
-                       help="Number of parallel workers (default: 1, sequential). Use e.g. --parallel 6 for hosted API calls.")
+    parser.add_argument("--parallel", type=int, default=0, metavar='N',
+                       help="Number of parallel workers (default: 0 = all jobs in parallel). Use 1 for sequential.")
 
     args = parser.parse_args()
 
@@ -1087,14 +1087,15 @@ def main():
         )
         return tp.name, proc, result, elapsed
 
-    if args.parallel > 1:
+    parallel_workers = args.parallel if args.parallel > 0 else len(jobs)
+    if parallel_workers > 1:
         from concurrent.futures import ThreadPoolExecutor, as_completed
         import threading
 
-        print(f"Running {len(jobs)} jobs with {args.parallel} parallel workers\n")
+        print(f"Running {len(jobs)} jobs with {parallel_workers} parallel workers\n")
 
         lock = threading.Lock()
-        with ThreadPoolExecutor(max_workers=args.parallel) as executor:
+        with ThreadPoolExecutor(max_workers=parallel_workers) as executor:
             futures = {executor.submit(run_job, job): job for job in jobs}
             for future in as_completed(futures):
                 tp_name, proc, result, elapsed = future.result()
