@@ -453,9 +453,10 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False, consensus_mode=
         print("  → Audio loaded successfully")
         result = model.transcribe(audio, batch_size=batch_size, language='en')
         
-        # Align
-        model_a, metadata = whisperx.load_align_model(language_code="en", device=device)
-        result = whisperx.align(result["segments"], model_a, metadata, audio, device, return_char_alignments=False)
+        # NOTE: We skip whisperx.align() entirely. Alignment drops most segments
+        # on some audio files and produces hallucinated filler text ("you", "Thank you").
+        # Since we now use segment-level speaker matching (not word-level), alignment
+        # is unnecessary. Raw transcription segments have correct timestamps already.
         
     except RuntimeError as e:
         if "out of memory" in str(e).lower() and device == "cuda":
@@ -478,10 +479,7 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False, consensus_mode=
                 if audio is None:
                     audio = whisperx.load_audio(audio_path)
                 result = model.transcribe(audio, batch_size=4, language='en')
-
-                # Align
-                model_a, metadata = whisperx.load_align_model(language_code="en", device=device)
-                result = whisperx.align(result["segments"], model_a, metadata, audio, device, return_char_alignments=False)
+                # Skip alignment (see note above)
             except RuntimeError as e2:
                 print(f"  ⚠ Still OOM with batch_size=4, retrying with batch_size=1...")
                 
@@ -501,9 +499,7 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False, consensus_mode=
                 if audio is None:
                     audio = whisperx.load_audio(audio_path)
                 result = model.transcribe(audio, batch_size=1, language='en')
-                # Align with smaller batch
-                model_a, metadata = whisperx.load_align_model(language_code="en", device=device)
-                result = whisperx.align(result["segments"], model_a, metadata, audio, device, return_char_alignments=False)
+                # Skip alignment (see note above)
         else:
             raise
     
