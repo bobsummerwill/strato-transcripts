@@ -540,20 +540,35 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False, consensus_mode=
         
         diarize_segments = diarize_model(diarize_path)
         
-        # Step 3: Assign speakers
-        print("  → Assigning speakers...")
-        annotation = diarize_segments.speaker_diarization
+        # Step 3: Assign speakers via segment-level overlap
+        # NOTE: We skip whisperx.assign_word_speakers() because it corrupts text
+        # by replacing words with '!!!' during word-level speaker reconstruction.
+        # Instead, we match each transcript segment to the diarization speaker
+        # with the most temporal overlap. This preserves the original text perfectly.
+        print("  → Assigning speakers (segment-level matching)...")
         
         diarize_list = []
-        for segment, _, speaker in annotation.itertracks(yield_label=True):
+        for segment, _, speaker in diarize_segments.itertracks(yield_label=True):
             diarize_list.append({
                 'start': segment.start,
                 'end': segment.end,
                 'speaker': speaker
             })
         
-        diarize_df = pd.DataFrame(diarize_list)
-        result_with_speakers = whisperx.assign_word_speakers(diarize_df, result)
+        # Assign speaker to each transcript segment by max overlap
+        for seg in result["segments"]:
+            seg_start = seg.get("start", 0)
+            seg_end = seg.get("end", 0)
+            best_speaker = "SPEAKER_00"
+            best_overlap = 0
+            for d in diarize_list:
+                overlap = min(seg_end, d["end"]) - max(seg_start, d["start"])
+                if overlap > best_overlap:
+                    best_overlap = overlap
+                    best_speaker = d["speaker"]
+            seg["speaker"] = best_speaker
+        
+        result_with_speakers = result
         
         # Count speakers
         speakers = set()
