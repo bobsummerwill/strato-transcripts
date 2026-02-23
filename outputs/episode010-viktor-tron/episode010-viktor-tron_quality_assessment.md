@@ -13,191 +13,221 @@
 
 Three transcriber sources were used to generate raw intermediates:
 
-| Transcriber | Word Count | Line Count | Diarization Format | Speaker Separation |
-|---|---|---|---|---|
-| WhisperX (local) | 11,568 | 342 | `**[MM:SS] SPEAKER_XX:**` per turn | Good -- individual turns well separated |
-| WhisperX-Cloud | 11,470 | 120 | `**[MM:SS] SPEAKER_XX:**` per turn | Poor -- many turns merged into long blocks |
-| AssemblyAI | 11,754 | 394 | `**[MM:SS] SPEAKER_XX:**` per turn | Best -- most granular turn-by-turn separation |
+| Transcriber | Word Count | Diarization Format | Speaker Separation |
+|---|---|---|---|
+| AssemblyAI | 11,754 | `**[MM:SS] SPEAKER_XX:**` per turn | Best -- most granular turn-by-turn separation |
+| WhisperX (local) | 11,568 | `**[MM:SS] SPEAKER_XX:**` per turn | Good -- individual turns mostly well separated |
+| WhisperX-Cloud | 11,470 | `**[MM:SS] SPEAKER_XX:**` per turn | Poor -- many turns merged into long blocks |
 
-### Detailed Transcriber Assessment
+### AssemblyAI
+- **Diarization quality:** Best of the three. Speaker turns are broken out granularly with individual timestamps. Short acknowledgments ("Oh yeah, yeah, yeah" / "Right") get their own lines. SPEAKER_00 is consistently Bob, SPEAKER_01 is Viktor.
+- **Transcription quality:** Good automatic speech recognition. Handles names reasonably well ("Vitalik", "Gavin"). Some typical ASR artifacts but overall clean.
+- **Corruption:** None detected.
 
-**WhisperX (local):**
-- Diarization is generally solid with speaker turns separated at reasonable intervals.
-- Speaker labels appear mostly correct (SPEAKER_01 = Bob, SPEAKER_00 = Viktor, with some swaps noted).
-- Raw text quality is reasonable but contains typical ASR artifacts: "Nakasha" for what should be a name, "boy theme" for unclear phrases, "data became slow" for garbled speech.
-- Timestamps appear at consistent intervals. Good granularity with ~342 lines.
+### WhisperX (local)
+- **Diarization quality:** Good but slightly less granular than AssemblyAI. Speaker labels are swapped -- SPEAKER_01 is Bob, SPEAKER_00 is Viktor. Most speaker turns are separated properly.
+- **Transcription quality:** Comparable to AssemblyAI with some small differences in phrasing. Lower-case first speaker block (not capitalized).
+- **Corruption:** None detected.
 
-**WhisperX-Cloud:**
-- Significantly fewer lines (120) despite similar word count, meaning turns are merged into very long paragraph blocks.
-- This makes the diarization much less useful for downstream processing -- many speaker changes are absorbed into single blocks.
-- Speaker labels are swapped relative to WhisperX local: SPEAKER_00 = Bob, SPEAKER_01 = Viktor (this is actually more intuitive).
-- Text quality is comparable to WhisperX local.
+### WhisperX-Cloud
+- **Diarization quality:** Poorest of the three. Many long merged blocks where multiple speaker turns are collapsed into a single paragraph. This significantly reduces granularity and makes it harder for processors to properly assign dialogue. Speaker labels also swapped (SPEAKER_01 = Bob, SPEAKER_00 = Viktor). Fewer line breaks overall (only 120 lines vs 342-394 for the others).
+- **Transcription quality:** Similar raw accuracy to local WhisperX but the merged blocks make it harder to follow.
+- **Corruption:** None detected but merged diarization is a structural quality issue.
+
+---
+
+## 2. AI Processor Quality Assessment
+
+### Word Count Summary
+
+| Processor Output | Word Count | % of Max (11,497) |
+|---|---|---|
+| assemblyai_gemini | 11,497 | 100% |
+| whisperx-cloud_grok | 11,420 | 99.3% |
+| whisperx_gemini | 11,324 | 98.5% |
+| whisperx-cloud_opus | 11,284 | 98.1% |
+| whisperx_opus | 11,206 | 97.5% |
+| whisperx-cloud_gemini | 11,135 | 96.9% |
+| whisperx_grok | 11,047 | 96.1% |
+| assemblyai_grok | 10,909 | 94.9% |
+| assemblyai_opus | 10,896 | 94.8% |
+
+All outputs are within 5% of each other. No truncation issues detected in any output.
+
+---
+
+### AssemblyAI + Opus (10,896 words, 364 lines)
+
+**Tier: 1 -- Complete, Excellent**
+
+- **Completeness:** Full transcript from opening ("So hello, I am Bob Summerwill...") through closing ("You too. Okay, thanks so much. Bye bye."). All major topics covered.
+- **Formatting:** Excellent. Clean `**[MM:SS] SPEAKER_XX:**` format with consistent timestamps. Every speaker turn properly separated. Good paragraph structure.
+- **Name corrections:** Excellent. Proper names handled very well: "Viktor Tron", "Gavin", "Vitalik", "Mihai Alisie", "Jack du Rose", "Stephan Tual", "Jeff", "Felix Lange", "Alex Van de Sande", "Nick Savers", "Roman Mandeleil", "Zsolt Felfoldi", "Daniel Nagy", "Aeron Buchanan", "Nick Johnson", "Moxie Marlinspike". Correctly identified "halting problem", "Hoxton Square", "AlethZero".
+- **Diarization fidelity:** SPEAKER_00 = Bob, SPEAKER_01 = Viktor maintained consistently throughout. No misattributions detected.
+- **Content accuracy:** Good correction of garbled phrases. "Sherpas on the way" cleaned up well. Technical terms like "devp2p", "Kademlia", "DHT", "DPA" all rendered correctly.
+- **Notable strength:** Cleanest formatting overall. Good timestamp density. Strong name recognition.
+
+### AssemblyAI + Gemini (11,497 words, 392 lines)
+
+**Tier: 1 -- Complete, Excellent**
+
+- **Completeness:** Full transcript start to finish. Highest word count of all outputs.
+- **Formatting:** Uses `**SPEAKER_XX:**` format without timestamps. Speaker turns well separated. More verbose transcription style that preserves more filler and hesitations from the raw transcript.
+- **Name corrections:** Good. Similar quality to Opus on major names. Some raw artifacts preserved ("Changed emails. Changed emails." kept verbatim).
+- **Diarization fidelity:** Maintains speaker labels consistently. No timestamp format means you lose temporal reference.
+- **Content accuracy:** Faithful to source material. Preserves more of the conversational hesitations and repetitions. "Who's the new glorious statement" left uncorrected (should probably be "It's the now-glorious statement").
+- **Notable strength:** Highest fidelity to raw source, most complete word-for-word rendering.
+- **Notable weakness:** No timestamps, which limits utility for cross-referencing with audio/video.
+
+### AssemblyAI + Grok (10,909 words, 384 lines)
+
+**Tier: 1 -- Complete, Excellent**
+
+- **Completeness:** Full transcript from start to finish. All topics covered.
+- **Formatting:** Uses `**[SPEAKER_XX:]**` format (brackets around label). No timestamps. Speaker turns well separated.
+- **Name corrections:** Very good. "Mihai Alisie", "Jack du Rose", "Stephan Tual", "Felix Lange", "Roman Mandeleil" all correct. Correctly identified "halting problem" and "Hoxton Square". Good handling of "AlethZero".
+- **Diarization fidelity:** Consistent speaker labels throughout. No misattributions.
+- **Content accuracy:** Good. Some light cleanup of raw transcription artifacts while preserving meaning. Technical content about Swarm/DHT/DPA handled well.
+- **Notable strength:** Clean and readable. Good balance between raw fidelity and cleanup.
+- **Notable weakness:** No timestamps. Bracket formatting slightly non-standard.
+
+### WhisperX-Cloud + Opus (11,284 words, 378 lines)
+
+**Tier: 1 -- Complete, Excellent**
+
+- **Completeness:** Full transcript. All topics from early Ethereum through Swarm's current state and closing remarks.
+- **Formatting:** `**[MM:SS] SPEAKER_XX:**` format with timestamps. Clean speaker turn separation. Despite the poor diarization in the source (merged blocks), Opus has done excellent work breaking turns back out into individual speaker segments.
+- **Name corrections:** Very good. "Stephane Tual", "Jack du Rose", "Mihail... Nashatyrev", "Danny [Nagy]", "Fefe [Zsolt Felfoldi]", "Felix [Lange]" -- note the helpful bracketed clarifications. "Jakub Cheplak" used (close but slightly different from other outputs' "Czepluch/Czepluk").
+- **Diarization fidelity:** Some speaker label misassignment inherited from the source (whisperx-cloud has swapped labels). The processor has attempted to fix this but there may be residual confusion in places where the source merged long blocks.
+- **Content accuracy:** Good. "Halting problem" correctly identified. Swarm technical details well rendered.
+- **Notable strength:** Recovered good structure from the poorest-quality source diarization. Bracketed annotations for names are helpful.
+
+### WhisperX-Cloud + Gemini (11,135 words, 282 lines)
+
+**Tier: 1 -- Complete, Excellent**
+
+- **Completeness:** Full transcript. All topics covered through closing.
+- **Formatting:** `**SPEAKER_XX:**` format without timestamps. Fewer lines (282) suggest some turns remain merged from the source. Long paragraphs in places.
+- **Name corrections:** Very good. "Stephane Tual", "Mikhail... Nashatyrev", "Daniel Nagy", "Zsolt Felfoldi", "Jack du Rose" all handled well. Helpful annotations: "Danny [Nagy]", "Fefe [Zsolt Felfoldi]", "Felix [Lange]".
+- **Diarization fidelity:** Inherits some merged blocks from whisperx-cloud source. Some speaker attribution challenges in long merged passages. Speaker labels occasionally swap unexpectedly.
+- **Content accuracy:** Good overall. "Halting problem", "Kademlia", "DHT" all correct. "Modulo operation" correctly identified (vs raw "modular operation"). "Eris Industries" correctly named.
+- **Notable strength:** Helpful name annotations in brackets. Good contextual corrections.
+- **Notable weakness:** Fewer line breaks and merged turns reduce readability. No timestamps.
+
+### WhisperX-Cloud + Grok (11,420 words, 122 lines)
+
+**Tier: 2 -- Mostly Complete, Good (formatting issues)**
+
+- **Completeness:** Full transcript content-wise. All topics covered through closing remarks.
+- **Formatting:** Only 122 lines -- extremely long merged paragraphs. Multiple speaker turns crammed into single blocks. This is a significant readability problem. Uses `**[MM:SS] SPEAKER_XX:**` format with timestamps but the timestamps are very widely spaced (sometimes 10+ minutes between timestamps) and many speaker changes within blocks lack any demarcation.
+- **Name corrections:** Good. "Stephane Tual", "Kademlia", "DHT", "DPA" all correct.
+- **Diarization fidelity:** Poor -- inherited from source and not decomposed by the processor. Multiple speakers within single blocks with no separation markers.
+- **Content accuracy:** The actual transcribed content is good and complete, but the presentation severely hampers readability and usability.
+- **Notable weakness:** By far the worst formatting of all outputs. The merged blocks from whisperx-cloud source were not broken apart, making the transcript very difficult to follow as a dialogue.
+
+### WhisperX + Opus (11,206 words, 382 lines)
+
+**Tier: 1 -- Complete, Excellent**
+
+- **Completeness:** Full transcript from opening through closing.
+- **Formatting:** `**[MM:SS] SPEAKER_XX:**` format with timestamps. Clean speaker turn separation. Good paragraph structure.
+- **Name corrections:** Very good. "Stephane Tual", "Jack du Rose", "Daniel Nagy", "Zsolt Felfoldi", "Felix Lange", "Roman Mandeleil" all correct. "Jakub Czepluk" used. "Hoxton Square" correctly identified.
+- **Diarization fidelity:** SPEAKER_00 = Viktor, SPEAKER_01 = Bob (following the whisperx source's swapped labels). Consistent throughout.
+- **Content accuracy:** Good. "Halting problem" correctly identified. Technical Swarm content well rendered. "Modulo operation" correctly named. "Kademlia", "DHT", "DPA" all correct.
+- **Notable strength:** Good balance of readability and fidelity. Clean formatting with timestamps.
+
+### WhisperX + Gemini (11,324 words, 348 lines)
+
+**Tier: 1 -- Complete, Excellent**
+
+- **Completeness:** Full transcript. All topics covered.
+- **Formatting:** `**SPEAKER_XX:**` format without timestamps. Good speaker turn separation. Helpful bracketed annotations for names: "[Danny]", "[Zsolt Felfoldi]", "[Lange]", "[Wilcke]", "[Maymounkov]".
+- **Name corrections:** Excellent. Among the best name handling. "Stephane Tual", "Michael... Akasha" (correctly identifying the Akasha connection), "Jack du Rose", "Daniel Nagy", "Zsolt Felfoldi", "Felix Lange", "Roman Mandeleil", "Jakub Czepluk". Bracketed clarifications very helpful for ambiguous names.
+- **Diarization fidelity:** Consistent speaker labels. Some passages where diarization assignment is slightly ambiguous but generally good.
+- **Content accuracy:** Very good. "Halting problem" correctly identified. Good technical accuracy. "Petar [Maymounkov]" annotation shows good contextual knowledge.
+- **Notable strength:** Best name annotation system with bracketed clarifications. High contextual intelligence.
+- **Notable weakness:** No timestamps.
+
+### WhisperX + Grok (11,047 words, 336 lines)
+
+**Tier: 1 -- Complete, Excellent**
+
+- **Completeness:** Full transcript through closing remarks.
+- **Formatting:** `**SPEAKER_XX:**` format without timestamps. Good speaker turn separation. Clean readable output.
+- **Name corrections:** Good. "Stephane Toual" (slightly different spelling), "Jack DeRose", "Daniel Nagy", "Zsolt Felfoldi", "Roman Mandeleiev" (alternative transliteration). "Hoxton Square" correctly identified.
+- **Diarization fidelity:** Consistent. SPEAKER_01 = Bob, SPEAKER_00 = Viktor (following whisperx source labels).
+- **Content accuracy:** Good. "Halting problem" correctly identified. Technical terms handled well. Some passages retain more raw conversational texture.
+- **Notable strength:** Clean, readable output with good flow.
+- **Notable weakness:** No timestamps. Some name spellings slightly variant from other outputs.
+
+---
+
+## 3. Transcriber Base Comparison
+
+### Side-by-Side: Same Passage (early portion, ~01:00)
 
 **AssemblyAI:**
-- Best diarization granularity with 394 lines and the most word count (11,754).
-- Speaker labels are correctly and consistently assigned (SPEAKER_00 = Bob, SPEAKER_01 = Viktor).
-- Individual utterances are well separated -- short responses like "Yes, yes, yes" get their own turns.
-- Text quality is slightly better with cleaner sentence boundaries.
-- Best raw material for AI processing due to granular turn separation.
+> "I was working on a project with BBC News Labs, News Juicer project. It was trying to kind of ingest a lot of new sources like from old photo archives, video archives and everything and kind of use it, basically work through the speech recognition and everything and categorize it and make it searchable in a very nice way."
 
-### Transcriber Ranking
-1. **AssemblyAI** -- Best diarization, most words, cleanest boundaries
-2. **WhisperX (local)** -- Good diarization, reasonable granularity
-3. **WhisperX-Cloud** -- Poor diarization (merged blocks), less useful for processors
+**WhisperX (local):**
+> "was working on a project of uh with the bbc news labs basically a news juicer project it's kind of a he was trying to kind of ingest a lot of new sources like from old photo archives video archives and everything and kind of juice it like basically work through the speech recognition and everything and categorized it and we made it searchable in a very nice way"
 
----
+**WhisperX-Cloud:**
+> "I was working on a project with BBC News Labs, basically a news juice project. He was trying to kind of ingest a lot of news sources, like from old photo archives, video archives, and everything, and kind of juice it, like, basically work through the speech recognition and everything, and categorize it, and made it searchable in a very nice way."
 
-## 2. AI Processor Comparison
+**Observations:**
+- AssemblyAI: Best punctuation and capitalization. Cleaner sentence structure. More polished raw output.
+- WhisperX (local): Raw lowercase output with minimal punctuation. Retains more filler words ("uh").
+- WhisperX-Cloud: Good punctuation and capitalization. Similar quality to AssemblyAI in raw text, but the merged diarization is a significant disadvantage.
 
-### 2a. AssemblyAI-based Outputs
+### Key Differences in Name Recognition
 
-| Processor | Word Count | % of Max | Has Timestamps | Format Quality | Content Quality | Tier |
-|---|---|---|---|---|---|---|
-| Opus | 10,896 | 94% | Yes (accurate) | Excellent | Excellent | **Tier 1** |
-| Gemini | 11,497 | 99% | No | Excellent | Excellent | **Tier 1** |
-| Grok | 10,909 | 94% | Yes (bracketed) | Excellent | Excellent | **Tier 1** |
-| Llama | 6,164 | 53% | Yes | Good | Good | **Tier 2** |
-| Kimi | 5,680 | 49% | Yes | Good | Good | **Tier 2** |
-| Mistral | 5,401 | 47% | Yes | Good | Good | **Tier 2** |
-| Qwen | 5,532 | 48% | Yes | Good | Good | **Tier 2** |
-| DeepSeek | 4,068 | 35% | Yes | Good | Moderate | **Tier 2** |
-| MiniMax | 4,155 | 36% | Yes | Good | Moderate | **Tier 2** |
-| GLM | 3,053 | 26% | Partial | Poor (analysis preamble) | Poor | **Tier 3** |
-| ChatGPT | 241 | 2% | N/A | Refused | Refused | **Tier 4** |
-
-**Opus (AssemblyAI):** Outstanding quality. Timestamps are preserved accurately. Excellent name corrections (Zsolt Felföldi, Mihai Alisie, Aeron Buchanan, Stephan Tual, Jack du Rose, Roman Mandeleil, AlethZero). Cleans up garbled speech intelligently ("halting problem" correctly inferred from "haunting problem"). Natural prose flow maintained throughout. Speaker turns well separated. Complete coverage from start to finish of the interview.
-
-**Gemini (AssemblyAI):** Highest word count, near-verbatim preservation. No timestamps included, which is a significant limitation. Speaker labels present without timestamps. Good name corrections and technical term fixes. Very faithful to original content with minimal editing -- preserves almost all speech patterns including hesitations.
-
-**Grok (AssemblyAI):** Excellent quality comparable to Opus. Uses bracketed speaker format `**[SPEAKER_XX:]**`. Good name corrections (e.g., "Hoxton Square" correctly identified). Complete coverage. Slightly less polished cleanup than Opus but still very high quality. Accurate technical terminology.
-
-**ChatGPT (AssemblyAI):** Complete failure -- refused to process the transcript, citing lack of timestamps in the input. This is a Tier 4 (unusable) output.
-
-**GLM (AssemblyAI):** Outputs analysis/commentary about how it would process the transcript rather than the actual cleaned transcript. The bulk of the content is internal reasoning about name corrections, technical terms, and processing strategy. Unusable as a transcript. Tier 3.
-
-### 2b. WhisperX-Cloud-based Outputs
-
-| Processor | Word Count | % of Max | Has Timestamps | Format Quality | Content Quality | Tier |
-|---|---|---|---|---|---|---|
-| GLM | 25,227 | 100% | Yes (in transcript portion) | Mixed (analysis + transcript) | Good (transcript portion) | **Tier 2** |
-| Grok | 11,420 | 45% | Yes (bracketed) | Excellent | Excellent | **Tier 1** |
-| Opus | 11,284 | 45% | Yes | Excellent | Excellent | **Tier 1** |
-| Gemini | 11,135 | 44% | No | Excellent | Excellent | **Tier 1** |
-| Llama | 6,624 | 26% | Yes | Good | Good | **Tier 2** |
-| Qwen | 6,026 | 24% | Yes | Good | Good | **Tier 2** |
-| MiniMax | 5,972 | 24% | Yes | Good | Good | **Tier 2** |
-| Mistral | 5,911 | 23% | Yes | Good | Good | **Tier 2** |
-| Kimi | 4,312 | 17% | Yes | Good | Good | **Tier 2** |
-| DeepSeek | 3,415 | 14% | Yes | Good | Moderate | **Tier 2** |
-| ChatGPT | 218 | 1% | N/A | Refused | Refused | **Tier 4** |
-
-Note: The GLM word count of 25,227 is inflated because it includes ~500 lines of analysis preamble before the actual transcript begins. The transcript portion itself is good quality but the preamble makes automated processing difficult.
-
-### 2c. WhisperX (local)-based Outputs
-
-| Processor | Word Count | % of Max | Has Timestamps | Format Quality | Content Quality | Tier |
-|---|---|---|---|---|---|---|
-| GLM | 15,195 | 100% | Yes (in transcript portion) | Mixed (analysis + transcript) | Good (transcript portion) | **Tier 2** |
-| Gemini | 11,324 | 75% | No | Excellent | Excellent | **Tier 1** |
-| Opus | 11,206 | 74% | Yes | Excellent | Excellent | **Tier 1** |
-| Grok | 11,047 | 73% | Yes (bracketed) | Excellent | Excellent | **Tier 1** |
-| Llama | 6,172 | 41% | Yes | Good | Good | **Tier 2** |
-| MiniMax | 5,699 | 38% | Yes | Good | Good | **Tier 2** |
-| Qwen | 5,567 | 37% | Yes | Good | Good | **Tier 2** |
-| Mistral | 3,361 | 22% | Yes | Good | Moderate | **Tier 2** |
-| DeepSeek | 2,786 | 18% | Yes | Good | Moderate | **Tier 2** |
-| Kimi | 1,212 | 8% | Yes | Truncated | Severely incomplete | **Tier 4** |
-| ChatGPT | 233 | 2% | N/A | Refused | Refused | **Tier 4** |
-
-**Kimi (WhisperX):** Only 34 lines and 1,212 words. The transcript cuts off after approximately 6 minutes of content. The portion that exists shows the speaker labels are swapped (SPEAKER_01 = Bob, SPEAKER_00 = Viktor). Severely truncated, unusable. Tier 4.
-
----
-
-## 3. Consensus Pipeline Status
-
-**No consensus/final file exists** (`*_final.md` not found). The consensus pipeline has not been run for this episode.
-
----
-
-## 4. Cross-Transcriber Comparison
-
-Comparing the top-tier processor (Opus) across all three transcriber bases:
-
-| Metric | AssemblyAI + Opus | WhisperX-Cloud + Opus | WhisperX + Opus |
+| Name | AssemblyAI | WhisperX | WhisperX-Cloud |
 |---|---|---|---|
-| Word Count | 10,896 | 11,284 | 11,206 |
-| Timestamps | Accurate, per-turn | Accurate, per-turn | Accurate, per-turn |
-| Speaker Labels | Correct (00=Bob, 01=Viktor) | Correct (00=Bob, 01=Viktor) | Correct (00=Bob, 01=Viktor) |
-| Name Corrections | Excellent | Good | Good |
-| Technical Terms | Excellent | Good | Good |
-| Completeness | Full coverage to 69:02 | Full coverage | Full coverage |
-| Prose Quality | Best -- cleanest editing | Good -- slightly more raw speech patterns preserved | Good -- slightly more raw speech patterns |
+| Hoxton Square | "Hoxton Square" | "Houston Square" | "Houston Square" |
+| Mihai Alisie | "Mihai" | "Michael" | "Michail" |
+| halting problem | "haunting problem" | "whole thing problem" | "whole thing problem" |
+| AlethZero | "East Eco" / "Esco" | varies | varies |
+| Weteringstraat | "Wurstraat" | varies | varies |
 
-### Key Observations Across Transcriber Bases
-
-1. **AssemblyAI produces the best raw material:** The granular turn separation gives AI processors cleaner input to work with, resulting in slightly higher quality outputs especially for name correction and sentence cleanup.
-
-2. **WhisperX-Cloud's merged blocks cause problems:** The long merged paragraphs mean processors sometimes struggle to correctly attribute speech or maintain clean turn-by-turn output.
-
-3. **Processor quality is more important than transcriber choice:** The difference between Opus/Gemini/Grok outputs across transcriber bases is smaller than the difference between Opus and (say) DeepSeek on the same transcriber base.
-
-4. **ChatGPT fails consistently across all three bases:** It refuses to process any input that lacks timestamps (or has timestamps it considers inadequate). This is a systematic failure mode.
-
-5. **GLM has a consistent pattern:** Across all three bases, it outputs extensive analysis/reasoning before (sometimes) producing a transcript. This makes it unreliable for automated pipeline use.
+All three transcribers struggle with some proper nouns and domain-specific terms. AssemblyAI generally has the best raw output for names but all require AI processor cleanup.
 
 ---
 
-## 5. Notable Quality Issues
+## 4. Overall Rankings
 
-### Name Corrections (Best Practices from Opus)
-The Opus processor consistently demonstrates the best name handling:
-- "Dalston" preserved correctly (London neighborhood)
-- "Hoxton Square" correctly identified (from various garbled forms)
-- "Zsolt Felföldi" with proper Hungarian diacritics
-- "Aeron Buchanan" correctly identified
-- "Stephan Tual" / "Stefan Tual" used (historical spelling varies)
-- "Mihai Alisie" correctly identified from garbled "Michail"/"Nakasha"
-- "Jack du Rose" of Colony correctly identified
-- "Roman Mandeleil" correctly identified
-- "Felix Lange" correctly inferred
-- "AlethZero" / "Mist browser" correctly identified
-- "halting problem" correctly inferred from "haunting/hunting problem"
-- "Weteringstraat" (Amsterdam office address) attempted
+### Best Processor Outputs (Recommended for use)
 
-### Problematic Passages Across All Processors
-- The long technical explanation of Swarm's DPA architecture (~30-40 minute mark) is challenging for all processors due to dense jargon
-- The audio quality apparently degrades toward the end (mentioned in transcript: "Sorry, we're getting some really bad audio")
-- Viktor's Parkinson's diagnosis and its effect on his speech is sensitively handled by all processors
+1. **assemblyai_opus** -- Best overall. Cleanest formatting with timestamps, excellent name corrections, consistent diarization. Most polished and readable.
+2. **whisperx_gemini** -- Excellent name annotations with bracketed clarifications. Very high contextual intelligence. Missing timestamps is the main drawback.
+3. **whisperx_opus** -- Clean formatting with timestamps, good name handling, consistent output.
+4. **assemblyai_grok** -- Clean and readable, good name handling. Missing timestamps.
+5. **whisperx-cloud_opus** -- Impressive recovery of structure from poor source diarization. Timestamps present.
+
+### Outputs to Avoid
+
+- **whisperx-cloud_grok** -- Content is complete but formatting is severely compromised with only 122 lines. Essentially unusable as a readable transcript without reformatting.
+
+### Best Transcriber Base
+
+**AssemblyAI** -- Best overall transcriber source. Superior diarization with granular speaker turns, better punctuation/capitalization, and slightly better name recognition in the raw output. WhisperX (local) is a reasonable second choice. WhisperX-Cloud's merged diarization is a significant handicap.
 
 ---
 
-## 6. Recommendations
+## 5. Tier Summary
 
-### Immediate Actions
-1. **Run consensus pipeline** using the three Tier 1 AssemblyAI outputs (Opus, Gemini, Grok) to produce a final transcript.
-2. **Consider AssemblyAI as the primary transcriber base** for this episode given its superior diarization.
-
-### Processor Recommendations
-- **Top choices:** Opus (best overall editing quality), Grok (excellent with timestamps), Gemini (highest fidelity but lacks timestamps)
-- **Acceptable alternatives:** Llama, Kimi (AssemblyAI base only), Qwen, Mistral, MiniMax -- all produce usable but significantly condensed transcripts
-- **Exclude from pipeline:** ChatGPT (systematic refusal), GLM (analysis preamble issue), Kimi on WhisperX base (truncation)
-
-### Pipeline Improvements
-- ChatGPT's refusal pattern should be investigated -- it may need timestamps in the input format or a different prompt structure.
-- GLM outputs should be post-processed to strip analysis preamble if the transcript portion is to be used.
-- WhisperX-Cloud outputs would benefit from a pre-processing step to split merged speaker blocks before AI processing.
-
-### Quality Tier Summary
-
-| Tier | Criteria | Processors (AssemblyAI base) | Count |
-|---|---|---|---|
-| Tier 1 | >90% max words, excellent quality | Opus, Gemini, Grok | 3 |
-| Tier 2 | Condensed but usable, good quality | Llama, Kimi, Mistral, Qwen, DeepSeek, MiniMax | 6 |
-| Tier 3 | <50% max words or format issues, limited value | GLM | 1 |
-| Tier 4 | Unusable | ChatGPT | 1 |
+| Output | Tier | Word Count | Timestamps | Notes |
+|---|---|---|---|---|
+| assemblyai_opus | 1 | 10,896 | Yes | Best overall output |
+| assemblyai_gemini | 1 | 11,497 | No | Highest word count, most faithful |
+| assemblyai_grok | 1 | 10,909 | No | Clean and readable |
+| whisperx-cloud_opus | 1 | 11,284 | Yes | Good recovery from poor source |
+| whisperx-cloud_gemini | 1 | 11,135 | No | Good with name annotations |
+| whisperx_opus | 1 | 11,206 | Yes | Clean with timestamps |
+| whisperx_gemini | 1 | 11,324 | No | Best name annotations |
+| whisperx_grok | 1 | 11,047 | No | Clean and readable |
+| whisperx-cloud_grok | 2 | 11,420 | Yes (sparse) | Formatting severely compromised |
 
 ---
 
-*Report generated: 2026-02-22*
-*Total output files assessed: 33 (11 per transcriber base x 3 bases)*
-*Transcriber intermediates assessed: 3*
+*Assessment generated 2026-02-23*

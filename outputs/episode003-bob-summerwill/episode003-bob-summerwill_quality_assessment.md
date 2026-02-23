@@ -1,174 +1,243 @@
 # Episode 003 (Bob Summerwill) — Quality Assessment Report
 
-**Date:** 2026-02-22
+**Date:** 2026-02-23
+**Assessed by:** Claude Opus 4.6 (self-assessment)
 **Episode Duration:** ~1h 19m
 **Topic:** Ethereum early history, foundation dynamics, The DAO hack, Ethereum Classic emergence
-**Speakers:** 5 (SPEAKER_00 through SPEAKER_04 in transcriber outputs)
+**Speakers:** 4-5 (varies by transcriber: AssemblyAI uses SPEAKER_00-03, WhisperX variants use SPEAKER_00-04)
 
 ---
 
 ## 1. Transcriber Comparison
 
-| Transcriber | Word Count | Speaker Diarization | Timestamp Accuracy | Technical Term Handling | Notable Issues |
+| Transcriber | Word Count | Speaker Count | Diarization Quality | Timestamp Format | Notable Issues |
 |---|---|---|---|---|---|
-| **WhisperX (local)** | 12,333 | 5 speakers (00-04); mostly accurate but some misattributions between speakers | Timestamps present, generally accurate | "C5" for C#, "Etheria" for Ethereum, "mainland" for mainnet, "Pyre theorem" for PyEthereum | Some speaker merging; speaker IDs generally stable |
-| **WhisperX-Cloud** | 12,325 | 5 speakers (00-04); significant speaker misattribution — Bob's speech frequently assigned to SPEAKER_00 instead of separate speaker | Timestamps present, generally accurate | "mainlet" for mainnet, "Soulsea" for Solc, slightly cleaner prose than local | Worst diarization of the three; multiple speaker swaps throughout |
-| **AssemblyAI** | 12,988 | 4 speakers (00-03); cleaner separation, Bob consistently SPEAKER_01 | Timestamps present and accurate | "seaport" for C#, "mainlet" for mainnet, "PI Ethereum" for PyEthereum | Best diarization; clearest speaker boundaries; slightly more words captured |
+| **AssemblyAI** | 12,988 | 4 (00-03) | Excellent | `[HH:MM:SS]` per turn | Best diarization; Bob is consistently SPEAKER_01; clean speaker boundaries; short interjections ("Yeah", "Yep") correctly attributed |
+| **WhisperX (local)** | 12,333 | 5 (00-04 + UNKNOWN) | Acceptable | `[MM:SS]` per turn | Longer paragraph blocks merge multiple speaker turns; SPEAKER_04 appears to be Kieren; some cross-speaker merging |
+| **WhisperX-Cloud** | 12,325 | 5 (00-04) | Poor | `[MM:SS]` per turn | Significant diarization errors; Bob's speech frequently assigned to SPEAKER_00; speakers confused/merged throughout |
 
-**Transcriber Assessment Summary:**
-- **Best overall:** AssemblyAI — superior diarization with consistent speaker identification, most complete word capture (12,988 words), and cleanest speaker boundaries.
-- **WhisperX (local):** Acceptable diarization with 5 speaker IDs. Some cross-speaker merging. Comparable word count to cloud version.
-- **WhisperX-Cloud:** Worst diarization — Bob Summerwill's extended monologues are frequently misattributed to other speakers. This creates significant problems for downstream AI processing.
-- **No corruption detected** in any transcriber output. All three are coherent and complete.
+### Transcriber Assessment Summary
+
+- **Best overall:** AssemblyAI -- superior diarization with consistent 4-speaker identification, most complete word capture (12,988 words), and cleanest speaker boundaries. Short acknowledgments ("Yeah", "Yep", "Okay") are properly attributed to the correct speakers.
+- **WhisperX (local):** Acceptable diarization with 5 speaker IDs. Uses longer paragraph blocks that sometimes merge multiple speakers within a single turn. Speaker IDs are generally stable but less granular.
+- **WhisperX-Cloud:** Worst diarization -- Bob Summerwill's extended monologues are frequently misattributed to SPEAKER_00. Multiple speaker swaps throughout. This creates significant problems for downstream AI processing, though the content itself is complete.
+- **No corruption detected** in any transcriber output. All three are coherent and contain the full episode content.
 
 ---
 
 ## 2. AI Processor Comparison — AssemblyAI Base
 
-Max word count from this base: 16,650 (GLM). Reference source: 12,988 words.
+Reference source: 12,988 words (raw transcriber). Max processor output: 11,805 words (Grok).
 
-| Processor | Words | % of Max | Tier | Speaker Labels | Name Corrections | Technical Accuracy | Prose Quality | Key Issues |
+| Processor | Words | Lines | % of Max | Tier | Speaker Labels | Name Corrections | Technical Accuracy | Prose Quality |
 |---|---|---|---|---|---|---|---|---|
-| **Opus** | 11,554 | 69% | **Tier 1** | Correct, consistent | "Bob Summerwill", "Kieren", "Ming", "Brian Behlendorf", "Slock.it", "Christoph Jentzsch", "Lefteris Karapetsas", "DEV AG" | Excellent — "mainnet", "cpp-ethereum", "pyethereum", "Solidity", "DevCon 0" | Excellent — clean filler removal, natural flow, proper paragraphing | Best quality output; superb name and technical corrections |
-| **ChatGPT** | 11,136 | 67% | **Tier 1** | Correct, consistent | "Bob Summerwill", "Kieren", "Ming", "Brian Behlendorf", "Slock.it" | Excellent — proper technical terms throughout | Excellent — good formatting with quotes around titles, natural prose | Strong contender; slightly less thorough name corrections than Opus |
-| **Gemini** | 11,777 | 71% | **Tier 1** | Correct, consistent | "Bob Summerwill", "Kieren", "Ming" | Very good — most technical terms correct | Very good — clean and readable | Solid output; slightly more verbose |
-| **Grok** | 11,805 | 71% | **Tier 1** | Correct, consistent | "Bob Summerwill", "Kieren", "Ming", "Brian Behlendorf" | Very good | Very good — natural conversational flow preserved | Reliable output |
-| **Kimi** | 11,660 | 70% | **Tier 1** | Correct, consistent | "Bob Summerwill", "Kieren", "Ming" | Very good | Very good | Solid, comparable to Grok |
-| **GLM** | 16,650 | 100% | **Tier 4 (Unusable)** | N/A | N/A | N/A | N/A | **FAILED: Output is the model's internal chain-of-thought reasoning, not a transcript.** Contains lines like "Analyze the Request", "Step-by-Step Processing", correction notes. No usable transcript produced. |
-| **DeepSeek** | 6,721 | 40% | **Tier 2** | Correct | "Bob Summerwill", "Kieren", "Ming" | Good — "cpp-ethereum", "Solidity" | Good — readable but condensed | Significant content compression; some late sections truncated |
-| **Llama** | 6,188 | 37% | **Tier 3** | Mostly correct | "Bob Summerwell" (WRONG), "Karen" retained | Adequate — some ASR artifacts remain ("mainlet") | Adequate — retains more filler words, less polished | Failed to correct guest name; minimal cleanup |
-| **MiniMax** | 5,903 | 35% | **Tier 3** | Correct | "Bob Summerwill", "Karen" for "Kieren" | Adequate — "Bing" retained for "Ming" | Adequate — some paragraphing issues | "Bing" instead of "Ming"; "Karen" not corrected to "Kieren" |
-| **Mistral** | 5,316 | 32% | **Tier 3** | Correct | "Bob Summerwill", "Gavin Wood", "Vitalik Buterin" (expanded), "Charles Hoskinson", "Vlad Zamfir", "Ming Chan", "Hudson Jameson", "Laura Shin" | Good — expands abbreviated names to full forms | Good prose quality but heavily condensed | Best name expansion of any model, but severe truncation; only ~41% of content |
-| **Qwen** | 5,822 | 35% | **Tier 3** | Correct | "Bob Summerwill", "Kieren" | Adequate | Adequate — readable but truncated | Significant content loss |
+| **Opus** | 11,554 | 340 | 98% | **Tier 1** | Correct (00-03), consistent | Excellent: "Bob Summerwill", "Kieren", "Ming", "Brian Behlendorf", "Slock.it", "Christoph Jentzsch", "Lefteris", "DEV AG", "Stiftung" | Excellent: "mainnet", "cpp-ethereum", "PyEthereum", "Solidity", "DevCon 0", "AlethZero", "Web3 Umbrella" | Excellent: clean filler removal, natural conversational flow, proper paragraphing, profanity sanitized to "mess with" |
+| **Gemini** | 11,777 | 276 | 100% | **Tier 1** | Correct (00-03), consistent | Excellent: adds contextual annotations like [Gavin Wood], [Enterprise Ethereum Alliance]; uses *italics* for book titles (*The Cryptopians*); backtick formatting for code (`solc`, `eth`) | Excellent: proper technical terms; inline code formatting distinguishes code from prose | Very good: longer paragraphs, more literary formatting; adds quotation marks around direct speech; slightly more verbose but highly readable |
+| **Grok** | 11,805 | 290 | 100% | **Tier 1** | Correct (00-03), consistent | Very good: "Bob Summerwill", "Kieren", "Ming", "Brian Behlendorf", "Slock.it" | Very good: correct technical terms throughout | Very good: natural conversational flow preserved; retains more raw speech patterns than Opus; less filler word cleanup; profanity retained ("fuck with") |
+
+### AssemblyAI Base — Detailed Notes
+
+**Opus:** The most polished output. Removes filler words ("you know", "like", "sort of") more aggressively than the others, resulting in cleaner prose. Timestamps use `[H:MM:SS]` format. Profanity is sanitized (e.g., "mess with" instead of the original expletive). Speaker turns are properly separated with bold timestamp+speaker headers. The closing segment is fully intact through "Cheers, guys."
+
+**Gemini:** The most formally formatted output. Uses inline code formatting for technical terms (`solc`, `eth`, `cpp-ethereum`), italics for book titles (*The Cryptopians*), and bracketed contextual annotations for proper nouns (e.g., [Gavin Wood], [EDCON], [Enterprise Ethereum Alliance]). This adds useful context but is stylistically heavier. Uses shorter timestamps (`[MM:SS]` format). Fewer lines (276 vs 340 for Opus) suggests longer paragraph blocks. The closing is complete through "Cheers, guys."
+
+**Grok:** The most faithful-to-source output. Retains more of the original speech patterns including filler words and profanity. Word count is highest (11,805) suggesting less aggressive cleanup. Timestamps use `[H:MM:SS]` format. Clean speaker attribution. The closing is fully intact. A solid, reliable middle-ground between raw and polished.
 
 ---
 
 ## 3. AI Processor Comparison — WhisperX (local) Base
 
-Max word count from this base: 24,665 (GLM). Excluding GLM anomaly, max is 12,231 (Gemini). Reference source: 12,333 words.
+Reference source: 12,333 words (raw transcriber). Max processor output: 12,231 words (Gemini).
 
-| Processor | Words | % of Max (excl. GLM) | Tier | Key Observations |
-|---|---|---|---|---|
-| **Opus** | 11,411 | 93% | **Tier 1** | Excellent quality; strong name/technical corrections; properly handles the 5-speaker diarization |
-| **ChatGPT** | 10,814 | 88% | **Tier 1** | Very good quality; slightly less complete than Opus |
-| **Gemini** | 12,231 | 100% | **Tier 1** | Most complete; good quality; slightly more verbose |
-| **Grok** | 11,433 | 93% | **Tier 1** | Very good quality; reliable |
-| **Kimi** | 12,148 | 99% | **Tier 1** | Very complete and good quality |
-| **GLM** | 24,665 | N/A | **Tier 4 (Unusable)** | **FAILED: Entire transcript duplicated (copy-pasted twice).** Content appears twice consecutively. The 24,665 word count is ~2x the expected ~12,000. |
-| **DeepSeek** | 6,477 | 53% | **Tier 2** | Condensed but readable; similar pattern to AssemblyAI base |
-| **Llama** | 6,190 | 51% | **Tier 3** | Retains ASR artifacts; "Bob Summerwell" not corrected |
-| **MiniMax** | 5,949 | 49% | **Tier 3** | Truncated; "Bing" for "Ming" retained |
-| **Mistral** | 5,988 | 49% | **Tier 3** | Heavily condensed; good name expansion but too much content lost |
-| **Qwen** | 6,080 | 50% | **Tier 3** | Truncated; adequate quality in retained content |
+| Processor | Words | Lines | % of Max | Tier | Speaker Labels | Key Observations |
+|---|---|---|---|---|---|---|
+| **Opus** | 11,411 | 158 | 93% | **Tier 1** | Uses 00-04 from source; maps Bob to SPEAKER_02, Kieren to SPEAKER_04 | Excellent quality; properly handles the 5-speaker WhisperX diarization; clean name and technical corrections; fewest lines (158) means longer consolidated paragraphs |
+| **Gemini** | 12,231 | 136 | 100% | **Tier 1** | Uses 00-04 from source | Most complete word count; retains more filler words ("you know", "sort of"); heaviest paragraphs (136 lines for 12K+ words); good technical formatting |
+| **Grok** | 11,433 | 146 | 94% | **Tier 1** | Uses 00-04 from source | Reliable output; retains more raw speech patterns; profanity retained; complete through closing; similar consolidation to Gemini |
+
+### WhisperX (local) Base — Detailed Notes
+
+All three processors produce complete, high-quality outputs from the WhisperX local base. The key difference from the AssemblyAI-based outputs is the speaker labeling: WhisperX uses 5 speakers (SPEAKER_00-04) whereas AssemblyAI uses 4 (SPEAKER_00-03). In the WhisperX base, Bob is SPEAKER_02 (vs SPEAKER_01 in AssemblyAI), and Kieren appears as SPEAKER_04.
+
+The outputs have notably fewer lines than their AssemblyAI counterparts (136-158 vs 276-340), suggesting the processors are consolidating the already-longer WhisperX paragraphs into even more extended blocks. All three outputs complete through the closing remarks. The WhisperX source mentions "Augur" where AssemblyAI has "DAI" as a contemporary project -- this is a transcriber-level difference that propagates through to all processor outputs.
 
 ---
 
 ## 4. AI Processor Comparison — WhisperX-Cloud Base
 
-Max word count from this base: 12,106 (Gemini). Excluding GLM. Reference source: 12,325 words.
+Reference source: 12,325 words (raw transcriber). Max processor output: 12,106 words (Gemini).
 
-| Processor | Words | % of Max | Tier | Key Observations |
-|---|---|---|---|---|
-| **Opus** | 11,583 | 96% | **Tier 1** | Excellent quality; compensates well for the poor diarization of the source |
-| **ChatGPT** | 10,630 | 88% | **Tier 1** | Very good quality |
-| **Gemini** | 12,106 | 100% | **Tier 1** | Most complete; good quality |
-| **Grok** | 11,988 | 99% | **Tier 1** | Very good quality and completeness |
-| **Kimi** | 12,062 | 100% | **Tier 1** | Very good; near-complete |
-| **GLM** | 807 | 7% | **Tier 4 (Unusable)** | **FAILED: Severely truncated.** Only ~807 words produced; output cuts off mid-sentence at the beginning of the episode. |
-| **DeepSeek** | 6,641 | 55% | **Tier 2** | Condensed but readable |
-| **Llama** | 6,857 | 57% | **Tier 2** | Slightly better than with other bases; still retains some artifacts |
-| **MiniMax** | 5,656 | 47% | **Tier 3** | Truncated |
-| **Mistral** | 6,089 | 50% | **Tier 3** | Heavily condensed; good name corrections |
-| **Qwen** | 6,132 | 51% | **Tier 3** | Truncated |
+| Processor | Words | Lines | % of Max | Tier | Speaker Labels | Key Observations |
+|---|---|---|---|---|---|---|
+| **Opus** | 11,583 | 526 | 96% | **Tier 1** | Uses 00-04 from source; maps Bob to SPEAKER_00 (inherits source diarization error) | Highest line count (526) -- significantly more granular speaker turns than other Opus outputs; compensates for poor diarization by creating frequent speaker breaks; uses `f***` censoring for profanity |
+| **Gemini** | 12,106 | 88 | 100% | **Tier 1** | Uses 00-04 from source | Most complete; fewest lines (88) means extremely long paragraphs; some speaker turns run thousands of words; inherits the diarization problems from the source |
+| **Grok** | 11,988 | 80 | 99% | **Tier 1** | Uses 00-04 from source | Fewest lines of all 9 outputs (80); massive paragraph blocks; inherits diarization problems; complete content but very hard to follow speaker changes |
 
----
+### WhisperX-Cloud Base — Detailed Notes
 
-## 5. Consensus Pipeline Status
+The whisperx-cloud base presents the most challenge for processors due to its poor speaker diarization. This manifests differently in each processor's output:
 
-**No `_final.md` file exists.** The consensus pipeline has not been run for this episode.
+**Opus (526 lines):** Attempts to compensate for the diarization issues by creating very frequent speaker turn breaks. This results in the highest line count of any output (526 vs 340 for assemblyai_opus). The output is structurally very different from the other Opus outputs -- each speaker turn is shorter and more granular. Despite this structural difference, the content quality remains excellent. Profanity is censored as `f***`.
+
+**Gemini (88 lines):** Takes the opposite approach -- consolidates into extremely long blocks. With only 88 lines for 12,106 words, individual paragraphs can run extremely long. The poor source diarization means speaker attribution within these blocks is unreliable. Content is complete but readability suffers from the wall-of-text formatting. Uses inline code formatting and contextual annotations as in the AssemblyAI-based output.
+
+**Grok (80 lines):** Even fewer lines than Gemini (80), creating the most consolidated output of all 9 files. Multiple speakers' dialogue is merged into single blocks. Like Gemini, the content is complete but speaker attribution is very difficult to follow. This is the least readable output of the 9 despite containing nearly complete content.
 
 ---
 
-## 6. Cross-Transcriber Comparison
+## 5. Cross-Transcriber Comparison
 
-Comparing outputs from the same AI processor across different transcriber bases reveals:
+### Side-by-Side: Same Processor, Different Bases
 
-### Opus (Best Processor)
+#### Opus Comparison
 | Metric | AssemblyAI + Opus | WhisperX + Opus | WhisperX-Cloud + Opus |
 |---|---|---|---|
 | Word Count | 11,554 | 11,411 | 11,583 |
+| Line Count | 340 | 158 | 526 |
 | Speaker IDs | 4 (00-03) | 5 (00-04) | 5 (00-04) |
-| Name "Kieren" | Correct | Correct | Correct |
-| Name "Ming" | Correct | Correct | Correct |
-| "DEV AG" / "Stiftung" | DEV AG | DEV AG | DEV AG |
-| "Slock.it" | Correct | Correct | Correct |
-| Overall Quality | Excellent | Excellent | Excellent |
+| Bob's Speaker ID | SPEAKER_01 | SPEAKER_02 | SPEAKER_00 |
+| Profanity Handling | Sanitized ("mess with") | Sanitized | Censored ("f***") |
+| Closing Line | "Cheers, guys." | "Cheers, guys." | "Cheers, guys." |
+| Readability | Excellent | Very good | Good (too many short turns) |
 
-**Key finding:** Opus produces consistently excellent results regardless of the transcriber base. The AssemblyAI base provides the cleanest speaker attribution, while Opus compensates well for diarization issues in the WhisperX variants.
-
-### GLM (Worst Processor)
-| Metric | AssemblyAI + GLM | WhisperX + GLM | WhisperX-Cloud + GLM |
+#### Gemini Comparison
+| Metric | AssemblyAI + Gemini | WhisperX + Gemini | WhisperX-Cloud + Gemini |
 |---|---|---|---|
-| Word Count | 16,650 | 24,665 | 807 |
-| Failure Mode | Chain-of-thought dump | Entire transcript doubled | Severely truncated |
-| Usable | No | No | No |
+| Word Count | 11,777 | 12,231 | 12,106 |
+| Line Count | 276 | 136 | 88 |
+| Code Formatting | Yes (`solc`, `eth`) | Yes | Yes |
+| Contextual Annotations | Yes ([Gavin Wood]) | Yes | Yes |
+| Closing Line | "Cheers, guys." | "Cheers, guys." | Complete |
+| Readability | Very good | Good (long paragraphs) | Poor (wall of text) |
 
-**Key finding:** GLM fails catastrophically across all three transcriber bases, each time in a different manner. This model is fundamentally unreliable for this task.
+#### Grok Comparison
+| Metric | AssemblyAI + Grok | WhisperX + Grok | WhisperX-Cloud + Grok |
+|---|---|---|---|
+| Word Count | 11,805 | 11,433 | 11,988 |
+| Line Count | 290 | 146 | 80 |
+| Profanity Handling | Retained | Retained | Retained |
+| Speech Patterns | More raw | More raw | Most raw (merged speakers) |
+| Closing Line | "Cheers guys." | Complete | Complete |
+| Readability | Good | Good | Poor (wall of text) |
+
+### Key Findings
+
+1. **All 9 outputs are complete (Tier 1).** No truncation detected in any output. All reach the closing segment with "Cheers, guys" or equivalent.
+
+2. **Word counts are remarkably consistent** across all 9 outputs (11,411 to 12,231), with variation under 7%. This indicates all three processors handle all three transcriber bases reliably.
+
+3. **Line count variation is dramatic** and reveals how processors handle different source structures:
+   - AssemblyAI base: 276-340 lines (moderate)
+   - WhisperX base: 136-158 lines (consolidated)
+   - WhisperX-Cloud base: 80-526 lines (wildly variable -- Opus fragments, Gemini/Grok consolidate)
+
+4. **Speaker attribution quality** directly depends on the transcriber base. No processor can fix the underlying diarization problems from whisperx-cloud.
+
+5. **The "Augur" vs "DAI" discrepancy:** WhisperX transcribes a project mention as "Augur" (and Grok retains this), while AssemblyAI transcribes it as "DAI." Gemini on the AssemblyAI base writes "DAI" while the WhisperX outputs use "Augur" or "DAI" depending on the processor. This is a genuine content ambiguity from the audio.
 
 ---
 
-## 7. Detailed Quality Notes
+## 6. Processor Quality Rankings
 
-### Specific Name/Term Corrections Observed
+### Tier 1 Outputs (All 9)
 
-| Original ASR | Correct Form | Fixed By (Models) |
-|---|---|---|
-| "Bob Summerwell" | Bob Summerwill | Opus, ChatGPT, Gemini, Grok, Kimi, Mistral, MiniMax, Qwen, DeepSeek |
-| "Bob Summerwell" | Bob Summerwill | NOT fixed by: Llama |
-| "Karen" / "Kieran" | Kieren | Opus, ChatGPT, Gemini, Grok, DeepSeek |
-| "Karen" | Kieren | NOT fixed by: Kimi (inconsistent), MiniMax, Llama, Mistral |
-| "Bing" (Ming Chan) | Ming | Opus, ChatGPT, Grok, DeepSeek, Mistral |
-| "Bing" | Ming | NOT fixed by: MiniMax, Llama, Qwen |
-| "mainlet" / "mainland" | mainnet | All Tier 1 processors |
-| "seaport" / "C5" | C# / C++ | Opus, ChatGPT (C#); others vary |
-| "Slocket" / "Slockit" | Slock.it | Opus, ChatGPT, DeepSeek |
-| "Brian Bellendorf" | Brian Behlendorf | Opus, ChatGPT, Grok, Mistral |
-| "Christoph Jentz" | Christoph Jentzsch | Opus, DeepSeek |
-| "Anthony Diorio" | Anthony Di Iorio | All processors on AssemblyAI base |
-| "Pyre theorem" | PyEthereum | All Tier 1 processors |
+All nine processor outputs qualify as Tier 1 (complete, readable, high quality). However, there are meaningful quality differences:
 
-### Speaker Diarization Handling
+**Rank 1: assemblyai_opus** -- Best overall combination.
+- Cleanest speaker diarization (4 speakers, correct attribution)
+- Best name corrections (Christoph Jentzsch, Lefteris, Brian Behlendorf, DEV AG, Stiftung)
+- Most polished prose with appropriate filler removal
+- Professional formatting with reasonable paragraph lengths (340 lines)
 
-The whisperx-cloud base has the worst diarization, with Bob Summerwill's extended monologues frequently merged with other speakers. Remarkably, the Tier 1 AI processors (Opus, ChatGPT, Gemini, Grok, Kimi) appear to handle this reasonably well, likely because the conversational content itself provides contextual cues for speaker identification. However, for maximum accuracy, the AssemblyAI base is preferred.
+**Rank 2: assemblyai_gemini** -- Best formatted, most complete.
+- Inline code formatting and contextual annotations add scholarly value
+- Highest word count from AssemblyAI base (11,777)
+- Italic formatting for book titles, proper quotation handling
+- Slightly more verbose but highly readable (276 lines)
+
+**Rank 3: assemblyai_grok** -- Most faithful, highest word count.
+- Retains the most content from the source (11,805 words)
+- Preserves conversational authenticity including profanity
+- Less aggressive cleanup means closer to the original speech
+- Good formatting (290 lines)
+
+**Rank 4: whisperx_opus** -- Best WhisperX output.
+- Excellent quality despite 5-speaker complexity
+- Clean and polished (158 lines, very consolidated)
+- Proper name and technical corrections
+
+**Rank 5: whisperx_gemini** -- Most complete overall.
+- Highest word count of all 9 outputs (12,231)
+- Good formatting consistency
+- 136 lines means long but readable paragraphs
+
+**Rank 6: whisperx_grok** -- Reliable WhisperX output.
+- Complete and faithful (11,433 words, 146 lines)
+- Retains speech patterns well
+
+**Rank 7: whisperx-cloud_opus** -- Structurally unusual but content-complete.
+- 526 lines is an outlier; very fragmented speaker turns
+- Content quality is still excellent
+- The extreme fragmentation makes it harder to read as a flowing transcript
+
+**Rank 8: whisperx-cloud_gemini** -- Complete but hard to read.
+- 88 lines for 12K+ words creates wall-of-text blocks
+- Speaker attribution unreliable due to source diarization
+- Content is all there but readability suffers
+
+**Rank 9: whisperx-cloud_grok** -- Least readable.
+- Only 80 lines for nearly 12K words
+- Massive paragraph blocks with merged speakers
+- Complete content but worst readability of all 9
+
+---
+
+## 7. Specific Name/Term Corrections Observed
+
+| Original ASR | Correct Form | Opus | Gemini | Grok |
+|---|---|---|---|---|
+| "Bob Summerwell" | Bob Summerwill | Yes | Yes | Yes |
+| "Karen" / "Kieran" | Kieren | Yes | Yes | Yes |
+| "Bing" / "Ming" | Ming | Yes | Yes | Yes |
+| "Brian Bellendorf" | Brian Behlendorf | Yes | Yes | Yes |
+| "mainlet" / "mainland" | mainnet | Yes | Yes | Yes |
+| "Christoph Jentz" | Christoph Jentzsch | Yes | Partially | Partially |
+| "Slocket" / "Slockit" | Slock.it | Yes | Yes | Yes |
+| "C5" / "seaport" | C++ / C# | Yes | Yes | Yes |
+| "Pyre theorem" / "PI Ethereum" | PyEthereum | Yes | Yes | Yes |
+| "DEV AG" (from "EthDev") | EthDev AG / DEV AG | Yes | Yes | Yes |
+| "Stiftung" | Stiftung (correct, retained) | Yes | Yes | Yes |
+| Profanity handling | -- | Sanitized | Context-dependent | Retained |
+
+All three processors handle core name and technical corrections well. Opus is the most thorough, particularly on less common names (Christoph Jentzsch, Lefteris Karapetsas). Gemini adds the most formatting polish. Grok is the most faithful to the original speech.
 
 ---
 
 ## 8. Recommendations
 
 ### Best Combination
-**AssemblyAI + Opus** — This combination offers:
+**AssemblyAI + Opus** -- This combination offers:
 - Best source diarization (4 consistent speakers, clean boundaries)
-- Most accurate name corrections (Kieren, Ming, Slock.it, Christoph Jentzsch, Lefteris Karapetsas, Brian Behlendorf, DEV AG)
-- Excellent technical term handling (mainnet, cpp-ethereum, pyethereum, Solidity, DevCon)
+- Most accurate and thorough name corrections
+- Excellent technical term handling
 - Clean prose with appropriate filler removal while preserving conversational tone
-- Complete coverage (~89% of raw word count, reflecting proper cleanup)
+- Complete coverage with professional formatting (340 lines, ~11,554 words)
 
 ### Runner-Up Combinations
-1. **AssemblyAI + ChatGPT** — Nearly as good as Opus; slightly less thorough on name corrections
-2. **AssemblyAI + Gemini** — Most complete word count; solid quality
-3. **AssemblyAI + Grok** — Reliable and consistent
-
-### Processors to Avoid
-1. **GLM** — Fails catastrophically on all three bases (chain-of-thought dump, duplication, severe truncation). Must not be used.
-2. **Llama** — Fails to correct the guest's name ("Bob Summerwell"), retains ASR artifacts, minimal value-add over raw transcript.
-3. **MiniMax** — "Bing" for "Ming", "Karen" for "Kieren"; heavy truncation loses significant content.
+1. **AssemblyAI + Gemini** -- Most formally formatted; best for scholarly or reference use; adds useful contextual annotations
+2. **AssemblyAI + Grok** -- Most faithful to original speech; best for preserving conversational authenticity
+3. **WhisperX + Opus** -- Best non-AssemblyAI option; good for consensus pipeline diversity
 
 ### Transcriber Recommendation
-- **Primary:** AssemblyAI (best diarization, most words captured)
-- **Secondary:** WhisperX (local) (acceptable diarization, good word capture)
-- **Avoid as primary:** WhisperX-Cloud (poor diarization quality for this episode)
+- **Primary:** AssemblyAI (best diarization, most words captured, cleanest speaker boundaries)
+- **Secondary:** WhisperX (local) (acceptable diarization, good word capture, useful for cross-reference)
+- **Tertiary:** WhisperX-Cloud (complete content but poor diarization; use only for consensus diversity)
 
-### Next Steps
-1. Run the consensus pipeline using the top 3-4 AssemblyAI-based outputs (Opus, ChatGPT, Gemini, Grok) to produce a `_final.md`
-2. Consider re-processing with GLM excluded from any future pipeline runs
-3. The Mistral processor shows promise for name expansion (full names with context) but needs to be configured to avoid severe content truncation
+### Consensus Pipeline Notes
+All 9 outputs are Tier 1, making this episode an excellent candidate for a consensus pipeline run. The top candidates for consensus input would be the three AssemblyAI-based outputs plus whisperx_opus for diversity.
+
+### Key Quality Observations
+1. This is a high-quality episode for transcription -- Bob Summerwill speaks clearly and at a measured pace, resulting in excellent ASR quality across all transcribers.
+2. The episode covers highly specific Ethereum history with many proper nouns, making AI processor name correction capability particularly important.
+3. All three processors (Opus, Gemini, Grok) perform at Tier 1 across all three bases -- no failures, no truncation, no hallucination detected.
+4. The main quality differentiator between outputs is readability/formatting rather than content completeness.
