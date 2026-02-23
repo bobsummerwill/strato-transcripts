@@ -109,7 +109,7 @@ def assess_intermediate_quality(episode_dir):
     results = {}
 
     for transcriber in TRANSCRIBERS:
-        txt_file = episode_dir / f"{episode_name}_{transcriber}.txt"
+        md_out = episode_dir / f"{episode_name}_{transcriber}.md"
         md_file = episode_dir / f"{episode_name}_{transcriber}.md"
 
         if not md_file.exists():
@@ -213,7 +213,7 @@ def assess_output_quality(episode_dir, transcriber):
     for processor in PROCESSORS:
         output_file = episode_dir / f"{base_name}_{processor}.md"
         if not output_file.exists():
-            output_file = episode_dir / f"{base_name}_{processor}.txt"
+            output_file = episode_dir / f"{base_name}_{processor}.md"
 
         if not output_file.exists():
             continue
@@ -263,7 +263,7 @@ def compare_outputs(episode_dir, transcriber):
     for processor in PROCESSORS:
         output_file = episode_dir / f"{base_name}_{processor}.md"
         if not output_file.exists():
-            output_file = episode_dir / f"{base_name}_{processor}.txt"
+            output_file = episode_dir / f"{base_name}_{processor}.md"
         if output_file.exists():
             with open(output_file, 'r', encoding='utf-8') as f:
                 contents[processor] = f.read()
@@ -1044,17 +1044,13 @@ def build_true_consensus(episode_name, transcriber, output_dir=Path("outputs"),
     provider_weights = {}
 
     for processor in PROCESSORS:
-        # Prefer .md files (have timestamps) over .txt (no timestamps)
         md_file = episode_dir / f"{base_name}_{processor}.md"
-        txt_file = episode_dir / f"{base_name}_{processor}.txt"
 
-        content = None
-        if md_file.exists():
-            with open(md_file, 'r', encoding='utf-8') as f:
-                content = f.read()
-        elif txt_file.exists():
-            with open(txt_file, 'r', encoding='utf-8') as f:
-                content = f.read()
+        if not md_file.exists():
+            continue
+
+        with open(md_file, 'r', encoding='utf-8') as f:
+            content = f.read()
 
         if content:
             segments = parse_transcript_segments(content)
@@ -1138,12 +1134,6 @@ def generate_intermediate_consensus(episode_name, intermediate_dir=Path("interme
         with open(md_file, 'w', encoding='utf-8') as f:
             f.write(consensus_md)
 
-        # Save txt version
-        txt_content = re.sub(r'\*\*', '', consensus_md)
-        txt_file = episode_dir / f"{episode_name}_intermediate_consensus.txt"
-        with open(txt_file, 'w', encoding='utf-8') as f:
-            f.write(txt_content)
-
         # Save word-level JSON for downstream use
         if consensus_words:
             json_file = episode_dir / f"{episode_name}_intermediate_consensus_words.json"
@@ -1219,9 +1209,9 @@ def generate_true_consensus_transcript(episode_name, output_dir=Path("outputs"),
         results['selected_transcriber'] = best_transcriber
 
         # Count how many processors contributed
-        txt_files = list(episode_out_dir.glob(f"{episode_name}_{best_transcriber}_*.txt"))
+        md_matches = list(episode_out_dir.glob(f"{episode_name}_{best_transcriber}_*.md"))
         md_files = list(episode_out_dir.glob(f"{episode_name}_{best_transcriber}_*.md"))
-        results['processors_merged'] = max(len(txt_files), len(md_files))
+        results['processors_merged'] = len(md_matches)
 
         # Save consensus
         consensus_episode_dir = consensus_dir / episode_name
@@ -1232,11 +1222,6 @@ def generate_true_consensus_transcript(episode_name, output_dir=Path("outputs"),
             f.write(best_consensus)
 
         # Also save txt version (strip markdown)
-        txt_content = re.sub(r'\*\*', '', best_consensus)
-        txt_file = consensus_episode_dir / f"{episode_name}_consensus.txt"
-        with open(txt_file, 'w', encoding='utf-8') as f:
-            f.write(txt_content)
-
         results['consensus_file'] = str(md_file)
 
     return results
@@ -1328,12 +1313,6 @@ def generate_consensus_transcript_selection(episode_name, output_dir=Path("outpu
             import shutil
             shutil.copy(src_file, dst_file)
             results['consensus_file'] = str(dst_file)
-
-            # Also copy txt version
-            src_txt = src_file.with_suffix('.txt')
-            if src_txt.exists():
-                dst_txt = dst_file.with_suffix('.txt')
-                shutil.copy(src_txt, dst_txt)
 
     return results
 
