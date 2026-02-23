@@ -220,66 +220,44 @@ def ensure_nvidia_lib_path():
 # File Saving Utilities
 # ============================================================================
 
-def save_transcript_dual_format(output_dir, basename, service_name, content, 
+def save_transcript_dual_format(output_dir, basename, service_name, content,
                                 content_type="text"):
     """
-    Save transcript in txt (clean) and md (with timestamps) formats.
-    
+    Save transcript as markdown with timestamps.
+
     Args:
         output_dir: Directory to save files
         basename: Base filename without extension
         service_name: Name of service (whisperx, whisperx-cloud, assemblyai)
         content: Either pre-formatted text or list of segment dicts
         content_type: "text" or "segments"
-    
+
     Returns:
-        Path object for the .txt file
+        Path object for the .md file
     """
     import re
-    
-    output_path = Path(output_dir) / f"{basename}_{service_name}_raw.txt"
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    
+
+    output_dir_path = Path(output_dir)
+    output_dir_path.mkdir(parents=True, exist_ok=True)
+    md_path = output_dir_path / f"{basename}_{service_name}_raw.md"
+
     if content_type == "text":
-        # Pre-formatted text with timestamps
-        # Save text version (NO timestamps)
-        text_lines = []
-        for line in content.split('\n'):
-            clean_line = re.sub(r'^\[[\d.]+s\] ', '', line)
-            text_lines.append(clean_line)
-        
-        with open(output_path, 'w', encoding='utf-8') as f:
-            f.write('\n'.join(text_lines))
-        
         # Save markdown version (WITH timestamps, bold speaker labels)
-        md_path = output_path.with_suffix('.md')
         md_lines = []
         for line in content.split('\n'):
             if re.match(r'^SPEAKER_\d+:', line):
                 line = line.replace('SPEAKER_', '**SPEAKER_').replace(':', ':**', 1)
             md_lines.append(line)
-        
+
         with open(md_path, 'w', encoding='utf-8') as f:
             f.write('\n'.join(md_lines))
-    
+
     elif content_type == "segments":
         # List of segment dicts with 'speaker', 'start', 'text' keys
         segments = content
         speaker_key = "speaker"
-        
-        # Save text version (NO timestamps)
-        with open(output_path, 'w', encoding='utf-8') as f:
-            current_speaker = None
-            for segment in segments:
-                speaker = segment.get(speaker_key, "UNKNOWN")
-                if speaker != current_speaker:
-                    f.write(f"\n{speaker}:\n")
-                    current_speaker = speaker
-                text = segment.get("text", "").strip()
-                f.write(f"{text}\n")
-        
+
         # Save markdown version (WITH timestamps)
-        md_path = output_path.with_suffix('.md')
         with open(md_path, 'w', encoding='utf-8') as f:
             current_speaker = None
             for segment in segments:
@@ -290,5 +268,5 @@ def save_transcript_dual_format(output_dir, basename, service_name, content,
                 start_time = segment.get("start", 0)
                 text = segment.get("text", "").strip()
                 f.write(f"[{start_time:.1f}s] {text}\n")
-    
-    return output_path
+
+    return md_path

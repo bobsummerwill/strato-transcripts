@@ -85,7 +85,6 @@ intermediates/
 outputs/
   episode001/
     episode001_whisperx_opus.md
-    episode001_whisperx_opus.txt
 ```
 
 ## Typical Processing Times

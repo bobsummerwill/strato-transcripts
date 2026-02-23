@@ -164,11 +164,10 @@ def build_episode_excerpt_pack(
 
         for pr in processors:
             out_md_path = out_dir / f"{episode}_{tr}_{pr}.md"
-            out_txt_path = out_dir / f"{episode}_{tr}_{pr}.txt"
-            if not out_md_path.exists() or not out_txt_path.exists():
+            if not out_md_path.exists():
                 continue
             out_mm = compute_md_metrics(out_md_path)
-            out_tm = compute_txt_metrics(out_txt_path)
+            out_tm = compute_txt_metrics(out_md_path)
             retention = (out_tm.word_count / (base_words or 1))
             ratio = (out_mm.timestamp_count / (base_mm.timestamp_count or 1))
 

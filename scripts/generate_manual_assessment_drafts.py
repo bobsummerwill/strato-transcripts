@@ -8,7 +8,7 @@ This script does not call any LLMs. It attempts to approximate a human
   - scoring similarity + tracking entity/phrase novelty
 
 It then prepends a MANUAL ASSESSMENT section to:
-  outputs/<episode>/QUALITY_ASSESSMENT.txt
+  outputs/<episode>/QUALITY_ASSESSMENT.md
 
 Notes
 -----
@@ -121,14 +121,13 @@ def build_draft_section(
         combos: list[ComboQual] = []
         for pr in processors:
             out_md_path = out_dir / f"{episode}_{tr}_{pr}.md"
-            out_txt_path = out_dir / f"{episode}_{tr}_{pr}.txt"
-            if not out_md_path.exists() or not out_txt_path.exists():
+            if not out_md_path.exists():
                 continue
 
             out_md = _read_text(out_md_path)
             out_blocks = parse_md_blocks(out_md)
             out_mm = compute_md_metrics(out_md_path)
-            out_tm = compute_txt_metrics(out_txt_path)
+            out_tm = compute_txt_metrics(out_md_path)
 
             # Similarity across sampled blocks (match by timestamp)
             sims: list[float] = []
@@ -218,8 +217,8 @@ def main() -> None:
     ap.add_argument("--k", type=int, default=5)
     ap.add_argument(
         "--assessment-filename",
-        default="QUALITY_ASSESSMENT.txt",
-        help="Which per-episode assessment file to prepend (default: QUALITY_ASSESSMENT.txt)",
+        default="QUALITY_ASSESSMENT.md",
+        help="Which per-episode assessment file to prepend (default: QUALITY_ASSESSMENT.md)",
     )
     args = ap.parse_args()
 

@@ -109,7 +109,6 @@ intermediates/episode001/
 
   # Phase 2: Merged consensus
   episode001_intermediate_consensus.md           # Final merged transcript
-  episode001_intermediate_consensus.txt          # Plain text
   episode001_intermediate_consensus_words.json   # Merged word-level data
 ```
 
@@ -198,7 +197,6 @@ Output:
 ```
 outputs/<episode>/
   <episode>_final.md    # Markdown with timestamps
-  <episode>_final.txt   # Plain text
   <episode>_final_words.json  # Word-level data
 ```
 
@@ -214,7 +212,6 @@ intermediates/<episode>/
   # Phase 2: Transcriber consensus
   <episode>_intermediate_consensus_words.json
   <episode>_intermediate_consensus.md
-  <episode>_intermediate_consensus.txt
 
   # Phase 3: AI corrections (×11)
   <episode>_ai_opus_words.json
@@ -231,7 +228,6 @@ intermediates/<episode>/
 outputs/<episode>/
   # Phase 6: Final outputs
   <episode>_final.md
-  <episode>_final.txt
   <episode>_final_words.json
 ```
 

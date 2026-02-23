@@ -9,7 +9,7 @@ Pipeline:
   Phase 3: AI Correction Pass - Process with all 11 AI models, align back to word-level
   Phase 4: AI Consensus - Build consensus from 11 AI word lists
   Phase 5: Filler Removal - Filter out filler words
-  Phase 6: Final Output - Generate .md and .txt files
+  Phase 6: Final Output - Generate .md files
 
 Prerequisite: Run transcriber consensus first (Phases 1-2):
   python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 --transcribers whisperx,assemblyai --consensus
@@ -681,12 +681,6 @@ def generate_intermediate_consensus(episode_name, intermediate_dir=Path("interme
         md_file = episode_dir / f"{episode_name}_intermediate_consensus.md"
         with open(md_file, 'w', encoding='utf-8') as f:
             f.write(consensus_md)
-
-        # Save txt version
-        txt_content = re.sub(r'\*\*', '', consensus_md)
-        txt_file = episode_dir / f"{episode_name}_intermediate_consensus.txt"
-        with open(txt_file, 'w', encoding='utf-8') as f:
-            f.write(txt_content)
 
         # Save word-level JSON for downstream use
         if consensus_words_list:
@@ -1521,7 +1515,7 @@ def remove_filler_words(episode_name, intermediate_dir=Path("intermediates")):
 
 def generate_final_output(episode_name, intermediate_dir=Path("intermediates"), output_dir=Path("outputs")):
     """
-    Phase 6: Generate final .md and .txt from word-level data.
+    Phase 6: Generate final .md from word-level data.
     """
     print("\n" + "="*70)
     print("PHASE 6: Final Output Generation")
@@ -1561,19 +1555,6 @@ def generate_final_output(episode_name, intermediate_dir=Path("intermediates"), 
         f.write(md_content)
 
     print(f"  Generated: {md_file}")
-
-    # Generate plain text (no timestamps, no markdown)
-    txt_lines = []
-    for seg in segments:
-        txt_lines.append(f"{seg['speaker']}: {seg['text']}")
-        txt_lines.append("")
-
-    txt_content = '\n'.join(txt_lines)
-    txt_file = episode_output_dir / f"{episode_name}_final.txt"
-    with open(txt_file, 'w', encoding='utf-8') as f:
-        f.write(txt_content)
-
-    print(f"  Generated: {txt_file}")
 
     # Also save final words JSON to outputs
     json_file = episode_output_dir / f"{episode_name}_final_words.json"
@@ -1733,7 +1714,7 @@ Prerequisites:
     if args.phase == 'all' or args.phase == '6':
         print(f"\nFinal outputs:")
         print(f"  {output_dir}/{args.episode}/{args.episode}_final.md")
-        print(f"  {output_dir}/{args.episode}/{args.episode}_final.txt")
+        print(f"  {output_dir}/{args.episode}/{args.episode}_final_words.json")
 
 
 if __name__ == "__main__":

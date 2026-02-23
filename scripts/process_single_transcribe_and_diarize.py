@@ -12,7 +12,7 @@ from pathlib import Path
 
 # Import shared utilities
 from common import (Colors, success, failure, skip, validate_api_key,
-                    load_vocabulary, save_transcript_dual_format, cleanup_gpu_memory,
+                    load_vocabulary, cleanup_gpu_memory,
                     ensure_nvidia_lib_path)
 
 

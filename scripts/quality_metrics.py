@@ -71,8 +71,12 @@ def compute_md_metrics(md_path: Path) -> MdMetrics:
     )
 
 
-def compute_txt_metrics(txt_path: Path) -> TxtMetrics:
-    t = _read_text(txt_path)
+def compute_txt_metrics(path: Path) -> TxtMetrics:
+    """Compute word count from a text or markdown file."""
+    t = _read_text(path)
+    # Strip markdown formatting before counting words
+    t = re.sub(r'\*\*\[[\d:]+\]\s*SPEAKER_\d+:\*\*', '', t)
+    t = re.sub(r'\*\*', '', t)
     return TxtMetrics(word_count=len(WORD_RE.findall(t)))
 
 
@@ -101,12 +105,11 @@ def main() -> None:
     print("BASELINES (intermediate)")
     baselines: dict[str, tuple[TxtMetrics, MdMetrics]] = {}
     for tr in transcribers:
-        txt = inter_dir / f"{ep}_{tr}.txt"
         md = inter_dir / f"{ep}_{tr}.md"
-        baselines[tr] = (compute_txt_metrics(txt), compute_md_metrics(md))
+        baselines[tr] = (compute_txt_metrics(md), compute_md_metrics(md))
         tm, mm = baselines[tr]
         print(
-            f"{tr:13} txt_words={tm.word_count:5} md_ts={mm.timestamp_count:4} md_headers={mm.header_count:4} "
+            f"{tr:13} words={tm.word_count:5} md_ts={mm.timestamp_count:4} md_headers={mm.header_count:4} "
             f"speakers={mm.speakers} nonmono={mm.non_monotonic_timestamps} fmt_bad={mm.format_violations}"
         )
 
@@ -117,11 +120,10 @@ def main() -> None:
     for tr in transcribers:
         base_txt, base_md = baselines[tr]
         for pr in processors:
-            out_txt = out_dir / f"{ep}_{tr}_{pr}.txt"
             out_md = out_dir / f"{ep}_{tr}_{pr}.md"
-            if not out_txt.exists() or not out_md.exists():
+            if not out_md.exists():
                 continue
-            tm = compute_txt_metrics(out_txt)
+            tm = compute_txt_metrics(out_md)
             mm = compute_md_metrics(out_md)
             ret = (tm.word_count / (base_txt.word_count or 1)) * 100
             ts_ratio = mm.timestamp_count / (base_md.timestamp_count or 1)
