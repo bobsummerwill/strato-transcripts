@@ -4,187 +4,293 @@
 
 - **Episode:** episode006-christoph-jentzsch
 - **Subject:** Christoph Jentzsch (Ethereum testing, Slock.it, The DAO)
-- **Speakers:** 5 participants (host Bob Summerwill, guest Christoph Jentzsch, Kieran James-Lubin, Jim, and one additional speaker)
+- **Speakers:** 4 participants -- host Bob Summerwill (SPEAKER_00), Kieran James-Lubin (SPEAKER_01), Christoph Jentzsch (SPEAKER_02), Jim (SPEAKER_03)
 - **Duration:** Approximately 87 minutes
-- **Transcriber sources:** 3 (WhisperX local, WhisperX Cloud, AssemblyAI)
-- **AI Processors:** 12 models across 3 transcriber bases (36 output files total, plus 3 processed variants)
-- **Assessment Date:** 2026-02-22
+- **Transcriber sources:** 3 (AssemblyAI, WhisperX local, WhisperX Cloud)
+- **AI Processors assessed:** Opus, Gemini, Grok (across all 3 transcriber bases = 9 outputs)
+- **Assessment Date:** 2026-02-23
 
 ---
 
-## 1. Transcriber Comparison
+## 1. Transcriber Quality Assessment
 
-| Transcriber | Word Count | Line Count | Diarization | Timestamp Granularity | Notable Issues |
+### Raw Transcriber Output Summary
+
+| Transcriber | Word Count | Diarization | Speaker Labels | Timestamp Style | Formatting |
 |---|---|---|---|---|---|
-| WhisperX (local) | 15,038 | 302 | 5 speakers (SPEAKER_00 through SPEAKER_04) + 1 UNKNOWN | Per-turn, ~148 timestamps | Good diarization with distinct speaker separation; lowercase for some speakers; occasional "UNKNOWN" label |
-| WhisperX Cloud | 14,932 | 158 | 9 speaker labels (SPEAKER_01, 02, 03, 04, 08) | Per-turn, ~79 timestamps | Poor diarization: multiple speakers merged into single blocks; SPEAKER_08 absorbs multiple speakers; significantly fewer turn boundaries |
-| AssemblyAI | 15,320 | 360 | 4 speakers (SPEAKER_00 through SPEAKER_03) | Per-turn, ~180 timestamps | Best diarization with cleanest speaker separation; most timestamps; consistent formatting with capitalized text |
-| AssemblyAI Consensus | 15,739 | 360 | Same as AssemblyAI but with filler words preserved | Per-turn, ~180 timestamps | Retains "uh", "um" fillers; used as enhanced base for processing |
+| AssemblyAI | 15,320 | 4 speakers (SPEAKER_00-03) | Consistent, correct separation | [MM:SS] per turn | Capitalized, clean |
+| WhisperX (local) | 15,038 | 5 speakers (SPEAKER_00-04) + 1 UNKNOWN | Generally good, minor splits | [MM:SS] per turn | Mixed case for some speakers |
+| WhisperX Cloud | 14,932 | 5 labels (01, 02, 03, 04, 08) | Poor -- speakers merged into long blocks | [MM:SS] per turn | Lowercase for host's lines |
 
-### Transcriber Quality Ranking
+### Detailed Transcriber Notes
 
-1. **AssemblyAI** -- Best overall. Cleanest diarization with 4 properly separated speakers, most timestamp granularity (180 turns), and proper capitalization. Correctly separates Rob (SPEAKER_00), Kieran (SPEAKER_01), Christoph (SPEAKER_02), and Jim (SPEAKER_03).
+**AssemblyAI (Best)**
+- Cleanest speaker separation with 4 distinct speakers correctly identified
+- Highest turn count (~180 speaker turns) providing the best conversational granularity
+- Properly capitalized text throughout
+- Consistent formatting with clear speaker labels
+- Correctly isolates short interjections (e.g., "Indeed." as its own turn at [01:11])
+- Minor transcription errors present in raw form: "Kevin Wood" for Gavin Wood, "territory physics" for theoretical physics, "AS6" for ASICs, "italic" for Vitalik, "Stefan to all" for Stefan Tual
 
-2. **WhisperX (local)** -- Good diarization with 5 speaker labels plus 1 UNKNOWN. Has 148 timestamps, which is reasonable. Speaker separation is generally accurate, though the additional SPEAKER_03/SPEAKER_04 split compared to AssemblyAI sometimes attributes Kieran's lines differently.
+**WhisperX (local) (Good)**
+- 5 speakers plus occasional UNKNOWN label; the extra split separates Jim (SPEAKER_04) from Kieran (SPEAKER_01) differently than AssemblyAI
+- ~148 turn boundaries -- fewer than AssemblyAI but adequate
+- Same quality of raw transcription errors as WhisperX Cloud (shared Whisper base)
+- Proper per-turn separation, though some longer monologues merge adjacent speakers' brief interjections
+- Correctly identifies "Dr. Christian Reitweissner" in raw form (better than AssemblyAI's "Wrightweisner")
 
-3. **WhisperX Cloud** -- Significantly inferior. Only 79 timestamps (less than half of AssemblyAI). Major diarization issues: SPEAKER_08 absorbs the host's dialogue plus other speakers' lines into single blocks, losing critical turn-by-turn attribution. Multiple speakers often merged into one paragraph, making the transcript much harder to follow.
+**WhisperX Cloud (Inferior)**
+- Major diarization problems: SPEAKER_08 absorbs the host's lines plus other speakers' dialogue into single massive blocks
+- Only ~79 turn boundaries -- less than half of AssemblyAI
+- The first block (SPEAKER_08 at [00:03]) runs continuously for over 1 minute, merging at least 3 speakers' dialogue into one paragraph
+- Same raw transcription quality as WhisperX local but far worse structural separation
+- Makes the transcript significantly harder to follow as a conversation
 
----
+### Transcriber Ranking
 
-## 2. AI Processor Comparison -- AssemblyAI Base
-
-| Processor | Word Count | % of Max | Timestamps | Formatting | Name Corrections | Filler Removal | Tier |
-|---|---|---|---|---|---|---|---|
-| **Opus** | 14,828 | 96.8% | Preserved (MM:SS) | Excellent | Yes (Jentzsch, Gavin Wood, Joseph Lubin, ETHDEV, EVM, Whisper, Stefan Tual, Henning Diedrich) | Clean | **Tier 1** |
-| **Gemini** | 15,145 | 98.9% | Preserved | Excellent | Yes | Clean | **Tier 1** |
-| **Gemini Processed** | 14,813 | 96.7% | Removed (no timestamps) | Good, no timestamps | Yes | Clean | **Tier 2** |
-| **Grok** | 14,955 | 97.6% | Preserved | Excellent | Yes | Clean | **Tier 1** |
-| **Sonnet Processed** | 14,720 | 96.1% | Removed (no timestamps) | Good, no timestamps | Yes | Clean | **Tier 2** |
-| **Kimi** | 12,210 | 79.7% | Preserved but minimal cleanup | Poor -- retains raw errors ("italic", "Kevin Wood", "AS6", "territory physics") | Minimal | Minimal | **Tier 3** |
-| **ChatGPT** | 4,012 | 26.2% | Partial (Part 1 only) | Good formatting but incomplete | Yes (what exists) | Clean | **Tier 3** |
-| **Llama** | 6,143 | 40.1% | Missing/malformed | Poor -- wrong timestamp format | Partial | Partial | **Tier 3** |
-| **Llama Processed** | 7,826 | 51.1% | Missing/malformed (e.g., [00:00], [00:01]) | Poor -- wrong timestamps | Partial | Partial | **Tier 3** |
-| **DeepSeek** | 4,021 | 26.3% | Preserved | Good for what exists, but heavily truncated | Yes | Clean | **Tier 3** |
-| **Qwen** | 5,728 | 37.4% | Preserved | Decent | Partial | Partial | **Tier 3** |
-| **Mistral** | 5,654 | 36.9% | Preserved | Decent | Partial | Partial | **Tier 3** |
-| **MiniMax** | 1,251 | 8.2% | Truncated early | Good for what exists | Yes | Clean | **Tier 4** |
-| **GLM** | 32,679 | n/a | Chain-of-thought dump | **Unusable** -- outputs reasoning/analysis notes instead of transcript | n/a | n/a | **Tier 4** |
-
-### AssemblyAI Base Top Performers
-
-**Tier 1 (>90% retention, excellent quality):**
-- **Opus** (14,828 words): Full transcript with correct timestamps, excellent name corrections (Gavin Wood for "Kevin Wood", Jentzsch for "Jens", EVM for "Ethereum rich machine", Stefan Tual for "Stefan to all"), clean filler removal, natural prose flow. Completes through the end with the sign-off at [87:27].
-- **Gemini** (15,145 words): Slightly higher word count with very similar quality. Accurate name corrections, preserved timestamps, clean formatting. Complete to the end.
-- **Grok** (14,955 words): Comparable quality to Opus and Gemini. Complete coverage, proper corrections.
-
-**Tier 2 (mostly complete, good quality but format issues):**
-- **Gemini Processed** (14,813 words): Content is high quality but timestamps were stripped during post-processing. Speaker labels preserved.
-- **Sonnet Processed** (14,720 words): Same issue -- timestamps stripped. Content is complete and well-corrected.
-
-**Tier 3 (<80% retention or significant issues):**
-- **Kimi** (12,210 words): Retains many raw transcription errors ("italic" instead of "Vitalik", "Kevin Wood" instead of "Gavin Wood", "AS6" instead of "ASICs", "territory physics" instead of "theoretical physics"). Essentially a pass-through with minimal improvement.
-- **ChatGPT** (4,012 words): Only delivered "Part 1" with a note saying to "Ask for Part 2" -- output size limit prevented completion.
-- **DeepSeek** (4,021 words): Heavily truncated, covers roughly the first quarter of the interview.
-- **Llama/Llama Processed** (6,143/7,826 words): Wrong timestamp format (minute-only counts instead of MM:SS), incomplete coverage.
-- **Qwen** (5,728 words): Truncated mid-conversation.
-- **Mistral** (5,654 words): Truncated mid-conversation.
-
-**Tier 4 (unusable):**
-- **MiniMax** (1,251 words): Barely covers the first few minutes.
-- **GLM** (32,679 words): Does not contain a processed transcript at all. Instead contains extensive chain-of-thought analysis notes ("**1. Understand the Goal:**", "**2. Analyze the Input:**", bullet-pointed correction notes). The model output its reasoning process rather than the final transcript.
+1. **AssemblyAI** -- Best diarization, most turn boundaries, cleanest formatting
+2. **WhisperX (local)** -- Good diarization, adequate turns, minor speaker label issues
+3. **WhisperX Cloud** -- Poor diarization with merged speaker blocks, unusable without AI post-processing
 
 ---
 
-## 3. AI Processor Comparison -- WhisperX (local) Base
+## 2. AI Processor Assessment -- AssemblyAI Base
 
-| Processor | Word Count | % of Max | Tier |
+### Word Counts (Opus, Gemini, Grok only)
+
+| Processor | Word Count | % of Raw (15,320) | Lines |
 |---|---|---|---|
-| **Opus** | 14,641 | 97.4% | **Tier 1** |
-| **Gemini** | 14,784 | 98.3% | **Tier 1** |
-| **Grok** | 14,816 | 98.5% | **Tier 1** |
-| **ChatGPT** | 11,861 | 78.9% | **Tier 2** |
-| **Kimi** | 12,209 | 81.2% | **Tier 2** |
-| **Llama** | 6,149 | 40.9% | **Tier 3** |
-| **MiniMax** | 5,915 | 39.4% | **Tier 3** |
-| **Mistral** | 5,561 | 37.0% | **Tier 3** |
-| **Qwen** | 5,657 | 37.6% | **Tier 3** |
-| **DeepSeek** | 4,718 | 31.4% | **Tier 3** |
-| **GLM** | 46,212 | n/a | **Tier 4** (chain-of-thought dump) |
+| Gemini | 15,145 | 98.9% | 356 |
+| Grok | 14,955 | 97.6% | 358 |
+| Opus | 14,828 | 96.8% | 354 |
 
-### Notes on WhisperX Base
-- Opus, Gemini, and Grok again lead. WhisperX Opus output is complete to the end at [81:00] with proper name corrections and clean formatting.
-- ChatGPT performed better here (11,861 words vs 4,012 on AssemblyAI), reaching about 79% retention.
-- The GLM failure is even worse here at 46,212 words of reasoning notes, the largest file in the entire output set.
+### AssemblyAI + Opus (Tier 1)
+
+**Completeness:** Complete from [00:03] to [87:28]. Final line is Christoph's sign-off "You too. That's great talking to you. Bye." All major topics covered including the DAO hack, DEVCON memories, Tokenize.it, and personal reflections.
+
+**Name Corrections (Excellent):**
+- "Kevin Wood" -> "Gavin Wood"
+- "Jentzsch" correctly throughout (raw had "Jens"/"yance")
+- "ETHDEV" (from "fdev"/"EFDEV")
+- "Ethereum Virtual Machine" (from "Ethereum rich machine")
+- "Stefan Tual" (from "Stefan to all"/"Toual")
+- "Henning Diedrich" (from fragmented "did Lexus from IBM")
+- "Joseph Lubin" (from "Joseph Rubin" in some instances)
+- "Tokenize.it" properly formatted
+- "Slock.it" properly formatted
+- "AlethZero", "AlethOne" properly formatted
+- "ASICs" (from "AS6")
+- "theoretical physics" (from "territory physics")
+- "Whisper" (from "Risper")
+- "pyEthereum" properly styled
+- "Deja Vu" (audit company name preserved)
+
+**Formatting:** Clean, readable prose. Speaker labels with timestamps preserved in `**[MM:SS] SPEAKER_XX:**` format. Filler words ("uh", "um") cleanly removed. Natural sentence flow maintained. Short interjections preserved as separate turns.
+
+**Notable Quality:** Correctly interprets "bold vision" (from raw "proud vision"), properly capitalizes DEVCON, correctly parses the Geth vs C++ audit story with clarity. The DAO discussion is complete and accurate. Properly handles the audio interruption sequence around [67:27]-[68:47].
+
+**Tier: 1 -- Complete, excellent quality**
+
+### AssemblyAI + Gemini (Tier 1)
+
+**Completeness:** Complete from [00:00] to [01:15:37]. Uses HH:MM:SS timestamp format for later sections. Final line matches Opus. Highest word count of the three (15,145).
+
+**Name Corrections:** Comparable to Opus. Uses "Devcon" capitalization style (mixed case) rather than "DEVCON". "Henning Diedrich" correctly identified. All major name corrections applied.
+
+**Formatting:** Very clean. Slightly different timestamp offset at the start ([00:00] vs [00:03]). Speaker turns are well-separated. Later timestamps switch to HH:MM:SS format (e.g., [01:00:36]) which is actually more precise for a long recording. One oddity: timestamps compress differently from Opus, suggesting Gemini may adjust timing slightly.
+
+**Notable Differences from Opus:** Gemini says "Devcon" (mixed case) while Opus says "DEVCON". Gemini retains slightly more of the conversational texture (marginally higher word count). Both are equally faithful to the source.
+
+**Tier: 1 -- Complete, excellent quality**
+
+### AssemblyAI + Grok (Tier 1)
+
+**Completeness:** Complete from [00:03] to [1:27:28]. Uses H:MM:SS format for timestamps exceeding one hour. Final line: "You too. That's great talking to you bye."
+
+**Name Corrections:** Comparable to Opus and Gemini. Correctly identifies "Henning Diedrich from IBM". "EthDev" used (mixed case). All major corrections applied.
+
+**Formatting:** Clean and readable. Preserves the same speaker turn structure. One minor issue: "decent currency" retained at [01:24] where Opus correctly renders "decentralized currency" -- this suggests Grok occasionally defers more to the raw transcription than Opus does.
+
+**Notable Differences:** Grok uses "Devcon" (mixed case) like Gemini. Grok retains some slightly more raw phrasings: "passed my PhD" (raw error) retained in one spot where Opus corrects to "paused my PhD". Minor but illustrates Opus's slightly more aggressive correction policy.
+
+**Tier: 1 -- Complete, excellent quality**
 
 ---
 
-## 4. AI Processor Comparison -- WhisperX Cloud Base
+## 3. AI Processor Assessment -- WhisperX (local) Base
 
-| Processor | Word Count | % of Max | Tier |
+### Word Counts
+
+| Processor | Word Count | % of Raw (15,038) | Lines |
 |---|---|---|---|
-| **Opus** | 14,772 | 98.6% | **Tier 1** |
-| **Gemini** | 14,927 | 99.7% | **Tier 1** |
-| **Grok** | 14,782 | 98.7% | **Tier 1** |
-| **GLM** | 16,981 | n/a | **Tier 1** (but needs verification -- may contain reasoning) |
-| **Kimi** | 12,699 | 84.8% | **Tier 2** |
-| **Llama** | 6,608 | 44.1% | **Tier 3** |
-| **Mistral** | 5,814 | 38.8% | **Tier 3** |
-| **Qwen** | 6,056 | 40.4% | **Tier 3** |
-| **ChatGPT** | 5,297 | 35.4% | **Tier 3** |
-| **MiniMax** | 5,129 | 34.2% | **Tier 3** |
-| **DeepSeek** | 1,882 | 12.6% | **Tier 4** |
+| Grok | 14,816 | 98.5% | 294 |
+| Gemini | 14,784 | 98.3% | 284 |
+| Opus | 14,641 | 97.4% | 334 |
 
-### Notes on WhisperX Cloud Base
-- The WhisperX Cloud base presents the extra challenge of merged speaker blocks. Opus successfully re-separates speakers and adds proper turn boundaries (171 timestamps from 79 input timestamps), demonstrating strong speaker identification capability.
-- DeepSeek on this base is especially poor at 1,882 words (12.6%), essentially a preamble with instructions followed by a partial transcript.
-- The WhisperX Cloud deepseek output notably begins with "Based on the guidelines, I'll clean up and format the transcript..." -- meta-commentary that should not appear in the output.
+### WhisperX + Opus (Tier 1)
+
+**Completeness:** Complete from [00:00] to [81:04]. Covers entire conversation through the final sign-off. Different total duration than AssemblyAI base (81 min vs 87 min) due to WhisperX's different timestamp calibration.
+
+**Name Corrections:** Excellent. Same quality as AssemblyAI+Opus. Correctly handles "Roman Mandeleil" (WhisperX raw had this more clearly), "Stephan Tual", "Kreuzberg", "DevCon Zero". "Corpus Ventures" rendered (from raw "Kopos"/"Kapos" variants). "GasHawk" properly identified. "cypherpunk" correctly rendered.
+
+**Speaker Handling:** WhisperX local uses SPEAKER_00 for Christoph, SPEAKER_01 for Kieran, SPEAKER_02 for Bob, SPEAKER_03 for Bob/misc, SPEAKER_04 for Jim. Opus preserves these labels faithfully. The different speaker numbering from AssemblyAI means a different mapping is needed for name replacement.
+
+**Formatting:** Clean, well-structured. 334 lines with good turn granularity. Properly handles the mid-conversation audio issues with appropriate short turns.
+
+**Tier: 1 -- Complete, excellent quality**
+
+### WhisperX + Gemini (Tier 1)
+
+**Completeness:** Complete. 14,784 words, 284 lines. Covers full conversation.
+
+**Quality:** Comparable to Opus on this base. Same name corrections applied. Slightly fewer lines (284 vs 334) suggesting some turn merging.
+
+**Tier: 1 -- Complete, excellent quality**
+
+### WhisperX + Grok (Tier 1)
+
+**Completeness:** Complete. 14,816 words, 294 lines. Highest word count on this base.
+
+**Quality:** Comparable to the other two. All major corrections applied. "chryench" retained for Twitter handle (same raw rendering issue across all processors).
+
+**Tier: 1 -- Complete, excellent quality**
 
 ---
 
-## 5. Consensus Pipeline Status
+## 4. AI Processor Assessment -- WhisperX Cloud Base
 
-- **Consensus intermediate exists:** Yes (`episode006-christoph-jentzsch_assemblyai_consensus.md`, 15,739 words)
-- **Consensus word-level JSON exists:** Yes (`episode006-christoph-jentzsch_assemblyai_consensus_words.json`)
-- **Final merged output exists:** No (`*_final.md` not found)
+### Word Counts
 
-The consensus pipeline has produced an intermediate that combines AssemblyAI base with additional word-level timing data. This consensus version retains all filler words ("uh", "um") and has the highest word count of any intermediate (15,739). However, no final merged/processed output has been produced from this consensus base.
+| Processor | Word Count | % of Raw (14,932) | Lines |
+|---|---|---|---|
+| Gemini | 14,927 | 99.97% | 196 |
+| Grok | 14,782 | 99.0% | 158 |
+| Opus | 14,772 | 98.9% | 340 |
+
+### WhisperX Cloud + Opus (Tier 1)
+
+**Completeness:** Complete from first line to [01:27:32] sign-off. 340 lines, 14,772 words.
+
+**Speaker Re-separation:** This is where Opus shines. Despite the WhisperX Cloud input having severely merged speaker blocks (SPEAKER_08 absorbing multiple speakers, only 79 turn boundaries), Opus successfully re-separates speakers and increases the turn count to 340 lines -- more granular than the raw input. It correctly attributes dialogue to different speakers even within merged blocks.
+
+**Name Corrections:** Same excellent quality. "Jeff Karras" appears in the final section (likely "Griff Green" misheard) -- this is a raw transcription error that Opus did not catch, representing a rare miss. "the diamonds and me" retained where the speaker said "Simon and me" -- another raw error not caught.
+
+**Formatting:** Well-structured despite the poor input quality. The speaker re-separation is the standout feature.
+
+**Tier: 1 -- Complete, excellent quality (with notable speaker re-separation capability)**
+
+### WhisperX Cloud + Gemini (Tier 1)
+
+**Completeness:** Complete. 14,927 words (highest on this base, nearly matching raw word count). Only 196 lines, meaning longer individual turns.
+
+**Quality:** Good corrections. Fewer turn boundaries than Opus output (196 vs 340), meaning Gemini did less speaker re-separation from the merged blocks.
+
+**Tier: 1 -- Complete, excellent quality**
+
+### WhisperX Cloud + Grok (Tier 1)
+
+**Completeness:** Complete. 14,782 words, 158 lines (fewest on this base).
+
+**Quality:** Good corrections. 158 lines closely mirrors the raw input's turn count (also around 158), indicating Grok preserved the merged structure rather than re-separating speakers. This means the diarization issues of WhisperX Cloud persist in the output.
+
+**Tier: 1 -- Complete, excellent quality (but diarization not improved)**
 
 ---
 
-## 6. Cross-Transcriber Comparison
+## 5. Cross-Transcriber Comparison
 
-### Consistent Performers Across All Three Bases
+### Consistency Table
 
-| Processor | AssemblyAI | WhisperX | WhisperX Cloud | Average | Consistency |
+| Processor | AssemblyAI (words) | WhisperX (words) | WhisperX Cloud (words) | Average | Spread |
 |---|---|---|---|---|---|
-| **Opus** | 14,828 (Tier 1) | 14,641 (Tier 1) | 14,772 (Tier 1) | 14,747 | Excellent |
-| **Gemini** | 15,145 (Tier 1) | 14,784 (Tier 1) | 14,927 (Tier 1) | 14,952 | Excellent |
-| **Grok** | 14,955 (Tier 1) | 14,816 (Tier 1) | 14,782 (Tier 1) | 14,851 | Excellent |
-| **Kimi** | 12,210 (Tier 3) | 12,209 (Tier 2) | 12,699 (Tier 2) | 12,373 | Good |
-| **GLM** | 32,679 (Tier 4) | 46,212 (Tier 4) | 16,981 (Tier 1?) | varies | Poor |
+| **Opus** | 14,828 | 14,641 | 14,772 | 14,747 | 187 (1.3%) |
+| **Gemini** | 15,145 | 14,784 | 14,927 | 14,952 | 361 (2.4%) |
+| **Grok** | 14,955 | 14,816 | 14,782 | 14,851 | 173 (1.2%) |
 
 ### Key Observations
 
-1. **Opus, Gemini, and Grok are uniformly excellent** across all three transcriber bases, consistently producing 96-100% retention with proper formatting, name corrections, and complete coverage.
+1. **All three processors are Tier 1 across all three bases.** Opus, Gemini, and Grok each produce complete, well-corrected transcripts regardless of the transcriber source. This is the ideal outcome for pipeline reliability.
 
-2. **Opus provides the best name correction quality.** Verified corrections include: "Christoph Jentzsch" (from "Jens"/"yance"), "Gavin Wood" (from "Kevin Wood"), "Ethereum Virtual Machine" (from "Ethereum rich machine"), "Stefan Tual" (from "Stefan to all"/"Toual"), "Henning Diedrich", "Joseph Lubin" (from "Joseph Rubin"), "ETHDEV" (from "fdev"/"EFDEV"), "Tokenize.it", "Slock.it", "AlethZero", "Incubed", "Kreuzberg", "Whisper" (from "Risper"), "ASICs" (from "AS6"), "theoretical physics" (from "territory physics").
+2. **Grok has the tightest word count spread** (173 words / 1.2% across bases), suggesting it is the most consistent in its processing behavior regardless of input format.
 
-3. **The processed variants (gemini_processed, sonnet_processed, llama_processed) strip timestamps**, which reduces their value for a transcript archive that depends on time references for verification and navigation.
+3. **Gemini consistently produces the highest word count** on each base, retaining more of the original conversational texture (filler-adjacent words, short transitional phrases). This is neither better nor worse -- it depends on whether maximum retention or maximum cleaning is preferred.
 
-4. **ChatGPT has inconsistent output-size behavior.** On AssemblyAI base it truncated at Part 1 (4,012 words) but on WhisperX local it reached 11,861 words. This suggests sensitivity to input formatting or context window issues.
+4. **Opus excels at speaker re-separation.** On the WhisperX Cloud base (which has severely merged speaker blocks), Opus expanded 79 input turn boundaries to 340 output lines -- a 4.3x increase. Gemini expanded to 196 (2.5x) and Grok stayed at 158 (2.0x, essentially no improvement). This demonstrates Opus's unique ability to reconstruct conversational structure from degraded input.
 
-5. **GLM consistently fails** by outputting chain-of-thought reasoning instead of the processed transcript on both AssemblyAI and WhisperX local bases. On WhisperX Cloud it may have succeeded (16,981 words at reasonable range), but this needs manual verification.
+5. **Name correction quality is equivalent** across all three processors. All correctly handle the major corrections (Gavin Wood, Jentzsch, Stefan Tual, ETHDEV/EthDev, EVM, AlethZero, Tokenize.it, Slock.it). Minor differences exist in capitalization style (DEVCON vs Devcon) and occasional edge cases.
 
-6. **Multiple models fail on long-form content:** DeepSeek, Mistral, Qwen, MiniMax, and Llama consistently produce truncated outputs (25-45% of expected length) across all bases. These models appear to hit output token limits.
+6. **Timestamp format varies by processor:**
+   - Opus: [MM:SS] throughout
+   - Gemini: [MM:SS] then [HH:MM:SS] after 1 hour
+   - Grok: [MM:SS] then [H:MM:SS] after 1 hour
+
+---
+
+## 6. Specific Quality Comparisons
+
+### Side-by-Side: Opening Lines
+
+**AssemblyAI + Opus:**
+> **[00:03] SPEAKER_00:** Okay, recording is in progress. It says so. Hello everybody. Today, delighted to have Christoph Jentzsch with us.
+
+**WhisperX + Opus:**
+> **[00:00] SPEAKER_02:** Okay, recording is in progress, it says. So hello everybody. Today delighted to have Christoph Jentzsch with us.
+
+**WhisperX Cloud + Opus:**
+> [Properly separated from merged block, same content quality]
+
+All three produce clean, readable openings with minor variation in timestamp start and phrasing.
+
+### Side-by-Side: Critical Passage (Why Geth Won)
+
+All three processors handle this complex narrative passage equivalently well. The Geth vs C++ audit story is rendered clearly with proper nouns correctly identified (Deja Vu, Ming, Polkadot, EthCore). No meaningful quality difference between Opus, Gemini, and Grok on this passage.
+
+### Side-by-Side: Emotional Passage (DEVCON 2 Reception)
+
+All three processors faithfully preserve the emotional quality of Christoph's account of receiving standing ovations at DEVCON 2 after the DAO hack. The passage about "I kind of almost destroyed Ethereum" and the community's forgiving response is rendered cleanly in all outputs. Opus uses "the hack" consistently; Grok uses "the fork" in one instance (WhisperX Cloud base) which may reflect a raw transcription difference.
 
 ---
 
 ## 7. Recommendations
 
-### Immediate Actions
+### Primary Transcript Selection
 
-1. **Select AssemblyAI + Opus as the primary transcript** for this episode. It has the best combination of diarization quality (AssemblyAI), name corrections, complete coverage, and preserved timestamps.
+1. **Recommended: AssemblyAI + Opus** as the primary transcript. It offers the best combination of:
+   - AssemblyAI's superior diarization (4 clean speakers, 180 turn boundaries)
+   - Opus's excellent name corrections (most aggressive and accurate)
+   - Opus's speaker re-separation capability (insurance against diarization issues)
+   - Complete coverage (96.8% word retention, full conversation end-to-end)
+   - Clean [MM:SS] timestamp format throughout
 
-2. **AssemblyAI + Gemini is an equally strong alternative** with marginally higher word retention (15,145 vs 14,828), useful as a cross-reference.
+2. **Strong alternative: AssemblyAI + Gemini** with marginally higher word retention (98.9%) for cross-reference.
 
-3. **Delete or archive GLM outputs** from all three bases. The AssemblyAI and WhisperX local GLM outputs are chain-of-thought dumps with no usable transcript content. The WhisperX Cloud GLM output should be manually verified.
-
-4. **Delete or archive ChatGPT AssemblyAI output** as it is a truncated Part 1 with explicit instructions to "ask for Part 2."
-
-### Pipeline Improvements
-
-5. **Complete the consensus pipeline** by processing the `assemblyai_consensus.md` intermediate through Opus to produce a final output.
-
-6. **Add output validation** to detect chain-of-thought dumps (e.g., check if output begins with common reasoning markers like "**Task Analysis:**", "**1. Understand the Goal:**", or "**Step 1:**") and flag them automatically.
-
-7. **Add output length validation** to flag any processor output below 60% of the input word count as likely truncated.
-
-8. **Consider dropping underperforming models** from the pipeline for long-form content: MiniMax, DeepSeek, Llama, Mistral, and Qwen consistently fail to produce complete transcripts. Running them wastes compute resources.
-
-9. **For processed variants** (gemini_processed, sonnet_processed, llama_processed), ensure timestamps are preserved during post-processing. The timestamp stripping significantly reduces the archival value of these outputs.
+3. **Validation reference: AssemblyAI + Grok** as a third independent check.
 
 ### Quality Notes
 
-10. **Speaker identification caveat:** None of the outputs replace SPEAKER_XX labels with actual names. For a final published transcript, a post-processing step to map SPEAKER_00 -> Bob Summerwill, SPEAKER_01 -> Kieran James-Lubin, SPEAKER_02 -> Christoph Jentzsch, SPEAKER_03 -> Jim would significantly improve readability.
+4. **Speaker label mapping needed for final publication:**
+   - AssemblyAI: SPEAKER_00 = Bob Summerwill, SPEAKER_01 = Kieran James-Lubin, SPEAKER_02 = Christoph Jentzsch, SPEAKER_03 = Jim
+   - WhisperX local: SPEAKER_00 = Christoph, SPEAKER_01 = Kieran, SPEAKER_02 = Bob, SPEAKER_03 = Bob/misc, SPEAKER_04 = Jim
 
-11. **WhisperX Cloud is not recommended** as a primary base for this episode due to its poor diarization (merged speaker blocks, only 79 turn boundaries vs 180 for AssemblyAI).
+5. **Uncaught raw errors to manually fix in final version:**
+   - "Jeff Karras" -> likely "Griff Green" (WhisperX Cloud base)
+   - "the diamonds and me" -> "Simon and me" (WhisperX Cloud base)
+   - "chryench" / "ChrYench" -> "@ChrJentzsch" (Twitter handle, all bases)
+   - "Kopos" / "Kapos" / "Corpus" Ventures -> verify correct name
+   - "decent currency" vs "decentralized currency" at ~[01:24] (varies by base/processor)
+
+6. **WhisperX Cloud base is not recommended** as a primary source for this episode due to its severely degraded diarization. However, Opus's re-separation of this base demonstrates robustness.
+
+### Tier Summary
+
+| Output | Tier | Notes |
+|---|---|---|
+| AssemblyAI + Opus | **Tier 1** | Recommended primary |
+| AssemblyAI + Gemini | **Tier 1** | Strong alternative, highest word count |
+| AssemblyAI + Grok | **Tier 1** | Consistent, reliable |
+| WhisperX + Opus | **Tier 1** | Good alternative base |
+| WhisperX + Gemini | **Tier 1** | Complete |
+| WhisperX + Grok | **Tier 1** | Complete |
+| WhisperX Cloud + Opus | **Tier 1** | Notable speaker re-separation |
+| WhisperX Cloud + Gemini | **Tier 1** | Complete but merged turns |
+| WhisperX Cloud + Grok | **Tier 1** | Complete but merged turns |

@@ -1,161 +1,211 @@
-# Episode 005 (Anthony Di Onofrio) -- Quality Assessment Report
+# Episode 005 (Anthony D'Onofrio) -- Quality Assessment Report
 
 ## Episode Summary
 
-A Twitter Spaces conversation featuring Texture (Anthony D'Onofrio), an early Ethereum contributor, interviewed by Bob Summerwill with co-host Kieren James-Lubin and host Jamie. Topics cover Texture's pre-Ethereum background (Peace Love Human, community building), his discovery of the Ethereum white paper through Adam B. Levine, the early Ethereum Skype group, the Miami house, Charles Hoskinson's behavior, the Red Wedding, Ethereum Foundation politics, and the foundation's governance through multiple leadership epochs.
+A Twitter Spaces conversation featuring Texture (Anthony D'Onofrio), an early Ethereum contributor, interviewed by Bob Summerwill (SPEAKER_00) with co-host Kieran James-Lubin (SPEAKER_02/SPEAKER_00 in whisperx-cloud) and host Jamie (SPEAKER_01). Topics cover Texture's pre-Ethereum background (Peace Love Human, community building, accidental cult), his discovery of the Ethereum white paper through Adam B. Levine, the early Ethereum Skype group, the Miami house, Charles Hoskinson's behavior and eventual departure, the Red Wedding, Ethereum Foundation palace politics, and the foundation's governance through multiple leadership epochs (Ming dynasty, Aya's Infinite Garden, Tomas era).
 
 ---
 
-## 1. Transcriber Comparison
+## 1. Transcriber Quality Assessment
 
-| Transcriber | Word Count | Diarization Quality | Timestamp Format | Key Issues |
-|---|---|---|---|---|
-| **WhisperX (local)** | 14,374 | 4 speakers (SPEAKER_00-03) + UNKNOWN. Good separation but some speaker confusion between SPEAKER_01/03 in early section. Long monologues well-captured. | `[MM:SS]` | "Chad GPT" uncorrected; "PFT texture" not corrected; some lowercase passages; occasional missed diarization boundaries |
-| **WhisperX (cloud)** | 14,156 | 7 speakers (SPEAKER_00-06). Severely collapsed diarization: multiple speakers merged into single long blocks, especially SPEAKER_03 and SPEAKER_06 containing huge multi-speaker monologues. | `[MM:SS]` | Worst diarization of the three; long multi-speaker blocks attributed to single speaker; "Chad GPT"; critical speaker boundary errors throughout |
-| **AssemblyAI** | 14,986 | 5 speakers (SPEAKER_00-04). Best diarization: fine-grained turn-taking with short, accurate segments. SPEAKER_03/04 split for Texture (common ASR issue) but still accurate per-utterance. | `[MM:SS]` | Texture split across SPEAKER_03/04 (frequent alternation); otherwise cleanest diarization with most granular speaker turns |
-| **AssemblyAI consensus** | 15,472 | Same structure as AssemblyAI base. Appears to be a consensus-enriched version. | `[MM:SS]` | Slightly higher word count suggesting filler retention; same SPEAKER_03/04 split |
+### Raw Transcriber Files
 
-**Transcriber Ranking:** AssemblyAI > WhisperX (local) > WhisperX (cloud)
+| Transcriber | File | Words | Speakers Detected |
+|---|---|---|---|
+| AssemblyAI | `intermediates/.../episode005-anthony-d-onofrio_assemblyai.md` | 14,986 | 5 (SPEAKER_00-04) |
+| WhisperX (local) | `intermediates/.../episode005-anthony-d-onofrio_whisperx.md` | 14,374 | 4 (SPEAKER_00-03) + UNKNOWN |
+| WhisperX (cloud) | `intermediates/.../episode005-anthony-d-onofrio_whisperx-cloud.md` | 14,156 | 7 (SPEAKER_00-06) |
 
-AssemblyAI provides the best diarization with fine-grained speaker turn boundaries, despite the SPEAKER_03/04 split for Texture. WhisperX local is acceptable but merges some turns. WhisperX cloud has the worst diarization with massive multi-speaker blocks erroneously attributed to single speakers.
+### Diarization Quality
 
----
+**AssemblyAI** -- Best diarization of the three. Provides fine-grained turn-taking with short, accurately bounded segments. Individual utterances like "Okay," "Yes," and brief interjections get their own properly-attributed lines. The main issue is Texture being split across SPEAKER_03 and SPEAKER_04 (frequent alternation within the same speech), which is a known ASR limitation for speakers with varied vocal patterns. Despite this, each individual turn boundary is accurate and speaker attribution within turns is correct.
 
-## 2. AI Processor Comparison
+**WhisperX (local)** -- Acceptable diarization. Uses 4 main speakers (SPEAKER_00-03) plus an occasional UNKNOWN tag. Speaker separation is generally correct, though some minor confusion exists between SPEAKER_01 and SPEAKER_03 in early sections. Long monologues are well-captured. Some passages collapse to lowercase without capitalization, and there is occasional merging of short turns from different speakers into a single block.
 
-### 2a. AssemblyAI-based outputs
+**WhisperX (cloud)** -- Worst diarization by a significant margin. Despite detecting 7 speaker labels, it has severely collapsed diarization where massive multi-speaker blocks are erroneously attributed to a single speaker. SPEAKER_00 and SPEAKER_03 contain huge multi-speaker monologues. For example, SPEAKER_00 at [03:55] contains a 700+ word block spanning dialogue from at least 4 different people (Jamie, Bob, Kieran, Texture). Similar collapse occurs with SPEAKER_03 containing enormous wall-of-text passages. This makes it extremely difficult for AI processors to correctly attribute dialogue.
 
-| Processor | Words | % of Max | Tier | Timestamps | Speaker Labels | Prose Quality | Key Issues |
-|---|---|---|---|---|---|---|---|
-| **Grok** | 14,978 | 100% | 1 | Preserved original `[MM:SS]` | Preserved SPEAKER_00-04 split | Good preservation of all dialogue, clean formatting | Retains most filler; "Nevermind" instead of "Nethermind"; faithful to source including errors |
-| **Gemini** | 14,639 | 98% | 1 | Regenerated to `[00:00]` offset (lost original times) | Merged SPEAKER_03/04 into unified SPEAKER_04 | Excellent readability; cleaned fillers well; good paragraph breaks | Timestamps regenerated and offset to 00:00; lost original timeline |
-| **Opus** | 14,308 | 96% | 1 | Preserved original `[MM:SS]` accurately | Preserved SPEAKER_00-04 | Excellent: clean, well-punctuated, natural flow; good filler removal | Very high quality; accurate names; well-merged speaker turns |
-| **Kimi** | 10,450 | 70% | 2 | Preserved | Preserved | Decent quality, some condensation | ~30% content loss; some dialogue trimmed |
-| **ChatGPT** | 5,426 | 36% | 3 | Preserved | Preserved | Reasonable quality but heavily condensed | >60% content loss; significant summarization |
-| **Qwen** | 5,500 | 37% | 3 | Preserved | Preserved | Moderate quality, heavy condensation | >60% content loss; major sections dropped |
-| **MiniMax** | 5,407 | 36% | 3 | Preserved | Preserved | Moderate quality | Heavy condensation |
-| **Llama** | 5,340 | 36% | 3 | Preserved | Preserved | Moderate quality | Heavy condensation |
-| **DeepSeek** | 5,245 | 35% | 3 | Preserved | Preserved | Moderate quality | Heavy condensation |
-| **Mistral** | 4,274 | 29% | 3 | Preserved | Preserved | Lower quality, incomplete | >70% content loss; cuts off or omits heavily |
-| **GLM** | 19,491 | 130% | 4 | N/A | N/A | Unusable: contains massive chain-of-thought preamble, no clean transcript output | Output is internal reasoning/analysis, not a cleaned transcript; includes raw "thinking" text; inflated word count is chain-of-thought, not content |
-
-### 2b. WhisperX (local)-based outputs
-
-| Processor | Words | % of Max | Tier | Timestamps | Speaker Labels | Prose Quality | Key Issues |
-|---|---|---|---|---|---|---|---|
-| **Grok** | 14,374 | 100% | 1 | Preserved | Preserved SPEAKER_00-03 | Faithful preservation; clean | Minor uncorrected terms |
-| **Gemini** | 14,060 | 98% | 1 | Stripped timestamps entirely | Preserved SPEAKER_00-03 | Excellent readability; very clean prose; good dashes/quotes for dialogue | No timestamps at all (stripped); excellent prose quality otherwise |
-| **Opus** | 13,549 | 94% | 1 | Preserved | Preserved | Excellent quality; well-cleaned | High-quality output |
-| **Kimi** | 12,374 | 86% | 1 | Preserved | Preserved | Good quality, slight condensation | Near-complete |
-| **ChatGPT** | 11,815 | 82% | 2 | Preserved | Preserved | Good quality | Some condensation |
-| **Llama** | 6,435 | 45% | 3 | Preserved | Preserved | Moderate | Heavy condensation |
-| **Qwen** | 5,852 | 41% | 3 | Preserved | Preserved | Moderate | Heavy condensation |
-| **DeepSeek** | 5,708 | 40% | 3 | Preserved | Preserved | Moderate | Heavy condensation |
-| **Mistral** | 5,612 | 39% | 3 | Preserved | Preserved SPEAKER_03/04 alternation | Lower quality; fragmented; retains the SPEAKER_03/04 alternation unfixed | Many broken sentence fragments due to unfixed speaker alternation |
-| **MiniMax** | 1,783 | 12% | 4 | Preserved (partial) | Preserved | Severely truncated; only ~72 lines covering first portion of episode | Cuts off extremely early; only covers ~10% of conversation |
-| **GLM** | 32,631 | 227% | 4 | N/A | N/A | Unusable: massive chain-of-thought preamble | Same issue as assemblyai_glm; internal reasoning dominates output |
-
-### 2c. WhisperX (cloud)-based outputs
-
-| Processor | Words | % of Max | Tier | Timestamps | Speaker Labels | Prose Quality | Key Issues |
-|---|---|---|---|---|---|---|---|
-| **Grok** | 14,157 | 100% | 1 | Preserved | Preserved SPEAKER_00-06 | Good faithful preservation | Inherits cloud diarization issues |
-| **Gemini** | 13,898 | 98% | 1 | Preserved | Preserved | Good quality | Inherits cloud diarization issues |
-| **Opus** | 13,349 | 94% | 1 | Preserved | Preserved | Excellent prose quality | Inherits cloud diarization issues |
-| **Kimi** | 12,985 | 92% | 1 | Preserved | Preserved | Good quality | Near-complete |
-| **ChatGPT** | 12,300 | 87% | 2 | Preserved | Preserved | Good quality | Some condensation |
-| **Llama** | 6,713 | 47% | 3 | Preserved | Preserved | Moderate | Heavy condensation |
-| **DeepSeek** | 6,774 | 48% | 3 | Preserved | Preserved | Moderate | Heavy condensation |
-| **Qwen** | 6,250 | 44% | 3 | Preserved | Preserved | Moderate | Heavy condensation |
-| **Mistral** | 6,021 | 43% | 3 | Preserved | Preserved | Moderate | Heavy condensation |
-| **MiniMax** | 5,907 | 42% | 3 | Preserved | Preserved | Moderate | Heavy condensation |
-| **GLM** | 45,813 | 324% | 4 | N/A | N/A | Unusable: massive chain-of-thought preamble (~320 lines before any transcript content) | Worst offender; enormous internal reasoning dump |
+**Transcriber Ranking:** AssemblyAI > WhisperX (local) >> WhisperX (cloud)
 
 ---
 
-## 3. Consensus Pipeline
+## 2. AI Processor Quality Assessment
 
-- **Status:** Partially present
-- **Files:** `episode005-anthony-d-onofrio_assemblyai_consensus.md` (15,472 words) and `episode005-anthony-d-onofrio_assemblyai_consensus_words.json` exist in intermediates
-- **No final consensus file** (`*_final.md`) exists in outputs
-- The consensus intermediate appears to be an enriched version of the AssemblyAI base transcript with slightly higher word count (15,472 vs 14,986), suggesting retention of additional filler words or small corrections
-- The consensus pipeline was started but not completed to final output stage
+### Word Count Summary
 
----
-
-## 4. Cross-Transcriber Comparison
-
-When comparing the same AI processor across different transcriber bases:
-
-### Opus outputs across transcribers
-| Base | Words | Quality Notes |
+| Processor Output | Words | % of Max (14,978) |
 |---|---|---|
-| AssemblyAI | 14,308 | Best diarization; SPEAKER_03/04 split preserved but clearly same person; accurate timestamps |
-| WhisperX local | 13,549 | Good quality; 4 speakers; slightly fewer words due to less granular source |
-| WhisperX cloud | 13,349 | Inherits cloud's poor diarization; long multi-speaker blocks remain unresolved |
+| assemblyai_grok | 14,978 | 100.0% |
+| assemblyai_gemini | 14,639 | 97.7% |
+| assemblyai_opus | 14,308 | 95.5% |
+| whisperx_grok | 14,374 | 96.0% |
+| whisperx_gemini | 14,060 | 93.9% |
+| whisperx_opus | 13,549 | 90.5% |
+| whisperx-cloud_grok | 14,157 | 94.5% |
+| whisperx-cloud_gemini | 13,898 | 92.8% |
+| whisperx-cloud_opus | 13,349 | 89.1% |
 
-### Gemini outputs across transcribers
-| Base | Words | Quality Notes |
-|---|---|---|
-| AssemblyAI | 14,639 | Best combined quality; merged SPEAKER_03/04 into SPEAKER_04; BUT regenerated timestamps to 00:00 offset |
-| WhisperX local | 14,060 | Stripped all timestamps; excellent prose quality with em-dashes and quotation marks for dialogue |
-| WhisperX cloud | 13,898 | Retained timestamps; inherits cloud diarization problems |
+### 2a. AssemblyAI-based Outputs
 
-### Grok outputs across transcribers
-| Base | Words | Quality Notes |
-|---|---|---|
-| AssemblyAI | 14,978 | Highest word retention; very faithful to source; minimal editing |
-| WhisperX local | 14,374 | Near-identical word count to source; minimal processing applied |
-| WhisperX cloud | 14,157 | Faithful to source; inherits diarization issues |
+#### assemblyai_opus (14,308 words, 482 lines)
 
-**Key Cross-Transcriber Findings:**
-1. AssemblyAI-based outputs consistently produce the best results due to superior diarization
-2. WhisperX cloud outputs are penalized by poor source diarization that AI processors mostly cannot fix
-3. Gemini has an inconsistent timestamp handling bug: regenerated in AssemblyAI base, stripped in WhisperX local, preserved in WhisperX cloud
-4. Grok is the most faithful/literal processor across all bases, preserving source structure with minimal editorial intervention
-5. Opus provides the best balance of faithfulness and readability across all bases
+- **Tier: 1 (Complete, Excellent)**
+- **Timestamps:** Preserved original `[MM:SS]` and `[H:MM:SS]` format correctly throughout
+- **Speaker Labels:** Maintained SPEAKER_00-04 designations from source
+- **Diarization Handling:** Faithfully preserved the SPEAKER_03/04 split from the AssemblyAI source; did not attempt to merge them
+- **Prose Quality:** Excellent. Clean formatting with proper sentence structure, capitalization corrected ("ChatGPT" not "Chad GPT"), proper nouns handled well ("PFP" corrected from "Pft", "Texture Punk" from "texture pump")
+- **Completeness:** Full transcript from opening ("Hear me? Can you hear me?") through closing ("Bye"). All content present
+- **Profanity:** Retained where spoken, some instances cleaned ("up" instead of "fucked up")
+- **Notable:** Most polished of the AssemblyAI outputs with best prose refinement while maintaining fidelity
+
+#### assemblyai_gemini (14,639 words, 398 lines)
+
+- **Tier: 1 (Complete, Excellent)**
+- **Timestamps:** Reformatted to shorter format starting from `[00:00]` -- timestamps do NOT match the original audio timecodes. The first speaker entry starts at `[00:00]` instead of `[01:19]`, suggesting Gemini renumbered timestamps from zero
+- **Speaker Labels:** Maintained SPEAKER_00-04 from source
+- **Prose Quality:** Good. Clean formatting. Some stutters/hesitation markers retained more than Opus ("I don't. This is like...")
+- **Completeness:** Full transcript end-to-end
+- **Notable Issue:** The timestamp renumbering from `[00:00]` is a significant deviation. All timestamps in the Gemini output are shifted roughly 1:19 earlier than the actual audio positions. This makes the timestamps unreliable for audio cross-referencing
+
+#### assemblyai_grok (14,978 words, 692 lines)
+
+- **Tier: 1 (Complete, Excellent)**
+- **Timestamps:** Preserved original `[MM:SS]` and `[H:MM:SS]` format matching the source
+- **Speaker Labels:** Maintained SPEAKER_00-04 split from source
+- **Prose Quality:** Good but more verbatim/raw. Retains more filler words, hesitations, and verbal tics. Highest word count reflects most faithful preservation of spoken content
+- **Completeness:** Full transcript end-to-end, highest line count (692) indicating most granular speaker turn preservation
+- **Notable Issues:** "Nevermind" instead of "Nethermind" (misspelling); "FCC" instead of "EthCC"; "Pongsai" instead of "Punks" in some instances. More faithful to source errors but fewer editorial corrections
+- **Formatting:** Most lines are shorter, preserving the fine-grained turn structure from AssemblyAI's diarization
+
+### 2b. WhisperX (local)-based Outputs
+
+#### whisperx_opus (13,549 words, 334 lines)
+
+- **Tier: 1 (Complete, Excellent)**
+- **Timestamps:** Correctly preserved `[MM:SS]` format from source
+- **Speaker Labels:** Maintained SPEAKER_00-03 + occasional UNKNOWN from source
+- **Prose Quality:** Excellent. Best editorial polish of all whisperx outputs. Proper nouns corrected ("Decentralized Dance Party", "Nethermind"), profanity retained where spoken ("fucked up", "motherfuckers"), natural sentence flow
+- **Completeness:** Full transcript end-to-end, from opening through "Bye"
+- **Notable:** Cleanest prose with proper capitalization, punctuation, and formatting. "Kismet" correctly transcribed where other outputs show "kids met"
+
+#### whisperx_gemini (14,060 words, 290 lines)
+
+- **Tier: 1 (Complete, Excellent)**
+- **Timestamps:** Removed entirely -- no timestamps present in output. All entries use just `**SPEAKER_XX:**` format
+- **Speaker Labels:** Maintained SPEAKER_00-03 from source
+- **Prose Quality:** Good. Uses quotation marks for direct quotes and dialogue (e.g., "Listen, man, I want you to listen to this podcast"), em dashes for parenthetical asides. More literary formatting style
+- **Completeness:** Full transcript end-to-end
+- **Notable Issue:** Complete absence of timestamps is a significant limitation for audio cross-referencing. However, the prose quality and formatting is among the most readable
+
+#### whisperx_grok (14,374 words, 294 lines)
+
+- **Tier: 1 (Complete, Excellent)**
+- **Timestamps:** Preserved `[MM:SS]` and `[H:MM:SS]` format from source
+- **Speaker Labels:** Maintained SPEAKER_00-03 + SPEAKER_06 from source
+- **Prose Quality:** Good but more raw/verbatim. Retains more filler and hesitation markers. Some passages have uncorrected lowercase text
+- **Completeness:** Full transcript end-to-end
+- **Notable Issues:** "ECC" instead of "EthCC"; "the oreo" instead of "D'Orio" (uncorrected speech-to-text error from source); "metallic" instead of "Vitalik" in one passage; "my ties" instead of "mai tais". Most faithful to source including its errors
+
+### 2c. WhisperX (cloud)-based Outputs
+
+#### whisperx-cloud_opus (13,349 words, 136 lines)
+
+- **Tier: 1 (Complete, Excellent)**
+- **Timestamps:** Preserved from source `[MM:SS]` and `[H:MM:SS]` format
+- **Speaker Labels:** Inherited the problematic SPEAKER_00/03/04/06 structure from the cloud source
+- **Prose Quality:** Good. Clean formatting despite the collapsed diarization from the source
+- **Completeness:** Full transcript end-to-end
+- **Notable Issue:** Only 136 lines due to inheriting the whisperx-cloud's massive multi-speaker blocks. Long wall-of-text paragraphs with multiple speakers collapsed into single entries. This is a source problem, not a processor problem
+
+#### whisperx-cloud_gemini (13,898 words, 216 lines)
+
+- **Tier: 1 (Complete, Excellent)**
+- **Timestamps:** Preserved from source
+- **Speaker Labels:** Inherited cloud source structure
+- **Prose Quality:** Good. Some improvement in line breaks compared to opus, with more frequent paragraph separations
+- **Completeness:** Full transcript end-to-end
+- **Notable Issues:** Same collapsed diarization inheritance from source; "ECC" instead of "EthCC"
+
+#### whisperx-cloud_grok (14,157 words, 132 lines)
+
+- **Tier: 1 (Complete, Excellent)**
+- **Timestamps:** Preserved from source
+- **Speaker Labels:** Inherited cloud source structure
+- **Prose Quality:** Raw/verbatim. Most faithfully preserves the massive collapsed blocks from the source without attempting editorial correction
+- **Completeness:** Full transcript end-to-end
+- **Notable Issues:** Fewest lines (132) reflecting the most faithful preservation of the source's collapsed structure; "Nevermind" instead of "Nethermind"; uncorrected lowercase passages; "Aya Miyaguchi" correctly identified in one passage
 
 ---
 
-## 5. Detailed Quality Notes
+## 3. Side-by-Side Transcriber Base Comparison
 
-### Tier 1 Outputs (Recommended)
+### Opening Passage (First 2 minutes)
 
-**AssemblyAI + Opus** -- Best overall combination. Accurate timestamps preserved, well-cleaned prose, proper name corrections (Kieren, Nethermind, etc.), natural paragraph breaks. SPEAKER_03/04 split for Texture is a minor annoyance but does not impair readability. Complete dialogue from opening greetings through closing remarks.
+**AssemblyAI:** Fine-grained turns. "Hear me? Can you hear me?" gets its own line (SPEAKER_00). "Yes, I can." gets its own line (SPEAKER_01). Each short interjection is separately attributed. 9 distinct speaker entries in the first 30 seconds.
 
-**AssemblyAI + Grok** -- Most faithful reproduction. Highest word retention. Good for archival accuracy but less editorial polish. Some uncorrected terms ("Nevermind" for "Nethermind", "FCC" for "EthCC").
+**WhisperX (local):** Moderate granularity. Opening lines are reasonably well separated. SPEAKER_03 handles Bob's dialogue, SPEAKER_01 handles Jamie. Some minor merging of adjacent short turns.
 
-**AssemblyAI + Gemini** -- Excellent readability with good editorial polish, merged Texture's split speaker labels. Critical flaw: regenerated timestamps to a 00:00 offset, losing the original timeline entirely. This makes it unsuitable as a primary reference.
+**WhisperX (cloud):** Severely collapsed. The opening "Can you hear me?" through "How are you?" is all lumped into a single SPEAKER_04 entry spanning 1:19 to 2:18. Subsequent multi-speaker dialogue about fall weather, co-hosting, and weather discussion is all collapsed into a single SPEAKER_00 block spanning 2:18 to 5:05.
 
-**WhisperX + Gemini** -- Excellent prose quality with literary formatting (em-dashes, quotation marks for dialogue). Critical flaw: stripped all timestamps. Excellent for reading but not for citation or reference.
+### Texture's Vision Story (~11-15 min mark)
 
-### Tier 4 Outputs (Unusable)
+All three transcribers capture this long monologue well, as it is primarily a single speaker (Texture) with minimal interruptions. The content is faithfully reproduced across all three sources with only minor word-level differences.
 
-**All GLM outputs** (3 files: assemblyai_glm, whisperx_glm, whisperx-cloud_glm) contain massive "chain-of-thought" reasoning preambles (150-320+ lines of internal analysis) before any transcript content. The GLM model exposed its internal reasoning process instead of producing clean output. These files are inflated to 19,491-45,813 words, with the vast majority being non-transcript content. All three should be regenerated or discarded.
+### Key Name/Term Handling
 
-**WhisperX + MiniMax** -- Severely truncated at 1,783 words (72 lines), covering only the first ~10% of the episode. Appears to have hit an output limit or context window issue.
+| Term | AssemblyAI | WhisperX (local) | WhisperX (cloud) |
+|---|---|---|---|
+| ChatGPT | "ChatGPT" | "Chad GPT" | "Chad GPT" |
+| PFP | "Pft" / "PFP" | "PFT texture" | "PFT texture" |
+| Nethermind | varies by processor | varies by processor | varies by processor |
+| D'Orio | "D'Orio" (inconsistent) | "Di Iorio" (inconsistent) | "Di Iorio" |
+| EthCC | varies by processor | varies by processor | varies by processor |
+
+### Timestamp Accuracy
+
+AssemblyAI and WhisperX (local) produce comparable timestamp positions, with timestamps falling close to the same points in the conversation. WhisperX (cloud) also has timestamps at approximately the right locations, despite its diarization problems. Timestamps are most useful from the AssemblyAI base as the granular turn boundaries provide more reference points.
 
 ---
 
-## 6. Recommendations
+## 4. Overall Rankings
 
-### Immediate Actions
-1. **Regenerate all GLM outputs** -- All three GLM files are unusable due to chain-of-thought leakage. Consider adjusting the GLM prompt or using a different model configuration.
-2. **Regenerate WhisperX + MiniMax** -- Severely truncated; needs re-processing.
-3. **Complete the consensus pipeline** -- The assemblyai_consensus intermediate exists but no final output was produced.
+### By Transcriber Base (for AI processing)
 
-### Best Candidates for Final Transcript
-1. **Primary recommendation: AssemblyAI + Opus** -- Best balance of completeness (96%), accuracy, timestamp preservation, and prose quality.
-2. **Runner-up: AssemblyAI + Grok** -- Most complete (100% retention) but less polished. Good for cross-reference.
-3. **Avoid: Gemini outputs** for primary reference due to inconsistent timestamp handling (regeneration or stripping).
+1. **AssemblyAI** -- Best diarization, most granular turns, highest word count. Recommended base for final output selection.
+2. **WhisperX (local)** -- Acceptable alternative with fewer speaker labels. Good for cross-referencing.
+3. **WhisperX (cloud)** -- Not recommended due to severely collapsed diarization. Outputs inherit the multi-speaker block problem.
 
-### Transcriber Recommendations
-1. **AssemblyAI should be the primary transcriber** for this episode type (multi-speaker conversational format). Its fine-grained diarization significantly outperforms both WhisperX variants.
-2. **WhisperX cloud should be deprioritized** -- Its diarization quality is notably worse than both WhisperX local and AssemblyAI for this episode.
-3. The SPEAKER_03/04 split in AssemblyAI (both representing Texture) could be addressed in post-processing by merging consecutive turns from either label.
+### By AI Processor
 
-### Processor Tier Summary
-- **Tier 1 (>90%, excellent):** Opus, Gemini, Grok, Kimi (WhisperX/cloud bases only)
-- **Tier 2 (70-89%, good):** Kimi (AssemblyAI base), ChatGPT (WhisperX bases)
-- **Tier 3 (<50%, limited value):** ChatGPT (AssemblyAI base), Qwen, MiniMax (cloud/assemblyai), Llama, DeepSeek, Mistral
-- **Tier 4 (unusable):** GLM (all bases), MiniMax (WhisperX local)
+1. **Opus** -- Best editorial polish, proper noun correction, natural prose flow. Slightly lower word count reflects appropriate removal of filler. Best for readability.
+2. **Gemini** -- Good quality but has format issues (timestamp removal in whisperx output, timestamp renumbering in assemblyai output). Literary formatting with quotation marks is a nice touch.
+3. **Grok** -- Most faithful/verbatim preservation. Highest word counts. Good for archival completeness but retains more errors and lacks editorial refinement. Some proper noun errors ("Nevermind", "FCC").
+
+### Recommended Final Outputs
+
+| Priority | Output | Rationale |
+|---|---|---|
+| **Primary** | `assemblyai_opus` | Best combination of source diarization + editorial polish. Accurate timestamps, clean prose, complete coverage. |
+| **Secondary** | `whisperx_opus` | Best WhisperX-based output. Cross-reference value with different transcriber perspective. |
+| **Archival** | `assemblyai_grok` | Most verbatim/complete. Useful as reference for any passages where editorial outputs may have over-corrected. |
+
+---
+
+## 5. Tier Summary
+
+| Output | Tier | Word Count | Notes |
+|---|---|---|---|
+| assemblyai_opus | **Tier 1** | 14,308 | Complete, excellent editorial quality |
+| assemblyai_gemini | **Tier 1** | 14,639 | Complete, good quality; timestamp renumbering issue |
+| assemblyai_grok | **Tier 1** | 14,978 | Complete, most verbatim; some proper noun errors |
+| whisperx_opus | **Tier 1** | 13,549 | Complete, excellent editorial quality |
+| whisperx_gemini | **Tier 1** | 14,060 | Complete, good quality; no timestamps |
+| whisperx_grok | **Tier 1** | 14,374 | Complete, good quality; some uncorrected errors |
+| whisperx-cloud_opus | **Tier 1** | 13,349 | Complete but collapsed diarization blocks |
+| whisperx-cloud_gemini | **Tier 1** | 13,898 | Complete but collapsed diarization blocks |
+| whisperx-cloud_grok | **Tier 1** | 14,157 | Complete but collapsed diarization blocks |
+
+All nine outputs achieve Tier 1 status (>90% of maximum word count, complete end-to-end coverage). The primary differentiators are editorial polish, timestamp handling, and inherited diarization quality rather than completeness.
+
+---
+
+*Assessment generated 2026-02-23*

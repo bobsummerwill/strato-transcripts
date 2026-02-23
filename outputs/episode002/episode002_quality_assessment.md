@@ -1,137 +1,183 @@
-# Episode 002 (BlockApps Co-founders: Kieran, Victor, Jim) — Quality Assessment Report
+# Episode 002 Quality Assessment Report
 
-**Date:** 2026-02-22
-**Episode Duration:** ~1 hour 11 minutes
-**Topic:** Early days of Ethereum post-launch — ConsenSys Dappathons, Devcon 1, Microsoft partnership, The DAO hack, CoinDesk Consensus Hackathon, Devcon 2 in Shanghai, formation of the Enterprise Ethereum Alliance (EEA)
-
----
-
-## 1. Transcriber Comparison
-
-Three transcriber sources exist for this episode:
-
-| Transcriber | File | Lines | Speaker IDs | Diarization Quality | Timestamps | Notes |
-|---|---|---|---|---|---|---|
-| **WhisperX (local)** | `episode002_whisperx.md` | ~100 (large paragraphs) | SPEAKER_00, SPEAKER_01, SPEAKER_03, UNKNOWN | Fair — uses 4 speaker IDs; SPEAKER_03 = Kieran, SPEAKER_00 = Victor, SPEAKER_01 = Jim. Occasional UNKNOWN tag. Long monolithic paragraphs. | Per-paragraph | Paragraphs are very long (some 500+ words per entry). Diarization occasionally collapses multiple speakers into one paragraph. Some crosstalk artifacts. |
-| **WhisperX Cloud** | `episode002_whisperx-cloud.md` | ~100 (large paragraphs) | SPEAKER_00, SPEAKER_02, SPEAKER_04 | Fair — uses 3 speaker IDs; SPEAKER_04 = Kieran, SPEAKER_00 = Victor, SPEAKER_02 = Jim. Multiple speakers collapsed into single paragraphs (worse than local WhisperX). | Per-paragraph | Similar to local WhisperX but with more aggressive paragraph merging. Some segments combine 3+ speaker turns into one block. |
-| **AssemblyAI** | `episode002_assemblyai.md` | ~100 (structured) | SPEAKER_00, SPEAKER_01, SPEAKER_02 | Good — uses 3 speaker IDs consistently; SPEAKER_00 = Kieran, SPEAKER_01 = Victor, SPEAKER_02 = Jim. Much better turn-by-turn separation. | Per-turn | Best diarization of the three. Shorter, more accurate paragraphs per speaker turn. Clean separation between speakers. |
-
-**Consensus file:** `episode002_assemblyai_consensus.md` and `episode002_assemblyai_consensus_words.json` exist, suggesting the consensus pipeline was run using AssemblyAI as the base.
-
-**Transcriber Assessment Summary:**
-- **AssemblyAI** provides the best base for AI processing: proper 3-speaker diarization with good turn separation, clean timestamps, and consistent speaker labeling.
-- **WhisperX local** has reasonable diarization but uses 4 speaker IDs (including SPEAKER_03 and an UNKNOWN) and produces very long paragraphs that make speaker attribution harder.
-- **WhisperX Cloud** has similar issues to local WhisperX but with even more aggressive paragraph merging, sometimes combining multiple speakers into one block.
+**Date:** 2026-02-23
+**Episode:** episode002 (BlockApps Co-founders: Kieran James-Lubin, Victor Wong, Jim Hermosdia)
+**Episode Duration:** ~60 minutes (timestamps end around 59:40 in assemblyai_opus; whisperx_grok timestamps extend to ~1:11:13 due to timestamp drift)
+**Topic:** Early days of Ethereum post-launch: ConsenSys Dappathons, Devcon 1, Microsoft/Azure partnership, The DAO hack and hard fork, CoinDesk Consensus Hackathon, Devcon 2 in Shanghai, formation of the Enterprise Ethereum Alliance (EEA)
 
 ---
 
-## 2. AI Processor Comparison — AssemblyAI Base
+## 1. File Inventory
 
-The AssemblyAI transcriber base was processed by 11 different AI models. The largest complete output (GLM at ~856 lines total including a second pass) serves as the approximate reference for max coverage.
+### Intermediates (Raw Transcriber Outputs)
 
-| Processor | Lines | Est. Word Count | Completeness | Quality | Tier | Notes |
-|---|---|---|---|---|---|---|
-| **GLM** | 562 (but includes duplicated transcript starting at line 520) | ~11,500 | Ends at ~27 min then re-starts the full transcript. Effectively a failed run — duplicated output. | Fair formatting, clean timestamps, proper speaker labels. But the duplicate is a processing failure. | Tier 3 | Duplication artifact makes it unreliable. First pass covers only ~45% of the episode. |
-| **Opus** | 635 | ~11,800 | Complete — covers from 00:00 to 59:40 with proper closing. All major topics covered. | Excellent. Clean formatting, proper speaker labels, accurate timestamps, good prose fidelity to the original. Capitalization of proper nouns (BlockApps, ConsenSys, Ethereum, etc.) is excellent. | Tier 1 | Best overall. Full coverage, high fidelity. |
-| **ChatGPT** | 509 | ~10,200 | Complete — covers from 00:01 to 1:11:13 with proper closing. All major topics covered. | Excellent. Clean formatting with proper speaker labels and timestamps. Light editorial cleanup of disfluencies while preserving meaning. Good proper noun handling. Some timestamps use hour:minute:second format for later segments. | Tier 1 | Full coverage, very polished. Slightly more cleaned-up prose than Opus. |
-| **Gemini** | 323 | ~6,500 | Complete — covers from 00:00 to 1:11:13 with proper closing. | Good. Clean formatting, good editorial cleanup of disfluencies. Slightly more condensed than Opus/ChatGPT — some passages are tightened. Good speaker attribution. | Tier 2 | Complete coverage but moderately condensed (~55% of max word count). |
-| **Grok** | 329 | ~6,600 | Complete — covers from 00:01 to full episode with proper closing. | Good. Clean formatting, proper timestamps. Faithful to original. | Tier 2 | Complete coverage, good quality, moderate condensation. |
-| **Kimi** | 329 | ~6,600 | Complete — covers from 00:01 to full episode with proper closing. | Good. Similar quality to Grok and Gemini. Clean speaker labels, good timestamps. | Tier 2 | Complete coverage, good quality, moderate condensation. |
-| **DeepSeek** | 197 | ~4,000 | Partial — covers only to ~38:45 (approximately the DAO section). Cuts off before CoinDesk Consensus Hackathon, Devcon 2, Shanghai, EEA formation. | Good quality for what it covers. Clean formatting, proper speaker labels. | Tier 3 | Cuts off roughly halfway. Missing ~30 minutes of content. |
-| **Mistral** | 86 | ~1,700 | Minimal — covers only to ~6:56 (first few minutes). Cuts off during the Dappathon discussion. | Clean formatting for what exists, but extremely incomplete. | Tier 4 | Covers less than 10% of the episode. Unusable. |
-| **Qwen** | 100 | ~2,000 | Minimal — covers only to ~9:58. | Clean formatting but extremely incomplete. | Tier 4 | Covers less than 15% of the episode. Unusable. |
-| **MiniMax** | 81 | ~1,600 | Minimal — covers only a few minutes. | Incomplete. | Tier 4 | Unusable. |
-| **Llama** | 1050+ | ~15,000+ (inflated) | **Catastrophically corrupted.** First ~480 lines contain reasonable transcript up to the mid-episode, then degenerates into repetitive garbage: hundreds of lines of "was like the DAO was like the DAO was like the DAO" etc. | First portion is adequate; second half is complete nonsensical repetition (hallucination loop). | Tier 4 | **CORRUPTED.** Must be discarded entirely. Classic repetition loop failure. |
+| File | Words | Lines |
+|---|---|---|
+| `episode002_whisperx.md` | 11,860 | 154 |
+| `episode002_whisperx-cloud.md` | 11,805 | 120 |
+| `episode002_assemblyai.md` | 11,909 | 338 |
 
----
+### Processed Outputs
 
-## 3. AI Processor Comparison — WhisperX Cloud Base
+| File | Words | Lines |
+|---|---|---|
+| `episode002_assemblyai_opus.md` | 11,814 | 634 |
+| `episode002_assemblyai_gemini.md` | 11,248 | 322 |
+| `episode002_assemblyai_grok.md` | 11,016 | 328 |
+| `episode002_whisperx_opus.md` | 11,605 | 278 |
+| `episode002_whisperx_gemini.md` | 11,248 | 212 |
+| `episode002_whisperx_grok.md` | 11,584 | 156 |
+| `episode002_whisperx-cloud_opus.md` | 11,313 | 777 |
+| `episode002_whisperx-cloud_gemini.md` | 11,330 | 230 |
+| `episode002_whisperx-cloud_grok.md` | 11,419 | 120 |
 
-| Processor | Lines | Est. Word Count | Completeness | Quality | Tier | Notes |
-|---|---|---|---|---|---|---|
-| **Opus** | 461 | ~9,200 | Complete — full episode coverage. | Excellent. Clean formatting, proper speaker labels. | Tier 1 | Comparable to AssemblyAI Opus. |
-| **GLM** | 328 | ~6,500 | Likely complete. | Good quality. | Tier 2 | Moderate condensation. |
-| **ChatGPT** | 171 | ~3,400 | Partial coverage. | Good formatting for what exists. | Tier 3 | Significantly condensed or truncated. |
-| **Gemini** | 116 | ~2,300 | Partial coverage. | Appears condensed. | Tier 3 | Limited content. |
-| **Grok** | 61 | ~1,200 | Minimal. | Incomplete. | Tier 4 | Unusable. |
-| **Kimi** | 57 | ~1,100 | Minimal. | Incomplete. | Tier 4 | Unusable. |
-| **Mistral** | 44 | ~900 | Minimal. | Incomplete. | Tier 4 | Unusable. |
-| **MiniMax** | 42 | ~800 | Minimal. | Incomplete. | Tier 4 | Unusable. |
-| **DeepSeek** | 41 | ~800 | Minimal. | Incomplete. | Tier 4 | Unusable. |
-| **Llama** | 37 | ~700 | Minimal. | Incomplete. | Tier 4 | Unusable. |
-| **Qwen** | 36 | ~700 | Minimal. | Incomplete. | Tier 4 | Unusable. |
+Other files: `REVIEW_EXCERPTS.md`
 
 ---
 
-## 4. AI Processor Comparison — WhisperX Local Base
+## 2. Transcriber Quality Assessment
 
-| Processor | Lines | Est. Word Count | Completeness | Quality | Tier | Notes |
-|---|---|---|---|---|---|---|
-| **GLM** | 354 | ~7,000 | Likely complete or near-complete. | Good quality. | Tier 2 | Moderate condensation. |
-| **ChatGPT** | 182 | ~3,600 | Partial. | Good formatting. | Tier 3 | Truncated. |
-| **Opus** | 140 | ~2,800 | Partial — appears truncated. | Good quality for what exists. | Tier 3 | Surprisingly short for Opus; likely hit a processing limit. |
-| **Gemini** | 107 | ~2,100 | Partial. | Good quality. | Tier 3 | Truncated. |
-| **Grok** | 79 | ~1,600 | Minimal. | Incomplete. | Tier 4 | Unusable. |
-| **Kimi** | 77 | ~1,500 | Minimal. | Incomplete. | Tier 4 | Unusable. |
-| **DeepSeek** | 73 | ~1,500 | Minimal. | Incomplete. | Tier 4 | Unusable. |
-| **Qwen** | 71 | ~1,400 | Minimal. | Incomplete. | Tier 4 | Unusable. |
-| **Llama** | 50 | ~1,000 | Minimal. | Incomplete. | Tier 4 | Unusable. |
-| **Mistral** | 46 | ~900 | Minimal. | Incomplete. | Tier 4 | Unusable. |
-| **MiniMax** | 40 | ~800 | Minimal. | Incomplete. | Tier 4 | Unusable. |
+### 2a. WhisperX (Local) — `episode002_whisperx.md`
 
----
+- **Speaker IDs:** SPEAKER_00 (Victor), SPEAKER_01 (Jim), SPEAKER_03 (Kieran), UNKNOWN (rare)
+- **Diarization Quality:** Fair. Uses 4 speaker IDs. Generally correct speaker attribution. Occasional UNKNOWN tag appears (line 57: `[25:14] UNKNOWN: Okay.`). Speaker turns are well separated into individual paragraphs.
+- **Timestamp Format:** Per-paragraph timestamps, e.g., `**[00:00] SPEAKER_03:**`
+- **Paragraph Structure:** Long paragraphs, especially for extended monologues. Some paragraphs exceed 500 words. Reasonable turn-by-turn separation for short exchanges.
+- **Corruption/Artifacts:** None detected. Clean text throughout. Some OCR-like artifacts in the raw transcription (e.g., "Justin Delacruz, Ph.D.:" and "David Price-" appear as speaker names mid-paragraph around the Augur discussion, line 29). These are hallucinated speaker attributions from WhisperX, not actual speakers.
+- **Overall Grade:** B
 
-## 5. Consensus Pipeline Status
+### 2b. WhisperX Cloud — `episode002_whisperx-cloud.md`
 
-- **Consensus base file:** `intermediates/episode002/episode002_assemblyai_consensus.md` exists (built from AssemblyAI transcriber base)
-- **Word-level JSON:** `intermediates/episode002/episode002_assemblyai_consensus_words.json` exists
-- **Final output:** No `*_final.md` file found in `outputs/episode002/`
-- **Status:** Consensus pipeline was initiated but no final merged output was produced.
+- **Speaker IDs:** SPEAKER_00 (Victor), SPEAKER_02 (Jim), SPEAKER_04 (Kieran)
+- **Diarization Quality:** Fair. Uses 3 speaker IDs consistently. More aggressive paragraph merging than local WhisperX -- some paragraphs combine multiple speaker turns into a single block, losing turn boundaries. For example, lines 11-12 merge Victor and Kieran's exchange into one SPEAKER_00 block.
+- **Timestamp Format:** Per-paragraph timestamps, e.g., `**[00:00] SPEAKER_04:**`
+- **Paragraph Structure:** Fewer but longer paragraphs (120 lines vs 154 for local WhisperX). Multiple speaker turns merged into single blocks.
+- **Corruption/Artifacts:** Same "Justin Delacruz, Ph.D." and "David Price-" hallucinated speaker artifacts in the Augur discussion section (line 17). Otherwise clean.
+- **Overall Grade:** B-
 
----
+### 2c. AssemblyAI — `episode002_assemblyai.md`
 
-## 6. Cross-Transcriber Comparison
+- **Speaker IDs:** SPEAKER_00 (Kieran), SPEAKER_01 (Victor), SPEAKER_02 (Jim)
+- **Diarization Quality:** Good. Best of the three transcribers. Uses 3 speaker IDs consistently with accurate turn-by-turn separation. Short exchanges are properly split into individual speaker turns. Much more granular than either WhisperX variant.
+- **Timestamp Format:** Per-turn timestamps, e.g., `**[00:01] SPEAKER_00:**`
+- **Paragraph Structure:** 338 lines with well-separated turns. Individual speaker segments are shorter and more accurate. Short interjections properly captured as separate turns.
+- **Corruption/Artifacts:** None detected. No hallucinated speaker names. Clean throughout.
+- **Overall Grade:** A-
 
-The AssemblyAI base consistently produced the best AI processor outputs across all models. Key observations:
+### Transcriber Ranking
 
-| Aspect | AssemblyAI Base | WhisperX Cloud Base | WhisperX Local Base |
-|---|---|---|---|
-| **Best output word count** | ~11,800 (Opus) | ~9,200 (Opus) | ~7,000 (GLM) |
-| **Number of Tier 1 outputs** | 2 (Opus, ChatGPT) | 1 (Opus) | 0 |
-| **Number of Tier 2 outputs** | 3 (Gemini, Grok, Kimi) | 2 (GLM, maybe ChatGPT) | 1-2 (GLM, ChatGPT) |
-| **Processor success rate** | 5/11 usable | 2-3/11 usable | 2-3/11 usable |
-| **Catastrophic failures** | 1 (Llama) | 0 | 0 |
-
-The AssemblyAI base with its better diarization (proper turn separation) appears to give AI processors more structure to work with, resulting in longer and more faithful outputs. The WhisperX bases, with their longer monolithic paragraphs, seem to cause many processors to truncate early or produce minimal output.
+1. **AssemblyAI** (A-) -- Best diarization, cleanest output, most granular speaker turns
+2. **WhisperX Local** (B) -- Decent diarization but long paragraphs and hallucinated speaker artifacts
+3. **WhisperX Cloud** (B-) -- Aggressive paragraph merging loses speaker turn boundaries; same hallucination artifacts
 
 ---
 
-## 7. Recommendations
+## 3. AI Processor Quality Assessment
 
-### Best Combination
-**AssemblyAI + Opus** is the clear winner for this episode:
-- Full episode coverage (00:00 to 59:40 in Opus timestamps / 1:11:13 in real time)
-- Excellent proper noun capitalization (BlockApps, ConsenSys, Ethereum, Devcon, EEA, etc.)
-- Faithful to original speech while cleaning up obvious disfluencies
-- Proper 3-speaker attribution throughout
-- All major topics covered: Dappathons, Augur/ICOs, Devcon 1, Microsoft/Azure partnership, The DAO hack/hard fork, CoinDesk Consensus Hackathon, Devcon 2 Shanghai, EEA formation, Quorum
+**Max word count:** 11,814 (assemblyai_opus)
+**Tier thresholds:**
+- Tier 1: >90% of max (>10,633 words), complete, excellent quality
+- Tier 2: 70-90% of max, mostly complete or condensed, good quality
+- Tier 3: 50-70% of max, significantly truncated
+- Tier 4: <50% of max, unusable
 
-### Runner-up
-**AssemblyAI + ChatGPT** is a strong second choice with slightly more editorial polish and full coverage.
+### 3a. AssemblyAI Base
 
-### Also Usable
-- **AssemblyAI + Gemini** — Complete but ~55% word count (good for summaries/condensed versions)
-- **AssemblyAI + Grok** and **AssemblyAI + Kimi** — Complete, moderate condensation
-- **WhisperX-Cloud + Opus** — Complete, good quality
+| Processor | Words | % of Max | Lines | Tier | Notes |
+|---|---|---|---|---|---|
+| **Opus** | 11,814 | 100% | 634 | **Tier 1** | Complete transcript, excellent formatting. Speaker labels on separate lines from timestamps. Granular paragraph breaks (634 lines). All content preserved through to closing remarks at [59:40]. |
+| **Gemini** | 11,248 | 95.2% | 322 | **Tier 1** | Complete transcript. Slightly condensed formatting with speaker+timestamp on same line. Minor editorial cleanup (e.g., adds quotation marks around "And then what?", "day one dapps"). Proper name corrections (Hormuzdiar, Cale Teeter). Ends at [58:57]. |
+| **Grok** | 11,016 | 93.2% | 328 | **Tier 1** | Complete transcript. Similar formatting to raw AssemblyAI with speaker+timestamp on same line. Timestamps match the raw transcript closely. Ends at [59:40] with "Thank you." Slightly more condensed than Opus. |
 
-### Processors to Avoid
-- **Llama**: Catastrophic repetition loop failure on the AssemblyAI base; minimal output on other bases. Should not be trusted for this episode.
-- **MiniMax**: Consistently produced minimal output across all transcriber bases.
-- **Mistral**: Consistently truncated early across all bases.
-- **Qwen**: Consistently truncated early across all bases.
-- **DeepSeek**: Partial on AssemblyAI base (cuts off at ~39 min), minimal on other bases.
+### 3b. WhisperX (Local) Base
 
-### Pipeline Recommendations
-1. The consensus pipeline should be completed to produce a `*_final.md` file using the AssemblyAI + Opus output as the primary source.
-2. Future processing runs on WhisperX bases may need increased context windows or chunking strategies, as most processors fail to produce complete output from these longer-paragraph inputs.
-3. The Llama processor needs investigation — the repetition loop is a known failure mode that should be caught and retried or flagged automatically.
+| Processor | Words | % of Max | Lines | Tier | Notes |
+|---|---|---|---|---|---|
+| **Opus** | 11,605 | 98.2% | 278 | **Tier 1** | Complete transcript. Uses 4 speaker IDs from WhisperX (SPEAKER_00, SPEAKER_01, SPEAKER_03, UNKNOWN). Well-structured with separate speaker/timestamp lines. Ends at [59:14] with "Thank you." |
+| **Gemini** | 11,248 | 95.2% | 212 | **Tier 1** | Complete transcript. Preserves WhisperX speaker IDs. Some editorial cleanup. Ends at [55:35] "Thank you." Timestamps appear compressed relative to other outputs. |
+| **Grok** | 11,584 | 98.1% | 156 | **Tier 1** | Complete transcript, but very long paragraphs (only 156 lines). Preserves raw WhisperX wall-of-text formatting. Ends at [1:11:13] "Thank you." Timestamp drift evident (1:11 vs ~60 min actual). |
+
+### 3c. WhisperX Cloud Base
+
+| Processor | Words | % of Max | Lines | Tier | Notes |
+|---|---|---|---|---|---|
+| **Opus** | 11,313 | 95.8% | 777 | **Tier 1** | Complete transcript. Most granular formatting of all outputs (777 lines). Breaks long monologues into timestamped sub-paragraphs. Uses 4 speaker IDs (SPEAKER_00, SPEAKER_02, SPEAKER_04, and occasional reassignment). Ends at [65:48] "Thank you." |
+| **Gemini** | 11,330 | 95.9% | 230 | **Tier 1** | Complete transcript. Clean formatting with good speaker turn separation. Some editorial improvements (quotation marks, proper name formatting). Ends at [59:12] "Thank you." |
+| **Grok** | 11,419 | 96.7% | 120 | **Tier 1** | Complete transcript but extremely dense formatting (120 lines). Massive paragraphs with multiple speaker turns merged. Preserves raw WhisperX-cloud wall-of-text style. Ends at [1:11:13] "Thank you." |
+
+### Processor Summary
+
+All 9 processed outputs are **Tier 1** -- complete and of good-to-excellent quality. Word counts are tightly clustered between 11,016 and 11,814 (a range of only ~7%), indicating no truncation occurred in any output.
+
+**Key differences are in formatting quality:**
+
+| Rank | Output | Words | Lines | Formatting Quality |
+|---|---|---|---|---|
+| 1 | `assemblyai_opus` | 11,814 | 634 | Excellent: granular paragraphs, clean speaker labels, best readability |
+| 2 | `whisperx-cloud_opus` | 11,313 | 777 | Excellent: most granular sub-paragraph timestamping |
+| 3 | `assemblyai_gemini` | 11,248 | 322 | Very good: editorial polish, proper name corrections |
+| 4 | `assemblyai_grok` | 11,016 | 328 | Good: faithful to source, clean formatting |
+| 5 | `whisperx-cloud_gemini` | 11,330 | 230 | Good: clean with editorial improvements |
+| 6 | `whisperx_opus` | 11,605 | 278 | Good: complete but fewer paragraph breaks |
+| 7 | `whisperx_gemini` | 11,248 | 212 | Acceptable: compressed timestamps |
+| 8 | `whisperx_grok` | 11,584 | 156 | Acceptable: wall-of-text paragraphs, timestamp drift |
+| 9 | `whisperx-cloud_grok` | 11,419 | 120 | Acceptable: extremely dense, minimal paragraph breaks |
+
+---
+
+## 4. Transcriber Base Comparison
+
+### Side-by-Side Observations
+
+**Speaker Identification:**
+- AssemblyAI: SPEAKER_00=Kieran, SPEAKER_01=Victor, SPEAKER_02=Jim
+- WhisperX Local: SPEAKER_03=Kieran, SPEAKER_00=Victor, SPEAKER_01=Jim, UNKNOWN (rare)
+- WhisperX Cloud: SPEAKER_04=Kieran, SPEAKER_00=Victor, SPEAKER_02=Jim
+
+All three transcribers correctly identified 3 speakers. WhisperX Local occasionally introduces a 4th (UNKNOWN) label. Speaker mapping is consistent within each transcriber but uses different numbering.
+
+**Textual Accuracy (opening line comparison):**
+- AssemblyAI: "All right, well, welcome back, everybody. The first episode of the early days of Ethereum actually got quite good critical reception on LinkedIn and Twitter."
+- WhisperX Local: "all right well welcome back everybody um the first episode of the early days of the theory I'm actually got quite good critical reception on LinkedIn in Twitter"
+- WhisperX Cloud: "all right well welcome back everybody um the first episode of the early days of ethereum actually got quite good critical reception on linkedin in twitter"
+
+AssemblyAI has proper capitalization and punctuation. WhisperX Local has a misrecognition ("the theory I'm" instead of "Ethereum"). WhisperX Cloud has correct words but no capitalization.
+
+**Diarization Granularity:**
+- AssemblyAI separates short interjections (e.g., "20 or 30" gets its own speaker turn at [03:16])
+- WhisperX variants merge short exchanges into surrounding paragraphs
+- AssemblyAI line count is 338 vs 154 (WhisperX) and 120 (WhisperX Cloud), reflecting more granular turn detection
+
+**Hallucination Artifacts:**
+- Both WhisperX variants hallucinate speaker names ("Justin Delacruz, Ph.D." and "David Price-") during the Augur/prediction markets discussion where Kieran is reading from Wikipedia. These appear to be OCR-like artifacts from the model.
+- AssemblyAI has no such hallucinations.
+
+**Timestamp Accuracy:**
+- AssemblyAI and WhisperX Local timestamps are generally consistent with each other (within a few seconds).
+- WhisperX Cloud timestamps are also generally aligned. No major drift observed in raw transcripts.
+- However, WhisperX Grok processed outputs show significant timestamp drift (final timestamp 1:11:13 vs ~59:40 for assemblyai_opus), suggesting the raw WhisperX timestamps may have accumulated error that Grok preserved rather than corrected.
+
+---
+
+## 5. Recommendations
+
+1. **Best base transcriber:** AssemblyAI provides the cleanest, most granular diarization with no artifacts. It should be the preferred base for processing.
+
+2. **Best processed output:** `episode002_assemblyai_opus.md` combines the best transcriber base with the most readable processor formatting (634 lines, granular paragraphs, clean speaker labels).
+
+3. **Runner-up:** `episode002_assemblyai_gemini.md` offers good editorial polish (proper name corrections like "Hormuzdiar" and "Cale Teeter") that could be valuable for a final version.
+
+4. **Formatting concern:** The WhisperX Grok outputs (`whisperx_grok` and `whisperx-cloud_grok`) have extremely dense paragraphs (120-156 lines total) that significantly reduce readability. They are complete but not recommended for direct use.
+
+5. **No truncation issues:** All 9 outputs are complete (Tier 1). This episode processed cleanly across all pipelines.
+
+---
+
+## 6. Quality Tier Summary
+
+| Tier | Outputs | Count |
+|---|---|---|
+| **Tier 1** (Complete, >90%) | assemblyai_opus, assemblyai_gemini, assemblyai_grok, whisperx_opus, whisperx_gemini, whisperx_grok, whisperx-cloud_opus, whisperx-cloud_gemini, whisperx-cloud_grok | 9 |
+| **Tier 2** (Mostly complete) | -- | 0 |
+| **Tier 3** (Truncated) | -- | 0 |
+| **Tier 4** (Unusable) | -- | 0 |

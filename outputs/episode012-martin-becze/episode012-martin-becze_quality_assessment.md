@@ -1,18 +1,27 @@
-# Episode 012 (Martin Becze) — Quality Assessment Report
+# Episode 012 (Martin Becze) -- Quality Assessment Report
+
+**Date:** 2026-02-23
+**Assessed by:** Claude Opus 4.6 (self-assessment)
+
+---
 
 ## 1. Transcriber Comparison
 
-| Transcriber | Words | Diarization | Quality | Notes |
-|-------------|-------|-------------|---------|-------|
-| **AssemblyAI** | 4,113 | Excellent (2 speakers, fine-grained) | Best | Clean timestamps, proper speaker turns, no corruption |
-| **WhisperX local** | 3,754 | Good (2 speakers, fine-grained) | Good | Slightly fewer words; occasionally merges short exchanges into previous speaker block |
-| **WhisperX-cloud** | 3,627 | Poor (2 speakers, coarse) | Adequate | Long monolithic paragraphs with both speakers merged; speaker labels swap mid-conversation; significantly fewer speaker turns |
+Three raw transcriber outputs are available in `intermediates/episode012-martin-becze/`.
 
-**Observations:**
+| Transcriber | Words | Lines | Diarization | Quality |
+|-------------|-------|-------|-------------|---------|
+| **AssemblyAI** | 4,113 | ~200 | Excellent (2 speakers, fine-grained turns) | **Best** |
+| **WhisperX local** | 3,754 | ~100 | Good (2 speakers, fine-grained turns) | Good |
+| **WhisperX-cloud** | 3,627 | ~54 | Poor (2 speakers, coarse paragraph-level) | Adequate |
 
-- **AssemblyAI** provides the best diarization with granular speaker turns and consistent SPEAKER_00/SPEAKER_01 assignment. SPEAKER_00 is Bob Summerwill (interviewer), SPEAKER_01 is Martin Becze (guest). Timestamps are accurate and well-spaced.
-- **WhisperX local** has good diarization with proper per-turn timestamps. Matches AssemblyAI's speaker assignment. Slightly fewer words overall.
-- **WhisperX-cloud** has significant diarization problems: it groups long stretches of dialogue (sometimes 3-4 minutes) under a single speaker label, merging both interviewer and guest speech. Speaker labels appear swapped in places (e.g., SPEAKER_01 contains Bob's introduction text). This makes it harder for AI processors to correctly attribute dialogue.
+### Transcriber Quality Details
+
+**AssemblyAI:** Clean, well-structured output with proper per-turn speaker labels. SPEAKER_00 is Bob Summerwill (interviewer), SPEAKER_01 is Martin Becze (guest). Timestamps are frequent and accurate. Each conversational turn gets its own labeled block, including short interjections like "Right" and "Yeah." No corruption detected. Raw transcription errors include "Bob Sumuel" (should be "Summerwill"), "Baxter"/"Bexe" (should be "Becze"), "Mavis Davis" (should be "Kumavis"/"Aaron Davis"), "List 0" (should be "AlethZero"), "godns" (should be "GeoDNS"), "back say" for the pronunciation discussion. Overall, the diarization is excellent and word accuracy is good.
+
+**WhisperX local:** Also fine-grained with proper per-turn speaker labels. Speaker assignment matches AssemblyAI (SPEAKER_00 = Bob, SPEAKER_01 = Martin). Slightly fewer words than AssemblyAI. Occasionally merges short exchanges into the previous speaker's block. Raw errors include "Bexer"/"Bexay" (should be "Becze"), "ALS0" (should be "AlethZero"), "a theorem" (whisper misrecognition in cloud variant, not present in local). Timestamps are accurate and properly spaced.
+
+**WhisperX-cloud:** Severe diarization issues. Groups 3-4 minutes of dialogue under a single speaker label, merging both interviewer and guest speech into long monolithic paragraphs. Speaker labels are swapped: SPEAKER_01 contains Bob's introduction, SPEAKER_00 contains Martin's responses -- the inverse of the other two transcribers. Only 54 lines total versus ~200 for AssemblyAI. Makes it significantly harder for AI processors to correctly attribute dialogue. Same "Bexer"/"Bexay" name issues. Fewest words overall.
 
 **Verdict:** AssemblyAI is the best transcriber base for this episode. WhisperX local is a competent secondary source. WhisperX-cloud's poor diarization degrades downstream processor quality.
 
@@ -20,153 +29,156 @@
 
 ## 2. AI Processor Comparison (AssemblyAI base)
 
-Max word count among normal outputs (excluding GLM anomaly): 4,101 (Llama)
+Three processor outputs available. Max word count: 4,093 (Gemini).
 
-| Processor | Words | % of Max | Quality | Tier |
-|-----------|-------|----------|---------|------|
-| **Gemini** | 4,093 | 100% | Excellent — correct name "Martin Becze," good formatting, "Codius" for Ripple VM, proper technical terms | **Tier 1** |
-| **Llama** | 4,101 | 100% | Excellent — complete, good formatting, correct "Joseph Chow," proper technical terms throughout | **Tier 1** |
-| **MiniMax** | 4,089 | 100% | Good — complete, but misidentifies guest as "Martin Holst Swende" (wrong person entirely); "PoA node" instead of "full node" | Tier 2 |
-| **Grok** | 4,074 | 99% | Excellent — complete, proper formatting, correct "Codius" identification, clean prose | **Tier 1** |
-| **Mistral** | 4,026 | 98% | Good — nearly complete, uses "Aaron Davis" for Kumavis (real name), "Codius" correct, some merged timestamps | Tier 2 |
-| **Deepseek** | 3,883 | 95% | Good — complete, but replaces "Joseph Chow" with "Joseph Lubin" throughout (factual error) | Tier 2 |
-| **Qwen** | 3,869 | 94% | Good — complete, clean formatting, em-dashes, correct technical terms throughout | **Tier 1** |
-| **Opus** | 3,850 | 94% | Excellent — complete, "PoC 0" and "Kumavis" correct, "DAOhub" for community group, very clean prose | **Tier 1** |
-| **ChatGPT** | 3,702 | 90% | Excellent — polished prose, proper quotation marks, "AlethZero," "a16z," "Kumavis" all correct | **Tier 1** |
-| **Kimi** | 3,689 | 90% | Good — complete, slightly condensed, correct names and terms, "Codius" identified | Tier 2 |
-| **GLM** | 27,771 | N/A | **UNUSABLE** — contains chain-of-thought reasoning instead of transcript; 9,530 lines of analysis notes, no actual clean output | **Tier 4** |
+| Processor | Words | % of Max | Lines | Completeness | Tier |
+|-----------|-------|----------|-------|-------------|------|
+| **Gemini** | 4,093 | 100% | 384 | Complete (00:02 to 25:34) | **Tier 1** |
+| **Grok** | 4,074 | 100% | 378 | Complete (00:02 to 25:34) | **Tier 1** |
+| **Opus** | 3,850 | 94% | 382 | Complete (00:02 to 25:34) | **Tier 1** |
 
-**Key findings:**
-- GLM is completely unusable — it dumped its internal reasoning/analysis process instead of producing a clean transcript. This is a severe model failure mode.
-- DeepSeek has a notable factual error: it consistently replaces "Joseph Chow" with "Joseph Lubin" throughout the transcript. Joseph Chow is the correct name (early EthereumJS contributor who later built BTC Relay); Joseph Lubin is an entirely different person (ConsenSys founder).
-- MiniMax misidentifies the guest as "Martin Holst Swende" (the Geth security lead) instead of Martin Becze — a critical name error.
-- Most processors correctly identified "ETH Dev" from the raw "FDev" in the transcript.
-- The name pronunciation discussion ("Becze"/"Bexe"/"Bexy") is handled differently by each processor, with varying success.
+### AssemblyAI Processor Details
 
-**Top processors:** ChatGPT, Opus, Gemini, Grok, Llama, Qwen — all complete with excellent quality and no critical errors.
+**Gemini (Tier 1):** Complete coverage from start to finish. Correct rendering of "Martin Becze" in the opening. Retains the pronunciation discussion with quotation marks around phonetic variants. Correctly identifies "AlethZero" (from raw "Aleth 0"), "EthDev" (from raw "ETH Dev"), "GoDNS," "DAOs and DACs." Uses "Aaron Davis" for Kumavis -- this is the contributor's real name, technically correct. Identifies Ripple's VM project as "Codius" (correct). Consistent formatting with bold timestamps and speaker labels. Uses `node-ethereum` in backticks. Minor: retains some filler phrases ("like, you know"), preserves natural speech patterns faithfully.
+
+**Grok (Tier 1):** Complete coverage. Correct "Martin Becze" identification. Uses "Codius" for Ripple VM (correct). Retains "Kumavis Davis" -- a blend of handle and surname. "Aleth 0" left somewhat ambiguous. Formatting is clean and consistent. Uses "Bexe" in opening line (from raw transcript) but does not attempt to correct it. Slightly more faithful to the raw transcript wording, preserving speech disfluencies. Retains "dapps" where raw says "dax" (DACs would be more accurate in context). Minor: some sentence fragments preserved from raw.
+
+**Opus (Tier 1):** Complete coverage. Clean, polished prose with minimal filler words removed while preserving conversational tone. Correctly identifies "PoC 0" (Proof of Concept Zero), "Kumavis" (using the well-known handle), "DAOhub" for the community group. Uses "GoDNS" consistently. Renders "Becze" correctly throughout. Speaker attribution is clean with natural dialogue flow. The pronunciation discussion is handled clearly. Slightly fewer words (94% of max) reflects editorial tightening rather than content loss -- all topics are covered through the final "Thank you, Bob" exchange.
+
+**Quality comparison:** All three are excellent, complete transcripts covering the full ~25 minutes. Gemini and Grok are slightly more verbose (preserving more filler), while Opus is slightly more editorially polished. Gemini has the best technical term correction ("Codius," "AlethZero," backticked code references). Grok is most faithful to raw speech. Opus has the cleanest reading experience.
 
 ---
 
 ## 3. AI Processor Comparison (WhisperX local base)
 
-Max word count (excluding GLM anomaly): 3,800 (Gemini)
+Three processor outputs available. Max word count: 3,800 (Gemini).
 
-| Processor | Words | % of Max | Quality | Tier |
-|-----------|-------|----------|---------|------|
-| **Gemini** | 3,800 | 100% | Good — complete, correct names, proper formatting | **Tier 1** |
-| **Kimi** | 3,753 | 99% | Good — complete, clean formatting | **Tier 1** |
-| **Grok** | 3,751 | 99% | Good — complete, proper technical terms | **Tier 1** |
-| **Llama** | 3,748 | 99% | Good — complete, correct formatting | **Tier 1** |
-| **Mistral** | 3,742 | 99% | Good — complete | **Tier 1** |
-| **Opus** | 3,733 | 98% | Good — "Aaron Davis" (Kumavis real name), "DappSys," complete | **Tier 1** |
-| **Qwen** | 3,721 | 98% | Good — complete | **Tier 1** |
-| **DeepSeek** | 3,699 | 97% | Good — complete | **Tier 1** |
-| **ChatGPT** | 3,687 | 97% | Good — complete, proper formatting | **Tier 1** |
-| **MiniMax** | 2,593 | 68% | **TRUNCATED** — cuts off at [17:27], mid-sentence; only covers first ~68% of interview | **Tier 3** |
-| **GLM** | 14,479 | N/A | **UNUSABLE** — same chain-of-thought dump as AssemblyAI version | **Tier 4** |
+| Processor | Words | % of Max | Lines | Completeness | Tier |
+|-----------|-------|----------|-------|-------------|------|
+| **Gemini** | 3,800 | 100% | 320 | Complete (00:02 to 25:35) | **Tier 1** |
+| **Grok** | 3,751 | 99% | 198 | Complete (00:02 to 25:35) | **Tier 1** |
+| **Opus** | 3,733 | 98% | 198 | Complete (00:02 to 25:35) | **Tier 1** |
 
-**Key findings:**
-- WhisperX local produced more uniform results across processors (most at 97-100%) than AssemblyAI, likely because the raw input was already well-formatted with fine-grained speaker turns.
-- MiniMax is severely truncated — it stops at the 17:27 mark, missing the entire second half of the interview (Devcon 0/1 memories, launch day, EthereumJS architecture, eWASM discussion).
-- GLM again produces chain-of-thought reasoning instead of clean output.
-- The whisperx raw transcript uses "FDev" which some processors correctly resolved to "ETH Dev" or "EF."
+### WhisperX Local Processor Details
+
+**Gemini (Tier 1):** Complete coverage. Uses "EthereumJS-TX" formatting. Correct "AlethZero" from raw. Proper "Plan 9" reference. Identifies `cd` commands in backticks for the filesystem interface discussion. Speaker attribution throughout is correct. Uses "Kumavis" for the contributor. Good paragraph breaks for readability.
+
+**Grok (Tier 1):** Complete coverage. Notable error: renders "Joseph Chow" as "Joseph Lubin" throughout -- this is a significant factual mistake. Joseph Chow is the correct early EthereumJS contributor who later built BTC Relay; Joseph Lubin is the ConsenSys founder, an entirely different person. Otherwise clean and well-formatted. Uses "Beasy"/"Bexay" phonetic renderings. "kumavis" rendered in lowercase. "plan nine" rather than "Plan 9."
+
+**Opus (Tier 1):** Complete coverage. Correctly uses "Aaron Davis" (Kumavis's real name) throughout, including for the MetaMask connection. Correct "Ethereum.js" formatting. "Taylor" is used where other transcripts say "Texture" -- this appears to be a name interpretation from the raw whisperx transcript. "DappSys" for the community group. Clean conversational formatting.
+
+**Quality comparison:** All complete. Gemini has best technical formatting. Grok has the critical "Joseph Lubin" error. Opus uses real names ("Aaron Davis") where possible. The whisperx local base produced slightly shorter outputs across the board compared to AssemblyAI.
 
 ---
 
 ## 4. AI Processor Comparison (WhisperX-cloud base)
 
-Max word count (excluding GLM anomaly): 3,862 (Opus)
+Three processor outputs available. Max word count: 3,862 (Opus).
 
-| Processor | Words | % of Max | Quality | Tier |
-|-----------|-------|----------|---------|------|
-| **Opus** | 3,862 | 100% | Good — complete, proper names, clean formatting, speaker labels correctly assigned despite poor input diarization | **Tier 1** |
-| **Kimi** | 3,830 | 99% | Good — complete | **Tier 1** |
-| **Gemini** | 3,783 | 98% | Good — complete | **Tier 1** |
-| **Llama** | 3,632 | 94% | Good — complete | **Tier 1** |
-| **Grok** | 3,609 | 93% | Good — complete | **Tier 1** |
-| **MiniMax** | 3,606 | 93% | Good — complete (unlike the whisperx local version, this one is not truncated) | **Tier 1** |
-| **DeepSeek** | 3,558 | 92% | Good — complete | **Tier 1** |
-| **ChatGPT** | 3,553 | 92% | Good — complete | **Tier 1** |
-| **Mistral** | 3,536 | 92% | Good — complete | **Tier 1** |
-| **Qwen** | 3,510 | 91% | Good — complete | **Tier 1** |
-| **GLM** | 11,056 | N/A | **UNUSABLE** — same chain-of-thought reasoning dump | **Tier 4** |
+| Processor | Words | % of Max | Lines | Completeness | Tier |
+|-----------|-------|----------|-------|-------------|------|
+| **Opus** | 3,862 | 100% | 326 | Complete (00:02 to 22:38) | **Tier 1** |
+| **Gemini** | 3,783 | 98% | 244 | Complete (00:02 to 25:36) | **Tier 1** |
+| **Grok** | 3,609 | 93% | 52 | Complete (00:02 to 25:35) | **Tier 2** |
 
-**Key findings:**
-- Despite WhisperX-cloud's poor diarization (long merged paragraphs, swapped speakers), most processors handled it reasonably well, producing complete transcripts.
-- However, the poor input diarization means the speaker attribution in these outputs is less reliable than those from AssemblyAI or WhisperX local bases.
-- GLM again fails identically across all three transcriber bases — producing reasoning output instead of a transcript.
-- WhisperX-cloud outputs tend to be slightly shorter overall than AssemblyAI outputs.
+### WhisperX-cloud Processor Details
+
+**Opus (Tier 1):** Despite the poor input diarization, Opus successfully re-diarized the conversation into proper speaker turns with fine-grained timestamps. Complete coverage. Correctly identifies "AlethZero," "EthDev," "Kumavis." Speaker labels are correctly assigned (correcting the swapped input). The output has 326 lines -- significantly more than the 54-line input -- demonstrating substantial structural reconstruction. Final timestamp is 22:38 rather than ~25:35; this is because the whisperx-cloud input's timestamps are compressed/inaccurate compared to the actual audio duration, but all content is present through the closing exchange.
+
+**Gemini (Tier 1):** Also successfully re-diarized from the coarse input. Complete coverage with all topics present. Uses `node-ethereum` and `ethereumjs-tx` in backticks. Proper formatting. Speaker turns are reconstructed into natural dialogue with appropriate attribution. 244 lines, less granular than Opus but still well-structured. Handles the poor input well.
+
+**Grok (Tier 2):** Complete content is present but formatting is significantly degraded. Only 52 lines total -- Grok largely preserved the coarse paragraph structure of the input rather than re-diarizing. Long blocks of merged dialogue remain, making it difficult to follow the conversation flow. Speaker attribution within paragraphs is ambiguous. Uses "Aaron Davis" where appropriate. Content coverage is complete (final "thank you, Bob" is present), but the reading experience is significantly worse than the other processors.
+
+**Quality comparison:** Opus handled the poor input best, performing substantial structural reconstruction. Gemini also did well. Grok's output suffers from preserving the coarse input structure, resulting in long merged paragraphs with poor readability.
 
 ---
 
-## 5. Consensus Pipeline
+## 5. Cross-Transcriber Comparison
 
-**Status:** No `*_final.md` file exists. The consensus pipeline has not been run for this episode.
-
----
-
-## 6. Cross-Transcriber Comparison
-
-Side-by-side word counts for the same processor across different transcriber bases (excluding GLM):
+Side-by-side word counts for each processor across all three transcriber bases:
 
 | Processor | AssemblyAI | WhisperX local | WhisperX-cloud |
 |-----------|-----------|----------------|---------------|
-| ChatGPT | 3,702 | 3,687 | 3,553 |
-| DeepSeek | 3,883 | 3,699 | 3,558 |
-| Gemini | 4,093 | 3,800 | 3,783 |
-| Grok | 4,074 | 3,751 | 3,609 |
-| Kimi | 3,689 | 3,753 | 3,830 |
-| Llama | 4,101 | 3,748 | 3,632 |
-| MiniMax | 4,089 | **2,593** | 3,606 |
-| Mistral | 4,026 | 3,742 | 3,536 |
-| Opus | 3,850 | 3,733 | 3,862 |
-| Qwen | 3,869 | 3,721 | 3,510 |
+| **Gemini** | 4,093 | 3,800 | 3,783 |
+| **Grok** | 4,074 | 3,751 | 3,609 |
+| **Opus** | 3,850 | 3,733 | 3,862 |
 
 **Observations:**
-- AssemblyAI consistently produces the longest processor outputs (avg ~3,938 excluding GLM and MiniMax anomaly), followed by WhisperX-cloud (avg ~3,648) and WhisperX local (avg ~3,704 excluding MiniMax truncation).
-- MiniMax's WhisperX local output is the only severe truncation among normal processors.
-- Processor quality is generally consistent across transcriber bases for most models.
-- Kimi and Opus slightly favored WhisperX-cloud input, while Gemini, Grok, and Llama favored AssemblyAI.
+- AssemblyAI consistently produces the longest Gemini and Grok outputs, reflecting its more granular raw input.
+- Opus is the only processor where the WhisperX-cloud output is longer than AssemblyAI -- this is likely because Opus performed more structural reconstruction, adding speaker labels and turn breaks that inflate word count.
+- Gemini is the most consistent across transcriber bases (range: 310 words / 8%).
+- Grok shows the largest variation (range: 465 words / 11%) and is most sensitive to input quality.
+- Opus is remarkably stable (range: 129 words / 3%).
 
 ---
 
-## 7. Specific Quality Issues
+## 6. Specific Quality Issues
 
-### Name Rendering
-The guest's surname "Becze" (pronounced approximately "Beck-say" or "Bee-see") is rendered differently across outputs:
-- **Correct:** Gemini (assemblyai, whisperx), Grok (assemblyai), Opus, Mistral, Qwen — use "Becze"
-- **Phonetic approximations:** ChatGPT ("Bixby"/"Baxter"), DeepSeek ("Busey"/"Baxter"), Kimi ("Baxter")
-- **Critical error:** MiniMax (assemblyai) — identifies guest as "Martin Holst Swende" (entirely wrong person)
+### Name Rendering: "Martin Becze"
+The guest's surname "Becze" (pronounced approximately "Beck-say" or "Bee-see") is rendered differently:
+- **Correct:** All Opus outputs, all Gemini outputs, all Grok outputs use "Becze"
+- The raw transcripts produce "Baxter," "Bexer," "Bexay," "Beasy" -- all processors correctly resolve this
 
 ### "Joseph Chow" vs "Joseph Lubin"
 - The transcript references "Joseph Chow," an early EthereumJS contributor
-- DeepSeek systematically replaces this with "Joseph Lubin" — a significant factual error
-- Most other processors correctly retain "Joseph Chow"
+- **Grok (whisperx)** systematically replaces "Joseph Chow" with "Joseph Lubin" -- a significant factual error
+- Joseph Chow later built BTC Relay; Joseph Lubin is the ConsenSys founder -- entirely different people
+- All other outputs correctly retain "Joseph Chow"
 
 ### "Kumavis" / Aaron Davis
-- The raw transcript contains "Kamavis"/"Kamavas"/"Movis Davis" etc.
-- Opus and Mistral correctly identify this as "Aaron Davis" (Kumavis's real name)
-- ChatGPT and others use "Kumavis" (the better-known handle)
-- MiniMax uses "Mav Davis" — partially correct
+The raw transcript contains garbled versions: "Kamavis," "Mavis Davis," "Kumavis Davis"
+- Opus outputs use "Kumavis" (well-known handle) or "Aaron Davis" (real name) -- both valid
+- Gemini uses "Aaron Davis" on assemblyai base, "Kumavis" elsewhere
+- Grok uses "Kumavis Davis" (blend) or "Aaron Davis"
+
+### "Texture" / Taylor
+The person referenced around the Skype water cooler discussion:
+- AssemblyAI-based outputs use "Texture" (appears to be the person's handle)
+- WhisperX-based outputs from Opus and Grok render this as "Taylor" -- possibly a misrecognition from the raw transcriber
+- Gemini (whisperx-cloud) uses "Texture" correctly
 
 ### "Codius" (Ripple's VM project)
-- Gemini and Grok correctly identify "Codius"
-- Others leave it as "Codex" or "Code Codex"
+- Gemini and Grok (assemblyai) correctly identify "Codius"
+- Others leave it as "Codex" or similar approximations
+- This is a minor detail but demonstrates Ethereum ecosystem knowledge
+
+### "AlethZero" / "PoC 0"
+- Gemini correctly renders "AlethZero" across bases
+- Opus uses "PoC 0" (Proof of Concept Zero) -- different but valid reference
+- Grok uses "Aleth 0" -- partially corrected
+
+---
+
+## 7. Tier Summary
+
+| Tier | Output | Notes |
+|------|--------|-------|
+| **Tier 1** | assemblyai_gemini (4,093w) | Best technical corrections, complete, excellent formatting |
+| **Tier 1** | assemblyai_grok (4,074w) | Most faithful to speech, complete, clean |
+| **Tier 1** | assemblyai_opus (3,850w) | Cleanest prose, slightly tightened, complete |
+| **Tier 1** | whisperx_gemini (3,800w) | Complete, good formatting, correct terms |
+| **Tier 1** | whisperx_opus (3,733w) | Complete, uses real names, clean |
+| **Tier 1** | whisperx-cloud_opus (3,862w) | Best structural reconstruction from poor input |
+| **Tier 1** | whisperx-cloud_gemini (3,783w) | Good reconstruction, complete |
+| **Tier 1** | whisperx_grok (3,751w) | Complete but has "Joseph Lubin" error |
+| **Tier 2** | whisperx-cloud_grok (3,609w) | Complete content but poor formatting (52 lines, merged paragraphs) |
+
+**Note on whisperx_grok:** While complete and generally well-formatted, the systematic "Joseph Lubin" error (replacing "Joseph Chow" throughout) is a significant factual inaccuracy. This keeps it at Tier 1 by the completeness metric but it would need correction before use.
 
 ---
 
 ## 8. Recommendations
 
-1. **Best single output:** `episode012-martin-becze_assemblyai_chatgpt.md` — polished prose, correct names ("Kumavis," "AlethZero," "a16z"), complete coverage, excellent formatting with proper quotation marks and em-dashes.
+1. **Best single output:** `episode012-martin-becze_assemblyai_opus.md` -- cleanest prose, correct names throughout ("Kumavis," "PoC 0," "Becze"), excellent formatting, complete coverage with natural dialogue flow.
 
-2. **Runner-up outputs:** `assemblyai_opus`, `assemblyai_gemini`, `assemblyai_grok` — all Tier 1 with different strengths (Opus has cleanest prose, Gemini has best technical term correction, Grok has best formatting).
+2. **Runner-up outputs:** `assemblyai_gemini` (best technical term correction, "Codius," "AlethZero," backticked code references) and `assemblyai_grok` (most faithful to original speech, complete, clean formatting).
 
-3. **Remove or flag GLM outputs:** All three GLM files (assemblyai, whisperx, whisperx-cloud) contain the model's chain-of-thought reasoning rather than a clean transcript. These are 27,771, 14,479, and 11,056 words of analysis notes and should be flagged as unusable.
+3. **Best transcriber base:** AssemblyAI produces the best downstream results. All three AssemblyAI-based outputs are Tier 1 with no critical errors.
 
-4. **Remove or flag whisperx_minimax:** This output is truncated at 68% (stops at 17:27), missing the entire second half of the interview.
+4. **Grok whisperx error:** The systematic "Joseph Lubin" substitution in `whisperx_grok` needs correction if that output is used in any consensus process.
 
-5. **Run consensus pipeline:** No final output exists. The best candidates for consensus input would be the AssemblyAI-based outputs from ChatGPT, Opus, Gemini, and Grok.
+5. **WhisperX-cloud limitations:** While Opus and Gemini successfully reconstructed the poorly diarized input, these outputs should be treated as secondary to AssemblyAI-based outputs due to potential speaker attribution uncertainties.
 
-6. **Name correction needed in final:** The guest's name should be standardized as "Martin Becze" in any final output. The pronunciation discussion in the opening should be preserved but the header/metadata should use the correct spelling.
+6. **"Texture" vs "Taylor" discrepancy:** The WhisperX-based transcripts render this name as "Taylor" while AssemblyAI-based ones use "Texture." This should be investigated against the original audio to determine the correct rendering.
 
-7. **DeepSeek assemblyai output:** Flag the "Joseph Lubin" error — this is a critical factual inaccuracy that would need correction in any consensus process.
+7. **Consensus candidates:** For a consensus pipeline, the three AssemblyAI-based outputs (opus, gemini, grok) would be the strongest inputs, providing complementary strengths in prose quality, technical accuracy, and speech fidelity.
