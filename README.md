@@ -96,7 +96,7 @@ python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 \
   --transcribers whisperx-cloud,assemblyai --consensus
 
 # Step 2: Build consensus from transcriber outputs
-python3 scripts/assess_quality.py --intermediate-consensus --episode <name>
+python3 scripts/ai_consensus_pipeline.py --episode <name> --phase 2
 ```
 
 Outputs to `intermediates/<episode>/`:
@@ -133,7 +133,6 @@ Final outputs to `outputs/<episode>/`:
 # Complete pipeline from audio to final transcript
 python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 \
   --transcribers whisperx-cloud,assemblyai --consensus
-python3 scripts/assess_quality.py --intermediate-consensus --episode <name>
 source setup_env.sh && python3 scripts/ai_consensus_pipeline.py --episode <name>
 ```
 

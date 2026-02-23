@@ -10,9 +10,8 @@ Build consensus transcripts from multiple transcribers AND AI post-processors us
 
 ## Arguments
 
-**For Phases 1-2 (Transcriber Consensus)** - uses `assess_quality.py`:
-- `--episode <name>` - Process specific episode (default: all episodes)
-- `--transcribers <list>` - Comma-separated transcribers to use (default: all available)
+**For Phase 2 (Transcriber Consensus)** - uses `ai_consensus_pipeline.py --phase 2`:
+- `--episode <name>` - Process specific episode (required)
 
 **For Phases 3-6 (AI Consensus Pipeline)** - uses `ai_consensus_pipeline.py`:
 - `--episode <name>` - Process specific episode (required)
@@ -35,7 +34,6 @@ Phase 3-6: AI Consensus Pipeline (new)
 # Full pipeline from scratch (all 3 transcribers)
 python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 \
   --transcribers whisperx,whisperx-cloud,assemblyai --consensus
-python3 scripts/assess_quality.py --intermediate-consensus --episode <name>
 python3 scripts/ai_consensus_pipeline.py --episode <name>
 ```
 
@@ -58,7 +56,7 @@ intermediates/episode001/
 ### Step 2: Build Consensus
 Run consensus generation to align and merge:
 ```bash
-python3 scripts/assess_quality.py --intermediate-consensus --episode <name>
+python3 scripts/ai_consensus_pipeline.py --episode <name> --phase 2
 ```
 
 ## Instructions
@@ -78,7 +76,7 @@ When the user invokes this command:
 
 3. **Run consensus generation**:
    ```bash
-   python3 scripts/assess_quality.py --intermediate-consensus [--episode <episode-name>]
+   python3 scripts/ai_consensus_pipeline.py --episode <episode-name> --phase 2
    ```
 
 4. **Report results**:

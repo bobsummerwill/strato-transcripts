@@ -12,7 +12,7 @@ Pipeline:
   Phase 6: Final Output - Generate .md and .txt files
 
 Prerequisite: Run transcriber consensus first (Phases 1-2):
-  python3 scripts/assess_quality.py --intermediate-consensus --episode <name>
+  python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 --transcribers whisperx,assemblyai --consensus
 """
 
 import argparse
@@ -28,14 +28,256 @@ from pathlib import Path
 # Import shared utilities
 from common import Colors, success, failure, validate_api_key
 
-# Import from assess_quality for reuse
-from assess_quality import (
-    load_glossary,
-    align_words_by_time,
-    build_word_level_consensus_text,
-    words_to_segments,
-    seconds_to_timestamp,
-)
+# =============================================================================
+# Utility functions (formerly in assess_quality.py)
+# =============================================================================
+
+def load_glossary():
+    """Load ethereum_glossary.json if available."""
+    glossary_path = Path("ethereum_glossary.json")
+    if glossary_path.exists():
+        with open(glossary_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return {"people": [], "technical_terms": [], "projects": []}
+
+
+def seconds_to_timestamp(secs):
+    """Convert seconds to MM:SS."""
+    secs = int(secs)
+    return f"{secs // 60}:{secs % 60:02d}"
+
+
+def align_words_by_time(all_word_lists, time_tolerance=0.3):
+    """
+    Align words from multiple transcribers by time with sub-second precision.
+
+    Groups words that start within time_tolerance seconds of each other.
+
+    Args:
+        all_word_lists: dict of {transcriber: [word_dicts]}
+        time_tolerance: Maximum time difference for matching (default 0.3s)
+
+    Returns:
+        List of aligned word groups: [{'time': float, 'variants': {transcriber: word_dict}}]
+    """
+    if not all_word_lists:
+        return []
+
+    # Collect all words with their sources
+    all_words = []
+    for transcriber, words in all_word_lists.items():
+        if words:
+            for word in words:
+                all_words.append({
+                    'transcriber': transcriber,
+                    'word': word
+                })
+
+    if not all_words:
+        return []
+
+    # Sort by start time
+    all_words.sort(key=lambda x: x['word']['start'])
+
+    # Group words within time tolerance
+    aligned = []
+    used = set()
+
+    for i, item in enumerate(all_words):
+        if i in used:
+            continue
+
+        group = {
+            'time': item['word']['start'],
+            'variants': {item['transcriber']: item['word']}
+        }
+        used.add(i)
+
+        # Find matching words from other transcribers
+        for j, other in enumerate(all_words):
+            if j in used:
+                continue
+            if other['transcriber'] == item['transcriber']:
+                continue
+            if other['transcriber'] in group['variants']:
+                continue
+
+            time_diff = abs(other['word']['start'] - item['word']['start'])
+            if time_diff <= time_tolerance:
+                group['variants'][other['transcriber']] = other['word']
+                used.add(j)
+
+        aligned.append(group)
+
+    return aligned
+
+
+def apply_word_level_glossary(words, glossary):
+    """Apply glossary-based corrections to word list with timing."""
+    # Build lowercase -> correct case mapping
+    corrections = {}
+    for person in glossary.get('people', []):
+        corrections[person.lower()] = person
+    for term in glossary.get('technical_terms', []):
+        corrections[term.lower()] = term
+    for project in glossary.get('projects', []):
+        corrections[project.lower()] = project
+
+    # Common Ethereum-specific corrections
+    crypto_corrections = {
+        'ether': 'Ether',
+        'ethereum': 'Ethereum',
+        'bitcoin': 'Bitcoin',
+        'defi': 'DeFi',
+        'nft': 'NFT',
+        'nfts': 'NFTs',
+        'dao': 'DAO',
+        'daos': 'DAOs',
+        'dapp': 'dApp',
+        'dapps': 'dApps',
+        'wei': 'Wei',
+        'gwei': 'Gwei',
+        'solidity': 'Solidity',
+        'evm': 'EVM',
+        'ipfs': 'IPFS',
+        'devcon': 'Devcon',
+        'vitalik': 'Vitalik',
+        'buterin': 'Buterin',
+    }
+    corrections.update(crypto_corrections)
+
+    for word in words:
+        text_stripped = word['text'].lower().strip('.,!?;:')
+        if text_stripped in corrections:
+            # Preserve punctuation
+            suffix = ''
+            for char in word['text'][::-1]:
+                if char in '.,!?;:':
+                    suffix = char + suffix
+                else:
+                    break
+            word['text'] = corrections[text_stripped] + suffix
+
+    return words
+
+
+def build_word_level_consensus_text(aligned_words, glossary=None):
+    """
+    Build consensus text from aligned words.
+
+    For each time position, vote on the word text among all transcribers.
+
+    Args:
+        aligned_words: Output from align_words_by_time()
+        glossary: Optional glossary for term correction
+
+    Returns:
+        List of consensus word dicts: [{'text': str, 'start': float, 'end': float, 'speaker': str}]
+    """
+    consensus_words = []
+
+    for group in aligned_words:
+        variants = group['variants']
+
+        if not variants:
+            continue
+
+        # Vote on text (case-insensitive comparison, preserve best case)
+        text_votes = Counter()
+        text_original = {}  # Preserve original casing
+        for transcriber, word in variants.items():
+            text_lower = word['text'].lower().strip('.,!?;:')
+            text_votes[text_lower] += 1
+            # Keep the version with more information (longer = likely has punctuation)
+            if text_lower not in text_original or len(word['text']) > len(text_original[text_lower]):
+                text_original[text_lower] = word['text']
+
+        winner_lower = text_votes.most_common(1)[0][0]
+        winner_text = text_original.get(winner_lower, winner_lower)
+
+        # Vote on speaker
+        speaker_votes = Counter()
+        for transcriber, word in variants.items():
+            speaker_votes[word['speaker']] += 1
+        consensus_speaker = speaker_votes.most_common(1)[0][0]
+
+        # Average the start/end times
+        starts = [w['start'] for w in variants.values()]
+        ends = [w['end'] for w in variants.values()]
+        avg_start = sum(starts) / len(starts)
+        avg_end = sum(ends) / len(ends)
+
+        consensus_words.append({
+            'text': winner_text,
+            'start': avg_start,
+            'end': avg_end,
+            'speaker': consensus_speaker,
+            'agreement': text_votes[winner_lower] / len(variants)
+        })
+
+    # Apply glossary corrections if available
+    if glossary:
+        consensus_words = apply_word_level_glossary(consensus_words, glossary)
+
+    return consensus_words
+
+
+def words_to_segments(consensus_words, max_gap=2.0):
+    """
+    Convert word-level consensus to speaker segments.
+
+    Groups consecutive words by speaker with gap detection.
+
+    Args:
+        consensus_words: List of word dicts with timing
+        max_gap: Maximum gap between words in same segment (seconds)
+
+    Returns:
+        List of segment dicts: [{'timestamp': 'MM:SS', 'speaker': str, 'text': str, 'start': float, 'end': float}]
+    """
+    if not consensus_words:
+        return []
+
+    segments = []
+    current_segment = None
+
+    for word in consensus_words:
+        if current_segment is None:
+            # Start new segment
+            current_segment = {
+                'speaker': word['speaker'],
+                'start': word['start'],
+                'end': word['end'],
+                'words': [word['text']]
+            }
+        elif (word['speaker'] != current_segment['speaker'] or
+              word['start'] - current_segment['end'] > max_gap):
+            # Speaker change or gap - finish current segment
+            current_segment['text'] = ' '.join(current_segment['words'])
+            current_segment['timestamp'] = seconds_to_timestamp(current_segment['start'])
+            del current_segment['words']
+            segments.append(current_segment)
+
+            # Start new segment
+            current_segment = {
+                'speaker': word['speaker'],
+                'start': word['start'],
+                'end': word['end'],
+                'words': [word['text']]
+            }
+        else:
+            # Continue current segment
+            current_segment['end'] = word['end']
+            current_segment['words'].append(word['text'])
+
+    # Don't forget the last segment
+    if current_segment and current_segment.get('words'):
+        current_segment['text'] = ' '.join(current_segment['words'])
+        current_segment['timestamp'] = seconds_to_timestamp(current_segment['start'])
+        del current_segment['words']
+        segments.append(current_segment)
+
+    return segments
 
 # =============================================================================
 # Constants
@@ -314,6 +556,150 @@ def align_ai_to_original(original_words, ai_text):
 
 
 # =============================================================================
+# Phase 2: Build Intermediate Consensus (from transcriber word-level JSONs)
+# =============================================================================
+
+def count_words(text):
+    """Count words in text, excluding speaker labels and timestamps."""
+    # Remove speaker labels like **[00:01] SPEAKER_00:**
+    cleaned = re.sub(r'\*\*\[\d+:\d+\]\s+SPEAKER_\d+:\*\*', '', text)
+    # Remove plain speaker labels like SPEAKER_00:
+    cleaned = re.sub(r'SPEAKER_\d+:', '', cleaned)
+    # Remove markdown formatting
+    cleaned = re.sub(r'\*\*', '', cleaned)
+    # Count words
+    words = cleaned.split()
+    return len(words)
+
+
+def load_word_level_json(episode_name, transcriber, intermediate_dir=Path("intermediates")):
+    """
+    Load word-level JSON for a transcriber.
+
+    Returns list of word dicts: [{'text': str, 'start': float, 'end': float, 'speaker': str}]
+    """
+    episode_dir = intermediate_dir / episode_name
+
+    # Try consensus_words.json first (from --consensus mode), then fall back to _words.json
+    json_file = episode_dir / f"{episode_name}_{transcriber}_consensus_words.json"
+    if not json_file.exists():
+        json_file = episode_dir / f"{episode_name}_{transcriber}_words.json"
+
+    if not json_file.exists():
+        return None
+
+    with open(json_file, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+
+def build_intermediate_word_consensus(episode_name, intermediate_dir=Path("intermediates"), glossary=None,
+                                       transcribers=None):
+    """Build word-level transcriber consensus.
+
+    Uses a pivot transcript (default preference: whisperx-cloud, then assemblyai)
+    and aligns other word streams using anchors + local DP via consensus_words module.
+
+    Returns:
+        (consensus_md, consensus_words, transcribers_used)
+    """
+
+    # Local import to avoid circular deps in other scripts.
+    from consensus_words import build_consensus
+
+    # Default to cloud-only providers unless explicitly overridden.
+    default_transcribers = ["whisperx-cloud", "assemblyai"]
+    transcribers_to_use = transcribers if transcribers else default_transcribers
+
+    all_word_lists = {}
+    for transcriber in transcribers_to_use:
+        words = load_word_level_json(episode_name, transcriber, intermediate_dir)
+        if words:
+            all_word_lists[transcriber] = words
+
+    if not all_word_lists:
+        return None, None, []
+
+    consensus_words = build_consensus(
+        all_word_lists,
+        provider_weights={"whisperx-cloud": 1.0, "assemblyai": 1.0},
+        pivot_preference=["whisperx-cloud", "assemblyai"],
+    )
+
+    # Apply glossary corrections if available
+    if glossary:
+        consensus_words = apply_word_level_glossary(consensus_words, glossary)
+
+    segments = words_to_segments(consensus_words)
+
+    lines = []
+    for seg in segments:
+        lines.append(f"**[{seg['timestamp']}] {seg['speaker']}:**")
+        lines.append(seg['text'])
+        lines.append("")
+
+    consensus_md = '\n'.join(lines)
+
+    return consensus_md, consensus_words, list(all_word_lists.keys())
+
+
+def generate_intermediate_consensus(episode_name, intermediate_dir=Path("intermediates"),
+                                     transcribers=None):
+    """
+    Generate word-level consensus from intermediate transcripts.
+
+    Uses word-level JSON files (*_consensus_words.json) for precise sub-second alignment.
+    Output goes to intermediates/<episode>/ alongside source files.
+
+    Returns:
+        Result dict with consensus info
+    """
+    glossary = load_glossary()
+
+    results = {
+        'episode': episode_name,
+        'transcribers_used': [],
+        'word_count': 0,
+        'consensus_file': None,
+        'has_word_level': False
+    }
+
+    # Build word-level consensus from intermediates
+    consensus_md, consensus_words_list, transcribers_used = build_intermediate_word_consensus(
+        episode_name, intermediate_dir, glossary, transcribers
+    )
+
+    if consensus_md:
+        results['transcribers_used'] = transcribers_used
+        results['word_count'] = count_words(consensus_md)
+        results['has_word_level'] = True
+
+        # Save consensus to intermediates (same dir as source files)
+        episode_dir = intermediate_dir / episode_name
+        episode_dir.mkdir(parents=True, exist_ok=True)
+
+        # Save markdown version
+        md_file = episode_dir / f"{episode_name}_intermediate_consensus.md"
+        with open(md_file, 'w', encoding='utf-8') as f:
+            f.write(consensus_md)
+
+        # Save txt version
+        txt_content = re.sub(r'\*\*', '', consensus_md)
+        txt_file = episode_dir / f"{episode_name}_intermediate_consensus.txt"
+        with open(txt_file, 'w', encoding='utf-8') as f:
+            f.write(txt_content)
+
+        # Save word-level JSON for downstream use
+        if consensus_words_list:
+            json_file = episode_dir / f"{episode_name}_intermediate_consensus_words.json"
+            with open(json_file, 'w', encoding='utf-8') as f:
+                json.dump(consensus_words_list, f, indent=2)
+
+        results['consensus_file'] = str(md_file)
+
+    return results
+
+
+# =============================================================================
 # Phase 3: AI Correction Pass
 # =============================================================================
 
@@ -476,7 +862,7 @@ def run_ai_correction_pass(episode_name, processors, intermediate_dir=Path("inte
     if not consensus_words:
         print(f"Error: Intermediate consensus not found: {source_file}")
         print("Run transcriber consensus first:")
-        print(f"  python3 scripts/assess_quality.py --intermediate-consensus --episode {episode_name}")
+        print(f"  python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 --transcribers whisperx,assemblyai --consensus")
         return False
 
     print(f"Loaded {len(consensus_words)} words from {source_file}")
@@ -1228,6 +1614,9 @@ Examples:
   # Run with subset of AI models (for testing)
   python3 scripts/ai_consensus_pipeline.py --episode episode003-bob-summerwill --processors opus,gemini,grok
 
+  # Build intermediate consensus from transcriber word JSONs (Phase 2)
+  python3 scripts/ai_consensus_pipeline.py --episode episode003-bob-summerwill --phase 2
+
   # Assess transcriber quality (after building intermediate consensus)
   python3 scripts/ai_consensus_pipeline.py --episode episode003-bob-summerwill --phase transcriber
 
@@ -1235,8 +1624,8 @@ Examples:
   python3 scripts/ai_consensus_pipeline.py --episode episode003-bob-summerwill --phase assess
 
 Prerequisites:
-  Run transcriber consensus first (Phases 1-2):
-  python3 scripts/assess_quality.py --intermediate-consensus --episode <name>
+  Transcribe with word-level JSON first (Phase 1):
+  python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 --transcribers whisperx,assemblyai --consensus
         """
     )
 
@@ -1244,8 +1633,8 @@ Prerequisites:
                         help='Episode name (e.g., episode003-bob-summerwill)')
     parser.add_argument('--processors', default='all',
                         help='Comma-separated AI models or "all" (default: all)')
-    parser.add_argument('--phase', choices=['transcriber', '3', '4', 'assess', '5', '6', 'all'], default='all',
-                        help='Run specific phase or all (default: all). "transcriber" assesses transcriber quality, "assess" assesses AI quality.')
+    parser.add_argument('--phase', choices=['2', 'transcriber', '3', '4', 'assess', '5', '6', 'all'], default='all',
+                        help='Run specific phase or all (default: all). "2" builds intermediate consensus, "transcriber" assesses transcriber quality, "assess" assesses AI quality.')
     parser.add_argument('--intermediate-dir', default='intermediates',
                         help='Directory for intermediate files (default: intermediates)')
     parser.add_argument('--output-dir', default='outputs',
@@ -1280,6 +1669,25 @@ Prerequisites:
     pipeline_start = time.time()
 
     # Run phases
+
+    # Phase 2: Build intermediate consensus from transcriber word JSONs
+    if args.phase in ['2', 'all']:
+        print(f"\n{'='*70}")
+        print("Phase 2: Building Intermediate Consensus")
+        print(f"{'='*70}")
+        result = generate_intermediate_consensus(args.episode, intermediate_dir)
+        if result['consensus_file']:
+            print(f"  Transcribers used: {', '.join(result['transcribers_used'])}")
+            print(f"  Word count: {result['word_count']}")
+            print(f"  Output: {result['consensus_file']}")
+        else:
+            print("  No transcriber word JSONs found. Run transcription with --consensus first.")
+            if args.phase == '2':
+                sys.exit(1)
+        if args.phase == '2':
+            elapsed = time.time() - pipeline_start
+            print(f"\nPhase 2 completed in {elapsed:.1f}s")
+            sys.exit(0)
 
     # Transcriber quality assessment (Phase 2.5 - after intermediate consensus is built)
     if args.phase == 'transcriber':

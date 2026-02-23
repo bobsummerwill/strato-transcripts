@@ -114,10 +114,7 @@ For highest quality transcripts, use the 6-phase AI Consensus Pipeline instead:
 python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 \
   --transcribers whisperx,assemblyai --consensus
 
-# Build transcriber consensus
-python3 scripts/assess_quality.py --intermediate-consensus --episode <name>
-
-# Run 11-model AI consensus (Phases 3-6)
+# Run AI consensus pipeline (Phases 2-6)
 python3 scripts/ai_consensus_pipeline.py --episode <name>
 ```
 
