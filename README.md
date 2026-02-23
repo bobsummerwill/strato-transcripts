@@ -84,56 +84,6 @@ python3 scripts/process_single_post_process.py transcript.md --processors opus,g
 python3 scripts/process_single_post_process.py transcript.md --processors opus,gemini,deepseek,chatgpt,qwen,kimi,glm,minimax,llama,grok,mistral
 ```
 
-## Word-Level Consensus Pipeline
-
-Build ultra-high-quality transcripts using a 6-phase consensus pipeline that combines multiple transcribers and 11 AI models.
-
-### Phase 1-2: Transcriber Consensus
-
-```bash
-# Step 1: Transcribe with multiple services (generates word-level JSON)
-python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 \
-  --transcribers whisperx-cloud,assemblyai --consensus
-
-# Step 2: Build consensus from transcriber outputs
-python3 scripts/ai_consensus_pipeline.py --episode <name> --phase 2
-```
-
-Outputs to `intermediates/<episode>/`:
-- `*_intermediate_consensus.md` - Merged transcript
-- `*_intermediate_consensus_words.json` - Word-level data with agreement scores
-
-### Phase 3-6: AI Consensus Pipeline
-
-After transcriber consensus, run through 11 AI models for superior accuracy:
-
-```bash
-# Source API keys first
-source setup_env.sh
-
-# Run full AI pipeline (Phases 3-6)
-python3 scripts/ai_consensus_pipeline.py --episode <name>
-```
-
-**Phases:**
-- **Phase 3**: AI Correction Pass - 11 models correct technical terms, names, grammar
-- **Phase 4**: AI Consensus - Voting across all AI outputs
-- **Phase 5**: Filler Removal - Removes um, uh, basically, literally, etc.
-- **Phase 6**: Final Output - Generates polished transcripts
-
-Final outputs to `outputs/<episode>/`:
-- `*_final.md` - Final markdown transcript
-- `*_final_words.json` - Word-level data
-
-### Quick Full Pipeline
-
-```bash
-# Complete pipeline from audio to final transcript
-python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 \
-  --transcribers whisperx-cloud,assemblyai --consensus
-source setup_env.sh && python3 scripts/ai_consensus_pipeline.py --episode <name>
-```
-
 ## Output Structure
 
 ```
@@ -145,31 +95,12 @@ intermediates/
     <episode>_assemblyai.md
     <episode>_assemblyai_words.json
 
-    # Consensus word files (--consensus mode)
-    <episode>_whisperx_consensus_words.json
-    <episode>_assemblyai_consensus_words.json
-
-    # Phase 2: Transcriber consensus
-    <episode>_intermediate_consensus.md
-    <episode>_intermediate_consensus_words.json
-
-    # Phase 3: AI corrections (×11 models)
-    <episode>_ai_opus_words.json
-    <episode>_ai_gemini_words.json
-    ... (9 more)
-
-    # Phase 4-5: AI consensus and filler removal
-    <episode>_ai_consensus_words.json
-    <episode>_final_words.json
-
 outputs/
   <episode>/
-    # Legacy: Single-model post-processing
-    <episode>_whisperx_opus.md
-
-    # Phase 6: Final consensus outputs
-    <episode>_final.md
-    <episode>_final_words.json
+    # AI post-processed transcripts
+    <episode>_assemblyai_opus.md
+    <episode>_whisperx-cloud_opus.md
+    ...
 ```
 
 ## Hardware Requirements

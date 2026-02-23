@@ -244,10 +244,7 @@ def load_word_timing(filepath):
         project_root = project_root.parent
 
     # Look for word timing JSON in intermediates directory
-    # Consensus mode files (--consensus flag) have _consensus_words.json suffix
     json_patterns = [
-        project_root / 'intermediates' / base_name / f"{base_name}_assemblyai_consensus_words.json",
-        project_root / 'intermediates' / base_name / f"{base_name}_whisperx-cloud_consensus_words.json",
         project_root / 'intermediates' / base_name / f"{base_name}_assemblyai_words.json",
         project_root / 'intermediates' / base_name / f"{base_name}_whisperx_words.json",
         project_root / 'intermediates' / base_name / f"{base_name}_whisperx-cloud_words.json",
@@ -345,8 +342,7 @@ def segments_to_srt(segments, speaker_names, word_timing):
     if not word_timing:
         raise ValueError(
             "Word-level timing JSON is required for subtitle generation.\n"
-            "Re-run transcription with --consensus flag to generate word timing:\n"
-            "  python3 scripts/process_single_transcribe_and_diarize.py <audio> --transcribers assemblyai --consensus"
+            "Ensure word-level JSON exists in intermediates/ for this episode."
         )
 
     srt_entries = []
