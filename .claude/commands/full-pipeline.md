@@ -95,26 +95,11 @@ outputs/
 | 60 min | ~12 min | ~3 min | ~45 sec |
 | 90 min | ~18 min | ~4 min | ~60 sec |
 
-## Three Independent Pipelines
+## Two Independent Pipelines
 
-This project has three pipelines that don't interfere with each other:
+This project has two pipelines that don't interfere with each other:
 
 | Pipeline | Output Pattern | Use Case |
 |----------|----------------|----------|
 | **1. Original (this)** | `{episode}_{transcriber}_{processor}.md` | Quick single-model output |
 | **2. Video Caption** | `{episode}_{transcriber}.srt/.ass` | Burned-in subtitles |
-| **3. AI Consensus** | `{episode}_final.md` | Premium 11-model consensus |
-
-## For Premium Quality
-
-For highest quality transcripts, use the 6-phase AI Consensus Pipeline instead:
-```bash
-# Transcribe with word-level JSON
-python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 \
-  --transcribers whisperx,assemblyai --consensus
-
-# Run AI consensus pipeline (Phases 2-6)
-python3 scripts/ai_consensus_pipeline.py --episode <name>
-```
-
-See `/consensus` command for details.

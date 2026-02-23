@@ -1,6 +1,6 @@
 # Quality Report
 
-Merge all per-episode self-assessments into a single cross-episode quality report. Aggregates transcriber reliability, processor rankings, consensus pipeline status, and best-combo recommendations across the entire corpus.
+Merge all per-episode self-assessments into a single cross-episode quality report. Aggregates transcriber reliability, processor rankings, and best-combo recommendations across the entire corpus.
 
 ## Usage
 
@@ -66,10 +66,6 @@ For processors that have outputs from both AssemblyAI and WhisperX-cloud:
 - Average word count from each base
 - Which base tends to produce more complete output for each processor
 
-**E. Consensus Pipeline Status**
-
-For each episode: was consensus run, did it succeed/fail, key metrics (alignment %, expansion ratio).
-
 ### 4. Generate insights
 
 Synthesize the aggregated data into:
@@ -77,7 +73,6 @@ Synthesize the aggregated data into:
 - **Overall best processors** — consistently Tier 1 across episodes and transcriber bases
 - **Overall worst processors** — consistently Tier 3/4 or with recurring issues
 - **Transcriber recommendation** — which transcriber to use by default
-- **Consensus pipeline verdict** — working, broken, or not yet tested enough
 - **Recurring patterns** — e.g., WhisperX local corruption, specific models truncating on long episodes
 - **Episode-specific outliers** — any episode where rankings differ significantly from the norm
 
@@ -120,25 +115,20 @@ Use this structure:
 [Table: processor × transcriber average word counts]
 [Which transcriber base produces better results]
 
-## 5. Consensus Pipeline Status
-
-[Table: episode × consensus status/metrics]
-[Overall verdict]
-
-## 6. Processor Tier Distribution
+## 5. Processor Tier Distribution
 
 [Table: processor × tier counts across all episodes]
 [Visual summary of consistency]
 
-## 7. Best Combinations
+## 6. Best Combinations
 
 [Ranked list of transcriber+processor combos with evidence]
 
-## 8. Processors to Avoid
+## 7. Processors to Avoid
 
 [List with reasons, supported by cross-episode evidence]
 
-## 9. Recommendations
+## 8. Recommendations
 
 [Actionable recommendations for default pipeline configuration]
 [Suggestions for further assessment]

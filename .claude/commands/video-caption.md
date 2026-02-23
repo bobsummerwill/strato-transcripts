@@ -115,14 +115,13 @@ Process multiple videos:
 ./scripts/process_all_videos.sh /path/to/videos/
 ```
 
-## Three Independent Pipelines
+## Two Independent Pipelines
 
-This project has three pipelines that don't interfere with each other:
+This project has two pipelines that don't interfere with each other:
 
 | Pipeline | Output Pattern | Use Case |
 |----------|----------------|----------|
-| **1. Original** | `{episode}_{transcriber}_{processor}.md` | Quick single-model output |
+| **1. Transcribe + Post-process** | `{episode}_{transcriber}_{processor}.md` | Single-model output |
 | **2. Video Caption** | `{episode}_{transcriber}.srt/.ass` | Burned-in subtitles |
-| **3. AI Consensus** | `{episode}_final.md` | Premium 11-model consensus |
 
-All pipelines can run on the same episode without conflicts.
+Both pipelines can run on the same episode without conflicts.

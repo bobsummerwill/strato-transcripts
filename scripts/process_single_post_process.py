@@ -201,12 +201,7 @@ def extract_transcriber_from_filename(filepath):
 
     # CHECK LONGER NAMES FIRST to avoid substring matching issues
     # (whisperx-cloud must be checked before whisperx)
-    # Also handle _consensus suffix from video captioning workflow
     for service in ['whisperx-cloud', 'assemblyai', 'whisperx']:
-        # Check for consensus suffix first (e.g., _assemblyai_consensus)
-        if f'_{service}_consensus' in filename:
-            basename = filename.replace(f'_{service}_consensus', '')
-            return basename, service
         if f'_{service}' in filename:
             basename = filename.replace(f'_{service}', '')
             return basename, service

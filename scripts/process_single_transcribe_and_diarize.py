@@ -242,8 +242,6 @@ def main():
     parser.add_argument("--output-dir", default="intermediates", help="Output directory")
     parser.add_argument("--force", action="store_true", help="Reprocess even if output exists")
     parser.add_argument("--force-cpu", action="store_true", help="Force CPU for WhisperX (disables GPU)")
-    parser.add_argument("--consensus", action="store_true",
-                        help="Consensus mode: keep ALL words (ums, ahs) and save word-level JSON for alignment")
     
     args = parser.parse_args()
     
@@ -305,12 +303,11 @@ def main():
                     str(audio_path),
                     args.output_dir,
                     args.force_cpu,
-                    consensus_mode=args.consensus
                 )
             elif transcriber == 'whisperx-cloud':
-                output_path = transcribe_whisperx_cloud(str(audio_path), args.output_dir, consensus_mode=args.consensus)
+                output_path = transcribe_whisperx_cloud(str(audio_path), args.output_dir)
             elif transcriber == 'assemblyai':
-                output_path = transcribe_assemblyai(str(audio_path), args.output_dir, consensus_mode=args.consensus)
+                output_path = transcribe_assemblyai(str(audio_path), args.output_dir)
             
             elapsed = time.time() - transcriber_start
             results.append((transcriber, output_path, 'success', elapsed))
@@ -355,13 +352,8 @@ def main():
         sys.exit(1)
 
 
-def transcribe_whisperx(audio_path, output_dir, force_cpu=False, consensus_mode=False):
-    """WhisperX local transcription with speaker diarization
-
-    Args:
-        consensus_mode: If True, saves word-level JSON for alignment. If False (default),
-                       only saves cleaned transcript without JSON.
-    """
+def transcribe_whisperx(audio_path, output_dir, force_cpu=False):
+    """WhisperX local transcription with speaker diarization."""
     import time
     import subprocess
     import tempfile
@@ -591,45 +583,12 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False, consensus_mode=
             episode_dir = output_dir_path / audio_path_obj.stem
         episode_dir.mkdir(parents=True, exist_ok=True)
 
-        if consensus_mode:
-            # Consensus mode: save BOTH word-level JSON AND md/txt transcripts
-            import json
-            word_data = []
-            for segment in result_with_speakers["segments"]:
-                speaker = segment.get("speaker", "UNKNOWN")
-                # WhisperX provides word-level timing in the "words" field
-                if "words" in segment:
-                    for word in segment["words"]:
-                        word_data.append({
-                            'text': word.get('word', ''),
-                            'start': word.get('start', 0),
-                            'end': word.get('end', 0),
-                            'speaker': speaker
-                        })
-
-            if word_data:
-                json_path = episode_dir / f"{audio_path_obj.stem}_whisperx_consensus_words.json"
-                with open(json_path, 'w') as f:
-                    json.dump(word_data, f, indent=2)
-                print(f"  → Saved consensus word-level data: {json_path}")
-            else:
-                raise RuntimeError("No word-level data available for consensus")
-
-            # Save consensus transcripts with _consensus suffix to avoid overwriting clean transcripts
-            output_path = save_transcript_files(
-                output_dir,
-                audio_path_obj.stem,
-                "whisperx_consensus",
-                result_with_speakers["segments"]
-            )
-        else:
-            # Normal mode: save md/txt transcripts (no JSON)
-            output_path = save_transcript_files(
-                output_dir,
-                audio_path_obj.stem,
-                "whisperx",
-                result_with_speakers["segments"]
-            )
+        output_path = save_transcript_files(
+            output_dir,
+            audio_path_obj.stem,
+            "whisperx",
+            result_with_speakers["segments"]
+        )
 
         elapsed = time.time() - start
         print(f"  → Completed in {elapsed:.1f}s ({elapsed/60:.1f} min)")
@@ -645,15 +604,11 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False, consensus_mode=
             os.unlink(temp_wav.name)
 
 
-def transcribe_whisperx_cloud(audio_path, output_dir, consensus_mode=False):
+def transcribe_whisperx_cloud(audio_path, output_dir):
     """Cloud transcription via Replicate with speaker diarization and word-level timestamps.
 
     Uses thomasmol/whisper-diarization which provides Whisper Large V3 Turbo with
     word-level and sentence-level timestamps plus speaker diarization via Pyannote.
-
-    Args:
-        consensus_mode: If True, saves word-level JSON for alignment. If False (default),
-                       only saves cleaned transcript without JSON.
     """
     import replicate
     import time
@@ -731,54 +686,12 @@ def transcribe_whisperx_cloud(audio_path, output_dir, consensus_mode=False):
             episode_dir = output_dir_path / audio_path_obj.stem
         episode_dir.mkdir(parents=True, exist_ok=True)
 
-        if consensus_mode:
-            # Consensus mode: save word-level JSON AND md/txt transcripts
-            word_data = []
-            for seg in pred_segments:
-                seg_speaker = seg.get('speaker', 'SPEAKER_00')
-                if seg_speaker and not seg_speaker.startswith('SPEAKER_'):
-                    try:
-                        seg_speaker = f'SPEAKER_{int(seg_speaker):02d}'
-                    except (ValueError, TypeError):
-                        seg_speaker = 'SPEAKER_UNKNOWN'
-
-                if 'words' in seg:
-                    for word in seg['words']:
-                        # Each word has its own speaker label from diarization
-                        word_speaker = word.get('speaker', seg_speaker)
-                        if word_speaker and not word_speaker.startswith('SPEAKER_'):
-                            try:
-                                word_speaker = f'SPEAKER_{int(word_speaker):02d}'
-                            except (ValueError, TypeError):
-                                word_speaker = 'SPEAKER_UNKNOWN'
-                        word_data.append({
-                            'text': word.get('word', word.get('text', '')),
-                            'start': float(word.get('start', 0)),
-                            'end': float(word.get('end', 0)),
-                            'speaker': word_speaker,
-                        })
-
-            if word_data:
-                json_path = episode_dir / f"{audio_path_obj.stem}_whisperx-cloud_consensus_words.json"
-                with open(json_path, 'w') as f:
-                    json.dump(word_data, f, indent=2)
-                print(f"  Saved consensus word-level data: {json_path}")
-            else:
-                raise RuntimeError("No word-level timing available from Replicate model for consensus")
-
-            output_path = save_transcript_files(
-                output_dir,
-                audio_path_obj.stem,
-                "whisperx-cloud_consensus",
-                segments,
-            )
-        else:
-            output_path = save_transcript_files(
-                output_dir,
-                audio_path_obj.stem,
-                "whisperx-cloud",
-                segments,
-            )
+        output_path = save_transcript_files(
+            output_dir,
+            audio_path_obj.stem,
+            "whisperx-cloud",
+            segments,
+        )
 
         return output_path
 
@@ -786,13 +699,8 @@ def transcribe_whisperx_cloud(audio_path, output_dir, consensus_mode=False):
         raise RuntimeError(f"WhisperX Cloud transcription failed: {e}")
 
 
-def transcribe_assemblyai(audio_path, output_dir, consensus_mode=False):
-    """AssemblyAI cloud transcription with speaker diarization
-
-    Args:
-        consensus_mode: If True, keeps disfluencies (um, uh) and saves word-level JSON.
-                       If False (default), removes disfluencies and skips JSON.
-    """
+def transcribe_assemblyai(audio_path, output_dir):
+    """AssemblyAI cloud transcription with speaker diarization"""
     import time
     import assemblyai as aai
     
@@ -809,19 +717,15 @@ def transcribe_assemblyai(audio_path, output_dir, consensus_mode=False):
     
     print(f"  Uploading and transcribing...")
     
-    # In consensus mode, keep disfluencies (um, uh) for raw word alignment
     config = aai.TranscriptionConfig(
         speaker_labels=True,
         speakers_expected=None,
         format_text=True,  # Auto-format for readability
         punctuate=True,
-        disfluencies=consensus_mode,  # Keep filler words only in consensus mode
+        disfluencies=False,
         word_boost=custom_vocab,  # Boost accuracy for Ethereum people/terms
         boost_param='high'  # Aggressively boost custom vocabulary
     )
-
-    if consensus_mode:
-        print("  Consensus mode: keeping disfluencies (um, uh, etc.)")
     
     transcriber = aai.Transcriber()
     transcript = transcriber.transcribe(str(audio_file_path), config=config)
@@ -885,34 +789,8 @@ def transcribe_assemblyai(audio_path, output_dir, consensus_mode=False):
         episode_dir = output_dir_path / audio_file_path.stem
     episode_dir.mkdir(parents=True, exist_ok=True)
 
-    if consensus_mode:
-        # Consensus mode: save BOTH word-level JSON AND md/txt transcripts
-        if not transcript.words:
-            raise RuntimeError("No word-level data available from AssemblyAI for consensus")
-
-        import json
-        word_data = []
-        for word in transcript.words:
-            word_data.append({
-                'text': word.text,
-                'start': word.start / 1000.0,  # Convert ms to seconds
-                'end': word.end / 1000.0,
-                'speaker': f"SPEAKER_{ord(word.speaker) - ord('A'):02d}" if hasattr(word, 'speaker') and word.speaker else None
-            })
-
-        json_path = episode_dir / f"{audio_file_path.stem}_assemblyai_consensus_words.json"
-        with open(json_path, 'w') as f:
-            json.dump(word_data, f, indent=2)
-        print(f"  Saved consensus word-level data: {json_path}")
-
-        # Save consensus transcripts with _consensus suffix to avoid overwriting clean transcripts
-        formatted_text = '\n'.join(output_lines) + '\n'
-        md_path = save_raw_transcript_from_text(output_dir, audio_file_path.stem, "assemblyai_consensus", formatted_text)
-        return md_path
-    else:
-        # Normal mode: save md/txt transcripts (no JSON)
-        formatted_text = '\n'.join(output_lines) + '\n'
-        return save_raw_transcript_from_text(output_dir, audio_file_path.stem, "assemblyai", formatted_text)
+    formatted_text = '\n'.join(output_lines) + '\n'
+    return save_raw_transcript_from_text(output_dir, audio_file_path.stem, "assemblyai", formatted_text)
 
 
 if __name__ == "__main__":

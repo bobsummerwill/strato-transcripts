@@ -104,9 +104,8 @@ VIDEO_DIR=$(dirname "$VIDEO_FILE")
 # Output paths
 AUDIO_FILE="${VIDEO_DIR}/${VIDEO_BASE}.mp3"
 INTERMEDIATE_DIR="${PROJECT_DIR}/intermediates/${VIDEO_BASE}"
-# Consensus mode saves transcripts with _consensus suffix to avoid overwriting clean transcripts
-CONSENSUS_TRANSCRIPT_FILE="${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}_consensus.md"
-CONSENSUS_WORDS_JSON="${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}_consensus_words.json"
+TRANSCRIPT_FILE="${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}.md"
+WORDS_JSON="${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}_words.json"
 SRT_FILE="${INTERMEDIATE_DIR}/${VIDEO_BASE}_${TRANSCRIBER}.srt"
 OUTPUT_VIDEO="${VIDEO_DIR}/${VIDEO_BASE}_captioned.mp4"
 
@@ -129,26 +128,25 @@ else
 fi
 echo ""
 
-# Step 2: Run transcription (always use --consensus for word-level timing required by subtitles)
+# Step 2: Run transcription
 echo "[2/4] Running transcription with $TRANSCRIBER..."
-TRANSCRIBE_CMD="python3 $SCRIPT_DIR/process_single_transcribe_and_diarize.py \"$AUDIO_FILE\" --transcribers \"$TRANSCRIBER\" --consensus"
+TRANSCRIBE_CMD="python3 $SCRIPT_DIR/process_single_transcribe_and_diarize.py \"$AUDIO_FILE\" --transcribers \"$TRANSCRIBER\""
 if [ -n "$FORCE_CPU" ]; then
     TRANSCRIBE_CMD="$TRANSCRIBE_CMD $FORCE_CPU"
 fi
 
-# Check for consensus_words.json (not transcript) since that's what subtitles need
-if [ -f "$CONSENSUS_WORDS_JSON" ]; then
-    echo "  Consensus word data already exists: $CONSENSUS_WORDS_JSON"
+if [ -f "$TRANSCRIPT_FILE" ]; then
+    echo "  Transcript already exists: $TRANSCRIPT_FILE"
 else
     eval $TRANSCRIBE_CMD
 fi
 echo ""
 
 # Step 3: Run post-processor if specified
-TRANSCRIPT_FOR_SUBTITLES="$CONSENSUS_TRANSCRIPT_FILE"
+TRANSCRIPT_FOR_SUBTITLES="$TRANSCRIPT_FILE"
 if [ -n "$PROCESSOR" ]; then
     echo "[2.5/4] Running post-processor: $PROCESSOR..."
-    python3 "$SCRIPT_DIR/process_single_post_process.py" "$CONSENSUS_TRANSCRIPT_FILE" --processors "$PROCESSOR"
+    python3 "$SCRIPT_DIR/process_single_post_process.py" "$TRANSCRIPT_FILE" --processors "$PROCESSOR"
     # Use processed transcript for subtitles
     PROCESSED_FILE="${PROJECT_DIR}/outputs/${VIDEO_BASE}/${VIDEO_BASE}_${TRANSCRIBER}_${PROCESSOR}.md"
     if [ -f "$PROCESSED_FILE" ]; then
