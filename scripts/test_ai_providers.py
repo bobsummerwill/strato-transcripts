@@ -16,15 +16,7 @@ import subprocess
 OPENROUTER_MODELS = {
     'opus': ('anthropic/claude-opus-4.6', 'Claude Opus 4.6'),
     'gemini': ('google/gemini-3.1-pro-preview', 'Gemini 3.1 Pro'),
-    'deepseek': ('deepseek/deepseek-chat', 'DeepSeek V3.2'),
-    'chatgpt': ('openai/gpt-5.2', 'GPT-5.2'),
-    'qwen': ('qwen/qwen3-max', 'Qwen3-Max'),
-    'kimi': ('moonshotai/kimi-k2.5', 'Kimi K2.5'),
-    'glm': ('z-ai/glm-4.7', 'GLM-4.7'),
-    'minimax': ('minimax/minimax-m2.1', 'MiniMax M2.1'),
-    'llama': ('meta-llama/llama-4-maverick', 'Llama 4 Maverick'),
     'grok': ('x-ai/grok-4', 'Grok 4'),
-    'mistral': ('mistralai/mistral-large-2411', 'Mistral Large'),
 }
 
 # Local model mapping (models that fit on 48GB dual 3090s)
@@ -310,7 +302,7 @@ def main():
     print("="*60)
     print("AI Provider Connectivity Test")
     print("="*60)
-    print("Hosted: All AI post-processing uses OpenRouter (single API key)")
+    print("Hosted: AI post-processing uses OpenRouter (opus, gemini, grok)")
     print("Local:  5 models via ollama (requires 2x RTX 3090 / 48GB)")
     print("        glm, deepseek-local, qwen-local, mistral-local, llama-local")
     print("="*60)

@@ -6,24 +6,16 @@ Tests actual context window limits for AI providers via OpenRouter.
 
 All post-processing providers are accessed through OpenRouter with a single API key.
 
-PROVIDER MATRIX (11 POST-PROCESSING PROVIDERS via OpenRouter):
+PROVIDER MATRIX (3 POST-PROCESSING PROVIDERS via OpenRouter):
 - opus: Claude Opus 4.6 - 1M context, 128K output
 - gemini: Gemini 3.1 Pro - 1M context, 64K output
-- deepseek: DeepSeek V3.2 - 128K context
-- chatgpt: GPT-5.2 - 400K context, 128K output
-- qwen: Qwen3-Max - 256K context
-- kimi: Kimi K2.5 - 256K context, 16K output
-- glm: GLM-4.7 - 203K context (via OpenRouter)
-- minimax: MiniMax M2.1 - 4M context (200K recommended)
-- llama: Llama 4 Maverick - 1M context
 - grok: Grok 4 - 256K context
-- mistral: Mistral Large - 256K context
 
 TRANSCRIPTION PROVIDERS (ASR + DIARIZATION - no context limits):
 - WhisperX (local GPU/CPU), WhisperX-Cloud (Replicate), AssemblyAI
 
 USAGE:
-    python3 scripts/test_context_limits.py --providers opus,gemini,deepseek,chatgpt
+    python3 scripts/test_context_limits.py --providers opus,gemini,grok
     python3 scripts/test_context_limits.py --providers all
 """
 
@@ -77,55 +69,6 @@ OPENROUTER_MODELS = {
         'advertised': '1,000,000 tokens',
         'test_sizes': [10000, 50000, 100000, 200000, 500000, 1000000],
     },
-    'deepseek': {
-        'model_id': 'deepseek/deepseek-chat',
-        'display_name': 'DeepSeek V3.2',
-        'provider': 'DeepSeek',
-        'advertised': '128,000 tokens',
-        'test_sizes': [10000, 50000, 100000, 120000, 128000],
-    },
-    'chatgpt': {
-        'model_id': 'openai/gpt-5.2',
-        'display_name': 'GPT-5.2',
-        'provider': 'OpenAI',
-        'advertised': '400,000 tokens',
-        'test_sizes': [10000, 50000, 100000, 200000, 300000, 400000],
-    },
-    'qwen': {
-        'model_id': 'qwen/qwen3-max',
-        'display_name': 'Qwen3-Max',
-        'provider': 'Alibaba',
-        'advertised': '256,000 tokens',
-        'test_sizes': [10000, 50000, 100000, 150000, 200000, 256000],
-    },
-    'kimi': {
-        'model_id': 'moonshotai/kimi-k2.5',
-        'display_name': 'Kimi K2.5',
-        'provider': 'Moonshot',
-        'advertised': '256,000 tokens',
-        'test_sizes': [10000, 50000, 100000, 150000, 200000, 256000],
-    },
-    'glm': {
-        'model_id': 'z-ai/glm-4.7',
-        'display_name': 'GLM-4.7',
-        'provider': 'Z.ai',
-        'advertised': '203,000 tokens',
-        'test_sizes': [10000, 50000, 100000, 150000, 200000],
-    },
-    'minimax': {
-        'model_id': 'minimax/minimax-m2.1',
-        'display_name': 'MiniMax M2.1',
-        'provider': 'MiniMax',
-        'advertised': '4,000,000 tokens (200K recommended)',
-        'test_sizes': [10000, 50000, 100000, 150000, 200000],
-    },
-    'llama': {
-        'model_id': 'meta-llama/llama-4-maverick',
-        'display_name': 'Llama 4 Maverick',
-        'provider': 'Meta/Together',
-        'advertised': '1,000,000 tokens',
-        'test_sizes': [10000, 50000, 100000, 200000, 500000, 1000000],
-    },
     'grok': {
         'model_id': 'x-ai/grok-4',
         'display_name': 'Grok 4',
@@ -133,28 +76,13 @@ OPENROUTER_MODELS = {
         'advertised': '256,000 tokens',
         'test_sizes': [10000, 50000, 100000, 150000, 200000, 256000],
     },
-    'mistral': {
-        'model_id': 'mistralai/mistral-large-2411',
-        'display_name': 'Mistral Large',
-        'provider': 'Mistral',
-        'advertised': '256,000 tokens',
-        'test_sizes': [10000, 50000, 100000, 150000, 200000, 256000],
-    },
 }
 
 # Model quality priority for recommendations
 MODEL_PRIORITY = {
-    'x-ai/grok-4': 100,
-    'anthropic/claude-opus-4.6': 95,
-    'openai/gpt-5.2': 90,
-    'google/gemini-3.1-pro-preview': 85,
-    'meta-llama/llama-4-maverick': 80,
-    'qwen/qwen3-max': 75,
-    'moonshotai/kimi-k2.5': 70,
-    'z-ai/glm-4.7': 65,
-    'mistralai/mistral-large-2411': 60,
-    'deepseek/deepseek-chat': 55,
-    'minimax/minimax-m2.1': 50,
+    'anthropic/claude-opus-4.6': 100,
+    'x-ai/grok-4': 95,
+    'google/gemini-3.1-pro-preview': 90,
 }
 
 
@@ -369,8 +297,8 @@ def main():
     )
     parser.add_argument(
         "--providers",
-        default="opus,gemini,deepseek,chatgpt",
-        help="Comma-separated list of providers to test (opus,gemini,deepseek,chatgpt,qwen,kimi,glm,minimax,llama,grok,mistral) or 'all'"
+        default="opus,gemini,grok",
+        help="Comma-separated list of providers to test (opus,gemini,grok) or 'all'"
     )
     parser.add_argument(
         "--output",
