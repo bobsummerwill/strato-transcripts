@@ -1,1 +1,0 @@
-**[00:01] SPEAKER_01:** Thank you. Thank you.

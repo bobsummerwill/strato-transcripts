@@ -55,21 +55,13 @@ python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 --transcriber
 
 ## AI Post-Processors
 
-All 11 models accessed via **OpenRouter** (single API key). See [AI_PROVIDERS.md](AI_PROVIDERS.md) for details.
+All hosted models accessed via **OpenRouter** (single API key). See [AI_PROVIDERS.md](AI_PROVIDERS.md) for details.
 
 | Processor | Model | Context | Best For |
 |-----------|-------|---------|----------|
 | **opus** | Claude Opus 4.6 | 1M | Premium quality, complex reasoning |
-| **gemini** | Gemini 3 Pro | 1M | Very long documents, technical |
-| **chatgpt** | GPT-5.2 | 400K | General-purpose, balanced |
-| **grok** | Grok 4 | 256K | #1 benchmark performance |
-| **deepseek** | DeepSeek V3.2 | 128K | Cost-effective, good quality |
-| **kimi** | Kimi K2.5 | 256K | Long-context, coding |
-| **qwen** | Qwen3-Max | 256K | Agent workflows |
-| **glm** | GLM-4.7 | 203K | Local-capable (~19GB VRAM) |
-| **minimax** | MiniMax M2.1 | 4M | Extremely long documents |
-| **llama** | Llama 4 Maverick | 1M | Open model, cost-effective |
-| **mistral** | Mistral Large | 256K | European sovereignty |
+| **gemini** | Gemini 3.1 Pro | 1M | Very long documents, technical |
+| **grok** | Grok 4 | 256K | High benchmark performance |
 
 ### Post-Processing Commands
 
@@ -77,11 +69,8 @@ All 11 models accessed via **OpenRouter** (single API key). See [AI_PROVIDERS.md
 # Single processor
 python3 scripts/process_single_post_process.py transcript.md --processors opus
 
-# Multiple processors
-python3 scripts/process_single_post_process.py transcript.md --processors opus,gemini,deepseek
-
 # All processors
-python3 scripts/process_single_post_process.py transcript.md --processors opus,gemini,deepseek,chatgpt,qwen,kimi,glm,minimax,llama,grok,mistral
+python3 scripts/process_single_post_process.py transcript.md --processors opus,gemini,grok
 ```
 
 ## Output Structure

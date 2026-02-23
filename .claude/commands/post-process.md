@@ -20,16 +20,8 @@ Run AI post-processing on transcripts to fix technical terms, names, and formatt
 | Processor | Model | Context | Best For |
 |-----------|-------|---------|----------|
 | opus | Claude Opus 4.6 | 1M | Premium quality |
-| gemini | Gemini 3 Pro | 1M | Long documents |
-| chatgpt | GPT-5.2 | 400K | General purpose |
-| grok | Grok 4 | 256K | #1 benchmark |
-| deepseek | DeepSeek V3.2 | 128K | Cost-effective |
-| kimi | Kimi K2.5 | 256K | Long-context |
-| qwen | Qwen3-Max | 256K | Agent workflows |
-| glm | GLM-4.7 | 203K | Also local-capable |
-| minimax | MiniMax M2.1 | 4M | Extremely long |
-| llama | Llama 4 Maverick | 1M | Open model |
-| mistral | Mistral Large | 256K | European sovereignty |
+| gemini | Gemini 3.1 Pro | 1M | Long documents |
+| grok | Grok 4 | 256K | High benchmark performance |
 
 ### Local (ollama, requires 2x RTX 3090)
 | Processor | Model | VRAM |
@@ -66,11 +58,8 @@ When the user invokes this command:
 # Single high-quality processor
 /post-process intermediates/episode001/episode001_whisperx.md --processors opus
 
-# Multiple processors for comparison
-/post-process intermediates/episode001/episode001_whisperx.md --processors opus,gemini,deepseek
-
-# All processors
-/post-process intermediates/episode001/episode001_whisperx.md --processors opus,gemini,deepseek,chatgpt,qwen,kimi,glm,minimax,llama,grok,mistral
+# All hosted processors
+/post-process intermediates/episode001/episode001_whisperx.md --processors opus,gemini,grok
 
 # Local mode (requires 2x RTX 3090)
 /post-process intermediates/episode001/episode001_whisperx.md --processors glm --mode local

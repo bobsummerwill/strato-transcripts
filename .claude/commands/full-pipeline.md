@@ -57,8 +57,8 @@ When the user invokes this command:
 # Force reprocess everything
 /full-pipeline episode001.mp3 --force
 
-# Premium quality with all top processors
-/full-pipeline episode001.mp3 --processors opus,grok,chatgpt
+# All processors
+/full-pipeline episode001.mp3 --processors opus,grok,gemini
 ```
 
 ## Pipeline Steps

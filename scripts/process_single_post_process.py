@@ -2,7 +2,7 @@
 """
 AI transcript post-processor for Ethereum/blockchain content.
 Batch process transcripts with multiple AI providers via OpenRouter.
-Supports: opus, gemini, deepseek, chatgpt, qwen, kimi, glm, glm5, minimax, llama, grok, mistral.
+Supports: opus, gemini, grok (hosted) and local models via ollama.
 
 All models are accessed through OpenRouter (https://openrouter.ai) with a single API key.
 """
@@ -21,7 +21,7 @@ from common import (Colors, success, failure, skip, validate_api_key,
 # ============================================================================
 # Model Configuration: Hosted (OpenRouter) + Local (ollama)
 # ============================================================================
-# 11 models via OpenRouter. 4 local options for 48GB (dual 3090s).
+# 3 hosted models via OpenRouter. 5 local options for 48GB (dual 3090s).
 #
 # HOSTED MODELS (OpenRouter):
 # ┌───────────┬─────────────────────┬───────────────────────────────────┬─────────┐
@@ -29,15 +29,7 @@ from common import (Colors, success, failure, skip, validate_api_key,
 # ├───────────┼─────────────────────┼───────────────────────────────────┼─────────┤
 # │ opus      │ Claude Opus 4.6     │ anthropic/claude-opus-4.6         │ 1M      │
 # │ gemini    │ Gemini 3.1 Pro      │ google/gemini-3.1-pro-preview     │ 1M      │
-# │ chatgpt   │ GPT-5.2             │ openai/gpt-5.2                    │ 400K    │
 # │ grok      │ Grok 4              │ x-ai/grok-4                       │ 256K    │
-# │ qwen      │ Qwen3-Max           │ qwen/qwen3-max                    │ 256K    │
-# │ kimi      │ Kimi K2.5           │ moonshotai/kimi-k2.5              │ 256K    │
-# │ mistral   │ Mistral Large       │ mistralai/mistral-large-2411      │ 256K    │
-# │ minimax   │ MiniMax M2.1        │ minimax/minimax-m2.1              │ 4M      │
-# │ llama     │ Llama 4 Maverick    │ meta-llama/llama-4-maverick       │ 1M      │
-# │ deepseek  │ DeepSeek V3.2       │ deepseek/deepseek-chat            │ 128K    │
-# │ glm       │ GLM-4.7             │ z-ai/glm-4.7                      │ 203K    │
 # └───────────┴─────────────────────┴───────────────────────────────────┴─────────┘
 #
 # LOCAL MODELS (ollama, fit on 48GB):
@@ -57,26 +49,14 @@ from common import (Colors, success, failure, skip, validate_api_key,
 OPENROUTER_MODELS = {
     'opus': 'anthropic/claude-opus-4.6',           # Claude Opus 4.6 - 1M context
     'gemini': 'google/gemini-3.1-pro-preview',     # Gemini 3.1 Pro - 1M context
-    'deepseek': 'deepseek/deepseek-chat',          # DeepSeek V3.2 - 128K context
-    'chatgpt': 'openai/gpt-5.2',                   # GPT-5.2 - 400K context
-    'qwen': 'qwen/qwen3-max',                      # Qwen3-Max - 256K context
-    'kimi': 'moonshotai/kimi-k2.5',                # Kimi K2.5 - 256K context
-    'glm': 'z-ai/glm-4.7',                         # GLM-4.7 - 203K context (reasoning model)
-    'glm5': 'z-ai/glm-5',                          # GLM-5 - 203K context (flagship agentic model, 744B MoE)
-    'minimax': 'minimax/minimax-m2.1',             # MiniMax M2.1 - 4M context
-    'llama': 'meta-llama/llama-4-maverick',        # Llama 4 Maverick - 1M context
     'grok': 'x-ai/grok-4',                         # Grok 4 - 256K context
-    'mistral': 'mistralai/mistral-large-2411',     # Mistral Large - 256K context
 }
 
 # Max output tokens per model (some models need higher limits)
 OPENROUTER_MAX_TOKENS = {
     'opus': 128000,     # Opus 4.6 supports 128K output
     'gemini': 64000,    # Gemini supports 64K output
-    'chatgpt': 16384,   # GPT-5.2 conservative default
     'grok': 32768,      # Grok uses internal reasoning, needs more tokens
-    'glm': 65536,       # GLM 4.7 is a reasoning model, needs tokens for reasoning + output
-    'glm5': 65536,      # GLM-5 flagship model
     'default': 8192,    # Default for others
 }
 
@@ -92,28 +72,13 @@ LOCAL_MODELS = {
 }
 
 # Models that require OpenRouter (no local option for 48GB)
-# MoE models require VRAM for ALL weights, not just active parameters
 HOSTED_ONLY_MODELS = {
-    # Proprietary (API-only)
-    'opus', 'gemini', 'chatgpt', 'grok', 'qwen',
-    # Open weights but too large for 48GB even at Q4
-    'deepseek',   # 671B total → ~386GB Q4 (use deepseek-local for 32B distilled)
-    'kimi',       # 1T total → ~373GB Q4
-    'mistral',    # 675B total → ~400GB Q4 (use mistral-local for 12B Nemo)
-    'minimax',    # 230B total → ~55GB Q4 min
-    'llama',      # 400B total → ~243GB Q4
+    'opus', 'gemini', 'grok',
 }
 
 # Direct API endpoints (bypass OpenRouter for specific providers)
 # Use when you have a direct API key - better reliability than OpenRouter for new models
-DIRECT_API_CONFIG = {
-    'kimi': {
-        'base_url': 'https://api.moonshot.ai/v1',  # Global endpoint
-        'model_id': 'kimi-latest',  # kimi-k2.5 uses reasoning_content, kimi-latest uses content
-        'env_var': 'MOONSHOT_API_KEY',
-        'max_tokens': 16384,
-    },
-}
+DIRECT_API_CONFIG = {}
 
 
 # ============================================================================
@@ -209,69 +174,6 @@ def extract_transcriber_from_filename(filepath):
     return filename, "whisperx"
 
 
-def fix_glm_format(content, input_content):
-    """
-    Fix GLM output format by adding timestamps from input.
-
-    GLM often outputs: SPEAKER_XX: text (missing timestamps and markdown)
-    This function converts to: **[MM:SS] SPEAKER_XX:** text
-
-    Args:
-        content: GLM's output (may be missing timestamps)
-        input_content: Original input transcript with timestamps
-
-    Returns:
-        Fixed content with proper formatting
-    """
-    import re
-
-    # Check if already properly formatted
-    if content.strip().startswith('**['):
-        return content
-
-    # Extract timestamps from input (format: **[MM:SS] SPEAKER_XX:** or [MM:SS] SPEAKER_XX:)
-    input_timestamps = {}
-    for match in re.finditer(r'\*?\*?\[(\d+:\d+)\]\s*(SPEAKER_\d+)', input_content):
-        ts, speaker = match.groups()
-        # Store first timestamp for each speaker turn
-        key = f"{speaker}_{len([k for k in input_timestamps if k.startswith(speaker)])}"
-        input_timestamps[key] = ts
-
-    # Parse GLM output - look for SPEAKER_XX: at start of line
-    lines = content.split('\n')
-    fixed_lines = []
-    speaker_counts = {}
-    current_timestamp = "00:00"
-
-    for line in lines:
-        # Check if line starts with SPEAKER_XX:
-        match = re.match(r'^(SPEAKER_\d+):\s*(.*)', line)
-        if match:
-            speaker, text = match.groups()
-
-            # Track speaker turn count
-            if speaker not in speaker_counts:
-                speaker_counts[speaker] = 0
-            else:
-                speaker_counts[speaker] += 1
-
-            # Try to find corresponding timestamp from input
-            key = f"{speaker}_{speaker_counts[speaker]}"
-            if key in input_timestamps:
-                current_timestamp = input_timestamps[key]
-
-            # Format with proper markdown and timestamp
-            fixed_lines.append(f"**[{current_timestamp}] {speaker}:** {text}")
-        elif line.strip():
-            # Non-speaker line (continuation text)
-            fixed_lines.append(line)
-        else:
-            # Empty line
-            fixed_lines.append(line)
-
-    return '\n'.join(fixed_lines)
-
-
 def save_processed_files(output_dir, basename, transcriber, processor, content, input_content=None):
     """Save txt (clean) and md (with timestamps).
 
@@ -288,10 +190,6 @@ def save_processed_files(output_dir, basename, transcriber, processor, content, 
         input_content: Original input (used to fix GLM format issues)
     """
     import re
-
-    # Fix GLM format if needed (GLM often omits timestamps)
-    if processor in ('glm', 'glm5') and input_content and not content.strip().startswith('**['):
-        content = fix_glm_format(content, input_content)
 
     # Create episode-specific subdirectory
     episode_dir = Path(output_dir) / basename
@@ -320,7 +218,7 @@ INSTRUCTION_TEMPLATE = """You are an expert transcript editor specializing in Et
 ════════════════════════════════════════════════════════════════════════════════
 CRITICAL: OUTPUT ONLY THE TRANSCRIPT - NO THINKING/REASONING/ANALYSIS
 ════════════════════════════════════════════════════════════════════════════════
-If you are a reasoning model (GLM, DeepSeek-R1, Kimi, etc.):
+If you are a reasoning model:
 - Do NOT output your chain-of-thought
 - Do NOT output any analysis, planning, or step-by-step thinking
 - Do NOT output numbered lists of what you will do
@@ -606,7 +504,7 @@ def process_with_openrouter(transcript, api_key, context, processor):
         transcript: The raw transcript text to process
         api_key: OpenRouter API key
         context: Context summary (glossary, people, terms)
-        processor: Processor name (opus, gemini, deepseek, etc.)
+        processor: Processor name (opus, gemini, grok)
 
     Returns:
         Processed transcript text
@@ -669,7 +567,7 @@ def process_with_openrouter(transcript, api_key, context, processor):
 def process_with_direct_api(transcript, api_key, context, processor):
     """Process transcript using direct provider API (bypasses OpenRouter).
 
-    Some providers (like Moonshot/Kimi) work better with direct API access,
+    Some providers work better with direct API access,
     especially for newly released models that may not be fully integrated
     with OpenRouter yet.
 
@@ -677,7 +575,7 @@ def process_with_direct_api(transcript, api_key, context, processor):
         transcript: The raw transcript text to process
         api_key: Direct API key for the provider
         context: Context summary (glossary, people, terms)
-        processor: Processor name (e.g., 'kimi')
+        processor: Processor name
 
     Returns:
         Processed transcript text
@@ -931,7 +829,7 @@ def main():
     
     parser.add_argument("transcripts", nargs='+', help="Transcript file path(s)")
     parser.add_argument("--processors", required=True,
-                       help="Comma-separated list of processors. Hosted: opus,gemini,deepseek,chatgpt,qwen,kimi,glm,glm5,minimax,llama,grok,mistral. Local-only: deepseek-local,qwen-local,mistral-local,llama-local")
+                       help="Comma-separated list of processors. Hosted: opus,gemini,grok. Local-only: glm,deepseek-local,qwen-local,mistral-local,llama-local")
     parser.add_argument("--mode", choices=['hosted', 'local'], default='hosted',
                        help="Run models via OpenRouter API (hosted, default) or locally via ollama (local)")
     parser.add_argument("--parallel", type=int, default=0, metavar='N',
@@ -943,10 +841,10 @@ def main():
     processors = [p.strip() for p in args.processors.split(',')]
     # All valid processor names (hosted + local-only)
     valid_processors = {
-        # Hosted (OpenRouter) - full-size models
-        'opus', 'gemini', 'deepseek', 'chatgpt', 'qwen', 'kimi', 'glm', 'glm5', 'minimax', 'llama', 'grok', 'mistral',
+        # Hosted (OpenRouter)
+        'opus', 'gemini', 'grok',
         # Local-only (ollama) - models that fit on 48GB
-        'deepseek-local', 'qwen-local', 'mistral-local', 'llama-local',
+        'glm', 'deepseek-local', 'qwen-local', 'mistral-local', 'llama-local',
     }
 
     for proc in processors:
@@ -979,9 +877,6 @@ def main():
             print(f"  qwen-local     → Qwen3 72B (~45GB)")
             print(f"  mistral-local  → Mixtral 8x7B (~27GB)")
             print(f"  llama-local    → Llama 3.3 70B (~40GB)")
-            print(f"\nNote: Full-size models require too much VRAM:")
-            print(f"  deepseek: ~386GB | kimi: ~373GB | mistral: ~400GB")
-            print(f"  minimax: ~55GB   | llama: ~243GB")
             print(f"\nUse --mode hosted for: {', '.join(sorted(HOSTED_ONLY_MODELS))}")
             sys.exit(1)
 
@@ -997,13 +892,8 @@ def main():
         local_only = [p for p in processors if p in LOCAL_MODELS and p not in OPENROUTER_MODELS]
         if local_only:
             print(f"\nERROR: Processor(s) only available in local mode: {', '.join(local_only)}")
-            print(f"\nThese are local-only models for ollama inference:")
-            print(f"  deepseek-local → DeepSeek-R1 70B (not V3.2)")
-            print(f"  qwen-local     → Qwen3 72B (not Max)")
-            print(f"  mistral-local  → Mixtral 8x7B (not Large)")
-            print(f"  llama-local    → Llama 3.3 70B (not Llama 4)")
-            print(f"\nUse --mode local to run these, or use the hosted equivalents:")
-            print(f"  deepseek, qwen, mistral, llama (via OpenRouter)")
+            print(f"\nThese are local-only models for ollama inference.")
+            print(f"Use --mode local to run these.")
             sys.exit(1)
 
         openrouter_key, error = validate_api_key('OPENROUTER_API_KEY')

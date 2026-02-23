@@ -42,7 +42,7 @@ while [[ $# -gt 0 ]]; do
             echo "                           Default: whisperx"
             echo ""
   echo "  --processors <list>      Comma-separated AI post-processors"
-  echo "                           (opus, gemini, deepseek, chatgpt)"
+  echo "                           (opus, gemini, grok)"
             echo "                           Default: opus (Claude Opus 4.6)"
             echo ""
             echo "Examples:"

@@ -248,7 +248,7 @@ def load_word_timing(filepath):
         project_root / 'intermediates' / base_name / f"{base_name}_assemblyai_words.json",
         project_root / 'intermediates' / base_name / f"{base_name}_whisperx_words.json",
         project_root / 'intermediates' / base_name / f"{base_name}_whisperx-cloud_words.json",
-        filepath.parent / f"{filepath.stem.replace('_opus', '').replace('_gemini', '').replace('_deepseek', '').replace('_chatgpt', '')}_words.json",
+        filepath.parent / f"{filepath.stem.replace('_opus', '').replace('_gemini', '').replace('_grok', '')}_words.json",
     ]
 
     for json_path in json_patterns:
