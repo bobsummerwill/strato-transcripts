@@ -211,7 +211,9 @@ def assess_output_quality(episode_dir, transcriber):
     glossary = load_glossary()
 
     for processor in PROCESSORS:
-        output_file = episode_dir / f"{base_name}_{processor}.txt"
+        output_file = episode_dir / f"{base_name}_{processor}.md"
+        if not output_file.exists():
+            output_file = episode_dir / f"{base_name}_{processor}.txt"
 
         if not output_file.exists():
             continue
@@ -259,7 +261,9 @@ def compare_outputs(episode_dir, transcriber):
     contents = {}
 
     for processor in PROCESSORS:
-        output_file = episode_dir / f"{base_name}_{processor}.txt"
+        output_file = episode_dir / f"{base_name}_{processor}.md"
+        if not output_file.exists():
+            output_file = episode_dir / f"{base_name}_{processor}.txt"
         if output_file.exists():
             with open(output_file, 'r', encoding='utf-8') as f:
                 contents[processor] = f.read()
