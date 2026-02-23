@@ -1064,13 +1064,6 @@ def main():
     for transcript_path in args.transcripts:
         transcript_path = Path(transcript_path)
 
-        # Prefer .md files (have timestamps) over .txt files
-        if transcript_path.suffix == '.txt':
-            md_path = transcript_path.with_suffix('.md')
-            if md_path.exists():
-                print(f"  → Using .md file (has timestamps): {md_path.name}")
-                transcript_path = md_path
-
         if not transcript_path.exists():
             print(f"✗ Transcript not found: {transcript_path}")
             failed_count += len(processors)
