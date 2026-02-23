@@ -456,7 +456,7 @@ def process_with_ai_model(text, processor, api_key, context=""):
     return result
 
 
-def run_ai_correction_pass(episode_name, processors, intermediate_dir=Path("intermediates")):
+def run_ai_correction_pass(episode_name, processors, intermediate_dir=Path("intermediates"), parallel=0):
     """
     Phase 3: Process intermediate consensus with all AI models.
 
@@ -500,36 +500,56 @@ def run_ai_correction_pass(episode_name, processors, intermediate_dir=Path("inte
     episode_dir = intermediate_dir / episode_name
     success_count = 0
 
-    for i, processor in enumerate(processors):
-        print(f"\n[{i+1}/{len(processors)}] Processing with {processor}...")
-
+    def process_one_model(processor):
+        """Process a single AI model. Returns (processor, success, elapsed)."""
         output_file = episode_dir / f"{episode_name}_ai_{processor}_words.json"
 
-        # Skip if already exists
         if output_file.exists():
-            print(f"      Skipping: {output_file.name} already exists")
-            success_count += 1
-            continue
+            return processor, True, 0, "skipped"
 
         try:
             start_time = time.time()
-
-            # Get AI correction
             corrected_text = process_with_ai_model(text, processor, api_key, context)
-
-            # Align back to word-level
             aligned_words = align_ai_to_original(consensus_words, corrected_text)
 
-            # Save
             with open(output_file, 'w', encoding='utf-8') as f:
                 json.dump(aligned_words, f, indent=2)
 
             elapsed = time.time() - start_time
-            print(f"      {success(f'Saved {len(aligned_words)} words to {output_file.name} ({elapsed:.1f}s)')}")
-            success_count += 1
-
+            return processor, True, elapsed, f"Saved {len(aligned_words)} words ({elapsed:.1f}s)"
         except Exception as e:
-            print(f"      {failure(f'Failed: {e}')}")
+            return processor, False, 0, str(e)
+
+    num_workers = parallel if parallel > 0 else len(processors)
+
+    if num_workers > 1:
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+        print(f"\nRunning {len(processors)} AI models with {num_workers} parallel workers\n")
+
+        with ThreadPoolExecutor(max_workers=num_workers) as executor:
+            futures = {executor.submit(process_one_model, p): p for p in processors}
+            for future in as_completed(futures):
+                proc, ok, elapsed, msg = future.result()
+                if ok:
+                    success_count += 1
+                    if msg == "skipped":
+                        print(f"  {proc}: Skipping (already exists)")
+                    else:
+                        print(f"  {success(f'{proc}: {msg}')}")
+                else:
+                    print(f"  {failure(f'{proc}: Failed — {msg}')}")
+    else:
+        for i, processor in enumerate(processors):
+            print(f"\n[{i+1}/{len(processors)}] Processing with {processor}...")
+            proc, ok, elapsed, msg = process_one_model(processor)
+            if ok:
+                success_count += 1
+                if msg == "skipped":
+                    print(f"      Skipping: {episode_dir / f'{episode_name}_ai_{processor}_words.json'} already exists")
+                else:
+                    print(f"      {success(msg)}")
+            else:
+                print(f"      {failure(f'Failed: {msg}')}")
 
     print(f"\nPhase 3 complete: {success_count}/{len(processors)} models processed")
     return success_count > 0
@@ -1230,6 +1250,8 @@ Prerequisites:
                         help='Directory for intermediate files (default: intermediates)')
     parser.add_argument('--output-dir', default='outputs',
                         help='Directory for final output (default: outputs)')
+    parser.add_argument('--parallel', type=int, default=0, metavar='N',
+                        help='Number of parallel workers for Phase 3 AI calls (default: 0 = all parallel). Use 1 for sequential.')
 
     args = parser.parse_args()
 
@@ -1269,7 +1291,7 @@ Prerequisites:
         sys.exit(0)
 
     if args.phase in ['3', 'all']:
-        if not run_ai_correction_pass(args.episode, processors, intermediate_dir):
+        if not run_ai_correction_pass(args.episode, processors, intermediate_dir, parallel=args.parallel):
             if args.phase == '3':
                 sys.exit(1)
 
