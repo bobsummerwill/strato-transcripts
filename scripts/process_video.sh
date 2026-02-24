@@ -47,7 +47,7 @@ usage() {
     echo "  --transcriber <name>   Transcription service (default: whisperx)"
     echo "                         Options: whisperx, whisperx-cloud, assemblyai"
     echo "  --processor <name>     AI post-processor (optional)"
-    echo "                         Options: opus, gemini, grok"
+    echo "                         Options: opus, gemini, grok, qwen"
     echo "  --force-cpu            Force CPU mode for WhisperX"
     echo "  --title <text>         Title overlay at top of screen"
     echo ""

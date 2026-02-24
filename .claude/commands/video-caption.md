@@ -14,7 +14,7 @@ Generate captioned videos with burned-in subtitles from transcripts.
 - `--transcriber <name>` - Transcription service (default: whisperx)
   - Options: whisperx, whisperx-cloud, assemblyai
 - `--processor <name>` - AI post-processor for transcript cleanup (optional)
-  - Options: opus, gemini, grok
+  - Options: opus, gemini, grok, qwen
 - `--title <text>` - Title overlay at top of screen
 - `--force-cpu` - Force CPU mode for WhisperX
 

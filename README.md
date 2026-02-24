@@ -62,6 +62,7 @@ All hosted models accessed via **OpenRouter** (single API key). See [AI_PROVIDER
 | **opus** | Claude Opus 4.6 | 1M | Premium quality, complex reasoning |
 | **gemini** | Gemini 3.1 Pro | 1M | Very long documents, technical |
 | **grok** | Grok 4 | 256K | High benchmark performance |
+| **qwen** | Qwen3.5 Plus | 1M | Multilingual, open weights |
 
 ### Post-Processing Commands
 
@@ -70,7 +71,7 @@ All hosted models accessed via **OpenRouter** (single API key). See [AI_PROVIDER
 python3 scripts/process_single_post_process.py transcript.md --processors opus
 
 # All processors
-python3 scripts/process_single_post_process.py transcript.md --processors opus,gemini,grok
+python3 scripts/process_single_post_process.py transcript.md --processors opus,gemini,grok,qwen
 ```
 
 ## Output Structure

@@ -22,6 +22,7 @@ Run AI post-processing on transcripts to fix technical terms, names, and formatt
 | opus | Claude Opus 4.6 | 1M | Premium quality |
 | gemini | Gemini 3.1 Pro | 1M | Long documents |
 | grok | Grok 4 | 256K | High benchmark performance |
+| qwen | Qwen3.5 Plus | 1M | Multilingual, open weights |
 
 ### Local (ollama, requires 2x RTX 3090)
 | Processor | Model | VRAM |
@@ -59,7 +60,7 @@ When the user invokes this command:
 /post-process intermediates/episode001/episode001_whisperx.md --processors opus
 
 # All hosted processors
-/post-process intermediates/episode001/episode001_whisperx.md --processors opus,gemini,grok
+/post-process intermediates/episode001/episode001_whisperx.md --processors opus,gemini,grok,qwen
 
 # Local mode (requires 2x RTX 3090)
 /post-process intermediates/episode001/episode001_whisperx.md --processors glm --mode local

@@ -2,7 +2,7 @@
 """
 AI transcript post-processor for Ethereum/blockchain content.
 Batch process transcripts with multiple AI providers via OpenRouter.
-Supports: opus, gemini, grok (hosted) and local models via ollama.
+Supports: opus, gemini, grok, qwen (hosted) and local models via ollama.
 
 All models are accessed through OpenRouter (https://openrouter.ai) with a single API key.
 """
@@ -21,7 +21,7 @@ from common import (Colors, success, failure, skip, validate_api_key,
 # ============================================================================
 # Model Configuration: Hosted (OpenRouter) + Local (ollama)
 # ============================================================================
-# 3 hosted models via OpenRouter. 5 local options for 48GB (dual 3090s).
+# 4 hosted models via OpenRouter. 5 local options for 48GB (dual 3090s).
 #
 # HOSTED MODELS (OpenRouter):
 # ┌───────────┬─────────────────────┬───────────────────────────────────┬─────────┐
@@ -30,6 +30,7 @@ from common import (Colors, success, failure, skip, validate_api_key,
 # │ opus      │ Claude Opus 4.6     │ anthropic/claude-opus-4.6         │ 1M      │
 # │ gemini    │ Gemini 3.1 Pro      │ google/gemini-3.1-pro-preview     │ 1M      │
 # │ grok      │ Grok 4              │ x-ai/grok-4                       │ 256K    │
+# │ qwen      │ Qwen3.5 Plus        │ qwen/qwen3.5-plus-02-15           │ 1M      │
 # └───────────┴─────────────────────┴───────────────────────────────────┴─────────┘
 #
 # LOCAL MODELS (ollama, fit on 48GB):
@@ -50,6 +51,7 @@ OPENROUTER_MODELS = {
     'opus': 'anthropic/claude-opus-4.6',           # Claude Opus 4.6 - 1M context
     'gemini': 'google/gemini-3.1-pro-preview',     # Gemini 3.1 Pro - 1M context
     'grok': 'x-ai/grok-4',                         # Grok 4 - 256K context
+    'qwen': 'qwen/qwen3.5-plus-02-15',            # Qwen3.5 Plus - 1M context
 }
 
 # Max output tokens per model (some models need higher limits)
@@ -57,6 +59,7 @@ OPENROUTER_MAX_TOKENS = {
     'opus': 128000,     # Opus 4.6 supports 128K output
     'gemini': 64000,    # Gemini supports 64K output
     'grok': 32768,      # Grok uses internal reasoning, needs more tokens
+    'qwen': 64000,      # Qwen3.5 Plus supports large output
     'default': 8192,    # Default for others
 }
 
@@ -73,7 +76,7 @@ LOCAL_MODELS = {
 
 # Models that require OpenRouter (no local option for 48GB)
 HOSTED_ONLY_MODELS = {
-    'opus', 'gemini', 'grok',
+    'opus', 'gemini', 'grok', 'qwen',
 }
 
 # Direct API endpoints (bypass OpenRouter for specific providers)
@@ -829,7 +832,7 @@ def main():
     
     parser.add_argument("transcripts", nargs='+', help="Transcript file path(s)")
     parser.add_argument("--processors", required=True,
-                       help="Comma-separated list of processors. Hosted: opus,gemini,grok. Local-only: glm,deepseek-local,qwen-local,mistral-local,llama-local")
+                       help="Comma-separated list of processors. Hosted: opus,gemini,grok,qwen. Local-only: glm,deepseek-local,qwen-local,mistral-local,llama-local")
     parser.add_argument("--mode", choices=['hosted', 'local'], default='hosted',
                        help="Run models via OpenRouter API (hosted, default) or locally via ollama (local)")
     parser.add_argument("--parallel", type=int, default=0, metavar='N',
@@ -842,7 +845,7 @@ def main():
     # All valid processor names (hosted + local-only)
     valid_processors = {
         # Hosted (OpenRouter)
-        'opus', 'gemini', 'grok',
+        'opus', 'gemini', 'grok', 'qwen',
         # Local-only (ollama) - models that fit on 48GB
         'glm', 'deepseek-local', 'qwen-local', 'mistral-local', 'llama-local',
     }

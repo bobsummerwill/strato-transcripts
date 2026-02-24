@@ -58,7 +58,7 @@ When the user invokes this command:
 /full-pipeline episode001.mp3 --force
 
 # All processors
-/full-pipeline episode001.mp3 --processors opus,grok,gemini
+/full-pipeline episode001.mp3 --processors opus,grok,gemini,qwen
 ```
 
 ## Pipeline Steps
