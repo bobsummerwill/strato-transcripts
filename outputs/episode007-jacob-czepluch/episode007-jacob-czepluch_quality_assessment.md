@@ -9,7 +9,7 @@
 - **Subject:** Jakob Czepluch discusses his internship at ETHDEV Berlin (Aug--Dec 2015), working on the Python client, the Ethereum Foundation funding crisis, and his experiences at DevCon 1.
 - **Duration:** ~16 minutes (00:01 to 15:52)
 - **Transcriber bases:** AssemblyAI, WhisperX-Cloud, WhisperX (local)
-- **AI Processors assessed:** Opus, Gemini, Grok (per instructions)
+- **AI Processors assessed:** Opus, Gemini, Grok, Qwen
 
 ---
 
@@ -42,7 +42,7 @@
 
 ---
 
-## 2. AI Processor Quality -- Opus, Gemini, Grok (AssemblyAI Base)
+## 2. AI Processor Quality -- AssemblyAI Base (Opus, Gemini, Grok, Qwen)
 
 ### AssemblyAI + Opus (2,868 words, 225 lines)
 
@@ -141,7 +141,47 @@
 
 ---
 
-## 3. AI Processor Quality -- Opus, Gemini, Grok (WhisperX-Cloud Base)
+### AssemblyAI + Qwen (2,905 words, 214 lines)
+
+**Completeness:** 99% of max (2,905 / 2,924 raw) -- **Tier 1**
+
+**First 150 lines assessment:**
+- Opens correctly with full greeting exchange
+- Speaker diarization perfectly preserved from AssemblyAI base
+- Timestamps retained at full granularity (~110 individual turns)
+- Proper noun corrections applied: "Bob Summerwill" (correct), "DevCon Prague" (from "Dark Prague"), "Ethereum Foundation" (from "FDEV" -- same misidentification as Grok), "DevCon" (from "DEFCON"), "Florian Glatz" (correct), "Fabian Vogelsteller" (correct), "Christoph Jentzsch" (correct)
+- "C++" properly formatted throughout -- consistent handling
+- "Felix Lange" correctly identified
+- At [04:34]: "Some Python, Simon, I think he was doing Go stuff" -- retains the ambiguous ASR output without correcting to Gustav Simonsson, but also does not introduce a wrong name (unlike Grok's "Piper Merriam")
+- Natural conversational flow preserved; retains a bit more speech disfluencies than Opus/Gemini (e.g., "I. I actually, I think the. The." at [03:12])
+
+**Last 100 lines assessment:**
+- Complete through to final exchange at [15:52]
+- "HydraChain" correctly identified and capitalized
+- "Raiden Network" correct
+- "free my bunk" retained at [13:15] without correction to "FreeMyVunk" -- missed proper noun
+- "LS0 or the Geth client" at [15:01] -- not corrected to AlethZero
+- DevCon comparisons (1, 2, 3) and Cancun reference all intact
+- "Blog. Blog." at [12:45] -- garbled rendering of "Block. Block." (referring to BlockApps) -- minor transcription artifact
+- "Strato" correctly rendered at [12:44]
+- Closing exchange fully preserved
+
+**Quality notes:**
+- Highest word count among all processors (2,905 vs 2,924 raw) -- closest to raw, indicating maximal content preservation
+- Retains more speech disfluencies and filler patterns than other processors (repeated words, false starts) -- this is more faithful to the actual speech but slightly less polished to read
+- "Ethereum Foundation" used instead of "ETHDEV" -- same error as Grok; ETHDEV was a distinct entity
+- Does not correct "Some Python, Simon" to "Gustav Simonsson" -- a miss, but at least no fabricated name
+- Does not correct "LS0" to "AlethZero" -- same miss as Opus
+- "Blog. Blog." artifact at [12:45] is a minor but notable transcription error unique to Qwen
+- Overall, the most complete output with good quality but slightly less editorial polish than Gemini or Opus
+
+**Tier: 1 (Complete, excellent quality -- most faithful to raw but less polished)**
+
+---
+
+## 3. AI Processor Quality -- WhisperX-Cloud Base (Opus, Gemini, Grok)
+
+Note: No Qwen output exists for the WhisperX-Cloud base.
 
 ### WhisperX-Cloud + Opus (2,729 words, 80 lines)
 
@@ -225,34 +265,35 @@ Comparing identical passages across the two usable transcriber bases:
 
 ### Key name corrections by AI processors:
 
-| Name | Correct | Opus (AAI) | Gemini (AAI) | Grok (AAI) |
-|------|---------|------------|--------------|------------|
-| Bob Summerwill | Bob Summerwill | Correct | Correct | Correct |
-| ETHPrague | ETHPrague | "DevCon Prague" | "ETHPrague" | "Devcon Prague" |
-| ETHDEV | ETHDEV | "ETHDEV" | "EthDev" | "Ethereum Foundation" |
-| Florian Glatz | Florian Glatz | Correct | Correct | Correct |
-| Gustav Simonsson | Gustav Simonsson | "Simonson" | Correct | "Piper Merriam" (wrong) |
-| Fabian Vogelsteller | Fabian Vogelsteller | Correct | Correct | Correct |
-| Christoph Jentzsch | Christoph Jentzsch | Correct | Correct | Correct |
-| Alex Van de Sande | Alex Van de Sande | Correct | Correct | Correct |
-| AlethZero | AlethZero | "Aleth" (partial) | Correct | "LES" (different entity) |
-| FreeMyVunk | FreeMyVunk | Correct | Correct | "free my bunk" (uncorrected) |
-| HydraChain | HydraChain | Correct | Correct | "Hydrachain" (capitalization) |
-| Gnosis | Gnosis | Correct | Correct | Correct |
+| Name | Correct | Opus (AAI) | Gemini (AAI) | Grok (AAI) | Qwen (AAI) |
+|------|---------|------------|--------------|------------|------------|
+| Bob Summerwill | Bob Summerwill | Correct | Correct | Correct | Correct |
+| ETHPrague | ETHPrague | "DevCon Prague" | "ETHPrague" | "Devcon Prague" | "DevCon Prague" |
+| ETHDEV | ETHDEV | "ETHDEV" | "EthDev" | "Ethereum Foundation" | "Ethereum Foundation" |
+| Florian Glatz | Florian Glatz | Correct | Correct | Correct | Correct |
+| Gustav Simonsson | Gustav Simonsson | "Simonson" | Correct | "Piper Merriam" (wrong) | "Simon" (uncorrected) |
+| Fabian Vogelsteller | Fabian Vogelsteller | Correct | Correct | Correct | Correct |
+| Christoph Jentzsch | Christoph Jentzsch | Correct | Correct | Correct | Correct |
+| Alex Van de Sande | Alex Van de Sande | Correct | Correct | Correct | Correct |
+| AlethZero | AlethZero | "Aleth" (partial) | Correct | "LES" (different entity) | "LS0" (uncorrected) |
+| FreeMyVunk | FreeMyVunk | Correct | Correct | "free my bunk" (uncorrected) | "free my bunk" (uncorrected) |
+| HydraChain | HydraChain | Correct | Correct | "Hydrachain" (capitalization) | Correct |
+| Gnosis | Gnosis | Correct | Correct | Correct | Correct |
 
-**Winner for proper nouns:** Gemini -- correctly identifies Gustav Simonsson and AlethZero, which both Opus and Grok miss or get wrong.
+**Winner for proper nouns:** Gemini -- correctly identifies Gustav Simonsson and AlethZero, which all other processors miss or get wrong.
 
 ---
 
 ## 6. Summary and Rankings
 
-### Overall Processor Rankings (AssemblyAI base, Opus/Gemini/Grok only)
+### Overall Processor Rankings (AssemblyAI base)
 
 | Rank | Processor | Words | Tier | Strengths | Weaknesses |
 |------|-----------|-------|------|-----------|------------|
 | 1 | **Gemini** | 2,747 | **Tier 1** | Best proper noun accuracy (Gustav Simonsson, AlethZero, ETHPrague), clean prose | Slightly shorter, some C/C++ inconsistency |
-| 2 | **Opus** | 2,868 | **Tier 1** | Most complete, best timestamp preservation, natural flow | Misses Gustav Simonsson, partial AlethZero |
-| 3 | **Grok** | 2,830 | **Tier 1** | Nearly complete, good flow | Introduces "Piper Merriam" error, inconsistent capitalization, misses FreeMyVunk |
+| 2 | **Opus** | 2,868 | **Tier 1** | Very complete, best timestamp preservation, natural flow | Misses Gustav Simonsson, partial AlethZero |
+| 3 | **Qwen** | 2,905 | **Tier 1** | Most complete (99% of raw), faithful to speech | Retains more disfluencies, misses Gustav Simonsson and AlethZero, "Ethereum Foundation" for ETHDEV |
+| 4 | **Grok** | 2,830 | **Tier 1** | Nearly complete, good flow | Introduces "Piper Merriam" error, inconsistent capitalization, misses FreeMyVunk |
 
 ### Overall Processor Rankings (WhisperX-Cloud base, Opus/Gemini/Grok only)
 
@@ -264,7 +305,7 @@ Comparing identical passages across the two usable transcriber bases:
 
 ### Best Available Transcript
 
-**Recommendation:** `episode007-jacob-czepluch_assemblyai_gemini.md` is the best single transcript for this episode among the three assessed processors, due to its superior proper noun accuracy (uniquely correct on Gustav Simonsson and AlethZero) and clean formatting. However, `assemblyai_opus.md` is a very close second with better timestamp preservation and slightly more complete content.
+**Recommendation:** `episode007-jacob-czepluch_assemblyai_gemini.md` is the best single transcript for this episode, due to its superior proper noun accuracy (uniquely correct on Gustav Simonsson and AlethZero) and clean formatting. `assemblyai_opus.md` is a very close second with better timestamp preservation and more complete content. `assemblyai_qwen.md` is the most faithful to the raw speech (99% word preservation) but trades polish for completeness. `assemblyai_grok.md` is the weakest of the four due to the fabricated "Piper Merriam" name substitution, though it is otherwise a solid output.
 
 ### Transcriber Verdict
 
