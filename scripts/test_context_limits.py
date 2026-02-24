@@ -76,6 +76,13 @@ OPENROUTER_MODELS = {
         'advertised': '256,000 tokens',
         'test_sizes': [10000, 50000, 100000, 150000, 200000, 256000],
     },
+    'qwen': {
+        'model_id': 'qwen/qwen3.5-plus-02-15',
+        'display_name': 'Qwen3.5 Plus',
+        'provider': 'Alibaba',
+        'advertised': '1,000,000 tokens',
+        'test_sizes': [10000, 50000, 100000, 200000, 500000, 1000000],
+    },
 }
 
 # Model quality priority for recommendations
@@ -83,6 +90,7 @@ MODEL_PRIORITY = {
     'anthropic/claude-opus-4.6': 100,
     'x-ai/grok-4': 95,
     'google/gemini-3.1-pro-preview': 90,
+    'qwen/qwen3.5-plus-02-15': 85,
 }
 
 

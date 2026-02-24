@@ -17,6 +17,7 @@ OPENROUTER_MODELS = {
     'opus': ('anthropic/claude-opus-4.6', 'Claude Opus 4.6'),
     'gemini': ('google/gemini-3.1-pro-preview', 'Gemini 3.1 Pro'),
     'grok': ('x-ai/grok-4', 'Grok 4'),
+    'qwen': ('qwen/qwen3.5-plus-02-15', 'Qwen3.5 Plus'),
 }
 
 # Local model mapping (models that fit on 48GB dual 3090s)

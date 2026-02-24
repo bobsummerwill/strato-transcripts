@@ -1,6 +1,6 @@
 # AI Providers for Transcript Post-Processing
 
-All 3 hosted models are accessed through **OpenRouter** with a single API key.
+All 4 hosted models are accessed through **OpenRouter** with a single API key.
 Get your key from: https://openrouter.ai/keys
 
 **Local Mode**: 5 models run locally via ollama on dual RTX 3090s (48GB).
@@ -12,6 +12,7 @@ Get your key from: https://openrouter.ai/keys
 | **opus** | Claude Opus 4.6 | `anthropic/claude-opus-4.6` | 1M | Closed |
 | **gemini** | Gemini 3.1 Pro | `google/gemini-3.1-pro-preview` | 1M | Closed |
 | **grok** | Grok 4 | `x-ai/grok-4` | 256K | Closed |
+| **qwen** | Qwen3.5 Plus | `qwen/qwen3.5-plus-02-15` | 1M | Open |
 
 ## Local Models (ollama, fit on 48GB)
 
@@ -50,7 +51,7 @@ python3 scripts/test_ai_providers.py
 python3 scripts/process_single_post_process.py transcript.md --processors opus
 
 # All hosted processors
-python3 scripts/process_single_post_process.py transcript.md --processors opus,gemini,grok
+python3 scripts/process_single_post_process.py transcript.md --processors opus,gemini,grok,qwen
 
 # Explicit hosted mode
 python3 scripts/process_single_post_process.py transcript.md --processors grok --mode hosted
@@ -78,7 +79,7 @@ python3 scripts/process_single_post_process.py transcript.md --processors glm,de
 
 ### Test Context Limits
 ```bash
-python3 scripts/test_context_limits.py --providers opus,gemini,grok
+python3 scripts/test_context_limits.py --providers opus,gemini,grok,qwen
 python3 scripts/test_context_limits.py --providers all
 ```
 
@@ -99,6 +100,11 @@ python3 scripts/test_context_limits.py --providers all
 - **Best For**: Very long documents, technical content
 - **Notes**: Dynamic thinking by default
 
+### Qwen3.5 Plus (`qwen`)
+- **Context**: 1M tokens
+- **Best For**: Multilingual content, agentic tasks
+- **Notes**: 397B MoE (17B active), open weights, 201 languages
+
 ## Recommendations
 
 ### For Typical Transcripts (60-90 min)
@@ -106,16 +112,17 @@ python3 scripts/test_context_limits.py --providers all
 - **Token count**: ~20,000-40,000 tokens
 - **Total with prompts**: ~45,000 tokens
 
-All 3 models have sufficient context for typical transcripts.
+All 4 models have sufficient context for typical transcripts.
 
 ### Best Quality
 1. **Claude Opus 4.6** - Consistently Tier 1 in 13/15 episodes
 2. **Grok 4** - Strong benchmark performance
 3. **Gemini 3.1 Pro** - Reliable, good for long content
+4. **Qwen3.5 Plus** - New, under evaluation
 
 ## OpenRouter Benefits
 
-- **Single API key** for all 3 models
+- **Single API key** for all 4 models
 - **Unified billing** across providers
 - **Automatic failover** if a provider is down
 - **Pay-as-you-go** with no monthly minimums
