@@ -4,7 +4,7 @@
 **Episode:** Early Days of Ethereum -- Michael Parenti interview by Bob Summerwill
 **Duration:** ~26 minutes
 **Location:** Paralelni Polis, Prague (HCPP / DevCon era)
-**Assessed processors:** opus, gemini, grok (per scope)
+**Assessed processors:** opus, gemini, grok, qwen (4 current hosted processors)
 
 ---
 
@@ -47,18 +47,31 @@ Three raw transcriber outputs were assessed from `intermediates/episode008-micha
 
 ## 2. AI Processor Comparison -- AssemblyAI Base
 
-Max word count among assessed outputs: 4,425 (gemini).
+Max word count among assessed outputs: 4,519 (qwen).
 
 | Processor | Words | Lines | % of Max | Tier | Rating |
 |---|---|---|---|---|---|
-| **gemini** | 4,425 | 384 | 100% | **Tier 1** | Excellent |
-| **opus** | 4,273 | 386 | 96.6% | **Tier 1** | Excellent |
-| **grok** | 4,251 | 386 | 96.1% | **Tier 1** | Excellent |
+| **qwen** | 4,519 | 378 | 100% | **Tier 1** | Excellent |
+| **gemini** | 4,425 | 384 | 97.9% | **Tier 1** | Excellent |
+| **opus** | 4,273 | 386 | 94.6% | **Tier 1** | Excellent |
+| **grok** | 4,251 | 386 | 94.1% | **Tier 1** | Excellent |
 
 ### Detailed Notes -- AssemblyAI Base
 
+**qwen (Tier 1 -- Excellent)**
+- Highest word count (4,519) and most complete content retention among all four processors.
+- 378 lines with excellent formatting, proper bold speaker labels and timestamps.
+- Good name corrections: "Bob Summerwill" (correct), "Mark Karpeles" (correct), "Charlie Shrem" (correct), "Amir Taaki" (correct), "Parallel Polis" (simplified from Czech spelling).
+- Renders the guest introduction as "Ethereum server Michael Paranti" -- partially corrected from "Exalt server" but still not quite "Exiled Surfer," and misspells the guest surname.
+- Corrects "Magical Tux" reference but renders it as "Mt. Gox" instead, which is the wrong entity for that line (Magical Tux was Mark Karpeles' handle, not the exchange name).
+- Renders "Smari McCarthy" and "Birgitta Jonsdottir" for the Icelandic parliamentarian -- a factually incorrect name substitution (Birgitta Jonsdottir was indeed an Icelandic Pirate Party MP but not the person referenced here; the actual person was Asta Helgadottir/Asta Fish).
+- Uses "Ross Ulbricht" instead of "Lyn Ulbricht" -- technically more well-known but the transcript clearly refers to Lyn (Ross's mother), who runs freeross.org.
+- Renders "Mike Gogulski" correctly.
+- Complete from start ([00:03]) to finish ([26:07] "Bye").
+- Preserves natural conversational flow with appropriate filler word retention.
+
 **gemini (Tier 1 -- Excellent)**
-- Highest word count (4,425) and most complete content retention among the three processors.
+- 4,425 words across 384 lines -- second highest word count with excellent line-level diarization.
 - Excellent formatting with proper bold speaker labels, timestamps, and clean speaker turn separation.
 - Strong name corrections: corrects "Bob Summerwill" (from "Bob Samuel"), "Mark Karpeles" (from "Capellis"), "Charlie Shrem" (from "Schremm"), "Smari McCarthy" with proper accent marks on "Asta Helgadottir."
 - Correctly identifies "Devcon Prague" from the garbled "Dark Prague."
@@ -90,7 +103,7 @@ Max word count among assessed outputs: 4,425 (gemini).
 
 ## 3. AI Processor Comparison -- WhisperX (Local) Base
 
-Max word count among assessed outputs: 4,348 (gemini).
+Max word count among assessed outputs: 4,348 (gemini). No qwen output exists for this transcriber base.
 
 | Processor | Words | Lines | % of Max | Tier | Rating |
 |---|---|---|---|---|---|
@@ -136,7 +149,7 @@ Max word count among assessed outputs: 4,348 (gemini).
 
 ## 4. AI Processor Comparison -- WhisperX-Cloud Base
 
-Max word count among assessed outputs: 4,276 (opus).
+Max word count among assessed outputs: 4,276 (opus). No qwen output exists for this transcriber base.
 
 | Processor | Words | Lines | % of Max | Tier | Rating |
 |---|---|---|---|---|---|
@@ -160,14 +173,14 @@ Max word count among assessed outputs: 4,276 (opus).
 - Content is largely complete (95.5% of max) but readability suffers significantly.
 - Long merged paragraphs make it difficult to follow the conversational back-and-forth.
 - Does correct some names: "Smari McCarthy," "Asta Fish."
-- Renders guest as "Michael Peranti" and host as "Bob Samuel" -- same as source without correction.
+- Renders guest as "Michael Paret" and host initially without correction, then uses "Bob Summerwill" in the intro line.
 - Timestamps are sparse (~25) matching the cloud input.
 - Complete from start to finish but structurally poor.
 
 **grok (Tier 2 -- Good)**
 - 3,932 words across 50 lines -- lowest word count, suggesting some content loss during processing.
 - Like gemini, preserves the coarse paragraph structure from the cloud input.
-- Renders "Michael Paret" for the guest name -- the least accurate rendering among the three processors.
+- Renders "Michael Perklin" for the guest name -- same recurring error.
 - Renders host as "Bob Summerwill" -- correct.
 - Uses "Goerli" for the testnet (correct modern spelling).
 - Same structural problems as gemini: long paragraphs, poor readability, sparse timestamps.
@@ -177,13 +190,14 @@ Max word count among assessed outputs: 4,276 (opus).
 
 ## 5. Cross-Transcriber Comparison
 
-### Processor Consistency Across Bases (opus/gemini/grok)
+### Processor Consistency Across Bases (opus/gemini/grok/qwen)
 
 | Processor | AssemblyAI | WhisperX | WhisperX-Cloud | Consistency |
 |---|---|---|---|---|
 | **opus** | Tier 1 (4,273w / 386L) | Tier 1 (4,077w / 276L) | Tier 1 (4,276w / 280L) | **Best** -- always Tier 1; uniquely re-diarizes coarse input |
 | **gemini** | Tier 1 (4,425w / 384L) | Tier 1 (4,348w / 200L) | Tier 2 (4,084w / 50L) | Good -- drops on cloud due to preserving coarse structure |
 | **grok** | Tier 1 (4,251w / 386L) | Tier 1 (4,073w / 196L) | Tier 2 (3,932w / 50L) | Good -- drops on cloud; has name substitution errors |
+| **qwen** | Tier 1 (4,519w / 378L) | N/A | N/A | Incomplete coverage -- only AssemblyAI base available |
 
 ### Key Findings
 
@@ -193,11 +207,17 @@ Max word count among assessed outputs: 4,276 (opus).
 - Most faithful to the source audio content, though this means it also preserves some transcription errors without correction (e.g., "Bob Samuel" instead of "Bob Summerwill").
 - Best structural formatting across all bases.
 
-**Highest content retention: gemini**
-- Consistently produces the highest word counts from any given base (4,425 from AssemblyAI, 4,348 from WhisperX).
-- Better at name correction than opus (correctly identifies "Bob Summerwill," provides accented names).
+**Highest content retention: qwen (AssemblyAI base only)**
+- Produces the highest word count of any processor output (4,519 words from AssemblyAI base), exceeding even gemini's 4,425.
+- Good name corrections for the host ("Bob Summerwill") and many key figures.
+- However, introduces factual substitution errors: "Birgitta Jonsdottir" for the Icelandic parliamentarian (wrong person) and "Ross Ulbricht" where "Lyn Ulbricht" was meant.
+- Cannot be fully evaluated for cross-base consistency as only the AssemblyAI output exists.
+
+**Best name corrections: gemini**
+- Consistently produces the highest word counts from fine-grained bases (4,425 from AssemblyAI, 4,348 from WhisperX).
+- Better at name correction than opus (correctly identifies "Bob Summerwill," provides accented names like "Asta Helgadottir," fills in "Mihai Alisie").
 - However, does not re-diarize coarse inputs -- preserves whatever structure the transcriber provides.
-- Misidentifies the guest as "Michael Polzl" in one variant -- a significant factual error.
+- Misidentifies the guest as "Michael Polzl" in the AssemblyAI variant -- a significant factual error.
 
 **Most variable: grok**
 - Solid Tier 1 on fine-grained inputs but drops to Tier 2 on coarse cloud input.
@@ -207,23 +227,24 @@ Max word count among assessed outputs: 4,276 (opus).
 
 ### Name Correction Quality Comparison
 
-| Name (correct) | opus | gemini | grok |
-|---|---|---|---|
-| Bob Summerwill | "Bob Samuel" (not corrected) | "Bob Summerwill" (correct) | "Bob Summerwill" (correct) |
-| Exiled Surfer | "Exalt server" (not corrected) | "ExiledSurfer" (correct) | "exiled surfer" (mostly correct) |
-| Michael Parenti (guest) | "Michael Parenti" (correct) | "Michael Polzl" (wrong) | "Michael Perklin" (wrong) |
-| Mark Karpeles | Correct | Correct | Correct |
-| Charlie Shrem | Correct | Correct | Correct |
-| Mihai (Alisie) | "Mihai" (partial) | "Mihai Alisie" (full, correct) | "Mihai" (partial) |
-| Smari McCarthy | Correct | Correct | Correct |
-| Asta (Helgadottir) | "Asta Fish" (phonetic) | "Asta Helgadottir" (correct) | "Asta Fysh/Fylkisdottir" (wrong) |
-| Mike Gogulski | "Mike Gogulski" (correct) | "Michael Gulskis" (close) | "Mike Hearn" (wrong person) |
-| Amir Taaki | Correct | Correct | Correct |
-| Jorg Platzer | Correct (with umlaut) | Correct (with umlaut) | Correct (with umlaut) |
-| Parallelni Polis | Correct | Correct | Correct |
-| Gorli/Goerli testnet | "Gorli" | "Goerli" (correct) | "Gorli"/"Goerli" (varies) |
+| Name (correct) | opus | gemini | grok | qwen |
+|---|---|---|---|---|
+| Bob Summerwill | "Bob Samuel" (not corrected) | "Bob Summerwill" (correct) | "Bob Summerwill" (correct) | "Bob Summerwill" (correct) |
+| Exiled Surfer | "Exalt server" (not corrected) | "ExiledSurfer" (correct) | "exiled surfer" (mostly correct) | "Ethereum server" (wrong) |
+| Michael Parenti (guest) | "Michael Parenti" (correct) | "Michael Polzl" (wrong) | "Michael Perklin" (wrong) | "Michael Paranti" (close) |
+| Mark Karpeles | Correct | Correct | Correct | Correct |
+| Charlie Shrem | Correct | Correct | Correct | Correct |
+| Mihai (Alisie) | "Mihai" (partial) | "Mihai Alisie" (full, correct) | "Mihai" (partial) | "Mihai" (partial) |
+| Smari McCarthy | Correct | Correct | Correct | Correct |
+| Asta (Helgadottir) | "Asta Fish" (phonetic) | "Asta Helgadottir" (correct) | "Asta Fysh/Fylkisdottir" (wrong) | "Birgitta Jonsdottir" (wrong person) |
+| Mike Gogulski | "Mike Gogulski" (correct) | "Michael Gulskis" (close) | "Mike Hearn" (wrong person) | "Mike Gogulski" (correct) |
+| Lyn Ulbricht | "Lyn Ulbricht" (correct) | "Lyn Ulbricht" (correct) | "Lyn Ulbricht" (correct) | "Ross Ulbricht" (wrong -- that's the son) |
+| Amir Taaki | Correct | Correct | Correct | Correct |
+| Jorg Platzer | Correct (with umlaut) | Correct (with umlaut) | Correct (with umlaut) | Correct (with umlaut) |
+| Parallelni Polis | Correct | Correct | Correct | "Parallel Polis" (simplified) |
+| Gorli/Goerli testnet | "Gorli" | "Goerli" (correct) | "Gorli"/"Goerli" (varies) | N/A (not in AssemblyAI portion checked) |
 
-**gemini** has the best name correction overall but critically misidentifies the guest. **opus** has the most faithful rendering of the guest name but does not correct the host name. **grok** has the most factual substitution errors where incorrect but real names are used.
+**gemini** has the best name correction overall but critically misidentifies the guest. **opus** has the most faithful rendering of the guest name and Mike Gogulski but does not correct the host name. **qwen** has good host name correction but introduces wrong-person substitutions (Birgitta Jonsdottir, Ross Ulbricht). **grok** has the most factual substitution errors where incorrect but real names are used.
 
 ---
 
@@ -231,18 +252,26 @@ Max word count among assessed outputs: 4,276 (opus).
 
 1. **Best single output for this episode**: `episode008-michael-parenti_assemblyai_opus.md` -- best structural fidelity, correct guest name, consistent formatting, and highest line-level diarization quality. The uncorrected "Bob Samuel" can be fixed in a manual pass.
 
-2. **Runner-up**: `episode008-michael-parenti_assemblyai_gemini.md` -- highest word count, best name corrections for most names, but the "Michael Polzl" misidentification of the guest is a significant drawback.
+2. **Runner-up**: `episode008-michael-parenti_assemblyai_qwen.md` -- highest word count (4,519), correct host name, good overall quality. However, the "Birgitta Jonsdottir" and "Ross Ulbricht" substitution errors require manual correction.
 
-3. **Third**: `episode008-michael-parenti_assemblyai_grok.md` -- solid quality but the "Michael Perklin" guest name error and "Mike Hearn" substitution are problematic.
+3. **Third**: `episode008-michael-parenti_assemblyai_gemini.md` -- second-highest word count, best name corrections for most names, but the "Michael Polzl" misidentification of the guest is a significant drawback.
 
-4. **WhisperX-Cloud outputs**: Only `episode008-michael-parenti_whisperx-cloud_opus.md` is recommended from this base. The gemini and grok cloud outputs (Tier 2) have poor structure due to preserved coarse paragraphs.
+4. **Fourth**: `episode008-michael-parenti_assemblyai_grok.md` -- solid quality but the "Michael Perklin" guest name error and "Mike Hearn" substitution are problematic.
 
-5. **Manual corrections needed across all outputs**:
+5. **WhisperX-Cloud outputs**: Only `episode008-michael-parenti_whisperx-cloud_opus.md` is recommended from this base. The gemini and grok cloud outputs (Tier 2) have poor structure due to preserved coarse paragraphs.
+
+6. **Missing outputs**: Qwen is only available for the AssemblyAI base. WhisperX and WhisperX-Cloud qwen outputs do not exist.
+
+7. **Manual corrections needed across all outputs**:
    - "Bob Samuel" -> "Bob Summerwill" (in opus outputs)
    - "Exalt server" -> "Exiled Surfer" (in opus outputs)
+   - "Ethereum server" -> "Exiled Surfer" (in qwen output)
    - "Michael Polzl" -> "Michael Parenti" (in gemini assemblyai output)
    - "Michael Perklin" -> "Michael Parenti" (in grok outputs)
+   - "Michael Paranti" -> "Michael Parenti" (in qwen output)
    - "Mike Hearn" -> "Mike Gogulski" (in grok assemblyai output)
    - "Michael Goldstein" -> "Mike Gogulski" (in grok whisperx output)
+   - "Birgitta Jonsdottir" -> "Asta Helgadottir" (in qwen output)
+   - "Ross Ulbricht" -> "Lyn Ulbricht" (in qwen output)
 
-6. **Consensus pipeline**: No `*_final.md` file exists. If running consensus, the recommended trio would be the AssemblyAI-based opus, gemini, and grok outputs, with manual correction of the guest name across gemini and grok before merging.
+8. **Consensus pipeline**: No `*_final.md` file exists. If running consensus, the recommended quartet would be the AssemblyAI-based opus, gemini, grok, and qwen outputs, with manual correction of guest/person names before merging.
