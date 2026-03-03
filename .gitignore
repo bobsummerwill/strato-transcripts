@@ -212,3 +212,8 @@ $RECYCLE.BIN/
 *.db
 *.sqlite
 *.sqlite3
+
+# Local environment
+.venv/
+Klaus/
+*.part
