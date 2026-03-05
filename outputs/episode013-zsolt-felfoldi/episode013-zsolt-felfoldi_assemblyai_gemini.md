@@ -1,254 +1,284 @@
-**[00:02] SPEAKER_00:** So, hello and welcome to ETHDenver 2026. I'm here recording for Early Days of Ethereum with Zsolt Felföldi. How do you pronounce your name?
+**[00:02] SPEAKER_00:** So, hello and welcome to ETHDenver 2024. So here recording for Early Days of Ethereum with Zsolt Felföldi. How do you pronounce your name?
 
 **[00:14] SPEAKER_01:** Zsolt Felföldi.
 
-**[00:16] SPEAKER_00:** There you go. Anyway, so yeah, I was working out when we recently reconnected at DevConnect and I was working it out that you're the third longest-serving person at the Ethereum Foundation. Right. You've got Vitalik and then Felix Lange and then you.
+**[00:16] SPEAKER_00:** There you go. Anyway, so yeah, I was working out when we recently reconnected at Devconnect and I was working out that you're the third longest person at the Ethereum Foundation. Right. You've got Vitalik and then Felix and then you.
 
 **[00:38] SPEAKER_01:** Yeah, I haven't really checked this fact yet, but honestly, yeah, it sounds great.
 
-**[00:46] SPEAKER_00:** That's it. So, I mean, you're a very long-time member of the Geth team.
+**[00:46] SPEAKER_00:** That's it. So, I mean, you're a very long time member of the Geth team.
 
 **[00:52] SPEAKER_01:** Yes.
 
-**[00:52] SPEAKER_00:** But what were you doing before you started at the foundation? What was your background? How did you find your way into the blockchain world?
+**[00:52] SPEAKER_00:** But what were you doing before you started at the Foundation? What was your background? How did you find your way into the blockchain world?
 
-**[01:02] SPEAKER_01:** Well, before Ethereum, I was working on really different types of projects. I first started at a Hungarian software company, like a really classic software company. We actually sold software in boxes, put on a shelf, like floppy disks. Put in a box on a shelf and you can buy the software. So this type of classic software.
+**[01:02] SPEAKER_01:** Well, before Ethereum, I was working on really different types of projects. So I first started at a Hungarian software company, like a really classic software company. We actually sold software in boxes, like put on a shelf, like floppy disks. Put in a box on a shelf and you can buy the software. So like this type of classic software.
 
-**[01:35] SPEAKER_00:** Five and a quarter inch floppies.
+**[01:35] SPEAKER_00:** Five and a quarter. Five and a quarter inch floppies.
 
-**[01:38] SPEAKER_01:** Yeah, actually three and a half.
+**[01:38] SPEAKER_01:** Yeah, yeah, actually three and a half.
 
 **[01:42] SPEAKER_00:** Oh, okay. Three and a half. We're on to modern floppies.
 
-**[01:46] SPEAKER_01:** Yeah, I started in '97, so maybe I was exaggerating a little. By that time it was mostly CDs. We still used a lot of floppies anyway. At that company I did things related to computer graphics. I wrote a ray tracing engine for some architectural software. And then I also did a lot of work on electronic circuit simulation and circuit design.
+**[01:46] SPEAKER_01:** Yeah, but maybe also like in... I started in 97, so maybe I was exaggerating a little. So by that time it was mostly CDs. We still used a lot of floppies anyway. So at that company I did things related to first things related to computer graphics. Like I wrote a ray tracing engine for some architectural software. And then I also did a lot of work on electronic circuit simulation and circuit design.
 
 **[02:20] SPEAKER_00:** Right.
 
-**[02:21] SPEAKER_01:** So yeah, really different things. It was around 2011 when I first heard about Bitcoin, and around 2012 when I started to realize that, as weird as it sounds, it really is probably a big thing. Actually, I first heard about Ethereum early 2014, a few months after the initial paper had been published.
+**[02:21] SPEAKER_01:** So yeah, really different things. And it was around 2011 when I first heard about Bitcoin and around 2012 when I started to realize that as weird as it sounds, it really is probably a big thing. Actually, I first heard about Ethereum early 2014, a few months after the initial paper had been published.
 
 **[02:53] SPEAKER_00:** Yeah.
 
-**[02:54] SPEAKER_01:** And yeah, I started contributing I think around November and officially joined EF in March 2015.
+**[02:54] SPEAKER_01:** And yeah, started contributing I think around November and officially joined EF in March 2015. So, yeah.
 
-**[03:05] SPEAKER_00:** And did you hear about it, do you think, through Dani and Viktor or some other way?
+**[03:05] SPEAKER_00:** And did you hear about it, you think, through Dani and Viktor or some other way?
 
-**[03:14] SPEAKER_01:** Well, I did hear about it from Dani and Viktor's friend circle.
+**[03:14] SPEAKER_01:** Well, I did hear about it from Dani and Viktor's friend circle. So.
 
 **[03:22] SPEAKER_00:** Right.
 
-**[03:22] SPEAKER_01:** Actually, I didn't know Viktor before. So I heard about this thing through one of Dani's friends and then Viktor was also in that wider circle, and he came to Hungary and said, "Oh, I'm already working on this." And then I started with my ideas and started to explain to him why this thing will probably never work. And he was like, "Okay, you seem to have a good understanding of this. Why don't you come to work?"
+**[03:22] SPEAKER_01:** Yeah, but then Viktor was already... Actually, I never really knew Viktor before. So I heard about this thing through one of Dani's friends and then Viktor was also in that wider circle and he came to Hungary and said, "Oh, I'm already working on this." And then I started with my ideas and started to explain to him why this thing probably will never work. And he was like, "Okay, you seem to have a good understanding of this. Why don't you come to work?"
 
-**[03:52] SPEAKER_00:** Right, right. And am I right in thinking that you said it was Swarm that you started with?
+**[03:52] SPEAKER_00:** Right, right. And was I right in thinking that you said it was Swarm that you started with?
 
-**[04:00] SPEAKER_01:** Well, yeah. So Swarm was part of this initial trinity of base technologies of Ethereum, supposed to be the storage layer for dapps. I mean, it was kind of a naive way of how people imagined decentralized applications back then, but honestly, it made sense at the time. I will say that nothing ever turned out exactly the way that people imagined it, but we are still making a lot of progress. So yeah, Swarm was how we initially imagined this storage layer for Ethereum. This project still has merits, but this whole problem space is just a bit more complex. But yeah, I started contributing to Swarm first, and actually, I wrote the first 500 lines of Swarm.
+**[04:00] SPEAKER_01:** Well, yeah. So Swarm was part of this initial trinity of base technologies of Ethereum. So it was supposed to be the storage layer for dapps. Yeah, I mean it was kind of a naive way of how people imagined decentralized applications back then. But honestly, it made sense at the time. So I will say that, yeah, nothing ever turned out exactly the way that people imagined it, but we are still making a lot of progress. So yeah, Swarm was how we initially imagined this storage layer for Ethereum. And I mean this project still has merits, but yeah, this whole problem space is just a bit more complex. But yeah, so I started contributing to Swarm first and actually I wrote the first 500 lines of Swarm.
 
-**[05:02] SPEAKER_00:** There you go. Yeah, I think if I remember rightly, Viktor mentioned around May 2014 was when he first heard about the trinity. This concept that you could have Ethereum as your compute and expensive database, Swarm as your decentralized storage, and then Whisper as your messaging. There was that famous diagram, right? There's a circle and the things coming in and Whisper going around the edge. But yeah, I guess it was Devcon 0 where Dani really presented a fleshed-out vision of what that decentralized storage was.
+**[05:02] SPEAKER_00:** There you go. Yeah, I mean, I think if I remember rightly that Viktor mentioned around May 2014 was when he first heard, you know, the trinity, that this concept that you could have Ethereum as your sort of compute and expensive database, Swarm as your decentralized storage, and then Whisper as your messaging. Was that famous diagram, right, with the... There's like a circle and the things coming in and Whisper going around the edge and there's another one of those. But yeah, I mean, I guess it was Devcon 0 where Dani really presented a fleshed-out vision of what that decentralized storage was.
 
-**[05:54] SPEAKER_01:** Yes, that's correct. I wasn't there at Devcon 0 yet. I heard about this idea even before I heard about Ethereum. So Dani already told me about this idea that he wants to do this kind of hash-based chunk storage. So it made total sense that he just pitched that.
+**[05:54] SPEAKER_01:** Yes, that's correct. I wasn't there at Devcon 0 yet. So I've heard about this idea even before I heard about Ethereum. So Dani Nagy told me about this idea that he wants to do these kinds of hash-based chunk storage and... Yeah, so it made total sense that he just pitched that.
 
-**[06:14] SPEAKER_00:** That it could fit in.
+**[06:14] SPEAKER_00:** That can fit in.
 
-**[06:16] SPEAKER_01:** Yeah, at the time it was a perfect fit. So he pitched this idea at Devcon 0, and when they accepted it and hired Dani, he called me and said—because he already knew that I knew of this project—he said, "Let's do it together."
+**[06:16] SPEAKER_01:** Yeah, at the time it was a perfect fit. Yeah. So he pitched this idea at Devcon 0, and when they accepted it and hired Dani, then he called me and said, because he already knew that I know of this project and... Yeah, then let's do it together.
 
-**[06:38] SPEAKER_00:** There you go. And then you were hired into ethdev? I did have a date for that, but I've forgotten. I guess it was shortly after Devcon 0, right, that you started there?
+**[06:38] SPEAKER_00:** There you go. And then so you were hired into ethdev? I did have a date for that. I've forgotten. I guess it was shortly after Devcon 0, right, that you started there?
 
 **[06:51] SPEAKER_01:** Yes, correct.
 
-**[06:53] SPEAKER_00:** Did you go to Berlin or Amsterdam? When did you first meet other people?
+**[06:53] SPEAKER_00:** Did you go to Berlin or Amsterdam? When did you first meet other people? How did...
 
-**[07:01] SPEAKER_01:** It was Amsterdam in February '15. That's where I met Jeffrey Wilcke, the creator of Go Ethereum, and the Go Ethereum team. Back then, I didn't say Geth because that abbreviation was invented later. So yeah, that's where I met the Go Ethereum people. I already had these contributions to Swarm, and it was kind of an implied thing that maybe I might be hired, but there was really no official hiring process back then. Jeff was this really laid-back guy, and he just said, "Okay man, I saw your contributions, let's talk sometime this week." And I waited the whole week and waited for some serious interview. It was a dream job for me, and I was really enthusiastic about this whole thing. Even though I felt that this whole initial design was a hard problem and I really couldn't imagine how it would scale, it was still worth starting it. I really wanted to get hired. The whole week I just waited. And at the end of the week, like the last half an hour before we all left for home, Jeff just said, "Oh yeah, man, I wanted to talk to you. You're hired." So, yeah, this is how the hiring process went back then.
+**[07:01] SPEAKER_01:** It was Amsterdam in February 2015.
 
-**[08:50] SPEAKER_00:** Excellent. Well, that's easy. We like that. And that was before you went to Amsterdam? I assume you went to Amsterdam after you had been hired.
+**[07:05] SPEAKER_00:** Right.
+
+**[07:06] SPEAKER_01:** That's where I met Jeffrey Wilcke, the creator of Go Ethereum and the Go Ethereum team. Back then, I didn't say Geth because that abbreviation was invented later. So yeah, that's where I met the Go Ethereum people. And I already had these contributions to Swarm, and it was kind of an implied thing that maybe I might be hired, but there was really no official hiring process back then. Yeah, it was really just Jeff was this really laid-back guy, and he just said, "Okay, man, I saw your contributions, and let's talk sometime this week."
+
+And I waited the whole week and waited for some serious interview like it was a dream job for me. Yeah, like, by that time I was really enthusiastic about this whole thing and I felt like... So even though I felt that this whole initial design was... yeah, I really couldn't imagine how it would scale and everything. And it is a hard problem. So yeah, it was true, but it was still worth starting it, and I was really enthusiastic and I really wanted to get hired. And yeah, the whole week I just waited. And at the end of the week, like the last half an hour before we all left home, Jeff just said, "Oh yeah, man, I wanted to talk to you. You're hired." Okay, that's a good talk. So, yeah, this is how the hiring process went back then.
+
+**[08:50] SPEAKER_00:** Excellent. Well, that's easy. We like that. And so you, that was before you went to Amsterdam, I assume. I assume you went to Amsterdam after you had been hired.
 
 **[09:04] SPEAKER_01:** No, no, no, it happened in Amsterdam.
 
-**[09:06] SPEAKER_00:** Oh, I see. So you were there unhired on site.
+**[09:06] SPEAKER_00:** Oh, I see. So you were there unhired, on site.
 
-**[09:10] SPEAKER_01:** Yeah, Jeff agreed that if I bought my own plane ticket, I could stay at the Airbnb where the team stayed. I just worked with them and showed my contributions. So I went to Amsterdam unhired.
+**[09:10] SPEAKER_01:** Yeah, so Jeff agreed that if I bought my own plane ticket, I could stay at the Airbnb the team stayed in. And yeah, I just worked with them and showed my contributions and yeah, so I went to Amsterdam unhired.
 
-**[09:27] SPEAKER_00:** Right, right.
+**[09:27] SPEAKER_00:** But yeah, I mean, right, right.
 
-**[09:29] SPEAKER_01:** That plane ticket was a good investment.
+**[09:29] SPEAKER_01:** That plane ticket was a good investment. So.
 
 **[09:31] SPEAKER_00:** Yeah. So did they not have office space at that point even?
 
-**[09:36] SPEAKER_01:** Well, they did. Back then there was an Amsterdam office.
+**[09:36] SPEAKER_01:** Well, they did actually back then there was an Amsterdam office.
 
 **[09:40] SPEAKER_00:** Right.
 
-**[09:41] SPEAKER_01:** It was mostly for Jeff because Jeff lived in Amsterdam. But when Jeff left EF, or maybe before that, this office was closed. It was a really small office. Last time I checked, I think a dentist works there now. It doesn't exist, but it was really just a small place. Later, I went to Berlin a lot after I was hired. For the Geth team, work was somehow centered in Berlin.
+**[09:41] SPEAKER_01:** It was mostly for Jeff because Jeff lived in Amsterdam. But when Jeff left EF, or maybe before that, I'm not sure exactly, this office was closed. Actually, it was a really small office. Last time I checked now I think a dentist works there. So yeah, it doesn't exist, but it was really just a small place. But later I went to Berlin a lot. So after I was hired and yeah, it was for the Geth team. It was centered in Berlin, so.
 
-**[10:24] SPEAKER_00:** Right, right. Because as well as Jeff, you've got Bas. He was another Amsterdam person, right? Bas van Kervel. But then maybe most of the other team members weren't in Amsterdam.
+**[10:24] SPEAKER_00:** Right, right. Because yeah, I mean, I guess as well as Jeff, you've got Bas van Kervel. Right. He was another Amsterdam person. But then maybe most of the other team members weren't in Berlin. Sorry, not in Amsterdam. I mean...
 
-**[10:43] SPEAKER_01:** Yeah, no one else was in Amsterdam. Bas was there for a relatively short time. And Jeffrey also left after a while and started his own company to develop games or something.
+**[10:43] SPEAKER_01:** Yeah, yeah. No one else was in Amsterdam. Bas was there for a short time. Relatively short time. And Jeffrey also left after a while and started his own company. Developed games or something. Yeah.
 
-**[11:01] SPEAKER_00:** Though he did have... EthLab was another one. Do you know anything about EthLab? Because when Jeff worked with JP Morgan to do Quorum, that was announced under the label EthLab.
+**[11:01] SPEAKER_00:** Though he did have... Oh, EthLabs was another one. Do you know anything about EthLabs? Because when Jeff worked with JP Morgan to do Quorum, that was announced under the label EthLabs. Never heard of that.
 
-**[11:18] SPEAKER_01:** I think I heard the name, but I didn't really know what it did. I knew that Jeff started working with JP Morgan at that time. Big banks really wanted to talk to us at every Devcon, and we were always invited to fancy dinners by main people. So banks really wanted to learn about the technology, and Jeff went for a while to work on Quorum, yes.
+**[11:18] SPEAKER_01:** Yeah, I think I heard the name, but I didn't really know what it does. But yeah, this is something I knew that Jeff started working with JP Morgan in that time. Big banks really, really wanted to just talk to us at every Devcon, and we were always invited to fancy dinners by some bank people. And so banks really wanted to learn about the technology. So Jeff went for a while to work on Quorum. Yes.
 
-**[11:52] SPEAKER_00:** Yeah. Unless I can somehow get in contact with Jeff, I guess it's a little bit of a mystery what exactly EthLab was. Though I suspect it might be a little bit like Ethersphere, just sort of being a name, a banner for activities rather than a legal entity. And another thing I don't know there, but I suspect is, I don't think Jeff told Ming Chan that he was doing that stuff with JP Morgan. I suspect that he completely just did that on his own without any communication with Ming or with the EF. He just went and did it.
+**[11:52] SPEAKER_00:** Yeah. I mean, unless I can somehow get in contact with Jeff, I guess it's a little bit of a mystery what exactly EthLabs was. Though I suspect it might be a little bit like Ethersphere, of just sort of being a name, a banner for activities rather than a legal entity. And another thing I don't know there, but I suspect, is I don't think Jeff told Ming Chan that he was doing that stuff with JP Morgan. I suspect that he completely just did that on his own without any communication with Ming or with the EF. It's just he went and did it.
 
-**[12:35] SPEAKER_01:** He never really told a lot to us about that. We knew that he was working with JP Morgan, but probably it's a big bank, and he had to sign non-disclosure agreements, so he probably couldn't share all the details.
+**[12:35] SPEAKER_01:** He never really told a lot to us about that, so we knew that. Yeah, he's working with JP Morgan, but probably it's a big bank. Probably he had to sign non-disclosure agreements, so he probably couldn't share all the details.
 
-**[12:51] SPEAKER_00:** No. I remember at some point, and I can't remember the context, him saying he found it interesting because the consensus for that was on-chain. The consensus for that was happening as smart contracts. So it was almost like this pluggable consensus that was pulled up into the app layer. He found the initial Quorum consensus quite interesting. It didn't last long, but I think Gav also was doing that sort of stuff on the C++ side. He did some Proof of Authority stuff before that happened on the Geth side with Clique. He actually made a different C++ client, so you've got eth, but he made another one that was called Fluidity or something, which was pulling all the libraries in the same way, but with a Proof of Authority consensus. That was one of the last things Gav did before he went out to Parity. So I think both him and Jeff were interested in how you formulate these pieces in different ways for those kinds of use cases. But yeah, Jeff left. I think it was probably very early in 2017. I did find a period, but it was certainly ahead of Devcon 3. Let me see if I can find the date.
+**[12:51] SPEAKER_00:** No, no. I mean, I remember at some point, and I can't remember the context, him saying he found it interesting because the consensus for that was on-chain. Like the consensus for that was happening as smart contracts. So it was kind of almost like this pluggable consensus, but consensus pulled up, you know, into the app layer. So he found that quite interesting that the initial Quorum consensus... it didn't last long, but I think Gav also was doing that sort of stuff on the C++ side that he did some proof of authority stuff before that happened on the Geth side before Clique.
 
-**[14:42] SPEAKER_01:** I don't remember the exact date. Actually, maybe there wasn't even a really exact date when Jeff left, because basically a month after I joined, Péter Szilágyi joined, and he was the team lead for a very long time. Jeff basically kind of handed it over to Péter. For a while, he was officially still team lead, but not really. We hadn't seen him on the calls for a while.
+There was this... okay, well, he actually made a different C++ client. So you've got `eth`, but he made another one that was called Fluidity or something which was pulling all the libraries in the same, but it was with a proof of authority consensus. But that was one of the last things he did before he went out to Parity. So I think both him and Jeff were interested at that thought of, well, how can you formulate these pieces in different ways for those kind of use cases. Interesting. But yeah, he left... I think it was probably very early in 2017. I did find a period, but it was certainly ahead of Devcon 3. Let me see if I can find the date.
 
-**[15:14] SPEAKER_00:** No. The date I found there was February 2017, but I think I got that from GitHub. I think that was his final commit. But he probably tailed off a long time before that.
+**[14:42] SPEAKER_01:** Yeah, I don't remember the exact date and actually there maybe wasn't even a really exact date when Jeff left because basically a month after I joined, Péter Szilágyi joined and he was the team lead for a very long time. So Jeff basically kind of handed it over to Péter and for a while he was officially still team lead, but not really. We haven't seen him on the calls for a while.
 
-**[15:28] SPEAKER_01:** He already started focusing on other stuff, like this Quorum stuff and his own things, sometime in '16.
+**[15:14] SPEAKER_00:** No. So the date I found there was February 2017. But I think I got that from GitHub. I think that was like his final commit. But he probably tailed off a long time before that.
 
-**[15:35] SPEAKER_00:** Yeah, he started a company called Grid Games with his brother, building a particular game. That also seems to have ceased. So he's now unknown, off in the world somewhere.
+**[15:28] SPEAKER_01:** He already started focusing on other stuff like this Quorum stuff and his own things sometime in 16. So.
 
-**[15:51] SPEAKER_01:** That's pretty much all I know about him. We tried to invite him a few times to come to some events and meet up, but I think for some reason he really had enough of, maybe not us, but things going on in the EF.
+**[15:35] SPEAKER_00:** Yeah, yeah, so started a company called Grid Games with his brother building a particular game, though that also seems to have ceased. So. Yeah, he's unknown off in the world somewhere.
 
-**[16:13] SPEAKER_00:** Yeah, I think that would be the case. When Ming came in, she both did legal tidy-up but also cut the spending a lot. You'd had the crowdsale in July, August, September 2014, but coming up to the mainnet release a year later, nearly all the money was gone. They spent it very fast.
+**[15:51] SPEAKER_01:** Yeah, that's pretty much all I know about him. We tried to invite him a few times to just come to some event and meet up. But yeah, I think for some reason he really had enough of... maybe not us, but things going on in the EF and...
 
-**[16:40] SPEAKER_01:** So Devcon 1 was postponed because of that. We didn't really feel a lot of this. Actually, Jeff just said that now that the ether price is so low—I think the lowest point was 42 cents—
+**[16:13] SPEAKER_00:** Yeah, I mean, yeah, I think that would be the case that you, you know, when Ming came in, she both did legal tidy up, but also cut the spending a lot. You know that you'd had the crowdsale in July, August, September 2014, but coming up to the mainnet release a year later, like nearly all the money was gone. Yes, they spent it very fast.
 
-**[17:00] SPEAKER_00:** Yeah. And for a full year it didn't really move.
+**[16:40] SPEAKER_01:** Yeah. So Devcon 1 was postponed because of that, but we didn't really feel a lot of this. Actually Jeff just said that now that the ether price is so low... actually I think the lower point was 42 cents.
 
-**[17:04] SPEAKER_01:** Jeff just said, "We all have to take a pay cut." But the pay cut was really just 10%, and I think maybe he took a bigger one. For us, it was really not that bad. The idea was that when the ether price reaches $2, then we do have some money to go forward. Then our salaries went back up. And that wasn't a lot of time. I don't really remember the exact price history, but I think the ether price reached something like $10 pretty soon.
+**[17:00] SPEAKER_00:** Yeah. And full year it didn't really move.
 
-**[17:56] SPEAKER_00:** Just around the start of 2016.
+**[17:04] SPEAKER_01:** And Jeff just said that, okay, we all have to take a payment cut. But the payment cut was really just 10% and I think maybe he took a bigger one. So yeah, for us it was really not that bad. And the idea was that when ether price reaches $2, then yeah, we do have some money to go forward. So yeah, then our salaries went back. And that wasn't a lot of time. So yeah, I don't really remember the price history and maybe it's not the most important thing, but I think ether price reached something like $10 pretty soon.
 
-**[17:58] SPEAKER_01:** Yeah. And we went even a little bit higher. But then we had the DAO fork and the Shanghai attacks. Given how turbulent those times were, the market held up pretty well, and with a $10 ether price, we could survive further.
+**[17:56] SPEAKER_00:** Just in the start of 2016.
 
-**[18:17] SPEAKER_00:** Yeah, that was quite a jump up. I heard that at the worst point there were only four months of runway left. That was how close it was to running out of money. But there were those big cuts which resulted in Gav and the C++ team being the main victims of those cuts. But then just into 2016... pardon me, I was hired in February 2016, the same time as Greg Colvin came in. Pavel was rehired; he was working through IMAP, working on EVMJIT, but that contract stopped and then he came back at that time as well. So this period through late 2015 to early 2016 was the absolute bottom of, "Are we even going to ship this thing? Are we going to run out of money before we get to mainnet?" Some of us were really coming in as backfill for that C++ team. And Devcon 1 had been canceled, but ConsenSys came in and actually paid for that. They said, "Hey, we'll mainly organize it so that the thing can happen." So that was the first public event. What are your memories of Devcon 1?
+**[17:58] SPEAKER_01:** Yeah, and we went even a little bit higher. But then we had the DAO fork and the Shanghai attacks and well, given how turbulent those times were, the market held pretty well and with $10 ether price we could survive further.
 
-**[20:00] SPEAKER_01:** My subjective impression was that it was really amazing. Compared to today's Devcons, it was small. I think around 300, maybe less than a thousand people definitely. It was at a really prestigious venue, some old bank building on Threadneedle Street, right in the City of London. I really felt like, "Okay, now this is really a serious thing." Probably that was the reason why ConsenSys stepped in and funded the event so we could step up in terms of public appearance and appear as something really serious. I remember all the big banks having booths at Devcon 1.
+**[18:17] SPEAKER_00:** Yeah, yeah, I mean that was quite a jump up. I mean I heard that at the worst point there was only four months of runway left. You know, that was how close it was to running out of money. But yeah, there were those big cuts which really resulted in like Gav and the C++ team were the main kind of victims of those cuts.
 
-**[20:56] SPEAKER_00:** Right? Yeah. And then Microsoft as headline sponsor. Recognition, right? Wow, Microsoft is interested and supportive. I think for a lot of people it was a real, "Wow, this is for real." Sadly, I could not afford to go. I watched the livestream. I was not quite in and working yet. I was an enthusiastic contributor.
+But then, yeah, just into 2016. Pardon me. So I was hired in February 2016, same time as Greg Colvin came in and also Paweł Bylica was rehired. You know, he was working through IMAPP, working on that JIT. But that contract stopped, but then he came back at that time as well. So it was this period through late 2015 to early 2016 was like the absolute bottom of like, are we even going to ship this thing? Are we going to run out of money before we get to mainnet? But then yeah, some of us were really coming in as backfill for that C++ team.
 
-**[21:34] SPEAKER_01:** Actually, it was the first time for me when I met a larger number of Ethereum people. I first met the Go Ethereum team in early '15, and I went to Amsterdam one more time, I think in May. But Devcon 1 was the place where I really realized how big this thing is, and that it's really not just about client developers. Even back then people presented about formal verification and all this stuff. I realized that this is really big, and everyone wants to be a part of it, at least a little bit.
+Yeah. So I mean Devcon 1 was sort of, you were mentioning in that series that it got canceled, but then ConsenSys came in and actually paid for that and said, hey, we'll mainly organize it so that the thing can happen. So that was the first public event. So what are your memories of Devcon 1?
 
-**[22:22] SPEAKER_00:** Looking back at Devcon 1 videos, any kind of use case you could think of, there was somebody presenting about it, so early, more than 10 years ago. Many concepts which were probably massively too early to do, but seem more viable now, were presented. You had Nick Szabo as well doing a keynote.
+**[20:00] SPEAKER_01:** Well, my subjective impression was that it's really amazing. Yeah. Compared to today's Devcons, it was small. I think 300 something people maybe, but I'm not sure. But less than a thousand definitely. And yeah, it was really prestigious venues. Some old bank building on Threadneedle Street, like City of London. And yeah, I really felt like, okay, so now this is really a serious thing. And probably that was the reason why ConsenSys stepped in and funded the event so we really could step up in terms of public appearance and appear as something really serious. And yeah, I remember all the big banks having the booths at Devcon 1, right?
 
-**[22:49] SPEAKER_01:** Yeah, Nick Szabo was also there.
+**[20:58] SPEAKER_00:** Yeah. And then Microsoft as headline sponsor. It's like wow. Recognition, right? That you're like, wow, Microsoft are interested and supportive and yeah, I mean, I think for a lot of people it was a real kind of wow. Like this is for real. Sadly, I could not afford to go. I watched the livestream. I was not quite in and working yet. I was an enthusiastic contributor. But...
 
-**[22:53] SPEAKER_00:** So was that maybe the first time that you'd met a number of the people from Berlin like Christoph Jentzsch and Lefteris Karapetsas, and maybe even Gav?
+**[21:34] SPEAKER_01:** Yeah, so actually it was also like the first time for me when I met a larger number of Ethereum people. So yeah, I first met the Go Ethereum team in early 15. And yeah, I went to Amsterdam one more time, I think in May. But Devcon 1 was the place where I really realized how big this thing is and it's really not just about client developers, but also even back then people presented about formal verification and all this stuff. So yeah, I realized that this is really big and probably everyone wants to be a part of it at least a little bit.
 
-**[23:03] SPEAKER_01:** I think I met some of these people already in London. The first time I went to the Berlin office back then, it was the old office. So some people I met at Devcon 1, some people I met in Berlin.
+**[22:22] SPEAKER_00:** Yeah, yeah, yeah. I mean, looking back at Devcon 1 videos, it's like any kind of use case you could think of, you know, there was somebody presenting about it, you know, just so, so early, more than 10 years ago. But you know, many, many concepts which were probably massively too early to do, but maybe you can do them more now seem to be presented. You had Nick Szabo as well. Nick Szabo doing a keynote.
 
-**[23:22] SPEAKER_00:** So was Devcon 1 the first time that you'd been to do Ethereum things in London, or did you go to any London meetups or meet any of those comms people earlier?
+**[22:49] SPEAKER_01:** Yeah, yeah, yeah. Nick Szabo was also there.
 
-**[23:41] SPEAKER_01:** I didn't go to any meetups in London before, but actually Viktor was in London at the time. I went to London around that time doing an event with my old Hungarian software company. We went to London to sell our software, as I was still working there.
+**[22:53] SPEAKER_00:** So was that maybe the first time that you'd met a number of the people in Berlin, like Christoph Jentzsch and Lefteris Karapetsas and maybe even Gav?
+
+**[23:03] SPEAKER_01:** I think I met some of these people already in London and I think first time I went to Berlin office back then it was like the old office. Yeah, right. But so yeah, some people I met at Devcon 1, some people I met in Berlin.
+
+**[23:22] SPEAKER_00:** But yeah, so did you... Was Devcon 1 the first time that you'd been to do Ethereum things in London or did you go to any sort of London meetups or meet any of those comms people earlier?
+
+**[23:41] SPEAKER_01:** I didn't go to any meetups to London before, but actually I did. So Viktor was in London at the time and I went to London around the time actually doing some event with my old software company, the Hungarian software company.
+
+**[24:10] SPEAKER_00:** Yeah.
+
+**[24:10] SPEAKER_01:** So we went to London to sell our software and everything. So I'm still working there.
 
 **[24:17] SPEAKER_00:** Right.
 
-**[24:17] SPEAKER_01:** And after that, I met up with Viktor and talked about Ethereum-related things.
+**[24:17] SPEAKER_01:** And after that, yeah, I met up with Viktor and talked about...
 
-**[24:21] SPEAKER_00:** Nice. From what he was describing, and looking at videos later, he had seen Gav talk in London in very early February. I think it was February 6th, almost immediately after they'd had the BTC Miami launch, Vitalik's first public talk, and Anthony Di Iorio's mansion where a lot of them met for the first time. Gav had been back in London a week after and did a talk there that Viktor had gone to. That was Viktor's first in-person meeting with any of them. And then Gav pulled him on board.
+**[24:21] SPEAKER_00:** Nice, yeah. Ethereum related things because yeah, he... From what he was describing and then I was looking at videos and things later, he had seen Gav talk in London in very, very early February, I think it was February 6th. So almost immediately after they'd had the BTC Miami launch, you know, Vitalik's first public talk and the Anthony Di Iorio's mansion where they a lot of them met for the first time. Gav had been back in London, I think it was like a week after and did a talk there that Viktor had gone to. That was Viktor's first in-person meeting with any of these. And then Gav had pulled him on board.
 
-**[25:19] SPEAKER_01:** Those were the very early days, and I wasn't there. I first heard about Ethereum in March or April '14, which was around the presale. But yeah, I know that Gavin was one of the very early founders, and he wrote the yellow paper full of Greek letters.
+**[25:19] SPEAKER_01:** Yeah, so those are like the very early days I wasn't there. So when I first heard about Ethereum that was I think March or April 14th. So I first heard about the presale and yeah, that's where I first heard about this thing. But yeah, I know that Gavin was one of the very early founders of this and he wrote the yellow paper full of Greek letters.
 
-**[25:51] SPEAKER_00:** Very confusing, yes. And the C++ client, of course. The first time I think I saw your name or was in contact with you was about the Light Client. I had been trying to get Ethereum ARM Linux cross-builds running on my smartwatch, and my thought was, "Get the thing running, and then this Light Client stuff is just starting, and scaling will be solved. We're going to be able to run these nodes on anything. You'll have them on your phone, smartwatch, router. They'll be in every operating system." So you were plunged right into that problem, right?
+**[25:51] SPEAKER_00:** Very confusing. Yeah. And the C++ client of course. So the first time I think I saw your name or was in contact with you was about light client because I'd been trying to get Ethereum ARM Linux cross-builds running on my smartwatch and my thought there was get the thing running and then this light client stuff is just kind of starting and scaling will be solved. Right. We're going to be able to run these nodes on anything. You know, you'll have them on your phone, smartwatch, router, they'll be in every operating system. You know, it just will solve that scaling and that lightness. So you were plunged right into that problem. Right?
 
-**[26:38] SPEAKER_01:** Yeah, when Jeff hired me, he put me on this project. He just said, "Okay, it's great that you contributed to Swarm, but if you join the Geth team, you will have to start working on the Light Client because it's a very important thing and hasn't been started yet." I felt really good about it. I felt like this is a big thing. Back then, it really felt like we just do these few things—have a working Light Client protocol and the whole trinity base layer—and then we're all good. It wasn't that easy, but those were the first steps. So I designed the LES protocol. In retrospect, it didn't make a lot of sense to build it over the devp2p layer because it wasn't easy to access from web browsers, and it was a Proof of Work based light client.
+**[26:38] SPEAKER_01:** Yeah. So when Jeff hired me, actually he has put me on this project. So he just said that, okay, it's great that I contributed to Swarm, but if I join the Geth team I will have to start working on the light client because it's a very important thing and it hasn't been started yet. So yeah, I felt really good about it. I also felt like this is a big thing and yeah, back then it really felt like we do these few things, we have a working light client protocol and the whole trinity of base layer, and then we're all good.
+
+Yeah, it wasn't that easy, but still those were the first steps, and so I designed the LES protocol. In retrospect, it didn't make a lot of sense to build it over the devp2p layer because it wasn't easy to access from web browsers stuff. But also, it was a proof of work based light client.
 
 **[27:51] SPEAKER_00:** Right.
 
-**[27:52] SPEAKER_01:** That project ended after a while, but I'm still very much into trustless chain access. That has usually been one of my focuses all the time. Right now, I'm working on something called the Trustless Execution Layer API, which is similar to the Beacon REST API but works on the execution layer and provides everything with proofs. I think this is where Ethereum really makes sense; if even normal users access chain data with proofs.
+**[27:52] SPEAKER_01:** So yeah, that project ended after a while, but I'm still very much into trustless chain access. So that has usually been one of my focuses all the time. So right now I'm also working on something called the Trustless Execution Layer API which is similar to the Beacon REST API but works on the execution layer and provides everything with proofs. So yeah, I'm still very much into this because I think this is where Ethereum really makes sense if even normal users access chain data with proofs.
 
-**[28:36] SPEAKER_00:** Right. And there was a project called Portal as well. Were you involved with Portal? That was a later Light Client.
+**[28:36] SPEAKER_00:** Right, right. And there was a project called Portal as well. Were you involved with Portal? That was a later kind of light client.
 
-**[28:44] SPEAKER_01:** No, I wasn't. Portal was Piper Merriam's brainchild. By the time we realized that LES was a nice first experiment but maybe not the best approach, he started something different that was UDP-based and used different topologies. It was kind of a DHT approach to storing the chain and the state. I think it's a bad thing that it's been completely canceled. Honestly, I never really believed that it would be an easily solvable problem to store the Merkle Patricia Trie of the state on a DHT, but for the chain data it made perfect sense. Maybe the state would have been possible with a lot of work. Piper told me a few times how he imagines to solve all the unsolvable problems, and it sounded good, but he made a lot of really hard assumptions about DHTs. By that time, I had already worked on Discovery V5, which we designed in 2016 in Berlin with Felix Lange.
+**[28:44] SPEAKER_01:** No, I wasn't. So Portal was Piper Merriam's brainchild. So by the time we kind of realized that LES was a nice first experiment, but maybe not the best approach, he started something different that was UDP based and also used different topologies. So it was kind of a DHT approach to storing the chain and the state. And yeah, actually I think it's a bad thing that it's been completely canceled because actually, to be honest, I never really believed that it will be an easily solvable problem to store the Merkle Patricia Trie of the state on DHT, but for the chain data it made perfect sense.
+
+So yeah, maybe the state would have been possible with a lot of work. But yeah, I mean Piper told me a few times about how he imagines to solve all the unsolvable problems and I felt like yeah, it sounds good, but he just made a lot of really hard assumptions about DHTs that by the time I already worked on Discovery V5, so there was also this discovery protocol that basically we designed it in 2016 in Berlin with Felix Lange.
 
 **[30:20] SPEAKER_00:** Right.
 
-**[30:20] SPEAKER_01:** I released the original version of that. I already knew that it's never easy to imagine a DHT that's efficiently formed and where all the nodes are working. But for the chain data...
+**[30:20] SPEAKER_01:** And I released the original version and yeah, so I already knew that it's never so easy to imagine a DHT that's efficiently formed and all the nodes are working and yeah, like this. So, but for the chain data...
 
 **[30:37] SPEAKER_00:** Right.
 
-**[30:37] SPEAKER_01:** Especially with EIP-4444, which lets the nodes running the main protocol forget the old chain history. It made perfect sense to at least put the chain history on a DHT. But it was an EF decision that it was discontinued at a point.
+**[30:37] SPEAKER_01:** Especially with EIP-4444. So that lets the mainnet protocol nodes forget the old chain history. So it made perfect sense to at least put the chain history on a DHT. But yeah, so it was an EF decision that it was discontinued at a point.
 
-**[31:05] SPEAKER_00:** Well, I guess the thing is, Merkle Patricia Tries are not great for the number of accesses anyway. Let alone if you're making each of those steps over a networked DHT setup. There's so much transactional change complexity.
+**[31:05] SPEAKER_00:** Well, I mean, I guess the thing is, you know, Patricia Merkle trees are not great for the number of accesses and things anyway, let alone if you're making each of those steps over a networked DHT kind of setup. That's... yeah, there's a lot of... It's so much transactional change complexity.
 
-**[31:31] SPEAKER_01:** The state trie suffers from a lot of issues, especially the Merkle Patricia state trie. It's a huge data set that keeps changing all the time at completely random places, and it's not an easy task to distribute it. It's getting harder to even synchronize it between full nodes storing the entire stuff.
+**[31:31] SPEAKER_01:** State trie suffers from a lot of issues, especially in the Merkle Patricia state trie. Yeah and yeah, it's a huge data set that keeps changing all the time and keeps changing at completely random places, and it's not an easy task to distribute it. So actually it's getting harder to even synchronize it between full nodes storing the entire stuff.
 
-**[32:00] SPEAKER_00:** Do you think that proofs are going to be a magic silver bullet here? By having local proofs versus massively redundant state machines, do you think there's a path there?
+**[32:00] SPEAKER_00:** So do you think that proofs are going to be a magic silver bullet here where by having local proofs versus massive really redundant state machines. Do you think there's a path here where...
 
-**[32:19] SPEAKER_01:** Oh, no, it's not a silver bullet. I assume you mean what people call statelessness. It's a good thing, and it definitely allows a higher degree of scaling, but the state trie still has to be processed and maintained by someone. Especially if most nodes have no incentive to process it. If we are talking about 100x and 1000x scaling, even if we do state expiry—currently imagined in a way that we reset the state trie every year or something and have multiple state tries—it will be a huge infrastructural centralization issue.
+**[32:19] SPEAKER_01:** Oh, yeah. No, it's not a silver bullet. So I assume you mean what people call statelessness. So it's a good thing. It definitely allows a higher degree of scaling. But the state trie still has to be processed and maintained by someone, and especially if most of the nodes have no incentive to process it. And yeah, now we are talking about 100x and 1000x scaling, then even if we also do state expiry, which is currently imagined in a way that we basically reset the state trie every year or something and have multiple state tries. So yeah, that helps somewhat. But if we scale a thousand x, then it will be a huge infrastructural centralization issue.
 
 **[33:21] SPEAKER_00:** Right.
 
-**[33:21] SPEAKER_01:** This thing is not an unsolvable problem. The state as it works today unfortunately makes it really hard to do fundamental improvements, but people are considering different storage architectures. Of course, we have to keep existing contracts workable because that was our main promise from the beginning: that we will not just shut down anything and everything has 100% uptime. But it is a viable way to come up with more efficient storage methods as an opt-in alternative, which will over time be available for much less, and new contracts can be designed using those more efficient architectures.
+**[33:21] SPEAKER_01:** And yeah, by the way, this thing is not an unsolvable problem. I mean, the state, as it works today, unfortunately somehow makes it really hard to do any fundamental improvements over these properties. But people are considering different storage architectures. Of course, we have to keep the existing contracts workable because that was our main promise from the beginning that we will not just shut down anything. Everything has 100% uptime. But it is a viable way to come up with more efficient storage methods and use it as an opt-in alternative that will over time be available for much less, and new contracts can be designed using those more efficient storage architectures.
 
-**[34:28] SPEAKER_00:** Yeah, because Verkle trees seemed to be the first sort of thought on that, but then that's kind of come and gone, and maybe it's a binary tree.
+**[34:28] SPEAKER_00:** Yeah, because Verkle trees seem to be the first sort of thought on that. But then that's kind of come and gone, and maybe it's a binary tree.
 
-**[34:37] SPEAKER_01:** Actually, it does either.
+**[34:37] SPEAKER_01:** Or actually it does either.
 
 **[34:40] SPEAKER_00:** You don't think it's so important either?
 
-**[34:42] SPEAKER_01:** Both are better than the Merkle Patricia Trie in some ways, but they don't solve this fundamental issue by themselves. The state is still a permanent key-value store, and in order to avoid it growing forever, there's all these ideas about state expiry, but it's still going to be a huge data set. The method of hashing or consensus protocol representation doesn't fundamentally change this. Verkle was supposed to provide more efficient Merkle proofs, but also somewhat more expensive state processing because of more expensive cryptography. Also, if I'm correct, it's not quantum secure. That was a thing that I always felt like, maybe it's not a good idea to start working on, and I just saw it canceled in front of my eyes.
+**[34:42] SPEAKER_01:** I mean both are better than the Merkle Patricia Trie in some ways. But they don't solve this fundamental issue by themselves. So still the thing is that the state is a permanent key-value store and in order to avoid it growing forever, yeah, there's all these ideas about state expiry, but still it's going to be a huge data set, and the method of hashing or consensus protocol representation doesn't fundamentally change this.
 
-**[36:00] SPEAKER_00:** I guess for running nodes in general, there's not a lot of incentive for people to run any kind of node software themselves unless they are a validator or running an exchange or a business and need a node back-end. The vision at the start was, "Well yeah, everyone will be running their own node." You had Mist on top of it for local apps, generating Swarm for the smart contracts, and it was almost like you wouldn't have server architecture because everyone's running their own server stack.
+So Verkle was supposed to provide more efficient Merkle proofs but also I guess somewhat more expensive state processing because it's like more expensive cryptography. Also if I'm correct, it's not quantum secure. So and that was also a thing that I always felt like, yeah, I'm not sure if it's a good idea to start working from now, and I just saw it in front of my eyes how it's going to be canceled.
 
-**[36:46] SPEAKER_01:** That did not happen. That's why we are also stuck with the JSON-RPC API, which doesn't provide proofs except for eth_getProof. It doesn't provide proofs for a lot of things because it was never meant to be used remotely. It was always imagined that it's used locally in a trusted setup on your own machine. And yeah, I remember all those good old days when I just synced up a full node, it was a few gigabytes of disk space, and ran Mist on top of it. It was magic, but unfortunately, it didn't scale.
+**[36:00] SPEAKER_00:** Yeah, yeah. I mean I guess for running nodes in general, you know, there's not a lot of incentive for people to run any kind of node software themselves unless they are, you know, a validator or an exchange or a business and you need your node back end to that. You know, I guess the vision that there was at the start of like, well yeah, everyone will be running their own node and you've got Mist on top of it and it's local apps, you know, and then that can have Swarm for the smart contracts and, you know, it's almost like you won't have server architecture because everyone's running a server stack and then, yeah.
 
-**[37:26] SPEAKER_00:** No. At the Museum of Ethereum here, I've got laptops running Geth 1.3.6, so Homestead Geth, and I mined Homestead back to life. Any hard fork that happens doesn't go away, right? It doesn't disappear; it's just people don't associate economic value with it and it kind of gets abandoned. What I've done is first GPU and then CPU mined that Homestead difficulty down to the level that you can CPU mine it again. So I have Mist running on those so we can go and transact locally. We can send a transaction between those, and it should be possible to run AlethZero and AlethOne and Mix on that as well. ERC-20 tokens existed; you could have DAO tokens or Mistcoin at that time. But the assumption that people would run their own node and it would all be a self-sovereign local app stack certainly did not come to fruition.
+**[36:46] SPEAKER_01:** That did not happen. Actually, that's why we are also stuck with the JSON-RPC API, which doesn't provide proofs except for `eth_getProof`, but doesn't provide proofs for a lot of things because it was never meant to be used remotely. It was always imagined that it's used locally in a trusted setup on your own machine. And yeah, I remember all those good old days when I just synced up a full node. It was a few gigabytes of disk space and ran Mist on top of it. And yeah, it's magic but yeah, unfortunately it didn't scale.
 
-**[38:54] SPEAKER_01:** Well, that's when the Light client came in, and we assumed we'd do the Light client and it would all be solved.
+**[37:26] SPEAKER_00:** No, no. At the Museum of Ethereum here I've got laptops running Geth 1.3.6 so Homestead Geth and I mined Homestead back to life. So you know, any hard fork that happens, the old one doesn't go away, right? It doesn't disappear. It's just people don't associate any economic value with it and it kind of gets abandoned. But yeah, what I've done is first GPU and then down to CPU mined that Homestead difficulty down to the level that you can CPU mine it again.
 
-**[39:01] SPEAKER_00:** That's what I was thinking: "I've got a full node running on my smartwatch that works, I'll just wait for you and the other guys to sort out the Light Client, turn that on, and there we go."
+So I do, I have got Mist running on those so we can go and transact, we can send a transaction between those and it should be possible to run AlethZero and AlethOne and Mix on that as well. I haven't had time to do that. And ERC-20 tokens existed. You could have DAO tokens or Mist coin at that time. But yeah, the assumption that people would run their own node and it would all be self-sovereign local apps certainly did not come to fruition.
 
-**[39:15] SPEAKER_01:** Actually, the Light Client protocol worked fine. I just spent a really crazy amount of time figuring out how it could be incentivized in a truly decentralized way. I remember there was this idealism that we are almost done with everything, so we just have to find a proper way to incentivize things, not through buying tokens from companies, but in a truly decentralized way. Which is much harder because you have to somehow build decentralized trust and figure out market mechanisms that work without initial trust. I spent years with this and I think I came up with some nice theoretical models and a lot of complex code, but it was just the wrong approach, maybe at the wrong time. We were simply not there.
+**[38:54] SPEAKER_01:** Well, yeah, that's when the light client came in and then we assumed that, okay, then we do the light client and then it will be all solved.
 
-**[40:27] SPEAKER_00:** Because BitTorrent has obviously worked for distributing content for many years, but you do have this tragedy of the commons. The latest Hollywood movie that someone has ripped off will get shared around no problem because people want that. But things which are only of interest to a smaller number of people, without incentives, it's just a leeching problem.
+**[39:01] SPEAKER_00:** But that's what I was thinking is like right, I've got a full node running on my smartwatch that works and I'll just wait for you and the other guys to sort out light client and just turn that on and there we go.
 
-**[41:00] SPEAKER_01:** Exactly.
+**[39:15] SPEAKER_01:** Well, actually the light client protocol worked fine. It's just, yeah, I spent like a really crazy amount of time figuring out how it could be incentivized in a truly decentralized way. Because yeah, I remember this... There was this idealism that, yeah, now we are almost done with everything, so we just have to find a real proper way for incentivizing things. But not in a way that there's a few companies where you can buy tokens, but truly in a decentralized way, which is much harder because yeah, then we have to somehow build decentralized trust and figure out market mechanisms that work without initial trust.
 
-**[41:00] SPEAKER_00:** Full node runners would contribute, they'd turn on LES as well, and help supply that. But the incentives and economics of that were not easy.
+So yeah, this is something I spent years with, and honestly I think I came up with some nice theoretical models and a lot of really complex code. But yeah, it's just again was like the wrong approach, maybe also at the wrong time. So we were just not there really.
 
-**[41:14] SPEAKER_01:** Actually, with BitTorrent, if you really want to use it, it often requires private trackers where you buy some priority access. So it's not completely decentralized, but it does work and is better than nothing. But for LES, it wasn't this easy. Downloading movies was an application everybody understood and used. With Ethereum, everyone felt the importance, but we were nowhere near a mature ecosystem. There just wasn't a big enough market for these services to work out in a market-based way. As we scale and accessing the whole data set becomes more difficult, at a certain point I think we are going to have something like what we imagined several years ago. I was right about everything except timing and specifics.
+**[40:27] SPEAKER_00:** Yeah, because I mean BitTorrent has obviously worked for distributing content for many, many years. But then you do have this tragedy of the commons, right, as the latest Hollywood movie, someone has ripped it off and people want that. So that's going to get shared around, no problem. But things which are only of interest to a smaller number of people without incentives, it's just a leeching problem. Right. Full node runners would contribute, they'd turn on LES as well. Right. They would help supply that. But the incentives and economics of that, not easy.
 
-**[42:46] SPEAKER_00:** Yes. There are a number of things that seemed like they would be easy, quick, and obvious, and have taken many years. Like Proof of Stake; it was in the white paper with an assumption later in 2015 that it will happen within six months. It took eight years before it actually went live. And on storage, Filecoin's first white paper was in 2014, and IPFS was around before Ethereum as well. Whisper kind of went for a while, and now there's Waku. You've had Status driving a lot of those techs for years as well. Jarrad Hope and the team were doing an Android version of the Java client around the same time I was looking at smartwatches.
+**[41:14] SPEAKER_01:** Yeah. Actually with BitTorrent it also usually, if you really want to use it, it requires trackers where you buy some priority access. So there are these private trackers and everything. So, yeah, and this is also not completely decentralized, but actually it does work. So it's definitely better than nothing. But for LES it wasn't really this easy because this whole service, like downloading movies, was an application that everyone understood, that everybody used. And somehow with Ethereum it was always this... yeah, everyone felt the importance, but if you're nowhere near close to a really mature ecosystem... and so it was just, I don't think there would have been a big enough market really for these services so that to really work out in a market-based way.
+
+But as we scale and accessing the whole data set becomes more and more difficult, at a certain point I think we are going to have something like I reimagined several years ago. So yeah, it's just both like timing and specifics. Yeah, I was right about everything except timing and specifics.
+
+**[42:46] SPEAKER_00:** Yes, yes. Yeah. I mean there's a number of things that seemed like they would be easy and quick and obvious and have taken so many years. I mean like proof of stake, you know, it was in the white paper there was an assumption, you know, later in 2015 that it will happen, you know, within six months, maybe three, six months. And then it's eight years before, you know, it actually went live.
+
+And yeah, I mean on storage. So Filecoin, their first white paper was in 2014 as well. You know, Filecoin was not a new thing, and IPFS was around before Ethereum as well. And then, yeah, Whisper kind of went for a while and then now there's Waku, and you've had Status driving a lot of those techs for a lot of those years as well. You know, Jarrad Hope and team who were also doing Android version of the Java client, same kind of time as I was looking at smartwatches.
 
 **[44:04] SPEAKER_01:** Jarrad Hope was also very eagerly waiting for a fully functional light client.
 
-**[44:10] SPEAKER_00:** Yeah. Because they were building a kind of super app, a competitor to Mist really, wanting a container for running dapps sitting on top of a local client, having this completely self-sovereign server app stack. Not easy. I can't remember who was telling me that when they first saw MetaMask at Devcon 1—MetaMask was a grantee winner—they thought, "No, that's not what we want. We don't want some browser extension talking to a trusted endpoint. That's absolutely the opposite. What are these guys doing?" And then that became the standard flow, right?
+**[44:10] SPEAKER_00:** Yeah, well yeah, because they were building kind of a decentralized WeWork super app but I guess kind of a competitor to Mist really, similar kind of thing wanting to have a container for running dapps in sitting on top of a local client, again having this completely self-sovereign kind of server app stack, but not easy. I can't remember who it was that was telling me when they first saw MetaMask, which was at Devcon 1, that was one of the grantee winners was MetaMask... them thinking, no, that's not what we want. We don't want some browser extension thing talking to a trusted endpoint. That's absolutely the opposite. What are these guys doing? And then that's become the standard flow, right?
 
-**[45:15] SPEAKER_01:** Well, this is still an unsolved problem to access everything in a truly decentralized way, but I think we are getting there over time. Nothing is as simple as we initially imagined, and there's a time for everything. True decentralized infrastructure will be forced by scaling constraints. Things sometimes just don't happen if they are not forced by external factors. As long as it works conceptually in a lazy way to just connect MetaMask to Infura, until then, it remains the standard way.
+**[45:15] SPEAKER_01:** Well yeah, so this is still kind of an unsolved problem to access everything in a truly decentralized way, but I think we are getting there over time. It's just nothing is as simple as we initially imagined, and also there's a time for everything, and I think true decentralized infrastructure will be forced by scaling, and things sometimes just don't happen if they are not forced by some circumstance, some external factor. So as long as it works in a lazy way to just connect MetaMask to Infura, until then it's the standard way.
 
-**[46:12] SPEAKER_00:** Yeah. So I think I found two different talks of yours at Devcons talking mainly about the Light Client. Do you remember? Did you talk in London, or was Shanghai your first?
+**[46:12] SPEAKER_00:** Yeah, yeah. So I think I found two different talks of yours at Devcons talking really about light client. Do you remember? Did you talk in London or was Shanghai your first?
 
-**[46:26] SPEAKER_01:** I talked in London, also Shanghai, and also in Cancun. The first two Devcons were mostly about the Light Client. The first release of the Light Client protocol was in '16. Later, I started to invent all the next chapters of decentralized technology. It was really naive of me, but I also had a project where I tried to make logs provable efficiently. That initial attempt was in 2017, and now I'm back at it. Now I have this trustless log index project. That old 2017 approach was just a more efficient way to organize Bloom filters, but it didn't solve the problem of Bloom filters not adapting to the number of events, and I never proposed putting it into consensus, which would have allowed actual trustless proofs through the chain.
+**[46:26] SPEAKER_01:** No, I talked at London, also Shanghai, and also in Cancun. Yeah so those were the first two Devcons that were mostly about the light client. Actually the first release of the light client protocol was in 16, so it was around that time, and later I already started to invent all the next chapters of decentralized technology.
+
+And yeah, it was really naive of me, but I also had this project back then where I started to try to make logs provable efficiently, and yeah, that was the initial attempt for that was in 2017, and now I'm back at it. Now I'm also like, I also have this trustless log index project and yeah, so this old approach of 2017, that was just a more efficient way to organize the Bloom filters, but it didn't really solve the problem of the Bloom filters not adapting to the number of events, and also I never even proposed putting it into consensus which would have allowed actual trustless proofs through the chain.
 
 **[47:58] SPEAKER_00:** Right.
 
-**[47:58] SPEAKER_01:** That also proved to be a hard problem, but this is one of the things I presented in Cancun.
+**[47:58] SPEAKER_01:** So yeah, that also proved to be a hard problem. But yeah, this is one of the things what I presented in Cancun.
 
-**[48:08] SPEAKER_00:** Right, right.
+**[48:08] SPEAKER_00:** Right, right, right.
 
-**[48:10] SPEAKER_01:** Also, I presented some ideas on state channels. Back then, we didn't have L2s the way we do now. Layer 2 just meant something happening off-chain, not necessarily another blockchain. I had ideas about individual nodes running their own blockchains and organizing off-chain calculations. It assumed a lot about how nodes would operate and probably would have never worked in retrospect.
+**[48:10] SPEAKER_01:** And also some kind of my ideas of state channels. So back then we didn't have like L2s in a way. Actually back then Layer 2 just meant something that happens off-chain, not necessarily another blockchain. And yeah, so I had these ideas about individual nodes running their own blockchains, somehow organizing some off-chain calculations through that. But yeah, it also assumed a lot about how nodes would operate and probably would have never worked in retrospect.
 
-**[48:53] SPEAKER_00:** We had state channels, and then we had Plasma, eventually coming into Optimistic Rollups, and then ZK later. Just many different attempts.
-
-**[49:06] SPEAKER_01:** Hello.
-
-**[49:07] SPEAKER_00:** See you, sir.
+**[48:53] SPEAKER_00:** Yeah, I mean we had state channels and then we had Plasma and then eventually coming into optimistic rollups and then ZK later. Just many, many different attempts. Hello. See you sir.
 
 **[49:07] SPEAKER_01:** Great to see you.
 
-**[49:10] SPEAKER_00:** There's an awful lot of learning, right? Ten years' worth of lots of people trying lots of different things. In terms of the Geth team, has that been similar over the years regarding size? Have you had larger and smaller amounts of people? Has it been a consistent flow through that time?
+**[49:10] SPEAKER_00:** So, so yeah, I mean I guess there's an awful lot of learning, right? Ten years' worth of lots of people trying lots of different things. So I mean in terms of the Geth team, has that been similar over the years or have you had larger and smaller amounts of people? Has it been a similar kind of flow through that time?
 
-**[49:36] SPEAKER_01:** I would say it was pretty consistently around 10 people throughout all these years. Sometimes 8 or 9, sometimes 11 or 12, but really in this range. We did improve our internal processes during the years; now we do issue and pull request triages. The team was always small enough so that we didn't need a lot of processes. The team culture did obviously change with certain people coming and going, but I would say it was always a good culture. I always liked the Geth team. That's why I never really looked into moving to other teams or projects because I felt that the team is the best place to do meaningful things.
+**[49:36] SPEAKER_01:** I would say it was pretty consistently around 10 people throughout all these years. Sometimes 8, 9, sometimes 11, 12. But really like in this range. We did improve our internal processes during the years. So yeah, now we do have like all this issue and pull request triages and yeah... but really it's been mostly... that team was also always small enough so that we didn't need a lot of processes. Honestly, the team culture, yeah, it did obviously change, especially with certain people coming and going. But I would say it was always a good team culture. I always liked the Geth team. That's also why I never really looked into moving to other teams or other projects because I felt that the team is the best place to do meaningful things.
 
-**[50:56] SPEAKER_00:** It's funny because from the very start of Ethereum, the intention was to have multiple clients. That was a very basic decision to say we want a separation between the specification and the implementation. We didn't want it to be like Bitcoin where you've got one codebase and there's no competition.
+**[50:56] SPEAKER_00:** Yeah, I mean it's funny because from the very start of Ethereum, the intention was to have multiple clients. Right. That was a very basic decision of saying we want a separation between the specification and the implementation. Right. Because we don't want it to be like Bitcoin where you've got one code base and then like there's no competition, there's no, you know.
 
-**[51:20] SPEAKER_01:** For Bitcoin's complexity that approach worked, but for Ethereum's complexity, I would say this was one of the best decisions. It also contributed to almost running out of money by the time we launched Mainnet, but I would say it was money well wasted.
+**[51:20] SPEAKER_01:** Well yeah, for Bitcoin's complexity that approach worked, but for Ethereum's complexity I would say this was one of the best decisions. Yeah, it also contributed to almost running out of money by the time we launched mainnet, but I would say it was money well wasted.
 
-**[51:40] SPEAKER_00:** Yes, I would agree it was not efficient, but the outcome was very much worthwhile.
+**[51:40] SPEAKER_00:** So yes, no, I would agree it was not efficient, but the outcome was very much worthwhile.
 
-**[51:48] SPEAKER_01:** When we switched to Proof of Stake, we again successfully applied this pattern by funding multiple Consensus Layer implementations and then testing every Execution Layer against every Consensus Layer, and running testnets with all five.
+**[51:48] SPEAKER_01:** Yeah. And when we switched to proof of stake, we again successfully applied this pattern by funding multiple CL implementations and then testing every EL against every CL and then running testnets with all the five.
 
-**[52:09] SPEAKER_00:** Are there five different primary consensus clients? I think it's five, and notably none of those were within the foundation either. They were all independent companies and teams. On the execution side, there have been a good number of alternative execution clients over the years. Starting with Parity and then Besu, Nethermind, and Erigon. How do you work with other teams in that kind of environment?
+**[52:09] SPEAKER_00:** Is it five? Five different primary consensus clients. There are. I think it's five. And yeah, notably none of those were within the Foundation either. They were all independent companies and teams. So I mean on the execution side, there have been a good number of different alternative execution clients over the years. So I mean how have you tended to work and interact in that kind of environment where you've got all these different... I guess starting with Parity and then Besu and Nethermind, Erigon. So how do you work with other teams?
 
-**[52:53] SPEAKER_01:** Now we have all the ACD calls and testing calls. We all have working clients all the time, so by default, we don't need to interact a lot. We have to interact when we are testing out new features, and there are proper forums for that. Some people keep more contacts outside the Geth team, and some turn inwards focusing on Geth issues. In the first years, communication was not really organized well; we just tried to figure things out. Now we have much better processes. It's also a much bigger challenge because there are so many more people. I realized this during the time we really started working on Proof of Stake. In 2017, the ether price went to several thousand dollars and the foundation had money to hire new teams and fund external teams. Until 2017, I mostly met non-Go Ethereum people only at Devcons.
+**[52:53] SPEAKER_01:** Well. Now we have all the All Core Devs calls and testing calls. So mostly, I mean we all do have working clients all the time. So by default we don't need to interact a lot. We have to interact when we are testing out new features. There are the prepared forums for that. So yeah. And it's also some people keep more contacts outside of the Geth team, some people are more turning inwards and then just focusing on Geth issues.
 
-**[54:37] SPEAKER_00:** Right.
+But actually I think in the first years communication was really not organized well, so we really just tried to figure out things and some people knew some people from the other teams. But actually these days we have much better processes for this. Also it's a much, much bigger challenge because there are so many more people. Actually this is also something I realized during the time we really started working on proof of stake.
 
-**[54:37] SPEAKER_01:** Maybe those who lived in Berlin or cities where there were multiple people met more, but I mainly lived in Hungary and worked remotely. I mostly met people at Devcons. Until Devcon 4 in Prague, it was maybe 30 or 40 people. After every Devcon, we stood up at the main stage and did a group photo.
+So in 2017 was the first time ether price went to several thousand dollars and yeah, the Foundation had money to hire new teams and found external teams. And I remember that until 2017 I mostly met non-Go Ethereum people mostly at Devcons.
+
+**[54:37] SPEAKER_00:** Right? Yeah.
+
+**[54:37] SPEAKER_01:** And maybe those people who lived in Berlin or one of those cities where there were multiple people, they met more people. But I was mainly in Hungary and worked remotely and yeah, I mostly met most of the people at Devcons. But I think it was 2018 where so many researchers and everything were hired, and there were also the Seattle teams, and I remember Devcon 4 in Prague.
+
+Yeah, so until then it was mostly... I don't know how many people exactly, but I do remember it's maybe 30, 40 people. I don't know, after every Devcon we stood up at the main stage and did a group photo.
 
 **[55:28] SPEAKER_00:** Oh yeah, yeah.
 
@@ -256,29 +286,27 @@
 
 **[55:30] SPEAKER_00:** Yes.
 
-**[55:30] SPEAKER_01:** It was that many people. In '18, I was just shocked. "Who the hell are all these people?" It was the whole Ethereum Foundation. It became a much bigger challenge, but now we do have official forums, and I try to go to more events to stay connected.
+**[55:30] SPEAKER_01:** Like it was that many people. And in 18 I just, I was just shocked. Like who the hell are all these people? All Ethereum Foundation. So yeah, it became a much bigger challenge. But also now we do have all these official forums and also I try to go to more events, not just Devcons. So yeah, in order to keep all the context live.
 
-**[56:00] SPEAKER_00:** Looking back to when you first started working on Ethereum, did you have any kind of thought or vision of what things might have looked like 10 years later? Has it worked out as you expected or differently?
+**[56:00] SPEAKER_00:** Yeah, yeah. So I mean looking back to when you first started working on Ethereum... Did you have any kind of thought or vision of what things might have looked like 10 years later? Like has it worked out as you expected or differently or what's your looking back on these 10 years? What's your thought?
 
-**[56:25] SPEAKER_01:** I always had a lot of visions. Maybe I was too focused on visions sometimes, yeah. We all kind of have to imagine the future at every point, even though we know we can't imagine it exactly as it will turn out. It never turns out exactly the way we want, but we always have to have some direction and ideas of how things can go. Around 2017, I realized that scaling would not happen just with L1. I had these ideas about solving problems more efficiently with application-specific state channels rather than rollups. There was also this really great project...
+**[56:25] SPEAKER_01:** I always had a lot of visions. Yeah, maybe I was too focused on visions sometimes. So the thing is that we all kind of have to imagine the future at every point even though we know we can't imagine it as it will turn out. So it never turns out exactly the way we want, but we always have to have some kind of direction and we have to just have ideas of how things can turn out.
+
+So yeah, around like 2017 I also realized that scaling will not happen just with L1. So I also had this, as I mentioned, had these ideas about how we could solve problems more efficiently with, not even rollups, just application-specific state channels and stuff like that. But there was also this really great project... Oh, okay. I don't... Yeah.
 
 **[57:34] SPEAKER_00:** Raiden.
 
-**[57:35] SPEAKER_01:** Raiden. Yeah, thank you. They properly implemented the protocol and everything.
+**[57:35] SPEAKER_01:** Raiden. Yeah. Thank you. Thank you. So yeah, they properly implemented the protocol and everything. Yeah, I think it has always struggled with like not many people using it. So it's like there's a problem... it's a pain that the transactions are expensive, but still somehow maybe we just missed some organizing force to really move to some kind of Layer 2 solutions.
 
-**[57:41] SPEAKER_00:** Yeah.
+**[58:10] SPEAKER_00:** Yeah, well it was meant to be Lightning for Ethereum, right? That was the thought.
 
-**[57:41] SPEAKER_01:** I think it always struggled with not many people using it. Transactions are expensive, but somehow we just missed an organizing force to really move to Layer 2 solutions back then.
+**[58:16] SPEAKER_01:** Well yeah, it was pretty much that idea.
 
-**[58:10] SPEAKER_00:** Well, it was meant to be Lightning for Ethereum, right? That was the thought.
+**[58:18] SPEAKER_00:** But then Lightning's kind of failed, so maybe not surprising if an Ethereum version of that's not really caught on. Because you've got routing issues. Right. It's really complicated. Channels seem to work great for consistent static topologies. If you want to do merchant to merchants, channels work great.
 
-**[58:16] SPEAKER_01:** Yeah, it was pretty much that idea.
+**[58:46] SPEAKER_01:** Yeah. But opening those channels is still costly and non-trivial and yeah... I also never really... I installed it, I tried it, I was like, "Okay, this is interesting," but I never really made a payment through Raiden because there was just no occasion where the other party really wanted a Raiden transfer.
 
-**[58:18] SPEAKER_00:** But then Lightning's kind of failed, so maybe it's not surprising if an Ethereum version of that hasn't really caught on. You've got routing issues. Channels seem to work perfectly for consistent static topographies. If you want to do merchant-to-merchant, channels work great.
-
-**[58:46] SPEAKER_01:** Yeah. But opening those channels is still costly and nontrivial. I installed it and tried it, and I thought, "Okay, this is interesting," but I never really made a payment through Raiden because there was just no occasion where the other party really wanted a Raiden transfer.
-
-**[59:14] SPEAKER_00:** No. Well, thank you very much. I think we can wrap it up there. Thanks for your time and thanks for all of your work on Geth over these very many years. Geth has always really been the backbone of Ethereum. New clients come and go, but Geth remains. So thank you.
+**[59:14] SPEAKER_00:** No. No. Well, thank you very much. I think we can wrap it up there. So thanks for your time and thanks for all of your work on Geth over these very many years. Geth has always really been the backbone of Ethereum. New clients come and go, but Geth remains. So thank you.
 
 **[59:39] SPEAKER_01:** Thank you for having me here.
 

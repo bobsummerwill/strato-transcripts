@@ -60,7 +60,7 @@
 
 **[26:02] SPEAKER_01:** Thank you. Thank you.
 
-**[26:39] SPEAKER_00:** Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you.
+**[26:39] SPEAKER_00:** Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you.
 
 **[31:05] SPEAKER_01:** Thank you.
 
@@ -68,7 +68,7 @@
 
 **[31:48] SPEAKER_01:** Thank you.
 
-**[32:14] SPEAKER_00:** Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you.
+**[32:14] SPEAKER_00:** Thank you. Thank you. Thank you. Thank you. Thank you. Thank you.
 
 **[35:52] SPEAKER_01:** Thank you.
 
