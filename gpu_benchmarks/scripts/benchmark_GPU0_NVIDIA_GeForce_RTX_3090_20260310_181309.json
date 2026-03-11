@@ -1,0 +1,108 @@
+{
+  "gpu_info": {
+    "id": 0,
+    "name": "NVIDIA GeForce RTX 3090",
+    "uuid": "GPU-d64aca9a-d2ed-af21-2b47-abeaa19cef7a",
+    "total_memory_gb": 23.550048828125,
+    "multiprocessor_count": 82,
+    "max_threads_per_multiprocessor": 1536,
+    "warp_size": 32,
+    "cuda_capability": "8.6"
+  },
+  "test_metadata": {
+    "timestamp": "2026-03-10T18:13:09.494158",
+    "date": "2026-03-10",
+    "time": "18:13:09",
+    "pytorch_version": "2.9.1+cu130",
+    "compute_backend": "cuda",
+    "cuda_version": "13.0"
+  },
+  "benchmark_results": {
+    "matmul": [
+      {
+        "size": 1024,
+        "avg_time_ms": 0.11771386000077655,
+        "min_time_ms": 0.11257200003456092,
+        "max_time_ms": 0.307850000012877,
+        "gflops": 18243.252306787264
+      },
+      {
+        "size": 2048,
+        "avg_time_ms": 0.7393487599995296,
+        "min_time_ms": 0.7162090000747412,
+        "max_time_ms": 1.2874350001084167,
+        "gflops": 23236.48880402657
+      },
+      {
+        "size": 4096,
+        "avg_time_ms": 5.390405839991672,
+        "min_time_ms": 5.138860999977624,
+        "max_time_ms": 6.158623000033003,
+        "gflops": 25496.958401969292
+      },
+      {
+        "size": 8192,
+        "avg_time_ms": 40.382517890000145,
+        "min_time_ms": 39.83431000006021,
+        "max_time_ms": 41.54460300003393,
+        "gflops": 27227.41634810915
+      }
+    ],
+    "memory_bandwidth": [
+      {
+        "size_mb": 1,
+        "h2d_bandwidth_gbps": 7.804648523964952,
+        "d2h_bandwidth_gbps": 7.206290685754585,
+        "h2d_time_ms": 0.1251257499939129,
+        "d2h_time_ms": 0.13551527999425161
+      },
+      {
+        "size_mb": 10,
+        "h2d_bandwidth_gbps": 11.435329341737614,
+        "d2h_bandwidth_gbps": 6.632559719821733,
+        "h2d_time_ms": 0.8539872100016055,
+        "d2h_time_ms": 1.4723764900020342
+      },
+      {
+        "size_mb": 100,
+        "h2d_bandwidth_gbps": 12.026598329973096,
+        "d2h_bandwidth_gbps": 4.835140406566793,
+        "h2d_time_ms": 8.120022580002342,
+        "d2h_time_ms": 20.19719011000575
+      },
+      {
+        "size_mb": 1000,
+        "h2d_bandwidth_gbps": 12.202459828744704,
+        "d2h_bandwidth_gbps": 4.566104883384398,
+        "h2d_time_ms": 80.02997049001237,
+        "d2h_time_ms": 213.87211309000236
+      }
+    ],
+    "compute_throughput": {
+      "Addition": {
+        "avg_time_us": 151.19080199690416,
+        "throughput_gops": 66.141589752297
+      },
+      "Multiplication": {
+        "avg_time_us": 149.45338299685318,
+        "throughput_gops": 66.91049609904485
+      },
+      "Division": {
+        "avg_time_us": 149.58488599836528,
+        "throughput_gops": 66.85167377210345
+      },
+      "Sqrt": {
+        "avg_time_us": 102.76660599913612,
+        "throughput_gops": 97.30787450627749
+      },
+      "Exp": {
+        "avg_time_us": 102.44305299977441,
+        "throughput_gops": 97.61520871524614
+      },
+      "Sin": {
+        "avg_time_us": 102.24429299955773,
+        "throughput_gops": 97.80496990715419
+      }
+    }
+  }
+}
