@@ -1,18 +1,19 @@
 # AI Providers for Transcript Post-Processing
 
-All 4 hosted models are accessed through **OpenRouter** with a single API key.
-Get your key from: https://openrouter.ai/keys
+Hosted post-processing uses **OpenRouter** for most models and direct OpenAI access for GPT-5.4.
+Get your OpenRouter key from: https://openrouter.ai/keys
 
 **Local Mode**: 5 models run locally via ollama on dual RTX 3090s (48GB).
 
-## Hosted Models (OpenRouter)
+## Hosted Models
 
-| Processor | Model | OpenRouter ID | Context | Weights |
-|-----------|-------|---------------|---------|---------|
-| **opus** | Claude Opus 4.6 | `anthropic/claude-opus-4.6` | 1M | Closed |
-| **gemini** | Gemini 3.1 Pro | `google/gemini-3.1-pro-preview` | 1M | Closed |
-| **grok** | Grok 4 | `x-ai/grok-4` | 256K | Closed |
-| **qwen** | Qwen3.5 Plus | `qwen/qwen3.5-plus-02-15` | 1M | Open |
+| Processor | Model | Route | Model ID | Context | Weights |
+|-----------|-------|-------|----------|---------|---------|
+| **opus** | Claude Opus 4.6 | OpenRouter | `anthropic/claude-opus-4.6` | 1M | Closed |
+| **gemini** | Gemini 3.1 Pro | OpenRouter | `google/gemini-3.1-pro-preview` | 1M | Closed |
+| **grok** | Grok 4 | OpenRouter | `x-ai/grok-4` | 256K | Closed |
+| **qwen** | Qwen3.5 Plus | OpenRouter | `qwen/qwen3.5-plus-02-15` | 1M | Open |
+| **gpt** | GPT-5.4 | Direct OpenAI API | `gpt-5.4` | 1.05M | Closed |
 
 ## Local Models (ollama, fit on 48GB)
 
@@ -26,13 +27,15 @@ Get your key from: https://openrouter.ai/keys
 
 ## Setup
 
-### 1. Get OpenRouter API Key
-Sign up at https://openrouter.ai and create an API key.
+### 1. Get Hosted API Keys
+Sign up at https://openrouter.ai and create an API key for `opus`, `gemini`, `grok`, and `qwen`.
+Get an OpenAI API key for `gpt`.
 
 ### 2. Configure Environment
 ```bash
 # Edit setup_env.sh and add your key
 export OPENROUTER_API_KEY="sk-or-v1-your-key-here"
+export OPENAI_API_KEY="sk-your-openai-key-here"
 
 # Source the environment
 source setup_env.sh
@@ -50,11 +53,14 @@ python3 scripts/test_ai_providers.py
 # Single processor
 python3 scripts/process_single_post_process.py transcript.md --processors opus
 
+# GPT-5.4 via direct OpenAI API
+python3 scripts/process_single_post_process.py transcript.md --processors gpt
+
 # All hosted processors
-python3 scripts/process_single_post_process.py transcript.md --processors opus,gemini,grok,qwen
+python3 scripts/process_single_post_process.py transcript.md --processors opus,gemini,grok,qwen,gpt
 
 # Explicit hosted mode
-python3 scripts/process_single_post_process.py transcript.md --processors grok --mode hosted
+python3 scripts/process_single_post_process.py transcript.md --processors grok,gpt --mode hosted
 ```
 
 ### Process Transcripts (Local Mode)
@@ -79,9 +85,11 @@ python3 scripts/process_single_post_process.py transcript.md --processors glm,de
 
 ### Test Context Limits
 ```bash
-python3 scripts/test_context_limits.py --providers opus,gemini,grok,qwen
+python3 scripts/test_context_limits.py --providers opus,gemini,grok,qwen,gpt
 python3 scripts/test_context_limits.py --providers all
 ```
+
+`test_context_limits.py` covers all supported hosted post-processors, including direct OpenAI `gpt`.
 
 ## Model Details
 
@@ -105,6 +113,11 @@ python3 scripts/test_context_limits.py --providers all
 - **Best For**: Multilingual content, agentic tasks
 - **Notes**: 397B MoE (17B active), open weights, 201 languages
 
+### GPT-5.4 (`gpt`)
+- **Context**: 1.05M tokens, 128K output
+- **Best For**: OpenAI-native transcript cleanup
+- **Notes**: Uses direct OpenAI API via `OPENAI_API_KEY`
+
 ## Recommendations
 
 ### For Typical Transcripts (60-90 min)
@@ -112,17 +125,18 @@ python3 scripts/test_context_limits.py --providers all
 - **Token count**: ~20,000-40,000 tokens
 - **Total with prompts**: ~45,000 tokens
 
-All 4 models have sufficient context for typical transcripts.
+All 5 hosted models have sufficient context for typical transcripts.
 
 ### Best Quality
 1. **Claude Opus 4.6** - Consistently Tier 1 in 13/15 episodes
 2. **Grok 4** - Strong benchmark performance
 3. **Gemini 3.1 Pro** - Reliable, good for long content
-4. **Qwen3.5 Plus** - New, under evaluation
+4. **GPT-5.4** - OpenAI-native option with very large context
+5. **Qwen3.5 Plus** - New, under evaluation
 
 ## OpenRouter Benefits
 
-- **Single API key** for all 4 models
+- **Single API key** for 4 cross-provider models
 - **Unified billing** across providers
 - **Automatic failover** if a provider is down
 - **Pay-as-you-go** with no monthly minimums

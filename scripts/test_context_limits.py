@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 """
-Context Window Limit Testing Tool (OpenRouter Edition)
-=======================================================
-Tests actual context window limits for AI providers via OpenRouter.
+Context Window Limit Testing Tool
+=================================
+Tests actual context window limits for supported hosted AI post-processors.
 
-All post-processing providers are accessed through OpenRouter with a single API key.
-
-PROVIDER MATRIX (3 POST-PROCESSING PROVIDERS via OpenRouter):
-- opus: Claude Opus 4.6 - 1M context, 128K output
-- gemini: Gemini 3.1 Pro - 1M context, 64K output
-- grok: Grok 4 - 256K context
+Hosted provider matrix:
+- opus: Claude Opus 4.6 via OpenRouter - 1M context, 128K output
+- gemini: Gemini 3.1 Pro via OpenRouter - 1M context, 64K output
+- grok: Grok 4 via OpenRouter - 256K context
+- qwen: Qwen3.5 Plus via OpenRouter - 1M context
+- gpt: GPT-5.4 via direct OpenAI API - 1.05M context, 128K output
 
 TRANSCRIPTION PROVIDERS (ASR + DIARIZATION - no context limits):
 - WhisperX (local GPU/CPU), WhisperX-Cloud (Replicate), AssemblyAI
 
 USAGE:
-    python3 scripts/test_context_limits.py --providers opus,gemini,grok
+    python3 scripts/test_context_limits.py --providers opus,gemini,grok,qwen,gpt
     python3 scripts/test_context_limits.py --providers all
 """
 
@@ -53,35 +53,58 @@ def print_warning(text):
     print(f"{Colors.YELLOW}⚠{Colors.RESET} {text}")
 
 
-# OpenRouter model mapping and context limits
-OPENROUTER_MODELS = {
+# Hosted model mapping and context limits
+HOSTED_MODELS = {
     'opus': {
         'model_id': 'anthropic/claude-opus-4.6',
         'display_name': 'Claude Opus 4.6',
         'provider': 'Anthropic',
+        'route': 'openrouter',
+        'env_var': 'OPENROUTER_API_KEY',
         'advertised': '1,000,000 tokens',
         'test_sizes': [10000, 50000, 100000, 200000, 500000, 1000000],
+        'request_kwargs': {'max_tokens': 50, 'temperature': 0.1},
     },
     'gemini': {
         'model_id': 'google/gemini-3.1-pro-preview',
         'display_name': 'Gemini 3.1 Pro',
         'provider': 'Google',
+        'route': 'openrouter',
+        'env_var': 'OPENROUTER_API_KEY',
         'advertised': '1,000,000 tokens',
         'test_sizes': [10000, 50000, 100000, 200000, 500000, 1000000],
+        'request_kwargs': {'max_tokens': 50, 'temperature': 0.1},
     },
     'grok': {
         'model_id': 'x-ai/grok-4',
         'display_name': 'Grok 4',
         'provider': 'xAI',
+        'route': 'openrouter',
+        'env_var': 'OPENROUTER_API_KEY',
         'advertised': '256,000 tokens',
         'test_sizes': [10000, 50000, 100000, 150000, 200000, 256000],
+        'request_kwargs': {'max_tokens': 50, 'temperature': 0.1},
     },
     'qwen': {
         'model_id': 'qwen/qwen3.5-plus-02-15',
         'display_name': 'Qwen3.5 Plus',
         'provider': 'Alibaba',
+        'route': 'openrouter',
+        'env_var': 'OPENROUTER_API_KEY',
         'advertised': '1,000,000 tokens',
         'test_sizes': [10000, 50000, 100000, 200000, 500000, 1000000],
+        'request_kwargs': {'max_tokens': 50, 'temperature': 0.1},
+    },
+    'gpt': {
+        'model_id': 'gpt-5.4',
+        'display_name': 'GPT-5.4',
+        'provider': 'OpenAI',
+        'route': 'direct',
+        'env_var': 'OPENAI_API_KEY',
+        'base_url': 'https://api.openai.com/v1',
+        'advertised': '1,050,000 tokens',
+        'test_sizes': [10000, 50000, 100000, 200000, 500000, 1000000],
+        'request_kwargs': {'max_completion_tokens': 50},
     },
 }
 
@@ -91,6 +114,7 @@ MODEL_PRIORITY = {
     'x-ai/grok-4': 95,
     'google/gemini-3.1-pro-preview': 90,
     'qwen/qwen3.5-plus-02-15': 85,
+    'gpt-5.4': 92,
 }
 
 
@@ -134,31 +158,40 @@ prompt engineering and determine when chunking strategies are necessary for long
 
 
 # ============================================================================
-# OpenRouter Testing
+# Hosted API Testing
 # ============================================================================
 
-def test_openrouter_context(api_key, processor_name):
-    """Test context limits for a model via OpenRouter."""
+def test_hosted_context(processor_name):
+    """Test context limits for a hosted model via its configured route."""
     try:
         import openai
     except ImportError:
         return {"error": "openai package not installed", "status": "skip"}
 
-    config = OPENROUTER_MODELS.get(processor_name)
+    config = HOSTED_MODELS.get(processor_name)
     if not config:
         return {"error": f"Unknown processor: {processor_name}", "status": "skip"}
+
+    api_key = os.environ.get(config['env_var'])
+    if not api_key:
+        return {"error": f"{config['env_var']} not set", "status": "skip", "provider": config['provider']}
 
     model_id = config['model_id']
     display_name = config['display_name']
     provider = config['provider']
     test_sizes = config['test_sizes']
+    route = config['route']
+    route_label = "OpenRouter" if route == 'openrouter' else "direct API"
 
-    print_info(f"Testing {display_name} ({model_id}) via OpenRouter...")
+    print_info(f"Testing {display_name} ({model_id}) via {route_label}...")
 
-    client = openai.OpenAI(
-        api_key=api_key,
-        base_url="https://openrouter.ai/api/v1"
-    )
+    client_kwargs = {'api_key': api_key}
+    if route == 'openrouter':
+        client_kwargs['base_url'] = "https://openrouter.ai/api/v1"
+    else:
+        client_kwargs['base_url'] = config['base_url']
+
+    client = openai.OpenAI(**client_kwargs)
 
     results = {
         "provider": provider,
@@ -176,19 +209,21 @@ def test_openrouter_context(api_key, processor_name):
 
         try:
             start = time.time()
-            response = client.chat.completions.create(
-                model=model_id,
-                messages=[
+            request_kwargs = {
+                'model': model_id,
+                'messages': [
                     {"role": "system", "content": "You are a helpful assistant."},
                     {"role": "user", "content": f"{payload}\n\nRespond with just: OK"}
                 ],
-                max_tokens=50,
-                temperature=0.1,
-                extra_headers={
+                **config['request_kwargs'],
+            }
+            if route == 'openrouter':
+                request_kwargs['extra_headers'] = {
                     "HTTP-Referer": "https://github.com/strato-net/strato-transcripts",
                     "X-Title": "Strato Transcripts Context Test"
                 }
-            )
+
+            response = client.chat.completions.create(**request_kwargs)
             elapsed = time.time() - start
 
             print_success(f"{actual_tokens:,} tokens OK ({elapsed:.1f}s)")
@@ -204,7 +239,7 @@ def test_openrouter_context(api_key, processor_name):
         except Exception as e:
             error_msg = str(e)
             if 'model_not_found' in error_msg.lower() or 'does not exist' in error_msg.lower():
-                return {"error": f"{display_name} not available via OpenRouter", "status": "skip"}
+                return {"error": f"{display_name} not available via {route_label}", "status": "skip", "provider": provider}
             print_failure(f"Failed - {error_msg[:100]}")
             results["tested"].append({
                 "target": size,
@@ -225,7 +260,7 @@ def generate_report(all_results):
     """Generate comprehensive test report"""
     report = []
     report.append("="*70)
-    report.append("AI PROVIDER CONTEXT WINDOW TEST RESULTS (via OpenRouter)")
+    report.append("AI PROVIDER CONTEXT WINDOW TEST RESULTS (hosted APIs)")
     report.append("="*70)
     report.append(f"\nTest Date: {time.strftime('%Y-%m-%d %H:%M:%S')}")
     report.append(f"\nFor typical 60-90 minute transcripts:")
@@ -301,12 +336,12 @@ def generate_report(all_results):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Test context window limits for AI providers via OpenRouter"
+        description="Test context window limits for hosted AI providers"
     )
     parser.add_argument(
         "--providers",
-        default="opus,gemini,grok",
-        help="Comma-separated list of providers to test (opus,gemini,grok) or 'all'"
+        default="opus,gemini,grok,qwen,gpt",
+        help="Comma-separated list of providers to test (opus,gemini,grok,qwen,gpt) or 'all'"
     )
     parser.add_argument(
         "--output",
@@ -316,29 +351,19 @@ def main():
 
     args = parser.parse_args()
 
-    print_header("AI Context Window Limit Testing (via OpenRouter)")
-    print_info("All providers accessed through OpenRouter with single API key")
+    print_header("AI Context Window Limit Testing (hosted APIs)")
+    print_info("OpenRouter backs opus/gemini/grok/qwen; gpt uses direct OpenAI API")
     print_info("Estimated cost: ~$0.01-0.10 total")
-    print()
-
-    # Check OpenRouter API key
-    api_key = os.environ.get('OPENROUTER_API_KEY')
-    if not api_key:
-        print_failure("OPENROUTER_API_KEY not set")
-        print_info("Get your API key from: https://openrouter.ai/keys")
-        sys.exit(1)
-
-    print_success("OpenRouter API key found")
     print()
 
     # Parse providers
     if args.providers.lower() == 'all':
-        providers = list(OPENROUTER_MODELS.keys())
+        providers = list(HOSTED_MODELS.keys())
     else:
         providers = [p.strip() for p in args.providers.split(',')]
 
     # Validate providers
-    valid_providers = set(OPENROUTER_MODELS.keys())
+    valid_providers = set(HOSTED_MODELS.keys())
     for p in providers:
         if p not in valid_providers:
             print_warning(f"Unknown provider: {p}")
@@ -355,7 +380,7 @@ def main():
     # Test each provider
     all_results = []
     for provider in providers:
-        result = test_openrouter_context(api_key, provider)
+        result = test_hosted_context(provider)
         all_results.append(result)
         print()
 

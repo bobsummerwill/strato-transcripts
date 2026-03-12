@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 """
 AI transcript post-processor for Ethereum/blockchain content.
-Batch process transcripts with multiple AI providers via OpenRouter.
-Supports: opus, gemini, grok, qwen (hosted) and local models via ollama.
-
-All models are accessed through OpenRouter (https://openrouter.ai) with a single API key.
+Batch process transcripts with multiple AI providers.
+Supports OpenRouter-hosted models, direct-provider hosted models, and local models via ollama.
 """
 
 import os
@@ -16,21 +14,23 @@ import argparse
 
 # Import shared utilities
 from common import (Colors, success, failure, skip, validate_api_key,
-                    load_people_list, load_terms_list, cleanup_gpu_memory)
+                    load_people_list, load_terms_list, cleanup_gpu_memory,
+                    apply_canonical_name_corrections)
 
 # ============================================================================
 # Model Configuration: Hosted (OpenRouter) + Local (ollama)
 # ============================================================================
-# 4 hosted models via OpenRouter. 5 local options for 48GB (dual 3090s).
+# 4 hosted models via OpenRouter, 1 direct hosted model, and 5 local options for 48GB (dual 3090s).
 #
-# HOSTED MODELS (OpenRouter):
+# HOSTED MODELS:
 # ┌───────────┬─────────────────────┬───────────────────────────────────┬─────────┐
-# │ Processor │ Model               │ OpenRouter ID                     │ Context │
+# │ Processor │ Model               │ Provider Route                    │ Context │
 # ├───────────┼─────────────────────┼───────────────────────────────────┼─────────┤
-# │ opus      │ Claude Opus 4.6     │ anthropic/claude-opus-4.6         │ 1M      │
-# │ gemini    │ Gemini 3.1 Pro      │ google/gemini-3.1-pro-preview     │ 1M      │
-# │ grok      │ Grok 4              │ x-ai/grok-4                       │ 256K    │
-# │ qwen      │ Qwen3.5 Plus        │ qwen/qwen3.5-plus-02-15           │ 1M      │
+# │ opus      │ Claude Opus 4.6     │ OpenRouter                        │ 1M      │
+# │ gemini    │ Gemini 3.1 Pro      │ OpenRouter                        │ 1M      │
+# │ grok      │ Grok 4              │ OpenRouter                        │ 256K    │
+# │ qwen      │ Qwen3.5 Plus        │ OpenRouter                        │ 1M      │
+# │ gpt       │ GPT-5.4             │ Direct OpenAI API                 │ 1.05M   │
 # └───────────┴─────────────────────┴───────────────────────────────────┴─────────┘
 #
 # LOCAL MODELS (ollama, fit on 48GB):
@@ -74,14 +74,28 @@ LOCAL_MODELS = {
     'llama-local': 'llama3.3:70b',        # 70B Llama 3.3 (not Llama 4), ~40GB Q4
 }
 
-# Models that require OpenRouter (no local option for 48GB)
+# Models that require hosted APIs (no local option for 48GB)
 HOSTED_ONLY_MODELS = {
-    'opus', 'gemini', 'grok', 'qwen',
+    'opus', 'gemini', 'grok', 'qwen', 'gpt',
 }
 
 # Direct API endpoints (bypass OpenRouter for specific providers)
 # Use when you have a direct API key - better reliability than OpenRouter for new models
-DIRECT_API_CONFIG = {}
+DIRECT_API_CONFIG = {
+    'gpt': {
+        'env_var': 'OPENAI_API_KEY',
+        'base_url': 'https://api.openai.com/v1',
+        'model_id': 'gpt-5.4',
+        'max_output_tokens': 128000,
+        'token_param': 'max_completion_tokens',
+    },
+}
+
+PROCESSOR_ALIASES = {
+    'gpt54': 'gpt',
+    'gpt-5.4': 'gpt',
+    'gpt5.4': 'gpt',
+}
 
 
 # ============================================================================
@@ -301,8 +315,10 @@ WHAT TO FIX (Corrections Only)
 ✓ Proper names - MUST use EXACT spellings from the "Key People" list above
   - This list contains the CANONICAL spellings of all names
   - "Bob Somersall" → "Bob Summerwill" (check the list!)
+  - "Bob Samuel" / "Bob Samuil" → "Bob Summerwill"
   - "Viktor Tron" → "Viktor Trón" (if accented version in list)
   - IMPORTANT: "Kieran" → "Kieren" (Kieren James-Lubin, NOT Kieran)
+  - IMPORTANT: "James Bond" / "James Logan" → "Kieren James-Lubin" when referring to the Strato CEO
   - When in doubt, use the EXACT spelling from the Key People list
   
 ✓ Blockchain terminology to match standard usage
@@ -507,7 +523,7 @@ def process_with_openrouter(transcript, api_key, context, processor):
         transcript: The raw transcript text to process
         api_key: OpenRouter API key
         context: Context summary (glossary, people, terms)
-        processor: Processor name (opus, gemini, grok)
+        processor: Processor name (opus, gemini, grok, qwen)
 
     Returns:
         Processed transcript text
@@ -603,15 +619,18 @@ def process_with_direct_api(transcript, api_key, context, processor):
     result = ""
     chunk_count = 0
 
-    stream = client.chat.completions.create(
-        model=config['model_id'],
-        messages=[
+    request_kwargs = {
+        'model': config['model_id'],
+        'messages': [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": prompt}
         ],
-        max_tokens=config['max_tokens'],
-        stream=True,
-    )
+        'stream': True,
+    }
+    token_param = config.get('token_param', 'max_tokens')
+    request_kwargs[token_param] = config['max_output_tokens']
+
+    stream = client.chat.completions.create(**request_kwargs)
 
     for chunk in stream:
         if chunk.choices:
@@ -733,9 +752,9 @@ def process_single_combination(transcript_path, provider, api_keys, context, mod
     Args:
         transcript_path: Path to transcript file
         provider: Processor name (opus, gemini, glm, etc.)
-        api_keys: Dict with 'openrouter' key (only needed for hosted mode)
+        api_keys: Dict with optional 'openrouter' and 'direct' keys for hosted mode
         context: Context summary for the prompt
-        mode: 'hosted' (OpenRouter API) or 'local' (ollama)
+        mode: 'hosted' (OpenRouter/direct API) or 'local' (ollama)
     """
     start_time = time.time()
 
@@ -763,6 +782,7 @@ def process_single_combination(transcript_path, provider, api_keys, context, mod
         # Strip any thinking/preamble from the output (reasoning models often include this)
         if corrected:
             corrected = strip_ai_preamble(corrected)
+            corrected = apply_canonical_name_corrections(corrected)
     except Exception as e:
         elapsed = time.time() - start_time
         print(f"      {failure(f'Processing failed ({elapsed:.1f}s): {e}')}")
@@ -832,20 +852,20 @@ def main():
     
     parser.add_argument("transcripts", nargs='+', help="Transcript file path(s)")
     parser.add_argument("--processors", required=True,
-                       help="Comma-separated list of processors. Hosted: opus,gemini,grok,qwen. Local-only: glm,deepseek-local,qwen-local,mistral-local,llama-local")
+                       help="Comma-separated list of processors. Hosted: opus,gemini,grok,qwen,gpt (aliases: gpt54,gpt-5.4). Local-only: glm,deepseek-local,qwen-local,mistral-local,llama-local")
     parser.add_argument("--mode", choices=['hosted', 'local'], default='hosted',
-                       help="Run models via OpenRouter API (hosted, default) or locally via ollama (local)")
+                       help="Run models via hosted APIs (OpenRouter/direct, default) or locally via ollama (local)")
     parser.add_argument("--parallel", type=int, default=0, metavar='N',
                        help="Number of parallel workers (default: 0 = all jobs in parallel). Use 1 for sequential.")
 
     args = parser.parse_args()
 
     # Parse processors
-    processors = [p.strip() for p in args.processors.split(',')]
+    processors = [PROCESSOR_ALIASES.get(p.strip(), p.strip()) for p in args.processors.split(',')]
     # All valid processor names (hosted + local-only)
     valid_processors = {
-        # Hosted (OpenRouter)
-        'opus', 'gemini', 'grok', 'qwen',
+        # Hosted (OpenRouter + direct API)
+        'opus', 'gemini', 'grok', 'qwen', 'gpt',
         # Local-only (ollama) - models that fit on 48GB
         'glm', 'deepseek-local', 'qwen-local', 'mistral-local', 'llama-local',
     }
@@ -890,7 +910,7 @@ def main():
             print(f"  {proc}: {model_name}")
 
     else:
-        # Hosted mode (default) - use OpenRouter
+        # Hosted mode (default) - use OpenRouter and direct provider APIs
         # Validate no local-only processors are requested
         local_only = [p for p in processors if p in LOCAL_MODELS and p not in OPENROUTER_MODELS]
         if local_only:
@@ -899,23 +919,35 @@ def main():
             print(f"Use --mode local to run these.")
             sys.exit(1)
 
-        openrouter_key, error = validate_api_key('OPENROUTER_API_KEY')
-        if error:
-            print(f"\nError: {error}")
-            print("All processors require OPENROUTER_API_KEY to be set.")
-            print("Get your API key from: https://openrouter.ai/keys")
-            sys.exit(1)
-
-        api_keys['openrouter'] = openrouter_key
-
         # Check for direct API keys (bypass OpenRouter for specific providers)
         api_keys['direct'] = {}
+        direct_key_errors = []
         for proc in processors:
             if proc in DIRECT_API_CONFIG:
                 env_var = DIRECT_API_CONFIG[proc]['env_var']
-                direct_key = os.environ.get(env_var)
+                direct_key = os.environ.get(env_var, '').strip()
                 if direct_key:
                     api_keys['direct'][proc] = direct_key
+                elif proc not in OPENROUTER_MODELS:
+                    direct_key_errors.append((proc, env_var))
+
+        if direct_key_errors:
+            print()
+            for proc, env_var in direct_key_errors:
+                print(f"Error: {proc} requires {env_var} to be set.")
+            print("Add the missing direct-provider API key(s) and retry.")
+            sys.exit(1)
+
+        requires_openrouter = [p for p in processors if p not in api_keys['direct']]
+        if requires_openrouter:
+            openrouter_key, error = validate_api_key('OPENROUTER_API_KEY')
+            if error:
+                print(f"\nError: {error}")
+                print(f"OPENROUTER_API_KEY is required for: {', '.join(sorted(requires_openrouter))}")
+                print("Get your API key from: https://openrouter.ai/keys")
+                sys.exit(1)
+
+            api_keys['openrouter'] = openrouter_key
 
         # Show which models will be used
         print("\nModels:")

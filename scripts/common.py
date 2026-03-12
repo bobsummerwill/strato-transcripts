@@ -6,6 +6,7 @@ Provides colors, formatters, validation, and file operations.
 
 import os
 import sys
+import re
 from pathlib import Path
 
 
@@ -133,6 +134,58 @@ def load_terms_list():
 
 
 # ============================================================================
+# Canonical Name Corrections
+# ============================================================================
+
+# Deterministic replacements for persistent ASR/LLM name drift.
+# Keep more specific patterns first.
+CANONICAL_NAME_CORRECTION_RULES = [
+    # Kieren James-Lubin variants
+    (r"\bKieran\s+James(?:\s|-)?Lubin\b", "Kieren James-Lubin"),
+    (r"\bKieren\s+James\s+Lubin\b", "Kieren James-Lubin"),
+    (r"\bJames\s+Bond\b", "Kieren James-Lubin"),
+    (r"\bJames\s+Logan\b", "Kieren James-Lubin"),
+    (r"\bKieran\b", "Kieren"),
+
+    # Bob Summerwill variants
+    (r"\bBob\s+Samuel\b", "Bob Summerwill"),
+    (r"\bBob\s+Samuil\b", "Bob Summerwill"),
+    (r"\bBob\s+Summer\s+will\b", "Bob Summerwill"),
+    (r"\bBob\s+Some\s+oil\b", "Bob Summerwill"),
+    (r"\bBob\s+(?:Somewell|Sunwell|Sumwell|Somersall|Summerow|Summerwell)\b", "Bob Summerwill"),
+    (r"\b(?:Somewell|Sunwell|Sumwell|Somersall|Summerow|Summerwell)\b", "Summerwill"),
+]
+
+
+def apply_canonical_name_corrections(text):
+    """Apply deterministic canonical name replacements."""
+    if not text:
+        return text
+
+    corrected = text
+    for pattern, replacement in CANONICAL_NAME_CORRECTION_RULES:
+        corrected = re.sub(pattern, replacement, corrected, flags=re.IGNORECASE)
+    return corrected
+
+
+def normalize_transcript_segments(segments, text_key="text"):
+    """Apply deterministic text normalization to transcript segments in place.
+
+    Args:
+        segments: Iterable of segment dicts
+        text_key: Key containing transcript text
+
+    Returns:
+        The same segment list for convenience
+    """
+    for segment in segments:
+        text = segment.get(text_key)
+        if text:
+            segment[text_key] = apply_canonical_name_corrections(text)
+    return segments
+
+
+# ============================================================================
 # GPU and Process Management
 # ============================================================================
 
@@ -256,6 +309,7 @@ def save_transcript_dual_format(output_dir, basename, service_name, content,
         # List of segment dicts with 'speaker', 'start', 'text' keys
         segments = content
         speaker_key = "speaker"
+        normalize_transcript_segments(segments)
 
         # Save markdown version (WITH timestamps)
         with open(md_path, 'w', encoding='utf-8') as f:
