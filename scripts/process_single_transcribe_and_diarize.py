@@ -13,7 +13,8 @@ from pathlib import Path
 # Import shared utilities
 from common import (Colors, success, failure, skip, validate_api_key,
                     load_vocabulary, cleanup_gpu_memory,
-                    ensure_nvidia_lib_path)
+                    ensure_nvidia_lib_path, apply_canonical_name_corrections,
+                    normalize_transcript_segments)
 
 
 # ============================================================================
@@ -119,6 +120,8 @@ def save_transcript_files(output_dir, basename, service_name, segments, speaker_
     else:
         episode_dir = output_dir_path / basename
     episode_dir.mkdir(parents=True, exist_ok=True)
+
+    normalize_transcript_segments(segments)
     
     # Merge consecutive segments from same speaker into paragraphs
     merged_segments = merge_consecutive_speaker_segments(segments, speaker_key)
@@ -131,6 +134,7 @@ def save_transcript_files(output_dir, basename, service_name, segments, speaker_
             speaker = segment['speaker']
             start_time = segment['start']
             text = clean_text(segment['text'])
+            text = apply_canonical_name_corrections(text)
             timestamp = format_timestamp(start_time)
             if text:
                 f.write(f"**[{timestamp}] {speaker}:** {text}\n\n")
@@ -209,6 +213,7 @@ def save_raw_transcript_from_text(output_dir, basename, service_name, formatted_
                 })
     
     # Merge consecutive segments from same speaker into paragraphs
+    normalize_transcript_segments(segments)
     merged_segments = merge_consecutive_speaker_segments(segments)
     
     # Save markdown version (WITH timestamps)
@@ -218,6 +223,7 @@ def save_raw_transcript_from_text(output_dir, basename, service_name, formatted_
         for segment in merged_segments:
             timestamp = format_timestamp(segment['start'])
             text = clean_text(segment['text'])
+            text = apply_canonical_name_corrections(text)
             f.write(f"**[{timestamp}] {segment['speaker']}:** {text}\n\n")
     
     return md_path
@@ -566,6 +572,7 @@ def transcribe_whisperx(audio_path, output_dir, force_cpu=False):
             seg["speaker"] = best_speaker
         
         result_with_speakers = result
+        normalize_transcript_segments(result_with_speakers["segments"])
         
         # Count speakers
         speakers = set()
@@ -672,7 +679,7 @@ def transcribe_whisperx_cloud(audio_path, output_dir):
                 'start': start,
                 'end': end,
                 'speaker': speaker,
-                'text': text,
+                'text': apply_canonical_name_corrections(text),
             })
 
         speakers = set(seg['speaker'] for seg in segments if seg['speaker'].startswith('SPEAKER_'))
@@ -754,7 +761,7 @@ def transcribe_assemblyai(audio_path, output_dir):
                 current_speaker = speaker_label
             
             # Split text into sentences
-            text = utterance.text.strip()
+            text = apply_canonical_name_corrections(utterance.text.strip())
             import re
             sentences = re.split(r'([.!?])\s+', text)
             
@@ -775,7 +782,7 @@ def transcribe_assemblyai(audio_path, output_dir):
                 output_lines.append(f'[{start_time:.1f}s] {current_sentence.strip()}')
     else:
         output_lines.append('SPEAKER_00:')
-        output_lines.append('[0.0s] ' + transcript.text)
+        output_lines.append('[0.0s] ' + apply_canonical_name_corrections(transcript.text))
     
     # Count speakers
     num_speakers = len(set(utterance.speaker for utterance in transcript.utterances)) if transcript.utterances else 1

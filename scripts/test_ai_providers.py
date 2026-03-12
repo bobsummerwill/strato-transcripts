@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 """
-Test connectivity and model access for all AI providers via OpenRouter.
-All AI post-processing models are accessed through OpenRouter with a single API key.
-Also tests local mode support (ollama + GPU detection for dual RTX 3090s).
-
-Local models (fit on 48GB): glm, deepseek-local, qwen-local, mistral-local, llama-local
+Test connectivity and model access for all supported AI providers.
+OpenRouter backs most hosted post-processing models, GPT uses the direct OpenAI API,
+and local mode uses ollama on dual RTX 3090s.
 """
 
 import os
@@ -18,6 +16,17 @@ OPENROUTER_MODELS = {
     'gemini': ('google/gemini-3.1-pro-preview', 'Gemini 3.1 Pro'),
     'grok': ('x-ai/grok-4', 'Grok 4'),
     'qwen': ('qwen/qwen3.5-plus-02-15', 'Qwen3.5 Plus'),
+}
+
+DIRECT_API_MODELS = {
+    'gpt': {
+        'model_id': 'gpt-5.4',
+        'display_name': 'GPT-5.4',
+        'env_var': 'OPENAI_API_KEY',
+        'base_url': 'https://api.openai.com/v1',
+        'token_param': 'max_completion_tokens',
+        'max_output_tokens': 20,
+    },
 }
 
 # Local model mapping (models that fit on 48GB dual 3090s)
@@ -45,7 +54,7 @@ def test_openrouter_model(api_key, processor_name, model_id, display_name):
         response = client.chat.completions.create(
             model=model_id,
             messages=[{"role": "user", "content": "Say 'hello' in one word"}],
-            max_tokens=20,  # GPT-5.2 requires >= 16
+            max_tokens=20,
             extra_headers={
                 "HTTP-Referer": "https://github.com/strato-net/strato-transcripts",
                 "X-Title": "Strato Transcripts Test"
@@ -54,6 +63,37 @@ def test_openrouter_model(api_key, processor_name, model_id, display_name):
 
         text = response.choices[0].message.content if response.choices else "No response"
         print(f"    ✅ Connected successfully")
+        print(f"    Response: {text[:50]}")
+        return True
+    except Exception as e:
+        print(f"    ❌ Error: {e}")
+        return False
+
+
+def test_direct_api_model(api_key, processor_name, config):
+    """Test a single model via a direct provider API."""
+    model_id = config['model_id']
+    display_name = config['display_name']
+    base_url = config['base_url']
+
+    print(f"\n  Testing {processor_name.upper()} ({display_name})...")
+    print(f"    Model: {model_id}")
+
+    try:
+        from openai import OpenAI
+        client = OpenAI(
+            api_key=api_key,
+            base_url=base_url,
+        )
+
+        response = client.chat.completions.create(
+            model=model_id,
+            messages=[{"role": "user", "content": "Say 'hello' in one word"}],
+            **{config.get('token_param', 'max_tokens'): config['max_output_tokens']},
+        )
+
+        text = response.choices[0].message.content if response.choices else "No response"
+        print("    ✅ Connected successfully")
         print(f"    Response: {text[:50]}")
         return True
     except Exception as e:
@@ -113,6 +153,28 @@ def test_all_openrouter_models(api_key):
         results[processor_name] = test_openrouter_model(
             api_key, processor_name, model_id, display_name
         )
+
+    return results
+
+
+def test_direct_apis():
+    """Test all direct provider API models."""
+    print("\n" + "="*60)
+    print("AI POST-PROCESSING PROVIDERS (direct APIs)")
+    print("="*60)
+
+    results = {}
+
+    for processor_name, config in DIRECT_API_MODELS.items():
+        env_var = config['env_var']
+        api_key = os.environ.get(env_var)
+        if not api_key:
+            print(f"\n  Testing {processor_name.upper()} ({config['display_name']})...")
+            print(f"    ⚠️  {env_var} not set - skipping")
+            results[processor_name] = "skipped"
+            continue
+
+        results[processor_name] = test_direct_api_model(api_key, processor_name, config)
 
     return results
 
@@ -303,7 +365,7 @@ def main():
     print("="*60)
     print("AI Provider Connectivity Test")
     print("="*60)
-    print("Hosted: AI post-processing uses OpenRouter (opus, gemini, grok)")
+    print("Hosted: OpenRouter (opus, gemini, grok, qwen) + direct OpenAI (gpt)")
     print("Local:  5 models via ollama (requires 2x RTX 3090 / 48GB)")
     print("        glm, deepseek-local, qwen-local, mistral-local, llama-local")
     print("="*60)
@@ -341,6 +403,8 @@ def main():
         # Mark all AI models as failed if no OpenRouter key
         for processor_name in OPENROUTER_MODELS.keys():
             results[processor_name] = False
+
+    results.update(test_direct_apis())
 
     # Summary
     print("\n" + "="*60)

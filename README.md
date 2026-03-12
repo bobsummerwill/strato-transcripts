@@ -55,7 +55,7 @@ python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 --transcriber
 
 ## AI Post-Processors
 
-All hosted models accessed via **OpenRouter** (single API key). See [AI_PROVIDERS.md](AI_PROVIDERS.md) for details.
+Hosted post-processing uses **OpenRouter** for most models, plus direct OpenAI access for GPT-5.4. See [AI_PROVIDERS.md](AI_PROVIDERS.md) for details.
 
 | Processor | Model | Context | Best For |
 |-----------|-------|---------|----------|
@@ -63,6 +63,7 @@ All hosted models accessed via **OpenRouter** (single API key). See [AI_PROVIDER
 | **gemini** | Gemini 3.1 Pro | 1M | Very long documents, technical |
 | **grok** | Grok 4 | 256K | High benchmark performance |
 | **qwen** | Qwen3.5 Plus | 1M | Multilingual, open weights |
+| **gpt** | GPT-5.4 | 1.05M | OpenAI-native post-processing |
 
 ### Post-Processing Commands
 
@@ -70,8 +71,11 @@ All hosted models accessed via **OpenRouter** (single API key). See [AI_PROVIDER
 # Single processor
 python3 scripts/process_single_post_process.py transcript.md --processors opus
 
-# All processors
-python3 scripts/process_single_post_process.py transcript.md --processors opus,gemini,grok,qwen
+# GPT-5.4 via direct OpenAI API
+python3 scripts/process_single_post_process.py transcript.md --processors gpt
+
+# All hosted processors
+python3 scripts/process_single_post_process.py transcript.md --processors opus,gemini,grok,qwen,gpt
 ```
 
 ## Output Structure
@@ -137,7 +141,8 @@ nano setup_env.sh
 Required keys in `setup_env.sh`:
 ```bash
 export HF_TOKEN="hf_..."              # Required for WhisperX diarization
-export OPENROUTER_API_KEY="sk-or-..." # Required for AI post-processing
+export OPENROUTER_API_KEY="sk-or-..." # Required for OpenRouter-backed post-processors
+export OPENAI_API_KEY="sk-..."        # Required for GPT-5.4 post-processing
 export ASSEMBLYAI_API_KEY="..."       # Optional: AssemblyAI transcription
 export REPLICATE_API_TOKEN="..."      # Optional: Cloud WhisperX
 ```

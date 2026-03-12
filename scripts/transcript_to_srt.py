@@ -8,6 +8,7 @@ import sys
 import re
 import json
 from pathlib import Path
+from common import apply_canonical_name_corrections
 
 # Word corrections for common transcription errors
 WORD_CORRECTIONS = {
@@ -224,6 +225,8 @@ def apply_word_corrections(word_timing):
         elif text_clean.lower() in WORD_CORRECTIONS:
             text = WORD_CORRECTIONS[text_clean.lower()] + punct
 
+        text = apply_canonical_name_corrections(text)
+
         corrected.append({
             **word_data,
             'text': text
@@ -285,6 +288,7 @@ def parse_transcript(filepath):
 
         # Clean up text
         text = ' '.join(text.split())
+        text = apply_canonical_name_corrections(text)
 
         segments.append({
             'start': seconds,

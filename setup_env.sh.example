@@ -4,7 +4,8 @@
 # ==============================================================================
 # Copy this file to setup_env.sh and fill in your API keys.
 # Only HF_TOKEN is required for transcription.
-# OPENROUTER_API_KEY provides access to all 11 AI post-processing models.
+# Hosted post-processing uses OpenRouter for `opus`, `gemini`, `grok`, and `qwen`,
+# plus direct OpenAI access for `gpt`.
 
 # ==============================================================================
 # REQUIRED: HuggingFace Token (for WhisperX diarization models)
@@ -16,38 +17,28 @@
 export HF_TOKEN=""
 
 # ==============================================================================
-# AI POST-PROCESSING: OpenRouter API Key (single key for all 11 models)
+# AI POST-PROCESSING: OpenRouter API Key
 # ==============================================================================
-# OpenRouter provides unified access to all major AI models with one API key.
+# OpenRouter provides unified access to the non-OpenAI hosted models used here.
 # Get your key from: https://openrouter.ai/keys
 #
 # SUPPORTED MODELS (via OpenRouter):
 #   opus     - Claude Opus 4.6 (Anthropic)     - 1M context
 #   gemini   - Gemini 3 Pro (Google)           - 1M context
-#   deepseek - DeepSeek V3.2                   - 128K context
-#   chatgpt  - GPT-5.2 (OpenAI)                - 400K context
-#   qwen     - Qwen3-Max (Alibaba)             - 256K context
-#   kimi     - Kimi K2.5 (Moonshot)            - 256K context
-#   glm      - GLM-4.7 (Z.ai)                  - 203K context
-#   minimax  - MiniMax M2.1                    - 4M context
-#   llama    - Llama 4 Maverick (Meta)         - 1M context
 #   grok     - Grok 4 (xAI)                    - 256K context
-#   mistral  - Mistral Large (Mistral AI)      - 256K context
+#   qwen     - Qwen3.5 Plus (Alibaba)          - 1M context
 #
 # All models have sufficient context for typical transcripts (20K-45K tokens).
-# OpenRouter charges ~5% markup over direct API pricing.
 export OPENROUTER_API_KEY=""
 
 # ==============================================================================
-# OPTIONAL: Direct Provider API Keys (bypass OpenRouter)
+# Direct Provider API Keys
 # ==============================================================================
-# For newly released models, direct API access may be more reliable than OpenRouter.
-# If set, these keys will be used instead of OpenRouter for the specific provider.
+# GPT uses the direct OpenAI API instead of OpenRouter in the current scripts.
 
-# Moonshot Kimi K2.5 (direct API, bypasses OpenRouter)
-# Get key from: https://platform.moonshot.ai/
-# Useful when Kimi K2.5 is not yet fully integrated with OpenRouter
-export MOONSHOT_API_KEY=""
+# OpenAI (`gpt` -> GPT-5.4 direct API)
+# Get key from: https://platform.openai.com/api-keys
+export OPENAI_API_KEY=""
 
 # ==============================================================================
 # OPTIONAL: Transcription Service API Keys
@@ -73,13 +64,13 @@ else
 fi
 
 if [ -n "$OPENROUTER_API_KEY" ] && [ "$OPENROUTER_API_KEY" != "" ]; then
-  echo "  OPENROUTER_API_KEY: SET (access to all 11 AI models)"
+  echo "  OPENROUTER_API_KEY: SET (access to OpenRouter-backed AI models)"
 else
   echo "  OPENROUTER_API_KEY: NOT SET"
 fi
 
-if [ -n "$MOONSHOT_API_KEY" ] && [ "$MOONSHOT_API_KEY" != "" ]; then
-  echo "  MOONSHOT_API_KEY: SET (Kimi K2.5 direct API)"
+if [ -n "$OPENAI_API_KEY" ] && [ "$OPENAI_API_KEY" != "" ]; then
+  echo "  OPENAI_API_KEY: SET (gpt direct OpenAI API)"
 fi
 
 if [ -n "$ASSEMBLYAI_API_KEY" ] && [ "$ASSEMBLYAI_API_KEY" != "" ]; then
