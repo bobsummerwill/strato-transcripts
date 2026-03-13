@@ -154,6 +154,9 @@ CANONICAL_NAME_CORRECTION_RULES = [
     (r"\bBob\s+Some\s+oil\b", "Bob Summerwill"),
     (r"\bBob\s+(?:Somewell|Sunwell|Sumwell|Somersall|Summerow|Summerwell)\b", "Bob Summerwill"),
     (r"\b(?:Somewell|Sunwell|Sumwell|Somersall|Summerow|Summerwell)\b", "Summerwill"),
+
+    # Project name normalization
+    (r"\bStrato\b", "STRATO"),
 ]
 
 
