@@ -215,5 +215,6 @@ $RECYCLE.BIN/
 
 # Local environment
 .venv/
+.codex
 Klaus/
 *.part
