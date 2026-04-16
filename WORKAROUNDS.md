@@ -2,21 +2,21 @@
 
 This document details all compatibility workarounds currently in place for the strato-transcripts pipeline, explaining why they're necessary, what upstream changes are needed to remove them, and estimated timelines.
 
-**Last Updated**: January 8, 2026
-**PyTorch Version**: 2.9.0+cu130
-**Status**: All workarounds are well-justified and necessary
+**Last Updated**: April 15, 2026
+**Validated Against**: torch 2.9.1+cu130, torchaudio 2.9.1+cu130, speechbrain 1.1.0, lightning 2.6.0/2.6.1, pyannote.audio 4.0.1/4.0.4, whisperx 3.8.5
+**Status**: Three runtime workarounds remain required on currently released packages. The former SpeechBrain torchaudio patches were removed after validating SpeechBrain 1.1.0.
 
 ---
 
 ## Overview
 
-The strato-transcripts pipeline requires four compatibility workarounds to bridge version incompatibilities between:
-- WhisperX 3.7.4 (transcription service)
-- pyannote.audio 4.0.1 (speaker diarization)
-- SpeechBrain 1.0.3 (audio processing)
-- PyTorch 2.9.0+ (GPU acceleration for RTX 5070 Blackwell)
+The strato-transcripts pipeline currently requires three active compatibility workarounds to bridge version incompatibilities between:
+- WhisperX 3.7.x-3.8.x (transcription service)
+- pyannote.audio 4.0.1+ (speaker diarization)
+- SpeechBrain 1.1.0 (audio processing, now fixed for torchaudio 2.9)
+- PyTorch 2.9.1+ (GPU acceleration for RTX 50xx / Blackwell)
 
-**All workarounds are legitimate compatibility bridges** - not hacks or technical debt. They enable cutting-edge GPU support (Blackwell architecture) while maintaining compatibility with upstream packages that haven't yet caught up.
+**All workarounds are legitimate compatibility bridges** - not hacks or accidental drift. They enable newer PyTorch/GPU support while released upstream packages still lag behind or ship conflicting constraints.
 
 ---
 
@@ -24,7 +24,7 @@ The strato-transcripts pipeline requires four compatibility workarounds to bridg
 
 ### The Problem
 
-WhisperX 3.7.4 still uses the **deprecated** `use_auth_token` parameter when calling pyannote.audio models. However, pyannote.audio 4.x and HuggingFace's model hub have migrated to the new `token` parameter.
+Released WhisperX 3.7.4 still uses the **deprecated** `use_auth_token` parameter when calling pyannote.audio models. Released WhisperX 3.8.5 partially migrates to `token`, but still leaves a `use_auth_token` path in `whisperx/asr.py`, so the install-time patch remains necessary on current wheels.
 
 **Error without workaround**:
 ```python
@@ -60,10 +60,10 @@ pipeline = Pipeline.from_pretrained(..., token=token)
 
 | Milestone | Timeline | Likelihood |
 |-----------|----------|------------|
-| WhisperX 3.8.0+ | Could happen anytime | **Medium** |
-| WhisperX 4.0.0 | Q2-Q3 2026 | **High** |
+| WhisperX 3.8.6+ fully removes `use_auth_token` | Unknown | **Medium** |
+| WhisperX 4.x | 2026 | **High** |
 
-**Estimated**: **Q2 2026** (next feature release)
+**Estimated**: Remove only after a released wheel has no remaining `use_auth_token` call sites.
 
 **Monitoring**:
 ```bash
@@ -81,67 +81,40 @@ pip index versions whisperx
   - Branch: `fix/use-auth-token-deprecation`
   - Changes: Updated `whisperx/vads/pyannote.py` and `whisperx/asr.py` to use new HuggingFace API
 
-**Status**: 🟢 **PR submitted by us** - Awaiting maintainer review and merge
+**Follow-up for remaining released-wheel gap:**
+- **Issue [#1406](https://github.com/m-bain/whisperX/issues/1406)** - Released wheel still uses `use_auth_token` in `whisperx/asr.py` with pyannote 4.x (logged by strato-transcripts, April 2026)
+- **Pull Request [#1407](https://github.com/m-bain/whisperX/pull/1407)** - Add `token` alias for Whisper model loading (submitted by @bobsummerwill, April 2026)
+  - Branch: `fix/token-alias-load-model`
+  - Scope: adds a `token` alias on WhisperX's API surface while preserving the downstream `faster-whisper` call path that still expects `use_auth_token`
+
+**Local tracking:**
+- **Issue [#97](https://github.com/strato-net/strato-transcripts/issues/97)** - Tracks when the install-time WhisperX patch can be removed after an upstream release picks up `m-bain/whisperX#1407`
+
+**Status**: 🟡 **Partially fixed upstream, not fully fixed in released wheels**
 
 ---
 
-## Workaround #2: SpeechBrain torchaudio 2.9+ Compatibility
+## Resolved April 2026: SpeechBrain torchaudio 2.9+ Compatibility
 
-### The Problem
+### Historical Problem
 
-SpeechBrain 1.0.3 calls `torchaudio.list_audio_backends()`, which was **deprecated in torchaudio 2.8 and removed in torchaudio 2.9** (October 2025).
+SpeechBrain 1.0.3 called `torchaudio.list_audio_backends()` and `torchaudio.info()`, both removed in torchaudio 2.9.
 
 **Error without workaround**:
 ```python
 AttributeError: module 'torchaudio' has no attribute 'list_audio_backends'
 ```
 
-### Our Solution
+### Resolution
 
-**Location**: `scripts/install_packages_and_venv.sh` (Step 10)
+After testing `speechbrain==1.1.0` in an isolated overlay against the current runtime (`torch 2.9.1+cu130`, `torchaudio 2.9.1+cu130`, `pyannote.audio 4.0.1`):
+- `speechbrain` imported cleanly,
+- `speechbrain.utils.torch_audio_backend` imported cleanly,
+- `speechbrain.dataio.dataio` imported cleanly,
+- `pyannote.audio.Pipeline` imported cleanly,
+- `speechbrain.dataio.dataio.read_audio_info()` successfully returned metadata for a real MP3 file.
 
-```python
-# Patch SpeechBrain to handle both old and new torchaudio APIs
-# Add hasattr() check before calling the removed method
-
-if hasattr(torchaudio, 'list_audio_backends'):
-    available_backends = torchaudio.list_audio_backends()
-else:
-    # torchaudio 2.9+ - handled by torchcodec
-    available_backends = []
-```
-
-**File Modified**: `speechbrain/utils/torch_audio_backend.py`
-
-### What Upstream Needs to Fix
-
-**SpeechBrain** needs to add the same `hasattr()` check we use - **which they've already done in their `develop` branch!**
-
-The fix is **already implemented** but not yet released:
-```python
-# SpeechBrain develop branch (unreleased):
-if hasattr(torchaudio, 'list_audio_backends'):
-    available_backends = torchaudio.list_audio_backends()
-else:
-    logger.debug("torchaudio 2.9+ detected - audio backend checking
-                  skipped (handled by torchcodec)")
-```
-
-### When Can We Remove It?
-
-| Milestone | Timeline | Likelihood |
-|-----------|----------|------------|
-| SpeechBrain 1.0.4 (patch) | Q1 2026 | **High** |
-| SpeechBrain 1.1.0 (minor) | Q2 2026 | **Very High** |
-
-**Estimated**: **Q1-Q2 2026** (next release with develop branch)
-
-**Monitoring**:
-```bash
-# Check for new SpeechBrain releases
-pip index versions speechbrain
-# Or visit: https://github.com/speechbrain/speechbrain/releases
-```
+Because of that validation, the old monkey-patches to `speechbrain/utils/torch_audio_backend.py` and `speechbrain/dataio/dataio.py` were removed from `scripts/install_venv.sh`, and the installer now explicitly installs `speechbrain==1.1.0`.
 
 ### Upstream References
 
@@ -163,11 +136,11 @@ pip index versions speechbrain
 **Source Code:**
 - **[torch_audio_backend.py (develop)](https://github.com/speechbrain/speechbrain/blob/develop/speechbrain/utils/torch_audio_backend.py)** - Shows the fix implemented
 
-**Status**: ✅ **Fixed in develop, awaiting release** - Our patch matches their solution exactly
+**Status**: ✅ **Resolved in released SpeechBrain 1.1.0 and validated locally**
 
 ---
 
-## Workaround #3: PyTorch 2.6+ weights_only Compatibility
+## Workaround #2: PyTorch 2.6+ weights_only Compatibility
 
 ### The Problem
 
@@ -214,28 +187,20 @@ export WHISPERX_ALLOW_UNSAFE_TORCH_LOAD=0
 
 ### What Upstream Needs to Fix
 
-**Option A** (Preferred): **pyannote.audio updates their checkpoint format**
-- Remove OmegaConf references from checkpoint metadata
-- Use only PyTorch-native types (dict, list, etc.)
-- This is the cleanest long-term solution
+Either of these would let us remove the local-file patch:
 
-**Option B**: **PyTorch expands safe allowlist**
-- Add OmegaConf classes to default safe globals
-- **Less likely** - PyTorch wants minimal allowlist for security
-
-**Option C**: **pyannote pins to PyTorch 2.5.x**
-- Avoid weights_only=True default entirely
-- **Not viable** - Breaks Blackwell GPU support
+- **Lightning** must default local filesystem checkpoint loads to `weights_only=False` when `weights_only` is unspecified, not just remote URL loads.
+- **pyannote.audio** must stop depending on the old implicit default and pass `weights_only=False` explicitly wherever required.
 
 ### When Can We Remove It?
 
 | Milestone | Timeline | Likelihood |
 |-----------|----------|------------|
-| pyannote.audio 4.0.3+ (patch) | Q2 2026 | **Low** |
-| pyannote.audio 5.0.0 (major) | Q3-Q4 2026 | **Medium** |
-| PyTorch expands allowlist | Unlikely | **Very Low** |
+| Lightning release fixes local-file default | Unknown | **Medium** |
+| pyannote.audio explicitly overrides `weights_only` everywhere needed | Unknown | **Medium** |
+| PyTorch expands safe allowlist | Unlikely | **Very Low** |
 
-**Estimated**: **Q3-Q4 2026** (requires major pyannote rewrite)
+**Estimated**: Unknown. This remains required on released Lightning 2.6.1.
 
 **Monitoring**:
 ```bash
@@ -250,7 +215,7 @@ pip index versions pyannote.audio
 - **[WhisperX #1304](https://github.com/m-bain/whisperx/issues/1304)** - UnpicklingError (November 2025)
 - **[pyannote/pyannote-audio #1825](https://github.com/pyannote/pyannote-audio/issues/1825)** - Can't load pyannote (January 2025)
 
-**Status**: 🟡 Open - Known issue, no timeline for checkpoint format migration
+**Status**: 🟡 Open - still required on released Lightning 2.6.x
 
 ### Security Considerations
 
@@ -266,12 +231,12 @@ This workaround uses `weights_only=False`, which **can execute arbitrary code** 
 
 ---
 
-## Workaround #4: pyannote.audio 4.0.1 Version Pin
+## Workaround #3: pyannote.audio 4.0.1 Version Pin
 
 ### The Problem
 
 This isn't a code patch - it's a **strategic version pin**:
-- `pyannote.audio 4.0.2+` hard-pins `torch==2.8.0` (exact version match)
+- `pyannote.audio 4.0.2+` hard-pins `torch==2.8.0` and `torchaudio==2.8.0`
 - We need `torch>=2.9.0` for **RTX 5070 Blackwell GPU support**
 - If we install pyannote 4.0.2+, pip will **downgrade PyTorch to 2.8.0**, breaking Blackwell
 
@@ -292,9 +257,9 @@ pip install "pyannote.audio==4.0.1"
 ```
 
 **Why 4.0.1 specifically**:
-- Last release with **flexible torch dependency** (`torch>=2.0`)
-- Fully compatible with torch 2.9.0+
-- All features work identically to 4.0.2+
+- Last release before the exact torch/torchaudio/torchcodec pins
+- Can coexist with torch 2.9.1 in our manually managed venv
+- Still requires the separate torchcodec fallback workaround described above
 
 ### What Upstream Needs to Fix
 
@@ -312,10 +277,10 @@ dependencies = ["torch>=2.8.0,<3.0"]
 
 | Milestone | Timeline | Likelihood |
 |-----------|----------|------------|
-| pyannote.audio 4.0.3+ (patch) | Q1-Q2 2026 | **High** |
-| pyannote.audio 5.0.0 (major) | Q3-Q4 2026 | **Very High** |
+| pyannote.audio relaxes exact pins | Unknown | **Low** |
+| torch/torchcodec compatibility story stabilizes enough for pyannote to unpin | 2026 | **Medium** |
 
-**Estimated**: **Q2 2026** (community pressure is building)
+**Estimated**: Unknown. Current released 4.0.4 still requires `torch>=2.8.0`, `torchaudio>=2.8.0`, and `torchcodec>=0.7.0`, but the project-level workaround remains necessary because current torchcodec still fails for our torch 2.9.1 runtime.
 
 **Monitoring**:
 ```bash
@@ -350,15 +315,9 @@ pip show pyannote.audio
 
 **Status**: 🟢 **PR submitted by us** - Awaiting maintainer review and merge
 
-### Why Hard Pins Are Bad Practice
+### Tracking Note
 
-Hard version pins like `torch==2.8.0` are considered **anti-patterns** in dependency management because:
-1. **Blocks security updates** - Can't upgrade to torch 2.8.1 for security fixes
-2. **Breaks new hardware** - Prevents Blackwell/future GPU support
-3. **Conflicts with ecosystem** - Other packages need newer PyTorch
-4. **Hurts adoption** - Users can't install alongside other ML libraries
-
-**Best practice**: Use version ranges like `torch>=2.8.0,<3.0`
+The repo currently tracks the runtime torchcodec workaround in issue `#36`. Issue `#44` was a documentation-only duplicate and can be closed when this document is kept current.
 
 ---
 
@@ -395,17 +354,17 @@ grep -r "use_auth_token" venv/lib/python*/site-packages/whisperx/
 # Remove sed commands from install script and reinstall
 ```
 
-### For Workaround #2 (SpeechBrain torchaudio):
+### For resolved SpeechBrain upgrade:
 ```bash
-# 1. Check SpeechBrain has hasattr check
-grep "hasattr.*list_audio_backends" venv/lib/python*/site-packages/speechbrain/utils/torch_audio_backend.py
-# Should find the check after fix
+# 1. Verify SpeechBrain version
+python3 -c "import importlib.metadata as m; print(m.version('speechbrain'))"
+# Should print 1.1.0 or newer
 
-# 2. Test without patch
-# Remove Python patch from install script and reinstall
+# 2. Test metadata read under torchaudio 2.9+
+python3 -c "from speechbrain.dataio.dataio import read_audio_info; print('ok')"
 ```
 
-### For Workaround #3 (PyTorch weights_only):
+### For Workaround #2 (PyTorch weights_only):
 ```bash
 # 1. Test if pyannote loads without patch
 python3 -c "
@@ -419,7 +378,7 @@ print('✓ Loaded without weights_only workaround')
 # Check pyannote release notes for checkpoint format changes
 ```
 
-### For Workaround #4 (pyannote version pin):
+### For Workaround #3 (pyannote version pin):
 ```bash
 # 1. Check pyannote dependency specification
 pip show pyannote.audio | grep Requires
@@ -434,7 +393,7 @@ pip install --dry-run "pyannote.audio>=4.0.2"
 
 ## Quarterly Review Schedule
 
-**Next Review**: April 2026
+**Next Review**: July 2026
 
 ### Review Checklist
 
@@ -456,10 +415,9 @@ pip install --dry-run "pyannote.audio>=4.0.2"
 
 | Workaround | Upstream Package | Status | Estimated Fix | Likelihood | Removal Priority |
 |------------|------------------|--------|---------------|------------|------------------|
-| #1: Token param | WhisperX | 🟢 **PR submitted** | Q1-Q2 2026 | **High** | **High** |
-| #2: torchaudio API | SpeechBrain | ✅ Fixed in develop | Q1-Q2 2026 | Very High | **High** |
-| #3: weights_only | pyannote.audio | 🟡 Open | Q3-Q4 2026 | Medium | **Low** |
-| #4: torch pin | pyannote.audio | 🟡 Open | Q2 2026 | High | **High** |
+| #1: Token param | WhisperX | 🟡 Partial upstream progress, still required on released wheels | Unknown | Medium | High |
+| #2: weights_only | Lightning / pyannote.audio | 🟡 Still required on released packages | Unknown | Medium | Low |
+| #3: torch/codec pinning | pyannote.audio / torchcodec | 🟡 Still required on released packages | Unknown | Medium | High |
 
 ### Legend
 - 🟢 **PR submitted** - Fix submitted, awaiting merge
@@ -471,16 +429,12 @@ pip install --dry-run "pyannote.audio>=4.0.2"
 
 ## Conclusion
 
-All four workarounds are:
-- ✅ **Well-justified** - Enable critical functionality
-- ✅ **Well-documented** - Clear purpose and implementation
-- ✅ **Properly scoped** - Minimal changes, version-aware
-- ✅ **Security-conscious** - Explicit warnings where needed
-- ✅ **Future-proof** - Match upstream fixes when available
+As of April 15, 2026:
+- The SpeechBrain torchaudio workarounds were removed after validating SpeechBrain 1.1.0 on the current runtime.
+- Three runtime workarounds remain active.
+- Several issue comments and assumptions from early 2026 were too optimistic because they relied on unreleased upstream code.
 
-**These are not technical debt** - they're necessary compatibility bridges that will naturally resolve as upstream packages update to support PyTorch 2.9+ and newer APIs.
-
-The repository is in **excellent shape** and ready for production use.
+These are still compatibility bridges, but they should be revalidated against released wheels rather than upstream `main` branches or issue comments.
 
 ---
 

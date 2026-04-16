@@ -161,11 +161,11 @@ Key dependencies managed by `install_packages_and_venv.sh`:
 | PyTorch | 2.9.1+cu130 | CUDA 13.0 for Blackwell GPUs |
 | torchaudio | 2.9.1+cu130 | Matches PyTorch |
 | pyannote-audio | 4.0.1 | Last version without torch pin |
-| whisperx | 3.7.6 | Speaker diarization |
+| speechbrain | 1.1.0 | Includes torchaudio 2.9 compatibility fixes |
+| whisperx | 3.8.5 | Speaker diarization |
 
 The install script applies compatibility patches for:
 - PyTorch 2.6+ `weights_only=True` default
-- torchaudio 2.9.x API changes
 - pyannote/torchcodec ABI compatibility
 
 ## Troubleshooting
