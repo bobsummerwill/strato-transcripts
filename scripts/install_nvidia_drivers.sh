@@ -7,12 +7,12 @@
 # Works with any NVIDIA GPU (RTX 3090, 4090, 5070, etc.).
 #
 # Usage:
-#   sudo ./install_nvidia_drivers.sh
+#   sudo ./scripts/install_nvidia_drivers.sh
 #   sudo reboot
 #
 # ==============================================================================
 
-set -e  # Exit on error
+set -euo pipefail
 
 # Colors for output
 RED='\033[0;31m'
@@ -27,62 +27,112 @@ echo -e "${BLUE}=================================${NC}"
 echo ""
 
 # Check if running as root
-if [ "$EUID" -ne 0 ]; then 
+if [ "$EUID" -ne 0 ]; then
     echo -e "${RED}ERROR: This script must be run as root (use sudo)${NC}"
     exit 1
 fi
 
-# Step 1: Update system packages
-echo -e "${YELLOW}[1/4] Updating system packages...${NC}"
+if [ "$#" -ne 0 ]; then
+    echo -e "${RED}ERROR: This script does not accept arguments${NC}"
+    echo "Usage:"
+    echo "  sudo ./scripts/install_nvidia_drivers.sh"
+    exit 1
+fi
+
+CURRENT_KERNEL=$(uname -r)
+TOTAL_STEPS=5
+step=1
+
+# Fail early on systems without NVIDIA hardware.
+if ! lspci | grep -iE "vga|3d|display" | grep -qi nvidia; then
+    echo -e "${RED}ERROR: No NVIDIA GPU detected on the PCI bus${NC}"
+    exit 1
+fi
+
+# Step 1: Refresh package indexes
+echo -e "${YELLOW}[${step}/${TOTAL_STEPS}] Updating package indexes...${NC}"
 apt update
-apt upgrade -y
-echo -e "${GREEN}✓ System packages updated${NC}"
+echo -e "${GREEN}✓ Package indexes updated${NC}"
 echo ""
+step=$((step + 1))
 
 # Step 2: Install NVIDIA driver
-echo -e "${YELLOW}[2/5] Installing NVIDIA driver...${NC}"
-echo "This will automatically detect your GPU and install the latest compatible driver."
+echo -e "${YELLOW}[${step}/${TOTAL_STEPS}] Installing NVIDIA driver from Ubuntu packages...${NC}"
+echo "This will automatically detect your GPU and install the latest compatible Ubuntu driver."
 ubuntu-drivers install
-echo -e "${GREEN}✓ NVIDIA driver installed${NC}"
+echo -e "${GREEN}✓ NVIDIA driver packages installed${NC}"
 echo ""
+step=$((step + 1))
 
-# Step 3: Install CUDA runtime libraries
+# Step 3: Verify current kernel has a matching NVIDIA module
+echo -e "${YELLOW}[${step}/${TOTAL_STEPS}] Verifying NVIDIA module for current kernel...${NC}"
+echo "Current kernel: $CURRENT_KERNEL"
+
+if modinfo -k "$CURRENT_KERNEL" nvidia &> /dev/null; then
+    echo -e "${GREEN}✓ NVIDIA kernel module is available for $CURRENT_KERNEL${NC}"
+else
+    echo -e "${RED}ERROR: No NVIDIA kernel module found for $CURRENT_KERNEL${NC}"
+    echo ""
+    echo "The driver packages were installed, but they do not match the currently"
+    echo "running kernel. This usually means either:"
+    echo "  - a newer kernel was installed and you need to reboot into it, or"
+    echo "  - the NVIDIA module for $CURRENT_KERNEL was not installed/built."
+    echo ""
+    echo "Check these commands after rebooting or fixing the kernel packages:"
+    echo "  uname -r"
+    echo "  modinfo -k \$(uname -r) nvidia"
+    echo ""
+    exit 1
+fi
+echo ""
+step=$((step + 1))
+
+# Step 4: Install CUDA runtime libraries.
 # PyTorch bundles its own CUDA, but CTranslate2/faster-whisper (used by WhisperX)
-# dynamically links against system libcublas.so.12 at runtime.
-# Without these, you get: RuntimeError: Library libcublas.so.12 is not found
-echo -e "${YELLOW}[3/5] Installing CUDA 12 runtime libraries...${NC}"
-echo "CTranslate2 (WhisperX dependency) requires system CUDA libraries."
+# dynamically link against system CUDA libraries at runtime.
+echo -e "${YELLOW}[${step}/${TOTAL_STEPS}] Installing CUDA runtime libraries...${NC}"
+echo "Ubuntu remains the source of truth for NVIDIA drivers; the CUDA repo is pinned"
+echo "so it cannot override driver packages."
 
-# Add NVIDIA CUDA repository if not already present
+apt install -y wget
+
 if ! dpkg -l cuda-keyring 2>/dev/null | grep -q "^ii"; then
-    echo "Adding NVIDIA CUDA repository..."
+    echo "Adding NVIDIA CUDA repository keyring..."
     wget -q https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-keyring_1.1-1_all.deb -O /tmp/cuda-keyring.deb
     dpkg -i /tmp/cuda-keyring.deb
     rm -f /tmp/cuda-keyring.deb
-    apt update
 fi
 
-# Install CUDA 12 runtime libraries (not the full toolkit — just what's needed)
-apt install -y libcublas-12-8 libcurand-12-8 libcusparse-12-8 libcusolver-12-8
-echo -e "${GREEN}✓ CUDA 12 runtime libraries installed${NC}"
-echo ""
+cat > /etc/apt/preferences.d/cuda-runtime-no-driver-overrides <<'EOF'
+Package: nvidia-* libnvidia-* linux-modules-nvidia-* xserver-xorg-video-nvidia-* cuda-drivers* nvidia-firmware-* nvidia-kernel-*
+Pin: origin developer.download.nvidia.com
+Pin-Priority: -1
+EOF
 
-# Step 4: Check current nvidia-smi status (may not work until reboot)
-echo -e "${YELLOW}[4/5] Checking current driver status...${NC}"
+apt update
+
+# Minimal CUDA runtime libraries needed by WhisperX/CTranslate2.
+apt install -y libcublas-12-8 libcurand-12-8 libcusparse-12-8 libcusolver-12-8
+echo -e "${GREEN}✓ CUDA runtime libraries installed without overriding driver packages${NC}"
+echo ""
+step=$((step + 1))
+
+# Step 5: Check current nvidia-smi status (may not work until reboot)
+echo -e "${YELLOW}[${step}/${TOTAL_STEPS}] Checking current driver status...${NC}"
 if command -v nvidia-smi &> /dev/null; then
     echo "nvidia-smi command is available."
     if nvidia-smi &> /dev/null; then
         echo -e "${GREEN}Driver is already loaded:${NC}"
         nvidia-smi
     else
-        echo -e "${YELLOW}Driver installed but not loaded yet (reboot required)${NC}"
+        echo -e "${YELLOW}Driver installed for the current kernel, but not loaded yet (reboot required)${NC}"
     fi
 else
     echo -e "${YELLOW}nvidia-smi will be available after reboot${NC}"
 fi
 echo ""
 
-# Step 5: Final instructions
+# Final instructions
 echo -e "${BLUE}=================================${NC}"
 echo -e "${GREEN}✓ Installation Complete!${NC}"
 echo -e "${BLUE}=================================${NC}"
@@ -90,6 +140,8 @@ echo ""
 echo -e "${YELLOW}IMPORTANT: You MUST reboot for the driver to work.${NC}"
 echo ""
 echo "After reboot, verify the installation with:"
+echo "  uname -r"
+echo "  modinfo -k \$(uname -r) nvidia"
 echo "  nvidia-smi"
 echo ""
 echo "Expected output should show:"
@@ -100,5 +152,6 @@ echo -e "${YELLOW}To reboot now, run:${NC}"
 echo "  sudo reboot"
 echo ""
 echo "After reboot, continue with:"
-echo "  ./install_packages_and_venv.sh"
+echo "  ./scripts/install_packages.sh"
+echo "  ./scripts/install_venv.sh --nvidia"
 echo ""
