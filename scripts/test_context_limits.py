@@ -5,7 +5,7 @@ Context Window Limit Testing Tool
 Tests actual context window limits for supported hosted AI post-processors.
 
 Hosted provider matrix:
-- opus: Claude Opus 4.6 via OpenRouter - 1M context, 128K output
+- opus: Claude Opus via direct Anthropic API - 200K context, 32K output
 - gemini: Gemini 3.1 Pro via OpenRouter - 1M context, 64K output
 - grok: Grok 4 via OpenRouter - 256K context
 - qwen: Qwen3.5 Plus via OpenRouter - 1M context
@@ -56,14 +56,14 @@ def print_warning(text):
 # Hosted model mapping and context limits
 HOSTED_MODELS = {
     'opus': {
-        'model_id': 'anthropic/claude-opus-4.6',
-        'display_name': 'Claude Opus 4.6',
+        'model_id': 'claude-opus-4-1-20250805',
+        'display_name': 'Claude Opus',
         'provider': 'Anthropic',
-        'route': 'openrouter',
-        'env_var': 'OPENROUTER_API_KEY',
-        'advertised': '1,000,000 tokens',
-        'test_sizes': [10000, 50000, 100000, 200000, 500000, 1000000],
-        'request_kwargs': {'max_tokens': 50, 'temperature': 0.1},
+        'route': 'anthropic',
+        'env_var': 'ANTHROPIC_API_KEY',
+        'advertised': '200,000 tokens',
+        'test_sizes': [10000, 50000, 100000, 150000, 200000],
+        'request_kwargs': {'max_tokens': 50},
     },
     'gemini': {
         'model_id': 'google/gemini-3.1-pro-preview',
@@ -110,7 +110,7 @@ HOSTED_MODELS = {
 
 # Model quality priority for recommendations
 MODEL_PRIORITY = {
-    'anthropic/claude-opus-4.6': 100,
+    'claude-opus-4-1-20250805': 100,
     'x-ai/grok-4': 95,
     'google/gemini-3.1-pro-preview': 90,
     'qwen/qwen3.5-plus-02-15': 85,
@@ -163,11 +163,6 @@ prompt engineering and determine when chunking strategies are necessary for long
 
 def test_hosted_context(processor_name):
     """Test context limits for a hosted model via its configured route."""
-    try:
-        import openai
-    except ImportError:
-        return {"error": "openai package not installed", "status": "skip"}
-
     config = HOSTED_MODELS.get(processor_name)
     if not config:
         return {"error": f"Unknown processor: {processor_name}", "status": "skip"}
@@ -181,17 +176,31 @@ def test_hosted_context(processor_name):
     provider = config['provider']
     test_sizes = config['test_sizes']
     route = config['route']
-    route_label = "OpenRouter" if route == 'openrouter' else "direct API"
+    route_label = {
+        'openrouter': 'OpenRouter',
+        'anthropic': 'direct Anthropic API',
+        'direct': 'direct API',
+    }.get(route, route)
 
     print_info(f"Testing {display_name} ({model_id}) via {route_label}...")
 
-    client_kwargs = {'api_key': api_key}
-    if route == 'openrouter':
-        client_kwargs['base_url'] = "https://openrouter.ai/api/v1"
+    if route == 'anthropic':
+        try:
+            from anthropic import Anthropic
+        except ImportError:
+            return {"error": "anthropic package not installed", "status": "skip", "provider": provider}
+        client = Anthropic(api_key=api_key)
     else:
-        client_kwargs['base_url'] = config['base_url']
-
-    client = openai.OpenAI(**client_kwargs)
+        try:
+            import openai
+        except ImportError:
+            return {"error": "openai package not installed", "status": "skip", "provider": provider}
+        client_kwargs = {'api_key': api_key}
+        if route == 'openrouter':
+            client_kwargs['base_url'] = "https://openrouter.ai/api/v1"
+        else:
+            client_kwargs['base_url'] = config['base_url']
+        client = openai.OpenAI(**client_kwargs)
 
     results = {
         "provider": provider,
@@ -209,21 +218,30 @@ def test_hosted_context(processor_name):
 
         try:
             start = time.time()
-            request_kwargs = {
-                'model': model_id,
-                'messages': [
-                    {"role": "system", "content": "You are a helpful assistant."},
-                    {"role": "user", "content": f"{payload}\n\nRespond with just: OK"}
-                ],
-                **config['request_kwargs'],
-            }
-            if route == 'openrouter':
-                request_kwargs['extra_headers'] = {
-                    "HTTP-Referer": "https://github.com/strato-net/strato-transcripts",
-                    "X-Title": "Strato Transcripts Context Test"
+            if route == 'anthropic':
+                response = client.messages.create(
+                    model=model_id,
+                    system="You are a helpful assistant.",
+                    messages=[
+                        {"role": "user", "content": f"{payload}\n\nRespond with just: OK"}
+                    ],
+                    **config['request_kwargs'],
+                )
+            else:
+                request_kwargs = {
+                    'model': model_id,
+                    'messages': [
+                        {"role": "system", "content": "You are a helpful assistant."},
+                        {"role": "user", "content": f"{payload}\n\nRespond with just: OK"}
+                    ],
+                    **config['request_kwargs'],
                 }
-
-            response = client.chat.completions.create(**request_kwargs)
+                if route == 'openrouter':
+                    request_kwargs['extra_headers'] = {
+                        "HTTP-Referer": "https://github.com/strato-net/strato-transcripts",
+                        "X-Title": "Strato Transcripts Context Test"
+                    }
+                response = client.chat.completions.create(**request_kwargs)
             elapsed = time.time() - start
 
             print_success(f"{actual_tokens:,} tokens OK ({elapsed:.1f}s)")
@@ -352,7 +370,7 @@ def main():
     args = parser.parse_args()
 
     print_header("AI Context Window Limit Testing (hosted APIs)")
-    print_info("OpenRouter backs opus/gemini/grok/qwen; gpt uses direct OpenAI API")
+    print_info("Anthropic backs opus directly; OpenRouter backs gemini/grok/qwen; gpt uses direct OpenAI API")
     print_info("Estimated cost: ~$0.01-0.10 total")
     print()
 

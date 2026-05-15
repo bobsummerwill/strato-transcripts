@@ -1,7 +1,7 @@
 # AI Providers for Transcript Post-Processing
 
-Hosted post-processing uses **OpenRouter** for most models and direct OpenAI access for GPT-5.4.
-Get your OpenRouter key from: https://openrouter.ai/keys
+Hosted post-processing uses direct Anthropic access for Opus, **OpenRouter** for Gemini/Grok/Qwen, and direct OpenAI access for GPT-5.4.
+Get your OpenRouter key from: https://openrouter.ai/keys and your Anthropic key from the Anthropic Console.
 
 **Local Mode**: 5 models run locally via ollama on dual RTX 3090s (48GB).
 
@@ -9,7 +9,7 @@ Get your OpenRouter key from: https://openrouter.ai/keys
 
 | Processor | Model | Route | Model ID | Context | Weights |
 |-----------|-------|-------|----------|---------|---------|
-| **opus** | Claude Opus 4.6 | OpenRouter | `anthropic/claude-opus-4.6` | 1M | Closed |
+| **opus** | Claude Opus | Direct Anthropic API | `claude-opus-4-1-20250805` | 200K | Closed |
 | **gemini** | Gemini 3.1 Pro | OpenRouter | `google/gemini-3.1-pro-preview` | 1M | Closed |
 | **grok** | Grok 4 | OpenRouter | `x-ai/grok-4` | 256K | Closed |
 | **qwen** | Qwen3.5 Plus | OpenRouter | `qwen/qwen3.5-plus-02-15` | 1M | Open |
@@ -28,13 +28,15 @@ Get your OpenRouter key from: https://openrouter.ai/keys
 ## Setup
 
 ### 1. Get Hosted API Keys
-Sign up at https://openrouter.ai and create an API key for `opus`, `gemini`, `grok`, and `qwen`.
+Sign up at https://openrouter.ai and create an API key for `gemini`, `grok`, and `qwen`.
+Get an Anthropic API key for `opus`.
 Get an OpenAI API key for `gpt`.
 
 ### 2. Configure Environment
 ```bash
 # Edit setup_env.sh and add your key
 export OPENROUTER_API_KEY="sk-or-v1-your-key-here"
+export ANTHROPIC_API_KEY="sk-ant-your-anthropic-key-here"
 export OPENAI_API_KEY="sk-your-openai-key-here"
 
 # Source the environment
@@ -93,10 +95,10 @@ python3 scripts/test_context_limits.py --providers all
 
 ## Model Details
 
-### Claude Opus 4.6 (`opus`)
-- **Context**: 1M tokens, 128K output
+### Claude Opus (`opus`)
+- **Context**: 200K tokens, 32K output by default
 - **Best For**: Premium quality, nuanced understanding
-- **Notes**: Highest quality output, consistently Tier 1 across episodes
+- **Notes**: Uses `ANTHROPIC_API_KEY` only; no OpenRouter fallback
 
 ### Grok 4 (`grok`)
 - **Context**: 256K tokens
@@ -128,7 +130,7 @@ python3 scripts/test_context_limits.py --providers all
 All 5 hosted models have sufficient context for typical transcripts.
 
 ### Best Quality
-1. **Claude Opus 4.6** - Consistently Tier 1 in 13/15 episodes
+1. **Claude Opus** - Consistently Tier 1 in 13/15 episodes
 2. **Grok 4** - Strong benchmark performance
 3. **Gemini 3.1 Pro** - Reliable, good for long content
 4. **GPT-5.4** - OpenAI-native option with very large context
@@ -136,7 +138,7 @@ All 5 hosted models have sufficient context for typical transcripts.
 
 ## OpenRouter Benefits
 
-- **Single API key** for 4 cross-provider models
+- **Single API key** for 3 cross-provider models
 - **Unified billing** across providers
 - **Automatic failover** if a provider is down
 - **Pay-as-you-go** with no monthly minimums

@@ -4,8 +4,8 @@
 # ==============================================================================
 # Copy this file to setup_env.sh and fill in your API keys.
 # Only HF_TOKEN is required for transcription.
-# Hosted post-processing uses OpenRouter for `opus`, `gemini`, `grok`, and `qwen`,
-# plus direct OpenAI access for `gpt`.
+# Hosted post-processing uses Anthropic directly for `opus`, OpenRouter for
+# `gemini`, `grok`, and `qwen`, plus direct OpenAI access for `gpt`.
 
 # ==============================================================================
 # REQUIRED: HuggingFace Token (for WhisperX diarization models)
@@ -19,11 +19,10 @@ export HF_TOKEN=""
 # ==============================================================================
 # AI POST-PROCESSING: OpenRouter API Key
 # ==============================================================================
-# OpenRouter provides unified access to the non-OpenAI hosted models used here.
+# OpenRouter provides unified access to the shared hosted models used here.
 # Get your key from: https://openrouter.ai/keys
 #
 # SUPPORTED MODELS (via OpenRouter):
-#   opus     - Claude Opus 4.6 (Anthropic)     - 1M context
 #   gemini   - Gemini 3 Pro (Google)           - 1M context
 #   grok     - Grok 4 (xAI)                    - 256K context
 #   qwen     - Qwen3.5 Plus (Alibaba)          - 1M context
@@ -39,6 +38,10 @@ export OPENROUTER_API_KEY=""
 # OpenAI (`gpt` -> GPT-5.4 direct API)
 # Get key from: https://platform.openai.com/api-keys
 export OPENAI_API_KEY=""
+
+# Anthropic (`opus` -> Claude Opus direct API, required for opus)
+# Get key from: https://console.anthropic.com/settings/keys
+export ANTHROPIC_API_KEY=""
 
 # ==============================================================================
 # OPTIONAL: Transcription Service API Keys
@@ -71,6 +74,10 @@ fi
 
 if [ -n "$OPENAI_API_KEY" ] && [ "$OPENAI_API_KEY" != "" ]; then
   echo "  OPENAI_API_KEY: SET (gpt direct OpenAI API)"
+fi
+
+if [ -n "$ANTHROPIC_API_KEY" ] && [ "$ANTHROPIC_API_KEY" != "" ]; then
+  echo "  ANTHROPIC_API_KEY: SET (opus direct Anthropic API)"
 fi
 
 if [ -n "$ASSEMBLYAI_API_KEY" ] && [ "$ASSEMBLYAI_API_KEY" != "" ]; then

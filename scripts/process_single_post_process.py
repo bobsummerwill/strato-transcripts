@@ -2,7 +2,7 @@
 """
 AI transcript post-processor for Ethereum/blockchain content.
 Batch process transcripts with multiple AI providers.
-Supports OpenRouter-hosted models, direct-provider hosted models, and local models via ollama.
+Supports hosted models via direct provider APIs/OpenRouter and local models via ollama.
 """
 
 import os
@@ -18,15 +18,16 @@ from common import (Colors, success, failure, skip, validate_api_key,
                     apply_canonical_name_corrections)
 
 # ============================================================================
-# Model Configuration: Hosted (OpenRouter) + Local (ollama)
+# Model Configuration: Hosted + Local (ollama)
 # ============================================================================
-# 4 hosted models via OpenRouter, 1 direct hosted model, and 5 local options for 48GB (dual 3090s).
+# Hosted models use direct provider APIs where configured, plus OpenRouter for
+# shared OpenAI-compatible routes.
 #
 # HOSTED MODELS:
 # ┌───────────┬─────────────────────┬───────────────────────────────────┬─────────┐
 # │ Processor │ Model               │ Provider Route                    │ Context │
 # ├───────────┼─────────────────────┼───────────────────────────────────┼─────────┤
-# │ opus      │ Claude Opus 4.6     │ OpenRouter                        │ 1M      │
+# │ opus      │ Claude Opus         │ Direct Anthropic API              │ 200K    │
 # │ gemini    │ Gemini 3.1 Pro      │ OpenRouter                        │ 1M      │
 # │ grok      │ Grok 4              │ OpenRouter                        │ 256K    │
 # │ qwen      │ Qwen3.5 Plus        │ OpenRouter                        │ 1M      │
@@ -48,7 +49,6 @@ from common import (Colors, success, failure, skip, validate_api_key,
 # ============================================================================
 
 OPENROUTER_MODELS = {
-    'opus': 'anthropic/claude-opus-4.6',           # Claude Opus 4.6 - 1M context
     'gemini': 'google/gemini-3.1-pro-preview',     # Gemini 3.1 Pro - 1M context
     'grok': 'x-ai/grok-4',                         # Grok 4 - 256K context
     'qwen': 'qwen/qwen3.5-plus-02-15',            # Qwen3.5 Plus - 1M context
@@ -56,7 +56,6 @@ OPENROUTER_MODELS = {
 
 # Max output tokens per model (some models need higher limits)
 OPENROUTER_MAX_TOKENS = {
-    'opus': 128000,     # Opus 4.6 supports 128K output
     'gemini': 64000,    # Gemini supports 64K output
     'grok': 32768,      # Grok uses internal reasoning, needs more tokens
     'qwen': 64000,      # Qwen3.5 Plus supports large output
@@ -88,6 +87,16 @@ DIRECT_API_CONFIG = {
         'model_id': 'gpt-5.4',
         'max_output_tokens': 128000,
         'token_param': 'max_completion_tokens',
+    },
+}
+
+# Direct Anthropic config for Opus. This uses Anthropic's native Messages API,
+# not the OpenAI-compatible client used by OpenRouter/OpenAI.
+ANTHROPIC_DIRECT_CONFIG = {
+    'opus': {
+        'env_var': 'ANTHROPIC_API_KEY',
+        'model_id': os.environ.get('ANTHROPIC_MODEL', 'claude-opus-4-1-20250805'),
+        'max_output_tokens': int(os.environ.get('ANTHROPIC_MAX_TOKENS', '32000')),
     },
 }
 
@@ -523,11 +532,14 @@ def process_with_openrouter(transcript, api_key, context, processor):
         transcript: The raw transcript text to process
         api_key: OpenRouter API key
         context: Context summary (glossary, people, terms)
-        processor: Processor name (opus, gemini, grok, qwen)
+        processor: Processor name (gemini, grok, qwen)
 
     Returns:
         Processed transcript text
     """
+    if processor in ANTHROPIC_DIRECT_CONFIG:
+        raise ValueError(f"{processor} uses the direct Anthropic API only; set ANTHROPIC_API_KEY")
+
     try:
         from openai import OpenAI
     except ImportError:
@@ -646,6 +658,43 @@ def process_with_direct_api(transcript, api_key, context, processor):
     print(" ✓")
     return result
 
+def process_with_anthropic_direct(transcript, api_key, context, processor):
+    """Process transcript using Anthropic's native Messages API."""
+    try:
+        from anthropic import Anthropic
+    except ImportError:
+        raise ImportError("anthropic package not installed. Install with: pip install anthropic")
+
+    config = ANTHROPIC_DIRECT_CONFIG.get(processor)
+    if not config:
+        raise ValueError(f"No Anthropic direct API config for processor: {processor}")
+
+    client = Anthropic(api_key=api_key)
+    prompt = build_prompt(context, transcript)
+
+    print(f"      Processing (direct Anthropic API): ", end='', flush=True)
+
+    result = ""
+    chunk_count = 0
+
+    with client.messages.stream(
+        model=config['model_id'],
+        max_tokens=config['max_output_tokens'],
+        system=SYSTEM_PROMPT,
+        messages=[
+            {"role": "user", "content": prompt}
+        ],
+    ) as stream:
+        for text in stream.text_stream:
+            if text:
+                result += text
+                chunk_count += 1
+                if chunk_count % 100 == 0:
+                    print(".", end='', flush=True)
+
+    print(" ✓")
+    return result
+
 
 def strip_ai_preamble(text):
     """Strip any thinking/preamble from AI output, keeping only the transcript.
@@ -754,7 +803,7 @@ def process_single_combination(transcript_path, provider, api_keys, context, mod
         provider: Processor name (opus, gemini, glm, etc.)
         api_keys: Dict with optional 'openrouter' and 'direct' keys for hosted mode
         context: Context summary for the prompt
-        mode: 'hosted' (OpenRouter/direct API) or 'local' (ollama)
+        mode: 'hosted' (direct APIs/OpenRouter) or 'local' (ollama)
     """
     start_time = time.time()
 
@@ -773,6 +822,8 @@ def process_single_combination(transcript_path, provider, api_keys, context, mod
     try:
         if mode == 'local':
             corrected = process_with_local_model(transcript, context, provider)
+        elif provider in api_keys.get('anthropic', {}):
+            corrected = process_with_anthropic_direct(transcript, api_keys['anthropic'][provider], context, provider)
         elif provider in api_keys.get('direct', {}):
             # Use direct API if available (better for newly released models)
             corrected = process_with_direct_api(transcript, api_keys['direct'][provider], context, provider)
@@ -910,13 +961,33 @@ def main():
             print(f"  {proc}: {model_name}")
 
     else:
-        # Hosted mode (default) - use OpenRouter and direct provider APIs
+        # Hosted mode (default) - use direct provider APIs and OpenRouter
         # Validate no local-only processors are requested
         local_only = [p for p in processors if p in LOCAL_MODELS and p not in OPENROUTER_MODELS]
         if local_only:
             print(f"\nERROR: Processor(s) only available in local mode: {', '.join(local_only)}")
             print(f"\nThese are local-only models for ollama inference.")
             print(f"Use --mode local to run these.")
+            sys.exit(1)
+
+        # Check for direct Anthropic API keys. Opus must use Anthropic directly;
+        # it must not fall back to OpenRouter.
+        api_keys['anthropic'] = {}
+        anthropic_key_errors = []
+        for proc in processors:
+            if proc in ANTHROPIC_DIRECT_CONFIG:
+                env_var = ANTHROPIC_DIRECT_CONFIG[proc]['env_var']
+                anthropic_key = os.environ.get(env_var, '').strip()
+                if anthropic_key:
+                    api_keys['anthropic'][proc] = anthropic_key
+                else:
+                    anthropic_key_errors.append((proc, env_var))
+
+        if anthropic_key_errors:
+            print()
+            for proc, env_var in anthropic_key_errors:
+                print(f"Error: {proc} requires {env_var} to be set.")
+            print("Opus uses the direct Anthropic API only and does not fall back to OpenRouter.")
             sys.exit(1)
 
         # Check for direct API keys (bypass OpenRouter for specific providers)
@@ -938,7 +1009,10 @@ def main():
             print("Add the missing direct-provider API key(s) and retry.")
             sys.exit(1)
 
-        requires_openrouter = [p for p in processors if p not in api_keys['direct']]
+        requires_openrouter = [
+            p for p in processors
+            if p not in api_keys['direct'] and p not in api_keys['anthropic']
+        ]
         if requires_openrouter:
             openrouter_key, error = validate_api_key('OPENROUTER_API_KEY')
             if error:
@@ -952,7 +1026,10 @@ def main():
         # Show which models will be used
         print("\nModels:")
         for proc in processors:
-            if proc in api_keys.get('direct', {}):
+            if proc in api_keys.get('anthropic', {}):
+                config = ANTHROPIC_DIRECT_CONFIG[proc]
+                print(f"  {proc}: {config['model_id']} (direct Anthropic API via {config['env_var']})")
+            elif proc in api_keys.get('direct', {}):
                 config = DIRECT_API_CONFIG[proc]
                 print(f"  {proc}: {config['model_id']} (direct API via {config['env_var']})")
             else:

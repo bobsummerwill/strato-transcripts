@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 Test connectivity and model access for all supported AI providers.
-OpenRouter backs most hosted post-processing models, GPT uses the direct OpenAI API,
-and local mode uses ollama on dual RTX 3090s.
+Anthropic backs Opus directly, OpenRouter backs Gemini/Grok/Qwen, GPT uses the
+direct OpenAI API, and local mode uses ollama on dual RTX 3090s.
 """
 
 import os
@@ -12,10 +12,18 @@ import subprocess
 
 # OpenRouter model IDs (same as in process_single_post_process.py)
 OPENROUTER_MODELS = {
-    'opus': ('anthropic/claude-opus-4.6', 'Claude Opus 4.6'),
     'gemini': ('google/gemini-3.1-pro-preview', 'Gemini 3.1 Pro'),
     'grok': ('x-ai/grok-4', 'Grok 4'),
     'qwen': ('qwen/qwen3.5-plus-02-15', 'Qwen3.5 Plus'),
+}
+
+ANTHROPIC_DIRECT_MODELS = {
+    'opus': {
+        'model_id': 'claude-opus-4-1-20250805',
+        'display_name': 'Claude Opus',
+        'env_var': 'ANTHROPIC_API_KEY',
+        'max_output_tokens': 20,
+    },
 }
 
 DIRECT_API_MODELS = {
@@ -99,6 +107,55 @@ def test_direct_api_model(api_key, processor_name, config):
     except Exception as e:
         print(f"    ❌ Error: {e}")
         return False
+
+
+def test_anthropic_direct_model(api_key, processor_name, config):
+    """Test a single model via Anthropic's native API."""
+    model_id = config['model_id']
+    display_name = config['display_name']
+
+    print(f"\n  Testing {processor_name.upper()} ({display_name})...")
+    print(f"    Model: {model_id}")
+
+    try:
+        from anthropic import Anthropic
+        client = Anthropic(api_key=api_key)
+
+        response = client.messages.create(
+            model=model_id,
+            max_tokens=config['max_output_tokens'],
+            messages=[{"role": "user", "content": "Say 'hello' in one word"}],
+        )
+
+        text = response.content[0].text if response.content else "No response"
+        print("    ✅ Connected successfully")
+        print(f"    Response: {text[:50]}")
+        return True
+    except Exception as e:
+        print(f"    ❌ Error: {e}")
+        return False
+
+
+def test_anthropic_direct_apis():
+    """Test direct Anthropic API models."""
+    print("\n" + "="*60)
+    print("AI POST-PROCESSING PROVIDERS (direct Anthropic API)")
+    print("="*60)
+
+    results = {}
+
+    for processor_name, config in ANTHROPIC_DIRECT_MODELS.items():
+        env_var = config['env_var']
+        api_key = os.environ.get(env_var)
+        if not api_key:
+            print(f"\n  Testing {processor_name.upper()} ({config['display_name']})...")
+            print(f"    ⚠️  {env_var} not set - skipping")
+            results[processor_name] = "skipped"
+            continue
+
+        results[processor_name] = test_anthropic_direct_model(api_key, processor_name, config)
+
+    return results
 
 
 def test_openrouter():
@@ -365,7 +422,7 @@ def main():
     print("="*60)
     print("AI Provider Connectivity Test")
     print("="*60)
-    print("Hosted: OpenRouter (opus, gemini, grok, qwen) + direct OpenAI (gpt)")
+    print("Hosted: direct Anthropic (opus) + OpenRouter (gemini, grok, qwen) + direct OpenAI (gpt)")
     print("Local:  5 models via ollama (requires 2x RTX 3090 / 48GB)")
     print("        glm, deepseek-local, qwen-local, mistral-local, llama-local")
     print("="*60)
@@ -391,6 +448,9 @@ def main():
     print("="*60)
     results['assemblyai'] = test_assemblyai()
     results['whisperx-cloud'] = test_whisperx_cloud()
+
+    # Test Anthropic direct models
+    results.update(test_anthropic_direct_apis())
 
     # Test OpenRouter connection first
     api_key, _ = test_openrouter()

@@ -55,11 +55,11 @@ python3 scripts/process_single_transcribe_and_diarize.py audio.mp3 --transcriber
 
 ## AI Post-Processors
 
-Hosted post-processing uses **OpenRouter** for most models, plus direct OpenAI access for GPT-5.4. See [AI_PROVIDERS.md](AI_PROVIDERS.md) for details.
+Hosted post-processing uses direct Anthropic access for Opus, **OpenRouter** for Gemini/Grok/Qwen, and direct OpenAI access for GPT-5.4. See [AI_PROVIDERS.md](AI_PROVIDERS.md) for details.
 
 | Processor | Model | Context | Best For |
 |-----------|-------|---------|----------|
-| **opus** | Claude Opus 4.6 | 1M | Premium quality, complex reasoning |
+| **opus** | Claude Opus | 200K | Premium quality, complex reasoning |
 | **gemini** | Gemini 3.1 Pro | 1M | Very long documents, technical |
 | **grok** | Grok 4 | 256K | High benchmark performance |
 | **qwen** | Qwen3.5 Plus | 1M | Multilingual, open weights |
@@ -141,7 +141,8 @@ nano setup_env.sh
 Required keys in `setup_env.sh`:
 ```bash
 export HF_TOKEN="hf_..."              # Required for WhisperX diarization
-export OPENROUTER_API_KEY="sk-or-..." # Required for OpenRouter-backed post-processors
+export ANTHROPIC_API_KEY="sk-ant-..." # Required for Opus post-processing
+export OPENROUTER_API_KEY="sk-or-..." # Required for Gemini/Grok/Qwen post-processors
 export OPENAI_API_KEY="sk-..."        # Required for GPT-5.4 post-processing
 export ASSEMBLYAI_API_KEY="..."       # Optional: AssemblyAI transcription
 export REPLICATE_API_TOKEN="..."      # Optional: Cloud WhisperX
